@@ -4,24 +4,34 @@
    CSS Custom Properties
    ===================================================== */
 :root {
-  --color-brand-blue: #003087;
-  --color-brand-blue-dark: #001f5c;
-  --color-brand-blue-light: #0050c8;
-  --color-accent: #e8a020;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #4a4a4a;
-  --color-text-muted: #6b7280;
-  --color-bg-white: #ffffff;
-  --color-bg-light: #f8f9fa;
-  --color-bg-section: #f1f4f8;
-  --color-border: #e0e4ea;
+  /* Brand */
+  --color-brand:       #81ab4c;
+  --color-brand-dark:  #6a9038;   /* hover / pressed */
+  --color-brand-light: #96c05e;   /* subtle tint */
 
-  --font-sans: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Neutrals */
+  --color-charcoal:    #3f3f3f;   /* headings, footer bg */
+  --color-charcoal-dk: #2a2a2a;   /* footer gutter */
+
+  /* Text */
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted:     #6b7280;
+
+  /* Backgrounds */
+  --color-bg-white:   #ffffff;
+  --color-bg-light:   #f8f9fa;
+  --color-bg-section: #f1f4f8;
+  --color-border:     #e0e4ea;
+
+  /* Typography */
+  --font-sans:    'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-heading: 'Montserrat', 'Open Sans', system-ui, sans-serif;
 
-  --max-width: 1200px;
-  --section-pad-y: 5rem;
-  --section-pad-x: 2rem;
+  /* Layout */
+  --max-width:      1200px;
+  --section-pad-y:  5rem;
+  --section-pad-x:  2rem;
 
   --transition-base: 200ms ease;
 }
@@ -62,13 +72,13 @@ img {
 }
 
 a {
-  color: var(--color-brand-blue);
+  color: var(--color-brand);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 a:hover {
-  color: var(--color-brand-blue-light);
+  color: var(--color-brand-dark);
 }
 
 /* =====================================================
@@ -78,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.25;
-  color: var(--color-brand-blue-dark);
+  color: var(--color-charcoal);
 }
 
 h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
@@ -134,42 +144,49 @@ li {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background var(--transition-base), transform var(--transition-base);
-  border: none;
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-base);
+  border: 2px solid transparent;
 }
 
 .btn:active {
   transform: translateY(1px);
 }
 
+/* Green bg, white text — used on white/light backgrounds */
 .btn--primary {
-  background: var(--color-brand-blue);
+  background: var(--color-brand);
   color: #fff;
+  border-color: var(--color-brand);
 }
 
 .btn--primary:hover {
-  background: var(--color-brand-blue-light);
+  background: var(--color-brand-dark);
+  border-color: var(--color-brand-dark);
   color: #fff;
 }
 
+/* White bg, green text — used on green/dark backgrounds (CTA strip, hero) */
 .btn--accent {
-  background: var(--color-accent);
-  color: #fff;
+  background: #fff;
+  color: var(--color-brand-dark);
+  border-color: #fff;
 }
 
 .btn--accent:hover {
-  background: #c98610;
-  color: #fff;
+  background: var(--color-bg-light);
+  border-color: var(--color-bg-light);
+  color: var(--color-brand-dark);
 }
 
+/* Outline — green border, no fill */
 .btn--outline {
   background: transparent;
-  color: var(--color-brand-blue);
-  border: 2px solid var(--color-brand-blue);
+  color: var(--color-brand);
+  border-color: var(--color-brand);
 }
 
 .btn--outline:hover {
-  background: var(--color-brand-blue);
+  background: var(--color-brand);
   color: #fff;
 }
 
@@ -217,7 +234,7 @@ li {
 
 .baf-section__inner h3 {
   margin-bottom: 1rem;
-  color: var(--color-brand-blue);
+  color: var(--color-brand);
 }
 
 /* flip: image on right, text on left */
@@ -249,7 +266,8 @@ li {
    Page Hero Banner
    ===================================================== */
 .page-hero {
-  background: linear-gradient(135deg, var(--color-brand-blue-dark) 0%, var(--color-brand-blue) 100%);
+  /* Fallback gradient uses charcoal when no bg-image is provided */
+  background: linear-gradient(135deg, var(--color-charcoal-dk) 0%, var(--color-charcoal) 100%);
   color: #fff;
   padding: 4rem var(--section-pad-x) 3rem;
   text-align: center;
@@ -271,7 +289,7 @@ li {
    CTA Strip
    ===================================================== */
 .cta-strip {
-  background: var(--color-brand-blue);
+  background: var(--color-brand);
   color: #fff;
   text-align: center;
   padding: 3.5rem var(--section-pad-x);
@@ -283,7 +301,7 @@ li {
 }
 
 .cta-strip p {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9);
   max-width: 580px;
   margin: 0 auto 1.75rem;
 }
