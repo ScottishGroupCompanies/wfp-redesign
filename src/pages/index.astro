@@ -1,47 +1,426 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BackAndForthSection from '../components/BackAndForthSection.astro';
+import BrandLogos from '../components/BrandLogos.astro';
+import CTAStrip from '../components/CTAStrip.astro';
 
 const title = 'Welcome | Window Film Philadelphia | Leading Window Film Solutions';
 const description = 'Window Film Philadelphia is honored to provide leading window film solutions for Philadelphia properties. Schedule your free consultation!';
-import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from '../components/CTAStrip.astro';
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/'>
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-contractor-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
+
+  <!-- ============================================================
+       SECTION 1 — Split Hero
+       Left: dark bg, H1 + intro text
+       Right: contractor photo, no overlay, bleeds to edge
+       ============================================================ -->
+  <section class="home-hero">
+    <div class="home-hero__text">
       <h1>Welcome to Window Film Philadelphia!</h1>
+      <p class="home-hero__lead">Window Film Philadelphia proudly serves residential and commercial properties throughout the <a href="/cities/philadelphia/">Philadelphia</a> metropolitan area. Our experienced team is always available to help you transform your property with our incredible, effective solutions. From energy savings to custom decorative printing, window film has exclusive benefits to offer your upcoming project. Work with our trusted contractors to save money, improve productivity, and much more.</p>
+      <a href="/contact/" class="btn btn--accent">Get a Free Quote</a>
+    </div>
+    <div class="home-hero__image">
+      <img
+        src="/images/window-film-contractor-philadelphia.jpg"
+        alt="Window film contractor Philadelphia"
+        width="2087"
+        height="1391"
+        fetchpriority="high"
+      />
     </div>
   </section>
 
+  <!-- ============================================================
+       SECTION 2 — Trusted Experts BAF
+       ============================================================ -->
   <BackAndForthSection
-  heading={'Welcome to Window Film Philadelphia!'}
-  body={'Window Film Philadelphia proudly serves residential and commercial properties throughout the Philadelphia metropolitan area. Our experienced team is always available to help you transform your property with our incredible, effective solutions. From energy savings to custom decorative printing, window film has exclusive benefits to offer your upcoming project. Work with our trusted contractors to save money, improve productivity, and much more.'}
-  imageSrc={'/images/window-film-contractor-philadelphia.jpg'}
-  imageAlt={'window film contractor philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Trusted Experts for Window Film in Philadelphia'}
+    body={'We\'re honored to provide industry-leading solutions to address a number of property concerns. With partnerships with all of the top window film manufacturers, we\'re able to provide the most extensive range of window film solutions for both residential and commercial properties. Our experts are always here to help you with your project goals.'}
+    imageSrc={'/images/window-film-contractor-philadelphia.jpg'}
+    imageAlt={'Window film contractor Philadelphia'}
+    flip={true}
+    altBg={false}
+  />
+
+  <!-- ============================================================
+       SECTION 3 — 6-Icon Quick-Link Bar (green)
+       ============================================================ -->
+  <section class="icon-bar">
+    <div class="icon-bar__grid">
+      <a href="/benefits/" class="icon-bar__item">
+        <img src="/images/2021-08-residential.png" alt="Residential window film" width="60" height="60" loading="lazy" />
+        <span>Residential</span>
+      </a>
+      <a href="/applications/" class="icon-bar__item">
+        <img src="/images/2021-08-commercial.png" alt="Commercial window film" width="60" height="60" loading="lazy" />
+        <span>Commercial</span>
+      </a>
+      <a href="/benefits/safety-and-security/" class="icon-bar__item">
+        <img src="/images/2021-08-security.png" alt="Security window film" width="60" height="60" loading="lazy" />
+        <span>Security</span>
+      </a>
+      <a href="/benefits/glare-reduction/" class="icon-bar__item">
+        <img src="/images/2021-08-glare-reduction.png" alt="Glare reduction window film" width="60" height="60" loading="lazy" />
+        <span>Glare Reduction</span>
+      </a>
+      <a href="/benefits/energy-saving-window-film-philadephia/" class="icon-bar__item">
+        <img src="/images/2021-08-energy-saving.png" alt="Energy saving window film" width="60" height="60" loading="lazy" />
+        <span>Energy Savings</span>
+      </a>
+      <a href="/benefits/uv-blocking-window-film-philadelphia/" class="icon-bar__item">
+        <img src="/images/2021-08-uv-protection.png" alt="UV protection window film" width="60" height="60" loading="lazy" />
+        <span>UV Protection</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — Why Window Film? (centred text block)
+       ============================================================ -->
+  <section class="why-section section-pad">
+    <div class="container why-section__inner">
+      <h2>Why Window Film?</h2>
+      <p class="why-section__lead">Window film is a highly versatile solution that can address a wide variety of both residential and commercial property concerns. With extensive specialty and multi-purpose products available, this cost-effective alternative can help you achieve your project goals without major renovations. Experience effective solutions that include energy conservation, glare reduction, UV protection, decor, security, and much more. Schedule a consultation to learn more about the benefits of window film in Philadelphia today!</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 — Text + YouTube Video
+       ============================================================ -->
+  <section class="video-section section-pad--sm">
+    <div class="container video-section__grid">
+      <div class="video-section__text">
+        <p>Window Film Philadelphia is acclaimed for providing innovative, affordable options for window film for Philadelphia <a href="/applications/">residential and commercial applications</a>. We're proud to help our community transform dysfunctional, existing rooms into practical, comfortable spaces. Our award-winning customer service sets us apart from other window film contractors. Experience the Scottish Difference and discover solutions with a great ROI.</p>
+      </div>
+      <div class="video-section__embed">
+        <div class="video-section__ratio">
+          <iframe
+            src="https://www.youtube.com/embed/wiQP8jVa_P0"
+            title="Window Film Philadelphia"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6 — 11 Benefit Back-and-Forth Sections
+       ============================================================ -->
 
   <BackAndForthSection
-  heading={'Trusted Experts for Window Film in Philadelphia'}
-  body={'We’re honored to provide industry-leading solutions to address a number of property concerns. With partnerships with all of the top window film manufacturers, we’re able to provide the most extensive range of window film solutions for both residential and commercial properties. Our experts are always here to help you with your project goals.'}
-  imageSrc={'/images/2021-08-residential.png'}
-  imageAlt={''}
-  flip={true}
-  altBg={true}
-/>
+    heading={'Privacy Window Film for Philadelphia'}
+    body={'Are you looking for the best solutions for privacy window film in Philadelphia? Privacy concerns can impact any property — from offices needing to protect sensitive information to homes wanting seclusion from busy streets. Our privacy window film provides effective, stylish solutions tailored to your needs.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-glare-privacy.jpg'}
+    imageAlt={'Privacy window film Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/privacy-window-film-philadelphia/'}
+  />
 
   <BackAndForthSection
-  heading={'Why Window Film?'}
-  body={'Window film is a highly versatile solution that can address a wide variety of both residential and commercial property concerns. With extensive specialty and multi-purpose products available, this cost-effective alternative can you achieve your project goals without major renovations. Experience effective solutions that include energy conservation, glare reduction, UV protection, decor, security, and much more. Schedule a consultation to learn more about the benefits of window film in Philadelphia today!'}
-  imageSrc={'/images/2021-08-commercial.png'}
-  imageAlt={''}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Anti-Glare Window Film Solutions for Properties in Philadelphia'}
+    body={'Anti glare window film in Philadelphia can be a game-changer for homes and businesses, especially those without surrounding shade. Excessive glare causes eye strain, fades furnishings, and makes screens nearly unusable. Our films dramatically reduce glare while maintaining clear, natural light.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-glare-reduction.jpg'}
+    imageAlt={'Glare reduction window film Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/glare-reduction/'}
+  />
+
+  <BackAndForthSection
+    heading={'Energy Saving Window Film in Philadelphia'}
+    body={'Save on your utility costs with energy saving window film in Philadelphia! Energy costs can be a concern for any residential or commercial property owner. Our energy efficient window films reduce heat gain in summer and heat loss in winter, delivering measurable savings year-round.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-energy-savings.jpg'}
+    imageAlt={'Energy saving window film Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/energy-saving-window-film-philadephia/'}
+  />
+
+  <BackAndForthSection
+    heading={'UV Blocking Window Film in Philadelphia'}
+    body={'Window Film Philadelphia is the trusted source for UV blocking window film in Philadelphia, Pennsylvania. Our films block up to 99% of harmful UV rays, protecting your furnishings, artwork, flooring, and most importantly your family or employees from UV-related health risks.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-uv-protection.jpg'}
+    imageAlt={'UV blocking window film Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/uv-blocking-window-film-philadelphia/'}
+  />
+
+  <BackAndForthSection
+    heading={'Anti-Graffiti Film in Philadelphia for Commercial Buildings'}
+    body={'Anti graffiti film in Philadelphia offers essential protection for commercial properties vulnerable to vandalism, graffiti, and surface damage. Our sacrificial films act as a transparent shield over glass and surfaces — when tagged, simply peel and replace rather than replacing the glass entirely.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-anti-graffiti-window-film-scratches-film.jpg'}
+    imageAlt={'Anti-graffiti window film Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/anti-graffiti/'}
+  />
+
+  <BackAndForthSection
+    heading={'Decorative Window Film in Philadelphia'}
+    body={'Get high-quality decorative window film in Philadelphia! In order to create beauty and visual interest in your home or business, our decorative films offer an extensive range of patterns, textures, and custom print options. Transform plain glass into a design statement without replacing windows.'}
+    imageSrc={'/images/2021-08-philadelphia-hd-clear-conference-room-window-film.jpg'}
+    imageAlt={'Decorative window film Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/decorative-promotional/'}
+  />
+
+  <BackAndForthSection
+    heading={'Ballistic Window Film for Philadelphia Buildings'}
+    body={'Enhance safety and security with ballistic window film in Philadelphia, a reliable solution for mitigating risks in high-threat environments. Our ballistic-resistant films significantly increase the structural integrity of glass, slowing forced entry and protecting occupants from flying glass shards.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-ballistic-resistant-window-film.jpg'}
+    imageAlt={'Ballistic resistance window film Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/ballistic-resistance/'}
+  />
+
+  <BackAndForthSection
+    heading={'Enhance Safety with Blast Mitigation Film in Philadelphia'}
+    body={'Enhance the security of your property with blast mitigation film in Philadelphia, designed to safeguard against potential explosive threats. Our blast mitigation films hold glass fragments in place during an explosion, dramatically reducing the risk of injury from flying shards.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-bomb-blast-protection.jpg'}
+    imageAlt={'Bomb blast protection window film Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/blast-mitigation/'}
+  />
+
+  <BackAndForthSection
+    heading={'Exterior Window Film in Philadelphia'}
+    body={'Curb appeal matters for commercial properties. Whether you\'re attracting new tenants or preparing to sell, updating your building\'s exterior is a cost-effective way to make a strong first impression. Our exterior window films and surface films refresh facades without expensive renovation.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-exterior-refinishing.jpg'}
+    imageAlt={'Exterior refinishing window film Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/exterior-window-film/'}
+  />
+
+  <BackAndForthSection
+    heading={'Elevator Refinishing Film for Philadelphia'}
+    body={'Elevators are an expensive investment for any commercial property. They serve an essential responsibility, especially for high-rise buildings. Our elevator refinishing films restore worn cab interiors and surfaces to like-new condition at a fraction of full replacement cost.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-elavator-surface-refinishing.jpg'}
+    imageAlt={'Elevator refinishing window film Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/elevator-refinishing/'}
+  />
+
+  <BackAndForthSection
+    heading={'Bird Strike Window Film in Philadelphia'}
+    body={'Professional bird strike window film in Philadelphia protects both migrating and resident birds while preserving the aesthetic of your building. Our Bird Divert films are virtually invisible to humans but highly visible to birds, preventing collisions without altering your view.'}
+    imageSrc={'/images/2021-08-philadelphia-window-film-bird-strike-protection.jpg'}
+    imageAlt={'Bird strike prevention window film Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Learn More'}
+    ctaHref={'/benefits/bird-strike-prevention/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+/* ============================================================
+   Split Hero
+   ============================================================ */
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+.home-hero__text {
+  background: var(--color-charcoal);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem 4rem 4rem;
+}
+
+.home-hero__text h1 {
+  color: #fff;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.home-hero__lead {
+  color: rgba(255,255,255,0.88);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.home-hero__lead a {
+  color: var(--color-brand-light);
+}
+
+.home-hero__lead a:hover {
+  color: #fff;
+}
+
+.home-hero__image {
+  overflow: hidden;
+}
+
+.home-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+  .home-hero__text {
+    padding: 3rem 1.5rem;
+  }
+  .home-hero__image {
+    min-height: 300px;
+  }
+}
+
+/* ============================================================
+   6-Icon Quick-Link Bar
+   ============================================================ */
+.icon-bar {
+  background: var(--color-brand);
+  padding: 2.5rem var(--section-pad-x);
+}
+
+.icon-bar__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.icon-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  padding: 0.75rem 0.5rem;
+  border-radius: 6px;
+  transition: background 200ms ease;
+}
+
+.icon-bar__item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.icon-bar__item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.icon-bar__item span {
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (max-width: 720px) {
+  .icon-bar__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .icon-bar__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   Why Window Film? — centred text block
+   ============================================================ */
+.why-section {
+  background: var(--color-bg-section);
+}
+
+.why-section__inner {
+  max-width: 760px;
+  text-align: center;
+}
+
+.why-section__inner h2 {
+  margin-bottom: 1.25rem;
+}
+
+.why-section__lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   Video Section
+   ============================================================ */
+.video-section {
+  background: var(--color-bg-white);
+}
+
+.video-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.video-section__text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.video-section__ratio {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.video-section__ratio iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .video-section__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
