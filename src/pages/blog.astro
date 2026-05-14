@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandLogos from '../components/BrandLogos.astro';
+import CTAStrip from '../components/CTAStrip.astro';
+
+const title = 'Blog | Window Film Philadelphia | Window Film Tips & Resources';
+const description = 'Read the latest window film tips, guides, and industry news from Window Film Philadelphia. Expert advice for residential and commercial properties in the Philadelphia area.';
+
+// Blog post registry — add new posts here as they are published
+const posts = [
+  {
+    slug: '/2026/04/22/benefits-window-tint-philadelphia-energy-comfort-uv-defense/',
+    title: 'Benefits of Window Tint in Philadelphia: Energy, Comfort, and UV Defense',
+    excerpt: 'From sun-soaked glass in Center City high-rises to drafty windows in classic rowhomes, Philadelphia buildings take a beating from temperature swings, glare, and UV exposure. Discover how window tint addresses all three — without replacing your windows.',
+    image: '/images/wfphilly-infographic-3e9af1ac.png',
+    imageAlt: 'Benefits of window tint in Philadelphia',
+    date: 'April 22, 2026',
+    category: 'Energy Efficient Window Film',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/blog/'>
+
+  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-08-window-film-philadelphia-benefits.jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+      <h1>Window Film Blog</h1>
+      <p>Tips, guides, and industry news from Philadelphia's window film experts.</p>
+    </div>
+  </section>
+
+  <section class="blog-archive">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <article class="blog-card">
+            <a href={post.slug} class="blog-card__image-link" tabindex="-1" aria-hidden="true">
+              <div class="blog-card__image">
+                <img src={post.image} alt={post.imageAlt} loading="lazy" />
+              </div>
+            </a>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">
+                <span class="blog-card__date">{post.date}</span>
+                {post.category && (
+                  <span class="blog-card__category">{post.category}</span>
+                )}
+              </div>
+              <h2 class="blog-card__title">
+                <a href={post.slug}>{post.title}</a>
+              </h2>
+              <p class="blog-card__excerpt">{post.excerpt}</p>
+              <a href={post.slug} class="btn btn--primary blog-card__cta">
+                Read More
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BrandLogos />
+  <CTAStrip />
+
+</BaseLayout>
+
+<style>
+.blog-archive {
+  padding: var(--section-pad-y) 0;
+  background: var(--color-bg-light);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+/* ── Blog Card ── */
+.blog-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.blog-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+  transform: translateY(-3px);
+}
+
+.blog-card__image-link {
+  display: block;
+}
+
+.blog-card__image {
+  height: 220px;
+  overflow: hidden;
+}
+
+.blog-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.blog-card:hover .blog-card__image img {
+  transform: scale(1.03);
+}
+
+.blog-card__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.blog-card__date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.blog-card__category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-brand);
+  background: rgba(129,171,76,0.10);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+.blog-card__title {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.blog-card__title a {
+  color: var(--color-charcoal);
+}
+
+.blog-card__title a:hover {
+  color: var(--color-brand);
+}
+
+.blog-card__excerpt {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.blog-card__cta {
+  align-self: flex-start;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.4rem;
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
