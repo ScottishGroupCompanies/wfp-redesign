@@ -1,0 +1,385 @@
+/* Window Film Philadelphia — Global Styles */
+
+/* =====================================================
+   CSS Custom Properties
+   ===================================================== */
+:root {
+  --color-brand-blue: #003087;
+  --color-brand-blue-dark: #001f5c;
+  --color-brand-blue-light: #0050c8;
+  --color-accent: #e8a020;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: #6b7280;
+  --color-bg-white: #ffffff;
+  --color-bg-light: #f8f9fa;
+  --color-bg-section: #f1f4f8;
+  --color-border: #e0e4ea;
+
+  --font-sans: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Montserrat', 'Open Sans', system-ui, sans-serif;
+
+  --max-width: 1200px;
+  --section-pad-y: 5rem;
+  --section-pad-x: 2rem;
+
+  --transition-base: 200ms ease;
+}
+
+/* =====================================================
+   Reset & Base
+   ===================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-bg-white);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-brand-blue);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-brand-blue-light);
+}
+
+/* =====================================================
+   Typography
+   ===================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-brand-blue-dark);
+}
+
+h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2.1rem); }
+h3 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); }
+h4 { font-size: 1.15rem; }
+
+p {
+  margin-bottom: 1.1em;
+  color: var(--color-text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  color: var(--color-text-secondary);
+}
+
+li {
+  margin-bottom: 0.4em;
+}
+
+/* =====================================================
+   Layout Utilities
+   ===================================================== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+}
+
+.section-pad {
+  padding: var(--section-pad-y) 0;
+}
+
+.section-pad--sm {
+  padding: 3rem 0;
+}
+
+/* =====================================================
+   Buttons / CTAs
+   ===================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition-base), transform var(--transition-base);
+  border: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--color-brand-blue);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-brand-blue-light);
+  color: #fff;
+}
+
+.btn--accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn--accent:hover {
+  background: #c98610;
+  color: #fff;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-brand-blue);
+  border: 2px solid var(--color-brand-blue);
+}
+
+.btn--outline:hover {
+  background: var(--color-brand-blue);
+  color: #fff;
+}
+
+/* =====================================================
+   Back-And-Forth Section Layout
+   ===================================================== */
+.baf-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.baf-section__image {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+}
+
+.baf-section__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.baf-section__content {
+  display: flex;
+  align-items: center;
+  padding: 3.5rem var(--section-pad-x);
+  background: var(--color-bg-white);
+}
+
+.baf-section__content--alt {
+  background: var(--color-bg-section);
+}
+
+.baf-section__inner {
+  max-width: 540px;
+}
+
+.baf-section__inner h2 {
+  margin-bottom: 1rem;
+}
+
+.baf-section__inner h3 {
+  margin-bottom: 1rem;
+  color: var(--color-brand-blue);
+}
+
+/* flip: image on right, text on left */
+.baf-section--flip .baf-section__image {
+  order: 2;
+}
+.baf-section--flip .baf-section__content {
+  order: 1;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .baf-section {
+    grid-template-columns: 1fr;
+  }
+  .baf-section__image {
+    min-height: 260px;
+  }
+  .baf-section--flip .baf-section__image {
+    order: 0;
+  }
+  .baf-section--flip .baf-section__content {
+    order: 1;
+    justify-content: flex-start;
+  }
+}
+
+/* =====================================================
+   Page Hero Banner
+   ===================================================== */
+.page-hero {
+  background: linear-gradient(135deg, var(--color-brand-blue-dark) 0%, var(--color-brand-blue) 100%);
+  color: #fff;
+  padding: 4rem var(--section-pad-x) 3rem;
+  text-align: center;
+}
+
+.page-hero h1 {
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.page-hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+}
+
+/* =====================================================
+   CTA Strip
+   ===================================================== */
+.cta-strip {
+  background: var(--color-brand-blue);
+  color: #fff;
+  text-align: center;
+  padding: 3.5rem var(--section-pad-x);
+}
+
+.cta-strip h2 {
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.cta-strip p {
+  color: rgba(255,255,255,0.85);
+  max-width: 580px;
+  margin: 0 auto 1.75rem;
+}
+
+/* =====================================================
+   Cards Grid (index pages)
+   ===================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  background: var(--color-bg-white);
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.card__image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__body {
+  padding: 1.25rem;
+}
+
+.card__body h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card__body p {
+  font-size: 0.9rem;
+}
+
+/* =====================================================
+   Breadcrumb
+   ===================================================== */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: 0.75rem var(--section-pad-x);
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+.breadcrumb span {
+  margin: 0 0.4em;
+}
+
+/* =====================================================
+   Blog Post
+   ===================================================== */
+.blog-content {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.blog-content h2 {
+  margin: 2rem 0 0.75rem;
+}
+
+.blog-content h3 {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.blog-content p + p {
+  margin-top: 1rem;
+}
+
+/* =====================================================
+   Responsive helpers
+   ===================================================== */
+@media (max-width: 640px) {
+  :root {
+    --section-pad-x: 1rem;
+    --section-pad-y: 3rem;
+  }
+}

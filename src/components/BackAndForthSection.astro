@@ -1,0 +1,53 @@
+---
+export interface Props {
+  /** Heading shown above the text block */
+  heading: string;
+  /** Body copy */
+  body: string;
+  /** Path to image under /public/images/ */
+  imageSrc: string;
+  /** Alt text for the image */
+  imageAlt: string;
+  /**
+   * When true, image appears on RIGHT, text on LEFT.
+   * When false (default), image appears on LEFT, text on RIGHT.
+   */
+  flip?: boolean;
+  /** Optional CTA button label */
+  ctaLabel?: string;
+  /** Optional CTA button href */
+  ctaHref?: string;
+  /** Apply alternate background to text column */
+  altBg?: boolean;
+}
+
+const {
+  heading,
+  body,
+  imageSrc,
+  imageAlt,
+  flip = false,
+  ctaLabel,
+  ctaHref,
+  altBg = false,
+} = Astro.props;
+---
+
+<section class={`baf-section${flip ? ' baf-section--flip' : ''}`}>
+  <div class="baf-section__image">
+    <img src={imageSrc} alt={imageAlt} loading="lazy" />
+  </div>
+  <div class={`baf-section__content${altBg ? ' baf-section__content--alt' : ''}`}>
+    <div class="baf-section__inner">
+      <h2>{heading}</h2>
+      {body.split('\n').filter(Boolean).map((para) => (
+        <p set:html={para} />
+      ))}
+      {ctaLabel && ctaHref && (
+        <a href={ctaHref} class="btn btn--primary" style="margin-top:1.25rem; display:inline-block;">
+          {ctaLabel}
+        </a>
+      )}
+    </div>
+  </div>
+</section>
