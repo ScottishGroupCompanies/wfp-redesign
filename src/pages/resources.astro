@@ -1,38 +1,133 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BackAndForthSection from '../components/BackAndForthSection.astro';
+import BrandLogos from '../components/BrandLogos.astro';
+import CTAStrip from '../components/CTAStrip.astro';
 
 const title = 'Resources | Window Film Philadelphia | Leading Window Film Solutions';
-const description = 'Window Film Philadelphia is honored to provide leading window film resources for Philadelphia properties. Schedule your free consultation!';
-import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from './../components/CTAStrip.astro';
+const description = 'Access window film resources for Philadelphia property owners — pricing guides, maintenance tips, warranty info, property codes, FAQs, and more.';
+
+const resources = [
+  { label: 'Window Film Pricing',                   href: '/resources/window-film-pricing/' },
+  { label: 'Window Film Maintenance, Care & Cleaning', href: '/resources/maintenance-and-care/' },
+  { label: 'Window Film Warranty',                  href: '/resources/warranty/' },
+  { label: 'Window Replacement Alternative',        href: '/resources/window-replacement-alternative/' },
+  { label: 'Window Film Alternatives',              href: '/resources/window-film-alternatives/' },
+  { label: 'Window Film Fact Sheet',                href: '/resources/window-film-fact-sheet/' },
+  { label: 'Commercial Window Film Guide',          href: '/resources/commercial-guide/' },
+  { label: 'Specs for Architects & Builders',       href: '/resources/architects-builders/' },
+  { label: 'Window Film FAQ for Business',          href: '/resources/commercial-faq/' },
+  { label: 'Window Film for Property Code',         href: '/resources/property-code/' },
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/'>
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-tinting-contractor-philadelphia.jpg'); background-size: cover; background-position: center;">
+
+  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-tinting-resources-philadelphia.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Window Film Resources for Philadelphia</h1>
+      <p>Window Film Philadelphia provides a comprehensive selection of resources so that residential and commercial property owners can find the right window film investment for their project.</p>
+    </div>
+  </section>
+
+  <section class="resources-section section-pad">
+    <div class="container">
+      <h2>General Window Film Resources</h2>
+      <p class="resources-section__intro">Everything you need to make an informed decision about window film for your Philadelphia property. Select a resource below to learn more.</p>
+      <ul class="resources-grid">
+        {resources.map((r) => (
+          <li>
+            <a href={r.href} class="resource-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+              </svg>
+              <span>{r.label}</span>
+              <svg class="resource-link__arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
   <BackAndForthSection
-  heading={'Window Film Resources for Philadelphia'}
-  body={'Window Film Philadelphia provides a comprehensive selection of window film resources so that residential and commercial property owners can find the right investment for their upcoming project.'}
-  imageSrc={'/images/window-tinting-contractor-philadelphia.jpg'}
-  imageAlt={'window tinting contractor philadelphia'}
-  flip={false}
-  altBg={false}
-/>
-
-  <BackAndForthSection
-  heading={'Work With Philadelphia’s Trusted Window Film Contractor'}
-  body={'Window Film Philadelphia is committed to sharing the latest resources and is happy to help you with your upcoming project! Contact us today to schedule your free consultation today!'}
-  imageSrc={'/images/window-tinting-resources-philadelphia.png'}
-  imageAlt={'window tinting resources philadelphia'}
-  flip={true}
-  altBg={true}
-/>
+    heading={"Work With Philadelphia's Trusted Window Film Contractor"}
+    body={"Window Film Philadelphia is committed to sharing the latest resources and is always happy to help you with your upcoming project. Our team of experts is ready to answer your questions and guide you to the best window film solution for your property. Contact us today for a free consultation."}
+    imageSrc={'/images/window-tinting-contractor-philadelphia.jpg'}
+    imageAlt={'Window film contractor Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Contact Us'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.resources-section {
+  background: var(--color-bg-section);
+}
+
+.resources-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.resources-section__intro {
+  max-width: 620px;
+  margin-bottom: 2rem;
+}
+
+.resources-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-charcoal);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+
+.resource-link svg:first-child {
+  color: var(--color-brand);
+  flex-shrink: 0;
+}
+
+.resource-link span {
+  flex: 1;
+}
+
+.resource-link__arrow {
+  opacity: 0.4;
+  flex-shrink: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.resource-link:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.resource-link:hover .resource-link__arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+</style>

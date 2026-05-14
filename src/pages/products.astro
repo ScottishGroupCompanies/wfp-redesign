@@ -1,45 +1,123 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BackAndForthSection from '../components/BackAndForthSection.astro';
+import BrandLogos from '../components/BrandLogos.astro';
+import CTAStrip from '../components/CTAStrip.astro';
 
 const title = 'Products | Window Film Philadelphia | Leading Window Film Solutions';
-const description = 'Window Film Philadelphia is honored to partner with leading window film manufacturers to provide comprehensive solutions. Contact us today!';
-import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from './../components/CTAStrip.astro';
+const description = 'Window Film Philadelphia carries all leading window film brands — 3M, LLumar, Vista, Solar Gard, Madico, Solyx, Huper Optik, C-Bond, HDClear, Hanita Coatings, Casper, Bird Divert, and NanoTint.';
+
+const brands = [
+  { label: '3M™',             href: '/products/3m-window-film/' },
+  { label: 'Madico',          href: '/products/madico-window-film/' },
+  { label: 'Vista',           href: '/products/vista-window-film/' },
+  { label: 'NanoTint',        href: '/products/nanotint-window-film/' },
+  { label: 'C-Bond',          href: '/products/c-bond-window-film/' },
+  { label: 'HDClear',         href: '/products/hdclear-window-film/' },
+  { label: 'Hanita Coatings', href: '/products/hanita-coatings-window-film/' },
+  { label: 'Solyx',           href: '/products/solyx-window-film/' },
+  { label: 'Solar Gard',      href: '/products/solar-gard-window-film/' },
+  { label: 'Casper',          href: '/products/casper-cloaking-film/' },
+  { label: 'LLumar',          href: '/products/llumar/' },
+  { label: 'Huper Optik',     href: '/products/huper-optik/' },
+  { label: 'Bird Divert',     href: '/products/bird-divert/' },
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/products/'>
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-tinting-reading-pennsylvania.jpg'); background-size: cover; background-position: center;">
+
+  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-10-window-film-brands-philadelphia.jpg'); background-size: cover; background-position: center;">
     <div class="container">
-      <h1>Leading Window Film Products forPhiladelphia Homes and Businesses</h1>
+      <h1>Leading Window Film Products for Philadelphia Homes and Businesses</h1>
+      <p>Window Film Philadelphia is honored to partner with all the leading window film manufacturers to provide the most comprehensive range of premium products for residential and commercial clients throughout Philadelphia.</p>
     </div>
   </section>
 
   <BackAndForthSection
-  heading={'Leading Window Film Products forPhiladelphia Homes and Businesses'}
-  body={'Window Film Philadelphia is honored to partner with all the leading window film manufacturers in order to provide the most comprehensive scope of premium window film solutions for our residential and commercial clients. We only carry the best products available to help you achieve all of your property goals and help address building concerns. Our team is happy to help you navigate all of our window film products available for your upcoming project!'}
-  imageSrc={'/images/window-tinting-reading-pennsylvania.jpg'}
-  imageAlt={'window tinting reading pennsylvania'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Comprehensive Window Film Products for Your Philadelphia Property'}
+    body={'Window Film Philadelphia is the number one source for all the leading window film products and brands. Find the right product for your project goals, or contact us and our experts will help you compare options. We also offer LEED certification support and custom HD decorative printing.'}
+    imageSrc={'/images/2021-10-window-film-brands-philadelphia.jpg'}
+    imageAlt={'Window film brands Philadelphia'}
+    flip={false}
+    altBg={false}
+  />
+
+  <section class="brands-section section-pad">
+    <div class="container">
+      <h2>Our Window Film Brand Partners</h2>
+      <p class="brands-section__intro">We carry products from the most trusted manufacturers in the industry. Click any brand below to learn more about their product lines and how they can serve your project.</p>
+      <ul class="brands-grid">
+        {brands.map((b) => (
+          <li>
+            <a href={b.href} class="brand-link">
+              <span>{b.label}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
   <BackAndForthSection
-  heading={'Comprehensive Window Film Products for Your Philadelphia Property'}
-  body={'Window Film Philadelphia is the number one source for all the leading window film products and brands. Find the right investment for your residential or commercial property: 3M Madico Vista Drywired C-Bond hdClear Hanita Coatings Solyx Solar Gard Casper LLumar Huper Optik If you’re interested in a window film product that isn’t listed here, please contact us! Our team is always available to help you find the perfect investment for your upcoming project!'}
-  imageSrc={'/images/2021-10-window-film-brands-philadelphia.jpg'}
-  imageAlt={'window film brands philadelphia'}
-  flip={true}
-  altBg={true}
-/>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Work With Philadelphia’s Preferred Window Film Contractor</h2>
-    <p>The Window Film Philadelphia team is always available to help you compare different window film products and brands for your upcoming project. From LEED certification to custom HD decorative printing, we can help you achieve your property goals through our comprehensive selection of window film.</p>
-  </div>
-</section>
+    heading={"Work With Philadelphia's Preferred Window Film Contractor"}
+    body={"Our team helps you compare different products and brands to find the perfect fit for your project. From energy-saving solar films to ballistic-resistant security films, custom decorative printing, and LEED-certified solutions — Window Film Philadelphia has the expertise and inventory to get the job done right."}
+    imageSrc={'/images/2021-10-window-film-installation-philadelphia.jpg'}
+    imageAlt={'Window film contractor Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Contact Us'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.brands-section {
+  background: var(--color-bg-section);
+}
+
+.brands-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.brands-section__intro {
+  max-width: 620px;
+  margin-bottom: 2rem;
+}
+
+.brands-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.1rem;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-charcoal);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+
+.brand-link:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+</style>

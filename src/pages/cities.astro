@@ -1,38 +1,129 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BackAndForthSection from '../components/BackAndForthSection.astro';
-
-const title = 'Cities | Window Film Philadelphia | Leading Window Film Solutions';
-const description = 'Window Film Philadelphia is honored to serve clients throughout the Philadelphia metropolitan area. Schedule your free consultation!';
 import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from './../components/CTAStrip.astro';
+import CTAStrip from '../components/CTAStrip.astro';
+
+const title = 'Cities We Serve | Window Film Philadelphia | Leading Window Film Solutions';
+const description = 'Window Film Philadelphia serves Philadelphia, Reading, Upper Darby Township, Camden, and surrounding areas. Leading residential and commercial window film services throughout the Philadelphia metro area.';
+
+const cities = [
+  { label: 'Philadelphia',        href: '/cities/philadelphia/' },
+  { label: 'Reading',             href: '/cities/reading/' },
+  { label: 'Upper Darby Township',href: '/cities/upper-darby-township/' },
+  { label: 'Camden',              href: '/cities/camden/' },
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/cities/'>
+
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-philadelphia.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Cities We Serve</h1>
+      <p>Window Film Philadelphia is honored to serve cities throughout the Philadelphia metropolitan area — providing leading residential and commercial window film services across Pennsylvania and New Jersey.</p>
+    </div>
+  </section>
+
+  <section class="cities-section section-pad">
+    <div class="container">
+      <h2>Leading Residential and Commercial Window Film Services for the Philadelphia Metropolitan Area</h2>
+      <p class="cities-section__intro">We proudly serve the following cities and surrounding communities. Don't see your city? Contact us — we serve the entire Philadelphia metro area and surrounding counties.</p>
+      <ul class="cities-grid">
+        {cities.map((c) => (
+          <li>
+            <a href={c.href} class="city-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg>
+              <span>{c.label}</span>
+              <svg class="city-link__arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
   <BackAndForthSection
-  heading={'Cities We Serve'}
-  body={'Window Film Philadelphia is honored to serve cities throughout the Philadelphia metropolitan area. Our team proudly serves the states of Pennsylvania and New Jersey and is happy to help residential and commercial property owners with their upcoming projects.'}
-  imageSrc={'/images/window-film-philadelphia.png'}
-  imageAlt={'window film philadelphia'}
-  flip={false}
-  altBg={false}
-/>
-
-  <BackAndForthSection
-  heading={'Work With Philadelphia’s Trusted Window Film Contractor'}
-  body={'Window Film Philadelphia proudly serves numerous cities and areas throughout the Philadelphia metropolitan area as well as the states of Pennsylvania and New Jersey. If you don’t see your city listed above, please contact us! We’re happy to help you with your upcoming residential or commercial project!'}
-  imageSrc={'/images/window-tinting-contractor-philadelphia.jpg'}
-  imageAlt={'window tinting contractor philadelphia'}
-  flip={true}
-  altBg={true}
-/>
+    heading={"Work With Philadelphia's Trusted Window Film Contractor"}
+    body={"Window Film Philadelphia proudly serves numerous cities and areas throughout the Philadelphia metropolitan area across both Pennsylvania and New Jersey. If your city is not listed above, please contact us — our team travels throughout the region and would be glad to discuss your project."}
+    imageSrc={'/images/window-film-contractor-philadelphia.jpg'}
+    imageAlt={'Window film contractor Philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Contact Us'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.cities-section {
+  background: var(--color-bg-section);
+}
+
+.cities-section h2 {
+  margin-bottom: 0.75rem;
+  max-width: 720px;
+}
+
+.cities-section__intro {
+  max-width: 620px;
+  margin-bottom: 2rem;
+}
+
+.cities-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  max-width: 800px;
+}
+
+.city-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-charcoal);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+
+.city-link svg:first-child {
+  color: var(--color-brand);
+  flex-shrink: 0;
+}
+
+.city-link span {
+  flex: 1;
+}
+
+.city-link__arrow {
+  opacity: 0.4;
+  flex-shrink: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.city-link:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.city-link:hover .city-link__arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+</style>
