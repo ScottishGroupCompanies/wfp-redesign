@@ -11,24 +11,15 @@ const description = 'Window Film Philadelphia is honored to provide leading wind
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/'>
 
   <!-- ============================================================
-       SECTION 1 — Split Hero
-       Left: dark bg, H1 + intro text
-       Right: contractor photo, no overlay, bleeds to edge
+       SECTION 1 — Full-Width Hero
+       Background: contractor photo with dark overlay
+       Content: centred H1 + intro text + CTA button
        ============================================================ -->
   <section class="home-hero">
-    <div class="home-hero__text">
+    <div class="home-hero__inner">
       <h1>Welcome to Window Film Philadelphia!</h1>
       <p class="home-hero__lead">Window Film Philadelphia proudly serves residential and commercial properties throughout the <a href="/cities/philadelphia/">Philadelphia</a> metropolitan area. Our experienced team is always available to help you transform your property with our incredible, effective solutions. From energy savings to custom decorative printing, window film has exclusive benefits to offer your upcoming project. Work with our trusted contractors to save money, improve productivity, and much more.</p>
       <a href="/contact/" class="btn btn--accent">Get a Free Quote</a>
-    </div>
-    <div class="home-hero__image">
-      <img
-        src="/images/window-film-contractor-philadelphia.jpg"
-        alt="Window film contractor Philadelphia"
-        width="2087"
-        height="1391"
-        fetchpriority="high"
-      />
     </div>
   </section>
 
@@ -240,63 +231,55 @@ const description = 'Window Film Philadelphia is honored to provide leading wind
 
 <style>
 /* ============================================================
-   Split Hero
+   Full-Width Hero
    ============================================================ */
 .home-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 520px;
-}
-
-.home-hero__text {
-  background: var(--color-charcoal);
+  background-image:
+    linear-gradient(rgba(30,30,30,0.65), rgba(30,30,30,0.72)),
+    url('/images/window-film-contractor-philadelphia.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 560px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 4rem 3rem 4rem 4rem;
+  padding: 5rem var(--section-pad-x);
 }
 
-.home-hero__text h1 {
+.home-hero__inner {
+  max-width: 780px;
+  width: 100%;
+  text-align: center;
+}
+
+.home-hero__inner h1 {
   color: #fff;
   margin-bottom: 1.25rem;
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
 .home-hero__lead {
-  color: rgba(255,255,255,0.88);
-  font-size: 1.05rem;
-  line-height: 1.7;
+  color: rgba(255,255,255,0.90);
+  font-size: 1.1rem;
+  line-height: 1.75;
   margin-bottom: 2rem;
 }
 
 .home-hero__lead a {
   color: var(--color-brand-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .home-hero__lead a:hover {
   color: #fff;
 }
 
-.home-hero__image {
-  overflow: hidden;
-}
-
-.home-hero__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 860px) {
+@media (max-width: 640px) {
   .home-hero {
-    grid-template-columns: 1fr;
-  }
-  .home-hero__text {
-    padding: 3rem 1.5rem;
-  }
-  .home-hero__image {
-    min-height: 300px;
+    min-height: 420px;
+    padding: 3.5rem var(--section-pad-x);
   }
 }
 
