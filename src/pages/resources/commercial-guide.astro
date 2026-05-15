@@ -8,17 +8,17 @@ const title = 'Commercial Window Film Guide | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is honored to provide a comprehensive commercial window film guide. Schedule your free consultation today!';
 
 const filmTypes = [
-  'UV blocking',
-  'Glare reduction',
-  'Energy saving — Solar heat gain rejection / Cold climate insulation',
-  'Daylight redirecting',
-  'Safety and security — Ballistic resistant / Bomb blast / Energy-saving safety / Anneal glass upgrade to tempered',
-  'Decorative — Frosted and interior privacy / Exterior building wraps / Cling wraps and short-term / Technological privacy / One-way viewing / Safety distraction markers',
-  'Privacy tinting',
-  'Anti-graffiti',
-  'Surface films',
-  'Bird collision prevention',
-  'Whiteboard film',
+  { label: 'UV Blocking',               href: '/benefits/uv-blocking-window-film-philadelphia/' },
+  { label: 'Glare Reduction',           href: '/benefits/glare-reduction/' },
+  { label: 'Energy Savings',            href: '/benefits/energy-saving-window-film-philadephia/' },
+  { label: 'Daylight Redirecting',      href: '/benefits/energy-saving-window-film-philadephia/' },
+  { label: 'Safety and Security',       href: '/benefits/safety-and-security/' },
+  { label: 'Decorative & Promotional',  href: '/benefits/decorative-promotional/' },
+  { label: 'Privacy Tinting',           href: '/benefits/privacy-window-film-philadelphia/' },
+  { label: 'Anti-Graffiti',             href: '/benefits/anti-graffiti/' },
+  { label: 'Surface Films',             href: '/benefits/updating-surfaces/' },
+  { label: 'Bird Collision Prevention', href: '/benefits/bird-strike-prevention/' },
+  { label: 'Whiteboard Film',           href: '/benefits/decorative-promotional/' },
 ];
 ---
 
@@ -54,7 +54,14 @@ const filmTypes = [
       <p>Once you've determined what your goals are, working with a professional window film contractor can help you find the perfect types of window film for your project. There are countless specialty films available as well as multi-purpose products. Here are some of the types of window film products you can choose from:</p>
       <ul class="film-type-list">
         {filmTypes.map((type) => (
-          <li>{type}</li>
+          <li>
+            <a href={type.href}>
+              {type.label}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </a>
+          </li>
         ))}
       </ul>
     </div>
@@ -84,16 +91,43 @@ const filmTypes = [
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 0.6rem;
 }
 .film-type-list li {
-  padding: 0.65rem 1rem;
-  background: var(--color-bg-white);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-brand);
   border-radius: 0 6px 6px 0;
-  color: var(--color-text-secondary);
+  background: var(--color-bg-white);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.film-type-list li:hover {
+  border-color: var(--color-brand);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transform: translateX(3px);
+}
+.film-type-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+  color: var(--color-charcoal);
   font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  gap: 0.5rem;
+}
+.film-type-list a:hover {
+  color: var(--color-brand);
+}
+.film-type-list a svg {
+  flex-shrink: 0;
+  opacity: 0.4;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.film-type-list li:hover a svg {
+  opacity: 1;
+  transform: translateX(2px);
 }
 </style>
