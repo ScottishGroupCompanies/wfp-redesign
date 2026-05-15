@@ -359,6 +359,14 @@ const currentPath = Astro.url.pathname;
   color: var(--color-brand);
 }
 
+/* Hide close button, toggle, and mobile CTA on desktop — must come BEFORE
+   the media query so the mobile @media block can override it */
+.site-nav__close,
+.site-nav__toggle,
+.site-nav__item--cta {
+  display: none;
+}
+
 /* ======================================================
    Mobile Nav
    ====================================================== */
@@ -468,7 +476,7 @@ const currentPath = Astro.url.pathname;
     border-top: none;
     box-shadow: none;
     padding: 0 0 0.5rem 1rem;
-    background: var(--color-bg-section);
+    background: var(--color-bg-white);
     border-radius: 0 0 6px 6px;
     margin-bottom: 0.25rem;
   }
@@ -479,6 +487,7 @@ const currentPath = Astro.url.pathname;
 
   /* 2. Mobile CTA button at bottom */
   .site-nav__item--cta {
+    display: block;
     padding-top: 1.5rem;
   }
 
@@ -487,13 +496,6 @@ const currentPath = Astro.url.pathname;
     text-align: center;
     width: 100%;
   }
-}
-
-/* Hide close button, toggle, and mobile CTA on desktop */
-.site-nav__close,
-.site-nav__toggle,
-.site-nav__item--cta {
-  display: none;
 }
 </style>
 
@@ -521,6 +523,15 @@ function toggleDropdown(toggle: HTMLButtonElement) {
   const item     = toggle.closest('.site-nav__item');
   const dropdown = item?.querySelector('.site-nav__dropdown');
   const isOpen   = toggle.getAttribute('aria-expanded') === 'true';
+
+  // Close all other open dropdowns first (one open at a time)
+  document.querySelectorAll<HTMLButtonElement>('.site-nav__toggle[aria-expanded="true"]').forEach((other) => {
+    if (other !== toggle) {
+      other.setAttribute('aria-expanded', 'false');
+      other.closest('.site-nav__item')?.querySelector('.site-nav__dropdown')?.classList.remove('is-open');
+    }
+  });
+
   if (isOpen) {
     toggle.setAttribute('aria-expanded', 'false');
     dropdown?.classList.remove('is-open');
