@@ -547,9 +547,12 @@ burger?.addEventListener('click', () => {
 
 closeBtn?.addEventListener('click', closeNav);
 
-// +/- toggle buttons
+// +/- toggle buttons — stopPropagation prevents the sibling <a> handler from also firing
 document.querySelectorAll<HTMLButtonElement>('.site-nav__toggle').forEach((toggle) => {
-  toggle.addEventListener('click', () => toggleDropdown(toggle));
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(toggle);
+  });
 });
 
 // On mobile: intercept taps on parent-item labels — open dropdown instead of navigating
@@ -557,6 +560,7 @@ document.querySelectorAll<HTMLAnchorElement>('[data-mobile-toggle]').forEach((li
   link.addEventListener('click', (e) => {
     if (!isMobile()) return; // desktop: navigate normally
     e.preventDefault();
+    e.stopPropagation();
     // Find the sibling toggle button and fire it
     const row    = link.closest('.site-nav__link-row');
     const toggle = row?.querySelector<HTMLButtonElement>('.site-nav__toggle');
