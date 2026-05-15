@@ -145,7 +145,6 @@ const currentPath = Astro.url.pathname;
                 <a
                   href={item.href}
                   class={`site-nav__link${currentPath.startsWith(item.href) && item.href !== '/' ? ' site-nav__link--active' : ''}`}
-                  data-mobile-toggle={item.children ? 'true' : undefined}
                 >
                   {item.label}
                   {/* Desktop-only caret */}
@@ -552,19 +551,6 @@ document.querySelectorAll<HTMLButtonElement>('.site-nav__toggle').forEach((toggl
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleDropdown(toggle);
-  });
-});
-
-// On mobile: intercept taps on parent-item labels — open dropdown instead of navigating
-document.querySelectorAll<HTMLAnchorElement>('[data-mobile-toggle]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    if (!isMobile()) return; // desktop: navigate normally
-    e.preventDefault();
-    e.stopPropagation();
-    // Find the sibling toggle button and fire it
-    const row    = link.closest('.site-nav__link-row');
-    const toggle = row?.querySelector<HTMLButtonElement>('.site-nav__toggle');
-    if (toggle) toggleDropdown(toggle);
   });
 });
 
