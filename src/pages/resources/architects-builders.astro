@@ -1,14 +1,67 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
 
 const title = 'Commercial Window Film Specifications | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is happy to provide commercial window film specifications for your upcoming project. Get your free quote today!';
-import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+
+const specs = [
+  { brand: '3M', docs: [
+    { label: '3M Thinsulate Climate Control Window Film', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3m-thinsulate-window-film-climate-control-philadelphia.pdf' },
+    { label: '3M Fasara Window Film Brochure', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3M-Fasara-Window-Film-Brochure-philadelphia.pdf' },
+    { label: '3M Fasara Window Film Collection', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3M-Fasara-Window-Film-Collection-philadelphia.pdf' },
+    { label: '3M Fasara Window Films Data Sheet', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3M-Fasara-Window-Films-Data-Sheet-philadelphia.pdf' },
+    { label: '3M Fasara Window Film Glass Finishes', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3M-Fasara-Window-Film-Glass-Finishes-philadelphia.pdf' },
+    { label: '3M Thinsulate Window Film Brochure', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3m-thinsulate-window-film-philadelphia-brochure.pdf' },
+    { label: '3M Daylight Redirecting Window Film Case Study', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3m-daylight-redirecting-window-film-philadelphia-case-study.pdf' },
+  ]},
+  { brand: 'Casper', docs: [
+    { label: 'Casper Cloaking Film Technical Sheet', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/casper-cloaking-film-technical-sheet-philadelphia.pdf' },
+  ]},
+  { brand: 'Hanita Coatings', docs: [
+    { label: 'Hanita Coatings Architectural Tint Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/philadelphia-Hanita_Coatings_Architectural_Tint_Specs.pdf' },
+    { label: 'Hanita Coatings SolarZone Datasheets', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/philadelphia_Hanita_Coatings_SolarZone_Datasheets.pdf' },
+    { label: 'Hanita Coatings SafetyZone Datasheets', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/philadelphia_Hanita_Coatings_SafetyZone_Datasheets.pdf' },
+    { label: 'Hanita Coatings Performance Data', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/philadelphia-Hanita_Coatings_Performance_Data.pdf' },
+    { label: 'Hanita Coatings Compatibility Chart', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/philadelphia_Hanita_Coatings_compatibility_chart.pdf' },
+  ]},
+  { brand: 'Huper Optik', docs: [
+    { label: 'Huper Optik Shield Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/HuperOptik_Shield_Specs_philadelphia.pdf' },
+    { label: 'Huper Optik Therm-X Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/HuperOptiks_ThermX_Specs_philadelphia.pdf' },
+    { label: 'Huper Optik Decorative Film Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/HuperOptik_Decorative_Film_Specs_philadelphia.pdf' },
+    { label: 'Huper Optik Fusion Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/HuperOptiks_Fusion_Specs_philadelphia.pdf' },
+    { label: 'Huper Optik Select Series Specifications', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/HuperOptiks_Select_Series_Specifications_philadelphia.pdf' },
+    { label: 'Huper Optik Traditional Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/HuperOptiks_Traditional_Specs_philadelphia.pdf' },
+  ]},
+  { brand: 'C-Bond', docs: [
+    { label: 'C-Bond System I Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-System-I-Specs-philadelphia.pdf' },
+    { label: 'C-Bond Test Report 1', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-Test-Report-1-philadelphia.pdf' },
+    { label: 'C-Bond Test Report 2', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-Test-Report-2-philadelphia.pdf' },
+    { label: 'C-Bond System Safety Data Sheet', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-System-Safety-Data-Sheet-philadelphia.pdf' },
+    { label: 'C-Bond System II Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-System-II-Specs-philadelphia.pdf' },
+  ]},
+  { brand: 'Solar Gard', docs: [
+    { label: 'Solar Gard Graffitigard Data Sheet', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Solar-Gard-Graffitigard-Data-Sheet-philadelphia.pdf' },
+  ]},
+  { brand: 'LLumar', docs: [
+    { label: 'LLumar Safety & Security Window Film Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/llumar-safety-securty-window-film-specs-philadelphia.pdf' },
+    { label: 'LLumar Solar Control Window Tint Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/llumar-solar-control-window-tint-specs-philadelphia.pdf' },
+    { label: 'LLumar Safety Security Film Testing Data Sheet', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/llumar_safety_security_film_testing_data_sheet_philadelphia.pdf' },
+    { label: 'LLumar Anti-Graffiti Film Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/llumar-anti-graffiti-film-specs-philadelphia.pdf' },
+  ]},
+  { brand: 'Graffiti Shield', docs: [
+    { label: 'Graffiti Shield Glass Shield Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Graffiti-Shield-Glass-Shield-Specs-philadelphia.pdf' },
+    { label: 'Graffiti Shield Mirror Shield Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Graffiti-Shield-Mirror-Shield-Specs-philadelphia.pdf' },
+    { label: 'Graffiti Shield Metal Shield Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Graffiti-Shield-Metal-Shield-Specs-philadelphia.pdf' },
+    { label: 'Graffiti Shield Multi-Layer Film Specs', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Graffiti-Shield-Multi-Layer-Film-Specs-philadelphia.pdf' },
+  ]},
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/architects-builders/'>
+
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/commercial-window-film-specs-philadelphia.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Window Film Specifications for Philadelphia Architects and Custom Builders</h1>
@@ -16,67 +69,94 @@ import CTAStrip from '../../components/CTAStrip.astro';
   </section>
 
   <BackAndForthSection
-  heading={'Window Film Specifications for Philadelphia Architects and Custom Builders'}
-  body={'For architects and custom builders in the Philadelphia area, we’re happy to provide a comprehensive list of window film specifications for your upcoming project. If you don’t see the specifications for a certain window film product that you’re interested in, please contact us for more details. Our team is always happy to work alongside other contractors in order to optimize your commercial project.'}
-  imageSrc={'/images/commercial-window-film-specs-philadelphia.png'}
-  imageAlt={'commercial window film specs philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Window Film Specifications for Philadelphia Architects and Custom Builders'}
+    body={"For architects and custom builders in the Philadelphia area, we're happy to provide a comprehensive list of window film specifications for your upcoming project. If you don't see the specifications for a certain window film product that you're interested in, please contact us for more details. Our team is always happy to work alongside other contractors in order to optimize your commercial project."}
+    imageSrc={'/images/commercial-window-film-specs-philadelphia.png'}
+    imageAlt={'Window film specifications Philadelphia architects'}
+    flip={false}
+    altBg={false}
+  />
+
+  <section class="section-pad resource-section">
+    <div class="container">
+      <h2>Window Film Spec Sheets by Brand</h2>
+      <p>Download the specification sheets for each product line below. Contact us if you need a spec sheet for a product not listed here.</p>
+      <div class="specs-grid">
+        {specs.map((brand) => (
+          <div class="specs-card">
+            <h3>{brand.brand}</h3>
+            <ul>
+              {brand.docs.map((doc) => (
+                <li>
+                  <a href={doc.url} target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>
+                    {doc.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <BackAndForthSection
-  heading={'3M'}
-  body={'3m-thinsulate-window-film-climate-control-philadelphia 3M-Fasara-Window-Film-Brochure-philadelphia 3M-Fasara-Window-Film-Collection-philadelphia 3M-Fasara-Window-Films-Data-Sheet-philadelphia 3M-Fasara-Window-Film-Glass-Finishes-philadelphia 3m-thinsulate-window-film-philadelphia-brochure 3m-daylight-redirecting-window-film-philadelphia-case-'}
-  imageSrc={'/images/commercial-window-film-specifications-philadelphia.jpg'}
-  imageAlt={'commercial window film specifications philadelphia'}
-  flip={true}
-  altBg={true}
-/>
-
-  <BackAndForthSection
-  heading={'Casper'}
-  body={'casper-cloaking-film-technical-sheet-philadelphia'}
-  imageSrc={'/images/window-film-specs-philadelphia.jpg'}
-  imageAlt={'window film specs philadelphia'}
-  flip={false}
-  altBg={false}
-/>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Hanita Coatings</h2>
-    <p>Hanita_Coatings_Architectural_Tint_Specs Hanita_Coatings_SolarZone_Datasheets Hanita_Coatings_SafetyZone_Datasheets Hanita_Coatings_Performance_Data Hanita_Coatings_compatibility_chart</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Huper Optik</h2>
-    <p>HuperOptik_Shield_Specs_philadelphia HuperOptiks_ThermX_Specs_philadelphia HuperOptik_Decorative_Film_Specs_philadelphia HuperOptiks_Fusion_Specs_philadelphia HuperOptiks_Select_Series_Specifications_philadelphia HuperOptiks_Traditional_Specs_philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>C-Bond</h2>
-    <p>C-Bond-System-I-Specs-philadelphia C-Bond-Test-Report-2-philadelphia C-Bond-Test-Report-1-philadelphia C-Bond-System-Safety-Data-Sheet-philadelphia C-Bond-System-II-Specs-philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Solar Gard</h2>
-    <p>Solar-Gard-Graffitigard-Data-Sheet-philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>LLumar</h2>
-    <p>llumar-safety-securty-window-film-specs-philadelphia llumar-solar-control-window-tint-specs-philadelphia llumar_safety_security_film_testing_data_sheet_philadelphia llumar-anti-graffiti-film-specs-philadelphia</p>
-  </div>
-</section>
+    heading={"Work With Philadelphia's Trusted Commercial Window Film Expert"}
+    body={'Window Film Philadelphia is honored to be the trusted commercial window film expert serving the state of Pennsylvania. Our team is happy to help you find the perfect investment for your upcoming project. Contact us today!'}
+    imageSrc={'/images/commercial-window-film-contractor-philadelphia.jpg'}
+    imageAlt={'Commercial window film contractor Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Get a Free Quote'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.resource-section { background: var(--color-bg-section); }
+.resource-section h2 { margin-bottom: 0.75rem; }
+.resource-section > .container > p { margin-bottom: 1.5rem; }
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.specs-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+}
+.specs-card h3 {
+  font-size: 0.9rem;
+  font-family: var(--font-heading);
+  color: var(--color-charcoal);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.specs-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.specs-card a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--color-brand);
+  transition: color 200ms;
+}
+.specs-card a:hover { color: var(--color-brand-dark); }
+</style>

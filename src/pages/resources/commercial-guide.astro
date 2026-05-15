@@ -1,14 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
 
 const title = 'Commercial Window Film Guide | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is honored to provide a comprehensive commercial window film guide. Schedule your free consultation today!';
-import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+
+const filmTypes = [
+  'UV blocking',
+  'Glare reduction',
+  'Energy saving — Solar heat gain rejection / Cold climate insulation',
+  'Daylight redirecting',
+  'Safety and security — Ballistic resistant / Bomb blast / Energy-saving safety / Anneal glass upgrade to tempered',
+  'Decorative — Frosted and interior privacy / Exterior building wraps / Cling wraps and short-term / Technological privacy / One-way viewing / Safety distraction markers',
+  'Privacy tinting',
+  'Anti-graffiti',
+  'Surface films',
+  'Bird collision prevention',
+  'Whiteboard film',
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/commercial-guide/'>
+
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/commercial-window-film-guide-philadelphia-1.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Commercial Window Film Guide for Your Philadelphia Property</h1>
@@ -16,41 +31,69 @@ import CTAStrip from '../../components/CTAStrip.astro';
   </section>
 
   <BackAndForthSection
-  heading={'Commercial Window Film Guide for Your Philadelphia Property'}
-  body={'Commercial window film is a great way to enhance your property regardless of what industry you’re in. From LEED certification to high-end productivity solutions, window film delivers a great ROI for Philadelphia commercial properties. This cost-effective investment provides numerous benefits ranging from energy conservation to marketing collateral. Whether you’re looking for a privacy solution for your Center City conference room or would premium safety and security window film for your Kensington business, we’ve got you covered.'}
-  imageSrc={'/images/commercial-window-film-guide-philadelphia-1.png'}
-  imageAlt={'commercial window film guide philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Commercial Window Film Guide for Your Philadelphia Property'}
+    body={"Commercial window film is a great way to enhance your property regardless of what industry you're in. From LEED certification to high-end productivity solutions, window film delivers a great ROI for Philadelphia commercial properties. This cost-effective investment provides numerous benefits ranging from energy conservation to marketing collateral. Whether you're looking for a privacy solution for your Center City conference room or premium safety and security window film for your Kensington business, we've got you covered."}
+    imageSrc={'/images/commercial-window-film-guide-philadelphia-1.png'}
+    imageAlt={'Commercial window film guide Philadelphia'}
+    flip={false}
+    altBg={false}
+  />
 
   <BackAndForthSection
-  heading={'Step One: Window Film Project Goal'}
-  body={'The first step for any commercial project is identifying your needs and goals. When it comes to your commercial property, think about any property dysfunction you may experience. This may come in the form of energy loss, privacy concerns, security needs, and more. Once you’ve determined this, you can create the right plan for your project and find the appropriate contractor.'}
-  imageSrc={'/images/commercial-window-film-guide-philadelphia.jpg'}
-  imageAlt={'commercial window film guide philadelphia'}
-  flip={true}
-  altBg={true}
-/>
+    heading={'Step One: Window Film Project Goal'}
+    body={"The first step for any commercial project is identifying your needs and goals. When it comes to your commercial property, think about any property dysfunction you may experience. This may come in the form of energy loss, privacy concerns, security needs, and more. Once you've determined this, you can create the right plan for your project and find the appropriate contractor."}
+    imageSrc={'/images/commercial-window-film-guide-philadelphia.jpg'}
+    imageAlt={'Window film project goal Philadelphia'}
+    flip={true}
+    altBg={true}
+  />
+
+  <section class="section-pad resource-section">
+    <div class="container">
+      <h2>Finding the Right Types of Window Film for Your Philadelphia Commercial Project</h2>
+      <p>Once you've determined what your goals are, working with a professional window film contractor can help you find the perfect types of window film for your project. There are countless specialty films available as well as multi-purpose products. Here are some of the types of window film products you can choose from:</p>
+      <ul class="film-type-list">
+        {filmTypes.map((type) => (
+          <li>{type}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
   <BackAndForthSection
-  heading={'Finding the Right Types of Window Film for Your Philadelphia Commercial Project'}
-  body={'Once you’ve determined what your goals are, working with a professional window film contractor can help you find the perfect types of window film for your project. There are countless specialty films available as well as multi-purpose products, making it helpful to work with an expert. Here are some of the types of window film products you can choose from: UV blocking Glare reduction Energy saving Solar heat gain rejection Cold climate insulation Daylight redirecting Safety and security Ballistic resistant Bomb blast Energy-saving safety Anneal glass upgrade to tempered Decorative Frosted and interior privacy Exterior building wraps Cling wraps and short-term Technological privacy One-way viewing Safety distraction markers Privacy tinting Anti-graffiti Surface films Bird collision preventi'}
-  imageSrc={'/images/commercial-window-film-benefits-philadelphia.jpg'}
-  imageAlt={'commercial window film benefits philadelphia'}
-  flip={false}
-  altBg={false}
-/>
-
-  <BackAndForthSection
-  heading={'Working With the Right Window Film Contractor for Your Philadelphia Project'}
-  body={'After you’ve decided your project goals and determined what types of window film you’ll need for your commercial property, it’s important to find the right contractor for the job. Commercial jobs require experienced contractors, especially those that require high-security clearance and other permitting. Find the right commercial window film contractor can also help you minimize project mistakes, save money, and find better investments. Our team is happy to help you with your upcoming commercial project!'}
-  imageSrc={'/images/commercial-window-film-contractor-philadelphia.jpg'}
-  imageAlt={'commercial window film contractor philadelphia'}
-  flip={true}
-  altBg={true}
-/>
+    heading={'Working With the Right Window Film Contractor for Your Philadelphia Project'}
+    body={"After you've decided your project goals and determined what types of window film you'll need for your commercial property, it's important to find the right contractor for the job. Commercial jobs require experienced contractors, especially those that require high-security clearance and other permitting. Finding the right commercial window film contractor can also help you minimize project mistakes, save money, and find better investments. Our team is happy to help you with your upcoming commercial project!"}
+    imageSrc={'/images/commercial-window-film-contractor-philadelphia.jpg'}
+    imageAlt={'Window film contractor Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Get a Free Quote'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.resource-section { background: var(--color-bg-section); }
+.resource-section h2 { margin-bottom: 0.75rem; }
+.resource-section > .container > p { margin-bottom: 1.25rem; }
+.film-type-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.6rem;
+}
+.film-type-list li {
+  padding: 0.65rem 1rem;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 0 6px 6px 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+</style>

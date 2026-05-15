@@ -1,14 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
 
 const title = 'Commercial Window Film FAQ | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is happy to answer FAQs for your upcoming commercial window film project. Get your free quote today!';
-import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+
+const faqs = [
+  {
+    q: 'How do I match window film that\'s already been installed on my property?',
+    a: 'In cases of vandalism, breakage, etc., window film replacement will be required for new glass installations. This can be tough for property owners to find an accurate match on their own. Working with a professional window film contractor can help you discover window film matching services to ensure a seamless installation.',
+  },
+  {
+    q: 'Can window film be removed? Can it be updated?',
+    a: "Yes, window film can be easily removed and replaced by a professional window film contractor. It's applied with a tamperproof adhesive that can't be removed by the general public. Window film can be updated and switched out for both short-term and long-term goals.",
+  },
+  {
+    q: 'Can window film help my commercial property with LEED certification?',
+    a: 'Yes, window film can count towards your LEED certification for commercial properties. Our LEED-certified contractors are happy to provide energy audits and help you achieve your energy-saving goals.',
+  },
+  {
+    q: 'Do I qualify for utility rebates if I install window film?',
+    a: 'This is dependent on your area and utility company — some companies do offer discounts and rebates, making it important to check with your local utility company to discover any saving opportunities.',
+  },
+  {
+    q: 'Does commercial window film come under warranty?',
+    a: 'Yes, manufacturers offer warranties on all of their window film products. Additionally, we have a limited workmanship warranty for all of our installations as well.',
+  },
+  {
+    q: 'I need a privacy solution that doesn\'t impact my views from the inside out — is this available?',
+    a: "Yes, there are numerous privacy window films and window tints that block unwanted views into your property without compromising the views out. We're happy to show you the different options available.",
+  },
+  {
+    q: 'How long does window film last on commercial properties?',
+    a: 'Most commercial window film lasts between seven and ten years but can experience a longer lifespan with proper maintenance and care. Safety and security window film products will last the lifetime of your windows and glass doors.',
+  },
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/commercial-faq/'>
+
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-faq-philadelphia.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Window Film FAQ for Philadelphia Businesses</h1>
@@ -16,32 +48,68 @@ import CTAStrip from '../../components/CTAStrip.astro';
   </section>
 
   <BackAndForthSection
-  heading={'Window Film FAQ for Philadelphia Businesses'}
-  body={'For commercial property owners in the Philadelphia area, we understand all the questions and concerns that can go into any renovation projects you may have. When it comes to utilizing commercial window film for all of its exclusive, incredible benefits, this great ROI can have a lot to offer. In order to help you make the most informed decision on your upcoming project, we’ve included answers to some of our most frequently asked questions.'}
-  imageSrc={'/images/window-film-faq-philadelphia.png'}
-  imageAlt={'window film faq philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Window Film FAQ for Philadelphia Businesses'}
+    body={"For commercial property owners in the Philadelphia area, we understand all the questions and concerns that can go into any renovation projects you may have. When it comes to utilizing commercial window film for all of its exclusive, incredible benefits, this great ROI can have a lot to offer. In order to help you make the most informed decision on your upcoming project, we've included answers to some of our most frequently asked questions."}
+    imageSrc={'/images/window-film-faq-philadelphia.png'}
+    imageAlt={'Window film FAQ Philadelphia'}
+    flip={false}
+    altBg={false}
+  />
+
+  <section class="section-pad resource-section">
+    <div class="container">
+      <h2>Frequently Asked Questions: Commercial Window Film for Philadelphia Properties</h2>
+      <div class="faq-list">
+        {faqs.map((item) => (
+          <div class="faq-item">
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <BackAndForthSection
-  heading={'Frequently Asked Questions: Commercial Window Film for Philadelphia Properties'}
-  body={'How do I match window film that’s already been installed on my property? In cases of vandalism, breakage, etc. window film replacement will be required for new glass installations. This can be tough for property owners to find an accurate match on their own. Working with a professional window film contractor can help you discover window film matching services to ensure a seamless installation. Can window film be removed? Can it be updated? Yes, window film can be easily removed and replaced by a professional window film contractor. It’s applied with a tamperproof adhesive that can’t be removed by the general public. Window film can be updated and switched out for both short-term and long-term goals. Can window film help my commercial property with LEED certification? Yes, window film can c'}
-  imageSrc={'/images/commercial-window-film-faw-philadelphia.jpg'}
-  imageAlt={'commercial window film faq philadelphia'}
-  flip={true}
-  altBg={true}
-/>
-
-  <BackAndForthSection
-  heading={'Work With Philadelphia’s Trusted Commercial Window Film Expert'}
-  body={'Window Film Philadelphia is honored to be the trusted commercial window film expert serving the state of Pennsylvania. Our team is happy to help answer any questions you have regarding window film or window tinting.'}
-  imageSrc={'/images/commercial-window-tinting-faq-philadelphia.jpg'}
-  imageAlt={'commercial window tinting faq philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={"Work With Philadelphia's Trusted Commercial Window Film Expert"}
+    body={'Window Film Philadelphia is honored to be the trusted commercial window film expert serving the state of Pennsylvania. Our team is happy to help answer any questions you have regarding window film or window tinting for your commercial property.'}
+    imageSrc={'/images/commercial-window-tinting-faq-philadelphia.jpg'}
+    imageAlt={'Commercial window film expert Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Get a Free Quote'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.resource-section { background: var(--color-bg-section); }
+.resource-section h2 { margin-bottom: 1.5rem; }
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.faq-item {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-brand);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+}
+.faq-item h3 {
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  margin-bottom: 0.6rem;
+}
+.faq-item p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+</style>

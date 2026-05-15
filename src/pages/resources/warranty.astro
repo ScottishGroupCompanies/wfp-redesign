@@ -1,14 +1,63 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
 
 const title = 'Warranty | Window Film Philadelphia | Leading Window Film Solutions';
 const description = 'Window Film Philadelphia is happy to share window film warranty information for homes and businesses. Get your free quote today!';
-import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+
+const warranties = [
+  { brand: '3M', docs: [
+    { label: '3M Commercial Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3M-Commercial-Window-Film-Warranty-philadelphia.pdf' },
+    { label: '3M Residential Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/3M-Residential-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'LLumar', docs: [
+    { label: 'LLumar Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/LLumar-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Solar Gard', docs: [
+    { label: 'SolarGard Limited Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/SolarGard-Limited-Warranty-philadelphia.pdf' },
+    { label: 'Solar Gard Residential and Commercial Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Solar-Gard-Residential-and-Commercial-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'C-Bond', docs: [
+    { label: 'C-Bond Commercial Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-Commercial-Warranty-philadelphia.pdf' },
+    { label: 'C-Bond Residential Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/C-Bond-Residential-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Designtex (Casper)', docs: [
+    { label: 'Designtex Casper Cloaking Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Designtex-Casper-Cloaking-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Graffiti Shield', docs: [
+    { label: 'Graffiti Shield Limited Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Graffiti-Shield-Limited-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Drywired (NanoTint)', docs: [
+    { label: 'Drywired Liquid Nanotint Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Drywired-Liquid-Nanotint-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Hanita Coatings', docs: [
+    { label: 'Hanita Coatings Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Hanita-Coatings-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'SunTek', docs: [
+    { label: 'SunTek Residential and Commercial Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/SunTek-Residential-and-Commercial-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Sunscape', docs: [
+    { label: 'Sunscape Residential Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Sunscape-Residential-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Madico', docs: [
+    { label: 'Madico Residential and Commercial Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Madico-Residential-and-Commercial-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Huper Optik', docs: [
+    { label: 'Huper Optik Standard Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Huper-Optik-Standard-Window-Film-Warranty-philadelphia.pdf' },
+    { label: 'Huper Optik Residential Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Huper-Optik-Residential-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+  { brand: 'Vista', docs: [
+    { label: 'Vista Residential Window Film Gold Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Vista-Residential-Window-Film-Gold-Warranty-philadelphia.pdf' },
+    { label: 'Vista Residential Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Vista-Residential-Window-Film-Warranty-philadelphia.pdf' },
+    { label: 'Vista Window Film Warranty', url: 'https://www.windowfilmphiladelphia.net/wp-content/uploads/Vista-Window-Film-Warranty-philadelphia.pdf' },
+  ]},
+];
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/warranty/'>
+
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-warranty-philadelphia.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Window Film Warranty for Philadelphia Properties</h1>
@@ -16,67 +65,94 @@ import CTAStrip from '../../components/CTAStrip.astro';
   </section>
 
   <BackAndForthSection
-  heading={'Window Film Warranty for Philadelphia Properties'}
-  body={'Window Film Philadelphia is honored to provide comprehensive warranty information regarding our window film products. All of the leading manufacturers provide incredible warranties, many even offering lifetime warranties on their products. Warranty information can also help you differentiate which product is best for your upcoming Philadelphia project. If you don’t see your interested or installed window film product below, please contact us or the manufacturer for warranty details.'}
-  imageSrc={'/images/window-film-warranty-philadelphia.png'}
-  imageAlt={'window film warranty philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Window Film Warranty for Philadelphia Properties'}
+    body={'Window Film Philadelphia is honored to provide comprehensive warranty information regarding our window film products. All of the leading manufacturers provide incredible warranties, many even offering lifetime warranties on their products. Warranty information can also help you differentiate which product is best for your upcoming Philadelphia project. If you don\'t see your interested or installed window film product below, please contact us or the manufacturer for warranty details.'}
+    imageSrc={'/images/window-film-warranty-philadelphia.png'}
+    imageAlt={'Window film warranty Philadelphia'}
+    flip={false}
+    altBg={false}
+  />
+
+  <section class="section-pad resource-section">
+    <div class="container">
+      <h2>Window Film Warranty Information</h2>
+      <p>Discover more on various window film product warranties below. Click any document link to download the PDF warranty.</p>
+      <div class="warranty-grid">
+        {warranties.map((brand) => (
+          <div class="warranty-card">
+            <h3>{brand.brand}</h3>
+            <ul>
+              {brand.docs.map((doc) => (
+                <li>
+                  <a href={doc.url} target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>
+                    {doc.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <BackAndForthSection
-  heading={'Window Film Warranty Information'}
-  body={'Discover more on various window film product warranties:'}
-  imageSrc={'/images/window-film-warranty-philadelphia.jpg'}
-  imageAlt={'window film warranty philadelphia'}
-  flip={true}
-  altBg={true}
-/>
-
-  <BackAndForthSection
-  heading={'3M'}
-  body={'3M Commercial Window Film Warranty Philadelphia 3M Residential Window Film Warranty Philadelphia'}
-  imageSrc={'/images/window-tinting-warranty-philadelphia.jpg'}
-  imageAlt={'window tinting warranty philadelphia'}
-  flip={false}
-  altBg={false}
-/>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>LLumar</h2>
-    <p>LLumar Window Film Warranty Philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Solar Gard</h2>
-    <p>SolarGard Limited Warranty Philadelphia Solar Gard Residential and Commercial Window Film Warranty Philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>C-Bond</h2>
-    <p>C-Bond Commercial Warranty Philadelphia C-Bond Residential Warranty Philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Designtex</h2>
-    <p>Designtex Casper Cloaking Film Warranty Philadelphia</p>
-  </div>
-</section>
-
-  <section class="section-pad">
-  <div class="container">
-    <h2>Graffiti Shield</h2>
-    <p>Graffiti Shield Limited Warranty Philadelphia</p>
-  </div>
-</section>
+    heading={"Work With Philadelphia's Trusted Window Film Expert"}
+    body={'Window Film Philadelphia is honored to be the trusted window film expert serving the state of Pennsylvania. Our team is happy to help provide you with window film warranty information for your upcoming project. Contact us today!'}
+    imageSrc={'/images/window-tinting-warranty-philadelphia.jpg'}
+    imageAlt={'Window film warranty expert Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Get a Free Quote'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.resource-section { background: var(--color-bg-section); }
+.resource-section h2 { margin-bottom: 0.75rem; }
+.resource-section > .container > p { margin-bottom: 1.5rem; }
+.warranty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.warranty-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+}
+.warranty-card h3 {
+  font-size: 0.9rem;
+  font-family: var(--font-heading);
+  color: var(--color-charcoal);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.warranty-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.warranty-card a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--color-brand);
+  transition: color 200ms;
+}
+.warranty-card a:hover { color: var(--color-brand-dark); }
+</style>

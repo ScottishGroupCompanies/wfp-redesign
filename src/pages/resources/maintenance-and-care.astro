@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
 
 const title = 'Maintenance & Care | Window Film Philadelphia | Leading Window Film';
 const description = 'Window Film Philadelphia is happy to share the latest resources on proper window film maintenance and care. Get your free quote today!';
-import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/maintenance-and-care/'>
+
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-maintenance-philadelphia.png'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Window Film Maintenance and Care Instructions for Philadelphia Properties</h1>
@@ -16,32 +17,61 @@ import CTAStrip from '../../components/CTAStrip.astro';
   </section>
 
   <BackAndForthSection
-  heading={'Window Film Maintenance and Care Instructions for Philadelphia Properties'}
-  body={'Window Film Philadelphia is honored to provide leading maintenance and care instructions for your Philadelphia clients. Window film is a great, low-maintenance investment but does require some specified care and cleaning. In order to make the most out of your investment and to experience the wealth of benefits it has to offer, make sure to follow the following instructions for maintenance and care.'}
-  imageSrc={'/images/window-film-maintenance-philadelphia.png'}
-  imageAlt={'window film maintenance philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={'Window Film Maintenance and Care Instructions for Philadelphia Properties'}
+    body={'Window Film Philadelphia is honored to provide leading maintenance and care instructions for our Philadelphia clients. Window film is a great, low-maintenance investment but does require some specified care and cleaning. In order to make the most out of your investment and to experience the wealth of benefits it has to offer, make sure to follow the instructions below for maintenance and care.'}
+    imageSrc={'/images/window-film-maintenance-philadelphia.png'}
+    imageAlt={'Window film maintenance Philadelphia'}
+    flip={false}
+    altBg={false}
+  />
+
+  <section class="section-pad care-section">
+    <div class="container">
+      <div class="care-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <strong>DO NOT CLEAN YOUR WINDOW FILM FOR 30 DAYS AFTER INSTALLATION!</strong>
+      </div>
+      <h2>Window Film Care and Cleaning Instructions for Philadelphia Properties</h2>
+      <p>Window film requires 30 days to fully cure. During this time period, your window film may appear foggy due to condensation buildup — don't worry, this will dissipate over the first week. Do not clean your window film during the first month post-installation in order to let it properly cure.</p>
+      <p>Please note, bubbles can also occur during the curing period — do not pop any bubbles since it can impact the structural integrity of your film. If you happen to pop a bubble, contact us immediately!</p>
+      <p>After this 30-day period, you can clean your window film periodically. Window film is less porous than glass, meaning it will require fewer cleanings. Always use a soft, non-abrasive cloth or paper towel paired with any commercial cleaner or a mixture of mild detergent and water. Never use anything abrasive to clean your windows since this can cause scratches on your film. It's best to use a soft cloth, paper towel, or squeegee to dry your window film — you don't want to leave it wet in order to minimize the risk of moisture getting underneath. While unnecessary, a silicone polish can also be applied to provide a luminous look.</p>
+    </div>
+  </section>
 
   <BackAndForthSection
-  heading={'Window Film Care and Cleaning Instructions for Philadelphia Properties'}
-  body={'**DO NOT CLEAN YOUR WINDOW FILM FOR 30 DAYS AFTER INSTALLATION!** Window film requires 30 days to fully cure. During this time period, your window film may appear foggy due to condensation buildup but don’t worry- this will dissipate over the first week. Do not clean your window film during the first month post-installation in order to let it properly cure. Please note, bubbles can also occur– do not pop any bubbles since it can impact the structural integrity of your film. If you happen to pop a bubble, contact us immediately! After this 30 day period, you can clean your window film periodically. Window film is less porous than glass, meaning it’ll require fewer cleanings. Always use a soft, non-abrasive cloth or paper towel paired with any commercial cleaner or a mixture of mild detergen'}
-  imageSrc={'/images/window-film-care-philadelphia.jpg'}
-  imageAlt={'window film care philadelphia'}
-  flip={true}
-  altBg={true}
-/>
-
-  <BackAndForthSection
-  heading={'Work With Philadelphia’s Trusted Window Film Expert'}
-  body={'Window Film Philadelphia is honored to be the trusted window film expert serving the state of Pennsylvania. Our team is happy to help provide you with leading maintenance and care instructions for your new investment.'}
-  imageSrc={'/images/window-film-cleaning-instructions-philadelphia.jpg'}
-  imageAlt={'window film cleaning instructions philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={"Work With Philadelphia's Trusted Window Film Expert"}
+    body={'Window Film Philadelphia is honored to be the trusted window film expert serving the state of Pennsylvania. Our team is happy to help provide you with leading maintenance and care instructions for your new investment.'}
+    imageSrc={'/images/window-film-cleaning-instructions-philadelphia.jpg'}
+    imageAlt={'Window film maintenance expert Philadelphia'}
+    flip={false}
+    altBg={false}
+    ctaLabel={'Get a Free Quote'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+
 </BaseLayout>
+
+<style>
+.care-section { background: var(--color-bg-section); }
+.care-section h2 { margin-bottom: 1rem; }
+.care-section p + p { margin-top: 0.85rem; }
+.care-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-left: 5px solid #e8a020;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  color: #7a4f00;
+  font-size: 1rem;
+}
+.care-warning svg { color: #e8a020; flex-shrink: 0; }
+</style>
