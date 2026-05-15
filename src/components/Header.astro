@@ -145,6 +145,7 @@ const currentPath = Astro.url.pathname;
                 <a
                   href={item.href}
                   class={`site-nav__link${currentPath.startsWith(item.href) && item.href !== '/' ? ' site-nav__link--active' : ''}`}
+                  data-mobile-toggle={item.children ? 'true' : undefined}
                 >
                   {item.label}
                   {/* Desktop-only caret */}
@@ -488,17 +489,21 @@ const currentPath = Astro.url.pathname;
   }
 }
 
-/* Hide close button and toggle on desktop */
+/* Hide close button, toggle, and mobile CTA on desktop */
 .site-nav__close,
-.site-nav__toggle {
+.site-nav__toggle,
+.site-nav__item--cta {
   display: none;
 }
 </style>
 
 <script>
-const burger  = document.querySelector('.site-header__burger') as HTMLButtonElement | null;
-const closeBtn = document.querySelector('.site-nav__close') as HTMLButtonElement | null;
-const nav     = document.getElementById('main-nav');
+const burger   = document.querySelector('.site-header__burger') as HTMLButtonElement | null;
+const closeBtn = document.querySelector('.site-nav__close')    as HTMLButtonElement | null;
+const nav      = document.getElementById('main-nav');
+
+// Helper: is the mobile flyout currently active?
+const isMobile = () => window.innerWidth <= 1024;
 
 function openNav() {
   nav?.classList.add('is-open');
@@ -512,31 +517,44 @@ function closeNav() {
   document.body.style.overflow = '';
 }
 
+function toggleDropdown(toggle: HTMLButtonElement) {
+  const item     = toggle.closest('.site-nav__item');
+  const dropdown = item?.querySelector('.site-nav__dropdown');
+  const isOpen   = toggle.getAttribute('aria-expanded') === 'true';
+  if (isOpen) {
+    toggle.setAttribute('aria-expanded', 'false');
+    dropdown?.classList.remove('is-open');
+  } else {
+    toggle.setAttribute('aria-expanded', 'true');
+    dropdown?.classList.add('is-open');
+  }
+}
+
 burger?.addEventListener('click', () => {
   nav?.classList.contains('is-open') ? closeNav() : openNav();
 });
 
 closeBtn?.addEventListener('click', closeNav);
 
-// Plus/minus toggles for dropdown items
+// +/- toggle buttons
 document.querySelectorAll<HTMLButtonElement>('.site-nav__toggle').forEach((toggle) => {
-  toggle.addEventListener('click', () => {
-    const item    = toggle.closest('.site-nav__item');
-    const dropdown = item?.querySelector('.site-nav__dropdown');
-    const isOpen  = toggle.getAttribute('aria-expanded') === 'true';
+  toggle.addEventListener('click', () => toggleDropdown(toggle));
+});
 
-    if (isOpen) {
-      toggle.setAttribute('aria-expanded', 'false');
-      dropdown?.classList.remove('is-open');
-    } else {
-      toggle.setAttribute('aria-expanded', 'true');
-      dropdown?.classList.add('is-open');
-    }
+// On mobile: intercept taps on parent-item labels — open dropdown instead of navigating
+document.querySelectorAll<HTMLAnchorElement>('[data-mobile-toggle]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    if (!isMobile()) return; // desktop: navigate normally
+    e.preventDefault();
+    // Find the sibling toggle button and fire it
+    const row    = link.closest('.site-nav__link-row');
+    const toggle = row?.querySelector<HTMLButtonElement>('.site-nav__toggle');
+    if (toggle) toggleDropdown(toggle);
   });
 });
 
-// Close nav when a leaf link is clicked (not the toggle row links on mobile)
+// Close nav when a child link or CTA is tapped on mobile
 nav?.querySelectorAll<HTMLAnchorElement>('.site-nav__dropdown-link, .site-nav__cta-btn').forEach((link) => {
-  link.addEventListener('click', closeNav);
+  link.addEventListener('click', () => { if (isMobile()) closeNav(); });
 });
 </script>
