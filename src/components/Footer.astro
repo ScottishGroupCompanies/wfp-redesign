@@ -45,151 +45,148 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="site-footer__main">
-    <div class="container">
-      <div class="site-footer__brand">
-        <a href="/" aria-label="Window Film Philadelphia — Home">
-          <img
-            src="/images/2021-08-window-film-philadelphia-white-1.png"
-            alt="Window Film Philadelphia"
-            width="200"
-            height="55"
-            loading="lazy"
-          />
-        </a>
-        <p>Philadelphia's leading commercial and residential window film contractor. Serving Philadelphia, Camden, Reading, and surrounding counties.</p>
-        <div class="site-footer__contact">
-          <a href="tel:+12673947980">{phone}</a>
-          <a href={`mailto:${email}`}>{email}</a>
-        </div>
+  <div class="footer-top">
+    <!-- Brand column -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        Window Film Philadelphia<span>.</span>
       </div>
-
-      {Object.entries(footerLinks).map(([group, links]) => (
-        <div class="site-footer__col">
-          <h4>{group}</h4>
-          <ul>
-            {links.map((l) => (
-              <li><a href={l.href}>{l.label}</a></li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <p class="footer-tagline">Philadelphia's leading commercial and residential window film contractor. Serving Philadelphia, Camden, Reading, and surrounding counties since 2008.</p>
+      <p class="footer-contact-line">
+        <a href="tel:+12673947980">{phone}</a>
+        &nbsp;&bull;&nbsp;
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
     </div>
+
+    <!-- Link columns -->
+    {Object.entries(footerLinks).map(([group, links]) => (
+      <div class="footer-col">
+        <h5>{group}</h5>
+        {links.map((l) => (
+          <a href={l.href}>{l.label}</a>
+        ))}
+      </div>
+    ))}
   </div>
 
-  <div class="site-footer__bottom">
-    <div class="container">
-      <p>&copy; {currentYear} Window Film Philadelphia. All rights reserved.</p>
-      <p>Philadelphia, PA &bull; (267) 394-7980 &bull; contact@windowfilmphiladelphia.net</p>
-    </div>
+  <div class="footer-bottom">
+    <span>&copy; {currentYear} Window Film Philadelphia. All rights reserved.</span>
+    <span>Philadelphia, PA &bull; {phone}</span>
   </div>
 </footer>
 
 <style>
 .site-footer {
-  background: var(--color-charcoal);
-  color: rgba(255,255,255,0.8);
-  margin-top: auto;
+  background: #1a1f22;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.site-footer__main .container {
+/* ── TOP GRID ── */
+.footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 3rem;
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  gap: 48px;
+  padding: 72px 5% 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.site-footer__brand p {
-  color: rgba(255,255,255,0.7);
-  font-size: 0.875rem;
-  margin: 1rem 0;
-  line-height: 1.6;
-}
-
-.site-footer__contact {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.site-footer__contact a {
-  color: rgba(255,255,255,0.85);
-  font-size: 0.875rem;
+/* Brand column */
+.footer-logo {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 22px;
   font-weight: 600;
-}
-
-.site-footer__contact a:hover {
   color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
 }
-
-.site-footer__col h4 {
-  color: #fff;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-  font-family: var(--font-heading);
+.footer-logo span {
+  color: var(--green, #81AB4C);
 }
-
-.site-footer__col ul {
-  list-style: none;
-  padding: 0;
+.footer-tagline {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 20px;
+}
+.footer-contact-line {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
   margin: 0;
 }
-
-.site-footer__col ul li {
-  margin-bottom: 0.5rem;
+.footer-contact-line a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
 }
-
-.site-footer__col a {
-  color: rgba(255,255,255,0.65);
-  font-size: 0.85rem;
-  transition: color var(--transition-base);
-}
-
-.site-footer__col a:hover {
+.footer-contact-line a:hover {
   color: #fff;
 }
 
-.site-footer__bottom {
-  background: var(--color-charcoal-dk);
-  border-top: 1px solid rgba(255,255,255,0.08);
+/* Link columns */
+.footer-col h5 {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.footer-col a {
+  display: block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover {
+  color: #fff;
 }
 
-.site-footer__bottom .container {
+/* ── BOTTOM BAR ── */
+.footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 24px 5%;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
-.site-footer__bottom p {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.8rem;
-  margin: 0;
-}
-
-@media (max-width: 900px) {
-  .site-footer__main .container {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 48px 5% 32px;
   }
-  .site-footer__brand {
+  .footer-brand {
     grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 560px) {
-  .site-footer__main .container {
-    grid-template-columns: 1fr;
+@media (max-width: 640px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
-  .site-footer__bottom .container {
+  .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-top {
+    grid-template-columns: 1fr;
   }
 }
 </style>
