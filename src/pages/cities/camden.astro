@@ -624,11 +624,21 @@ const description = 'Window Film Philadelphia is the #1 source for window film i
 </style>
 
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  // IntersectionObserver deferred to idle — off the critical paint path.
+  const registerFadeIns = () => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  };
 
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(registerFadeIns);
+  } else {
+    setTimeout(registerFadeIns, 200);
+  }
+
+  // FAQ accordion — synchronous, must respond to clicks immediately.
   document.querySelectorAll('.ip-faq__item').forEach(item => {
     item.querySelector('.ip-faq__q')?.addEventListener('click', () => {
       const isOpen = item.classList.contains('ip-faq__item--open');

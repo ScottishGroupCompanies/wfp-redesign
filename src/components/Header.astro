@@ -523,22 +523,40 @@ function toggleDropdown(toggle: HTMLButtonElement) {
   }
 }
 
-burger?.addEventListener('click', () => {
-  flyout?.classList.contains('is-open') ? closeNav() : openNav();
-});
+// ── Mobile-only listeners ──────────────────────────────────────────────
+// These handlers (burger open/close, accordion toggles, close-on-tap) are
+// only needed on mobile viewports. Guard them so they never run on desktop,
+// keeping the main thread free during initial load on larger screens.
+const mq = window.matchMedia('(max-width: 1024px)');
 
-closeBtn?.addEventListener('click', closeNav);
-
-// +/- toggles — stopPropagation prevents sibling <a> from also firing
-document.querySelectorAll<HTMLButtonElement>('.s-nav__toggle').forEach((toggle) => {
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDropdown(toggle);
+function initMobileNav() {
+  burger?.addEventListener('click', () => {
+    flyout?.classList.contains('is-open') ? closeNav() : openNav();
   });
-});
 
-// Close nav when a child link or mobile CTA is tapped on mobile
-flyout?.querySelectorAll<HTMLAnchorElement>('.s-nav__dropdown-link, .s-nav__cta-btn').forEach((link) => {
-  link.addEventListener('click', () => { if (isMobile()) closeNav(); });
-});
+  closeBtn?.addEventListener('click', closeNav);
+
+  // +/- toggles — stopPropagation prevents sibling <a> from also firing
+  document.querySelectorAll<HTMLButtonElement>('.s-nav__toggle').forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown(toggle);
+    });
+  });
+
+  // Close nav when a child link or mobile CTA is tapped on mobile
+  flyout?.querySelectorAll<HTMLAnchorElement>('.s-nav__dropdown-link, .s-nav__cta-btn').forEach((link) => {
+    link.addEventListener('click', () => { if (isMobile()) closeNav(); });
+  });
+}
+
+if (mq.matches) {
+  // Already mobile at page load
+  initMobileNav();
+} else {
+  // Desktop at page load — wait in case the viewport is resized to mobile
+  mq.addEventListener('change', (e) => {
+    if (e.matches) initMobileNav();
+  }, { once: true });
+}
 </script>

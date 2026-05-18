@@ -462,6 +462,7 @@ const description = 'Window Film Philadelphia provides professional window film 
 .hp-strip__scroll {
   display: flex; gap: 48px; align-items: center;
   animation: s-scroll 28s linear infinite;
+  animation-delay: 0.5s;
   width: max-content;
 }
 @keyframes s-scroll {
@@ -708,8 +709,19 @@ const description = 'Window Film Philadelphia provides professional window film 
 </style>
 
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  // Run IntersectionObserver when the browser is idle — keeps it off
+  // the critical path during initial paint.
+  const registerFadeIns = () => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  };
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(registerFadeIns);
+  } else {
+    // Fallback for Safari < 16
+    setTimeout(registerFadeIns, 200);
+  }
 </script>
