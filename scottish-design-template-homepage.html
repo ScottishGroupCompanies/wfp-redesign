@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scottish Window Tinting — Modern Redesign Template (Homepage)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  SCOTTISH SITES — MODERN REDESIGN TEMPLATE
+  Homepage Layout
+  ============================================================
+  BRAND COLORS:
+    Primary Green:     #81AB4C
+    Secondary (Dark):  #272E32
+    Accent Red:        #CE4741  (use sparingly — promos/alerts only)
+
+  TYPOGRAPHY:
+    Headings:  Playfair Display (serif) — 400/500/600
+    Body/UI:   DM Sans (sans-serif) — 300/400/500/600
+
+  DESIGN PRINCIPLES (synthesized from table22.com, understory.io, ruul.io):
+    - Rounded corners everywhere (pill CTAs, xl image containers, lg cards)
+    - Alternating white / #F7F6F3 section backgrounds
+    - Scroll fade-in animations on all major blocks
+    - Bold serif+sans headline pairing
+    - Floating badge overlays on hero image
+    - Scrolling logo/location strip
+    - Numbered step labels (Step 01, Step 02...)
+    - Large editorial stat numbers
+    - Circular avatar testimonials
+    - Dark rounded CTA banner before footer
+
+  SECTIONS (in order):
+    1. Alert banner (red accent — promo/seasonal use)
+    2. Sticky frosted nav
+    3. Hero (2-col: copy left, image right)
+    4. Logo/location scroll strip
+    5. Services grid (3-col cards)
+    6. Stats band (dark bg)
+    7. Why Us (alternating image+content rows)
+    8. How It Works (4-step grid)
+    9. Testimonials (3-col cards)
+    10. CTA banner (dark rounded)
+    11. Footer (4-col)
+  ============================================================
+-->
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand: #272E32;
+    --brand-light: #3a4449;
+    --green: #81AB4C;
+    --green-light: #eef4e4;
+    --red: #CE4741;
+    --white: #ffffff;
+    --off-white: #F7F6F3;
+    --light-gray: #EFEFED;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a4a4a;
+    --text-light: #888;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 40px;
+    --radius-pill: 100px;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── ALERT BANNER ── */
+  .alert-banner {
+    background: var(--red);
+    padding: 14px 5%;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+  }
+  .alert-banner p { color: white; font-size: 14px; font-weight: 500; }
+  .alert-banner a { color: white; font-weight: 700; text-decoration: underline; white-space: nowrap; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--brand); letter-spacing: -0.3px;
+  }
+  .nav-logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--text-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brand); }
+  .nav-cta {
+    background: var(--green); color: white;
+    padding: 10px 22px; border-radius: var(--radius-pill);
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: #6e9640; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    padding: 80px 5% 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: var(--white);
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-light); color: #5a7a33;
+    padding: 6px 14px; border-radius: var(--radius-pill);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--green); border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 600; line-height: 1.1;
+    letter-spacing: -1px; color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+  .hero h1 em { font-style: italic; color: var(--green); }
+  .hero p {
+    font-size: 18px; color: var(--text-mid);
+    line-height: 1.7; max-width: 480px; margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green); color: white;
+    padding: 14px 28px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+    border: 2px solid var(--green);
+  }
+  .btn-primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: var(--brand);
+    padding: 14px 28px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    border: 2px solid var(--brand);
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--brand); color: white; transform: translateY(-2px); }
+  .hero-trust {
+    margin-top: 48px; padding-top: 32px;
+    border-top: 1px solid var(--light-gray);
+    display: flex; gap: 32px; align-items: center;
+  }
+  .trust-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600; color: var(--brand); display: block;
+  }
+  .trust-stat .num span { color: var(--green); }
+  .trust-stat .lbl { font-size: 13px; color: var(--text-light); }
+  .hero-visual { position: relative; height: 560px; }
+  .hero-img-main {
+    width: 100%; height: 460px;
+    background: var(--brand);
+    border-radius: var(--radius-xl); overflow: hidden; position: relative;
+  }
+  .hero-img-main-inner {
+    width: 100%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80') center/cover;
+    opacity: 0.8; border-radius: var(--radius-xl);
+  }
+  .hero-badge {
+    position: absolute; bottom: -20px; left: -20px;
+    background: white; padding: 16px 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    display: flex; align-items: center; gap: 12px; min-width: 200px;
+  }
+  .badge-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .badge-text .b-title { font-size: 15px; font-weight: 600; color: var(--text-dark); }
+  .badge-text .b-sub { font-size: 12px; color: var(--text-light); }
+  .hero-img-accent {
+    position: absolute; top: 20px; right: -24px;
+    width: 120px; height: 120px;
+    background: var(--green-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 600; color: #5a7a33;
+    text-align: center; line-height: 1.3; padding: 16px;
+  }
+
+  /* ── LOGO STRIP ── */
+  .logo-strip { background: var(--off-white); padding: 28px 5%; overflow: hidden; }
+  .logo-strip-label {
+    text-align: center; font-size: 12px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-light); margin-bottom: 20px;
+  }
+  .logo-scroll {
+    display: flex; gap: 48px; align-items: center;
+    animation: scroll-logos 28s linear infinite; width: max-content;
+  }
+  @keyframes scroll-logos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .logo-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 600; color: var(--text-light);
+    white-space: nowrap; letter-spacing: 0.5px;
+  }
+
+  /* ── SHARED SECTION STYLES ── */
+  section { padding: 100px 5%; }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 600; line-height: 1.15; letter-spacing: -0.5px;
+    color: var(--text-dark); margin-bottom: 16px; max-width: 600px;
+  }
+  .section-sub {
+    font-size: 17px; color: var(--text-mid);
+    line-height: 1.7; max-width: 540px; margin-bottom: 48px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--off-white); border-radius: var(--radius-lg);
+    padding: 36px 28px; transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--green);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: var(--radius-md);
+    background: var(--brand); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 24px;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 12px;
+  }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.65; }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 20px; font-size: 14px; font-weight: 600;
+    color: var(--green); text-decoration: none; transition: gap 0.2s;
+  }
+  .service-link:hover { gap: 10px; }
+
+  /* ── STATS ── */
+  .stats { background: var(--brand); padding: 80px 5%; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-item {
+    text-align: center; padding: 20px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 600; color: white; display: block; line-height: 1;
+  }
+  .stat-suffix { color: var(--green); }
+  .stat-label { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 8px; display: block; }
+
+  /* ── WHY US ── */
+  .why { background: var(--off-white); }
+  .why-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; margin-bottom: 80px;
+  }
+  .why-row:last-child { margin-bottom: 0; }
+  .why-row.reverse .why-img { order: 2; }
+  .why-row.reverse .why-content { order: 1; }
+  .why-img {
+    height: 420px; border-radius: var(--radius-xl);
+    overflow: hidden; background: var(--light-gray); position: relative;
+  }
+  .why-img-inner {
+    width: 100%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=500&q=80') center/cover;
+    border-radius: var(--radius-xl);
+  }
+  .why-img-inner.img2 {
+    background: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&q=80') center/cover;
+  }
+  .why-img-pill {
+    position: absolute; top: 24px; right: 24px;
+    background: white; padding: 10px 18px; border-radius: var(--radius-pill);
+    font-size: 13px; font-weight: 600; color: var(--brand);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .why-content .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; font-weight: 600;
+    color: var(--light-gray); line-height: 1; margin-bottom: 4px;
+  }
+  .why-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px; font-weight: 600;
+    color: var(--text-dark); line-height: 1.2; margin-bottom: 16px;
+  }
+  .why-content p { font-size: 16px; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; }
+  .why-points { list-style: none; }
+  .why-points li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 15px; color: var(--text-mid); padding: 6px 0;
+  }
+  .why-points li::before {
+    content: '✓'; color: var(--green); font-weight: 700;
+    font-size: 14px; margin-top: 2px; flex-shrink: 0;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--off-white); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step {
+    background: white; border-radius: var(--radius-lg);
+    padding: 32px 24px; position: relative; transition: transform 0.2s;
+  }
+  .step:hover { transform: translateY(-4px); }
+  .step-number { font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 20px; letter-spacing: 0.5px; }
+  .step-icon {
+    width: 48px; height: 48px; border-radius: var(--radius-md);
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 20px;
+  }
+  .step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 10px;
+  }
+  .step p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+  .step-connector {
+    position: absolute; top: 44px; right: -12px;
+    width: 24px; height: 2px; background: var(--light-gray); z-index: 1;
+  }
+  .step:last-child .step-connector { display: none; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testi-card { background: var(--off-white); border-radius: var(--radius-lg); padding: 32px 28px; }
+  .testi-stars { color: var(--green); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testi-quote { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--brand); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600; flex-shrink: 0;
+  }
+  .testi-name { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+  .testi-location { font-size: 13px; color: var(--text-light); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--brand); border-radius: var(--radius-xl);
+    padding: 72px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px; margin: 0 5%; margin-bottom: 100px;
+  }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 600;
+    color: white; line-height: 1.2; max-width: 480px;
+  }
+  .cta-banner h2 em { font-style: italic; color: var(--green); }
+  .cta-banner-btns { display: flex; gap: 14px; flex-shrink: 0; }
+  .btn-white {
+    background: white; color: var(--brand);
+    padding: 14px 28px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: all 0.2s; display: inline-block; white-space: nowrap;
+  }
+  .btn-white:hover { background: var(--off-white); transform: translateY(-2px); }
+  .btn-green {
+    background: var(--green); color: white;
+    padding: 14px 28px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; display: inline-block; white-space: nowrap;
+    border: 2px solid var(--green);
+  }
+  .btn-green:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer { background: #1a1f22; padding: 72px 5% 40px; color: rgba(255,255,255,0.6); }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 32px;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: white; margin-bottom: 16px; }
+  .footer-logo span { color: var(--green); }
+  .footer-tagline { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+  .footer-col h5 {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase; color: white; margin-bottom: 20px;
+  }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; padding: 4px 0; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); }
+
+  /* ── SCROLL FADE ── */
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER — use for seasonal promos, limited-time offers. Red accent #CE4741 -->
+<div class="alert-banner">
+  <p>🌞 Summer Special: 15% off residential window film — limited time. <a href="#">Book now →</a></p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Scottish<span>.</span></div>
+  <div class="nav-links">
+    <a href="#">Services</a>
+    <a href="#">Locations</a>
+    <a href="#">About</a>
+    <a href="#">Gallery</a>
+    <a href="#" class="nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Serving Colorado Since 1993</div>
+    <h1>Window Tinting <em>Done Right,</em> Every Time</h1>
+    <p>Professional window film installation for homes, businesses, and vehicles. Trusted by thousands of Colorado families and commercial clients.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Get a Free Quote</a>
+      <a href="#" class="btn-ghost">View Our Work</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-stat">
+        <span class="num">30<span>+</span></span>
+        <span class="lbl">Years of experience</span>
+      </div>
+      <div style="width:1px; height:40px; background:var(--light-gray);"></div>
+      <div class="trust-stat">
+        <span class="num">50k<span>+</span></span>
+        <span class="lbl">Projects completed</span>
+      </div>
+      <div style="width:1px; height:40px; background:var(--light-gray);"></div>
+      <div class="trust-stat">
+        <span class="num">4.9<span>★</span></span>
+        <span class="lbl">Average rating</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-img-main">
+      <div class="hero-img-main-inner"></div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-icon">🏅</div>
+      <div class="badge-text">
+        <div class="b-title">#1 in Colorado</div>
+        <div class="b-sub">Window Film Installer</div>
+      </div>
+    </div>
+    <div class="hero-img-accent">Lifetime Warranty Included</div>
+  </div>
+</section>
+
+<!-- LOGO / LOCATION SCROLL STRIP -->
+<div class="logo-strip">
+  <p class="logo-strip-label">Trusted by Colorado's top builders, dealerships & commercial properties</p>
+  <div style="overflow:hidden;">
+    <div class="logo-scroll">
+      <span class="logo-item">Colorado State</span><span class="logo-item">·</span>
+      <span class="logo-item">Denver Metro</span><span class="logo-item">·</span>
+      <span class="logo-item">Front Range</span><span class="logo-item">·</span>
+      <span class="logo-item">Colorado Springs</span><span class="logo-item">·</span>
+      <span class="logo-item">Boulder</span><span class="logo-item">·</span>
+      <span class="logo-item">Fort Collins</span><span class="logo-item">·</span>
+      <span class="logo-item">Pueblo</span><span class="logo-item">·</span>
+      <span class="logo-item">Grand Junction</span><span class="logo-item">·</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="logo-item">Colorado State</span><span class="logo-item">·</span>
+      <span class="logo-item">Denver Metro</span><span class="logo-item">·</span>
+      <span class="logo-item">Front Range</span><span class="logo-item">·</span>
+      <span class="logo-item">Colorado Springs</span><span class="logo-item">·</span>
+      <span class="logo-item">Boulder</span><span class="logo-item">·</span>
+      <span class="logo-item">Fort Collins</span><span class="logo-item">·</span>
+      <span class="logo-item">Pueblo</span><span class="logo-item">·</span>
+      <span class="logo-item">Grand Junction</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div style="text-align:center; margin-bottom:52px;">
+    <p class="section-eyebrow">What We Do</p>
+    <h2 class="section-title" style="margin:0 auto 16px;">Expert film solutions for <em style="font-style:italic; color:var(--green)">every surface</em></h2>
+    <p class="section-sub" style="margin:0 auto;">From homes to high-rises, vehicles to storefronts — we handle every project with precision and care.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">🏠</div>
+      <h3>Residential Tinting</h3>
+      <p>Reduce heat, glare, and UV damage while adding privacy and style to your home. Energy savings from day one.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card fade-in fade-in-delay-1">
+      <div class="service-icon">🏢</div>
+      <h3>Commercial Film</h3>
+      <p>Protect your assets, reduce HVAC load, and create a professional appearance for offices and retail spaces.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <div class="service-icon">🚗</div>
+      <h3>Automotive Tinting</h3>
+      <p>Keep your cabin cooler, protect your upholstery, and enhance your vehicle's look with premium ceramic films.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item fade-in">
+      <span class="stat-num">30<span class="stat-suffix">+</span></span>
+      <span class="stat-label">Years in business</span>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-1">
+      <span class="stat-num">50k<span class="stat-suffix">+</span></span>
+      <span class="stat-label">Projects completed</span>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-2">
+      <span class="stat-num">120<span class="stat-suffix">+</span></span>
+      <span class="stat-label">Cities served</span>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-3">
+      <span class="stat-num">4.9<span class="stat-suffix">★</span></span>
+      <span class="stat-label">Average Google rating</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why">
+  <div style="text-align:center; margin-bottom:64px;">
+    <p class="section-eyebrow">Why Scottish</p>
+    <h2 class="section-title" style="margin:0 auto;">The difference you'll notice from day one</h2>
+  </div>
+  <div class="why-row fade-in">
+    <div class="why-img">
+      <div class="why-img-inner"></div>
+      <span class="why-img-pill">Lifetime Warranty</span>
+    </div>
+    <div class="why-content">
+      <div class="step-num">01</div>
+      <h3>Premium films from the world's top manufacturers</h3>
+      <p>We only install films from 3M, Llumar, and Solar Gard — brands with proven track records and manufacturer-backed warranties that last the lifetime of your film.</p>
+      <ul class="why-points">
+        <li>Blocks up to 99% of UV radiation</li>
+        <li>Rejects up to 80% of solar heat</li>
+        <li>Scratch-resistant hard coat on all films</li>
+      </ul>
+    </div>
+  </div>
+  <div class="why-row reverse fade-in">
+    <div class="why-img">
+      <div class="why-img-inner img2"></div>
+      <span class="why-img-pill">Expert Installers</span>
+    </div>
+    <div class="why-content">
+      <div class="step-num">02</div>
+      <h3>Installers who treat your property like their own</h3>
+      <p>Every member of our installation team is factory-trained and background-checked. We show up on time, work clean, and leave no trace except a flawless tint job.</p>
+      <ul class="why-points">
+        <li>Factory-certified installation team</li>
+        <li>Background-checked technicians</li>
+        <li>On-time guarantee or $50 off</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div style="text-align:center; margin-bottom:52px;">
+    <p class="section-eyebrow">The Process</p>
+    <h2 class="section-title" style="margin:0 auto;">From quote to done in <em style="font-style:italic; color:var(--green)">four simple steps</em></h2>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-number">Step 01</div>
+      <div class="step-icon">💬</div>
+      <h4>Free consultation</h4>
+      <p>Tell us about your project online or by phone. We'll recommend the right film and provide an instant estimate.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step fade-in fade-in-delay-1">
+      <div class="step-number">Step 02</div>
+      <div class="step-icon">📋</div>
+      <h4>Custom proposal</h4>
+      <p>Receive a detailed written quote with film options, pricing, and an expected energy savings projection.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step fade-in fade-in-delay-2">
+      <div class="step-number">Step 03</div>
+      <div class="step-icon">🛠️</div>
+      <h4>Professional install</h4>
+      <p>Our certified crew arrives on schedule, installs cleanly, and ensures every panel is perfect before leaving.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step fade-in fade-in-delay-3">
+      <div class="step-number">Step 04</div>
+      <div class="step-icon">✅</div>
+      <h4>Lifetime support</h4>
+      <p>Every job comes with a lifetime warranty. If anything goes wrong, we make it right — no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div style="text-align:center; margin-bottom:52px;">
+    <p class="section-eyebrow">Client Reviews</p>
+    <h2 class="section-title" style="margin:0 auto;">What Colorado customers are saying</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-in">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"The team was professional, fast, and the finished result looks incredible. Our living room is so much cooler now — already seeing the difference on our energy bill."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">JR</div>
+        <div>
+          <div class="testi-name">Jennifer R.</div>
+          <div class="testi-location">Residential · Denver, CO</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Had three floors of office windows done. The crew was on time, respectful of our workspace, and the film looks great. We'll use Scottish for every project going forward."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MT</div>
+        <div>
+          <div class="testi-name">Marcus T.</div>
+          <div class="testi-location">Commercial · Colorado Springs, CO</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Best automotive tint job I've ever had. No bubbles, perfect edges, and the ceramic film keeps my truck remarkably cool. Worth every penny."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">BK</div>
+        <div>
+          <div class="testi-name">Brian K.</div>
+          <div class="testi-location">Automotive · Fort Collins, CO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner fade-in">
+  <h2>Ready to transform your <em>home, business, or vehicle?</em></h2>
+  <div class="cta-banner-btns">
+    <a href="#" class="btn-white">Get a Free Quote</a>
+    <a href="#" class="btn-green">Call Us Today</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Scottish<span>.</span></div>
+      <p class="footer-tagline">Colorado's most trusted window film installer. Serving residential, commercial, and automotive clients since 1993.</p>
+      <p style="font-size:13px;">📍 Serving 120+ Colorado cities</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#">Residential Tinting</a>
+      <a href="#">Commercial Film</a>
+      <a href="#">Automotive Tinting</a>
+      <a href="#">Decorative Film</a>
+      <a href="#">Security Film</a>
+    </div>
+    <div class="footer-col">
+      <h5>Locations</h5>
+      <a href="#">Denver</a>
+      <a href="#">Colorado Springs</a>
+      <a href="#">Boulder</a>
+      <a href="#">Fort Collins</a>
+      <a href="#">View all cities</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#">About Us</a>
+      <a href="#">Gallery</a>
+      <a href="#">Reviews</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Scottish Window Tinting. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Service</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

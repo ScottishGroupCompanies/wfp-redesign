@@ -4,192 +4,183 @@ const email = 'contact@windowfilmphiladelphia.net';
 
 const footerLinks = {
   Benefits: [
-    { label: 'Security Film', href: '/benefits/safety-and-security/' },
-    { label: 'Privacy Film', href: '/benefits/privacy-window-film-philadelphia/' },
-    { label: 'Energy Savings', href: '/benefits/energy-saving-window-film-philadephia/' },
-    { label: 'Decorative Film', href: '/benefits/decorative-promotional/' },
-    { label: 'Anti-Graffiti', href: '/benefits/anti-graffiti/' },
-    { label: 'Glare Reduction', href: '/benefits/glare-reduction/' },
-    { label: 'UV Protection', href: '/benefits/uv-blocking-window-film-philadelphia/' },
+    { label: 'Security Film',          href: '/benefits/safety-and-security/' },
+    { label: 'Privacy Film',           href: '/benefits/privacy-window-film-philadelphia/' },
+    { label: 'Energy Savings',         href: '/benefits/energy-saving-window-film-philadephia/' },
+    { label: 'Decorative Film',        href: '/benefits/decorative-promotional/' },
+    { label: 'Anti-Graffiti',          href: '/benefits/anti-graffiti/' },
+    { label: 'Glare Reduction',        href: '/benefits/glare-reduction/' },
+    { label: 'UV Protection',          href: '/benefits/uv-blocking-window-film-philadelphia/' },
     { label: 'Bird Strike Prevention', href: '/benefits/bird-strike-prevention/' },
   ],
   Applications: [
-    { label: 'Office', href: '/applications/office/' },
-    { label: 'Retail', href: '/applications/retail/' },
-    { label: 'Schools', href: '/applications/schools-universities/' },
-    { label: 'Hotels', href: '/applications/hotel-window-film/' },
-    { label: 'Churches', href: '/applications/churches/' },
+    { label: 'Office',              href: '/applications/office/' },
+    { label: 'Retail',              href: '/applications/retail/' },
+    { label: 'Schools',             href: '/applications/schools-universities/' },
+    { label: 'Hotels',              href: '/applications/hotel-window-film/' },
+    { label: 'Churches',            href: '/applications/churches/' },
     { label: 'Museums & Libraries', href: '/applications/museums-libraries/' },
-    { label: 'Arenas & Stadiums', href: '/applications/arenas-stadiums/' },
-    { label: 'Government', href: '/government-buildings/' },
+    { label: 'Arenas & Stadiums',   href: '/applications/arenas-stadiums/' },
+    { label: 'Government',          href: '/government-buildings/' },
   ],
   Resources: [
-    { label: 'Commercial Guide', href: '/resources/commercial-guide/' },
-    { label: 'FAQ', href: '/resources/commercial-faq/' },
-    { label: 'Window Film Pricing', href: '/resources/window-film-pricing/' },
-    { label: 'Maintenance & Care', href: '/resources/maintenance-and-care/' },
-    { label: 'Warranty', href: '/resources/warranty/' },
-    { label: 'Window Film Alternatives', href: '/resources/window-film-alternatives/' },
+    { label: 'Commercial Guide',        href: '/resources/commercial-guide/' },
+    { label: 'FAQ',                     href: '/resources/commercial-faq/' },
+    { label: 'Window Film Pricing',     href: '/resources/window-film-pricing/' },
+    { label: 'Maintenance & Care',      href: '/resources/maintenance-and-care/' },
+    { label: 'Warranty',                href: '/resources/warranty/' },
+    { label: 'Window Film Alternatives',href: '/resources/window-film-alternatives/' },
   ],
   Company: [
-    { label: 'Our Process', href: '/process/' },
-    { label: 'Contact Us', href: '/contact/' },
-    { label: 'Philadelphia', href: '/cities/philadelphia/' },
-    { label: 'Camden', href: '/cities/camden/' },
-    { label: 'Reading', href: '/cities/reading/' },
-    { label: 'Upper Darby', href: '/cities/upper-darby-township/' },
+    { label: 'Our Process',   href: '/process/' },
+    { label: 'Contact Us',    href: '/contact/' },
+    { label: 'Philadelphia',  href: '/cities/philadelphia/' },
+    { label: 'Camden',        href: '/cities/camden/' },
+    { label: 'Reading',       href: '/cities/reading/' },
+    { label: 'Upper Darby',   href: '/cities/upper-darby-township/' },
   ],
 };
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
-  <div class="site-footer__main">
-    <div class="container">
-      <div class="site-footer__brand">
-        <a href="/" aria-label="Window Film Philadelphia — Home">
-          <img
-            src="/images/2021-08-window-film-philadelphia-white-1.png"
-            alt="Window Film Philadelphia"
-            width="200"
-            height="55"
-            loading="lazy"
-          />
-        </a>
-        <p>Philadelphia's leading commercial and residential window film contractor. Serving Philadelphia, Camden, Reading, and surrounding counties.</p>
-        <div class="site-footer__contact">
-          <a href="tel:+12673947980">{phone}</a>
-          <a href={`mailto:${email}`}>{email}</a>
-        </div>
-      </div>
+<footer class="s-footer">
+  <div class="s-footer__top">
 
-      {Object.entries(footerLinks).map(([group, links]) => (
-        <div class="site-footer__col">
-          <h4>{group}</h4>
-          <ul>
-            {links.map((l) => (
-              <li><a href={l.href}>{l.label}</a></li>
-            ))}
-          </ul>
-        </div>
-      ))}
+    <!-- Brand column -->
+    <div class="s-footer__brand">
+      <div class="s-footer__logo">
+        Window Film Philadelphia<span>.</span>
+      </div>
+      <p class="s-footer__tagline">Philadelphia's leading commercial and residential window film contractor. Serving Philadelphia, Camden, Reading, and surrounding counties since 2008.</p>
+      <p class="s-footer__contact">
+        <a href="tel:+12673947980">{phone}</a>
+        &nbsp;&bull;&nbsp;
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
     </div>
+
+    <!-- Link columns -->
+    {Object.entries(footerLinks).map(([group, links]) => (
+      <div class="s-footer__col">
+        <h5>{group}</h5>
+        {links.map((l) => (
+          <a href={l.href}>{l.label}</a>
+        ))}
+      </div>
+    ))}
+
   </div>
 
-  <div class="site-footer__bottom">
-    <div class="container">
-      <p>&copy; {currentYear} Window Film Philadelphia. All rights reserved.</p>
-      <p>Philadelphia, PA &bull; (267) 394-7980 &bull; contact@windowfilmphiladelphia.net</p>
-    </div>
+  <div class="s-footer__bottom">
+    <span>&copy; {currentYear} Window Film Philadelphia. All rights reserved.</span>
+    <span>Philadelphia, PA &bull; {phone}</span>
   </div>
 </footer>
 
 <style>
-.site-footer {
-  background: var(--color-charcoal);
-  color: rgba(255,255,255,0.8);
-  margin-top: auto;
+.s-footer {
+  background: #1a1f22;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.site-footer__main .container {
+/* ── TOP GRID ── */
+.s-footer__top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 3rem;
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  gap: 48px;
+  padding: 72px 5% 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.site-footer__brand p {
-  color: rgba(255,255,255,0.7);
-  font-size: 0.875rem;
-  margin: 1rem 0;
-  line-height: 1.6;
-}
-
-.site-footer__contact {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.site-footer__contact a {
-  color: rgba(255,255,255,0.85);
-  font-size: 0.875rem;
+/* Brand column */
+.s-footer__logo {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 22px;
   font-weight: 600;
-}
-
-.site-footer__contact a:hover {
   color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.s-footer__logo span { color: var(--green, #81AB4C); }
+
+.s-footer__tagline {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 20px;
 }
 
-.site-footer__col h4 {
-  color: #fff;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-  font-family: var(--font-heading);
-}
-
-.site-footer__col ul {
-  list-style: none;
-  padding: 0;
+.s-footer__contact {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
   margin: 0;
 }
-
-.site-footer__col ul li {
-  margin-bottom: 0.5rem;
+.s-footer__contact a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
 }
+.s-footer__contact a:hover { color: #fff; }
 
-.site-footer__col a {
-  color: rgba(255,255,255,0.65);
-  font-size: 0.85rem;
-  transition: color var(--transition-base);
-}
-
-.site-footer__col a:hover {
+/* Link columns */
+.s-footer__col h5 {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   color: #fff;
+  margin-bottom: 20px;
 }
-
-.site-footer__bottom {
-  background: var(--color-charcoal-dk);
-  border-top: 1px solid rgba(255,255,255,0.08);
+.s-footer__col a {
+  display: block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.2s;
 }
+.s-footer__col a:hover { color: #fff; }
 
-.site-footer__bottom .container {
+/* ── BOTTOM BAR ── */
+.s-footer__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 24px 5%;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
-.site-footer__bottom p {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.8rem;
-  margin: 0;
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .s-footer__top {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 48px 5% 32px;
+  }
+  .s-footer__brand { grid-column: 1 / -1; }
 }
 
-@media (max-width: 900px) {
-  .site-footer__main .container {
+@media (max-width: 640px) {
+  .s-footer__top {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 24px;
   }
-  .site-footer__brand {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 560px) {
-  .site-footer__main .container {
-    grid-template-columns: 1fr;
-  }
-  .site-footer__bottom .container {
+  .s-footer__bottom {
     flex-direction: column;
     text-align: center;
   }
+}
+
+@media (max-width: 400px) {
+  .s-footer__top { grid-template-columns: 1fr; }
 }
 </style>

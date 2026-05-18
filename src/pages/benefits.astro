@@ -1,144 +1,720 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BackAndForthSection from '../components/BackAndForthSection.astro';
-import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from '../components/CTAStrip.astro';
 
 const title = 'Benefits | Window Film Philadelphia | Leading Window Film Solutions';
 const description = 'Explore the full range of window film benefits for Philadelphia properties — energy savings, privacy, security, UV protection, glare reduction, and more.';
+
+const benefits = [
+  { label: 'Energy Savings',          href: '/benefits/energy-saving-window-film-philadephia/', icon: '⚡' },
+  { label: 'UV Protection',           href: '/benefits/uv-blocking-window-film-philadelphia/',  icon: '☀️' },
+  { label: 'Privacy',                 href: '/benefits/privacy-window-film-philadelphia/',       icon: '🔒' },
+  { label: 'Glare Reduction',         href: '/benefits/glare-reduction/',                        icon: '🕶️' },
+  { label: 'Anti-Graffiti',           href: '/benefits/anti-graffiti/',                          icon: '🛡️' },
+  { label: 'Decorative & Promotional',href: '/benefits/decorative-promotional/',                 icon: '🎨' },
+  { label: 'Safety and Security',     href: '/benefits/safety-and-security/',                    icon: '🔐' },
+  { label: 'Exterior Building Wraps', href: '/benefits/exterior-building-wraps/',                icon: '🏗️' },
+  { label: 'Ballistic Resistance',    href: '/benefits/ballistic-resistance/',                   icon: '💪' },
+  { label: 'Bomb Blast Protection',   href: '/benefits/blast-mitigation/',                      icon: '🧱' },
+  { label: 'Exterior Refinishing',    href: '/benefits/exterior-window-film/',                   icon: '🏢' },
+  { label: 'Mirror Refinishing',      href: '/benefits/mirror-refinishing/',                     icon: '🪞' },
+  { label: 'Bird Strike Prevention',  href: '/benefits/bird-strike-prevention/',                 icon: '🐦' },
+  { label: 'School Security Film',    href: '/benefits/school-security-window-film/',            icon: '🏫' },
+  { label: 'Updating Surfaces',       href: '/benefits/updating-surfaces/',                      icon: '✨' },
+];
+
+const benefitDetails = [
+  {
+    heading: 'Privacy',
+    body: 'With window tint, you can get the privacy you need to keep your affairs and activities confidential. Window tint provides a variety of privacy solutions for conference rooms, waiting areas, patient and tenant rooms, and home windows. Leading brands include Solyx, 3M, and LLumar.',
+    img: '/images/2021-08-philadelphia-window-film-glare-privacy.jpg',
+    alt: 'Privacy window film Philadelphia',
+    href: '/benefits/privacy-window-film-philadelphia/',
+    cta: 'Privacy Window Film',
+  },
+  {
+    heading: 'Glare Reduction',
+    body: 'Glare is a common issue for many high-rise buildings in Philadelphia. It can cause eye strain, reduce productivity, and make screens difficult to use. Window film selectively rejects glare-causing light while maintaining natural light — improving comfort for offices and homes alike.',
+    img: '/images/2021-08-philadelphia-window-film-glare-reduction.jpg',
+    alt: 'Glare reduction window film Philadelphia',
+    href: '/benefits/glare-reduction/',
+    cta: 'Glare Reduction Films',
+  },
+  {
+    heading: 'Energy Savings',
+    body: 'Window tint offers an easy solution for optimizing the energy efficiency of your building. Window film boosts glazing performance, reducing energy costs and addressing hot and cold spots. Our films can reduce cooling costs by up to 30% — available in both clear and tinted options.',
+    img: '/images/2021-08-philadelphia-window-film-energy-savings.jpg',
+    alt: 'Energy saving window film Philadelphia',
+    href: '/benefits/energy-saving-window-film-philadephia/',
+    cta: 'Energy Saving Film',
+  },
+  {
+    heading: 'UV Protection',
+    body: 'Being exposed to too much sunlight causes furniture and flooring to fade. Window tint blocks up to 99.9% of UV rays — offering the equivalent of SPF 1000 — protecting your furnishings, valuables, and the health of your family or employees.',
+    img: '/images/2021-08-philadelphia-window-film-uv-protection.jpg',
+    alt: 'UV protection window film Philadelphia',
+    href: '/benefits/uv-blocking-window-film-philadelphia/',
+    cta: 'UV Protection Film',
+  },
+  {
+    heading: 'Anti-Graffiti',
+    body: 'Our sacrificial anti-graffiti films act as a transparent shield over glass, metal, and mirror surfaces. When tagged, simply peel and replace rather than replacing the glass entirely. Partners include 3M, Graffiti Shield, and LLumar.',
+    img: '/images/2021-08-philadelphia-window-film-anti-graffiti-window-film-scratches-film.jpg',
+    alt: 'Anti-graffiti window film Philadelphia',
+    href: '/benefits/anti-graffiti/',
+    cta: 'Anti-Graffiti Film',
+  },
+  {
+    heading: 'Decorative & Promotional',
+    body: 'With window film you can easily enhance the aesthetic appearance of your home, office, or commercial property. Options include custom logos, etched and frosted patterns, and full building wraps for brand visibility or promotional campaigns. Custom HD decorative printing is available.',
+    img: '/images/2021-08-philadelphia-hd-clear-conference-room-window-film.jpg',
+    alt: 'Decorative window film Philadelphia',
+    href: '/benefits/decorative-promotional/',
+    cta: 'Decorative Film',
+  },
+  {
+    heading: 'Ballistic Resistance',
+    body: 'Ballistic resistant window film systems provide advanced security for schools, government buildings, airports, and banks — protecting against gunfire, explosions, break-ins, and natural disasters. We partner with C-Bond and 3M for certified ballistic protection solutions.',
+    img: '/images/2021-08-philadelphia-window-film-ballistic-resistant-window-film.jpg',
+    alt: 'Ballistic resistance window film Philadelphia',
+    href: '/benefits/ballistic-resistance/',
+    cta: 'Ballistic Resistance Film',
+  },
+  {
+    heading: 'Bomb Blast Protection',
+    body: 'Blast mitigation window film retains broken glass fragments during explosions or disasters — dramatically reducing the risk of injury from flying shards, minimizing property damage, and reducing recovery time for your business.',
+    img: '/images/2021-08-philadelphia-window-film-bomb-blast-protection.jpg',
+    alt: 'Bomb blast protection window film Philadelphia',
+    href: '/benefits/blast-mitigation/',
+    cta: 'Bomb Blast Protection',
+  },
+  {
+    heading: 'Exterior Refinishing',
+    body: 'Exterior window film masks glass damage and defects, adds insulation, and updates the look of hotels, office buildings, high-rises, and historic architecture — without the cost of full renovation. Ideal for attracting new tenants or preparing to sell.',
+    img: '/images/2021-08-philadelphia-window-film-exterior-refinishing.jpg',
+    alt: 'Exterior refinishing window film Philadelphia',
+    href: '/benefits/exterior-window-film/',
+    cta: 'Exterior Refinishing',
+  },
+  {
+    heading: 'Bird Strike Prevention',
+    body: 'Philadelphia has over 1,000 high-rise buildings contributing to an estimated one billion bird deaths per year from glass collisions. Our fritted window film options are virtually invisible to humans but clearly visible to birds, preventing collisions without altering your view.',
+    img: '/images/2021-08-philadelphia-window-film-bird-strike-protection.jpg',
+    alt: 'Bird strike prevention window film Philadelphia',
+    href: '/benefits/bird-strike-prevention/',
+    cta: 'Bird Strike Prevention Film',
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-08-window-film-philadelphia-benefits.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Film Benefits for Philadelphia</h1>
-      <p>From energy savings and comfort to privacy, security, and aesthetic appeal, window film offers a versatile, money-saving solution for residential and commercial properties throughout Philadelphia.</p>
+<!-- ══════════════════════════════════════
+     BREADCRUMB
+     ══════════════════════════════════════ -->
+<div class="bp-breadcrumb">
+  <a href="/">Home</a>
+  <span> › </span>
+  <span>Benefits</span>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO — 2-col: copy left, benefits nav right
+     ══════════════════════════════════════ -->
+<div class="bp-hero">
+  <div class="bp-hero__content">
+    <div class="bp-hero__eyebrow">Window Film Benefits</div>
+    <h1>Everything Window Film Can Do for <em>Your Property</em></h1>
+    <p class="bp-hero__lead">From energy savings and UV protection to ballistic resistance and decorative design — window film is one of the most versatile property upgrades available. Explore the full range of benefits below and find the right solution for your Philadelphia home or business.</p>
+    <div class="bp-hero__ctas">
+      <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
+      <a href="/process/" class="bp-btn bp-btn--ghost">Our Process</a>
     </div>
-  </section>
+    <div class="bp-trust-row">
+      <div class="bp-trust-badge"><span>15+</span> years serving Philadelphia</div>
+      <div class="bp-trust-badge"><span>✓</span> Lifetime warranty</div>
+      <div class="bp-trust-badge"><span>★ 4.9</span> Google rating</div>
+    </div>
+  </div>
+  <div class="bp-hero__sidebar">
+    <div class="bp-benefits-nav">
+      <h3>All Benefits</h3>
+      <ul>
+        {benefits.map((b) => (
+          <li>
+            <a href={b.href}>
+              <span class="bp-benefits-nav__icon">{b.icon}</span>
+              {b.label}
+              <svg class="bp-benefits-nav__arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'Privacy'}
-    body={'With window tint, you can get the privacy you need to keep your affairs and activities confidential. Window tint provides a variety of privacy solutions for conference rooms, waiting areas, patient and tenant rooms, and home windows. Leading brands include Solyx, 3M, and LLumar.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-glare-privacy.jpg'}
-    imageAlt={'Privacy window film Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Privacy Window Film'}
-    ctaHref={'/benefits/privacy-window-film-philadelphia/'}
-  />
+<!-- ══════════════════════════════════════
+     HERO IMAGE
+     ══════════════════════════════════════ -->
+<div class="bp-hero-img-wrap">
+  <div class="bp-hero-img fade-in">
+    <img
+      src="/images/2021-08-window-film-philadelphia-benefits.jpg"
+      alt="Window film benefits Philadelphia"
+      width="1200"
+      height="380"
+      loading="lazy"
+    />
+    <span class="bp-hero-img__caption">📍 Serving Philadelphia, Camden, Reading &amp; surrounding areas</span>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'Glare Reduction'}
-    body={'Glare is a common issue for many high-rise buildings in Philadelphia. It can cause eye strain, reduce productivity, and make screens difficult to use. Window film selectively rejects glare-causing light frequencies while maintaining natural light — improving comfort for offices and homes alike.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-glare-reduction.jpg'}
-    imageAlt={'Glare reduction window film Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Glare Reduction Window Films'}
-    ctaHref={'/benefits/glare-reduction/'}
-  />
+<!-- ══════════════════════════════════════
+     MAIN CONTENT + SIDEBAR
+     ══════════════════════════════════════ -->
+<div class="bp-content-wrap">
+  <div class="bp-main prose">
+    <h2>Why Philadelphia Properties Choose Window Film</h2>
+    <p>Window film is a highly versatile solution that addresses a wide variety of both residential and commercial property concerns. With extensive specialty and multi-purpose products available, this cost-effective alternative helps you achieve your project goals without major renovations. Experience effective solutions that include energy conservation, glare reduction, UV protection, decor, security, and much more.</p>
+  </div>
 
-  <BackAndForthSection
-    heading={'Energy Savings'}
-    body={'Window tint offers an easy solution for optimizing the energy efficiency and comfort of your building. Window film boosts glazing performance, reducing energy costs and addressing hot and cold spots. Our films can reduce cooling costs by up to 30% — available in both clear and tinted options.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-energy-savings.jpg'}
-    imageAlt={'Energy saving window film Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Energy Saving Window Film'}
-    ctaHref={'/benefits/energy-saving-window-film-philadephia/'}
-  />
+  <div class="bp-sidebar">
+    <!-- Why us callout -->
+    <div class="bp-sidebar-card fade-in fade-in-delay-1">
+      <h4>Why Window Film Philadelphia?</h4>
+      <div class="bp-why-list">
+        <div class="bp-why-item">
+          <div class="bp-why-item__icon">🏅</div>
+          <div>
+            <div class="bp-why-item__title">15+ Years Experience</div>
+            <div class="bp-why-item__sub">Serving Philadelphia since 2008</div>
+          </div>
+        </div>
+        <div class="bp-why-item">
+          <div class="bp-why-item__icon">🔧</div>
+          <div>
+            <div class="bp-why-item__title">Factory-Certified Installers</div>
+            <div class="bp-why-item__sub">3M, LLumar, Vista, Solar Gard</div>
+          </div>
+        </div>
+        <div class="bp-why-item">
+          <div class="bp-why-item__icon">📋</div>
+          <div>
+            <div class="bp-why-item__title">Lifetime Warranty</div>
+            <div class="bp-why-item__sub">On all residential &amp; commercial films</div>
+          </div>
+        </div>
+        <div class="bp-why-item">
+          <div class="bp-why-item__icon">💬</div>
+          <div>
+            <div class="bp-why-item__title">Free Consultations</div>
+            <div class="bp-why-item__sub">On-site estimates, no obligation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'UV Protection'}
-    body={'Being exposed to too much sunlight can cause your furniture and flooring to look worn and faded. Window tint blocks up to 99.9% of UV rays — offering the equivalent of SPF 1000 — protecting your furnishings, valuables, and the health of your family or employees from UV-related risks.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-uv-protection.jpg'}
-    imageAlt={'UV protection window film Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'UV Protection Window Film'}
-    ctaHref={'/benefits/uv-blocking-window-film-philadelphia/'}
-  />
+<!-- ══════════════════════════════════════
+     BENEFIT ROWS — full-width alternating (Why Us pattern)
+     ══════════════════════════════════════ -->
+<section class="bp-benefit-rows">
+  {benefitDetails.map((b, i) => (
+    <div class={`bp-benefit-row fade-in${i % 2 === 1 ? ' bp-benefit-row--rev' : ''}`}>
+      <div class="bp-benefit-row__img">
+        <img src={b.img} alt={b.alt} width="600" height="420" loading="lazy" />
+        <span class="bp-benefit-row__pill">{b.heading}</span>
+      </div>
+      <div class="bp-benefit-row__content">
+        <h3>{b.heading}</h3>
+        <p>{b.body}</p>
+        <a href={b.href} class="bp-benefit-row__cta">
+          {b.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BackAndForthSection
-    heading={'Anti-Graffiti'}
-    body={'If you live or work in an older neighborhood or inner city area of Philadelphia, you may have experienced issues with graffiti. Our sacrificial anti-graffiti films act as a transparent shield over glass, metal, and mirror surfaces — when tagged, simply peel and replace rather than replacing the glass entirely. Partners include 3M, Graffiti Shield, and LLumar.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-anti-graffiti-window-film-scratches-film.jpg'}
-    imageAlt={'Anti-graffiti window film Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Anti-Graffiti Window Film'}
-    ctaHref={'/benefits/anti-graffiti/'}
-  />
+<!-- ══════════════════════════════════════
+     BENEFIT COMPARISON / HOW TO CHOOSE
+     ══════════════════════════════════════ -->
+<div class="bp-chooser fade-in">
+  <div class="bp-chooser__hd">
+    <p class="section-eyebrow">Find the Right Film</p>
+    <h2 class="section-title" style="margin:0 auto;">Not sure which benefit is right for you?</h2>
+    <p class="bp-chooser__sub">Answer one question: what is your primary goal?</p>
+  </div>
+  <div class="bp-chooser__grid">
+    <a href="/benefits/energy-saving-window-film-philadephia/" class="bp-chooser__card">
+      <div class="bp-chooser__card-icon">🌡️</div>
+      <h4>Reduce heat &amp; energy costs</h4>
+      <p>Solar control and energy-saving films</p>
+    </a>
+    <a href="/benefits/safety-and-security/" class="bp-chooser__card">
+      <div class="bp-chooser__card-icon">🔐</div>
+      <h4>Improve security</h4>
+      <p>Safety, ballistic, and blast films</p>
+    </a>
+    <a href="/benefits/privacy-window-film-philadelphia/" class="bp-chooser__card">
+      <div class="bp-chooser__card-icon">🔒</div>
+      <h4>Add privacy</h4>
+      <p>One-way, frosted, and decorative films</p>
+    </a>
+    <a href="/benefits/decorative-promotional/" class="bp-chooser__card">
+      <div class="bp-chooser__card-icon">🎨</div>
+      <h4>Enhance appearance</h4>
+      <p>Custom print, frosted, and tinted films</p>
+    </a>
+    <a href="/benefits/anti-graffiti/" class="bp-chooser__card">
+      <div class="bp-chooser__card-icon">🛡️</div>
+      <h4>Protect surfaces</h4>
+      <p>Anti-graffiti and surface refinishing films</p>
+    </a>
+    <a href="/benefits/uv-blocking-window-film-philadelphia/" class="bp-chooser__card">
+      <div class="bp-chooser__card-icon">☀️</div>
+      <h4>Block UV rays</h4>
+      <p>UV protection films up to SPF 1000</p>
+    </a>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'Decorative & Promotional'}
-    body={'With window film you can easily enhance the aesthetic appearance of your home, office, or commercial property. Options include custom logos, etched and frosted patterns, and full building wraps for brand visibility or short- and long-term promotional campaigns. Custom HD decorative printing is available.'}
-    imageSrc={'/images/2021-08-philadelphia-hd-clear-conference-room-window-film.jpg'}
-    imageAlt={'Decorative window film Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Decorative & Promotional Window Film'}
-    ctaHref={'/benefits/decorative-promotional/'}
-  />
+<!-- ══════════════════════════════════════
+     FAQ ACCORDION
+     ══════════════════════════════════════ -->
+<div class="bp-faq">
+  <div class="bp-faq__hd">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-title" style="margin:0 auto;">Common questions about window film benefits</h2>
+  </div>
+  <div class="bp-faq__item bp-faq__item--open">
+    <div class="bp-faq__q">Can one film provide multiple benefits? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Yes — many films are multi-functional. For example, a solar control film simultaneously rejects heat, blocks UV rays, reduces glare, and can add privacy. Our team will help you select a film that addresses all your goals in one installation.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">How long does window film last? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Most residential and commercial films are designed to last 10–20 years. All our installations include a lifetime manufacturer warranty against peeling, bubbling, and fading for the original property owner.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">Will window film affect my view or natural light? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Modern window films are engineered to maintain a natural view while controlling light and heat. Many energy-saving films are nearly invisible. We offer a range of visible light transmission (VLT) levels to suit your preference.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">Is window film a good investment for commercial properties? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Absolutely. Commercial window film typically pays for itself within 3–5 years through HVAC energy savings alone. It also reduces glare (improving employee productivity), protects furnishings, and enhances the building's security profile.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">Can window film be applied to any type of glass? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Window film can be applied to most flat glass surfaces — single-pane, double-pane, tempered, laminated, and more. Our team will assess your specific glass type during the free consultation to recommend the right film and confirm compatibility.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">How do I care for window film after installation? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Window film is low-maintenance. Allow 30 days for the film to fully cure after installation. After that, clean with a soft cloth and mild soap or ammonia-free glass cleaner. Avoid abrasive scrubbers that can scratch the film surface. See our <a href="/resources/maintenance-and-care/">Maintenance &amp; Care guide</a> for full details.</div>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'Ballistic Resistance'}
-    body={'Life in the city can be dangerous. Ballistic resistant window film systems provide advanced security for schools, government buildings, airports, and banks — protecting against gunfire, explosions, break-ins, and natural disasters. We partner with C-Bond and 3M for certified ballistic protection solutions.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-ballistic-resistant-window-film.jpg'}
-    imageAlt={'Ballistic resistance window film Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Ballistic Resistance Window Film'}
-    ctaHref={'/benefits/ballistic-resistance/'}
-  />
-
-  <BackAndForthSection
-    heading={'Bomb Blast Protection'}
-    body={'Violent crime rates in Philadelphia are above national averages. Blast mitigation window film retains broken glass fragments during explosions or disasters — dramatically reducing the risk of injury from flying shards, minimizing property damage, and reducing recovery time for your business.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-bomb-blast-protection.jpg'}
-    imageAlt={'Bomb blast protection window film Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Bomb Blast Protection Window Systems'}
-    ctaHref={'/benefits/blast-mitigation/'}
-  />
-
-  <BackAndForthSection
-    heading={'Exterior Refinishing'}
-    body={'Curb appeal matters for commercial properties. Whether you are attracting new tenants or preparing to sell, exterior window film masks glass damage and defects, adds insulation, and updates the look of hotels, office buildings, high-rises, and historic architecture — without the cost of full renovation.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-exterior-refinishing.jpg'}
-    imageAlt={'Exterior refinishing window film Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Exterior Refinishing'}
-    ctaHref={'/benefits/exterior-window-film/'}
-  />
-
-  <BackAndForthSection
-    heading={'Elevator Refinishing'}
-    body={'Elevators are a significant investment for any commercial property. Our elevator refinishing films conceal scratches, dings, and surface wear on glass, stainless steel, or aluminum cab interiors — custom-tailored to your finish. Films can be removed and replaced, reducing decommission time and costs.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-elavator-surface-refinishing.jpg'}
-    imageAlt={'Elevator refinishing window film Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Elevator Refinishing'}
-    ctaHref={'/benefits/elevator-refinishing/'}
-  />
-
-  <BackAndForthSection
-    heading={'Bird Strike Prevention'}
-    body={'Philadelphia has over 1,000 high-rise buildings contributing to an estimated one billion bird deaths per year from glass collisions. Our fritted window film options — perforated, striped, dotted, and patterned — are virtually invisible to humans but clearly visible to birds, preventing collisions without altering your view.'}
-    imageSrc={'/images/2021-08-philadelphia-window-film-bird-strike-protection.jpg'}
-    imageAlt={'Bird strike prevention window film Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Bird Strike Prevention Window Film'}
-    ctaHref={'/benefits/bird-strike-prevention/'}
-  />
-
-  <BrandLogos />
-  <CTAStrip />
+<!-- ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ -->
+<div class="bp-cta fade-in">
+  <h2>Ready to experience the benefits of <em>window film?</em></h2>
+  <div class="bp-cta__btns">
+    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
 
 </BaseLayout>
+
+<style>
+/* ── BREADCRUMB ── */
+.bp-breadcrumb {
+  padding: 16px 5%;
+  background: var(--off-white, #F7F6F3);
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+}
+.bp-breadcrumb span { font-size: 13px; color: var(--text-light, #888); }
+.bp-breadcrumb a { color: var(--green, #81AB4C); text-decoration: none; font-size: 13px; }
+.bp-breadcrumb a:hover { text-decoration: underline; }
+
+/* ── PAGE HERO ── */
+.bp-hero {
+  padding: 64px 5% 0;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  align-items: start;
+  background: #fff;
+}
+.bp-hero__content { padding-bottom: 64px; }
+
+.bp-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green-light, #eef4e4); color: #5a7a33;
+  padding: 6px 14px; border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.bp-hero__eyebrow::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--green, #81AB4C); border-radius: 50%;
+}
+
+.bp-hero h1 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+  line-height: 1.1; letter-spacing: -0.8px;
+  color: var(--text-dark, #1a1a1a); margin-bottom: 20px;
+}
+.bp-hero h1 em { font-style: italic; color: var(--green, #81AB4C); }
+
+.bp-hero__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; max-width: 560px; margin-bottom: 32px;
+}
+
+.bp-hero__ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 32px; }
+
+/* Buttons */
+.bp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); color: var(--brand, #272E32); }
+.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+
+.bp-trust-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.bp-trust-badge {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--off-white, #F7F6F3);
+  padding: 10px 16px; border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 500; color: var(--text-mid, #4a4a4a);
+}
+.bp-trust-badge span { color: var(--green, #81AB4C); font-weight: 700; }
+
+/* Benefits nav sidebar (hero) */
+.bp-hero__sidebar { padding-bottom: 64px; }
+.bp-benefits-nav {
+  background: var(--off-white, #F7F6F3);
+  border-radius: var(--radius-lg, 24px); padding: 24px 20px;
+  max-height: 520px; overflow-y: auto;
+}
+.bp-benefits-nav h3 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 17px; font-weight: 600;
+  color: var(--text-dark, #1a1a1a); margin-bottom: 16px;
+}
+.bp-benefits-nav ul { list-style: none; padding: 0; margin: 0; }
+.bp-benefits-nav ul li { border-bottom: 1px solid var(--light-gray, #EFEFED); }
+.bp-benefits-nav ul li:last-child { border-bottom: none; }
+.bp-benefits-nav ul li a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 4px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; font-weight: 500;
+  color: var(--text-mid, #4a4a4a); text-decoration: none;
+  transition: color 0.15s;
+}
+.bp-benefits-nav ul li a:hover { color: var(--green, #81AB4C); }
+.bp-benefits-nav__icon { flex-shrink: 0; }
+.bp-benefits-nav__arrow { margin-left: auto; opacity: 0.35; transition: opacity 0.15s, transform 0.15s; }
+.bp-benefits-nav ul li a:hover .bp-benefits-nav__arrow { opacity: 1; transform: translateX(3px); }
+
+/* ── HERO IMAGE ── */
+.bp-hero-img-wrap { padding: 32px 5% 0; }
+.bp-hero-img {
+  width: 100%; height: 380px;
+  border-radius: var(--radius-xl, 40px); overflow: hidden; position: relative;
+}
+.bp-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bp-hero-img__caption {
+  position: absolute; bottom: 20px; left: 20px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  padding: 10px 18px; border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+}
+
+/* ── CONTENT + SIDEBAR ── */
+.bp-content-wrap {
+  padding: 0 5%;
+  display: grid; grid-template-columns: 1fr 360px;
+  gap: 60px; align-items: start;
+}
+.bp-main { padding: 64px 0; }
+.bp-sidebar { padding: 64px 0; }
+
+/* Prose headings */
+.prose h2 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 28px; font-weight: 600;
+  color: var(--text-dark, #1a1a1a); margin: 48px 0 16px; line-height: 1.2;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose > p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a); line-height: 1.8; margin-bottom: 24px;
+}
+
+/* ── BENEFIT ROWS — full-width alternating (Why Us pattern) ── */
+.bp-benefit-rows {
+  background: var(--off-white, #F7F6F3);
+  padding: 80px 5%;
+}
+
+.bp-benefit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.bp-benefit-row:last-child { margin-bottom: 0; }
+
+/* Even rows (--rev): image right, text left */
+.bp-benefit-row--rev .bp-benefit-row__img   { order: 2; }
+.bp-benefit-row--rev .bp-benefit-row__content { order: 1; }
+
+.bp-benefit-row__img {
+  height: 420px;
+  border-radius: var(--radius-xl, 40px);
+  overflow: hidden;
+  background: var(--light-gray, #EFEFED);
+  position: relative;
+}
+.bp-benefit-row__img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.bp-benefit-row__pill {
+  position: absolute; top: 24px; right: 24px;
+  background: #fff;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.bp-benefit-row__content h3 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 26px; font-weight: 600;
+  color: var(--text-dark, #1a1a1a); line-height: 1.2; margin-bottom: 16px;
+}
+.bp-benefit-row__content p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; margin-bottom: 24px;
+}
+.bp-benefit-row__cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; font-weight: 600;
+  color: var(--green, #81AB4C); text-decoration: none;
+  transition: gap 0.2s;
+}
+.bp-benefit-row__cta:hover { gap: 10px; }
+
+/* Sidebar cards */
+.bp-sidebar-card {
+  background: var(--off-white, #F7F6F3);
+  border-radius: var(--radius-lg, 24px); padding: 24px; margin-bottom: 20px;
+}
+.bp-sidebar-card--sticky { position: sticky; top: 84px; }
+.bp-sidebar-card h4 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); margin-bottom: 14px;
+}
+
+/* Jump list (sidebar) */
+.bp-jump-list { list-style: none; padding: 0; margin: 0; }
+.bp-jump-list li { border-bottom: 1px solid var(--light-gray, #EFEFED); }
+.bp-jump-list li:last-child { border-bottom: none; }
+.bp-jump-list li a {
+  display: flex; align-items: center; gap: 8px; padding: 9px 0;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 500;
+  color: var(--text-mid, #4a4a4a); text-decoration: none; transition: color 0.15s;
+}
+.bp-jump-list li a:hover { color: var(--green, #81AB4C); }
+
+/* Why-us card */
+.bp-why-list { display: flex; flex-direction: column; gap: 16px; }
+.bp-why-item { display: flex; align-items: flex-start; gap: 12px; }
+.bp-why-item__icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--green-light, #eef4e4);
+  border-radius: var(--radius-md, 16px);
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.bp-why-item__title {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; font-weight: 600; color: var(--text-dark, #1a1a1a);
+}
+.bp-why-item__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px; color: var(--text-light, #888); margin-top: 2px;
+}
+
+/* CTA sidebar card */
+.bp-sidebar-cta {
+  background: var(--brand, #272E32);
+  border-radius: var(--radius-lg, 24px); padding: 24px;
+  margin-bottom: 20px;
+}
+.bp-sidebar-cta h4 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 10px;
+}
+.bp-sidebar-cta p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 20px; line-height: 1.6;
+}
+.bp-sidebar-cta__btn { width: 100%; text-align: center; margin-bottom: 12px; }
+.bp-sidebar-cta__phone {
+  display: block; text-align: center;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s;
+}
+.bp-sidebar-cta__phone:hover { color: #fff; }
+
+/* ── CHOOSER SECTION ── */
+.bp-chooser {
+  background: var(--off-white, #F7F6F3);
+  padding: 80px 5%;
+}
+.bp-chooser__hd { text-align: center; margin-bottom: 48px; }
+.bp-chooser__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a); margin-top: 12px;
+}
+.bp-chooser__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.bp-chooser__card {
+  background: #fff; border-radius: var(--radius-lg, 24px); padding: 28px 24px;
+  text-decoration: none; border: 2px solid transparent;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: block;
+}
+.bp-chooser__card:hover {
+  border-color: var(--green, #81AB4C);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+}
+.bp-chooser__card-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-md, 16px);
+  background: var(--green-light, #eef4e4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 16px;
+}
+.bp-chooser__card h4 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 17px; font-weight: 600;
+  color: var(--text-dark, #1a1a1a); margin-bottom: 8px; line-height: 1.2;
+}
+.bp-chooser__card p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; color: var(--text-mid, #4a4a4a); margin: 0; line-height: 1.5;
+}
+
+/* ── FAQ ── */
+.bp-faq { padding: 80px 5%; background: #fff; }
+.bp-faq__hd { text-align: center; margin-bottom: 48px; }
+.bp-faq__item {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding: 20px 0; cursor: pointer; max-width: 900px; margin: 0 auto;
+}
+.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.bp-faq__q {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600; color: var(--text-dark, #1a1a1a);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 20px; flex-shrink: 0; transition: transform 0.2s; }
+.bp-faq__a {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; color: var(--text-mid, #4a4a4a); line-height: 1.7;
+  margin-top: 12px; display: none;
+}
+.bp-faq__a a { color: var(--green, #81AB4C); }
+.bp-faq__item--open .bp-faq__a { display: block; }
+.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
+
+/* ── CTA BANNER ── */
+.bp-cta {
+  background: var(--brand, #272E32); border-radius: var(--radius-xl, 40px);
+  padding: 64px 60px; display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5% 80px;
+}
+.bp-cta h2 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 32px; font-weight: 600; color: #fff; line-height: 1.2; max-width: 460px; margin: 0;
+}
+.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .bp-hero { grid-template-columns: 1fr; }
+  .bp-hero__sidebar { padding-bottom: 0; }
+  .bp-benefits-nav { max-height: none; }
+  .bp-content-wrap { grid-template-columns: 1fr; }
+  .bp-sidebar-card--sticky { position: static; }
+  .bp-chooser__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .bp-hero { padding: 40px 5% 0; gap: 40px; }
+  .bp-hero-img { height: 220px; }
+  .bp-benefit-rows { padding: 48px 5%; }
+  .bp-benefit-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
+  .bp-benefit-row--rev .bp-benefit-row__img   { order: 0; }
+  .bp-benefit-row--rev .bp-benefit-row__content { order: 1; }
+  .bp-benefit-row__img { height: 260px; }
+  .bp-chooser__grid { grid-template-columns: 1fr; }
+  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .bp-cta h2 { font-size: 26px; max-width: 100%; }
+  .bp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .bp-hero__ctas { flex-direction: column; align-items: flex-start; }
+  .bp-trust-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.bp-faq__item').forEach(item => {
+    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('bp-faq__item--open');
+      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
+      if (!isOpen) item.classList.add('bp-faq__item--open');
+    });
+  });
+</script>

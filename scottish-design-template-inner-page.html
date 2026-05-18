@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Window Tinting in Denver, CO | Scottish Window Tinting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  SCOTTISH SITES — MODERN REDESIGN TEMPLATE
+  Inner Page Layout (City / Service Page)
+  ============================================================
+  BRAND COLORS:
+    Primary Green:     #81AB4C
+    Secondary (Dark):  #272E32
+    Accent Red:        #CE4741  (use sparingly — promos/alerts only)
+
+  TYPOGRAPHY:
+    Headings:  Playfair Display (serif) — 400/500/600
+    Body/UI:   DM Sans (sans-serif) — 300/400/500/600
+
+  PAGE STRUCTURE:
+    1.  Sticky frosted nav (same as homepage)
+    2.  Breadcrumb trail
+    3.  Page hero — shorter than homepage, 2-col:
+          LEFT:  H1, lead paragraph, dual CTAs, trust badges
+          RIGHT: Sticky quote request form (dark card)
+    4.  Full-width hero image with caption pill
+    5.  2-col content layout:
+          LEFT (main):  Prose content, callout box, film options grid, bullet points
+          RIGHT (sidebar): Reviews, certifications, service area tags
+    6.  Local area section — map placeholder + neighborhood copy
+    7.  FAQ accordion (2-col grid)
+    8.  Related cities grid
+    9.  CTA banner (dark rounded)
+    10. Footer (same as homepage)
+
+  NOTES FOR HERMES / SITE-BUILDER:
+    - Replace "Denver" / "Denver, CO" with the target city throughout
+    - Replace phone number (303) 555-0100 with location-specific number
+    - Replace breadcrumb path with correct hierarchy
+    - Replace neighborhood tags with real neighborhoods for that city
+    - Replace "related cities" grid with nearby cities
+    - Hero image: swap Unsplash placeholder with real project photo
+    - Map: embed Google Maps iframe for the service area
+    - FAQ answers can be localized with city-specific details
+    - Film prices are placeholder — confirm with client before publishing
+    - The sticky quote form sidebar uses position:sticky top:84px
+  ============================================================
+-->
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --brand: #272E32;
+    --brand-light: #3a4449;
+    --green: #81AB4C;
+    --green-light: #eef4e4;
+    --red: #CE4741;
+    --white: #ffffff;
+    --off-white: #F7F6F3;
+    --light-gray: #EFEFED;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a4a4a;
+    --text-light: #888;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 40px;
+    --radius-pill: 100px;
+  }
+  body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.93); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--brand); }
+  .nav-logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--brand); }
+  .nav-cta { background: var(--green); color: white !important; padding: 10px 22px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 500; transition: background 0.2s; }
+  .nav-cta:hover { background: #6e9640 !important; }
+
+  /* BREADCRUMB */
+  .breadcrumb { padding: 16px 5%; background: var(--off-white); border-bottom: 1px solid var(--light-gray); }
+  .breadcrumb span { font-size: 13px; color: var(--text-light); }
+  .breadcrumb a { color: var(--green); text-decoration: none; font-size: 13px; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 64px 5% 0;
+    display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start;
+    background: var(--white);
+  }
+  .page-hero-content { padding-bottom: 64px; }
+  .page-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-light); color: #5a7a33;
+    padding: 6px 14px; border-radius: var(--radius-pill);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .page-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px); font-weight: 600; line-height: 1.1;
+    letter-spacing: -0.8px; color: var(--text-dark); margin-bottom: 20px;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--green); }
+  .page-hero-lead { font-size: 17px; color: var(--text-mid); line-height: 1.75; max-width: 560px; margin-bottom: 32px; }
+  .hero-ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-primary { background: var(--green); color: white; padding: 14px 28px; border-radius: var(--radius-pill); font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s; display: inline-block; border: 2px solid var(--green); }
+  .btn-primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--brand); padding: 14px 28px; border-radius: var(--radius-pill); font-size: 15px; font-weight: 500; text-decoration: none; border: 2px solid var(--brand); transition: all 0.2s; display: inline-block; }
+  .btn-ghost:hover { background: var(--brand); color: white; transform: translateY(-2px); }
+  .trust-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .trust-badge { display: flex; align-items: center; gap: 8px; background: var(--off-white); padding: 10px 16px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 500; color: var(--text-mid); }
+  .trust-badge span { color: var(--green); font-weight: 700; }
+
+  /* STICKY QUOTE FORM */
+  .quote-sidebar { position: sticky; top: 84px; }
+  .quote-card { background: var(--brand); border-radius: var(--radius-lg); padding: 32px 28px; color: white; }
+  .quote-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: white; margin-bottom: 6px; }
+  .quote-card p { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 24px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 12px 16px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-md); color: white; font-size: 14px; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input::placeholder { color: rgba(255,255,255,0.45); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--green); }
+  .form-group select { color: rgba(255,255,255,0.7); }
+  .form-group select option { background: var(--brand); color: white; }
+  .btn-form { width: 100%; background: var(--green); color: white; padding: 14px; border-radius: var(--radius-pill); font-size: 15px; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s; margin-top: 8px; font-family: inherit; }
+  .btn-form:hover { background: #6e9640; }
+  .form-note { text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 12px; }
+
+  /* CONTENT WRAP */
+  .content-wrap { padding: 0 5%; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
+  .main-content { padding: 64px 0; }
+  .sidebar-wrap { padding: 64px 0; }
+
+  /* HERO IMAGE */
+  .hero-image-full { width: 100%; height: 380px; border-radius: var(--radius-xl); overflow: hidden; position: relative; }
+  .hero-image-full-inner { width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80') center/cover; }
+  .hero-image-caption { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 10px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; color: var(--brand); }
+
+  /* PROSE */
+  .prose h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--text-dark); margin: 48px 0 16px; line-height: 1.2; }
+  .prose h2:first-child { margin-top: 0; }
+  .prose h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--text-dark); margin: 32px 0 12px; }
+  .prose p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 18px; }
+  .prose ul { list-style: none; margin-bottom: 18px; }
+  .prose ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text-mid); padding: 5px 0; line-height: 1.6; }
+  .prose ul li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 13px; margin-top: 3px; flex-shrink: 0; }
+
+  /* CALLOUT */
+  .callout { background: var(--green-light); border-left: 4px solid var(--green); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 20px 24px; margin: 32px 0; }
+  .callout p { font-size: 15px; color: #3a5a1f; margin: 0; line-height: 1.7; }
+
+  /* FILM OPTIONS GRID */
+  .film-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0 32px; }
+  .film-card { background: var(--off-white); border-radius: var(--radius-lg); padding: 24px 20px; border: 2px solid transparent; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
+  .film-card:hover { border-color: var(--green); transform: translateY(-2px); }
+  .film-card.featured { border-color: var(--green); background: var(--green-light); }
+  .film-badge { display: inline-block; background: var(--green); color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .film-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+  .film-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .film-price { font-size: 13px; font-weight: 600; color: var(--green); margin-top: 10px; }
+
+  /* LOCAL SECTION */
+  .local-section { background: var(--off-white); padding: 80px 5%; }
+  .local-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .local-map { height: 340px; background: var(--light-gray); border-radius: var(--radius-xl); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .map-placeholder { text-align: center; color: var(--text-light); }
+  .map-placeholder .map-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+  .map-placeholder p { font-size: 14px; }
+  .local-content h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; color: var(--text-dark); line-height: 1.2; margin-bottom: 16px; }
+  .local-content p { font-size: 16px; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
+  .neighborhood-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag { background: white; border: 1px solid var(--light-gray); padding: 6px 14px; border-radius: var(--radius-pill); font-size: 13px; color: var(--text-mid); font-weight: 500; }
+
+  /* FAQ */
+  .faq-section { padding: 80px 5%; background: var(--white); }
+  .faq-item { border-bottom: 1px solid var(--light-gray); padding: 20px 0; cursor: pointer; max-width: 900px; margin: 0 auto; }
+  .faq-item:first-of-type { border-top: 1px solid var(--light-gray); }
+  .faq-q { font-size: 15px; font-weight: 600; color: var(--text-dark); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq-toggle { color: var(--green); font-size: 20px; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-a { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-top: 12px; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+  /* RELATED CITIES */
+  .related-section { background: var(--off-white); padding: 64px 5%; }
+  .cities-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 32px; }
+  .city-link { background: white; border-radius: var(--radius-md); padding: 16px 14px; text-align: center; text-decoration: none; font-size: 14px; font-weight: 500; color: var(--text-mid); border: 1px solid var(--light-gray); transition: all 0.2s; }
+  .city-link:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+  .city-link .city-state { display: block; font-size: 11px; color: var(--text-light); margin-top: 2px; font-weight: 400; }
+
+  /* CTA BANNER */
+  .cta-banner { background: var(--brand); border-radius: var(--radius-xl); padding: 64px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; margin: 0 5% 80px; }
+  .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600; color: white; line-height: 1.2; max-width: 460px; }
+  .cta-banner h2 em { font-style: italic; color: var(--green); }
+  .cta-banner-btns { display: flex; gap: 14px; flex-shrink: 0; }
+  .btn-white { background: white; color: var(--brand); padding: 14px 28px; border-radius: var(--radius-pill); font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; display: inline-block; white-space: nowrap; }
+  .btn-white:hover { background: var(--off-white); transform: translateY(-2px); }
+  .btn-green { background: var(--green); color: white; padding: 14px 28px; border-radius: var(--radius-pill); font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s; display: inline-block; white-space: nowrap; border: 2px solid var(--green); }
+  .btn-green:hover { background: #6e9640; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: #1a1f22; padding: 72px 5% 40px; color: rgba(255,255,255,0.6); }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 32px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: white; margin-bottom: 16px; }
+  .footer-logo span { color: var(--green); }
+  .footer-tagline { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+  .footer-col h5 { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: white; margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; padding: 4px 0; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); }
+
+  /* SIDEBAR */
+  .sidebar-card { background: var(--off-white); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px; }
+  .sidebar-card h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--text-dark); margin-bottom: 14px; }
+  .review-mini { display: flex; align-items: flex-start; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--light-gray); }
+  .review-mini:last-child { border-bottom: none; padding-bottom: 0; }
+  .review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--brand); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+  .review-stars { color: var(--green); font-size: 11px; }
+  .review-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; margin-top: 2px; }
+  .review-name { font-size: 12px; font-weight: 600; color: var(--text-dark); }
+  .badge-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cert-badge { display: flex; align-items: center; gap: 8px; background: white; border: 1px solid var(--light-gray); padding: 10px 14px; border-radius: var(--radius-md); font-size: 12px; font-weight: 600; color: var(--text-mid); }
+
+  /* SCROLL FADE */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+
+  /* SHARED */
+  .section-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; line-height: 1.15; letter-spacing: -0.5px; color: var(--text-dark); margin-bottom: 16px; max-width: 600px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Scottish<span>.</span></div>
+  <div class="nav-links">
+    <a href="#">Services</a>
+    <a href="#">Locations</a>
+    <a href="#">About</a>
+    <a href="#">Gallery</a>
+    <a href="#" class="nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">Home</a>
+  <span> › </span>
+  <a href="#">Locations</a>
+  <span> › </span>
+  <a href="#">Colorado</a>
+  <span> › </span>
+  <span>Denver Window Tinting</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-eyebrow">Denver, Colorado</div>
+    <h1>Window Tinting in <em>Denver, CO</em></h1>
+    <p class="page-hero-lead">Scottish Window Tinting has served Denver homeowners, businesses, and drivers for over 30 years. Expert installation, premium films, and a lifetime warranty on every project.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Get a Free Quote</a>
+      <a href="#" class="btn-ghost">Call (303) 555-0100</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-badge"><span>★ 4.9</span> 300+ Denver reviews</div>
+      <div class="trust-badge"><span>✓</span> Lifetime warranty</div>
+      <div class="trust-badge"><span>✓</span> Same-week appointments</div>
+    </div>
+  </div>
+  <div class="quote-sidebar">
+    <div class="quote-card">
+      <h3>Get a Free Quote</h3>
+      <p>Denver estimates in under 24 hours</p>
+      <div class="form-group"><input type="text" placeholder="Your name"></div>
+      <div class="form-group"><input type="tel" placeholder="Phone number"></div>
+      <div class="form-group"><input type="email" placeholder="Email address"></div>
+      <div class="form-group">
+        <select>
+          <option value="" disabled selected>Service type</option>
+          <option>Residential Window Tinting</option>
+          <option>Commercial Window Film</option>
+          <option>Automotive Tinting</option>
+          <option>Decorative Film</option>
+          <option>Security Film</option>
+        </select>
+      </div>
+      <button class="btn-form">Request My Free Quote →</button>
+      <p class="form-note">No commitment. Response within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div style="padding: 32px 5% 0;">
+  <div class="hero-image-full fade-in">
+    <div class="hero-image-full-inner"></div>
+    <span class="hero-image-caption">📍 Serving all Denver neighborhoods & suburbs</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT + SIDEBAR -->
+<div class="content-wrap">
+  <div class="main-content prose">
+    <h2>Denver's Trusted Window Tinting Experts</h2>
+    <p>At Scottish Window Tinting, we've been serving Denver and the surrounding Front Range communities since 1993. Whether you're looking to reduce the intense Colorado sun in your home, improve energy efficiency in your office building, or protect your vehicle's interior, our certified installers deliver flawless results every time.</p>
+    <p>Denver's high altitude means stronger UV exposure year-round — our window films block up to 99% of harmful UV rays and reject up to 80% of solar heat, keeping your space comfortable in summer and retaining warmth in winter.</p>
+
+    <div class="callout">
+      <p><strong>Denver Altitude Advantage:</strong> At 5,280 feet, Denver receives approximately 15% more UV radiation than sea-level cities. Professional window film isn't just a comfort upgrade here — it's a smart investment in your property and health.</p>
+    </div>
+
+    <h2>Window Film Options for Denver Properties</h2>
+    <p>We offer a curated selection of premium films from 3M, Llumar, and Solar Gard — matched to Denver's specific climate and your project goals.</p>
+
+    <div class="film-grid">
+      <div class="film-card featured">
+        <span class="film-badge">Most Popular</span>
+        <h4>Ceramic Solar Film</h4>
+        <p>Maximum heat rejection without signal interference. Ideal for Denver homes and offices.</p>
+        <div class="film-price">From $8.50/sq ft installed</div>
+      </div>
+      <div class="film-card">
+        <h4>Safety & Security Film</h4>
+        <p>Holds glass together on impact. Popular for commercial storefronts and ground-floor offices.</p>
+        <div class="film-price">From $7.00/sq ft installed</div>
+      </div>
+      <div class="film-card">
+        <h4>Decorative Privacy Film</h4>
+        <p>Frosted, patterned, or custom-cut designs for bathrooms, conference rooms, and storefronts.</p>
+        <div class="film-price">From $6.00/sq ft installed</div>
+      </div>
+      <div class="film-card">
+        <h4>Automotive Ceramic</h4>
+        <p>Colorado-legal VLT options for all vehicle types. Keeps your cabin noticeably cooler.</p>
+        <div class="film-price">From $199 full vehicle</div>
+      </div>
+    </div>
+
+    <h2>Why Denver Homeowners Choose Scottish</h2>
+    <ul>
+      <li>30+ years serving the Denver metro area</li>
+      <li>Factory-certified installation technicians</li>
+      <li>Manufacturer-backed lifetime warranty on all films</li>
+      <li>Same-week appointments available across Denver</li>
+      <li>Free in-home or on-site consultations</li>
+      <li>Colorado's most reviewed window tinting company</li>
+    </ul>
+
+    <h2>Our Denver Installation Process</h2>
+    <p>We keep it simple. Call or submit a quote request and receive a detailed estimate within 24 hours. Our Denver-based crew arrives on schedule, preps the surface, installs the film, and leaves your space spotless. Most residential jobs are completed in a single day.</p>
+  </div>
+
+  <div class="sidebar-wrap">
+    <div class="sidebar-card fade-in">
+      <h4>Recent Denver Reviews</h4>
+      <div class="review-mini">
+        <div class="review-avatar">SR</div>
+        <div>
+          <div class="review-name">Sarah R. — Washington Park</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Incredible difference in our living room. Professional team, on time, and spotless cleanup."</div>
+        </div>
+      </div>
+      <div class="review-mini">
+        <div class="review-avatar">DM</div>
+        <div>
+          <div class="review-name">Dave M. — LoDo Office</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Tinted our entire 3rd floor. Glare is gone and the AC bill dropped noticeably."</div>
+        </div>
+      </div>
+      <div class="review-mini">
+        <div class="review-avatar">KL</div>
+        <div>
+          <div class="review-name">Kat L. — Automotive</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Best tint job I've had. Ceramic film makes a huge difference driving west on I-70."</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-card fade-in fade-in-delay-1">
+      <h4>Certifications & Partners</h4>
+      <div class="badge-row">
+        <div class="cert-badge">🏅 3M Certified</div>
+        <div class="cert-badge">✓ Llumar Dealer</div>
+        <div class="cert-badge">🛡️ Solar Gard</div>
+        <div class="cert-badge">⭐ BBB A+</div>
+      </div>
+    </div>
+    <div class="sidebar-card fade-in fade-in-delay-2">
+      <h4>Denver Service Area</h4>
+      <p style="font-size:14px; color:var(--text-mid); line-height:1.6; margin-bottom:12px;">We serve all Denver neighborhoods and surrounding suburbs, typically within 1–2 business days.</p>
+      <div class="neighborhood-tags" style="margin-top:0;">
+        <span class="tag">LoDo</span>
+        <span class="tag">Capitol Hill</span>
+        <span class="tag">Wash Park</span>
+        <span class="tag">Cherry Creek</span>
+        <span class="tag">Highlands</span>
+        <span class="tag">Stapleton</span>
+        <span class="tag">Aurora</span>
+        <span class="tag">Lakewood</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCAL AREA -->
+<div class="local-section fade-in">
+  <div class="local-grid">
+    <div class="local-map">
+      <div class="map-placeholder">
+        <span class="map-icon">🗺️</span>
+        <p>Denver Service Map</p>
+        <p style="font-size:12px; margin-top:4px;">(embed Google Map iframe here)</p>
+      </div>
+    </div>
+    <div class="local-content">
+      <p class="section-eyebrow">Local Expertise</p>
+      <h2>We know Denver inside and out</h2>
+      <p>From Capitol Hill condos to Cherry Creek commercial towers to suburban Lakewood homes — our crews work in every Denver neighborhood, every week. We understand the unique challenges of Colorado's climate and the specific building styles across the metro area.</p>
+      <div class="neighborhood-tags">
+        <span class="tag">Denver</span>
+        <span class="tag">Aurora</span>
+        <span class="tag">Lakewood</span>
+        <span class="tag">Englewood</span>
+        <span class="tag">Littleton</span>
+        <span class="tag">Arvada</span>
+        <span class="tag">Westminster</span>
+        <span class="tag">Thornton</span>
+        <span class="tag">+ more</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div style="text-align:center; margin-bottom:48px;">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-title" style="margin:0 auto;">Common questions about Denver window tinting</h2>
+  </div>
+  <div class="faq-item open">
+    <div class="faq-q">Is window tinting legal in Colorado? <span class="faq-toggle">+</span></div>
+    <div class="faq-a">Yes. Colorado law allows front side windows at 27% VLT or higher, and rear windows at any darkness. We ensure all automotive installs are fully compliant with Colorado state law.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How long does installation take? <span class="faq-toggle">+</span></div>
+    <div class="faq-a">Most residential jobs take 4–8 hours. Commercial projects are scoped per job. Automotive tinting typically takes 2–4 hours depending on the vehicle.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What warranty comes with my installation? <span class="faq-toggle">+</span></div>
+    <div class="faq-a">All our residential and commercial installations include a lifetime manufacturer warranty against peeling, bubbling, and fading. Automotive films carry a limited lifetime warranty.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How much does window tinting cost in Denver? <span class="faq-toggle">+</span></div>
+    <div class="faq-a">Residential film starts around $6–$10 per square foot installed. Automotive starts at $199 for a full vehicle. Commercial pricing is project-based. Request a free quote for an exact estimate.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do you offer free consultations? <span class="faq-toggle">+</span></div>
+    <div class="faq-a">Yes — all consultations are free. We'll come to your home, office, or dealership, assess your needs, and provide a detailed written estimate at no charge.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How soon can you schedule in Denver? <span class="faq-toggle">+</span></div>
+    <div class="faq-a">We typically have same-week availability in the Denver metro. During peak summer months we recommend booking 1–2 weeks in advance.</div>
+  </div>
+</div>
+
+<!-- RELATED CITIES -->
+<div class="related-section fade-in">
+  <p class="section-eyebrow" style="text-align:center;">Also Serving</p>
+  <h2 class="section-title" style="margin:0 auto 8px; text-align:center;">Window tinting near Denver</h2>
+  <p style="text-align:center; color:var(--text-light); font-size:15px;">We serve the entire Front Range and beyond</p>
+  <div class="cities-grid">
+    <a href="#" class="city-link">Aurora<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Lakewood<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Englewood<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Littleton<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Arvada<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Westminster<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Thornton<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Centennial<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Boulder<span class="city-state">CO</span></a>
+    <a href="#" class="city-link">Fort Collins<span class="city-state">CO</span></a>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner fade-in">
+  <h2>Ready to get started in <em>Denver?</em></h2>
+  <div class="cta-banner-btns">
+    <a href="#" class="btn-white">Get a Free Quote</a>
+    <a href="#" class="btn-green">Call (303) 555-0100</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Scottish<span>.</span></div>
+      <p class="footer-tagline">Colorado's most trusted window film installer. Serving residential, commercial, and automotive clients since 1993.</p>
+      <p style="font-size:13px;">📍 Serving 120+ Colorado cities</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#">Residential Tinting</a>
+      <a href="#">Commercial Film</a>
+      <a href="#">Automotive Tinting</a>
+      <a href="#">Decorative Film</a>
+      <a href="#">Security Film</a>
+    </div>
+    <div class="footer-col">
+      <h5>Locations</h5>
+      <a href="#">Denver</a>
+      <a href="#">Colorado Springs</a>
+      <a href="#">Boulder</a>
+      <a href="#">Fort Collins</a>
+      <a href="#">View all cities</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#">About Us</a>
+      <a href="#">Gallery</a>
+      <a href="#">Reviews</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Scottish Window Tinting. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Service</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
