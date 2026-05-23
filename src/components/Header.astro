@@ -40,10 +40,6 @@ const navLinks = [
     ],
   },
   {
-    label: 'Process',
-    href: '/process/',
-  },
-  {
     label: 'Products',
     href: '/products/',
     children: [
@@ -178,30 +174,33 @@ const currentPath = Astro.url.pathname;
 
 <style>
 /* ══════════════════════════════════════════
-   NAV SHELL — sticky frosted bar
+   NAV SHELL — floating pill over hero
    ══════════════════════════════════════════ */
 nav.s-nav {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  /* The shell itself is transparent; the flyout carries the bg on desktop */
   height: 68px;
 }
 
 /* ══════════════════════════════════════════
-   FLYOUT — desktop: normal flex row
+   FLYOUT — desktop: floating pill
    ══════════════════════════════════════════ */
 .s-nav__flyout {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 68px;
-  padding: 0 5%;
+  padding: 0 3.5%;
   gap: 24px;
-  background: rgba(255, 255, 255, 0.93);
+  margin: 14px 2.5%;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* ── LOGO ── */
@@ -360,13 +359,7 @@ nav.s-nav {
    MOBILE (≤ 1024px)
    ══════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  nav.s-nav {
-    height: 68px;
-    background: rgba(255, 255, 255, 0.93);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-  }
+  nav.s-nav { height: 68px; }
 
   .s-nav__burger { display: flex; }
 
@@ -386,8 +379,12 @@ nav.s-nav {
     align-items: flex-start;
     height: 100dvh;
     gap: 0;
-    border-bottom: none;
+    /* Override floating pill styles for full-screen mode */
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .s-nav__flyout.is-open { display: flex; }
 
