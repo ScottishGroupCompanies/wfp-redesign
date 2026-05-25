@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  bgImage: string;
+  desc: string;
+}
+const { title, bgImage, desc } = Astro.props;
+---
+
+<section class="ip-page-hero" style={`background-image: url('${bgImage}')`}>
+  <div class="ip-page-hero__inner">
+    <div class="ip-page-hero__top">
+      <h1 class="ip-page-hero__title" set:html={title} />
+    </div>
+    <div class="ip-page-hero__bottom">
+      <p class="ip-page-hero__desc">{desc}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.ip-page-hero {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.ip-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 100%);
+  z-index: 1;
+}
+.ip-page-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 600px;
+  padding: 0 5% 52px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+.ip-page-hero__top {
+  padding-top: 110px;
+}
+.ip-page-hero__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+}
+.ip-page-hero__bottom {
+  text-align: right;
+}
+.ip-page-hero__desc {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
+  margin-left: auto;
+  padding-bottom: 10px;
+}
+</style>

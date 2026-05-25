@@ -1,16 +1,14 @@
 ---
 // BrandLogos.astro — "Proudly Offering" brand logo strip
-// Two rows of 6 logos each, white background, centred heading
+// Infinite horizontal scrolling carousel, grayscale logos
 
 const logos = [
-  // Row 1
   { file: '2021-09-3m-window-film-philadelphia.jpg',              alt: '3M Window Film' },
   { file: '2021-09-llumar-window-film-philadelphia.jpg',          alt: 'LLumar Window Film' },
   { file: '2021-09-vista-window-film-philadelphia.jpg',           alt: 'Vista Window Film' },
   { file: '2021-09-solar-gard-window-film-philadelphia.jpg',      alt: 'Solar Gard Window Film' },
   { file: '2021-09-huper-optik-window-film-philadelphia.jpg',     alt: 'Huper Optik Window Film' },
   { file: '2021-09-casper-window-film-philadelphia.jpg',          alt: 'Casper Cloaking Film' },
-  // Row 2
   { file: '2021-09-cbond-window-film-philadelphia.jpg',           alt: 'C-Bond Window Film' },
   { file: '2021-09-madico-window-film-philadelphia.jpg',          alt: 'Madico Window Film' },
   { file: '2021-09-hdclear-window-film-philadelphia.jpg',         alt: 'HDClear Window Film' },
@@ -18,16 +16,12 @@ const logos = [
   { file: '2021-09-solyx-window-film-philadelphia.jpg',           alt: 'Solyx Window Film' },
   { file: '2021-09-graffiti-shield-window-film-philadelphia.jpg', alt: 'Graffiti Shield Window Film' },
 ];
-
-const row1 = logos.slice(0, 6);
-const row2 = logos.slice(6, 12);
 ---
 
 <section class="brand-logos">
-  <div class="container">
-    <h2 class="brand-logos__title">Proudly Offering</h2>
-    <div class="brand-logos__row">
-      {row1.map((logo) => (
+  <div class="brand-logos__track-wrap">
+    <div class="brand-logos__track">
+      {logos.map((logo) => (
         <div class="brand-logos__item">
           <img
             src={`/images/${logo.file}`}
@@ -36,9 +30,8 @@ const row2 = logos.slice(6, 12);
           />
         </div>
       ))}
-    </div>
-    <div class="brand-logos__row">
-      {row2.map((logo) => (
+      {/* Duplicate for seamless loop */}
+      {logos.map((logo) => (
         <div class="brand-logos__item">
           <img
             src={`/images/${logo.file}`}
@@ -53,45 +46,46 @@ const row2 = logos.slice(6, 12);
 
 <style>
 .brand-logos {
-  background: var(--color-bg-white);
-  padding: 3rem var(--section-pad-x);
-  border-top: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 48px 0;
+  border-top: 1px solid var(--light-gray, #EFEFED);
+  overflow: hidden;
 }
 
-.brand-logos__title {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  color: var(--color-charcoal);
+.brand-logos__track-wrap {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
-.brand-logos__row {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.5rem;
+.brand-logos__track {
+  display: flex;
   align-items: center;
-  justify-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: brand-scroll 32s linear infinite;
 }
 
-.brand-logos__row + .brand-logos__row {
-  margin-top: 1.5rem;
+.brand-logos__track:hover {
+  animation-play-state: paused;
 }
 
 .brand-logos__item {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  flex-shrink: 0;
 }
 
 .brand-logos__item img {
-  max-height: 60px;
+  height: 52px;
   width: auto;
-  max-width: 100%;
+  max-width: 140px;
   object-fit: contain;
-  filter: grayscale(20%);
-  opacity: 0.85;
-  transition: opacity 200ms ease, filter 200ms ease;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
 .brand-logos__item img:hover {
@@ -99,15 +93,8 @@ const row2 = logos.slice(6, 12);
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .brand-logos__row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .brand-logos__row {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@keyframes brand-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 </style>

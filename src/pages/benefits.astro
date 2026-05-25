@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
 
 const title = 'Benefits | Window Film Philadelphia | Leading Window Film Solutions';
 const description = 'Explore the full range of window film benefits for Philadelphia properties — energy savings, privacy, security, UV protection, glare reduction, and more.';
 
 const benefits = [
-  { label: 'Energy Savings',          href: '/benefits/energy-saving-window-film-philadephia/', icon: '⚡' },
+  { label: 'Energy Savings',          href: '/benefits/energy-savings/', icon: '⚡' },
   { label: 'UV Protection',           href: '/benefits/uv-blocking-window-film-philadelphia/',  icon: '☀️' },
   { label: 'Privacy',                 href: '/benefits/privacy-window-film-philadelphia/',       icon: '🔒' },
   { label: 'Glare Reduction',         href: '/benefits/glare-reduction/',                        icon: '🕶️' },
@@ -44,7 +45,7 @@ const benefitDetails = [
     body: 'Window tint offers an easy solution for optimizing the energy efficiency of your building. Window film boosts glazing performance, reducing energy costs and addressing hot and cold spots. Our films can reduce cooling costs by up to 30% — available in both clear and tinted options.',
     img: '/images/2021-08-philadelphia-window-film-energy-savings.jpg',
     alt: 'Energy saving window film Philadelphia',
-    href: '/benefits/energy-saving-window-film-philadephia/',
+    href: '/benefits/energy-savings/',
     cta: 'Energy Saving Film',
   },
   {
@@ -107,6 +108,14 @@ const benefitDetails = [
 ---
 
 <BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/">
+
+<InnerPageHero
+  title="Window Film Benefits"
+  bgImage="/images/wfp-premium-films-v2.jpg"
+  desc="Explore the full range of window film solutions for Philadelphia properties."
+/>
+
+<div class="ip-page-body">
 
 <!-- ══════════════════════════════════════
      BREADCRUMB
@@ -252,7 +261,7 @@ const benefitDetails = [
     <p class="bp-chooser__sub">Answer one question: what is your primary goal?</p>
   </div>
   <div class="bp-chooser__grid">
-    <a href="/benefits/energy-saving-window-film-philadephia/" class="bp-chooser__card">
+    <a href="/benefits/energy-savings/" class="bp-chooser__card">
       <div class="bp-chooser__card-icon">🌡️</div>
       <h4>Reduce heat &amp; energy costs</h4>
       <p>Solar control and energy-saving films</p>
@@ -328,6 +337,8 @@ const benefitDetails = [
     <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
     <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
   </div>
+</div>
+
 </div>
 
 </BaseLayout>
@@ -701,6 +712,20 @@ const benefitDetails = [
 @media (max-width: 480px) {
   .bp-hero__ctas { flex-direction: column; align-items: flex-start; }
   .bp-trust-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── INNER PAGE BODY ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>
 

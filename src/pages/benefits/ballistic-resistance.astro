@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,16 +11,16 @@ const description = 'Window Film Philadelphia delivers top-quality ballistic win
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/ballistic-resistance/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/ballistic-resistant-window-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Ballistic Window Film for Philadelphia Buildings</h1>
-      <p>Enhance safety and security with ballistic window film in Philadelphia — a reliable solution for mitigating risks in high-threat environments and protecting commercial properties.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Ballistic-Resistant Window Film"
+  bgImage="/images/ballistic-resistant-window-film-philadelphia.jpg"
+  desc="Maximum protection for high-risk commercial properties."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Ballistic Window Film for Philadelphia Buildings"}
-    body={"Ballistic resistance is the closest thing available to bulletproof glass on today\'s market. For schools, government buildings, airports, banks, and other high-security facilities in Philadelphia, ballistic-resistant window film offers a comprehensive solution for protecting glass windows and doors. Window Film Philadelphia is honored to be the trusted ballistic-resistant security film contractor for properties across the Philadelphia metro area."}
+    body={"Ballistic resistance is the closest thing available to bulletproof glass on today's market. For schools, government buildings, airports, banks, and other high-security facilities in Philadelphia, ballistic-resistant window film offers a comprehensive solution for protecting glass windows and doors. Window Film Philadelphia is honored to be the trusted ballistic-resistant security film contractor for properties across the Philadelphia metro area."}
     imageSrc={'/images/ballistic-resistant-window-film-philadelphia.jpg'}
     imageAlt={'Ballistic resistant window film Philadelphia'}
     flip={false}
@@ -45,7 +46,7 @@ const description = 'Window Film Philadelphia delivers top-quality ballistic win
   />
 
   <BackAndForthSection
-    heading={"Work with Philadelphia\'s Leading Ballistic-Resistant Security Film Contractor"}
+    heading={"Work with Philadelphia's Leading Ballistic-Resistant Security Film Contractor"}
     body={"Window Film Philadelphia is honored to provide leading ballistic-resistant security film services for commercial properties. Our ballistic window film in Philadelphia offers an effective solution for safeguarding windows and doors from high-impact threats. Whether you are concerned about vandalism, theft, or more extreme threats, our ballistic window film ensures your property is shielded from harm. Contact us for more information."}
     imageSrc={'/images/ballistic-resistant-window-film-philadelphia-schools.jpg'}
     imageAlt={'Ballistic resistant window film Philadelphia schools'}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia delivers top-quality ballistic win
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia delivers top-quality ballistic win
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

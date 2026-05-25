@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia specializes in professional mirror
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/mirror-refinishing/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/mirror-refinishing-in-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Expert Mirror Refinishing in Philadelphia</h1>
-      <p>Mirrors serve a crucial role in many commercial properties, but they are costly investments easily damaged by everyday wear and vandalism. Window Film Philadelphia provides professional mirror refinishing throughout Philadelphia.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Mirror Refinishing Window Film"
+  bgImage="/images/mirror-refinishing-in-philadelphia.png"
+  desc="Restore and refinish mirrors without costly replacement."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Expert Mirror Refinishing in Philadelphia"}
     body={"Mirrors serve a crucial role in many commercial properties, but they are costly investments that can easily suffer damage from everyday wear, tear, and vandalism. Once a mirror is damaged, permanent repairs are often not possible, making replacement necessary. However, specialty surface films offer an affordable solution for businesses looking to restore mirrors. Window Film Philadelphia is proud to offer professional mirror refinishing throughout Philadelphia."}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia specializes in professional mirror
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia specializes in professional mirror
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia offers anti-graffiti film in Phila
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/anti-graffiti-surface-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Anti-Graffiti Film in Philadelphia for Commercial Buildings</h1>
-      <p>Anti-graffiti film in Philadelphia offers essential protection for commercial properties vulnerable to vandalism, graffiti, and property crimes throughout the metro area.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Anti-Graffiti Window Film"
+  bgImage="/images/anti-graffiti-surface-film-philadelphia.jpg"
+  desc="Protect your glass from etching, paint, and vandalism."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Anti-Graffiti Film in Philadelphia for Commercial Buildings"}
     body={"Anti-graffiti film in Philadelphia offers essential protection for commercial properties vulnerable to vandalism, graffiti, and other property crimes throughout the metro area. To keep expensive surfaces in high foot-traffic areas — schools, businesses, mass transit systems, and other commercial properties — safe from vandalism, a reliable solution is required. Anti-graffiti film offers an effective way to protect surfaces while providing exclusive benefits for commercial property owners. Window Film Philadelphia is honored to provide comprehensive anti-graffiti solutions for commercial properties."}
@@ -45,7 +46,7 @@ const description = 'Window Film Philadelphia offers anti-graffiti film in Phila
   />
 
   <BackAndForthSection
-    heading={"Work With Philadelphia\'s Leading Anti-Graffiti Film Contractor"}
+    heading={"Work With Philadelphia's Leading Anti-Graffiti Film Contractor"}
     body={"We at Window Film Philadelphia are honored to provide leading anti-graffiti surface film services for commercial properties throughout Philadelphia. Our team has helped countless businesses keep their surfaces protected and would love the opportunity to help defend your expensive investments. Contact us today for more information!"}
     imageSrc={'/images/2021-08-philadelphia-window-film-anti-graffiti-window-film-scratches-film.jpg'}
     imageAlt={'Anti-graffiti window film contractor Philadelphia'}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia offers anti-graffiti film in Phila
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia offers anti-graffiti film in Phila
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia offers blast mitigation film in Ph
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/blast-mitigation/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/bomb-blast-protection-window-film-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Enhance Safety with Blast Mitigation Film in Philadelphia</h1>
-      <p>Enhance the security of your property with blast mitigation film in Philadelphia, designed to safeguard against potential threats and natural disasters.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Blast Mitigation Window Film"
+  bgImage="/images/bomb-blast-protection-window-film-philadelphia.png"
+  desc="Government-grade protection for high-security facilities."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Enhance Safety with Blast Mitigation Film in Philadelphia"}
     body={"Public buildings, government buildings, stadiums, and other properties that can house thousands of occupants require a premium security and safety option. When it comes to keeping your commercial property safe from natural disasters and potential threats, one of the biggest areas of concern is the glass windows and doors. Window film can provide a comprehensive solution for keeping your property safe without compromising aesthetics. Window Film Philadelphia proudly offers a large selection of bomb blast window film solutions for Philadelphia properties."}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia offers blast mitigation film in Ph
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia offers blast mitigation film in Ph
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

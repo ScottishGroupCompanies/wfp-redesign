@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia offers expert installation of secu
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/school-security-window-film/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/school-security-window-film-philadelphia-1.jpeg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Security Window Film in Philadelphia for Safer Schools</h1>
-      <p>At Window Film Philadelphia, we understand the paramount importance of protecting students, teachers, and staff from potential threats. Our school security window films are designed to increase response time and delay intruders.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="School Security Window Film"
+  bgImage="/images/school-security-window-film-philadelphia-1.jpeg"
+  desc="Protect students and staff with safety and security film."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Security Window Film in Philadelphia for Safer Schools"}
     body={"As our society faces ongoing security concerns, it is crucial to prioritize the safety of our schools. Window Film Philadelphia offers state-of-the-art school security window film for Philadelphia educational facilities. Our security films are specifically engineered to fortify school windows and withstand significant force — providing valuable additional response time for safe evacuation during a threat."}
@@ -37,7 +38,7 @@ const description = 'Window Film Philadelphia offers expert installation of secu
 
   <BackAndForthSection
     heading={"Security Film Options for Schools"}
-    body={"We offer a range of security film options to cater to the unique needs of Philadelphia schools:  Basic Security Film — Economical option to strengthen glass; increases response time by 30 seconds to 1 minute.  Premium Security Film — Advanced carbon fiber, cross-weave technology; increases response time by 30 seconds to 3 minutes.  Dual Premium Security Film — Interior and exterior application with anchoring system; recommended for dual-pane glazing; increases response time by 3 minutes or more.  Bomb Blast Resistant Film — Offered for single and dual-pane applications; increases flexibility and shatter resistance.  Ballistic Resistant Security Film — Three layers of security window film; designed to protect against crimes committed with 9mm handguns or below."}
+    body={"We offer a range of security film options to cater to the unique needs of Philadelphia schools:\nBasic Security Film — Economical option to strengthen glass; increases response time by 30 seconds to 1 minute.\nPremium Security Film — Advanced carbon fiber, cross-weave technology; increases response time by 30 seconds to 3 minutes.\nDual Premium Security Film — Interior and exterior application with anchoring system; recommended for dual-pane glazing; increases response time by 3 minutes or more.\nBomb Blast Resistant Film — Offered for single and dual-pane applications; increases flexibility and shatter resistance.\nBallistic Resistant Security Film — Three layers of security window film; designed to protect against crimes committed with 9mm handguns or below."}
     imageSrc={'/images/philadelphia-college-school-security-film-1.jpg'}
     imageAlt={'Philadelphia college school security film'}
     flip={false}
@@ -66,6 +67,7 @@ const description = 'Window Film Philadelphia offers expert installation of secu
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -78,5 +80,17 @@ const description = 'Window Film Philadelphia offers expert installation of secu
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

@@ -1,56 +1,87 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAStrip from '../../components/CTAStrip.astro';
 
 const title = 'Elevator Refinishing | Window Film Philadelphia | Leading Window Film';
 const description = 'Window Film Philadelphia is honored to provide leading elevator refinishing window film solutions. Schedule your free consultation today!';
-import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/elevator-refinishing/'>
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/elevator-refinishing-window-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Elevator Refinishing Film for Philadelphia</h1>
-    </div>
-  </section>
 
-  <BackAndForthSection
-  heading={'Elevator Refinishing Film for Philadelphia'}
-  body={'Elevators are an expensive investment for any commercial property. They serve an essential responsibility, especially for properties three levels and higher, and can provide one of the first impressions for your guests. Many elevators can become susceptible to vandalism, graffiti, and daily wear and tear. In order to keep your elevator in the best condition possible while saving on repair costs, decommissioning downtime, and more, surface film can be utilized. Window Film Philadelphia proudly offers elevator refinishing services with proprietary window film technology for Philadelphia.'}
-  imageSrc={'/images/elevator-refinishing-window-film-philadelphia.jpg'}
-  imageAlt={'elevator refinishing window film philadelphia'}
-  flip={false}
-  altBg={false}
+<InnerPageHero
+  title="Elevator Refinishing Window Film"
+  bgImage="/images/elevator-refinishing-window-film-philadelphia.jpg"
+  desc="Restore and protect elevator interiors with specialty film."
 />
 
+<div class="ip-page-body">
   <BackAndForthSection
-  heading={'About Elevator Refinishing'}
-  body={'Elevator refinishing utilizes specialty surface film in order to restore cosmetically damaged elevators from daily wear and tear, vandalism, and graffiti. This specialty window film product provides high durability in order to protect against future damage. It’s also available in multiple finishes in order to seamlessly conceal any existing damage for the best impression possible. The sacrificial layer is then removed and replaced when damaged, providing significant repair savings.'}
-  imageSrc={'/images/2021-10-elevator-refinishing-philadelphia.jpg'}
-  imageAlt={'elevator refinishing philadelphia'}
-  flip={true}
-  altBg={true}
-/>
+    heading={"Elevator Refinishing Film for Philadelphia"}
+    body={"Elevators are an expensive investment for any commercial property. They serve an essential responsibility, especially for properties three levels and higher, and can provide one of the first impressions for your guests. Many elevators can become susceptible to vandalism, graffiti, and daily wear and tear. In order to keep your elevator in the best condition possible while saving on repair costs, decommissioning downtime, and more, surface film can be utilized. Window Film Philadelphia proudly offers elevator refinishing services with proprietary window film technology for Philadelphia."}
+    imageSrc={'/images/elevator-refinishing-window-film-philadelphia.jpg'}
+    imageAlt={'elevator refinishing window film philadelphia'}
+    flip={false}
+    altBg={false}
+  />
 
   <BackAndForthSection
-  heading={'The Benefits of Elevator Refinishing Surface Film for Your Philadelphia Property'}
-  body={'Elevator refinishing service in Philadelphia offers numerous benefits for commercial properties, including: Invisible protection that’s tamperproof to the public Sacrificial layer that’s easily replaced once damaged Thick, durable material that can withstand acid etching Available in multiple finishes Conceals existing damage Save thousands in repairs and minimize operational downtime'}
-  imageSrc={'/images/2021-10-elevator-metal-shield-window-film-philadelphia.jpg'}
-  imageAlt={'elevator metal shield window film philadelphia'}
-  flip={false}
-  altBg={false}
-/>
+    heading={"About Elevator Refinishing"}
+    body={"Elevator refinishing utilizes specialty surface film in order to restore cosmetically damaged elevators from daily wear and tear, vandalism, and graffiti. This specialty window film product provides high durability in order to protect against future damage. It is also available in multiple finishes in order to seamlessly conceal any existing damage for the best impression possible. The sacrificial layer is then removed and replaced when damaged, providing significant repair savings."}
+    imageSrc={'/images/2021-10-elevator-refinishing-philadelphia.jpg'}
+    imageAlt={'elevator refinishing philadelphia'}
+    flip={true}
+    altBg={true}
+  />
 
   <BackAndForthSection
-  heading={'Work With Philadelphia’s Leading Elevator Refinishing Window Film Contractor'}
-  body={'Window Film Philadelphia is honored to provide leading elevator refinishing window film services for commercial properties. We’ve helped countless buildings defend their elevators and would love the opportunity to help protect your property. Contact us today for more information!'}
-  imageSrc={'/images/elevator-repair-window-film-philadelphia.jpg'}
-  imageAlt={'elevator repair window film philadelphia'}
-  flip={true}
-  altBg={true}
-/>
+    heading={"The Benefits of Elevator Refinishing Surface Film for Your Philadelphia Property"}
+    body={"Elevator refinishing service in Philadelphia offers numerous benefits for commercial properties, including:\n\nInvisible protection that is tamperproof to the public\nSacrificial layer that is easily replaced once damaged\nThick, durable material that can withstand acid etching\nAvailable in multiple finishes\nConceals existing damage\nSave thousands in repairs and minimize operational downtime"}
+    imageSrc={'/images/2021-10-elevator-metal-shield-window-film-philadelphia.jpg'}
+    imageAlt={'elevator metal shield window film philadelphia'}
+    flip={false}
+    altBg={false}
+  />
+
+  <BackAndForthSection
+    heading={"Work With Philadelphia's Leading Elevator Refinishing Window Film Contractor"}
+    body={"Window Film Philadelphia is honored to provide leading elevator refinishing window film services for commercial properties. We have helped countless buildings defend their elevators and would love the opportunity to help protect your property. Contact us today for more information!"}
+    imageSrc={'/images/elevator-repair-window-film-philadelphia.jpg'}
+    imageAlt={'elevator repair window film philadelphia'}
+    flip={true}
+    altBg={true}
+    ctaLabel={'Get a Free Quote'}
+    ctaHref={'/contact/'}
+  />
 
   <BrandLogos />
   <CTAStrip />
+</div>
+
 </BaseLayout>
+
+<style>
+.benefit-list {
+  padding-left: 1.5em;
+  margin-top: 0.75rem;
+}
+.benefit-list li {
+  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+</style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Protect birds with bird strike window film in Philadelphia.
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/bird-strike-prevention/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-bird-safety-film-Philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Bird Strike Window Film in Philadelphia</h1>
-      <p>Professional bird strike window film in Philadelphia protects both migrating and resident birds while preserving the aesthetics of your building.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Bird Strike Prevention Window Film"
+  bgImage="/images/window-bird-safety-film-Philadelphia.jpg"
+  desc="Protect birds and your glass with specialty patterned film."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Bird Strike Window Film in Philadelphia"}
     body={"Every year, up to 1 billion birds lose their lives from collisions with glass. Philadelphia — with over 1,000 high-rise buildings and extensive urban greenery — is home to a diverse range of bird species including warblers, sparrows, and thrushes. Our Bird Divert window film offers an extraordinary solution that combines innovation with the responsibility of preserving the natural world. Window Film Philadelphia is proud to offer Bird Divert throughout the Philadelphia area."}
@@ -37,7 +38,7 @@ const description = 'Protect birds with bird strike window film in Philadelphia.
 
   <BackAndForthSection
     heading={"Why Install Bird Divert for Your Property?"}
-    body={"Reduces bird collisions by up to 95% — invisible to humans, clearly visible to birds Optically clear 98% VLT — does not block natural light or views 3.2mm PVC acrylic hard coat — durable, robust, and tear-resistant Exterior application — no interior access required for installation Qualifies commercial buildings for LEED Pilot 55 certification Endorsed by the National Audubon Society and American Bird Conservancy Industry-leading 5-year manufacturer warranty"}
+    body={"Reduces bird collisions by up to 95% — invisible to humans, clearly visible to birds\nOptically clear 98% VLT — does not block natural light or views\n3.2mm PVC acrylic hard coat — durable, robust, and tear-resistant\nExterior application — no interior access required for installation\nQualifies commercial buildings for LEED Pilot 55 certification\nEndorsed by the National Audubon Society and American Bird Conservancy\nIndustry-leading 5-year manufacturer warranty"}
     imageSrc={'/images/bird-divert-philadelphia.jpg'}
     imageAlt={'Bird Divert Philadelphia'}
     flip={false}
@@ -66,6 +67,7 @@ const description = 'Protect birds with bird strike window film in Philadelphia.
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -78,5 +80,17 @@ const description = 'Protect birds with bird strike window film in Philadelphia.
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

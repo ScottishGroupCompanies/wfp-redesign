@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia offers premium window film for ant
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/glare-reduction/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/glare-reduction-window-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Anti-Glare Window Film Solutions for Properties in Philadelphia</h1>
-      <p>Anti-glare window film in Philadelphia can be a game-changer for homes and businesses. Window Film Philadelphia provides comprehensive glare-reduction solutions for properties throughout the Philadelphia area.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Glare Reduction Window Film"
+  bgImage="/images/glare-reduction-window-film-philadelphia.jpg"
+  desc="Eliminate screen glare and eye strain in any space."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Anti-Glare Window Film Solutions for Properties in Philadelphia"}
     body={"Anti glare window film in Philadelphia can be a game-changer for homes and businesses, especially those without surrounding foliage. With sunshine many days out of the year, it is important to find effective solutions that improve the comfort and productivity of your building. When it comes to glare, traditional window treatments can often be less aesthetically pleasing and require manual operation. Window Film Philadelphia is honored to provide comprehensive glare-reduction solutions for properties across Philadelphia."}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia offers premium window film for ant
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia offers premium window film for ant
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

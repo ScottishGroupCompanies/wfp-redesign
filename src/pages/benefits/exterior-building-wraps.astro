@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia provides professional exterior bui
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/exterior-building-wraps/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/exterior-building-wrap-window-film-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Exterior Building Wrap in Philadelphia</h1>
-      <p>To achieve amazing, head-turning marketing collateral, brick-and-mortar businesses can utilize exterior building wraps in Philadelphia — from promoting upcoming events to improving brand visibility.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Exterior Building Wraps & Film"
+  bgImage="/images/exterior-building-wrap-window-film-philadelphia.png"
+  desc="Transform your building's exterior with custom vinyl wraps."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Exterior Building Wrap in Philadelphia"}
     body={"To achieve amazing, head-turning marketing collateral, brick-and-mortar businesses can utilize exterior building wraps in Philadelphia to really make use of their real estate. From promoting upcoming events to improving brand visibility and everything in between, there is a vast scope of solutions available. One of the most creative ways to do that is with custom building wraps. These premium decorative window film solutions are perfect for any commercial property. Window Film Philadelphia is proud to offer complete building wrap options for Philadelphia businesses."}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia provides professional exterior bui
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia provides professional exterior bui
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

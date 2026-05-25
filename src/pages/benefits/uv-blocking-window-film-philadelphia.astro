@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia is the trusted source for UV block
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/uv-blocking-window-film-philadelphia/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-philadelphia-uv-blocking-solar-shield-1.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>UV Blocking Window Film in Philadelphia</h1>
-      <p>Window Film Philadelphia is the trusted source for UV blocking window film in Philadelphia, PA — blocking up to 99.9% of harmful UV rays to protect people, furnishings, and flooring.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="UV Blocking Window Film Philadelphia"
+  bgImage="/images/window-film-philadelphia-uv-blocking-solar-shield-1.jpg"
+  desc="Block up to 99% of UV rays and protect interiors from fading."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"UV Blocking Window Film in Philadelphia"}
     body={"Window Film Philadelphia is the trusted source for UV blocking window film in Philadelphia, Pennsylvania. Our films block up to 99.9% of UVA and UVB rays, protecting people, furniture, and flooring. With access to a wide selection from leading brands like 3M, Vista, and LLumar, clients enjoy outstanding results from just one installation — saving on energy costs and improving comfort year-round. Whether you want to safeguard valuables in your commercial property or prevent hardwood floors in your home from fading, we will help you find the perfect solution."}
@@ -28,7 +29,7 @@ const description = 'Window Film Philadelphia is the trusted source for UV block
 
   <BackAndForthSection
     heading={"Why Philadelphia Properties Need UV Protection"}
-    body={"The sun\'s UV rays are one of the leading causes of interior fading and material breakdown. Furniture, carpets, hardwood flooring, and artwork are all vulnerable to sun damage. UV window film acts like an invisible shield, filtering out harmful rays while still letting natural light into your space.  For homeowners, this means protecting your investment and extending the life of your decor. For businesses, it means lower maintenance costs, a more comfortable environment for employees, and an improved customer experience."}
+    body={"The sun's UV rays are one of the leading causes of interior fading and material breakdown. Furniture, carpets, hardwood flooring, and artwork are all vulnerable to sun damage. UV window film acts like an invisible shield, filtering out harmful rays while still letting natural light into your space.  For homeowners, this means protecting your investment and extending the life of your decor. For businesses, it means lower maintenance costs, a more comfortable environment for employees, and an improved customer experience."}
     imageSrc={'/images/window-film-philadelphia-uv-protection-solar-filter-1.jpg'}
     imageAlt={'UV protection window film Philadelphia'}
     flip={true}
@@ -54,7 +55,7 @@ const description = 'Window Film Philadelphia is the trusted source for UV block
   />
 
   <BackAndForthSection
-    heading={"Partner with Philadelphia\'s Top UV Blocking Window Film Experts"}
+    heading={"Partner with Philadelphia's Top UV Blocking Window Film Experts"}
     body={"Ready to protect your property from harmful UV rays? Window Film Philadelphia offers customized solutions for homes and businesses throughout the city. With years of experience and access to the best brands in the industry, we deliver installations that combine comfort, efficiency, and long-term value. Contact us at (267) 394-7980 or email contact@windowfilmphiladelphia.net to get started."}
     imageSrc={'/images/window-film-philadelphia-uv-blocking-sunlight-protection-1.jpg'}
     imageAlt={'UV window film contractor Philadelphia'}
@@ -66,6 +67,7 @@ const description = 'Window Film Philadelphia is the trusted source for UV block
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -78,5 +80,17 @@ const description = 'Window Film Philadelphia is the trusted source for UV block
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

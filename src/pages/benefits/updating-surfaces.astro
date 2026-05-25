@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia specializes in 3M DI-NOC film inst
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/updating-surfaces/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/surface-window-film.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>3M DI-NOC Film Installation in Philadelphia</h1>
-      <p>Update surfaces with 3M DI-NOC in Philadelphia. Window Film Philadelphia is honored to provide comprehensive 3M DI-NOC services for updating surfaces throughout Philadelphia properties.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Surface Updating Window Film"
+  bgImage="/images/surface-window-film.jpg"
+  desc="Refresh outdated surfaces with cost-effective film solutions."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"3M DI-NOC Film Installation in Philadelphia"}
     body={"Keeping your property fresh and up to date can be a significant task for any business owner. In order to keep your expensive surfaces in the best condition possible while ensuring they are modern for the best guest experience, it is important to find ways to update regularly. Interior design and renovations can be significantly costly and lead to undesirable operational downtime. A great, cost-effective alternative is 3M DI-NOC. Window Film Philadelphia is honored to provide comprehensive 3M DI-NOC services for updating surfaces throughout Philadelphia properties."}
@@ -45,7 +46,7 @@ const description = 'Window Film Philadelphia specializes in 3M DI-NOC film inst
   />
 
   <BackAndForthSection
-    heading={"Work with Philadelphia\'s Leading 3M DI-NOC Experts"}
+    heading={"Work with Philadelphia's Leading 3M DI-NOC Experts"}
     body={"At Window Film Philadelphia, we take pride in offering comprehensive 3M DI-NOC services in Philadelphia to transform your commercial space. Our experienced team has helped countless businesses achieve stunning, cost-effective updates tailored to their specific needs. Contact us today to learn more about how DI-NOC can refresh your property."}
     imageSrc={'/images/updating-surfaces-window-filmphiladelphia.jpg'}
     imageAlt={'Updating surfaces window film Philadelphia'}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia specializes in 3M DI-NOC film inst
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia specializes in 3M DI-NOC film inst
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

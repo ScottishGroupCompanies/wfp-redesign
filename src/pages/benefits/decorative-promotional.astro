@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -10,13 +11,13 @@ const description = 'Window Film Philadelphia provides premium decorative window
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/decorative-promotional/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-10-decorative-promotional-window-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Decorative Window Film in Philadelphia</h1>
-      <p>Get high-quality decorative window film in Philadelphia! Window Film Philadelphia provides a comprehensive selection of decorative window film solutions for residential and commercial properties.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Decorative & Promotional Window Film"
+  bgImage="/images/2021-10-decorative-promotional-window-film-philadelphia.jpg"
+  desc="Custom branded and decorative film for any glass surface."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Decorative Window Film in Philadelphia"}
     body={"Get high-quality decorative window film in Philadelphia! In order to create beauty and visual interest in your home or business, selecting decorative solutions can be challenging. When it comes to improving the aesthetics of your residential property or finding an effective marketing and promotional investment for your commercial property, decorative window film is the perfect option. Window Film Philadelphia is proud to provide a comprehensive selection of decorative window film solutions for your Philadelphia property."}
@@ -45,7 +46,7 @@ const description = 'Window Film Philadelphia provides premium decorative window
   />
 
   <BackAndForthSection
-    heading={"Partner with Philadelphia\'s Top Decorative Window Film Contractor"}
+    heading={"Partner with Philadelphia's Top Decorative Window Film Contractor"}
     body={"Window Film Philadelphia is honored to provide leading decorative window film services for residential and commercial properties in Philadelphia. We have helped countless buildings improve their aesthetics and would love to help transform your property. Our team offers customized solutions tailored to your specific needs, ensuring you achieve the perfect balance of style and functionality. Contact us today for more information!"}
     imageSrc={'/images/transform-decorative-window-film-philadelphia.png'}
     imageAlt={'Transform decorative window film Philadelphia'}
@@ -57,6 +58,7 @@ const description = 'Window Film Philadelphia provides premium decorative window
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Window Film Philadelphia provides premium decorative window
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>

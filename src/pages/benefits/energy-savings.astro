@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CTAStrip from '../../components/CTAStrip.astro';
@@ -8,15 +9,15 @@ const title = 'Energy Saving Window Film Philadelphia | Solar Films';
 const description = 'Looking to cut energy costs? Window Film Philadelphia offers high-quality energy-saving window films in Philadelphia. Get a Quote Now!';
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/energy-saving-window-film-philadephia/'>
+<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/energy-savings/'>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/energy-saving-window-film-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Energy Saving Window Film in Philadelphia</h1>
-      <p>Save on your utility costs with energy saving window film in Philadelphia — available for residential and commercial properties throughout the Philadelphia metro area.</p>
-    </div>
-  </section>
+<InnerPageHero
+  title="Energy Saving Window Film"
+  bgImage="/images/energy-saving-window-film-philadelphia.png"
+  desc="Cut cooling costs and reduce solar heat gain year-round."
+/>
 
+<div class="ip-page-body">
   <BackAndForthSection
     heading={"Energy Saving Window Film in Philadelphia"}
     body={"Save on your utility costs with energy saving window film in Philadelphia! Energy costs can be a concern for any residential or commercial property owner. In order to keep buildings comfortable all year round, finding an energy-saving solution can help you lower your costs.  Window film offers a great way to address these issues without the high costs and long operational downtime. Window Film Philadelphia is honored to provide comprehensive energy-saving window film options from 3M, LLumar, Vista, and other industry-leading brands. Whether you are in the market for low-e window film for your Center City office or heat blocking film for your Chestnut Hill home, we have you covered!"}
@@ -57,6 +58,7 @@ const description = 'Looking to cut energy costs? Window Film Philadelphia offer
 
   <BrandLogos />
   <CTAStrip />
+</div>
 
 </BaseLayout>
 
@@ -69,5 +71,17 @@ const description = 'Looking to cut energy costs? Window Film Philadelphia offer
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 </style>
