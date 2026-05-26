@@ -1,69 +1,343 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Solar Gard Window Film Philadelphia | Solar Gard Philadelphia';
 const description = 'Enhance energy efficiency, UV protection, and security with Solar Gard window film in Philadelphia. Schedule your free consultation with our experts today.';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Solar Gard Energy Efficiency Window Film',
+    body: 'Solar Gard Energy Efficiency Window Film reduces solar heat gain, blocks UV rays, minimizes glare, and maintains privacy. It reduces heating and cooling costs by up to 30%, blocks 99% of UV rays (equivalent to SPF 285), and achieves a 67% average fade reduction — protecting interiors and delivering measurable energy savings year-round for Philadelphia homes and offices.',
+    img: '/images/Window-film-Philadelphia-office-1.jpg',
+    alt: 'Solar Gard energy efficiency window film Philadelphia',
+    href: '/benefits/energy-savings/',
+    cta: 'Explore Energy Savings',
+  },
+  {
+    number: '02',
+    heading: 'Solar Gard Safety and Security Window Film',
+    body: 'Solar Gard Safety and Security Window Film prevents glass breakage and defends building occupants from high-impact events. It delays intrusion and deters intruders, helps prevent injury from human impact and accidents, and mitigates broken glass hazards — providing passive 24/7 protection for your property without altering the appearance of your windows.',
+    img: '/images/safety-window-film-philadelphia-1.jpg',
+    alt: 'Solar Gard safety security window film Philadelphia',
+    href: '/benefits/safety-and-security/',
+    cta: 'Explore Safety & Security',
+  },
+  {
+    number: '03',
+    heading: 'Solar Gard Anti-Graffiti Window Film',
+    body: 'Solar Gard Anti-Graffiti Window Film is a premium surface film providing thick, durable defense against vandalism and daily wear. It protects glass from graffiti, scratches, and surface damage — keeping surfaces in great condition and saving money on costly repair and replacement. Ideal for transit systems, retail storefronts, school campuses, and any high-traffic Philadelphia property.',
+    img: '/images/anti-graffiti-surface-film-philadelphia.jpg',
+    alt: 'Solar Gard anti-graffiti window film Philadelphia',
+    href: '/benefits/anti-graffiti/',
+    cta: 'Explore Anti-Graffiti Film',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:thermometer', title: 'Energy Efficiency', sub: 'Reduces costs by up to 30%' },
+  { icon: 'lucide:shield-check', title: 'Safety & Security', sub: 'Passive 24/7 glass protection' },
+  { icon: 'lucide:eraser', title: 'Anti-Graffiti', sub: 'Premium surface vandalism defense' },
+  { icon: 'lucide:sun', title: 'UV Protection', sub: 'Blocks 99% UV — SPF 285 equivalent' },
+  { icon: 'lucide:eye-off', title: 'Glare Control', sub: '67% average fade reduction' },
+  { icon: 'lucide:lock', title: 'Break-In Defense', sub: 'Delays intrusion, deters intruders' },
+  { icon: 'lucide:trending-down', title: 'Energy Savings', sub: 'Heating and cooling cost reductions' },
+  { icon: 'lucide:award', title: 'Expert Install', sub: 'Manufacturer warranty on all products' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-09-solar-gard-window-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Solar Gard Window Film in Philadelphia</h1>
+<InnerPageHero
+  title="Solar Gard Window Film Philadelphia"
+  bgImage="/images/2021-09-solar-gard-window-film-philadelphia.jpg"
+  desc="Energy efficiency, security, and surface protection in one trusted brand."
+/>
+
+<div class="ip-page-body">
+
+<section class="pp-intro">
+  <div class="pp-intro__inner">
+    <div class="pp-intro__left">
+      <span class="pp-eyebrow">Solar Gard Films</span>
+      <h1 class="pp-intro__title">Solar Performance You Can Count On.</h1>
     </div>
-  </section>
+    <div class="pp-intro__right">
+      <p class="pp-intro__lead">Solar Gard is a globally trusted window film brand with a comprehensive lineup covering energy efficiency, safety and security, and anti-graffiti surface protection. Window Film Philadelphia installs Solar Gard products for residential and commercial properties throughout the Philadelphia region — with expert guidance on selecting the right film for your specific goals.</p>
+      <div class="pp-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Solar Gard Window Film in Philadelphia'}
-    body={'Solar Gard window film provides comfort and protection through energy savings, improved privacy, and long-lasting performance. Perfect for homes, offices, and commercial spaces throughout Philadelphia, Solar Gard delivers measurable results across a full range of applications.'}
-    imageSrc={'/images/window-film-contractor-reading-pennsylvania.jpg'}
-    imageAlt={'Solar Gard window film Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-featured">
+  <div class="pp-featured__hd">
+    <span class="pp-eyebrow">Product Lines</span>
+    <h2 class="pp-featured__title">Three Solar Gard series for Philadelphia properties</h2>
+  </div>
 
-  <BackAndForthSection
-    heading={'Solar Gard Energy Efficiency Window Film'}
-    body={'Reduce solar heat gain, block UV rays, minimize glare, and maintain privacy with Solar Gard Energy Efficiency Window Film. Reduce heating and cooling costs by up to 30%, block 99% of UV rays (equivalent to SPF 285), and achieve a 67% average fade reduction — protecting interiors and reducing energy bills year-round.'}
-    imageSrc={'/images/Window-film-Philadelphia-office-1.jpg'}
-    imageAlt={'Solar Gard energy efficiency window film Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
+  {featuredSections.map((s, i) => (
+    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
+      <div class="pp-feat-row__img">
+        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+        <span class="pp-feat-row__pill">{s.heading}</span>
+      </div>
+      <div class="pp-feat-row__content">
+        <span class="pp-feat-row__num">{s.number}</span>
+        <h3 class="pp-feat-row__heading">{s.heading}</h3>
+        <p class="pp-feat-row__body">{s.body}</p>
+        <a href={s.href} class="pp-feat-row__cta">
+          {s.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BackAndForthSection
-    heading={'Solar Gard Safety and Security Window Film'}
-    body={'Solar Gard Safety and Security Window Film prevents glass breakage and defends building occupants from high-impact events. It delays intrusion and deters intruders, helps prevent injury from human impact, and mitigates broken glass hazards — providing passive 24/7 protection for your property.'}
-    imageSrc={'/images/Airplane-over-skyscrapers.jpg'}
-    imageAlt={'Solar Gard safety security window film Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-why">
+  <div class="pp-why__hd">
+    <span class="pp-eyebrow">Product Range</span>
+    <h2 class="pp-why__title">The complete Solar Gard lineup</h2>
+  </div>
+  <div class="pp-why__grid">
+    {benefitItems.map((item) => (
+      <div class="pp-why__item fade-in">
+        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+        <div class="pp-why__divider"></div>
+        <h4 class="pp-why__item-title">{item.title}</h4>
+        <p class="pp-why__item-sub">{item.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Solar Gard Anti-Graffiti Window Film'}
-    body={'Solar Gard Anti-Graffiti Window Film is a premium surface film for glass providing thick, durable defense against vandalism and daily wear. It protects surfaces from vandalism, keeps surfaces in great condition from everyday use, and saves money on costly repair and glass replacement.'}
-    imageSrc={'/images/anti-graffiti-surface-film-philadelphia.jpg'}
-    imageAlt={'Solar Gard anti-graffiti window film Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
+<section class="pp-faq">
+  <div class="pp-faq__hd">
+    <span class="pp-eyebrow">FAQ</span>
+    <h2 class="pp-faq__title">Common questions about Solar Gard window film</h2>
+  </div>
+  <div class="pp-faq__item pp-faq__item--open">
+    <div class="pp-faq__q">What Solar Gard products does Window Film Philadelphia install? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Window Film Philadelphia installs the full Solar Gard lineup, including energy efficiency films, safety and security films, and anti-graffiti surface protection films. Both residential and commercial grades are available, and the team will recommend the right series based on your property type and specific goals.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">How does Solar Gard compare to 3M Sun Control film? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Both are premium solar control film brands with similar performance categories. The choice often comes down to VLT preference, warranty terms, and specific product specifications. The Window Film Philadelphia team compares both options for your project so you can make an informed decision.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Is Solar Gard Anti-Graffiti film suitable for transit systems? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. Solar Gard Anti-Graffiti film is widely used on mass transit vehicles, buses, trains, and transit stations. It is extremely durable, and when vandalism occurs, the film can be removed and replaced quickly — protecting the underlying glass and significantly reducing repair costs.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Does Solar Gard Security Film change how my windows look? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">No. Optically clear options are available in the Solar Gard safety and security series. Your windows will look unchanged after installation — the film provides passive, invisible protection.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">How long does Solar Gard window film last? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Solar Gard window film typically lasts 10–20+ years with professional installation. A manufacturer warranty covers all series — specific warranty terms vary by product and application type.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Can Solar Gard film qualify for LEED credits? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. Solar Gard energy efficiency films can support LEED certification documentation. Window Film Philadelphia provides the performance data required for LEED credit applications as part of the installation service.</div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Work With Philadelphia\'s Trusted Solar Gard Experts'}
-    body={'Window Film Philadelphia helps you find the right Solar Gard film for energy efficiency, safety, or privacy goals. Our team provides expert guidance and professional installation for residential and commercial properties throughout Philadelphia. Contact us today for more information.'}
-    imageSrc={'/images/Cozy-living-room-interior-1.jpg'}
-    imageAlt={'Solar Gard window film contractor Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+<BrandLogos />
 
-  <BrandLogos />
-  <CTAStrip />
+<div class="pp-cta fade-in">
+  <h2>Ready to upgrade your property with <em>Solar Gard window film?</em></h2>
+  <div class="pp-cta__btns">
+    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
 
+</div>
 </BaseLayout>
+
+<style>
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green, #81AB4C); margin-bottom: 16px;
+}
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
+.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  padding: 10px 18px; border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25; margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+  color: var(--text-dark, #1a1a1a); line-height: 1.2;
+  margin-bottom: 20px; letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
+  text-decoration: none; transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
+  margin: 0; max-width: 600px;
+}
+.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
+.pp-why__icon svg { display: block; }
+.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
+.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
+.pp-faq { padding: 100px 10%; background: #ffffff; }
+.pp-faq__hd { margin-bottom: 48px; }
+.pp-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
+}
+.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
+.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
+.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
+.pp-faq__item--open .pp-faq__a { display: block; }
+.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
+.pp-cta {
+  background: var(--brand, #272E32); border-radius: 40px;
+  padding: 64px 60px; display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5% 0;
+}
+.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
+.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-faq { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .pp-cta h2 { font-size: 26px; max-width: 100%; }
+  .pp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.pp-faq__item').forEach(item => {
+    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('pp-faq__item--open');
+      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
+      if (!isOpen) item.classList.add('pp-faq__item--open');
+    });
+  });
+</script>

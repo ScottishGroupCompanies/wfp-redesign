@@ -1,96 +1,343 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Bird Divert Philadelphia | Window Film Philadelphia';
 const description = 'Discover Bird Divert in Philadelphia - an innovative bird safety window film to protect birds and your property. Get a quote now!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'How Bird Divert Works',
+    body: 'Bird Divert uses a UV-absorbing and UV-reflecting dot matrix that is optically clear to human eyes — maintaining 98% visible light transmission — but appears black or violet to avian eyes, which see into the ultraviolet spectrum. This dot matrix acts as a visual beacon, redirecting birds away from glass before a collision occurs. The markers are precision-applied to the glass exterior and require no interior access, making the installation fast and non-disruptive.',
+    img: '/images/bird-divert-film-philadelphia.jpg',
+    alt: 'Bird Divert dot matrix film Philadelphia',
+    href: '/benefits/bird-strike-prevention/',
+    cta: 'Explore Bird Strike Prevention',
+  },
+  {
+    number: '02',
+    heading: 'Why Install Bird Divert?',
+    body: 'Bird Divert is manufactured by National Window Film and holds an industry-leading threat level rating of 18 — the highest available. It is certified under LEED Pilot 55 and endorsed by the National Audubon Society and American Bird Conservancy. With 98% visible light transmission, a PVC acrylic hard coat at 3.2mm thickness, a 5-year manufacturer warranty, and exterior-only application requiring no interior access, Bird Divert sets the performance standard for bird-safe glazing solutions.',
+    img: '/images/bird-divert-philadelphia.jpg',
+    alt: 'Bird Divert certifications Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+  {
+    number: '03',
+    heading: 'Comply With Local Bird-Friendly Regulations',
+    body: 'Cities across the US are enacting laws requiring buildings to meet bird-friendly design standards, and Philadelphia properties face rising regulatory pressure. Bird Divert is the easiest path to compliance — applied to existing glass with no interior access required, no renovation, and no disruption to building operations. Whether you are retrofitting an existing building or preparing a new construction for bird-friendly certification, Bird Divert is the fastest and most cost-effective solution available.',
+    img: '/images/bird-strike-prevention-film-bird-divert-philadelphia.jpg',
+    alt: 'Bird friendly building regulations Philadelphia',
+    href: '/contact/',
+    cta: 'Schedule a Consultation',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:eye-off', title: 'Invisible to Humans', sub: '98% visible light transmission' },
+  { icon: 'lucide:feather', title: 'Visible to Birds', sub: 'UV dot matrix guides birds away' },
+  { icon: 'lucide:award', title: 'Threat Level 18', sub: 'Industry-leading safety rating' },
+  { icon: 'lucide:leaf', title: 'LEED Pilot 55', sub: 'Qualifies for green building certification' },
+  { icon: 'lucide:shield-check', title: 'Audubon Endorsed', sub: 'National Audubon Society approved' },
+  { icon: 'lucide:building', title: 'Code Compliant', sub: 'Meets bird-friendly building regulations' },
+  { icon: 'lucide:clock', title: '5-Year Warranty', sub: 'Manufacturer-backed performance guarantee' },
+  { icon: 'lucide:zap', title: 'Exterior Application', sub: 'No interior access required' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/products/bird-divert/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/bird-divert/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/bird-safety-solutions-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Bird Divert for Philadelphia Properties</h1>
+<InnerPageHero
+  title="Bird Divert Philadelphia"
+  bgImage="/images/bird-safety-solutions-philadelphia.jpg"
+  desc="The only bird-safe window film that's invisible to humans."
+/>
+
+<div class="ip-page-body">
+
+<section class="pp-intro">
+  <div class="pp-intro__inner">
+    <div class="pp-intro__left">
+      <span class="pp-eyebrow">Bird Strike Prevention</span>
+      <h1 class="pp-intro__title">The Only Film Birds Can See. Humans Can't.</h1>
     </div>
-  </section>
+    <div class="pp-intro__right">
+      <p class="pp-intro__lead">Bird Divert is manufactured by National Window Film and is the only bird-safety marker proven to achieve an industry-leading threat level of 18. Window Film Philadelphia installs Bird Divert for residential and commercial properties throughout Philadelphia — helping property owners protect bird populations while meeting increasingly strict local bird-friendly building regulations. Up to 1 billion birds die annually from glass collisions, and Bird Divert is the proven solution.</p>
+      <div class="pp-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Bird Divert for Philadelphia Properties'}
-    body={'Welcome to Window Film Philadelphia, where innovation meets nature\'s beauty! We are thrilled to introduce Bird Divert, the revolutionary bird safety window film. We are proud to offer this remarkable solution to property owners throughout Philadelphia, including Chestnut Hill, Fairmount-Spring Garden, Roxborough, East Falls, and Manayunk.'}
-    imageSrc={'/images/bird-safety-solutions-philadelphia.jpg'}
-    imageAlt={'Bird Divert Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-featured">
+  <div class="pp-featured__hd">
+    <span class="pp-eyebrow">How It Works</span>
+    <h2 class="pp-featured__title">The science behind Bird Divert</h2>
+  </div>
 
-  <BackAndForthSection
-    heading={'Statistics Surrounding Bird Glass Collisions'}
-    body={'Every year, up to 1 billion birds lose their lives due to collisions with glass. In North America, houses and cottages are responsible for an estimated 25.9% of fatalities, low to mid-rise buildings contribute 63.9%, and high-rise buildings account for 10.2% of bird fatalities. These figures underscore the urgency of finding a solution to prevent these tragic events.'}
-    imageSrc={'/images/bird-divert-philadelphia-2.jpg'}
-    imageAlt={'Bird glass collision statistics'}
-    flip={true}
-    altBg={true}
-  />
+  {featuredSections.map((s, i) => (
+    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
+      <div class="pp-feat-row__img">
+        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+        <span class="pp-feat-row__pill">{s.heading}</span>
+      </div>
+      <div class="pp-feat-row__content">
+        <span class="pp-feat-row__num">{s.number}</span>
+        <h3 class="pp-feat-row__heading">{s.heading}</h3>
+        <p class="pp-feat-row__body">{s.body}</p>
+        <a href={s.href} class="pp-feat-row__cta">
+          {s.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BackAndForthSection
-    heading={'Help Save Birds in Philadelphia'}
-    body={'Philadelphia is an urban oasis intertwined with lush greenery, parks, and natural habitats home to warblers, sparrows, and thrushes. Bird Divert, manufactured by National Window Film, is a remarkable optically-clear bird marker that leads the market today. What sets it apart is its unique ability to be seen only by birds, falling within their visible spectrum, while remaining invisible to the human eye.'}
-    imageSrc={'/images/bird-divert-film-philadelphia.jpg'}
-    imageAlt={'Bird Divert save birds Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-why">
+  <div class="pp-why__hd">
+    <span class="pp-eyebrow">Key Features</span>
+    <h2 class="pp-why__title">Eight reasons Bird Divert leads the market</h2>
+  </div>
+  <div class="pp-why__grid">
+    {benefitItems.map((item) => (
+      <div class="pp-why__item fade-in">
+        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+        <div class="pp-why__divider"></div>
+        <h4 class="pp-why__item-title">{item.title}</h4>
+        <p class="pp-why__item-sub">{item.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Bird Divert Helps Birds Navigate the Sky Safely'}
-    body={'Bird Divert comprises a durable UV-absorbing and reflecting dot matrix that appears optically clear to humans but takes on a black or violet appearance for avian eyes. This unique technology acts as a guiding beacon, gently redirecting birds away from windows — a silent protector of the skies, reducing collisions and saving countless lives.'}
-    imageSrc={'/images/bird-divert-philadelphia-safety-film.png'}
-    imageAlt={'Bird Divert dot matrix pattern'}
-    flip={true}
-    altBg={true}
-  />
+<section class="pp-faq">
+  <div class="pp-faq__hd">
+    <span class="pp-eyebrow">FAQ</span>
+    <h2 class="pp-faq__title">Common questions about Bird Divert</h2>
+  </div>
+  <div class="pp-faq__item pp-faq__item--open">
+    <div class="pp-faq__q">How does Bird Divert make glass visible to birds? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Bird Divert uses a UV-absorbing and UV-reflecting dot matrix applied to the glass surface. Birds can see into the ultraviolet spectrum — to them, the dots appear black or violet, acting as a visible barrier that redirects them away from the glass. Human eyes cannot detect UV, so the markers are invisible to us. The film maintains 98% visible light transmission, meaning the glass looks completely clear to people inside and outside the building.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Will Bird Divert affect my views or natural light? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">No. Bird Divert maintains 98% visible light transmission, which means it is optically clear to human eyes. Your views remain completely unobstructed and your interior receives the same natural light as before installation.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Is Bird Divert LEED certified? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. Bird Divert qualifies for LEED Pilot Credit 55, which covers bird collision deterrence. It is also endorsed by the National Audubon Society and the American Bird Conservancy — making it the most credentialed bird-safe glazing solution available.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Does Bird Divert require interior access during installation? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">No. Bird Divert is applied exclusively to the exterior surface of the glass. Installation requires no interior access, making it ideal for occupied buildings, high floors, and any property where interior disruption must be minimized.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">What is the warranty on Bird Divert? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Bird Divert comes with a 5-year manufacturer warranty covering performance and adhesion. The PVC acrylic hard coat at 3.2mm thickness is engineered for long-term durability on exterior glass surfaces, resisting weathering, UV degradation, and normal environmental wear.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Are Philadelphia buildings required to use bird-friendly glass solutions? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Increasingly, yes. Cities across the United States are passing bird-friendly building codes that require new construction and major renovations to meet minimum bird safety standards. Philadelphia properties face growing regulatory pressure in this area. Bird Divert is the easiest and most cost-effective path to compliance — applied to existing glass without any renovation or structural changes.</div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Why Install Bird Divert for Your Property?'}
-    body={'Bird Divert achieves an industry-leading threat level of 18 — the only product of its kind to do so. It qualifies commercial buildings for LEED Pilot 55 certification and comes with an industry-leading 5-year manufacturer warranty. It is endorsed by the National Audubon Society and recognized by the American Bird Conservancy. With 98% visible light transmission, it does not obstruct natural light or views.'}
-    imageSrc={'/images/bird-divert-philadelphia.jpg'}
-    imageAlt={'Why install Bird Divert Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<BrandLogos />
 
-  <BackAndForthSection
-    heading={'Bird Divert Technical Facts'}
-    body={'Bird Divert features 98% Visible Light Transmission (VLT) to preserve your property\'s natural ambiance. With a thickness of 3.2mm, the PVC acrylic hard coat material is robust and tear-resistant. Exterior application means installation does not require access to your building\'s interior — no extensive renovations needed.'}
-    imageSrc={'/images/bird-safety-window-film-philadelphia.jpg'}
-    imageAlt={'Bird Divert technical specifications'}
-    flip={true}
-    altBg={true}
-  />
+<div class="pp-cta fade-in">
+  <h2>Ready to upgrade your property with <em>Bird Divert?</em></h2>
+  <div class="pp-cta__btns">
+    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'Adhere to Local Regulations & Building Codes'}
-    body={'Across the nation, cities and regions are enacting local laws requiring building owners to comply with bird-friendly design requirements. By choosing Bird Divert, you not only protect birds but also meet these important regulations — contributing to a more bird-friendly environment and ensuring harmony between urban architecture and the natural world.'}
-    imageSrc={'/images/bird-strike-prevention-film-bird-divert-philadelphia.jpg'}
-    imageAlt={'Bird friendly building regulations Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
-
-  <BackAndForthSection
-    heading={'Get a Quote on Bird Divert in Philadelphia'}
-    body={'We are here to make your property a haven for both humans and birds. Our commitment to reducing bird collisions and preserving bird populations extends throughout Philadelphia and surrounding communities. Contact us today to install Bird Divert or get an estimate — together we can make a difference, one window at a time.'}
-    imageSrc={'/images/philadelphia-window-film-bird-divert.jpg'}
-    imageAlt={'Bird Divert quote Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
-
-  <BrandLogos />
-  <CTAStrip />
-
+</div>
 </BaseLayout>
+
+<style>
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green, #81AB4C); margin-bottom: 16px;
+}
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
+.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  padding: 10px 18px; border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25; margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+  color: var(--text-dark, #1a1a1a); line-height: 1.2;
+  margin-bottom: 20px; letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
+  text-decoration: none; transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
+  margin: 0; max-width: 600px;
+}
+.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
+.pp-why__icon svg { display: block; }
+.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
+.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
+.pp-faq { padding: 100px 10%; background: #ffffff; }
+.pp-faq__hd { margin-bottom: 48px; }
+.pp-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
+}
+.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
+.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
+.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
+.pp-faq__item--open .pp-faq__a { display: block; }
+.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
+.pp-cta {
+  background: var(--brand, #272E32); border-radius: 40px;
+  padding: 64px 60px; display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5% 0;
+}
+.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
+.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-faq { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .pp-cta h2 { font-size: 26px; max-width: 100%; }
+  .pp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.pp-faq__item').forEach(item => {
+    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('pp-faq__item--open');
+      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
+      if (!isOpen) item.classList.add('pp-faq__item--open');
+    });
+  });
+</script>

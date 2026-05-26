@@ -1,69 +1,257 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Property Code | Window Film Philadelphia | Leading Window Film';
 const description = 'Window Film Philadelphia is happy to share how to use window film for commercial property code. Schedule your free consultation today!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Safety Distraction Markers With Decorative Film',
+    body: 'Building codes require safety distraction markers on any interior glass wall, partition, or full-height glazing that could be mistaken for an open passage by building occupants. These visual indicators must meet specific height and coverage requirements. Decorative window film provides a custom, compliant solution — available as simple frosted bands, branded patterns, or fully custom-printed graphics. Film satisfies code, enhances aesthetics, and supports branding simultaneously.',
+    img: '/images/window-film-property-code-adherance-philadelphia.jpg',
+    alt: 'Decorative window film safety distraction markers Philadelphia',
+    href: '/benefits/decorative-promotional/',
+    cta: 'Explore Decorative Film',
+  },
+  {
+    number: '02',
+    heading: 'Annealed Glass Upgrades With Security Film',
+    body: 'Older Philadelphia commercial properties often contain annealed glass — the original flat glass standard — which is no longer compliant with current safety glazing codes that require tempered or laminated glass in high-risk locations. Rather than replacing all non-compliant glass (a significant renovation expense), security window film can be applied to upgrade annealed glass to tempered glass performance standards. The film holds shattered glass in place, replicating the safety behavior of tempered glass at a fraction of the cost.',
+    img: '/images/commercial-window-film-property-code-philadelphia.jpg',
+    alt: 'Security window film annealed glass upgrade Philadelphia',
+    href: '/benefits/safety-and-security/',
+    cta: 'Explore Safety & Security',
+  },
+  {
+    number: '03',
+    heading: 'Why Film Is the Smarter Compliance Path',
+    body: 'Glass replacement for code compliance is expensive, disruptive, and time-consuming — requiring permits, structural work, and weeks of operational downtime. Window film achieves the same compliance outcome at a fraction of the cost, with installation measured in hours rather than weeks and no permitting required for most commercial applications. Our team provides full documentation confirming that installed film meets the applicable code requirements for your project.',
+    img: '/images/window-film-property-code-philadelphia.png',
+    alt: 'Window film property code compliance Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Consultation',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:shield-check', title: 'Code Compliant', sub: 'Film meets safety glazing requirements' },
+  { icon: 'lucide:dollar-sign', title: 'Fraction of the Cost', sub: 'vs. full glass replacement' },
+  { icon: 'lucide:clock', title: 'Installed in Hours', sub: 'No weeks of operational downtime' },
+  { icon: 'lucide:building', title: 'No Permits Required', sub: 'Surface treatment, not structural work' },
+  { icon: 'lucide:palette', title: 'Distraction Markers', sub: 'Custom decorative compliance solutions' },
+  { icon: 'lucide:layers', title: 'Annealed Glass Upgrade', sub: 'Replicates tempered glass safety behavior' },
+  { icon: 'lucide:file-text', title: 'Full Documentation', sub: 'Code compliance records provided' },
+  { icon: 'lucide:award', title: 'Manufacturer Warranty', sub: 'Backed on every compliance installation' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/property-code/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/property-code/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-property-code-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Film for Philadelphia Commercial Property Code</h1>
+<InnerPageHero title="Window Film for Property Code Compliance" bgImage="/images/window-film-property-code-philadelphia.png" desc="Bring your Philadelphia property up to code — without the renovation cost." />
+
+<div class="ip-page-body">
+
+  <section class="rp-intro">
+    <div class="rp-intro__inner">
+      <div class="rp-intro__left">
+        <span class="rp-eyebrow">Property Code</span>
+        <h1 class="rp-intro__title">Bring Your Building Up to Code. Without the Renovation.</h1>
+      </div>
+      <div class="rp-intro__right">
+        <p class="rp-intro__lead">Property code compliance for commercial glass can be expensive when it requires full glass replacement. Window film provides a fast, affordable alternative — upgrading existing glass to meet current code requirements for safety glazing, distraction markers, and annealed glass without the cost, permitting, or operational downtime of window replacement.</p>
+        <div class="rp-intro__ctas">
+          <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+          <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={'Window Film for Philadelphia Commercial Property Code'}
-    body={"Window film is a wonderful, cost-effective option for commercial properties looking to adhere to certain property codes. Glass replacement can require a high financial investment, lead to operational downtime, and other disadvantages. Window film provides a quick, affordable way to bring your Philadelphia property up to code. We're honored to provide these leading solutions for commercial properties throughout the area."}
-    imageSrc={'/images/window-film-property-code-philadelphia.png'}
-    imageAlt={'Window film property code Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+  <section class="rp-featured">
+    <div class="rp-featured__hd">
+      <span class="rp-eyebrow">Compliance Solutions</span>
+      <h2 class="rp-featured__title">How Window Film Solves Property Code Challenges</h2>
+    </div>
+    {featuredSections.map((s, i) => (
+      <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+        <div class="rp-feat-row__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <span class="rp-feat-row__pill">{s.heading}</span>
+        </div>
+        <div class="rp-feat-row__content">
+          <span class="rp-feat-row__num">{s.number}</span>
+          <h3 class="rp-feat-row__heading">{s.heading}</h3>
+          <p class="rp-feat-row__body">{s.body}</p>
+          <a href={s.href} class="rp-feat-row__cta">
+            {s.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </section>
 
-  <BackAndForthSection
-    heading={'Window Film Benefits for Philadelphia Commercial Property Code'}
-    body={'Window film provides an effective way to make sure your commercial property is adhering to current property code requirements. From safety distraction markers to annealed glass upgrades, our team offers comprehensive solutions to keep your property compliant.'}
-    imageSrc={'/images/commercial-window-film-property-code-philadelphia.jpg'}
-    imageAlt={'Window film commercial property code benefits Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
+  <section class="rp-why">
+    <div class="rp-why__hd">
+      <span class="rp-eyebrow">Code Solutions</span>
+      <h2 class="rp-why__title">Eight ways window film solves property code challenges</h2>
+    </div>
+    <div class="rp-why__grid">
+      {benefitItems.map((item) => (
+        <div class="rp-why__item fade-in">
+          <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+          <div class="rp-why__divider"></div>
+          <h4 class="rp-why__item-title">{item.title}</h4>
+          <p class="rp-why__item-sub">{item.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-  <BackAndForthSection
-    heading={'Decorative Window Film for Custom Safety Distraction Markers'}
-    body={'Safety distraction markers are required on any interior glass wall, partition, and other surfaces that could potentially be run into by building occupants. These distraction markers serve as visual alerts so that people are well aware that there is a piece of glass there and helps minimize potential accidents. Decorative film offers a custom option that can also be utilized to improve branding and marketing efforts. From frosted privacy films to truly custom printed logos, we have a comprehensive selection of options that can serve both short-term and long-term projects.'}
-    imageSrc={'/images/window-film-property-code-adherance-philadelphia.jpg'}
-    imageAlt={'Decorative window film safety distraction markers Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
-
-  <BackAndForthSection
-    heading={'Security Window Film for Annealed Glass Upgrades'}
-    body={'Older and outdated properties often contain annealed glass. However, current property code requires tempered glass in the event of an accident. Tempered glass naturally breaks into larger pieces, helping mitigate broken glass hazards that are a result of broken annealed glass. Rather than paying to replace all of your windows and glass features, security film can be installed in order to upgrade your annealed glass to tempered glass. This provides quick installations as well, helping minimize operational downtime while providing significant savings.'}
-    imageSrc={'/images/commercial-window-film-property-code-philadelphia.jpg'}
-    imageAlt={'Security window film annealed glass upgrade Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
-
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Commercial Property Code Window Film Expert"}
-    body={'Window Film Philadelphia is honored to be the trusted commercial property code window film expert serving the state of Pennsylvania. Our team is happy to help you bring your property up to code with these creative solutions. Contact us today!'}
-    imageSrc={'/images/window-film-property-code-philadelphia.png'}
-    imageAlt={'Property code window film contractor Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+  <section class="rp-faq">
+    <div class="rp-faq__hd">
+      <span class="rp-eyebrow">FAQ</span>
+      <h2 class="rp-faq__title">Common questions about window film and property code</h2>
+    </div>
+    <div class="rp-faq__item rp-faq__item--open">
+      <div class="rp-faq__q">Can window film make my annealed glass code-compliant? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — security window film applied to annealed glass replicates the safety behavior of tempered glass, satisfying current safety glazing code requirements in most jurisdictions. The film holds shattered glass in place, preventing the dangerous shard patterns that make annealed glass non-compliant.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">What are safety distraction markers and does my property need them? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Safety distraction markers are required on full-height interior glass partitions and walls to prevent building occupants from walking into glass. If your property has floor-to-ceiling glass walls or conference room glass partitions, you likely need them. Decorative window film provides a compliant, custom solution at a fraction of the cost of etched or frosted glass.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Will a building inspector accept window film as a compliance solution? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes, in most jurisdictions. Window Film Philadelphia provides documentation confirming film specifications and compliance standards. Our team advises on any local requirements specific to your jurisdiction before the project begins.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Does installing window film for code compliance require permits? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Generally no — film is a surface treatment applied to existing glass, not a structural alteration, so no permits are required for most commercial applications. Our team advises on any jurisdiction-specific requirements for your project.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">How quickly can window film be installed for code compliance? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Most code compliance installations complete in one to two days depending on scope — significantly faster than glass replacement, which can take weeks of lead time, permitting, and installation work. Film is often the fastest path to compliance for properties facing code violations or inspection deadlines.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Can one film address both distraction marker requirements and energy performance? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — decorative films that satisfy distraction marker requirements often also provide UV blocking and glare reduction as secondary benefits. Our team identifies overlapping benefits to maximize the value of your compliance installation.</div>
+    </div>
+  </section>
 
   <BrandLogos />
-  <CTAStrip />
 
+  <div class="rp-cta fade-in">
+    <h2>Ready to bring your property up to code with <em>window film?</em></h2>
+    <div class="rp-cta__btns">
+      <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+      <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+    </div>
+  </div>
+
+</div>
 </BaseLayout>
+
+<style>
+.ip-page-body { position:relative; background:#ffffff; border-top-left-radius:40px; border-top-right-radius:40px; border-bottom-left-radius:40px; border-bottom-right-radius:40px; margin-top:-40px; z-index:10; overflow:visible; padding-bottom:80px; }
+.rp-eyebrow { display:inline-block; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-btn { display:inline-block; padding:14px 28px; border-radius:var(--radius-pill,100px); font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:500; text-decoration:none; transition:all 0.2s; border:2px solid transparent; white-space:nowrap; }
+.rp-btn--primary { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--primary:hover { background:#6e9640; border-color:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-btn--ghost { background:transparent; color:var(--brand,#272E32); border-color:var(--brand,#272E32); }
+.rp-btn--ghost:hover { background:var(--brand,#272E32); color:#fff; transform:translateY(-2px); }
+.rp-btn--white { background:#fff; color:var(--brand,#272E32); border-color:#fff; font-weight:600; }
+.rp-btn--white:hover { background:var(--off-white,#F7F6F3); transform:translateY(-2px); }
+.rp-btn--green { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--green:hover { background:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-intro { padding:80px 10%; border-top-left-radius:40px; border-top-right-radius:40px; overflow:hidden; }
+.rp-intro__inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.rp-intro__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(36px,4.5vw,58px); font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-intro__lead { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-bottom:32px; }
+.rp-intro__ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.rp-featured { padding:100px 10%; background:var(--off-white,#F7F6F3); }
+.rp-featured__hd { margin-bottom:72px; }
+.rp-featured__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-feat-row { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-bottom:100px; }
+.rp-feat-row:last-child { margin-bottom:0; }
+.rp-feat-row--rev .rp-feat-row__img { order:2; }
+.rp-feat-row--rev .rp-feat-row__content { order:1; }
+.rp-feat-row__img { position:relative; height:480px; border-radius:32px; overflow:hidden; }
+.rp-feat-row__img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rp-feat-row__pill { position:absolute; bottom:24px; left:24px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); padding:10px 18px; border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-weight:600; color:var(--brand,#272E32); box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.rp-feat-row__num { display:block; font-family:var(--font-serif,'Playfair Display',serif); font-size:72px; font-weight:700; color:var(--green,#81AB4C); line-height:1; opacity:0.25; margin-bottom:-8px; }
+.rp-feat-row__heading { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(24px,3vw,36px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin-bottom:20px; letter-spacing:-0.3px; }
+.rp-feat-row__body { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.8; margin-bottom:28px; }
+.rp-feat-row__cta { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:600; color:var(--green,#81AB4C); text-decoration:none; transition:gap 0.2s; }
+.rp-feat-row__cta:hover { gap:14px; }
+.rp-why { background:var(--brand,#272E32); padding:100px 10%; }
+.rp-why__hd { margin-bottom:64px; }
+.rp-why__hd .rp-eyebrow { color:var(--green,#81AB4C); }
+.rp-why__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#ffffff; line-height:1.15; letter-spacing:-0.5px; margin:0; max-width:680px; }
+.rp-why__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.rp-why__item { padding:32px 28px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); }
+.rp-why__item:nth-child(4n) { border-right:none; }
+.rp-why__item:nth-child(n+5) { border-bottom:none; }
+.rp-why__icon { color:var(--green,#81AB4C); margin-bottom:16px; display:flex; align-items:center; line-height:1; }
+.rp-why__icon svg { display:block; }
+.rp-why__divider { width:32px; height:2px; background:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-why__item-title { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:700; color:#ffffff; margin-bottom:6px; }
+.rp-why__item-sub { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; color:rgba(255,255,255,0.5); margin:0; line-height:1.5; }
+.rp-faq { padding:100px 10%; background:#ffffff; }
+.rp-faq__hd { margin-bottom:48px; }
+.rp-faq__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); max-width:620px; margin:0; }
+.rp-faq__item { border-bottom:1px solid var(--light-gray,#EFEFED); padding:24px 0; cursor:pointer; max-width:900px; }
+.rp-faq__item:first-of-type { border-top:1px solid var(--light-gray,#EFEFED); }
+.rp-faq__q { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; font-weight:600; color:var(--text-dark,#1a1a1a); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rp-faq__toggle { color:var(--green,#81AB4C); font-size:22px; flex-shrink:0; transition:transform 0.2s; }
+.rp-faq__a { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-top:14px; display:none; }
+.rp-faq__item--open .rp-faq__a { display:block; }
+.rp-faq__item--open .rp-faq__toggle { transform:rotate(45deg); }
+.rp-cta { background:var(--brand,#272E32); border-radius:40px; padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; margin:0 5% 0; }
+.rp-cta h2 { font-family:var(--font-serif,'Playfair Display',serif); font-size:32px; font-weight:700; color:#fff; line-height:1.2; max-width:460px; margin:0; }
+.rp-cta h2 em { font-style:italic; color:var(--green,#81AB4C); }
+.rp-cta__btns { display:flex; gap:14px; flex-shrink:0; }
+.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media (max-width:1024px) {
+  .rp-intro__inner { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order:0; }
+  .rp-feat-row--rev .rp-feat-row__content { order:1; }
+  .rp-why__grid { grid-template-columns:repeat(2,1fr); }
+  .rp-why__item:nth-child(4n) { border-right:1px solid rgba(255,255,255,0.1); }
+  .rp-why__item:nth-child(2n) { border-right:none; }
+}
+@media (max-width:768px) {
+  .rp-intro { padding:60px 5%; }
+  .rp-featured { padding:60px 5%; }
+  .rp-why { padding:60px 5%; }
+  .rp-faq { padding:60px 5%; }
+  .rp-feat-row__img { height:300px; }
+  .rp-why__grid { grid-template-columns:1fr; }
+  .rp-cta { flex-direction:column; padding:40px 28px; text-align:center; }
+  .rp-cta h2 { font-size:26px; max-width:100%; }
+  .rp-cta__btns { flex-direction:column; width:100%; }
+}
+@media (max-width:480px) { .rp-intro__ctas { flex-direction:column; } }
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  document.querySelectorAll('.rp-faq__item').forEach(item => {
+    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('rp-faq__item--open');
+      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
+      if (!isOpen) item.classList.add('rp-faq__item--open');
+    });
+  });
+</script>

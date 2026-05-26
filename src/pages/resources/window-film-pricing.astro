@@ -1,107 +1,324 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Window Film Pricing | Window Film Philadelphia | Leading Window Film';
 const description = 'Window Film Philadelphia offers the most competitive pricing for the best window film solutions in the Philadelphia area. Contact us today!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'How to Choose the Right Film',
+    body: 'Before worrying about price, identify your goal. Energy savings, security, privacy, decorative branding, UV protection, and anti-graffiti protection all have different product categories — and different price points. Matching the right film to the right goal prevents over-specification (paying for performance you don\'t need) and under-specification (choosing a lower-cost film that won\'t achieve your objective). Our team provides free consultations that help you find the optimal product for your budget and goals.',
+    img: '/images/window-film-pricing-philadelphia.jpg',
+    alt: 'How to choose window film Philadelphia',
+    href: '/benefits/',
+    cta: 'Explore All Benefits',
+  },
+  {
+    number: '02',
+    heading: 'What Drives Installation Costs',
+    body: 'Three variables determine the total cost of a window film installation: film material cost (higher-quality materials like ceramic or silver cost more but perform better), project size and complexity (larger projects with difficult access or multi-story installation require larger crews and more time), and installer quality (experienced installers with manufacturer certifications deliver better results and include meaningful warranties). The cheapest quote rarely delivers the best long-term value.',
+    img: '/images/window-film-pricing-guide-philadelphia.jpg',
+    alt: 'Window film installation cost factors Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+  {
+    number: '03',
+    heading: 'ROI: What You Get Back',
+    body: 'While window film is a meaningful investment, it pays for itself. Energy-saving films typically return their full cost within 2–5 years through HVAC savings alone — then continue delivering savings for 15–20+ years. Security films reduce forced-entry risk and potential insurance premiums. Decorative film replaces frosted or etched glass at a fraction of the cost. And every film product backed by a manufacturer warranty means your investment is protected long after installation day.',
+    img: '/images/window-film-pricing-guide-philadelphia-1.jpg',
+    alt: 'Window film ROI Philadelphia',
+    href: '/resources/window-replacement-alternative/',
+    cta: 'Compare to Window Replacement',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:dollar-sign', title: 'Transparent Pricing', sub: 'No surprises — we explain every line item' },
+  { icon: 'lucide:award', title: 'Manufacturer Certified', sub: 'Installer certification affects quality and warranty' },
+  { icon: 'lucide:trending-down', title: 'Fast ROI', sub: 'Energy films pay back in 2–5 years' },
+  { icon: 'lucide:layers', title: 'Right Film for Budget', sub: 'Options at every price point' },
+  { icon: 'lucide:clock', title: 'No Hidden Costs', sub: 'Site assessment reveals all variables upfront' },
+  { icon: 'lucide:shield-check', title: 'Warranty Included', sub: 'Manufacturer + WFP workmanship warranty' },
+  { icon: 'lucide:check-circle', title: 'Free Consultation', sub: 'Onsite assessment at no charge' },
+  { icon: 'lucide:building', title: 'Commercial & Residential', sub: 'Pricing for all property types' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/window-film-pricing/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/window-film-pricing/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-pricing-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Film Pricing Guide for Philadelphia Properties</h1>
+<InnerPageHero title="Window Film Pricing Guide" bgImage="/images/window-film-pricing-philadelphia.png" desc="Understand what window film costs — and what drives the price." />
+
+<div class="ip-page-body">
+
+  <section class="rp-intro">
+    <div class="rp-intro__inner">
+      <div class="rp-intro__left">
+        <span class="rp-eyebrow">Pricing Guide</span>
+        <h1 class="rp-intro__title">What Does Window Film Actually Cost?</h1>
+      </div>
+      <div class="rp-intro__right">
+        <p class="rp-intro__lead">Window film pricing varies significantly by film type, glass area, and installation complexity. This guide provides a framework for understanding how pricing works — but for an accurate quote for your specific project, contact us directly. Every project is unique, and the only way to get a precise number is a site assessment.</p>
+        <div class="rp-intro__ctas">
+          <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+          <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={'Window Film Pricing Guide for Philadelphia Properties'}
-    body={"In order to obtain the most accurate, up-to-date window film pricing, it's best to contact us for a quote. There are many factors that go into window film pricing, making every commercial and residential project unique. Window film often is a cost-effective alternative to other solutions but it can be a considerable investment for your upcoming project. Here is a basic guideline on window film pricing for Philadelphia properties."}
-    imageSrc={'/images/window-film-pricing-philadelphia.png'}
-    imageAlt={'Window film pricing Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+  <section class="rp-featured">
+    <div class="rp-featured__hd">
+      <span class="rp-eyebrow">Pricing Factors</span>
+      <h2 class="rp-featured__title">Understanding the Cost of Window Film</h2>
+    </div>
+    {featuredSections.map((s, i) => (
+      <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+        <div class="rp-feat-row__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <span class="rp-feat-row__pill">{s.heading}</span>
+        </div>
+        <div class="rp-feat-row__content">
+          <span class="rp-feat-row__num">{s.number}</span>
+          <h3 class="rp-feat-row__heading">{s.heading}</h3>
+          <p class="rp-feat-row__body">{s.body}</p>
+          <a href={s.href} class="rp-feat-row__cta">
+            {s.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </section>
 
-  <BackAndForthSection
-    heading={'How to Choose the Right Window Film'}
-    body={"Because there are hundreds of different types of window films and brands, deciding on a window film can feel overwhelming at first, but it's actually quite a simple matter. Finding the right film is all about identifying your goals. Are you looking for a way to save money on energy costs or is security a bigger concern? What do you hope your home or building will look like once the film is installed? Once you have your goals figured out, you can narrow down your options much more easily."}
-    imageSrc={'/images/window-film-pricing-philadelphia.jpg'}
-    imageAlt={'How to choose window film Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
-
-  <BackAndForthSection
-    heading={'Calculating Actual Installation Costs'}
-    body={"Once you have determined what type of film you need, the next step is to calculate the cost of the actual install. Though all installations vary because every building is different, there are generally three variables that affect the total cost: the cost to manufacture the film, the size and intensity of the project, and the quality of the service being performed. Higher quality films cost more because they are made of more expensive materials like silver, ceramic, and high grade polyester, but produce better results. Larger projects typically cost more because they require a larger crew and more materials. Difficult installs can also be more time consuming, which also affects the price. The quality of the workmanship should also be taken into consideration — a larger, more experienced company will generally produce better and more rapid results and typically includes a warranty with their work."}
-    imageSrc={'/images/window-film-pricing-guide-philadelphia.jpg'}
-    imageAlt={'Window film installation costs Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
-
-  <section class="section-pad resource-section">
-    <div class="container">
-      <h2>General Price Estimates</h2>
-      <p>Window film prices are usually calculated per square foot. Prices vary depending on the type of film and the brand. Here are some general estimates on commonly used films:</p>
-      <table class="pricing-table">
+  <section class="rp-pricing">
+    <div class="rp-pricing__hd">
+      <span class="rp-eyebrow">Price Estimates</span>
+      <h2 class="rp-pricing__title">General Price Estimates by Film Type</h2>
+      <p class="rp-pricing__intro">Window film prices are calculated per square foot. The estimates below reflect typical installed cost ranges. Contact us for an accurate quote for your project.</p>
+    </div>
+    <div class="rp-pricing__table-wrap">
+      <table class="rp-pricing__table">
         <thead>
-          <tr><th>Film Type</th><th>Approx. Cost</th><th>Common Use</th></tr>
+          <tr>
+            <th>Film Type</th>
+            <th>Approx. Cost</th>
+            <th>Best For</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Spectrally Selective</td><td>$9–18 per sq ft</td><td>Blocking heat, glare, and UV radiation</td></tr>
-          <tr><td>Low-E Film</td><td>~$20 per sq ft</td><td>Year-round climate control and energy savings</td></tr>
-          <tr><td>Safety / Security</td><td>$8–16 per sq ft</td><td>Protection against forced entry, accidents, and weather</td></tr>
-          <tr><td>Bullet Resistant</td><td>~$125 per sq ft</td><td>Strengthen glass against ballistics and severe impact</td></tr>
-          <tr><td>Security Attachment Systems</td><td>$2–5 per linear ft</td><td>Attach security film for increased impact resistance</td></tr>
-          <tr><td>Decorative / Frosted</td><td>$6–12 per sq ft</td><td>Privacy and decorative features</td></tr>
+          <tr>
+            <td class="rp-pricing__film-type">Spectrally Selective</td>
+            <td class="rp-pricing__cost">$9–18 per sq ft</td>
+            <td>Blocking heat, glare, and UV radiation</td>
+          </tr>
+          <tr>
+            <td class="rp-pricing__film-type">Low-E Film</td>
+            <td class="rp-pricing__cost">~$20 per sq ft</td>
+            <td>Year-round climate control and energy savings</td>
+          </tr>
+          <tr>
+            <td class="rp-pricing__film-type">Safety / Security</td>
+            <td class="rp-pricing__cost">$8–16 per sq ft</td>
+            <td>Protection against forced entry, accidents, and weather</td>
+          </tr>
+          <tr>
+            <td class="rp-pricing__film-type">Bullet Resistant</td>
+            <td class="rp-pricing__cost">~$125 per sq ft</td>
+            <td>Strengthen glass against ballistics and severe impact</td>
+          </tr>
+          <tr>
+            <td class="rp-pricing__film-type">Security Attachment Systems</td>
+            <td class="rp-pricing__cost">$2–5 per linear ft</td>
+            <td>Attach security film for increased impact resistance</td>
+          </tr>
+          <tr>
+            <td class="rp-pricing__film-type">Decorative / Frosted</td>
+            <td class="rp-pricing__cost">$6–12 per sq ft</td>
+            <td>Privacy and decorative features</td>
+          </tr>
         </tbody>
       </table>
-      <p class="pricing-note">* Please note that prices vary and those listed may not be reflective of actual costs. Contact us for an accurate quote.</p>
+      <p class="rp-pricing__disclaimer">* Prices vary and those listed may not reflect actual costs for your project. Contact us for an accurate quote.</p>
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Film Expert"}
-    body={"Window Film Philadelphia is honored to be the trusted window film expert serving the state of Pennsylvania. Our team is happy to help guide you through window film pricing and can always give you a more accurate quote over the phone or during an on-site consultation. Contact us today!"}
-    imageSrc={'/images/window-film-pricing-guide-philadelphia-1.jpg'}
-    imageAlt={'Window film pricing expert Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+  <section class="rp-why">
+    <div class="rp-why__hd">
+      <span class="rp-eyebrow">Pricing Factors</span>
+      <h2 class="rp-why__title">Eight things that affect your window film investment</h2>
+    </div>
+    <div class="rp-why__grid">
+      {benefitItems.map((item) => (
+        <div class="rp-why__item fade-in">
+          <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+          <div class="rp-why__divider"></div>
+          <h4 class="rp-why__item-title">{item.title}</h4>
+          <p class="rp-why__item-sub">{item.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="rp-faq">
+    <div class="rp-faq__hd">
+      <span class="rp-eyebrow">FAQ</span>
+      <h2 class="rp-faq__title">Common questions about window film pricing</h2>
+    </div>
+    <div class="rp-faq__item rp-faq__item--open">
+      <div class="rp-faq__q">How do I get an accurate price for my project? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Contact us for a free onsite consultation. Pricing depends on glass area, film type, access complexity, and installer experience — all variables our team assesses during a site visit. We provide itemized quotes with no surprises after the assessment.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Why does bullet-resistant film cost so much more than other security film? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Ballistic-resistant film is multi-ply, significantly thicker, and uses specialized materials engineered to meet military and law enforcement ballistic standards. It's a fundamentally different product from standard safety and security film, designed to a completely different performance specification.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Is the cheapest quote always the best deal? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Rarely. Lower-cost installs often use thinner film with less UV protection, skip proper surface preparation, or don't include meaningful warranties. Total cost of ownership — including energy savings, warranty coverage, and product longevity — consistently favors quality installation over the cheapest initial price.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Does film price include installation? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">WFP's quotes always include professional installation, surface preparation, and warranty documentation. Be cautious of film-only quotes that don't account for labor, proper surface prep, and workmanship warranty — the installation quality is as important as the film itself.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Can I get financing or payment terms for a large commercial install? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Contact us to discuss payment options for large commercial projects. We work with property managers and building owners on project scheduling, phasing, and payment structures that work for your operational and financial requirements.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">How long after installation does pricing typically pay back through energy savings? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Energy films typically achieve full payback in 2–5 years for most commercial properties. Residential varies by glazing area and orientation. Our team can model projected savings based on your specific building during your free consultation — giving you a real payback projection before you commit.</div>
+    </div>
+  </section>
 
   <BrandLogos />
-  <CTAStrip />
 
+  <div class="rp-cta fade-in">
+    <h2>Ready for an accurate quote on <em>your project?</em></h2>
+    <div class="rp-cta__btns">
+      <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+      <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+    </div>
+  </div>
+
+</div>
 </BaseLayout>
 
 <style>
-.resource-section { background: var(--color-bg-section); }
-.resource-section h2 { margin-bottom: 1rem; }
-.resource-section > .container > p { margin-bottom: 1.5rem; }
-.pricing-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+.ip-page-body { position:relative; background:#ffffff; border-top-left-radius:40px; border-top-right-radius:40px; border-bottom-left-radius:40px; border-bottom-right-radius:40px; margin-top:-40px; z-index:10; overflow:visible; padding-bottom:80px; }
+.rp-eyebrow { display:inline-block; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-btn { display:inline-block; padding:14px 28px; border-radius:var(--radius-pill,100px); font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:500; text-decoration:none; transition:all 0.2s; border:2px solid transparent; white-space:nowrap; }
+.rp-btn--primary { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--primary:hover { background:#6e9640; border-color:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-btn--ghost { background:transparent; color:var(--brand,#272E32); border-color:var(--brand,#272E32); }
+.rp-btn--ghost:hover { background:var(--brand,#272E32); color:#fff; transform:translateY(-2px); }
+.rp-btn--white { background:#fff; color:var(--brand,#272E32); border-color:#fff; font-weight:600; }
+.rp-btn--white:hover { background:var(--off-white,#F7F6F3); transform:translateY(-2px); }
+.rp-btn--green { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--green:hover { background:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-intro { padding:80px 10%; border-top-left-radius:40px; border-top-right-radius:40px; overflow:hidden; }
+.rp-intro__inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.rp-intro__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(36px,4.5vw,58px); font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-intro__lead { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-bottom:32px; }
+.rp-intro__ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.rp-featured { padding:100px 10%; background:var(--off-white,#F7F6F3); }
+.rp-featured__hd { margin-bottom:72px; }
+.rp-featured__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-feat-row { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-bottom:100px; }
+.rp-feat-row:last-child { margin-bottom:0; }
+.rp-feat-row--rev .rp-feat-row__img { order:2; }
+.rp-feat-row--rev .rp-feat-row__content { order:1; }
+.rp-feat-row__img { position:relative; height:480px; border-radius:32px; overflow:hidden; }
+.rp-feat-row__img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rp-feat-row__pill { position:absolute; bottom:24px; left:24px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); padding:10px 18px; border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-weight:600; color:var(--brand,#272E32); box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.rp-feat-row__num { display:block; font-family:var(--font-serif,'Playfair Display',serif); font-size:72px; font-weight:700; color:var(--green,#81AB4C); line-height:1; opacity:0.25; margin-bottom:-8px; }
+.rp-feat-row__heading { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(24px,3vw,36px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin-bottom:20px; letter-spacing:-0.3px; }
+.rp-feat-row__body { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.8; margin-bottom:28px; }
+.rp-feat-row__cta { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:600; color:var(--green,#81AB4C); text-decoration:none; transition:gap 0.2s; }
+.rp-feat-row__cta:hover { gap:14px; }
+.rp-pricing { background:#ffffff; padding:80px 10%; }
+.rp-pricing__hd { margin-bottom:40px; }
+.rp-pricing__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin:0 0 12px; }
+.rp-pricing__intro { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.7; max-width:680px; margin:0; }
+.rp-pricing__table-wrap { overflow-x:auto; }
+.rp-pricing__table { width:100%; border-collapse:collapse; font-family:var(--font-body,'DM Sans',sans-serif); }
+.rp-pricing__table thead tr { background:var(--brand,#272E32); }
+.rp-pricing__table thead th { padding:14px 20px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#fff; text-align:left; }
+.rp-pricing__table tbody tr:nth-child(odd) { background:#fff; }
+.rp-pricing__table tbody tr:nth-child(even) { background:var(--off-white,#F7F6F3); }
+.rp-pricing__table tbody td { padding:14px 20px; font-size:15px; color:var(--text-mid,#4a4a4a); border-bottom:1px solid var(--light-gray,#EFEFED); }
+.rp-pricing__film-type { font-weight:600; color:var(--text-dark,#1a1a1a) !important; }
+.rp-pricing__cost { font-weight:700; color:var(--green,#81AB4C) !important; white-space:nowrap; }
+.rp-pricing__disclaimer { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-style:italic; color:rgba(0,0,0,0.4); margin-top:12px; }
+.rp-why { background:var(--brand,#272E32); padding:100px 10%; }
+.rp-why__hd { margin-bottom:64px; }
+.rp-why__hd .rp-eyebrow { color:var(--green,#81AB4C); }
+.rp-why__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#ffffff; line-height:1.15; letter-spacing:-0.5px; margin:0; max-width:680px; }
+.rp-why__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.rp-why__item { padding:32px 28px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); }
+.rp-why__item:nth-child(4n) { border-right:none; }
+.rp-why__item:nth-child(n+5) { border-bottom:none; }
+.rp-why__icon { color:var(--green,#81AB4C); margin-bottom:16px; display:flex; align-items:center; line-height:1; }
+.rp-why__icon svg { display:block; }
+.rp-why__divider { width:32px; height:2px; background:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-why__item-title { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:700; color:#ffffff; margin-bottom:6px; }
+.rp-why__item-sub { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; color:rgba(255,255,255,0.5); margin:0; line-height:1.5; }
+.rp-faq { padding:100px 10%; background:#ffffff; }
+.rp-faq__hd { margin-bottom:48px; }
+.rp-faq__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); max-width:620px; margin:0; }
+.rp-faq__item { border-bottom:1px solid var(--light-gray,#EFEFED); padding:24px 0; cursor:pointer; max-width:900px; }
+.rp-faq__item:first-of-type { border-top:1px solid var(--light-gray,#EFEFED); }
+.rp-faq__q { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; font-weight:600; color:var(--text-dark,#1a1a1a); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rp-faq__toggle { color:var(--green,#81AB4C); font-size:22px; flex-shrink:0; transition:transform 0.2s; }
+.rp-faq__a { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-top:14px; display:none; }
+.rp-faq__item--open .rp-faq__a { display:block; }
+.rp-faq__item--open .rp-faq__toggle { transform:rotate(45deg); }
+.rp-cta { background:var(--brand,#272E32); border-radius:40px; padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; margin:0 5% 0; }
+.rp-cta h2 { font-family:var(--font-serif,'Playfair Display',serif); font-size:32px; font-weight:700; color:#fff; line-height:1.2; max-width:460px; margin:0; }
+.rp-cta h2 em { font-style:italic; color:var(--green,#81AB4C); }
+.rp-cta__btns { display:flex; gap:14px; flex-shrink:0; }
+.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media (max-width:1024px) {
+  .rp-intro__inner { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order:0; }
+  .rp-feat-row--rev .rp-feat-row__content { order:1; }
+  .rp-why__grid { grid-template-columns:repeat(2,1fr); }
+  .rp-why__item:nth-child(4n) { border-right:1px solid rgba(255,255,255,0.1); }
+  .rp-why__item:nth-child(2n) { border-right:none; }
 }
-.pricing-table th {
-  background: var(--color-charcoal);
-  color: #fff;
-  padding: 0.65rem 1rem;
-  text-align: left;
-  font-family: var(--font-heading);
+@media (max-width:768px) {
+  .rp-intro { padding:60px 5%; }
+  .rp-featured { padding:60px 5%; }
+  .rp-pricing { padding:60px 5%; }
+  .rp-why { padding:60px 5%; }
+  .rp-faq { padding:60px 5%; }
+  .rp-feat-row__img { height:300px; }
+  .rp-why__grid { grid-template-columns:1fr; }
+  .rp-cta { flex-direction:column; padding:40px 28px; text-align:center; }
+  .rp-cta h2 { font-size:26px; max-width:100%; }
+  .rp-cta__btns { flex-direction:column; width:100%; }
 }
-.pricing-table td {
-  padding: 0.6rem 1rem;
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
-}
-.pricing-table tr:nth-child(even) td { background: var(--color-bg-white); }
-.pricing-note { font-size: 0.8rem; color: var(--color-text-muted); font-style: italic; }
+@media (max-width:480px) { .rp-intro__ctas { flex-direction:column; } }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  document.querySelectorAll('.rp-faq__item').forEach(item => {
+    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('rp-faq__item--open');
+      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
+      if (!isOpen) item.classList.add('rp-faq__item--open');
+    });
+  });
+</script>

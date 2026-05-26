@@ -1,87 +1,343 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Huper Optik Window Film Philadelphia | Huper Optik Philadelphia';
 const description = 'Enhance comfort and privacy in your home or office with premium Huper Optik in Philadelphia, using advanced window films that reduce glare and block UV rays.';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Huper Optik Select & Ceramic Series',
+    body: 'The Select Series delivers powerful solar performance with a clean, natural appearance — blocking 99% of UV radiation and rejecting up to 70% of solar heat with a fade-resistant, long-lasting finish. The Ceramic Series steps this up with nano-ceramic technology engineered for best-in-class durability in temperature extremes and high-impact environments, while maintaining a low-reflectivity appearance that blends with any building facade.',
+    img: '/images/Modern-glass-building-entrance.jpg',
+    alt: 'Huper Optik Select and Ceramic Series Philadelphia',
+    href: '/benefits/energy-savings/',
+    cta: 'Explore Energy Savings',
+  },
+  {
+    number: '02',
+    heading: 'Huper Optik Therm-X & Fusion Series',
+    body: 'The Therm-X Series provides a thick thermal barrier with multiple finishes — delivering excellent ROI through quick payback and a substantial privacy solution while maintaining strong visible light transmission. The Fusion Series uses proprietary green technology with neutral tones and low reflectivity, rejecting 77% of solar heat gain and effectively eliminating hot and cold spots throughout your property.',
+    img: '/images/Looking-up-at-skyscrapers.jpg',
+    alt: 'Huper Optik Therm-X Fusion Series Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+  {
+    number: '03',
+    heading: 'Huper Optik Shield Series',
+    body: 'The Shield Series combines energy savings with security in a single film. It provides moderate solar heat rejection and UV protection, defends against threats ranging from natural disasters to burglaries, and mitigates broken glass hazards — making it the complete solution for Philadelphia properties that require both comfort and protection in one installation.',
+    img: '/images/safety-and-security-window-film-philadelphia.png',
+    alt: 'Huper Optik Shield Series security Philadelphia',
+    href: '/benefits/safety-and-security/',
+    cta: 'Explore Safety & Security',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:sun', title: 'Select Series', sub: 'Blocks 99% UV, rejects 70% solar heat' },
+  { icon: 'lucide:layers', title: 'Ceramic Series', sub: 'Nano-ceramic, best-in-class durability' },
+  { icon: 'lucide:wind', title: 'Therm-X Series', sub: 'Thick thermal barrier, multiple finishes' },
+  { icon: 'lucide:leaf', title: 'Fusion Series', sub: 'Green technology, 77% heat rejection' },
+  { icon: 'lucide:shield-check', title: 'Shield Series', sub: 'Security + energy in one film' },
+  { icon: 'lucide:eye-off', title: 'Glare Control', sub: 'Low-reflectivity options available' },
+  { icon: 'lucide:thermometer', title: 'Heat Rejection', sub: 'Up to 77% solar heat rejected' },
+  { icon: 'lucide:award', title: 'Certified Install', sub: 'Manufacturer-backed warranty' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/products/huper-optik/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/huper-optik/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-09-huper-optik-window-film-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Huper Optik in Philadelphia for Modern Property Upgrades</h1>
+<InnerPageHero
+  title="Huper Optik Window Film Philadelphia"
+  bgImage="/images/2021-09-huper-optik-window-film-philadelphia.jpg"
+  desc="Nanoceramic technology for superior solar performance and clarity."
+/>
+
+<div class="ip-page-body">
+
+<section class="pp-intro">
+  <div class="pp-intro__inner">
+    <div class="pp-intro__left">
+      <span class="pp-eyebrow">Huper Optik</span>
+      <h1 class="pp-intro__title">Nanoceramic Science. Superior Clarity.</h1>
     </div>
-  </section>
+    <div class="pp-intro__right">
+      <p class="pp-intro__lead">Huper Optik is one of the most technologically advanced window film brands available. Using nanoceramic technology, Huper Optik films achieve exceptional solar heat rejection, UV blocking, and glare reduction — while maintaining low reflectivity and high visible light transmission. Window Film Philadelphia installs the complete Huper Optik lineup for homes and commercial buildings throughout Philadelphia.</p>
+      <div class="pp-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Huper Optik in Philadelphia for Modern Property Upgrades'}
-    body={'Huper Optik utilizes advanced nanoceramic window film technology to reduce heat, control glare, and improve comfort for residential and commercial buildings throughout Philadelphia. Reliable, stylish, and built for lasting performance, Huper Optik is the premium choice for property owners who demand the best.'}
-    imageSrc={'/images/window-film-contractor-upper-darby-township.jpg'}
-    imageAlt={'Huper Optik window film Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-featured">
+  <div class="pp-featured__hd">
+    <span class="pp-eyebrow">Product Lines</span>
+    <h2 class="pp-featured__title">Five Huper Optik series for Philadelphia properties</h2>
+  </div>
 
-  <BackAndForthSection
-    heading={'Huper Optik Select Series'}
-    body={'The Select Series delivers powerful solar performance with a clean, natural appearance. It blocks 99% of UV radiation, rejects up to 70% of solar heat, and is fade-resistant for lasting clarity — making it an excellent all-around choice for both residential and commercial applications.'}
-    imageSrc={'/images/House-with-mountain-view.jpg'}
-    imageAlt={'Huper Optik Select Series'}
-    flip={true}
-    altBg={true}
-  />
+  {featuredSections.map((s, i) => (
+    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
+      <div class="pp-feat-row__img">
+        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+        <span class="pp-feat-row__pill">{s.heading}</span>
+      </div>
+      <div class="pp-feat-row__content">
+        <span class="pp-feat-row__num">{s.number}</span>
+        <h3 class="pp-feat-row__heading">{s.heading}</h3>
+        <p class="pp-feat-row__body">{s.body}</p>
+        <a href={s.href} class="pp-feat-row__cta">
+          {s.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BackAndForthSection
-    heading={'Huper Optik Ceramic Series'}
-    body={'The Ceramic Series leverages nano-ceramic technology for best-in-class durability and performance in temperature extremes and high-impact events. It rejects 70% of solar heat, blocks 99% of UV radiation, and maintains a low-reflectivity appearance that blends with any building facade.'}
-    imageSrc={'/images/Modern-glass-building-entrance.jpg'}
-    imageAlt={'Huper Optik Ceramic Series'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-why">
+  <div class="pp-why__hd">
+    <span class="pp-eyebrow">Product Range</span>
+    <h2 class="pp-why__title">The complete Huper Optik series lineup</h2>
+  </div>
+  <div class="pp-why__grid">
+    {benefitItems.map((item) => (
+      <div class="pp-why__item fade-in">
+        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+        <div class="pp-why__divider"></div>
+        <h4 class="pp-why__item-title">{item.title}</h4>
+        <p class="pp-why__item-sub">{item.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Huper Optik Therm-X Series'}
-    body={'The Therm-X Series provides a thick thermal barrier with multiple finishes to choose from. It delivers great ROI with quick payback, is available in numerous finishes and hues, and offers a significant privacy solution while maintaining substantial visible light transmission.'}
-    imageSrc={'/images/Looking-up-at-skyscrapers.jpg'}
-    imageAlt={'Huper Optik Therm-X Series'}
-    flip={true}
-    altBg={true}
-  />
+<section class="pp-faq">
+  <div class="pp-faq__hd">
+    <span class="pp-eyebrow">FAQ</span>
+    <h2 class="pp-faq__title">Common questions about Huper Optik window film</h2>
+  </div>
+  <div class="pp-faq__item pp-faq__item--open">
+    <div class="pp-faq__q">What makes Huper Optik different from other window film brands? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Huper Optik uses nanoceramic technology — meaning the film contains no metal layers. This provides several advantages: no color shift over time, no signal interference with cell phones or WiFi, and superior long-term durability compared to metallic films. The ceramic particles provide excellent solar heat rejection while maintaining a natural, low-reflectivity appearance.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Which Huper Optik series is best for energy savings? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">The Fusion Series offers the highest heat rejection at 77%, making it the top choice for maximum energy savings. The Select and Ceramic Series are excellent for UV and solar control. The Therm-X Series provides a strong thermal barrier with privacy benefits. The Window Film Philadelphia team can recommend the best series based on your specific property and energy goals.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Does Huper Optik film look reflective from outside? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">No. Low reflectivity is a defining characteristic of the Huper Optik lineup. The Fusion Series in particular has neutral tones that blend naturally with building aesthetics without the mirror-like appearance of traditional metallic films.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Is Huper Optik suitable for residential homes? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. The Select and Ceramic Series are excellent choices for residential properties. Since Huper Optik contains no metal layers, there is no cell or WiFi signal interference inside the home — a common concern with older metallic window films.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Does Huper Optik Shield Series replace a dedicated security film? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">The Shield Series provides moderate security performance combined with energy savings — a solid choice for properties that want a combined solution. For high-security requirements such as government facilities or critical infrastructure, the Window Film Philadelphia team may recommend a dedicated security film installation or a layered approach.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">How long does Huper Optik window film last? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Huper Optik window film typically lasts 10–20+ years. The ceramic technology is particularly durable with no fading, cracking, or peeling over time. All series come with a full manufacturer warranty covering performance and adhesion.</div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Huper Optik Fusion Series'}
-    body={'The Fusion Series uses proprietary green technology with low reflective properties. It features neutral tones with low reflectivity, rejects 77% of solar heat gain, and effectively eliminates hot and cold spots throughout your property for a consistently comfortable environment.'}
-    imageSrc={'/images/energy-saving-window-film-philadelphia.png'}
-    imageAlt={'Huper Optik Fusion Series'}
-    flip={false}
-    altBg={false}
-  />
+<BrandLogos />
 
-  <BackAndForthSection
-    heading={'Huper Optik Shield Series'}
-    body={'The Shield Series combines energy savings with security in one film. It provides moderate solar heat rejection and UV protection, defends against threats ranging from natural disasters to burglaries, and mitigates broken glass hazards — a complete solution for properties requiring both comfort and protection.'}
-    imageSrc={'/images/safety-and-security-window-film-philadelphia.png'}
-    imageAlt={'Huper Optik Shield Series'}
-    flip={true}
-    altBg={true}
-  />
+<div class="pp-cta fade-in">
+  <h2>Ready to upgrade your property with <em>Huper Optik window film?</em></h2>
+  <div class="pp-cta__btns">
+    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
 
-  <BackAndForthSection
-    heading={'Trusted Huper Optik Installation Experts in Philadelphia'}
-    body={'Window Film Philadelphia is the trusted provider of Huper Optik window film for residential and commercial properties throughout the Philadelphia area. Our team provides expert guidance on selecting the right Huper Optik series for your project. Contact us today for more information.'}
-    imageSrc={'/images/2021-10-llumar-window-film-contractor-philadelphia.jpg'}
-    imageAlt={'Huper Optik installation experts Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
-
-  <BrandLogos />
-  <CTAStrip />
-
+</div>
 </BaseLayout>
+
+<style>
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green, #81AB4C); margin-bottom: 16px;
+}
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
+.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  padding: 10px 18px; border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25; margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+  color: var(--text-dark, #1a1a1a); line-height: 1.2;
+  margin-bottom: 20px; letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
+  text-decoration: none; transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
+  margin: 0; max-width: 600px;
+}
+.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
+.pp-why__icon svg { display: block; }
+.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
+.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
+.pp-faq { padding: 100px 10%; background: #ffffff; }
+.pp-faq__hd { margin-bottom: 48px; }
+.pp-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
+}
+.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
+.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
+.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
+.pp-faq__item--open .pp-faq__a { display: block; }
+.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
+.pp-cta {
+  background: var(--brand, #272E32); border-radius: 40px;
+  padding: 64px 60px; display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5% 0;
+}
+.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
+.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-faq { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .pp-cta h2 { font-size: 26px; max-width: 100%; }
+  .pp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.pp-faq__item').forEach(item => {
+    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('pp-faq__item--open');
+      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
+      if (!isOpen) item.classList.add('pp-faq__item--open');
+    });
+  });
+</script>

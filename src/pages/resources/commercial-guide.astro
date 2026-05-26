@@ -1,11 +1,54 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Commercial Window Film Guide | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is honored to provide a comprehensive commercial window film guide. Schedule your free consultation today!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Step One: Identify Your Project Goals',
+    body: 'The first step for any commercial window film project is identifying your needs. Think about the dysfunction or opportunity at your property — are you losing energy through large glass facades? Do conference rooms lack privacy? Is glare affecting productivity? Are you looking to reinforce glass against break-ins or severe weather? Once you\'ve identified your primary goal, you can narrow the field from hundreds of products to a short list of candidates.',
+    img: '/images/commercial-window-film-guide-philadelphia.jpg',
+    alt: 'Window film project goal Philadelphia',
+    href: '/benefits/',
+    cta: 'Explore All Benefits',
+  },
+  {
+    number: '02',
+    heading: 'Step Two: Choose the Right Film Type',
+    body: 'Once your goals are clear, a professional window film contractor can help you select the right product from the options available. There are films optimized for energy savings, UV blocking, glare reduction, safety and security, privacy, decorative branding, anti-graffiti protection, bird strike prevention, and surface refinishing. Many films serve multiple goals simultaneously — an energy film also blocks UV; a security film also reduces glare. Our team helps you find the overlap.',
+    img: '/images/commercial-window-film-guide-philadelphia-1.png',
+    alt: 'Choose right window film type Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Consultation',
+  },
+  {
+    number: '03',
+    heading: 'Step Three: Work With the Right Contractor',
+    body: 'Commercial window film installation requires experienced contractors — especially for high-security clearances, government facilities, LEED documentation, or multi-floor deployments. The right contractor minimizes project mistakes, saves money through accurate product selection, and provides documentation for warranty, LEED, and project closeout. Window Film Philadelphia brings decades of commercial expertise to every project in the Philadelphia region.',
+    img: '/images/commercial-window-film-contractor-philadelphia.jpg',
+    alt: 'Commercial window film contractor Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:thermometer', title: 'Energy Savings', sub: 'HVAC cost reduction, LEED eligible' },
+  { icon: 'lucide:shield-check', title: 'Safety & Security', sub: 'Impact resistance, smash-and-grab deterrence' },
+  { icon: 'lucide:palette', title: 'Decorative & Branding', sub: 'Custom graphics, frosted, privacy' },
+  { icon: 'lucide:eye-off', title: 'Privacy', sub: 'One-way and frosted options' },
+  { icon: 'lucide:sun', title: 'UV & Glare', sub: '99.9% UV block, glare control' },
+  { icon: 'lucide:eraser', title: 'Anti-Graffiti', sub: 'Surface protection for high-traffic areas' },
+  { icon: 'lucide:feather', title: 'Bird Strike Prevention', sub: 'Bird-friendly glazing compliance' },
+  { icon: 'lucide:layers', title: 'Surface Films', sub: 'Refinish surfaces without replacement' },
+];
 
 const filmTypes = [
   { label: 'UV Blocking',               href: '/benefits/uv-blocking-window-film-philadelphia/' },
@@ -22,112 +65,231 @@ const filmTypes = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/commercial-guide/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/commercial-guide/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/commercial-window-film-guide-philadelphia-1.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Commercial Window Film Guide for Your Philadelphia Property</h1>
+<InnerPageHero title="Commercial Window Film Guide" bgImage="/images/commercial-window-film-guide-philadelphia-1.png" desc="A step-by-step guide to choosing and installing commercial window film." />
+
+<div class="ip-page-body">
+
+  <section class="rp-intro">
+    <div class="rp-intro__inner">
+      <div class="rp-intro__left">
+        <span class="rp-eyebrow">Commercial Guide</span>
+        <h1 class="rp-intro__title">Find the Right Film for Your Property.</h1>
+      </div>
+      <div class="rp-intro__right">
+        <p class="rp-intro__lead">Commercial window film delivers a great ROI for Philadelphia properties across every industry — from LEED certification support to security upgrades, privacy solutions, and marketing-grade decorative film. The key to a successful project is knowing your goals before you start. This guide walks you through the three steps every commercial property owner should take before specifying or installing window film.</p>
+        <div class="rp-intro__ctas">
+          <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+          <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={'Commercial Window Film Guide for Your Philadelphia Property'}
-    body={"Commercial window film is a great way to enhance your property regardless of what industry you're in. From LEED certification to high-end productivity solutions, window film delivers a great ROI for Philadelphia commercial properties. This cost-effective investment provides numerous benefits ranging from energy conservation to marketing collateral. Whether you're looking for a privacy solution for your Center City conference room or premium safety and security window film for your Kensington business, we've got you covered."}
-    imageSrc={'/images/commercial-window-film-guide-philadelphia-1.png'}
-    imageAlt={'Commercial window film guide Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+  <section class="rp-featured">
+    <div class="rp-featured__hd">
+      <span class="rp-eyebrow">Three Steps</span>
+      <h2 class="rp-featured__title">Your Commercial Window Film Project, Step by Step</h2>
+    </div>
+    {featuredSections.map((s, i) => (
+      <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+        <div class="rp-feat-row__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <span class="rp-feat-row__pill">{s.heading}</span>
+        </div>
+        <div class="rp-feat-row__content">
+          <span class="rp-feat-row__num">{s.number}</span>
+          <h3 class="rp-feat-row__heading">{s.heading}</h3>
+          <p class="rp-feat-row__body">{s.body}</p>
+          <a href={s.href} class="rp-feat-row__cta">
+            {s.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </section>
 
-  <BackAndForthSection
-    heading={'Step One: Window Film Project Goal'}
-    body={"The first step for any commercial project is identifying your needs and goals. When it comes to your commercial property, think about any property dysfunction you may experience. This may come in the form of energy loss, privacy concerns, security needs, and more. Once you've determined this, you can create the right plan for your project and find the appropriate contractor."}
-    imageSrc={'/images/commercial-window-film-guide-philadelphia.jpg'}
-    imageAlt={'Window film project goal Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
-
-  <section class="section-pad resource-section">
-    <div class="container">
-      <h2>Finding the Right Types of Window Film for Your Philadelphia Commercial Project</h2>
-      <p>Once you've determined what your goals are, working with a professional window film contractor can help you find the perfect types of window film for your project. There are countless specialty films available as well as multi-purpose products. Here are some of the types of window film products you can choose from:</p>
-      <ul class="film-type-list">
-        {filmTypes.map((type) => (
-          <li>
-            <a href={type.href}>
-              {type.label}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </a>
-          </li>
-        ))}
-      </ul>
+  <section class="rp-filmtypes">
+    <div class="rp-filmtypes__hd">
+      <span class="rp-eyebrow">Film Types</span>
+      <h2 class="rp-filmtypes__title">Window Film Options for Philadelphia Commercial Properties</h2>
+      <p class="rp-filmtypes__intro">Here are the window film types available for your commercial project. Click any type to learn more.</p>
+    </div>
+    <div class="rp-filmtypes__grid">
+      {filmTypes.map((type) => (
+        <a href={type.href} class="rp-filmtypes__pill">
+          {type.label}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      ))}
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={'Working With the Right Window Film Contractor for Your Philadelphia Project'}
-    body={"After you've decided your project goals and determined what types of window film you'll need for your commercial property, it's important to find the right contractor for the job. Commercial jobs require experienced contractors, especially those that require high-security clearance and other permitting. Finding the right commercial window film contractor can also help you minimize project mistakes, save money, and find better investments. Our team is happy to help you with your upcoming commercial project!"}
-    imageSrc={'/images/commercial-window-film-contractor-philadelphia.jpg'}
-    imageAlt={'Window film contractor Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+  <section class="rp-why">
+    <div class="rp-why__hd">
+      <span class="rp-eyebrow">Key Benefits</span>
+      <h2 class="rp-why__title">Window film benefits for every commercial property type</h2>
+    </div>
+    <div class="rp-why__grid">
+      {benefitItems.map((item) => (
+        <div class="rp-why__item fade-in">
+          <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+          <div class="rp-why__divider"></div>
+          <h4 class="rp-why__item-title">{item.title}</h4>
+          <p class="rp-why__item-sub">{item.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="rp-faq">
+    <div class="rp-faq__hd">
+      <span class="rp-eyebrow">FAQ</span>
+      <h2 class="rp-faq__title">Common questions about commercial window film projects</h2>
+    </div>
+    <div class="rp-faq__item rp-faq__item--open">
+      <div class="rp-faq__q">How do I know which type of window film is right for my property? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">It starts with identifying your primary goal. Our team provides free consultations and onsite assessments to evaluate your property's glass, orientation, and specific needs — and then recommends the best product match for your goals and budget.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Can one film address multiple goals? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — many films serve multiple purposes simultaneously. An energy film also blocks UV. A security film also reduces glare. Our team helps you find the product that provides the greatest overlap between your goals, so you don't have to choose just one benefit.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Do commercial window film installs require permits? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Generally no — film is a surface treatment, not a structural alteration, so no permits are required for most commercial window film installations. Our team will advise on any jurisdiction-specific requirements for your project.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">How long does a typical commercial installation take? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">It depends on scope. A single floor typically takes 1–2 days. Multi-floor projects are scheduled around your operations to minimize disruption. Our team works around your business hours and coordinates with your facilities team throughout the project.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Can window film be installed on any glass type? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Most flat architectural glass is compatible with window film. Some double-pane and specialty glass require specific film selection to avoid thermal stress. Our team assesses your glass type during the consultation process and recommends only products that are compatible with your specific glass.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">What is the typical ROI for commercial window film? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Energy-saving films typically achieve a 2–3 year payback through HVAC savings. Security films deliver ROI through reduced forced-entry risk and potential insurance premium reductions. Decorative films provide immediate value as a fraction of replacement frosted or etched glass cost.</div>
+    </div>
+  </section>
 
   <BrandLogos />
-  <CTAStrip />
 
+  <div class="rp-cta fade-in">
+    <h2>Ready to start your <em>commercial window film project?</em></h2>
+    <div class="rp-cta__btns">
+      <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+      <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+    </div>
+  </div>
+
+</div>
 </BaseLayout>
 
 <style>
-.resource-section { background: var(--color-bg-section); }
-.resource-section h2 { margin-bottom: 0.75rem; }
-.resource-section > .container > p { margin-bottom: 1.25rem; }
-.film-type-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0.6rem;
+.ip-page-body { position:relative; background:#ffffff; border-top-left-radius:40px; border-top-right-radius:40px; border-bottom-left-radius:40px; border-bottom-right-radius:40px; margin-top:-40px; z-index:10; overflow:visible; padding-bottom:80px; }
+.rp-eyebrow { display:inline-block; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-btn { display:inline-block; padding:14px 28px; border-radius:var(--radius-pill,100px); font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:500; text-decoration:none; transition:all 0.2s; border:2px solid transparent; white-space:nowrap; }
+.rp-btn--primary { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--primary:hover { background:#6e9640; border-color:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-btn--ghost { background:transparent; color:var(--brand,#272E32); border-color:var(--brand,#272E32); }
+.rp-btn--ghost:hover { background:var(--brand,#272E32); color:#fff; transform:translateY(-2px); }
+.rp-btn--white { background:#fff; color:var(--brand,#272E32); border-color:#fff; font-weight:600; }
+.rp-btn--white:hover { background:var(--off-white,#F7F6F3); transform:translateY(-2px); }
+.rp-btn--green { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--green:hover { background:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-intro { padding:80px 10%; border-top-left-radius:40px; border-top-right-radius:40px; overflow:hidden; }
+.rp-intro__inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.rp-intro__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(36px,4.5vw,58px); font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-intro__lead { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-bottom:32px; }
+.rp-intro__ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.rp-featured { padding:100px 10%; background:var(--off-white,#F7F6F3); }
+.rp-featured__hd { margin-bottom:72px; }
+.rp-featured__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-feat-row { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-bottom:100px; }
+.rp-feat-row:last-child { margin-bottom:0; }
+.rp-feat-row--rev .rp-feat-row__img { order:2; }
+.rp-feat-row--rev .rp-feat-row__content { order:1; }
+.rp-feat-row__img { position:relative; height:480px; border-radius:32px; overflow:hidden; }
+.rp-feat-row__img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rp-feat-row__pill { position:absolute; bottom:24px; left:24px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); padding:10px 18px; border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-weight:600; color:var(--brand,#272E32); box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.rp-feat-row__num { display:block; font-family:var(--font-serif,'Playfair Display',serif); font-size:72px; font-weight:700; color:var(--green,#81AB4C); line-height:1; opacity:0.25; margin-bottom:-8px; }
+.rp-feat-row__heading { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(24px,3vw,36px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin-bottom:20px; letter-spacing:-0.3px; }
+.rp-feat-row__body { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.8; margin-bottom:28px; }
+.rp-feat-row__cta { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:600; color:var(--green,#81AB4C); text-decoration:none; transition:gap 0.2s; }
+.rp-feat-row__cta:hover { gap:14px; }
+.rp-filmtypes { background:#ffffff; padding:80px 10%; }
+.rp-filmtypes__hd { margin-bottom:40px; }
+.rp-filmtypes__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin:0 0 12px; }
+.rp-filmtypes__intro { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.7; max-width:600px; margin:0; }
+.rp-filmtypes__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+.rp-filmtypes__pill { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:var(--off-white,#F7F6F3); border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:14px; font-weight:600; color:var(--brand,#272E32); text-decoration:none; border:1px solid var(--light-gray,#EFEFED); transition:all 0.2s; }
+.rp-filmtypes__pill:hover { background:var(--brand,#272E32); color:#fff; border-color:var(--brand,#272E32); }
+.rp-why { background:var(--brand,#272E32); padding:100px 10%; }
+.rp-why__hd { margin-bottom:64px; }
+.rp-why__hd .rp-eyebrow { color:var(--green,#81AB4C); }
+.rp-why__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#ffffff; line-height:1.15; letter-spacing:-0.5px; margin:0; max-width:680px; }
+.rp-why__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.rp-why__item { padding:32px 28px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); }
+.rp-why__item:nth-child(4n) { border-right:none; }
+.rp-why__item:nth-child(n+5) { border-bottom:none; }
+.rp-why__icon { color:var(--green,#81AB4C); margin-bottom:16px; display:flex; align-items:center; line-height:1; }
+.rp-why__icon svg { display:block; }
+.rp-why__divider { width:32px; height:2px; background:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-why__item-title { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:700; color:#ffffff; margin-bottom:6px; }
+.rp-why__item-sub { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; color:rgba(255,255,255,0.5); margin:0; line-height:1.5; }
+.rp-faq { padding:100px 10%; background:#ffffff; }
+.rp-faq__hd { margin-bottom:48px; }
+.rp-faq__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); max-width:620px; margin:0; }
+.rp-faq__item { border-bottom:1px solid var(--light-gray,#EFEFED); padding:24px 0; cursor:pointer; max-width:900px; }
+.rp-faq__item:first-of-type { border-top:1px solid var(--light-gray,#EFEFED); }
+.rp-faq__q { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; font-weight:600; color:var(--text-dark,#1a1a1a); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rp-faq__toggle { color:var(--green,#81AB4C); font-size:22px; flex-shrink:0; transition:transform 0.2s; }
+.rp-faq__a { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-top:14px; display:none; }
+.rp-faq__item--open .rp-faq__a { display:block; }
+.rp-faq__item--open .rp-faq__toggle { transform:rotate(45deg); }
+.rp-cta { background:var(--brand,#272E32); border-radius:40px; padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; margin:0 5% 0; }
+.rp-cta h2 { font-family:var(--font-serif,'Playfair Display',serif); font-size:32px; font-weight:700; color:#fff; line-height:1.2; max-width:460px; margin:0; }
+.rp-cta h2 em { font-style:italic; color:var(--green,#81AB4C); }
+.rp-cta__btns { display:flex; gap:14px; flex-shrink:0; }
+.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media (max-width:1024px) {
+  .rp-intro__inner { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order:0; }
+  .rp-feat-row--rev .rp-feat-row__content { order:1; }
+  .rp-why__grid { grid-template-columns:repeat(2,1fr); }
+  .rp-why__item:nth-child(4n) { border-right:1px solid rgba(255,255,255,0.1); }
+  .rp-why__item:nth-child(2n) { border-right:none; }
 }
-.film-type-list li {
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-brand);
-  border-radius: 0 6px 6px 0;
-  background: var(--color-bg-white);
-  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+@media (max-width:768px) {
+  .rp-intro { padding:60px 5%; }
+  .rp-featured { padding:60px 5%; }
+  .rp-filmtypes { padding:60px 5%; }
+  .rp-why { padding:60px 5%; }
+  .rp-faq { padding:60px 5%; }
+  .rp-feat-row__img { height:300px; }
+  .rp-why__grid { grid-template-columns:1fr; }
+  .rp-cta { flex-direction:column; padding:40px 28px; text-align:center; }
+  .rp-cta h2 { font-size:26px; max-width:100%; }
+  .rp-cta__btns { flex-direction:column; width:100%; }
 }
-.film-type-list li:hover {
-  border-color: var(--color-brand);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  transform: translateX(3px);
-}
-.film-type-list a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 1rem;
-  color: var(--color-charcoal);
-  font-size: 0.9rem;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  text-decoration: none;
-  gap: 0.5rem;
-}
-.film-type-list a:hover {
-  color: var(--color-brand);
-}
-.film-type-list a svg {
-  flex-shrink: 0;
-  opacity: 0.4;
-  transition: opacity 200ms ease, transform 200ms ease;
-}
-.film-type-list li:hover a svg {
-  opacity: 1;
-  transform: translateX(2px);
-}
+@media (max-width:480px) { .rp-intro__ctas { flex-direction:column; } }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  document.querySelectorAll('.rp-faq__item').forEach(item => {
+    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('rp-faq__item--open');
+      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
+      if (!isOpen) item.classList.add('rp-faq__item--open');
+    });
+  });
+</script>

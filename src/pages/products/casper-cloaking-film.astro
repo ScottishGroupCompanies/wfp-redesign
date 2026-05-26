@@ -1,60 +1,343 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Casper Cloaking Film Philadelphia | Window Film Philadelphia';
 const description = 'Protect LED screens and maintain privacy with casper cloaking film in Philadelphia, enhancing commercial aesthetics and security with advanced technology.';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'How Casper Cloaking Film Works',
+    body: 'Casper uses a proprietary optical technology to selectively block the specific light frequencies emitted by LED and LCD screens, making them appear completely black from outside the glass. The surrounding space remains fully visible and the glass stays clear everywhere screens are not present. Available in optically clear and patterned versions, Casper gives conference rooms and boardrooms the open glass-wall aesthetic without any exposure of sensitive screen content.',
+    img: '/images/Casper-cloaking-technology-office.jpg',
+    alt: 'Casper cloaking technology office',
+    href: '/benefits/privacy-window-film-philadelphia/',
+    cta: 'Explore Privacy Solutions',
+  },
+  {
+    number: '02',
+    heading: 'Benefits for Philadelphia Commercial Properties',
+    body: 'Open floor plans with glass walls create collaboration — but also expose sensitive meetings, financial screens, and proprietary data. Casper solves this without requiring blinds, shades, or solid walls. It is ideal for law firms, financial offices, healthcare facilities, tech companies, and any commercial space where screen privacy matters. Your space stays open and connected while your screen content stays protected.',
+    img: '/images/Bright-office-interior.jpg',
+    alt: 'Casper cloaking film benefits Philadelphia office',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+  {
+    number: '03',
+    heading: 'Custom Printing & Design Options',
+    body: 'Casper Cloaking Film is available in modern geometric patterns and custom printing configurations — allowing you to combine screen privacy with branded graphics, frosted aesthetics, or decorative designs. It supports both short-term and long-term applications and is compatible with most commercial glass surfaces, including glass partitions, conference room walls, and storefront glass.',
+    img: '/images/2021-09-window-film-philadelphia-office.jpg',
+    alt: 'Casper cloaking custom design Philadelphia',
+    href: '/contact/',
+    cta: 'Schedule a Consultation',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:eye-off', title: 'Screen Privacy', sub: 'Blacks out all LED and LCD screens' },
+  { icon: 'lucide:building', title: 'Open Aesthetics', sub: 'Maintains glass-wall feel' },
+  { icon: 'lucide:monitor', title: 'All Screen Types', sub: 'Works with LED and LCD displays' },
+  { icon: 'lucide:palette', title: 'Custom Printing', sub: 'Branded and decorative options' },
+  { icon: 'lucide:lock', title: 'Data Protection', sub: 'Conceals sensitive screen content' },
+  { icon: 'lucide:layers', title: 'Clear Option', sub: 'Optically clear version available' },
+  { icon: 'lucide:shield-check', title: 'Non-Obstructive', sub: 'Views outside screen areas remain clear' },
+  { icon: 'lucide:trending-up', title: 'Brand & Decor', sub: 'Modern professional aesthetic' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/products/casper-cloaking-film/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/casper-cloaking-film/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/casper-cloaking-window-film-for-Philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Casper Cloaking Film in Philadelphia for Properties</h1>
+<InnerPageHero
+  title="Casper Cloaking Film Philadelphia"
+  bgImage="/images/casper-cloaking-window-film-for-Philadelphia.jpg"
+  desc="Screens go dark. Your space stays open and collaborative."
+/>
+
+<div class="ip-page-body">
+
+<section class="pp-intro">
+  <div class="pp-intro__inner">
+    <div class="pp-intro__left">
+      <span class="pp-eyebrow">Privacy Technology</span>
+      <h1 class="pp-intro__title">Screens Go Dark. Your Space Stays Open.</h1>
     </div>
-  </section>
+    <div class="pp-intro__right">
+      <p class="pp-intro__lead">Casper Cloaking Film is a revolutionary privacy solution for commercial properties. It makes all LED and LCD screens appear completely black from outside the glass while maintaining clear, unobstructed views everywhere else — giving conference rooms, boardrooms, and client-facing areas the open glass-wall aesthetic without exposing sensitive screen content.</p>
+      <div class="pp-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Casper Cloaking Film in Philadelphia for Properties'}
-    body={'Casper Cloaking Film is designed specifically for commercial properties. It blackouts LED and LCD screens from external view while maintaining an open, professional atmosphere — ideal for conference rooms, client-facing areas, and office partitions. Easy to install and compatible with a variety of glass surfaces.'}
-    imageSrc={'/images/casper-cloaking-window-film-for-Philadelphia.jpg'}
-    imageAlt={'Casper cloaking film Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-featured">
+  <div class="pp-featured__hd">
+    <span class="pp-eyebrow">How It Works</span>
+    <h2 class="pp-featured__title">The technology behind Casper Cloaking Film</h2>
+  </div>
 
-  <BackAndForthSection
-    heading={'About Casper Cloaking Window Film'}
-    body={'Casper Cloaking Film makes all screens appear completely black from outside the glass while maintaining clear, unobstructed views everywhere else. It combines technological privacy with elegant decor — giving your office the open, collaborative feel of a glass-walled space without compromising sensitive screen content.'}
-    imageSrc={'/images/Casper-cloaking-technology-office.jpg'}
-    imageAlt={'Casper cloaking technology office'}
-    flip={true}
-    altBg={true}
-  />
+  {featuredSections.map((s, i) => (
+    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
+      <div class="pp-feat-row__img">
+        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+        <span class="pp-feat-row__pill">{s.heading}</span>
+      </div>
+      <div class="pp-feat-row__content">
+        <span class="pp-feat-row__num">{s.number}</span>
+        <h3 class="pp-feat-row__heading">{s.heading}</h3>
+        <p class="pp-feat-row__body">{s.body}</p>
+        <a href={s.href} class="pp-feat-row__cta">
+          {s.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BackAndForthSection
-    heading={'The Benefits of Casper Cloaking Film for Your Philadelphia Property'}
-    body={'Casper Cloaking Film provides exclusive benefits including: available in modern designs with custom printing options, available in an optically clear option, achieves complete technological privacy for screen-based content, blacks out any LED or LCD screen behind the film, and creates an open and welcoming space without sacrificing privacy.'}
-    imageSrc={'/images/Bright-office-interior.jpg'}
-    imageAlt={'Casper cloaking film benefits Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<section class="pp-why">
+  <div class="pp-why__hd">
+    <span class="pp-eyebrow">Key Features</span>
+    <h2 class="pp-why__title">Eight reasons Casper is the smarter privacy solution</h2>
+  </div>
+  <div class="pp-why__grid">
+    {benefitItems.map((item) => (
+      <div class="pp-why__item fade-in">
+        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+        <div class="pp-why__divider"></div>
+        <h4 class="pp-why__item-title">{item.title}</h4>
+        <p class="pp-why__item-sub">{item.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Trusted Casper Cloaking Film Experts Serving Philadelphia'}
-    body={'Window Film Philadelphia is proud to provide professional Casper Cloaking Film installation with expert guidance for commercial properties throughout Philadelphia. Our team helps you select the right solution to achieve technological privacy while maintaining the aesthetic of your space. Contact us today for a free consultation.'}
-    imageSrc={'/images/2021-09-window-film-philadelphia-office.jpg'}
-    imageAlt={'Casper cloaking film contractor Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+<section class="pp-faq">
+  <div class="pp-faq__hd">
+    <span class="pp-eyebrow">FAQ</span>
+    <h2 class="pp-faq__title">Common questions about Casper Cloaking Film</h2>
+  </div>
+  <div class="pp-faq__item pp-faq__item--open">
+    <div class="pp-faq__q">What screens does Casper Cloaking Film work on? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Casper Cloaking Film works on LED and LCD screens — the most common types used in conference rooms, boardrooms, and commercial offices. It does not work on printed materials, whiteboards, or non-emissive displays, as the technology specifically targets the light frequencies emitted by electronic screens.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Can people still see into the room — just not the screens? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. The rest of the glass remains completely clear. Casper only targets the specific light frequencies emitted by LED and LCD screens — everything else in the room, including people, furniture, and whiteboards, remains fully visible through the glass. Only the screens appear black from outside.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Is Casper Cloaking Film available in decorative patterns? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. Casper is available in modern geometric patterns and custom printing configurations, allowing you to combine screen privacy with branded graphics, frosted aesthetics, or decorative designs. This makes it suitable for both functional privacy and architectural design purposes.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Can Casper be installed on existing glass partitions? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Yes. Casper is compatible with most commercial glass surfaces, including existing glass partitions and conference room walls. The Window Film Philadelphia team assesses the glass type and configuration before installation to confirm compatibility.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">Does Casper affect the room's natural light? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">No. The optically clear version of Casper has very high light transmission — it does not reduce natural light entering the space. Patterned versions vary slightly depending on the design density, but are generally designed to maintain strong light transmission.</div>
+  </div>
+  <div class="pp-faq__item">
+    <div class="pp-faq__q">How is Casper different from frosted or privacy window film? <span class="pp-faq__toggle">+</span></div>
+    <div class="pp-faq__a">Frosted and privacy window films block all views through the glass — you cannot see in or out. Casper specifically and selectively targets screen content only, leaving all other views completely clear. This makes Casper the preferred solution for open-plan offices where the goal is screen privacy without sacrificing the open, collaborative aesthetic.</div>
+  </div>
+</section>
 
-  <BrandLogos />
-  <CTAStrip />
+<BrandLogos />
 
+<div class="pp-cta fade-in">
+  <h2>Ready to upgrade your property with <em>Casper Cloaking Film?</em></h2>
+  <div class="pp-cta__btns">
+    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
+
+</div>
 </BaseLayout>
+
+<style>
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green, #81AB4C); margin-bottom: 16px;
+}
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
+.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  padding: 10px 18px; border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25; margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+  color: var(--text-dark, #1a1a1a); line-height: 1.2;
+  margin-bottom: 20px; letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
+  text-decoration: none; transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
+  margin: 0; max-width: 600px;
+}
+.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
+.pp-why__icon svg { display: block; }
+.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
+.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
+.pp-faq { padding: 100px 10%; background: #ffffff; }
+.pp-faq__hd { margin-bottom: 48px; }
+.pp-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
+}
+.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
+.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
+.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
+.pp-faq__item--open .pp-faq__a { display: block; }
+.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
+.pp-cta {
+  background: var(--brand, #272E32); border-radius: 40px;
+  padding: 64px 60px; display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5% 0;
+}
+.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
+.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-faq { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .pp-cta h2 { font-size: 26px; max-width: 100%; }
+  .pp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.pp-faq__item').forEach(item => {
+    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('pp-faq__item--open');
+      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
+      if (!isOpen) item.classList.add('pp-faq__item--open');
+    });
+  });
+</script>

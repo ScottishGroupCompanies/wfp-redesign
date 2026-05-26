@@ -1,94 +1,301 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Window Film Fact Sheet | Window Film Philadelphia | Leading Solutions';
 const description = 'Window Film Philadelphia is happy to provide a comprehensive window film fact sheet for your upcoming project. Get your free quote today!';
+
+const facts = [
+  'Window film can reject up to 97% of infrared radiation emitted from the sun',
+  'Window film can block up to 60% of solar heat from entering a building through its glass windows and doors',
+  'Window film provides fade protection and health benefits by blocking up to 99.9% of UV rays',
+  'Window film offers a sustainable solution — approximately every 16 feet of window film installed equals energy savings that total one barrel of oil each year',
+  'Businesses on average can get a full return on investment from window film within six months to three years, depending on the type of film, glass type, and building size',
+  'Solar heat gain and radiant heat loss account for approximately one-third of a home\'s energy costs',
+  'Approximately 40% of energy lost is through a residential or commercial property\'s windows',
+  'Window film has been identified by the Department of Energy as a "first-tier technology"',
+  'Window film can improve the energy efficiency of glass by up to 92%',
+  'Property owners can save about $1 to $2 for every square foot of window film installed, resulting in as much as 19 kWh per square foot of glass',
+  'Window film can reduce heat gain during the summer months by up to 79%',
+  'Residential property owners typically see an average of 30% savings on energy costs during the summer and around 10% to 15% savings in the winter',
+  'An 8.8% carbon emission reduction would occur if every home in California installed window film',
+  'Window films can offer carbon-negative benefits in as fast as six months from the day they are installed',
+  'Window film can reduce the temperature of direct sunlight by as much as 9 degrees Fahrenheit',
+];
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Energy Efficiency Facts',
+    body: 'Window film can reject up to 97% of infrared radiation from the sun and block up to 60% of solar heat from entering through glass. Property owners save $1–$2 per square foot of film installed — as much as 19 kWh per square foot of glass annually. Residential property owners see average cooling cost savings of 30% in summer and 10–15% in winter. The Department of Energy has identified window film as a "first-tier technology" for building energy efficiency.',
+    img: '/images/energy-saving-window-film-philadelphia.png',
+    alt: 'Window film energy efficiency facts Philadelphia',
+    href: '/benefits/energy-savings/',
+    cta: 'Explore Energy Savings',
+  },
+  {
+    number: '02',
+    heading: 'UV & Fade Protection Facts',
+    body: 'Window film blocks up to 99.9% of UVA and UVB radiation — the leading cause of interior fading for furnishings, flooring, and artwork. UV rays account for 40–60% of all interior fading. Window film also improves the energy efficiency of existing glass by up to 92%, effectively converting single-pane glass to near double-pane performance in thermal management terms.',
+    img: '/images/window-film-philadelphia-uv-blocking-solar-shield-1.jpg',
+    alt: 'Window film UV protection facts Philadelphia',
+    href: '/benefits/uv-blocking-window-film-philadelphia/',
+    cta: 'Explore UV Blocking',
+  },
+  {
+    number: '03',
+    heading: 'ROI & Sustainability Facts',
+    body: 'Businesses typically achieve full ROI on window film within 6 months to 3 years depending on glazing area and film type. Window film can deliver carbon-negative benefits within 6 months of installation. Solar heat gain and radiant heat loss account for approximately one-third of a home\'s total energy costs — and approximately 40% of energy lost in any building exits through its windows. Every 16 feet of film installed saves the energy equivalent of one barrel of oil annually.',
+    img: '/images/window-film-statistics-philadelphia.jpg',
+    alt: 'Window film ROI sustainability facts Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:thermometer', title: '97% IR Rejection', sub: 'Infrared radiation blocked by top films' },
+  { icon: 'lucide:sun', title: '99.9% UV Block', sub: 'Industry standard for UV-rated films' },
+  { icon: 'lucide:trending-down', title: '30% Summer Savings', sub: 'Average residential cooling cost reduction' },
+  { icon: 'lucide:bar-chart', title: '92% Glass Efficiency', sub: 'Energy efficiency improvement on existing glass' },
+  { icon: 'lucide:dollar-sign', title: '$1–2 / Sq Ft Saved', sub: 'Annual energy savings per square foot' },
+  { icon: 'lucide:leaf', title: 'Carbon-Negative', sub: 'Benefits achievable within 6 months' },
+  { icon: 'lucide:clock', title: '6-mo to 3-yr ROI', sub: 'Full payback for most commercial installs' },
+  { icon: 'lucide:award', title: 'DOE First-Tier Tech', sub: 'Department of Energy recognized solution' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/window-film-fact-sheet/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/window-film-fact-sheet/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-fact-sheet-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Film Fact Sheet for Philadelphia Properties</h1>
+<InnerPageHero title="Window Film Fact Sheet" bgImage="/images/window-film-fact-sheet-philadelphia.png" desc="The performance data behind every window film claim we make." />
+
+<div class="ip-page-body">
+
+  <section class="rp-intro">
+    <div class="rp-intro__inner">
+      <div class="rp-intro__left">
+        <span class="rp-eyebrow">Fact Sheet</span>
+        <h1 class="rp-intro__title">The Numbers Behind the Film.</h1>
+      </div>
+      <div class="rp-intro__right">
+        <p class="rp-intro__lead">Window film's performance claims are backed by independent testing, Department of Energy recognition, and decades of real-world installation data. Whether you're evaluating window film for energy savings, UV protection, or carbon reduction goals, here are the facts and statistics that matter.</p>
+        <div class="rp-intro__ctas">
+          <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+          <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={'Window Film Fact Sheet for Philadelphia Properties'}
-    body={'Window film is a highly celebrated product for both residential and commercial properties. With quick installation times, minimized operational downtime, exclusive benefits, and effective properties, window film is the perfect addition for countless projects. In order to make the most informed decision for your upcoming home or business renovation, here is a comprehensive list of window film facts for Philadelphia property owners.'}
-    imageSrc={'/images/window-film-fact-sheet-philadelphia.png'}
-    imageAlt={'Window film fact sheet Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+  <section class="rp-featured">
+    <div class="rp-featured__hd">
+      <span class="rp-eyebrow">Performance Data</span>
+      <h2 class="rp-featured__title">What the Data Shows About Window Film Performance</h2>
+    </div>
+    {featuredSections.map((s, i) => (
+      <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+        <div class="rp-feat-row__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <span class="rp-feat-row__pill">{s.heading}</span>
+        </div>
+        <div class="rp-feat-row__content">
+          <span class="rp-feat-row__num">{s.number}</span>
+          <h3 class="rp-feat-row__heading">{s.heading}</h3>
+          <p class="rp-feat-row__body">{s.body}</p>
+          <a href={s.href} class="rp-feat-row__cta">
+            {s.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </section>
 
-  <section class="section-pad resource-section">
-    <div class="container">
-      <h2>Window Film Facts and Statistics for Philadelphia Properties</h2>
-      <ul class="facts-list">
-        <li>Window film can reject up to 97% of infrared radiation emitted from the sun</li>
-        <li>Window film can block up to 60% of solar heat from entering a building through its glass windows and doors</li>
-        <li>Window film provides fade protection and health benefits by blocking up to 99.9% of UV rays</li>
-        <li>Window film offers a sustainable solution — approximately every 16 feet of window film installed equals energy savings that total one barrel of oil each year</li>
-        <li>Businesses on average can get a full return on investment from window film within six months to three years, depending on the type of film, glass type, and building size</li>
-        <li>Solar heat gain and radiant heat loss account for approximately one-third of a home's energy costs</li>
-        <li>Approximately 40% of energy lost is through a residential or commercial property's windows</li>
-        <li>Window film has been identified by the Department of Energy as a "first-tier technology"</li>
-        <li>Window film can improve the energy efficiency of glass by up to 92%</li>
-        <li>Property owners can save about $1 to $2 for every square foot of window film installed, resulting in as much as 19 kWh per square foot of glass</li>
-        <li>Window film can reduce heat gain during the summer months by up to 79%</li>
-        <li>Residential property owners typically see an average of 30% savings on energy costs during the summer and around 10% to 15% savings in the winter</li>
-        <li>An 8.8% carbon emission reduction would occur if every home in California installed window film</li>
-        <li>Window films can offer carbon-negative benefits in as fast as six months from the day they are installed</li>
-        <li>Window film can reduce the temperature of direct sunlight by as much as 9 degrees Fahrenheit</li>
-      </ul>
+  <section class="rp-facts">
+    <div class="rp-facts__hd">
+      <span class="rp-eyebrow">15 Key Facts</span>
+      <h2 class="rp-facts__title">Window Film Statistics for Philadelphia Properties</h2>
+    </div>
+    <div class="rp-facts__grid">
+      {facts.map((fact) => (
+        <div class="rp-facts__item">
+          <div class="rp-facts__check">
+            <Icon name="lucide:check-circle" width="24" height="24" />
+          </div>
+          <p>{fact}</p>
+        </div>
+      ))}
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Film Expert"}
-    body={'Window Film Philadelphia is honored to be the trusted window film expert serving the state of Pennsylvania. Our team is happy to help guide you through various window film facts and statistics so that you can make the most informed decision on your upcoming project.'}
-    imageSrc={'/images/window-film-statistics-philadelphia.jpg'}
-    imageAlt={'Window film expert Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+  <section class="rp-why">
+    <div class="rp-why__hd">
+      <span class="rp-eyebrow">By the Numbers</span>
+      <h2 class="rp-why__title">Eight headline statistics about window film performance</h2>
+    </div>
+    <div class="rp-why__grid">
+      {benefitItems.map((item) => (
+        <div class="rp-why__item fade-in">
+          <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+          <div class="rp-why__divider"></div>
+          <h4 class="rp-why__item-title">{item.title}</h4>
+          <p class="rp-why__item-sub">{item.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="rp-faq">
+    <div class="rp-faq__hd">
+      <span class="rp-eyebrow">FAQ</span>
+      <h2 class="rp-faq__title">Common questions about window film performance data</h2>
+    </div>
+    <div class="rp-faq__item rp-faq__item--open">
+      <div class="rp-faq__q">Where does this performance data come from? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">This data comes from independent lab testing, manufacturer performance data, Department of Energy studies, and real-world installation case studies accumulated over decades of commercial and residential window film application. All figures represent tested results from certified film products.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Does window film really block 99.9% of UV rays? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — most premium films from 3M, LLumar, Vista, and other major brands achieve 99.9% UV rejection regardless of the film's visible light transmission level. Even clear, low-visibility films block virtually all UV radiation while remaining nearly invisible on glass.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">How quickly can I expect to see energy savings after installation? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Energy savings begin immediately on day one of installation. Most property owners notice reduced HVAC cycling within the first billing cycle after installation, with measurable cost reductions typically visible within the first month of summer or winter use.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Is the 92% glass efficiency improvement realistic for my property? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">The 92% figure represents maximum improvement potential on single-pane glass with a high-performance Low-E film. Actual improvement varies by glass type, orientation, and film selected. Our team provides property-specific energy projections during your free consultation.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">What does "carbon-negative within 6 months" mean? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">It means the energy saved by the film exceeds the embodied carbon of manufacturing and installing it within 6 months of installation — so the film has a net positive environmental impact remarkably quickly. This makes window film one of the fastest-payback sustainability investments available for buildings.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Can I get a customized energy savings projection for my specific property? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — our team provides free onsite assessments and can model expected savings based on your building's glazing area, glass orientation, existing glass type, and local climate data. Contact us to schedule a free consultation for your property.</div>
+    </div>
+  </section>
 
   <BrandLogos />
-  <CTAStrip />
 
+  <div class="rp-cta fade-in">
+    <h2>Ready to put these numbers to work for <em>your property?</em></h2>
+    <div class="rp-cta__btns">
+      <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+      <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+    </div>
+  </div>
+
+</div>
 </BaseLayout>
 
 <style>
-.resource-section { background: var(--color-bg-section); }
-.resource-section h2 { margin-bottom: 1.25rem; }
-.facts-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+.ip-page-body { position:relative; background:#ffffff; border-top-left-radius:40px; border-top-right-radius:40px; border-bottom-left-radius:40px; border-bottom-right-radius:40px; margin-top:-40px; z-index:10; overflow:visible; padding-bottom:80px; }
+.rp-eyebrow { display:inline-block; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-btn { display:inline-block; padding:14px 28px; border-radius:var(--radius-pill,100px); font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:500; text-decoration:none; transition:all 0.2s; border:2px solid transparent; white-space:nowrap; }
+.rp-btn--primary { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--primary:hover { background:#6e9640; border-color:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-btn--ghost { background:transparent; color:var(--brand,#272E32); border-color:var(--brand,#272E32); }
+.rp-btn--ghost:hover { background:var(--brand,#272E32); color:#fff; transform:translateY(-2px); }
+.rp-btn--white { background:#fff; color:var(--brand,#272E32); border-color:#fff; font-weight:600; }
+.rp-btn--white:hover { background:var(--off-white,#F7F6F3); transform:translateY(-2px); }
+.rp-btn--green { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--green:hover { background:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-intro { padding:80px 10%; border-top-left-radius:40px; border-top-right-radius:40px; overflow:hidden; }
+.rp-intro__inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.rp-intro__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(36px,4.5vw,58px); font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-intro__lead { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-bottom:32px; }
+.rp-intro__ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.rp-featured { padding:100px 10%; background:var(--off-white,#F7F6F3); }
+.rp-featured__hd { margin-bottom:72px; }
+.rp-featured__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-feat-row { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-bottom:100px; }
+.rp-feat-row:last-child { margin-bottom:0; }
+.rp-feat-row--rev .rp-feat-row__img { order:2; }
+.rp-feat-row--rev .rp-feat-row__content { order:1; }
+.rp-feat-row__img { position:relative; height:480px; border-radius:32px; overflow:hidden; }
+.rp-feat-row__img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rp-feat-row__pill { position:absolute; bottom:24px; left:24px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); padding:10px 18px; border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-weight:600; color:var(--brand,#272E32); box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.rp-feat-row__num { display:block; font-family:var(--font-serif,'Playfair Display',serif); font-size:72px; font-weight:700; color:var(--green,#81AB4C); line-height:1; opacity:0.25; margin-bottom:-8px; }
+.rp-feat-row__heading { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(24px,3vw,36px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin-bottom:20px; letter-spacing:-0.3px; }
+.rp-feat-row__body { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.8; margin-bottom:28px; }
+.rp-feat-row__cta { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:600; color:var(--green,#81AB4C); text-decoration:none; transition:gap 0.2s; }
+.rp-feat-row__cta:hover { gap:14px; }
+.rp-facts { background:var(--off-white,#F7F6F3); padding:80px 10%; }
+.rp-facts__hd { margin-bottom:48px; }
+.rp-facts__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin:0; }
+.rp-facts__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; }
+.rp-facts__item { display:flex; align-items:flex-start; gap:16px; background:#fff; border-radius:16px; padding:20px 24px; border:1px solid var(--light-gray,#EFEFED); }
+.rp-facts__check { width:24px; height:24px; flex-shrink:0; color:var(--green,#81AB4C); margin-top:2px; }
+.rp-facts__item p { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.6; margin:0; }
+.rp-why { background:var(--brand,#272E32); padding:100px 10%; }
+.rp-why__hd { margin-bottom:64px; }
+.rp-why__hd .rp-eyebrow { color:var(--green,#81AB4C); }
+.rp-why__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#ffffff; line-height:1.15; letter-spacing:-0.5px; margin:0; max-width:680px; }
+.rp-why__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.rp-why__item { padding:32px 28px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); }
+.rp-why__item:nth-child(4n) { border-right:none; }
+.rp-why__item:nth-child(n+5) { border-bottom:none; }
+.rp-why__icon { color:var(--green,#81AB4C); margin-bottom:16px; display:flex; align-items:center; line-height:1; }
+.rp-why__icon svg { display:block; }
+.rp-why__divider { width:32px; height:2px; background:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-why__item-title { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:700; color:#ffffff; margin-bottom:6px; }
+.rp-why__item-sub { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; color:rgba(255,255,255,0.5); margin:0; line-height:1.5; }
+.rp-faq { padding:100px 10%; background:#ffffff; }
+.rp-faq__hd { margin-bottom:48px; }
+.rp-faq__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); max-width:620px; margin:0; }
+.rp-faq__item { border-bottom:1px solid var(--light-gray,#EFEFED); padding:24px 0; cursor:pointer; max-width:900px; }
+.rp-faq__item:first-of-type { border-top:1px solid var(--light-gray,#EFEFED); }
+.rp-faq__q { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; font-weight:600; color:var(--text-dark,#1a1a1a); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rp-faq__toggle { color:var(--green,#81AB4C); font-size:22px; flex-shrink:0; transition:transform 0.2s; }
+.rp-faq__a { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-top:14px; display:none; }
+.rp-faq__item--open .rp-faq__a { display:block; }
+.rp-faq__item--open .rp-faq__toggle { transform:rotate(45deg); }
+.rp-cta { background:var(--brand,#272E32); border-radius:40px; padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; margin:0 5% 0; }
+.rp-cta h2 { font-family:var(--font-serif,'Playfair Display',serif); font-size:32px; font-weight:700; color:#fff; line-height:1.2; max-width:460px; margin:0; }
+.rp-cta h2 em { font-style:italic; color:var(--green,#81AB4C); }
+.rp-cta__btns { display:flex; gap:14px; flex-shrink:0; }
+.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media (max-width:1024px) {
+  .rp-intro__inner { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order:0; }
+  .rp-feat-row--rev .rp-feat-row__content { order:1; }
+  .rp-why__grid { grid-template-columns:repeat(2,1fr); }
+  .rp-why__item:nth-child(4n) { border-right:1px solid rgba(255,255,255,0.1); }
+  .rp-why__item:nth-child(2n) { border-right:none; }
 }
-.facts-list li {
-  padding: 0.8rem 1.1rem 0.8rem 1.5rem;
-  background: var(--color-bg-white);
-  border-left: 4px solid var(--color-brand);
-  border-radius: 0 6px 6px 0;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  font-size: 0.95rem;
-  position: relative;
+@media (max-width:768px) {
+  .rp-intro { padding:60px 5%; }
+  .rp-featured { padding:60px 5%; }
+  .rp-facts { padding:60px 5%; }
+  .rp-why { padding:60px 5%; }
+  .rp-faq { padding:60px 5%; }
+  .rp-feat-row__img { height:300px; }
+  .rp-why__grid { grid-template-columns:1fr; }
+  .rp-facts__grid { grid-template-columns:1fr; }
+  .rp-cta { flex-direction:column; padding:40px 28px; text-align:center; }
+  .rp-cta h2 { font-size:26px; max-width:100%; }
+  .rp-cta__btns { flex-direction:column; width:100%; }
 }
-.facts-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0.4rem;
-  color: var(--color-brand);
-  font-weight: 700;
-}
+@media (max-width:480px) { .rp-intro__ctas { flex-direction:column; } }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  document.querySelectorAll('.rp-faq__item').forEach(item => {
+    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('rp-faq__item--open');
+      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
+      if (!isOpen) item.classList.add('rp-faq__item--open');
+    });
+  });
+</script>

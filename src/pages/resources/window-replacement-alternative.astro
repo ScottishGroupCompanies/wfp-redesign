@@ -1,69 +1,384 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Window Replacement Alternative | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is happy to provide leading window replacement services with premium window film. Get your free quote today!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Window Film vs. Window Replacement',
+    body: 'Both options deliver meaningful glass performance improvements — but they differ enormously in cost, disruption, and timeline. Window replacement is a true renovation: structural work, permits, lengthy installs, and price tags that run $800–$1,500 per window or more. Window film achieves many of the same goals — energy savings, UV protection, privacy, glare reduction, and even security — at a fraction of the cost, with installation measured in days rather than weeks, and no permitting required for commercial properties.',
+    img: '/images/window-replacement-alternatives-philadelphia.jpg',
+    alt: 'Window film vs window replacement Philadelphia',
+    href: '/benefits/',
+    cta: 'Explore All Benefits',
+  },
+  {
+    number: '02',
+    heading: 'Window Replacement: The Full Picture',
+    body: 'New windows do offer genuine benefits. Modern replacement windows can improve soundproofing, increase property value, and provide decades of maintenance-free performance. For properties with structurally failing window frames, fogged insulated glass units, or severe air infiltration, replacement may be the right call. The trade-offs: high upfront cost, significant operational disruption during installation, permitting requirements, and install timelines that can stretch weeks — making it an oversized solution for properties whose windows are structurally sound but underperforming on energy, privacy, or UV protection.',
+    img: '/images/window-film-window-replacement-philadelphia.jpg',
+    alt: 'Window replacement pros and cons Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Consultation',
+  },
+  {
+    number: '03',
+    heading: 'Why Window Film Wins for Most Projects',
+    body: 'For the vast majority of Philadelphia properties with structurally sound windows, film delivers the same performance gains at 10–15× lower cost with zero renovation disruption. A single pane window treated with Low-E film performs comparably to a double-pane insulated unit for energy conservation. UV-blocking film eliminates 99.9% of harmful radiation — protecting furnishings, flooring, and occupants. Security film holds shattered glass in place. Decorative film transforms aesthetics. And exterior films can conceal damaged or dated window frames, delivering a visual refresh without replacement. Most installs complete in one day.',
+    img: '/images/window-film-alternatives-philadelphia.jpg',
+    alt: 'Window film benefits over replacement Philadelphia',
+    href: '/contact/',
+    cta: 'Schedule a Consultation',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:dollar-sign',   title: 'Fraction of the Cost',      sub: '10–15× less expensive than replacement' },
+  { icon: 'lucide:clock',         title: 'Installed in Days',          sub: 'Not weeks — zero renovation timeline' },
+  { icon: 'lucide:shield-check',  title: 'No Permits Required',        sub: 'Commercial install with no permitting' },
+  { icon: 'lucide:thermometer',   title: 'Double-Pane Performance',    sub: 'Low-E film matches insulated glass units' },
+  { icon: 'lucide:sun',           title: '99.9% UV Blocking',          sub: 'Full UV protection on existing glass' },
+  { icon: 'lucide:eye-off',       title: 'Privacy Solutions',          sub: 'One-way, frosted, and tinted options' },
+  { icon: 'lucide:layers',        title: 'Multiple Benefits in One',   sub: 'Energy, privacy, safety, and design' },
+  { icon: 'lucide:trending-up',   title: 'Fast ROI',                   sub: 'Payback period of 2–5 years' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/window-replacement-alternative/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/window-replacement-alternative/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-replacement-alternative-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Replacement Alternatives for Philadelphia Commercial Properties</h1>
+<InnerPageHero
+  title="Window Replacement Alternative"
+  bgImage="/images/window-replacement-alternative-philadelphia.png"
+  desc="Upgrade your glass performance without replacing a single pane."
+/>
+
+<div class="ip-page-body">
+
+<!-- ══════════════════════════════════════
+     INTRO — 2-col: big heading left, text + CTAs right
+     ══════════════════════════════════════ -->
+<section class="rp-intro">
+  <div class="rp-intro__inner">
+    <div class="rp-intro__left">
+      <span class="rp-eyebrow">Resources</span>
+      <h1 class="rp-intro__title">Don't Replace It. Upgrade It.</h1>
     </div>
-  </section>
+    <div class="rp-intro__right">
+      <p class="rp-intro__lead">Window replacement can feel like the obvious solution when glass is underperforming on energy, privacy, or appearance — but it's rarely the most cost-effective one. Window film delivers most of the same benefits at a fraction of the cost, with no structural work, no permits, and no operational downtime. For Philadelphia residential and commercial properties with structurally sound windows, film is almost always the smarter upgrade.</p>
+      <div class="rp-intro__ctas">
+        <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+        <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Window Replacement Alternatives for Philadelphia Commercial Properties'}
-    body={'Window replacement can provide a wide scope of benefits ranging from better energy conservation to improved curb appeal. While window replacement is ideal for improving your property\'s value, it requires a significant renovation process to complete as well as a high price tag. For those looking for window replacement alternatives for their Philadelphia commercial properties, window film can be an excellent option. Learn more about the benefits of window film for this great alternative.'}
-    imageSrc={'/images/window-replacement-alternative-philadelphia.png'}
-    imageAlt={'Window replacement alternative Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<!-- ══════════════════════════════════════
+     FEATURED SECTIONS — 3 numbered alternating rows
+     ══════════════════════════════════════ -->
+<section class="rp-featured">
+  <div class="rp-featured__hd">
+    <span class="rp-eyebrow">The Comparison</span>
+    <h2 class="rp-featured__title">Window film vs. window replacement:<br/>what you need to know</h2>
+  </div>
 
-  <BackAndForthSection
-    heading={'Window Film vs. Window Replacement'}
-    body={'Both options have their own set of pros and cons, making it important to learn more about your options in order to make the most informed decision for your upcoming project. Let\'s take a closer look at what the differences are between these two options.'}
-    imageSrc={'/images/window-replacement-alternatives-philadelphia.jpg'}
-    imageAlt={'Window film vs window replacement Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
+  {featuredSections.map((s, i) => (
+    <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+      <div class="rp-feat-row__img">
+        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+        <span class="rp-feat-row__pill">{s.heading}</span>
+      </div>
+      <div class="rp-feat-row__content">
+        <span class="rp-feat-row__num">{s.number}</span>
+        <h3 class="rp-feat-row__heading">{s.heading}</h3>
+        <p class="rp-feat-row__body">{s.body}</p>
+        <a href={s.href} class="rp-feat-row__cta">
+          {s.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BackAndForthSection
-    heading={'Window Replacement Pros and Cons'}
-    body={'From better energy efficiency to improved soundproofing, new window investment does have a lot to offer residential and commercial properties throughout Philadelphia. But when it comes to upgrades like UV protection and privacy, these will need a considerable investment for these customizations. Window replacement is a true renovation project, requiring lengthy install times which can impact your property more drastically than installing window film. However, window replacement does heighten property value and can provide decades of benefits.'}
-    imageSrc={'/images/window-film-window-replacement-philadelphia.jpg'}
-    imageAlt={'Window replacement pros and cons Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<!-- ══════════════════════════════════════
+     BENEFITS GRID — 4-col dark icon grid
+     ══════════════════════════════════════ -->
+<section class="rp-why">
+  <div class="rp-why__hd">
+    <span class="rp-eyebrow">Why Film Wins</span>
+    <h2 class="rp-why__title">Eight reasons film beats replacement for most Philadelphia properties</h2>
+  </div>
+  <div class="rp-why__grid">
+    {benefitItems.map((item) => (
+      <div class="rp-why__item fade-in">
+        <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+        <div class="rp-why__divider"></div>
+        <h4 class="rp-why__item-title">{item.title}</h4>
+        <p class="rp-why__item-sub">{item.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={'Window Film Pros and Cons'}
-    body={'Window film is a more affordable option than window replacement. The cost-effective pricing and quick installation times are often highly desired for both residential and commercial properties. Since window film can be quickly installed within a day to a couple of weeks depending on the property size, it helps minimize operational downtime and inconvenience. In commercial settings, window film won\'t require permitting for installation. There are window film products available that can transform a single pane window into a double pane in terms of energy efficiency and insulation. Window film can provide energy savings, glare reduction, UV protection, privacy, decorative, safety and security, and much more. Additionally, exterior films and spandrel painting can help conceal damaged and outdated windows for a quick update. For the disadvantages, window film won\'t offer the same property value increase as window replacement, and while well-maintained window film can last for many years, it also won\'t have the same product life as new windows.'}
-    imageSrc={'/images/window-film-alternatives-philadelphia.jpg'}
-    imageAlt={'Window film pros and cons Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
+<!-- ══════════════════════════════════════
+     FAQ ACCORDION
+     ══════════════════════════════════════ -->
+<section class="rp-faq">
+  <div class="rp-faq__hd">
+    <span class="rp-eyebrow">FAQ</span>
+    <h2 class="rp-faq__title">Common questions about window film as a replacement alternative</h2>
+  </div>
+  <div class="rp-faq__item rp-faq__item--open">
+    <div class="rp-faq__q">How does window film compare to window replacement for energy savings? <span class="rp-faq__toggle">+</span></div>
+    <div class="rp-faq__a">For most Philadelphia properties, window film achieves 80–90% of the energy savings of full replacement at 10–15% of the cost. Low-E window film in particular is engineered to replicate the thermal insulation performance of double-pane insulated glass units — reducing heat loss in winter and heat gain in summer. For properties whose windows are structurally sound, film is almost always the higher-ROI investment.</div>
+  </div>
+  <div class="rp-faq__item">
+    <div class="rp-faq__q">Is window film permanent, or can it be removed if I change my mind? <span class="rp-faq__toggle">+</span></div>
+    <div class="rp-faq__a">Window film is not permanent. Most films can be removed cleanly from standard glass without damage to the surface — making it a reversible upgrade unlike window replacement. Decorative and privacy films are commonly swapped out as interior design evolves. Security and solar films, once removed, leave no permanent residue when professionally installed and removed.</div>
+  </div>
+  <div class="rp-faq__item">
+    <div class="rp-faq__q">Does window film installation require permits for commercial properties? <span class="rp-faq__toggle">+</span></div>
+    <div class="rp-faq__a">In most cases, no. Window film installation is classified as a surface treatment, not a structural alteration — so it typically does not require building permits for commercial properties in Philadelphia. Window replacement, by contrast, is a structural renovation and almost always requires permits, inspections, and compliance with building codes. This makes film significantly faster and less expensive to deploy across large commercial portfolios.</div>
+  </div>
+  <div class="rp-faq__item">
+    <div class="rp-faq__q">Can window film really make a single-pane window perform like a double-pane? <span class="rp-faq__toggle">+</span></div>
+    <div class="rp-faq__a">Yes — Low-E (low emissivity) window film adds an insulating metallic layer to single-pane glass that significantly reduces heat transfer in both directions. Independent testing shows that single-pane glass treated with Low-E film achieves thermal performance comparable to standard double-pane insulated glass units. It won't perfectly replicate a premium triple-pane window, but for most older Philadelphia commercial buildings with single-pane glass, it's a dramatic and cost-effective improvement.</div>
+  </div>
+  <div class="rp-faq__item">
+    <div class="rp-faq__q">How long does window film last compared to replacement windows? <span class="rp-faq__toggle">+</span></div>
+    <div class="rp-faq__a">Premium window film from brands like 3M, LLumar, and Vista is engineered to last 10–20+ years with proper care, and most products carry manufacturer warranties covering adhesion, color stability, and performance for the life of the film. Replacement windows typically last 20–30 years. The trade-off: film delivers comparable performance at a fraction of the cost and can be updated or upgraded without structural work when it does eventually need replacement.</div>
+  </div>
+  <div class="rp-faq__item">
+    <div class="rp-faq__q">When does window replacement make more sense than window film? <span class="rp-faq__toggle">+</span></div>
+    <div class="rp-faq__a">Window replacement is the right call when window frames are structurally failing or rotting, when insulated glass units have fogged or broken seals that cannot be repaired, when air infiltration is severe and coming from frame gaps rather than the glass itself, or when a property is undergoing a major renovation where replacement can be bundled into existing construction costs. Our team will give you an honest assessment — if replacement is the better choice for your property, we'll tell you.</div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Replacement Alternative Expert"}
-    body={'Window Film Philadelphia is honored to be the trusted window replacement alternative expert serving the state of Pennsylvania. Our team is happy to help guide you through all the pros and cons of window film versus window replacement so you can make the most informed decision for your property.'}
-    imageSrc={'/images/window-film-contractor-philadelphia.jpg'}
-    imageAlt={'Window replacement alternative contractor Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+<!-- ══════════════════════════════════════
+     BRAND LOGOS
+     ══════════════════════════════════════ -->
+<BrandLogos />
 
-  <BrandLogos />
-  <CTAStrip />
+<!-- ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ -->
+<div class="rp-cta fade-in">
+  <h2>Ready to upgrade your glass without <em>replacing it?</em></h2>
+  <div class="rp-cta__btns">
+    <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
 
+</div><!-- end ip-page-body -->
 </BaseLayout>
+
+<style>
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+
+/* ── EYEBROW ── */
+.rp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green, #81AB4C); margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.rp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.rp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.rp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.rp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.rp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.rp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.rp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.rp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.rp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+
+/* ── INTRO ── */
+.rp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.rp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.rp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.rp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.75; margin-bottom: 32px;
+}
+.rp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ── FEATURED SECTIONS ── */
+.rp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
+.rp-featured__hd { margin-bottom: 72px; }
+.rp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); margin: 0;
+}
+.rp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+.rp-feat-row:last-child { margin-bottom: 0; }
+.rp-feat-row--rev .rp-feat-row__img { order: 2; }
+.rp-feat-row--rev .rp-feat-row__content { order: 1; }
+.rp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
+.rp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  padding: 10px 18px; border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.rp-feat-row__num {
+  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25; margin-bottom: -8px;
+}
+.rp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+  color: var(--text-dark, #1a1a1a); line-height: 1.2;
+  margin-bottom: 20px; letter-spacing: -0.3px;
+}
+.rp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.rp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
+  text-decoration: none; transition: gap 0.2s;
+}
+.rp-feat-row__cta:hover { gap: 14px; }
+
+/* ── BENEFITS GRID (dark) ── */
+.rp-why { background: var(--brand, #272E32); padding: 100px 10%; }
+.rp-why__hd { margin-bottom: 64px; }
+.rp-why__hd .rp-eyebrow { color: var(--green, #81AB4C); }
+.rp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
+  margin: 0; max-width: 680px;
+}
+.rp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.rp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.rp-why__item:nth-child(4n) { border-right: none; }
+.rp-why__item:nth-child(n+5) { border-bottom: none; }
+.rp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
+.rp-why__icon svg { display: block; }
+.rp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
+.rp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+.rp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
+
+/* ── FAQ ── */
+.rp-faq { padding: 100px 10%; background: #ffffff; }
+.rp-faq__hd { margin-bottom: 48px; }
+.rp-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a); max-width: 620px; margin: 0;
+}
+.rp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
+.rp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.rp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.rp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
+.rp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
+.rp-faq__item--open .rp-faq__a { display: block; }
+.rp-faq__item--open .rp-faq__toggle { transform: rotate(45deg); }
+
+/* ── CTA BANNER ── */
+.rp-cta {
+  background: var(--brand, #272E32); border-radius: 40px;
+  padding: 64px 60px; display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5% 0;
+}
+.rp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
+.rp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.rp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .rp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .rp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order: 0; }
+  .rp-feat-row--rev .rp-feat-row__content { order: 1; }
+  .rp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .rp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .rp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .rp-intro { padding: 60px 5%; }
+  .rp-featured { padding: 60px 5%; }
+  .rp-why { padding: 60px 5%; }
+  .rp-faq { padding: 60px 5%; }
+  .rp-feat-row__img { height: 300px; }
+  .rp-why__grid { grid-template-columns: 1fr; }
+  .rp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .rp-cta h2 { font-size: 26px; max-width: 100%; }
+  .rp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .rp-intro__ctas { flex-direction: column; }
+}
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.rp-faq__item').forEach(item => {
+    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('rp-faq__item--open');
+      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
+      if (!isOpen) item.classList.add('rp-faq__item--open');
+    });
+  });
+</script>

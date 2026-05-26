@@ -1,11 +1,54 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Warranty | Window Film Philadelphia | Leading Window Film Solutions';
 const description = 'Window Film Philadelphia is happy to share window film warranty information for homes and businesses. Get your free quote today!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Manufacturer Warranties',
+    body: 'The leading window film manufacturers — 3M, LLumar, Solar Gard, Vista, Huper Optik, Madico, Hanita Coatings, and others — all stand behind their products with comprehensive warranties. Residential films typically carry lifetime warranties. Commercial films vary by product series, typically ranging from 5 to 15 years. Warranty terms cover adhesion failure, color shift, delamination, and film degradation under normal use and cleaning conditions.',
+    img: '/images/window-film-warranty-philadelphia.jpg',
+    alt: 'Window film manufacturer warranty Philadelphia',
+    href: '/contact/',
+    cta: 'Contact Us With Questions',
+  },
+  {
+    number: '02',
+    heading: "WFP's Workmanship Warranty",
+    body: 'In addition to manufacturer warranties, Window Film Philadelphia provides a limited workmanship warranty on every installation we perform. This covers installation defects — including edge lifting, bubbling from installation error, or adhesion failure attributable to our installation process — separate from any manufacturer product warranty. Our team stands behind the quality of every job we complete throughout Philadelphia and the surrounding region.',
+    img: '/images/window-tinting-warranty-philadelphia.jpg',
+    alt: 'Window Film Philadelphia workmanship warranty',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+  {
+    number: '03',
+    heading: 'Maintaining Your Warranty Coverage',
+    body: 'Warranty coverage requires proper care during and after installation. The most common cause of warranty voidance is cleaning film within the first 30 days of installation before it has fully cured. Other warranty conditions include using only soft, non-abrasive cleaning materials, not applying adhesives or decals to filmed glass, and not allowing abrasive cleaning tools near the film surface. Review our maintenance guide for full care instructions that protect your warranty coverage.',
+    img: '/images/window-film-maintenance-philadelphia.png',
+    alt: 'Window film warranty care Philadelphia',
+    href: '/resources/maintenance-and-care/',
+    cta: 'View Maintenance Guide',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:award', title: 'Manufacturer Backed', sub: 'Every product carries a manufacturer warranty' },
+  { icon: 'lucide:shield-check', title: 'Workmanship Warranty', sub: 'WFP stands behind every install' },
+  { icon: 'lucide:clock', title: 'Up to Lifetime', sub: 'Residential films often carry lifetime coverage' },
+  { icon: 'lucide:layers', title: 'All Products Covered', sub: '13 brands, residential and commercial' },
+  { icon: 'lucide:file-text', title: 'PDF Downloads', sub: 'Instant access to all warranty documents' },
+  { icon: 'lucide:check-circle', title: 'Performance Guaranteed', sub: 'Color, adhesion, and film stability covered' },
+  { icon: 'lucide:refresh-cw', title: 'Transferable', sub: 'Some warranties transfer with property sale' },
+  { icon: 'lucide:users', title: 'Claim Support', sub: 'WFP assists with all warranty claims' },
+];
 
 const warranties = [
   { brand: '3M', docs: [
@@ -56,103 +99,244 @@ const warranties = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/warranty/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/warranty/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-warranty-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Film Warranty for Philadelphia Properties</h1>
-    </div>
-  </section>
+<InnerPageHero title="Window Film Warranty Information" bgImage="/images/window-film-warranty-philadelphia.jpg" desc="Manufacturer warranties for every brand we install — all in one place." />
 
-  <BackAndForthSection
-    heading={'Window Film Warranty for Philadelphia Properties'}
-    body={'Window Film Philadelphia is honored to provide comprehensive warranty information regarding our window film products. All of the leading manufacturers provide incredible warranties, many even offering lifetime warranties on their products. Warranty information can also help you differentiate which product is best for your upcoming Philadelphia project. If you don\'t see your interested or installed window film product below, please contact us or the manufacturer for warranty details.'}
-    imageSrc={'/images/window-film-warranty-philadelphia.png'}
-    imageAlt={'Window film warranty Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<div class="ip-page-body">
 
-  <section class="section-pad resource-section">
-    <div class="container">
-      <h2>Window Film Warranty Information</h2>
-      <p>Discover more on various window film product warranties below. Click any document link to download the PDF warranty.</p>
-      <div class="warranty-grid">
-        {warranties.map((brand) => (
-          <div class="warranty-card">
-            <h3>{brand.brand}</h3>
-            <ul>
-              {brand.docs.map((doc) => (
-                <li>
-                  <a href={doc.url} target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-                    </svg>
-                    {doc.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+  <section class="rp-intro">
+    <div class="rp-intro__inner">
+      <div class="rp-intro__left">
+        <span class="rp-eyebrow">Warranty Information</span>
+        <h1 class="rp-intro__title">Your Investment. Protected.</h1>
+      </div>
+      <div class="rp-intro__right">
+        <p class="rp-intro__lead">Every window film product installed by Window Film Philadelphia comes backed by a manufacturer warranty — covering film performance, adhesion, and color stability for the life of the product. We also provide a workmanship warranty on every installation. Download the warranty documents for your installed product below, or contact us if you don't see yours listed.</p>
+        <div class="rp-intro__ctas">
+          <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+          <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Film Expert"}
-    body={'Window Film Philadelphia is honored to be the trusted window film expert serving the state of Pennsylvania. Our team is happy to help provide you with window film warranty information for your upcoming project. Contact us today!'}
-    imageSrc={'/images/window-tinting-warranty-philadelphia.jpg'}
-    imageAlt={'Window film warranty expert Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+  <section class="rp-featured">
+    <div class="rp-featured__hd">
+      <span class="rp-eyebrow">Coverage Details</span>
+      <h2 class="rp-featured__title">Understanding Your Window Film Warranty</h2>
+    </div>
+    {featuredSections.map((s, i) => (
+      <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+        <div class="rp-feat-row__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <span class="rp-feat-row__pill">{s.heading}</span>
+        </div>
+        <div class="rp-feat-row__content">
+          <span class="rp-feat-row__num">{s.number}</span>
+          <h3 class="rp-feat-row__heading">{s.heading}</h3>
+          <p class="rp-feat-row__body">{s.body}</p>
+          <a href={s.href} class="rp-feat-row__cta">
+            {s.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="rp-downloads">
+    <div class="rp-downloads__hd">
+      <span class="rp-eyebrow">Downloads</span>
+      <h2 class="rp-downloads__title">Warranty Documents by Brand</h2>
+      <p class="rp-downloads__intro">Download the manufacturer warranty for your installed product below. Contact us if your product isn't listed.</p>
+    </div>
+    <div class="rp-downloads__grid">
+      {warranties.map((brand) => (
+        <div class="rp-downloads__card">
+          <h3 class="rp-downloads__brand">{brand.brand}</h3>
+          <ul class="rp-downloads__list">
+            {brand.docs.map((doc) => (
+              <li class="rp-downloads__item">
+                <a href={doc.url} target="_blank" rel="noopener noreferrer" class="rp-downloads__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/></svg>
+                  {doc.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="rp-why">
+    <div class="rp-why__hd">
+      <span class="rp-eyebrow">Why It Matters</span>
+      <h2 class="rp-why__title">Eight reasons our warranty coverage stands apart</h2>
+    </div>
+    <div class="rp-why__grid">
+      {benefitItems.map((item) => (
+        <div class="rp-why__item fade-in">
+          <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+          <div class="rp-why__divider"></div>
+          <h4 class="rp-why__item-title">{item.title}</h4>
+          <p class="rp-why__item-sub">{item.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="rp-faq">
+    <div class="rp-faq__hd">
+      <span class="rp-eyebrow">FAQ</span>
+      <h2 class="rp-faq__title">Common questions about window film warranties</h2>
+    </div>
+    <div class="rp-faq__item rp-faq__item--open">
+      <div class="rp-faq__q">Do all window film products come with a warranty? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — all major manufacturers provide warranties on their window film products. Residential films typically carry lifetime warranties. Commercial films vary by product series, typically ranging from 5 to 15 years of coverage.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">What does the manufacturer warranty cover? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Manufacturer warranties cover adhesion failure, color shift, delamination, and film degradation under normal use conditions. They do not cover physical damage from impacts, scratches, or cleaning with improper materials. Review the specific warranty document for your installed product for full terms.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">What is WFP's workmanship warranty? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Our workmanship warranty covers installation defects attributable to our installation process — including edge lifting from installer error, install-related bubbling, or adhesion failure caused by our application technique. This is separate from the manufacturer's product warranty and covers our craftsmanship specifically.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Does cleaning my film incorrectly void the warranty? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Yes — using abrasives, harsh chemicals, or cleaning within the first 30 days of installation can void the manufacturer warranty. Follow the care instructions provided at installation to maintain full coverage. Our maintenance guide outlines all approved cleaning practices.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">Is my warranty transferable if I sell my property? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Some manufacturer warranties are transferable to new property owners — this varies by brand and product series. Contact us with your installation details and we'll check the specific transferability terms for your installed film.</div>
+    </div>
+    <div class="rp-faq__item">
+      <div class="rp-faq__q">How do I make a warranty claim? <span class="rp-faq__toggle">+</span></div>
+      <div class="rp-faq__a">Contact Window Film Philadelphia with your installation date, product name, and a description of the issue. Our team coordinates the claim process with the manufacturer and handles all communication on your behalf. We make warranty claims as straightforward as possible.</div>
+    </div>
+  </section>
 
   <BrandLogos />
-  <CTAStrip />
 
+  <div class="rp-cta fade-in">
+    <h2>Questions about your warranty? We're here to <em>help.</em></h2>
+    <div class="rp-cta__btns">
+      <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+      <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+    </div>
+  </div>
+
+</div>
 </BaseLayout>
 
 <style>
-.resource-section { background: var(--color-bg-section); }
-.resource-section h2 { margin-bottom: 0.75rem; }
-.resource-section > .container > p { margin-bottom: 1.5rem; }
-.warranty-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+.ip-page-body { position:relative; background:#ffffff; border-top-left-radius:40px; border-top-right-radius:40px; border-bottom-left-radius:40px; border-bottom-right-radius:40px; margin-top:-40px; z-index:10; overflow:visible; padding-bottom:80px; }
+.rp-eyebrow { display:inline-block; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-btn { display:inline-block; padding:14px 28px; border-radius:var(--radius-pill,100px); font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:500; text-decoration:none; transition:all 0.2s; border:2px solid transparent; white-space:nowrap; }
+.rp-btn--primary { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--primary:hover { background:#6e9640; border-color:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-btn--ghost { background:transparent; color:var(--brand,#272E32); border-color:var(--brand,#272E32); }
+.rp-btn--ghost:hover { background:var(--brand,#272E32); color:#fff; transform:translateY(-2px); }
+.rp-btn--white { background:#fff; color:var(--brand,#272E32); border-color:#fff; font-weight:600; }
+.rp-btn--white:hover { background:var(--off-white,#F7F6F3); transform:translateY(-2px); }
+.rp-btn--green { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
+.rp-btn--green:hover { background:#6e9640; transform:translateY(-2px); color:#fff; }
+.rp-intro { padding:80px 10%; border-top-left-radius:40px; border-top-right-radius:40px; overflow:hidden; }
+.rp-intro__inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.rp-intro__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(36px,4.5vw,58px); font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-intro__lead { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-bottom:32px; }
+.rp-intro__ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.rp-featured { padding:100px 10%; background:var(--off-white,#F7F6F3); }
+.rp-featured__hd { margin-bottom:72px; }
+.rp-featured__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); margin:0; }
+.rp-feat-row { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-bottom:100px; }
+.rp-feat-row:last-child { margin-bottom:0; }
+.rp-feat-row--rev .rp-feat-row__img { order:2; }
+.rp-feat-row--rev .rp-feat-row__content { order:1; }
+.rp-feat-row__img { position:relative; height:480px; border-radius:32px; overflow:hidden; }
+.rp-feat-row__img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rp-feat-row__pill { position:absolute; bottom:24px; left:24px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); padding:10px 18px; border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-weight:600; color:var(--brand,#272E32); box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.rp-feat-row__num { display:block; font-family:var(--font-serif,'Playfair Display',serif); font-size:72px; font-weight:700; color:var(--green,#81AB4C); line-height:1; opacity:0.25; margin-bottom:-8px; }
+.rp-feat-row__heading { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(24px,3vw,36px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin-bottom:20px; letter-spacing:-0.3px; }
+.rp-feat-row__body { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.8; margin-bottom:28px; }
+.rp-feat-row__cta { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:600; color:var(--green,#81AB4C); text-decoration:none; transition:gap 0.2s; }
+.rp-feat-row__cta:hover { gap:14px; }
+.rp-downloads { background:#ffffff; padding:80px 10%; }
+.rp-downloads__hd { margin-bottom:48px; }
+.rp-downloads__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:36px; font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin:0 0 16px; }
+.rp-downloads__intro { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.7; max-width:680px; margin:0; }
+.rp-downloads__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
+.rp-downloads__card { background:#fff; border:1px solid var(--light-gray,#EFEFED); border-radius:16px; padding:24px 28px; }
+.rp-downloads__brand { font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin:0 0 16px; }
+.rp-downloads__list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+.rp-downloads__link { display:flex; align-items:flex-start; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:14px; color:#4a4a4a; text-decoration:none; line-height:1.4; transition:color 0.2s; }
+.rp-downloads__link svg { flex-shrink:0; margin-top:2px; }
+.rp-downloads__link:hover { color:var(--green,#81AB4C); }
+.rp-why { background:var(--brand,#272E32); padding:100px 10%; }
+.rp-why__hd { margin-bottom:64px; }
+.rp-why__hd .rp-eyebrow { color:var(--green,#81AB4C); }
+.rp-why__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#ffffff; line-height:1.15; letter-spacing:-0.5px; margin:0; max-width:680px; }
+.rp-why__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.rp-why__item { padding:32px 28px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); }
+.rp-why__item:nth-child(4n) { border-right:none; }
+.rp-why__item:nth-child(n+5) { border-bottom:none; }
+.rp-why__icon { color:var(--green,#81AB4C); margin-bottom:16px; display:flex; align-items:center; line-height:1; }
+.rp-why__icon svg { display:block; }
+.rp-why__divider { width:32px; height:2px; background:var(--green,#81AB4C); margin-bottom:16px; }
+.rp-why__item-title { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:700; color:#ffffff; margin-bottom:6px; }
+.rp-why__item-sub { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; color:rgba(255,255,255,0.5); margin:0; line-height:1.5; }
+.rp-faq { padding:100px 10%; background:#ffffff; }
+.rp-faq__hd { margin-bottom:48px; }
+.rp-faq__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); max-width:620px; margin:0; }
+.rp-faq__item { border-bottom:1px solid var(--light-gray,#EFEFED); padding:24px 0; cursor:pointer; max-width:900px; }
+.rp-faq__item:first-of-type { border-top:1px solid var(--light-gray,#EFEFED); }
+.rp-faq__q { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; font-weight:600; color:var(--text-dark,#1a1a1a); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.rp-faq__toggle { color:var(--green,#81AB4C); font-size:22px; flex-shrink:0; transition:transform 0.2s; }
+.rp-faq__a { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-top:14px; display:none; }
+.rp-faq__item--open .rp-faq__a { display:block; }
+.rp-faq__item--open .rp-faq__toggle { transform:rotate(45deg); }
+.rp-cta { background:var(--brand,#272E32); border-radius:40px; padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; margin:0 5% 0; }
+.rp-cta h2 { font-family:var(--font-serif,'Playfair Display',serif); font-size:32px; font-weight:700; color:#fff; line-height:1.2; max-width:460px; margin:0; }
+.rp-cta h2 em { font-style:italic; color:var(--green,#81AB4C); }
+.rp-cta__btns { display:flex; gap:14px; flex-shrink:0; }
+.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media (max-width:1024px) {
+  .rp-intro__inner { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row { grid-template-columns:1fr; gap:40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order:0; }
+  .rp-feat-row--rev .rp-feat-row__content { order:1; }
+  .rp-why__grid { grid-template-columns:repeat(2,1fr); }
+  .rp-why__item:nth-child(4n) { border-right:1px solid rgba(255,255,255,0.1); }
+  .rp-why__item:nth-child(2n) { border-right:none; }
 }
-.warranty-card {
-  background: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 1.1rem 1.25rem;
+@media (max-width:768px) {
+  .rp-intro { padding:60px 5%; }
+  .rp-featured { padding:60px 5%; }
+  .rp-downloads { padding:60px 5%; }
+  .rp-why { padding:60px 5%; }
+  .rp-faq { padding:60px 5%; }
+  .rp-feat-row__img { height:300px; }
+  .rp-why__grid { grid-template-columns:1fr; }
+  .rp-cta { flex-direction:column; padding:40px 28px; text-align:center; }
+  .rp-cta h2 { font-size:26px; max-width:100%; }
+  .rp-cta__btns { flex-direction:column; width:100%; }
 }
-.warranty-card h3 {
-  font-size: 0.9rem;
-  font-family: var(--font-heading);
-  color: var(--color-charcoal);
-  margin-bottom: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.warranty-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.warranty-card a {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.82rem;
-  color: var(--color-brand);
-  transition: color 200ms;
-}
-.warranty-card a:hover { color: var(--color-brand-dark); }
+@media (max-width:480px) { .rp-intro__ctas { flex-direction:column; } }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  document.querySelectorAll('.rp-faq__item').forEach(item => {
+    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('rp-faq__item--open');
+      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
+      if (!isOpen) item.classList.add('rp-faq__item--open');
+    });
+  });
+</script>
