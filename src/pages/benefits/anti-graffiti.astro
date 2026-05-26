@@ -1,15 +1,57 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import CTAStrip from '../../components/CTAStrip.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Anti-Graffiti Film in Philadelphia - Window Film Philadelphia';
 const description = 'Window Film Philadelphia offers anti-graffiti film in Philadelphia to protect glass from scratches, vandalism, and costly damage. Call today for a free quote!';
+
+const featuredSections = [
+  {
+    number: '01',
+    heading: 'Anti-Graffiti Film for Commercial Buildings in Philadelphia',
+    body: 'Anti-graffiti film offers essential protection for commercial properties vulnerable to vandalism, graffiti, and property crimes throughout the Philadelphia metro area. Schools, businesses, mass transit systems, and other high foot-traffic commercial properties need a reliable solution to keep expensive surfaces safe. Window Film Philadelphia provides comprehensive anti-graffiti film solutions that protect surfaces while delivering exclusive benefits for commercial property owners — from retail storefronts to municipal facilities.',
+    img: '/images/anti-graffiti-surface-film-philadelphia.jpg',
+    alt: 'Anti-graffiti surface film Philadelphia',
+    href: '/contact/',
+    cta: 'Get a Free Quote',
+  },
+  {
+    number: '02',
+    heading: 'How Anti-Graffiti Surface Film Works',
+    body: 'Anti-graffiti surface film is a specialty product that works as a sacrificial layer for protecting commercial surfaces against vandalism, graffiti, and daily wear and tear. Available in numerous finishes for metal, mirrored, glass, and other non-porous surfaces, it defends against new damage while concealing any existing damage. Once the film is damaged — whether from acid etching, marker stains, or abrasion — it is simply removed and replaced by a professional window film contractor with minimal operational downtime.',
+    img: '/images/anti-graffiti-window-film-philadelphia.jpg',
+    alt: 'Anti-graffiti window film Philadelphia',
+    href: '/contact/',
+    cta: 'Schedule a Consultation',
+  },
+  {
+    number: '03',
+    heading: 'Philadelphia\'s Leading Anti-Graffiti Film Contractor',
+    body: 'Window Film Philadelphia has helped countless businesses and public-sector clients keep their surfaces protected across the metro area. Our team understands the specific vandalism challenges facing Philadelphia properties and delivers targeted anti-graffiti solutions that are cost-effective, long-lasting, and professionally installed. From initial consultation to ongoing maintenance and film replacement, we support your property at every stage — so your surfaces always look their best.',
+    img: '/images/2021-08-philadelphia-window-film-anti-graffiti-window-film-scratches-film.jpg',
+    alt: 'Anti-graffiti window film contractor Philadelphia',
+    href: '/contact/',
+    cta: 'Contact Our Team',
+  },
+];
+
+const benefitItems = [
+  { icon: 'lucide:shield',         title: 'Sacrificial Protection',    sub: '24/7 replaceable layer shields surfaces' },
+  { icon: 'lucide:eraser',         title: 'Conceals Damage',           sub: 'Hides existing scratches, etching, and marks' },
+  { icon: 'lucide:zap',            title: 'Acid Etch Resistant',       sub: 'Withstands aggressive vandalism attempts' },
+  { icon: 'lucide:lock',           title: 'Tamper-Proof',              sub: 'Invisible to the public, secure by design' },
+  { icon: 'lucide:refresh-cw',     title: 'Easy Replacement',          sub: 'Pro removal and replacement, minimal downtime' },
+  { icon: 'lucide:palette',        title: 'Custom Finishes',           sub: 'Available for glass, metal, and mirrored surfaces' },
+  { icon: 'lucide:trending-down',  title: 'Reduce Repair Costs',       sub: 'Eliminates expensive surface replacements' },
+  { icon: 'lucide:layers',         title: 'Multi-Surface',             sub: 'Works on glass, metal, and non-porous materials' },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/">
 
 <InnerPageHero
   title="Anti-Graffiti Window Film"
@@ -18,60 +60,129 @@ const description = 'Window Film Philadelphia offers anti-graffiti film in Phila
 />
 
 <div class="ip-page-body">
-  <BackAndForthSection
-    heading={"Anti-Graffiti Film in Philadelphia for Commercial Buildings"}
-    body={"Anti-graffiti film in Philadelphia offers essential protection for commercial properties vulnerable to vandalism, graffiti, and other property crimes throughout the metro area. To keep expensive surfaces in high foot-traffic areas — schools, businesses, mass transit systems, and other commercial properties — safe from vandalism, a reliable solution is required. Anti-graffiti film offers an effective way to protect surfaces while providing exclusive benefits for commercial property owners. Window Film Philadelphia is honored to provide comprehensive anti-graffiti solutions for commercial properties."}
-    imageSrc={'/images/anti-graffiti-surface-film-philadelphia.jpg'}
-    imageAlt={'Anti-graffiti surface film Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
 
-  <BackAndForthSection
-    heading={"The Basics of Anti-Graffiti Film"}
-    body={"Anti-graffiti surface film is a specialty film product that works as a sacrificial layer for protecting commercial surfaces against vandalism, graffiti, and daily wear and tear. Available in numerous finishes for metal, mirrored, glass, and other custom non-porous surfaces, anti-graffiti film defends against new damage while concealing any existing damage. Once damaged, it is easily removed and replaced by a professional window film contractor."}
-    imageSrc={'/images/anti-graffiti-window-film-philadelphia.jpg'}
-    imageAlt={'Anti-graffiti window film Philadelphia'}
-    flip={true}
-    altBg={true}
-  />
+<!-- ══════════════════════════════════════
+     INTRO — 2-col: big heading left, text + CTAs right
+     ══════════════════════════════════════ -->
+<section class="bp-intro">
+  <div class="bp-intro__inner">
+    <div class="bp-intro__left">
+      <span class="bp-eyebrow">Surface Protection</span>
+      <h1 class="bp-intro__title">Stop Vandals Before They Cost You Thousands.</h1>
+    </div>
+    <div class="bp-intro__right">
+      <p class="bp-intro__lead">Anti-graffiti film is one of the most cost-effective defenses available for high-traffic commercial properties in Philadelphia. By creating a sacrificial protective layer over glass, metal, and other non-porous surfaces, it absorbs vandalism damage so your underlying surfaces don't have to — and replacement is fast, affordable, and minimally disruptive.</p>
+      <div class="bp-intro__ctas">
+        <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
+        <a href="/benefits/" class="bp-btn bp-btn--ghost">All Benefits</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={"The Benefits of Anti-Graffiti Film for Philadelphia Properties"}
-    body={"Conceals existing damage such as scratches, graffiti, or blemishes\nWithstands new damage including acid etching, marker stains, and abrasions\nProvides a sacrificial layer for 24/7 protection of underlying surfaces\nTamper-proof to the public, deterring vandals from causing significant damage\nEasily removed and replaced by a professional — minimal downtime\nCustom printing available for non-porous surfaces\nReduces repair and replacement costs for vandalized surfaces"}
-    imageSrc={'/images/How-to-remove-tagging-graffiti-Philadelphia.png'}
-    imageAlt={'Anti-graffiti film how to remove graffiti Philadelphia'}
-    flip={false}
-    altBg={false}
-  />
+<!-- ══════════════════════════════════════
+     FEATURED SECTIONS — 3 numbered alternating rows
+     ══════════════════════════════════════ -->
+<section class="bp-featured">
+  <div class="bp-featured__hd">
+    <span class="bp-eyebrow">How It Works</span>
+    <h2 class="bp-featured__title">Everything you need to know about<br/>anti-graffiti window film</h2>
+  </div>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Leading Anti-Graffiti Film Contractor"}
-    body={"We at Window Film Philadelphia are honored to provide leading anti-graffiti surface film services for commercial properties throughout Philadelphia. Our team has helped countless businesses keep their surfaces protected and would love the opportunity to help defend your expensive investments. Contact us today for more information!"}
-    imageSrc={'/images/2021-08-philadelphia-window-film-anti-graffiti-window-film-scratches-film.jpg'}
-    imageAlt={'Anti-graffiti window film contractor Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Get a Free Quote'}
-    ctaHref={'/contact/'}
-  />
+  {featuredSections.map((s, i) => (
+    <div class={`bp-feat-row fade-in${i % 2 === 1 ? ' bp-feat-row--rev' : ''}`}>
+      <div class="bp-feat-row__img">
+        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+        <span class="bp-feat-row__pill">{s.heading}</span>
+      </div>
+      <div class="bp-feat-row__content">
+        <span class="bp-feat-row__num">{s.number}</span>
+        <h3 class="bp-feat-row__heading">{s.heading}</h3>
+        <p class="bp-feat-row__body">{s.body}</p>
+        <a href={s.href} class="bp-feat-row__cta">
+          {s.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
 
-  <BrandLogos />
-  <CTAStrip />
+<!-- ══════════════════════════════════════
+     BENEFITS GRID — 4-col dark icon grid
+     ══════════════════════════════════════ -->
+<section class="bp-why">
+  <div class="bp-why__hd">
+    <span class="bp-eyebrow">Key Benefits</span>
+    <h2 class="bp-why__title">Eight reasons anti-graffiti film is worth it</h2>
+  </div>
+  <div class="bp-why__grid">
+    {benefitItems.map((item) => (
+      <div class="bp-why__item fade-in">
+        <div class="bp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
+        <div class="bp-why__divider"></div>
+        <h4 class="bp-why__item-title">{item.title}</h4>
+        <p class="bp-why__item-sub">{item.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ ACCORDION
+     ══════════════════════════════════════ -->
+<section class="bp-faq">
+  <div class="bp-faq__hd">
+    <span class="bp-eyebrow">FAQ</span>
+    <h2 class="bp-faq__title">Common questions about anti-graffiti window film</h2>
+  </div>
+  <div class="bp-faq__item bp-faq__item--open">
+    <div class="bp-faq__q">What surfaces can anti-graffiti film be applied to? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Anti-graffiti film can be applied to a wide range of non-porous surfaces including glass windows and doors, metal panels, elevator interiors, mirrored surfaces, and more. We carry specialty films designed for different surface types and finishes, ensuring a seamless, professional result on any application.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">How does anti-graffiti film protect against vandalism? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">The film acts as a sacrificial layer between the vandal and the underlying surface. When graffiti, acid etching, or abrasion is applied to the film, the damage is absorbed by the film rather than the surface beneath it. Once the film is damaged, it is professionally removed and a new layer is applied — restoring the surface to its original condition at a fraction of the cost of full replacement.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">How is the film replaced after it's been damaged? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Replacement is straightforward and handled by our professional installation team. The damaged film is cleanly peeled away from the surface, and a fresh layer is applied. The process is fast, typically taking less than a day depending on the scope, and causes minimal disruption to your operations. Most commercial clients schedule replacements during off-peak hours or overnight.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">Can anti-graffiti film conceal existing damage to my surfaces? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Yes. One of the key advantages of anti-graffiti film is that it not only defends against future damage but also conceals pre-existing damage such as scratches, light etching, and surface blemishes. When applied, the film creates a fresh-looking surface — giving your property a clean appearance while protecting against new threats.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">Is anti-graffiti film visible or detectable by the public? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">Anti-graffiti film is designed to be completely undetectable to the average passerby. The film is tamperproof to the public — it cannot be peeled or removed without specialized tools — and its appearance seamlessly matches the surface beneath it. This invisible protection deters vandals without altering the aesthetics of your property.</div>
+  </div>
+  <div class="bp-faq__item">
+    <div class="bp-faq__q">How much can anti-graffiti film save compared to surface replacement? <span class="bp-faq__toggle">+</span></div>
+    <div class="bp-faq__a">The savings can be significant. Replacing etched or deeply damaged glass typically costs $300–$1,500 or more per pane, while full surface panels can run into the thousands. Anti-graffiti film replacement costs a fraction of that amount. For high-traffic properties that experience repeated vandalism — schools, transit stations, retail corridors — the cumulative savings over time can be substantial.</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BRAND LOGOS
+     ══════════════════════════════════════ -->
+<BrandLogos />
+
+<!-- ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ -->
+<div class="bp-cta fade-in">
+  <h2>Ready to defend your property against <em>vandalism?</em></h2>
+  <div class="bp-cta__btns">
+    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
+  </div>
 </div>
 
+</div><!-- end ip-page-body -->
 </BaseLayout>
 
 <style>
-.benefit-list {
-  padding-left: 1.5em;
-  margin-top: 0.75rem;
-}
-.benefit-list li {
-  margin-bottom: 0.5rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-}
+/* ── PAGE BODY WRAPPER ── */
 .ip-page-body {
   position: relative;
   background: #ffffff;
@@ -84,4 +195,292 @@ const description = 'Window Film Philadelphia offers anti-graffiti film in Phila
   overflow: visible;
   padding-bottom: 80px;
 }
+
+/* ── EYEBROW ── */
+.bp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.bp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+
+/* ── INTRO ── */
+.bp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.bp-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.bp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.bp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ── FEATURED SECTIONS ── */
+.bp-featured {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.bp-featured__hd { margin-bottom: 72px; }
+.bp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.bp-feat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.bp-feat-row:last-child { margin-bottom: 0; }
+.bp-feat-row--rev .bp-feat-row__img { order: 2; }
+.bp-feat-row--rev .bp-feat-row__content { order: 1; }
+.bp-feat-row__img {
+  position: relative;
+  height: 480px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.bp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600;
+  color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.bp-feat-row__num {
+  display: block;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25;
+  margin-bottom: -8px;
+}
+.bp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+.bp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.bp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.bp-feat-row__cta:hover { gap: 14px; }
+
+/* ── BENEFITS GRID (dark) ── */
+.bp-why {
+  background: var(--brand, #272E32);
+  padding: 100px 10%;
+}
+.bp-why__hd { margin-bottom: 64px; }
+.bp-why__hd .bp-eyebrow { color: var(--green, #81AB4C); }
+.bp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0;
+  max-width: 600px;
+}
+.bp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.bp-why__item {
+  padding: 32px 28px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.bp-why__item:nth-child(4n) { border-right: none; }
+.bp-why__item:nth-child(n+5) { border-bottom: none; }
+.bp-why__icon {
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+  display: flex; align-items: center; line-height: 1;
+}
+.bp-why__icon svg { display: block; }
+.bp-why__divider {
+  width: 32px; height: 2px;
+  background: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.bp-why__item-title {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.bp-why__item-sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin: 0; line-height: 1.5;
+}
+
+/* ── FAQ ── */
+.bp-faq { padding: 100px 10%; background: #ffffff; }
+.bp-faq__hd { margin-bottom: 48px; }
+.bp-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  max-width: 560px; margin: 0;
+}
+.bp-faq__item {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding: 24px 0;
+  cursor: pointer;
+  max-width: 900px;
+}
+.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.bp-faq__q {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px; font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
+.bp-faq__a {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75;
+  margin-top: 14px; display: none;
+}
+.bp-faq__item--open .bp-faq__a { display: block; }
+.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
+
+/* ── CTA BANNER ── */
+.bp-cta {
+  background: var(--brand, #272E32);
+  border-radius: 40px;
+  padding: 64px 60px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 5% 0;
+}
+.bp-cta h2 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 32px; font-weight: 700;
+  color: #fff; line-height: 1.2;
+  max-width: 460px; margin: 0;
+}
+.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .bp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .bp-feat-row--rev .bp-feat-row__img { order: 0; }
+  .bp-feat-row--rev .bp-feat-row__content { order: 1; }
+  .bp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .bp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .bp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .bp-intro { padding: 60px 5%; }
+  .bp-featured { padding: 60px 5%; }
+  .bp-why { padding: 60px 5%; }
+  .bp-faq { padding: 60px 5%; }
+  .bp-feat-row__img { height: 300px; }
+  .bp-why__grid { grid-template-columns: 1fr; }
+  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .bp-cta h2 { font-size: 26px; max-width: 100%; }
+  .bp-cta__btns { flex-direction: column; width: 100%; }
+}
+@media (max-width: 480px) {
+  .bp-intro__ctas { flex-direction: column; }
+}
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.bp-faq__item').forEach(item => {
+    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('bp-faq__item--open');
+      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
+      if (!isOpen) item.classList.add('bp-faq__item--open');
+    });
+  });
+</script>
