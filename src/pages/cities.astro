@@ -1,128 +1,437 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BackAndForthSection from '../components/BackAndForthSection.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
 import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from '../components/CTAStrip.astro';
 
 const title = 'Cities We Serve | Window Film Philadelphia | Leading Window Film Solutions';
-const description = 'Window Film Philadelphia serves Philadelphia, Reading, Upper Darby Township, Camden, and surrounding areas. Leading residential and commercial window film services throughout the Philadelphia metro area.';
+const description = 'Window Film Philadelphia serves Philadelphia, Reading, Upper Darby Township, Camden, and the surrounding metro area. Leading residential and commercial window film across PA and NJ.';
 
 const cities = [
-  { label: 'Philadelphia',        href: '/cities/philadelphia/' },
-  { label: 'Reading',             href: '/cities/reading/' },
-  { label: 'Upper Darby Township',href: '/cities/upper-darby-township/' },
-  { label: 'Camden',              href: '/cities/camden/' },
+  {
+    label: 'Philadelphia',
+    state: 'PA',
+    desc: 'Our home base and primary service area. We serve residential and commercial properties across all neighborhoods — from Center City high-rises and Fishtown rowhouses to South Philly retail and Manayunk homes.',
+    img: '/images/wfp-landing-hero.jpg',
+    alt: 'Window film Philadelphia Pennsylvania',
+    href: '/cities/philadelphia/',
+  },
+  {
+    label: 'Camden',
+    state: 'NJ',
+    desc: 'Serving residential and commercial properties throughout Camden County — including Cherry Hill, Voorhees, Collingswood, Haddonfield, Pennsauken, and surrounding South Jersey communities.',
+    img: '/images/wfp-camden-hero-bg.jpg',
+    alt: 'Window film Camden New Jersey',
+    href: '/cities/camden/',
+  },
+  {
+    label: 'Reading',
+    state: 'PA',
+    desc: 'Professional window film installation for Berks County homes, office parks, and commercial buildings throughout the greater Reading metro area — including Wyomissing and Muhlenberg Township.',
+    img: '/images/wfp-premium-films-v2.jpg',
+    alt: 'Window film Reading Pennsylvania',
+    href: '/cities/reading/',
+  },
+  {
+    label: 'Upper Darby Township',
+    state: 'PA',
+    desc: 'Serving Delaware County residential and commercial properties in Upper Darby, Drexel Hill, Lansdowne, and neighboring communities throughout the western Philadelphia suburbs.',
+    img: '/images/wfp-expert-installation-v1.jpg',
+    alt: 'Window film Upper Darby Township Pennsylvania',
+    href: '/cities/upper-darby-township/',
+  },
+];
+
+const alsoServing = [
+  { label: 'Cherry Hill, NJ',    href: '/contact/' },
+  { label: 'Voorhees, NJ',       href: '/contact/' },
+  { label: 'Haddonfield, NJ',    href: '/contact/' },
+  { label: 'Collingswood, NJ',   href: '/contact/' },
+  { label: 'Pennsauken, NJ',     href: '/contact/' },
+  { label: 'Marlton, NJ',        href: '/contact/' },
+  { label: 'Maple Shade, NJ',    href: '/contact/' },
+  { label: 'Wilmington, DE',     href: '/contact/' },
+  { label: 'Chester, PA',        href: '/contact/' },
+  { label: 'Norristown, PA',     href: '/contact/' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/cities/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-film-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Cities We Serve</h1>
-      <p>Window Film Philadelphia is honored to serve cities throughout the Philadelphia metropolitan area — providing leading residential and commercial window film services across Pennsylvania and New Jersey.</p>
+<InnerPageHero
+  title="Cities We Serve"
+  bgImage="/images/wfp-landing-hero.jpg"
+  desc="Professional window film across the Philadelphia metropolitan area."
+/>
+
+<div class="ip-page-body">
+
+<!-- ══════════════════════════════════════
+     INTRO — 2-col: big heading left, text + CTAs right
+     ══════════════════════════════════════ -->
+<section class="cp-intro">
+  <div class="cp-intro__inner">
+    <div class="cp-intro__left">
+      <span class="cp-eyebrow">Service Area</span>
+      <h1 class="cp-intro__title">Serving the Greater Philadelphia Metro Area</h1>
     </div>
-  </section>
+    <div class="cp-intro__right">
+      <p class="cp-intro__lead">Window Film Philadelphia is the trusted window film contractor across Pennsylvania and New Jersey. With local crews based in the Philadelphia area, we offer same-week scheduling, on-site estimates, and the fastest installation turnaround in the region. Select your city below to learn more about our services in your area.</p>
+      <div class="cp-intro__ctas">
+        <a href="/contact/" class="cp-btn cp-btn--primary">Get a Free Quote</a>
+        <a href="/applications/" class="cp-btn cp-btn--ghost">Our Applications</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="cities-section section-pad">
-    <div class="container">
-      <h2>Leading Residential and Commercial Window Film Services for the Philadelphia Metropolitan Area</h2>
-      <p class="cities-section__intro">We proudly serve the following cities and surrounding communities. Don't see your city? Contact us — we serve the entire Philadelphia metro area and surrounding counties.</p>
-      <ul class="cities-grid">
-        {cities.map((c) => (
+<!-- ══════════════════════════════════════
+     CITY CARDS — 2-col grid
+     ══════════════════════════════════════ -->
+<section class="cp-cities">
+  <div class="cp-cities__grid">
+    {cities.map((c, i) => (
+      <a href={c.href} class="cp-city-card fade-in" style={`transition-delay: ${(i % 2) * 100}ms`}>
+        <div class="cp-city-card__img">
+          <img src={c.img} alt={c.alt} loading="lazy" />
+          <span class="cp-city-card__badge">{c.state}</span>
+        </div>
+        <div class="cp-city-card__body">
+          <h3 class="cp-city-card__title">{c.label}</h3>
+          <div class="cp-city-card__rule"></div>
+          <p class="cp-city-card__desc">{c.desc}</p>
+          <span class="cp-city-card__cta">
+            Explore {c.label}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ALSO SERVING — pill links
+     ══════════════════════════════════════ -->
+<section class="cp-also">
+  <div class="cp-also__inner">
+    <div class="cp-also__left">
+      <span class="cp-eyebrow">Broader Service Area</span>
+      <h2 class="cp-also__title">Don't see your city?</h2>
+      <p class="cp-also__body">We travel throughout the Philadelphia metropolitan area and regularly serve communities across South Jersey, Delaware County, and Chester County. Contact us to discuss your project — we'd be happy to come to you.</p>
+      <a href="/contact/" class="cp-btn cp-btn--primary">Contact Us</a>
+    </div>
+    <div class="cp-also__right">
+      <p class="cp-also__also-label">Also serving:</p>
+      <ul class="cp-also__pills">
+        {alsoServing.map((s) => (
           <li>
-            <a href={c.href} class="city-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-              </svg>
-              <span>{c.label}</span>
-              <svg class="city-link__arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
+            <a href={s.href} class="cp-also__pill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+              {s.label}
             </a>
           </li>
         ))}
       </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Film Contractor"}
-    body={"Window Film Philadelphia proudly serves numerous cities and areas throughout the Philadelphia metropolitan area across both Pennsylvania and New Jersey. If your city is not listed above, please contact us — our team travels throughout the region and would be glad to discuss your project."}
-    imageSrc={'/images/window-film-contractor-philadelphia.jpg'}
-    imageAlt={'Window film contractor Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Contact Us'}
-    ctaHref={'/contact/'}
-  />
+<!-- ══════════════════════════════════════
+     BRAND LOGOS
+     ══════════════════════════════════════ -->
+<BrandLogos />
 
-  <BrandLogos />
-  <CTAStrip />
+<!-- ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ -->
+<div class="cp-cta fade-in">
+  <h2>Ready to get started in <em>your city?</em></h2>
+  <div class="cp-cta__btns">
+    <a href="/contact/" class="cp-btn cp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="cp-btn cp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
+
+</div><!-- end ip-page-body -->
 
 </BaseLayout>
 
 <style>
-.cities-section {
-  background: var(--color-bg-section);
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 
-.cities-section h2 {
-  margin-bottom: 0.75rem;
-  max-width: 720px;
+/* ── EYEBROW ── */
+.cp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
 }
 
-.cities-section__intro {
-  max-width: 620px;
-  margin-bottom: 2rem;
+/* ── BUTTONS ── */
+.cp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
 }
+.cp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.cp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.cp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.cp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.cp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.cp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.cp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.cp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
 
-.cities-grid {
+/* ── INTRO ── */
+.cp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.cp-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.cp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.cp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.cp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ── CITY CARDS ── */
+.cp-cities {
+  padding: 0 10% 100px;
+}
+.cp-cities__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.cp-city-card {
+  background: transparent;
+  border-radius: 24px;
+  overflow: visible;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  border: 1px solid #DDDCDA;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.cp-city-card:hover {
+  border-color: var(--green, #81AB4C);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+}
+.cp-city-card__img {
+  margin: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+}
+.cp-city-card__img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.cp-city-card:hover .cp-city-card__img img {
+  transform: scale(1.04);
+}
+.cp-city-card__badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--brand, #272E32);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+.cp-city-card__body {
+  padding: 12px 24px 28px;
+}
+.cp-city-card__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.cp-city-card__rule {
+  width: 100%; height: 1px;
+  background: var(--light-gray, #EFEFED);
+  margin-bottom: 16px;
+}
+.cp-city-card__desc {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+.cp-city-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  transition: gap 0.2s;
+}
+.cp-city-card:hover .cp-city-card__cta { gap: 13px; }
+
+/* ── ALSO SERVING ── */
+.cp-also {
+  background: var(--off-white, #F7F6F3);
+  margin: 0 5%;
+  border-radius: 32px;
+  padding: 64px 60px;
+  margin-bottom: 80px;
+}
+.cp-also__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.cp-also__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+.cp-also__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin: 0 0 28px;
+}
+.cp-also__also-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light, #888);
+  margin: 0 0 16px;
+}
+.cp-also__pills {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-}
-
-.city-link {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cp-also__pill {
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 1.1rem;
-  background: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  color: var(--color-charcoal);
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+  gap: 7px;
+  padding: 9px 18px;
+  background: #fff;
+  border: 1px solid var(--light-gray, #EFEFED);
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid, #4a4a4a);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
 }
+.cp-also__pill svg { color: var(--green, #81AB4C); flex-shrink: 0; }
+.cp-also__pill:hover { border-color: var(--green, #81AB4C); color: var(--green, #81AB4C); }
 
-.city-link svg:first-child {
-  color: var(--color-brand);
-  flex-shrink: 0;
+/* ── CTA BANNER ── */
+.cp-cta {
+  background: var(--brand, #272E32);
+  border-radius: 40px;
+  padding: 64px 60px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 5% 0;
 }
-
-.city-link span {
-  flex: 1;
+.cp-cta h2 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 32px; font-weight: 700;
+  color: #fff; line-height: 1.2;
+  max-width: 460px; margin: 0;
 }
+.cp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.cp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
 
-.city-link__arrow {
-  opacity: 0.4;
-  flex-shrink: 0;
-  transition: opacity 200ms ease, transform 200ms ease;
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .cp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .cp-also__inner { grid-template-columns: 1fr; gap: 40px; }
+  .cp-also { padding: 48px 40px; }
 }
-
-.city-link:hover {
-  border-color: var(--color-brand);
-  color: var(--color-brand);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+@media (max-width: 768px) {
+  .cp-intro { padding: 60px 5%; }
+  .cp-cities { padding: 0 5% 60px; }
+  .cp-cities__grid { grid-template-columns: 1fr; }
+  .cp-city-card__img { height: 240px; }
+  .cp-also { margin: 0 5%; padding: 40px 28px; margin-bottom: 60px; }
+  .cp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .cp-cta h2 { font-size: 26px; max-width: 100%; }
+  .cp-cta__btns { flex-direction: column; width: 100%; }
 }
-
-.city-link:hover .city-link__arrow {
-  opacity: 1;
-  transform: translateX(3px);
+@media (max-width: 480px) {
+  .cp-intro__ctas { flex-direction: column; }
 }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>

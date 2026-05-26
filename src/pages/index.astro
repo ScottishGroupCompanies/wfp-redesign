@@ -77,25 +77,54 @@ const description = 'Window Film Philadelphia provides professional window film 
 </div>
 
 <!-- ══════════════════════════════════════
-     STATS BAND
+     STATS — 2-col: hero image + 2×2 card grid
      ══════════════════════════════════════ -->
 <div class="hp-stats">
-  <div class="hp-stats__grid">
-    <div class="hp-stat fade-in">
-      <span class="hp-stat__num">15<span class="hp-stat__sfx">+</span></span>
-      <span class="hp-stat__lbl">Years in business</span>
+  <div class="hp-stats__inner">
+
+    <div class="hp-stats__hero-img">
+      <img src="/images/bp-stats-home-large.jpg" alt="Professional window film installation Philadelphia" loading="lazy" />
     </div>
-    <div class="hp-stat fade-in fade-in-delay-1">
-      <span class="hp-stat__num">5k<span class="hp-stat__sfx">+</span></span>
-      <span class="hp-stat__lbl">Projects completed</span>
-    </div>
-    <div class="hp-stat fade-in fade-in-delay-2">
-      <span class="hp-stat__num">50<span class="hp-stat__sfx">+</span></span>
-      <span class="hp-stat__lbl">Cities served</span>
-    </div>
-    <div class="hp-stat fade-in fade-in-delay-3">
-      <span class="hp-stat__num">4.9<span class="hp-stat__sfx">★</span></span>
-      <span class="hp-stat__lbl">Average Google rating</span>
+
+    <div class="hp-stats__cards">
+
+      <div class="hp-stat-card">
+        <div class="hp-stat-card__top">
+          <div class="hp-stat-card__label">Years of Experience</div>
+          <div class="hp-stat-card__rule"></div>
+        </div>
+        <div class="hp-stat-card__bottom">
+          <div class="hp-stat-card__num">15<span class="hp-stat-card__accent">+</span></div>
+          <div class="hp-stat-card__sub">Serving Philadelphia since 2008</div>
+        </div>
+      </div>
+
+      <div class="hp-stat-card">
+        <div class="hp-stat-card__top">
+          <div class="hp-stat-card__label">Projects Completed</div>
+          <div class="hp-stat-card__rule"></div>
+        </div>
+        <div class="hp-stat-card__bottom">
+          <div class="hp-stat-card__num">5k<span class="hp-stat-card__accent">+</span></div>
+          <div class="hp-stat-card__sub">Residential &amp; commercial installs</div>
+        </div>
+      </div>
+
+      <div class="hp-stat-card">
+        <div class="hp-stat-card__top">
+          <div class="hp-stat-card__label">Cities Served</div>
+          <div class="hp-stat-card__rule"></div>
+        </div>
+        <div class="hp-stat-card__bottom">
+          <div class="hp-stat-card__num">50<span class="hp-stat-card__accent">+</span></div>
+          <div class="hp-stat-card__sub">Across Pennsylvania &amp; New Jersey</div>
+        </div>
+      </div>
+
+      <div class="hp-stat-card hp-stat-card--img">
+        <img src="/images/bp-stats-home-card.jpg" alt="Window film professionals Philadelphia" loading="lazy" />
+      </div>
+
     </div>
   </div>
 </div>
@@ -465,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
 .hp-hero__content {
   position: relative;
   z-index: 1;
-  padding: 72px 5% 200px;
+  padding: 200px 5% 400px;
   width: 100%;
   max-width: 100%;
   text-align: center;
@@ -878,24 +907,59 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 }
 
-/* ── STATS BAND ── */
-.hp-stats { background: var(--brand, #272E32); padding: 80px 5%; }
-.hp-stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.hp-stat {
-  text-align: center; padding: 20px;
-  border-right: 1px solid rgba(255,255,255,0.12);
+/* ── STATS ── */
+.hp-stats {
+  background: #ffffff;
+  padding: 0 5% 80px;
 }
-.hp-stat:last-child { border-right: none; }
-.hp-stat__num {
-  font-family: var(--font-serif);
-  font-size: 52px; font-weight: 800; color: #fff;
-  display: block; line-height: 1;
+.hp-stats__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
 }
-.hp-stat__sfx { color: var(--green, #81AB4C); }
-.hp-stat__lbl {
+.hp-stats__hero-img {
+  border-radius: 32px;
+  overflow: hidden;
+  min-height: 500px;
+}
+.hp-stats__hero-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.hp-stats__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: 100%;
+}
+.hp-stat-card {
+  background: var(--off-white, #F7F6F3);
+  border-radius: 24px;
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hp-stat-card--img { padding: 0; overflow: hidden; }
+.hp-stat-card--img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hp-stat-card__label {
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px; color: rgba(255,255,255,0.55);
-  margin-top: 8px; display: block;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-light, #888);
+  margin-bottom: 10px;
+}
+.hp-stat-card__rule { width: 100%; height: 1px; background: var(--light-gray, #EFEFED); }
+.hp-stat-card__num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(44px, 4vw, 64px); font-weight: 700;
+  color: var(--text-dark, #1a1a1a); line-height: 1; margin-bottom: 10px;
+}
+.hp-stat-card__accent { color: var(--green, #81AB4C); }
+.hp-stat-card__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; color: var(--text-light, #888); line-height: 1.4;
 }
 
 /* ── WHY US ── */
@@ -1063,7 +1127,8 @@ document.addEventListener('DOMContentLoaded', () => {
   .hp-glass { padding: 0 5% 40px; }
   .hp-services { padding: 60px 5% 80px; }
   .hp-strip__scroll { animation-duration: 40s; }
-  .hp-stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .hp-stats__inner { grid-template-columns: 1fr; }
+  .hp-stats__hero-img { min-height: 360px; }
   .hp-why__row,
   .hp-why__row--rev { grid-template-columns: 1fr; gap: 32px; }
   .hp-why__row--rev .hp-why__img    { order: 0; }
@@ -1241,7 +1306,8 @@ a.hp-apps__name:hover {
 
 @media (max-width: 560px) {
   .hp-steps { grid-template-columns: 1fr; }
-  .hp-stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .hp-stats__hero-img { min-height: 260px; }
+  .hp-stat-card__num { font-size: clamp(36px, 9vw, 52px); }
   .hp-cta__btns { flex-direction: column; width: 100%; }
 }
 </style>

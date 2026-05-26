@@ -1,133 +1,481 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BackAndForthSection from '../components/BackAndForthSection.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
 import BrandLogos from '../components/BrandLogos.astro';
-import CTAStrip from '../components/CTAStrip.astro';
 
 const title = 'Resources | Window Film Philadelphia | Leading Window Film Solutions';
 const description = 'Access window film resources for Philadelphia property owners — pricing guides, maintenance tips, warranty info, property codes, FAQs, and more.';
 
+const featuredResources = [
+  {
+    number: '01',
+    heading: 'Window Film Pricing Guide',
+    body: 'Understanding window film costs is the first step to budgeting your project. Our pricing guide breaks down cost variables by film type, project size, and installation complexity — with general price ranges for spectrally selective, security, Low-E, and decorative films across Philadelphia residential and commercial properties.',
+    img: '/images/window-film-pricing-guide-philadelphia.jpg',
+    alt: 'Window film pricing guide Philadelphia',
+    href: '/resources/window-film-pricing/',
+    cta: 'View Pricing Guide',
+  },
+  {
+    number: '02',
+    heading: 'Commercial Window Film Guide',
+    body: 'Philadelphia commercial property owners and managers will find everything they need in this comprehensive guide. Learn how solar control, safety, and decorative films perform in office buildings, retail spaces, hotels, and more — with ROI data, installation timelines, and energy savings projections.',
+    img: '/images/commercial-window-film-guide-philadelphia.jpg',
+    alt: 'Commercial window film guide Philadelphia',
+    href: '/resources/commercial-guide/',
+    cta: 'View Commercial Guide',
+  },
+  {
+    number: '03',
+    heading: 'Window Film Warranty',
+    body: 'All our residential and commercial installations include a lifetime manufacturer warranty against peeling, bubbling, cracking, and fading. Learn what your warranty covers, what to do if you experience issues with your installation, and how Window Film Philadelphia stands behind every project.',
+    img: '/images/window-tinting-warranty-philadelphia.jpg',
+    alt: 'Window film warranty Philadelphia',
+    href: '/resources/warranty/',
+    cta: 'View Warranty Information',
+  },
+];
+
 const resources = [
-  { label: 'Window Film Pricing',                   href: '/resources/window-film-pricing/' },
-  { label: 'Window Film Maintenance, Care & Cleaning', href: '/resources/maintenance-and-care/' },
-  { label: 'Window Film Warranty',                  href: '/resources/warranty/' },
-  { label: 'Window Replacement Alternative',        href: '/resources/window-replacement-alternative/' },
-  { label: 'Window Film Alternatives',              href: '/resources/window-film-alternatives/' },
-  { label: 'Window Film Fact Sheet',                href: '/resources/window-film-fact-sheet/' },
-  { label: 'Commercial Window Film Guide',          href: '/resources/commercial-guide/' },
-  { label: 'Specs for Architects & Builders',       href: '/resources/architects-builders/' },
-  { label: 'Window Film FAQ for Business',          href: '/resources/commercial-faq/' },
-  { label: 'Window Film for Property Code',         href: '/resources/property-code/' },
+  {
+    label: 'Maintenance, Care & Cleaning',
+    desc: 'Step-by-step care instructions for keeping your window film looking new — including what products to avoid and how to handle the curing period after installation.',
+    img: '/images/window-film-maintenance-philadelphia.png',
+    alt: 'Window film maintenance Philadelphia',
+    href: '/resources/maintenance-and-care/',
+  },
+  {
+    label: 'Window Replacement Alternative',
+    desc: 'Window film delivers many of the performance benefits of new glass at a fraction of the cost. See how film compares to full window replacement for energy savings and UV protection.',
+    img: '/images/window-replacement-alternatives-philadelphia.jpg',
+    alt: 'Window replacement alternative Philadelphia',
+    href: '/resources/window-replacement-alternative/',
+  },
+  {
+    label: 'Window Film Alternatives',
+    desc: 'Not sure if window film is right for you? We break down the alternatives — blinds, shades, tinted glass, and more — so you can make the most informed decision for your property.',
+    img: '/images/window-film-alternatives-philadelphia.jpg',
+    alt: 'Window film alternatives Philadelphia',
+    href: '/resources/window-film-alternatives/',
+  },
+  {
+    label: 'Window Film Fact Sheet',
+    desc: 'Quick-reference facts on heat rejection, UV blocking, visible light transmission, glare reduction, and other key window film performance metrics.',
+    img: '/images/window-film-facts-philadelphia.jpg',
+    alt: 'Window film fact sheet Philadelphia',
+    href: '/resources/window-film-fact-sheet/',
+  },
+  {
+    label: 'Specs for Architects & Builders',
+    desc: 'Technical specifications, product data sheets, and LEED documentation for architects, engineers, and builders specifying window film on new construction or renovation projects.',
+    img: '/images/commercial-window-film-specifications-philadelphia.jpg',
+    alt: 'Window film specs for architects Philadelphia',
+    href: '/resources/architects-builders/',
+  },
+  {
+    label: 'Window Film FAQ for Business',
+    desc: 'Answers to the most common questions from commercial property managers and business owners — installation timelines, disruption, ROI, and film compatibility.',
+    img: '/images/commercial-window-tinting-faq-philadelphia.jpg',
+    alt: 'Commercial window film FAQ Philadelphia',
+    href: '/resources/commercial-faq/',
+  },
+  {
+    label: 'Window Film for Property Code',
+    desc: 'Learn how window film can help Philadelphia commercial properties meet safety glazing, fire, and energy code requirements — with documentation for permit applications.',
+    img: '/images/commercial-window-film-property-code-philadelphia.jpg',
+    alt: 'Window film property code Philadelphia',
+    href: '/resources/property-code/',
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/resources/'>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/resources/">
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/window-tinting-resources-philadelphia.png'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Window Film Resources for Philadelphia</h1>
-      <p>Window Film Philadelphia provides a comprehensive selection of resources so that residential and commercial property owners can find the right window film investment for their project.</p>
+<InnerPageHero
+  title="Window Film Resources"
+  bgImage="/images/2021-08-window-film-philadelphia-resources.jpg"
+  desc="Everything you need to make the right window film decision for your Philadelphia property."
+/>
+
+<div class="ip-page-body">
+
+<!-- ══════════════════════════════════════
+     INTRO — 2-col: big heading left, text + CTAs right
+     ══════════════════════════════════════ -->
+<section class="rp-intro">
+  <div class="rp-intro__inner">
+    <div class="rp-intro__left">
+      <span class="rp-eyebrow">Knowledge Base</span>
+      <h1 class="rp-intro__title">Everything you need to make an informed decision</h1>
     </div>
-  </section>
-
-  <section class="resources-section section-pad">
-    <div class="container">
-      <h2>General Window Film Resources</h2>
-      <p class="resources-section__intro">Everything you need to make an informed decision about window film for your Philadelphia property. Select a resource below to learn more.</p>
-      <ul class="resources-grid">
-        {resources.map((r) => (
-          <li>
-            <a href={r.href} class="resource-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-              </svg>
-              <span>{r.label}</span>
-              <svg class="resource-link__arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </a>
-          </li>
-        ))}
-      </ul>
+    <div class="rp-intro__right">
+      <p class="rp-intro__lead">Window Film Philadelphia is committed to keeping property owners informed. Whether you're comparing costs, reviewing technical specs, or checking warranty coverage — our resource library gives you the answers before you ever pick up the phone. Browse below or contact us with any questions.</p>
+      <div class="rp-intro__ctas">
+        <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
+        <a href="/benefits/" class="rp-btn rp-btn--ghost">View Film Benefits</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Film Contractor"}
-    body={"Window Film Philadelphia is committed to sharing the latest resources and is always happy to help you with your upcoming project. Our team of experts is ready to answer your questions and guide you to the best window film solution for your property. Contact us today for a free consultation."}
-    imageSrc={'/images/window-tinting-contractor-philadelphia.jpg'}
-    imageAlt={'Window film contractor Philadelphia'}
-    flip={true}
-    altBg={true}
-    ctaLabel={'Contact Us'}
-    ctaHref={'/contact/'}
-  />
+<!-- ══════════════════════════════════════
+     FEATURED RESOURCES — numbered alternating rows
+     ══════════════════════════════════════ -->
+<section class="rp-featured">
+  <div class="rp-featured__hd">
+    <span class="rp-eyebrow">Most Referenced</span>
+    <h2 class="rp-featured__title">Start with the resources our<br/>clients reach for most</h2>
+  </div>
 
-  <BrandLogos />
-  <CTAStrip />
+  {featuredResources.map((r, i) => (
+    <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
+      <div class="rp-feat-row__img">
+        <img src={r.img} alt={r.alt} width="600" height="480" loading="lazy" />
+        <span class="rp-feat-row__pill">{r.heading}</span>
+      </div>
+      <div class="rp-feat-row__content">
+        <span class="rp-feat-row__num">{r.number}</span>
+        <h3 class="rp-feat-row__heading">{r.heading}</h3>
+        <p class="rp-feat-row__body">{r.body}</p>
+        <a href={r.href} class="rp-feat-row__cta">
+          {r.cta}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </a>
+      </div>
+    </div>
+  ))}
+</section>
+
+<!-- ══════════════════════════════════════
+     ALL RESOURCES GRID — image cards
+     ══════════════════════════════════════ -->
+<section class="rp-all">
+  <div class="rp-all__hd">
+    <span class="rp-eyebrow">Full Resource Library</span>
+    <h2 class="rp-all__title">Additional guides &amp; reference materials</h2>
+  </div>
+  <div class="rp-all__grid">
+    {resources.map((r, i) => (
+      <a href={r.href} class="rp-all__card fade-in" style={`transition-delay: ${(i % 4) * 80}ms`}>
+        <div class="rp-all__card-img">
+          <img src={r.img} alt={r.alt} loading="lazy" />
+        </div>
+        <div class="rp-all__card-body">
+          <h3 class="rp-all__card-title">{r.label}</h3>
+          <div class="rp-all__card-rule"></div>
+          <p class="rp-all__card-desc">{r.desc}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BRAND LOGOS
+     ══════════════════════════════════════ -->
+<BrandLogos />
+
+<!-- ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ -->
+<div class="rp-cta fade-in">
+  <h2>Still have questions about your <em>project?</em></h2>
+  <div class="rp-cta__btns">
+    <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
+    <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
+  </div>
+</div>
+
+</div><!-- end ip-page-body -->
 
 </BaseLayout>
 
 <style>
-.resources-section {
-  background: var(--color-bg-section);
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
 }
 
-.resources-section h2 {
-  margin-bottom: 0.75rem;
+/* ── EYEBROW ── */
+.rp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
 }
 
-.resources-section__intro {
-  max-width: 620px;
-  margin-bottom: 2rem;
+/* ── BUTTONS ── */
+.rp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
 }
+.rp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.rp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.rp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.rp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.rp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.rp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.rp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.rp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
 
-.resources-grid {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ── INTRO ── */
+.rp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.rp-intro__inner {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0.75rem;
-}
-
-.resource-link {
-  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 1.1rem;
-  background: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  color: var(--color-charcoal);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+.rp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.rp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.rp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ── FEATURED RESOURCES ── */
+.rp-featured {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.rp-featured__hd {
+  margin-bottom: 72px;
+}
+.rp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.rp-feat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.rp-feat-row:last-child { margin-bottom: 0; }
+.rp-feat-row--rev .rp-feat-row__img { order: 2; }
+.rp-feat-row--rev .rp-feat-row__content { order: 1; }
+.rp-feat-row__img {
+  position: relative;
+  height: 480px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.rp-feat-row__img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.rp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600;
+  color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.rp-feat-row__num {
+  display: block;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+  opacity: 0.25;
+  margin-bottom: -8px;
+}
+.rp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+.rp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.rp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.rp-feat-row__cta:hover { gap: 14px; }
+
+/* ── ALL RESOURCES GRID ── */
+.rp-all {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.rp-all__hd {
+  margin-bottom: 56px;
+}
+.rp-all__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  max-width: 600px;
+  margin: 0;
+}
+.rp-all__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.rp-all__card {
+  background: transparent;
+  border-radius: 24px;
+  overflow: visible;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  border: 1px solid #DDDCDA;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.rp-all__card:hover {
+  border-color: var(--green, #81AB4C);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+}
+.rp-all__card-img {
+  margin: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 200px;
+}
+.rp-all__card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.rp-all__card:hover .rp-all__card-img img {
+  transform: scale(1.05);
+}
+.rp-all__card-body {
+  padding: 8px 16px 24px;
+}
+.rp-all__card-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.rp-all__card-rule {
+  width: 100%; height: 1px;
+  background: var(--light-gray, #EFEFED);
+  margin-bottom: 14px;
+}
+.rp-all__card-desc {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.65;
+  margin: 0;
 }
 
-.resource-link svg:first-child {
-  color: var(--color-brand);
-  flex-shrink: 0;
+/* ── CTA BANNER ── */
+.rp-cta {
+  background: var(--brand, #272E32);
+  border-radius: 40px;
+  padding: 64px 60px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 5% 0;
 }
-
-.resource-link span {
-  flex: 1;
+.rp-cta h2 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 32px; font-weight: 700;
+  color: #fff; line-height: 1.2;
+  max-width: 460px; margin: 0;
 }
+.rp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.rp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
 
-.resource-link__arrow {
-  opacity: 0.4;
-  flex-shrink: 0;
-  transition: opacity 200ms ease, transform 200ms ease;
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .rp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .rp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .rp-feat-row--rev .rp-feat-row__img { order: 0; }
+  .rp-feat-row--rev .rp-feat-row__content { order: 1; }
+  .rp-all__grid { grid-template-columns: repeat(3, 1fr); }
 }
-
-.resource-link:hover {
-  border-color: var(--color-brand);
-  color: var(--color-brand);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+@media (max-width: 768px) {
+  .rp-intro { padding: 60px 5%; }
+  .rp-featured { padding: 60px 5%; }
+  .rp-all { padding: 60px 5%; }
+  .rp-feat-row__img { height: 300px; }
+  .rp-all__grid { grid-template-columns: repeat(2, 1fr); }
+  .rp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .rp-cta h2 { font-size: 26px; max-width: 100%; }
+  .rp-cta__btns { flex-direction: column; width: 100%; }
 }
-
-.resource-link:hover .resource-link__arrow {
-  opacity: 1;
-  transform: translateX(3px);
+@media (max-width: 480px) {
+  .rp-all__grid { grid-template-columns: 1fr; }
+  .rp-intro__ctas { flex-direction: column; }
 }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
