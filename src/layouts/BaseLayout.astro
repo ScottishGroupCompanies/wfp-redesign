@@ -2,16 +2,147 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEOHead from '../components/SEOHead.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
 import '../styles/global.css';
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
 
 export interface Props {
   title: string;
   description: string;
   canonical?: string;
   ogImage?: string;
+  noindex?: boolean;
+  /** FAQ Q&A pairs — renders FAQPage schema when provided */
+  faqItems?: FaqItem[];
+  /** Service name for Service schema — renders when provided */
+  serviceName?: string;
+  /** Service description for Service schema */
+  serviceDesc?: string;
+  /** Page canonical URL — used as Service schema @id */
+  serviceUrl?: string;
+  /** HowTo schema steps — renders HowTo schema when provided */
+  howToSteps?: { name: string; text: string; image?: string }[];
+  /** HowTo schema name */
+  howToName?: string;
+  /** HowTo schema description */
+  howToDesc?: string;
 }
 
-const { title, description, canonical, ogImage } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  noindex,
+  faqItems,
+  serviceName,
+  serviceDesc,
+  serviceUrl,
+  howToSteps,
+  howToName,
+  howToDesc,
+} = Astro.props;
+
+// ─── LocalBusiness schema (sitewide) ───────────────────────────────────────
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.windowfilmphiladelphia.net/#business",
+  "name": "Window Film Philadelphia",
+  "url": "https://www.windowfilmphiladelphia.net",
+  "logo": "https://www.windowfilmphiladelphia.net/images/window-film-philadelphia-logo-white.png",
+  "image": "https://www.windowfilmphiladelphia.net/images/wfp-landing-hero.webp",
+  "description": "Philadelphia's leading commercial and residential window film contractor. Serving Philadelphia, Camden, Reading, and surrounding counties since 2008.",
+  "telephone": "+12673947980",
+  "email": "contact@windowfilmphiladelphia.net",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Philadelphia",
+    "addressRegion": "PA",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Philadelphia", "sameAs": "https://en.wikipedia.org/wiki/Philadelphia" },
+    { "@type": "City", "name": "Camden", "sameAs": "https://en.wikipedia.org/wiki/Camden,_New_Jersey" },
+    { "@type": "City", "name": "Reading", "sameAs": "https://en.wikipedia.org/wiki/Reading,_Pennsylvania" },
+    { "@type": "City", "name": "Upper Darby Township", "sameAs": "https://en.wikipedia.org/wiki/Upper_Darby_Township,_Pennsylvania" }
+  ],
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.windowfilmphiladelphia.net"
+  ]
+};
+
+// ─── FAQPage schema (page-level, only when faqItems provided) ───────────────
+const faqSchema = faqItems && faqItems.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+
+// ─── Service schema (page-level, only when serviceName provided) ────────────
+const serviceSchema = serviceName ? {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${serviceUrl || canonical || 'https://www.windowfilmphiladelphia.net'}#service`,
+  "name": serviceName,
+  "description": serviceDesc || description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.windowfilmphiladelphia.net/#business"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Philadelphia",
+    "sameAs": "https://en.wikipedia.org/wiki/Philadelphia"
+  },
+  "url": serviceUrl || canonical || "https://www.windowfilmphiladelphia.net"
+} : null;
+
+// ─── HowTo schema (page-level, only when howToSteps provided) ───────────────
+const howToSchema = howToSteps && howToSteps.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": howToName || "Window Film Installation Process",
+  "description": howToDesc || "Professional window film installation process in the Philadelphia metro area.",
+  "step": howToSteps.map((s, i) => ({
+    "@type": "HowToStep",
+    "name": s.name,
+    "position": i + 1,
+    "text": s.text,
+    ...(s.image ? { "image": s.image } : {})
+  })),
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.windowfilmphiladelphia.net/#business"
+  }
+} : null;
+
+const schemas = [
+  localBusiness,
+  ...(faqSchema ? [faqSchema] : []),
+  ...(serviceSchema ? [serviceSchema] : []),
+  ...(howToSchema ? [howToSchema] : []),
+];
 ---
 
 <!doctype html>
@@ -21,14 +152,12 @@ const { title, description, canonical, ogImage } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/images/wfp-favicon.png" sizes="512x512" />
     <link rel="shortcut icon" href="/images/wfp-favicon.png" />
-    <!-- Google Fonts: Playfair Display (serif headings) + DM Sans (body/UI) -->
+    <!-- Fonts self-hosted via @fontsource-variable (imported in global.css) -->
+    <!-- Preconnect kept for legacy Hind font still loaded from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <SEOHead title={title} description={description} canonical={canonical} ogImage={ogImage} />
+    <SEOHead title={title} description={description} canonical={canonical} ogImage={ogImage} noindex={noindex} />
+    <SchemaOrg schemas={schemas} />
   </head>
   <body>
     <Header />

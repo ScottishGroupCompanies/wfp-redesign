@@ -4,13 +4,61 @@ import BackAndForthSection from '../components/BackAndForthSection.astro';
 import BrandLogos from '../components/BrandLogos.astro';
 import CTAStrip from '../components/CTAStrip.astro';
 
-const title = 'Process | Window Film Philadelphia | Leading Window Film Solutions';
+const title = 'Window Film Installation Process | Window Film Philadelphia';
 const description = 'Learn about Window Film Philadelphia\'s professional installation process — from consultation and preparation to precision installation. Schedule your free consultation today.';
+
+// HowTo schema for the installation process page
+const howToSteps = [
+  {
+    "@type": "HowToStep",
+    "name": "Window Film Consultation",
+    "position": 1,
+    "text": "We provide either same-day installations or scheduled consultations. During the consultation, our window film contractors show you available options, discuss your project goals, take measurements, and determine whether same-day installation is possible or a follow-up appointment is needed.",
+    "image": "https://www.windowfilmphiladelphia.net/images/2021-10-window-film-process-philadelphia.webp"
+  },
+  {
+    "@type": "HowToStep",
+    "name": "Window Film Preparation",
+    "position": 2,
+    "text": "Our contractors prepare your windows by thoroughly cleaning the glass using razor blades and squeegee tools. This removes all dirt, debris, and residue from the glass surface to ensure proper adhesion and full cure time.",
+    "image": "https://www.windowfilmphiladelphia.net/images/2021-10-window-film-preparation-philadelphia.webp"
+  },
+  {
+    "@type": "HowToStep",
+    "name": "Window Film Installation",
+    "position": 3,
+    "text": "Film is custom-cut per window dimension to minimize waste and ensure a perfect fit. C-Bond adhesion technology is available for faster cure times and stronger bond strength. Do not clean your window film for 30 days after installation to allow the adhesive to fully cure.",
+    "image": "https://www.windowfilmphiladelphia.net/images/2021-10-window-film-installation-philadelphia.webp"
+  }
+];
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Install Window Film — Window Film Philadelphia",
+  "description": "Professional window film installation process: consultation, preparation, and precision installation for residential and commercial properties in the Philadelphia metro area.",
+  "step": howToSteps,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.windowfilmphiladelphia.net/#business"
+  },
+  "totalTime": "PT1D"
+};
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/process/'>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical='https://www.windowfilmphiladelphia.net/process/'
+  serviceName="Window Film Installation"
+  serviceDesc="Professional window film installation for residential and commercial properties throughout the Philadelphia metro area. Consultation, preparation, and precision installation with lifetime warranty."
+  serviceUrl="https://www.windowfilmphiladelphia.net/process/"
+  howToName="How to Install Window Film — Window Film Philadelphia"
+  howToDesc="Professional window film installation process: consultation, preparation, and precision installation for residential and commercial properties in the Philadelphia metro area."
+  howToSteps={howToSteps}
+>
 
-  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-10-window-film-process-philadelphia.jpg'); background-size: cover; background-position: center;">
+  <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/2021-10-window-film-process-philadelphia.webp'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Expert Window Film Installation in Philadelphia</h1>
       <p>Our team specializes in window film installation in Philadelphia, providing residential and commercial properties with professional, precise service using cutting-edge technology for optimal adhesion and performance.</p>
@@ -20,7 +68,7 @@ const description = 'Learn about Window Film Philadelphia\'s professional instal
   <BackAndForthSection
     heading={'Step One: Window Film Consultation'}
     body={'We provide either same-day installations or scheduled consultations for our clients. During the consultation, our window film contractors show you available options, discuss your project goals, take measurements, and determine whether same-day installation is possible or a follow-up appointment is needed.'}
-    imageSrc={'/images/2021-10-window-film-process-philadelphia.jpg'}
+    imageSrc={'/images/2021-10-window-film-process-philadelphia.webp'}
     imageAlt={'Window film consultation Philadelphia'}
     flip={false}
     altBg={false}
@@ -29,7 +77,7 @@ const description = 'Learn about Window Film Philadelphia\'s professional instal
   <BackAndForthSection
     heading={'Step Two: Window Film Preparation'}
     body={'In order to ensure proper adhesion of your window film, our contractors prepare your windows by thoroughly cleaning the glass using razor blades and squeegee tools. This process removes all dirt, debris, and residue from the interior or exterior glass surface — ensuring proper adhesion and cure time.'}
-    imageSrc={'/images/2021-10-window-film-preparation-philadelphia.jpg'}
+    imageSrc={'/images/2021-10-window-film-preparation-philadelphia.webp'}
     imageAlt={'Window film preparation Philadelphia'}
     flip={true}
     altBg={true}
@@ -38,7 +86,7 @@ const description = 'Learn about Window Film Philadelphia\'s professional instal
   <BackAndForthSection
     heading={'Step Three: Window Film Installation'}
     body={'Film is custom-cut per window dimension to minimize waste and ensure a perfect fit. C-Bond adhesion technology is available for faster cure times and stronger bond strength. Important care note: DO NOT CLEAN YOUR WINDOW FILM FOR 30 DAYS after installation to allow the adhesive to fully cure.'}
-    imageSrc={'/images/2021-10-window-film-installation-philadelphia.jpg'}
+    imageSrc={'/images/2021-10-window-film-installation-philadelphia.webp'}
     imageAlt={'Window film installation Philadelphia'}
     flip={false}
     altBg={false}
@@ -47,7 +95,7 @@ const description = 'Learn about Window Film Philadelphia\'s professional instal
   <BackAndForthSection
     heading={"Work With Philadelphia's Trusted Window Film Installation Experts"}
     body={"Window Film Philadelphia's installation team brings precision, professionalism, and expert product knowledge to every project. Whether you're upgrading a single office window or outfitting an entire building, we deliver solutions with a great ROI and award-winning customer service. Contact us today to schedule your project."}
-    imageSrc={'/images/2021-10-llumar-window-film-contractor-philadelphia.jpg'}
+    imageSrc={'/images/2021-10-llumar-window-film-contractor-philadelphia.webp'}
     imageAlt={'Window film installation experts Philadelphia'}
     flip={true}
     altBg={true}
