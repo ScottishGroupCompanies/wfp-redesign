@@ -100,13 +100,51 @@ const description = 'Contact Window Film Philadelphia to schedule your free on-s
           <textarea name="message" placeholder="Message..." rows="6" required class="ct-form__input ct-form__textarea"></textarea>
         </div>
 
-        <button type="submit" class="ct-form__submit">
+        <button type="submit" class="ct-form__submit" id="ct-submit-btn">
           <span>Submit</span>
           <span class="ct-form__submit-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </span>
         </button>
       </form>
+
+      <!-- PROMPT CARD -->
+      <div class="ai-prompt-card" id="ai-prompt-card">
+        <div class="ai-prompt-card__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <p class="ai-prompt-card__text">Before we send your message — would you like to tell us a bit more about your window film project? It takes about a minute and helps us prepare a more accurate estimate.</p>
+        <div class="ai-prompt-card__actions">
+          <button class="ai-prompt-card__yes" id="ai-yes-btn">Yes, tell us more</button>
+          <button class="ai-prompt-card__no" id="ai-no-btn">No thanks, just submit</button>
+        </div>
+      </div>
+
+      <!-- CHAT WIDGET -->
+      <div class="ai-chat" id="ai-chat">
+        <div class="ai-chat__header">
+          <span class="ai-chat__header-dot" aria-hidden="true"></span>
+          <span class="ai-chat__header-label">Window Film Project Inquiry</span>
+        </div>
+        <div class="ai-chat__messages" id="ai-chat-messages"></div>
+        <div class="ai-chat__quick-replies" id="ai-quick-replies"></div>
+        <div class="ai-chat__input-row" id="ai-input-row">
+          <input type="text" class="ai-chat__input" id="ai-chat-input" placeholder="Type your answer…" />
+          <button class="ai-chat__send" id="ai-chat-send" aria-label="Send">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2 15 22 11 13 2 9l20-7z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS MESSAGE -->
+      <div class="ai-success" id="ai-success">
+        <div class="ai-success__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        </div>
+        <h3 class="ai-success__title">Message sent!</h3>
+        <p class="ai-success__text">Thanks for reaching out. We'll review your project details and get back to you shortly.</p>
+      </div>
+
     </div>
 
     <div class="ct-map-wrap">
@@ -133,6 +171,256 @@ const description = 'Contact Window Film Philadelphia to schedule your free on-s
 </div><!-- end ip-page-body -->
 
 </BaseLayout>
+
+<script define:vars={{ geminiKey: import.meta.env.PUBLIC_GEMINI_KEY }}>
+(function () {
+  const GEMINI_KEY = geminiKey || '';
+  const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/contact@windowfilmphiladelphia.net';
+
+  const SYSTEM_PROMPT = `You are a friendly intake assistant for Window Film Philadelphia, a professional window film contractor serving residential and commercial properties in the Philadelphia metro area. Ask one question at a time in this order: (1) residential or commercial, (2) film type (Sun Control, Privacy, or Security), (3) list each window and approximate square footage, (4) any windows more than 8ft off the ground, (5) any existing window film, (6) city/neighborhood, (7) timeline. After all 7 questions are answered, thank them warmly and output a JSON object wrapped in <SUMMARY> tags like: <SUMMARY>{"project_type":"...","film_type":"...","windows":"...","high_windows":"...","existing_film":"...","location":"...","timeline":"..."}</SUMMARY>`;
+
+  const SCRIPTED_QUESTIONS = [
+    { text: 'Is this a residential or commercial project?', replies: ['Residential', 'Commercial'] },
+    { text: 'What type of film are you looking for?', replies: ['Sun Control', 'Privacy', 'Security'] },
+    { text: 'Can you list each window and its approximate square footage? For example: \'Living room – 40 sq ft, 2 bedroom windows – 15 sq ft each\'. A rough estimate is totally fine!', replies: [] },
+    { text: 'Are any of these windows more than 8 feet off the ground?', replies: ['Yes', 'No', 'Not sure'] },
+    { text: 'Do any of the windows have existing window film on them already?', replies: ['Yes', 'No', 'Not sure'] },
+    { text: 'What city or neighborhood is the project in?', replies: ['Philadelphia', 'South Philly', 'Center City', 'NE Philly', 'Camden, NJ', 'Montgomery County', 'Other'] },
+    { text: 'Last one — any urgency or timeline we should know about?', replies: ['ASAP', 'Within a month', '1–3 months', 'Just exploring'] },
+  ];
+
+  const QUESTION_LABELS = [
+    'Project Type',
+    'Film Type',
+    'Window Details',
+    'High Windows (8ft+)',
+    'Existing Film',
+    'Location',
+    'Timeline',
+  ];
+
+  const form        = document.querySelector('.ct-form');
+  const submitBtn   = document.getElementById('ct-submit-btn');
+  const promptCard  = document.getElementById('ai-prompt-card');
+  const yesBtn      = document.getElementById('ai-yes-btn');
+  const noBtn       = document.getElementById('ai-no-btn');
+  const chatWidget  = document.getElementById('ai-chat');
+  const messagesEl  = document.getElementById('ai-chat-messages');
+  const quickReplies= document.getElementById('ai-quick-replies');
+  const inputRow    = document.getElementById('ai-input-row');
+  const chatInput   = document.getElementById('ai-chat-input');
+  const sendBtn     = document.getElementById('ai-chat-send');
+  const successEl   = document.getElementById('ai-success');
+
+  let conversationHistory = [];  // [{role, parts:[{text}]}]
+  let scriptedStep = 0;
+  let useScripted = !GEMINI_KEY;
+  let chatTranscript = [];
+  let pendingSubmit = false;
+
+  function show(el, displayType) { el.style.display = displayType || 'flex'; }
+  function hide(el) { el.style.display = 'none'; }
+
+  // --- intercept form submit ---
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    show(promptCard);
+    promptCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  noBtn.addEventListener('click', function () {
+    hide(promptCard);
+    doSubmit('');
+  });
+
+  yesBtn.addEventListener('click', function () {
+    hide(promptCard);
+    show(chatWidget);
+    chatWidget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    startChat();
+  });
+
+  sendBtn.addEventListener('click', handleUserInput);
+  chatInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleUserInput(); }
+  });
+
+  function startChat() {
+    if (useScripted) {
+      addMessage('bot', SCRIPTED_QUESTIONS[0].text);
+      showQuickReplies(SCRIPTED_QUESTIONS[0].replies);
+      scriptedStep = 0;
+    } else {
+      callGemini(null);
+    }
+  }
+
+  function handleUserInput(textOverride) {
+    const text = typeof textOverride === 'string' ? textOverride : chatInput.value.trim();
+    if (!text) return;
+    chatInput.value = '';
+    addMessage('user', text);
+
+    // label the answer using the current question index
+    if (useScripted) {
+      const label = QUESTION_LABELS[scriptedStep] || 'Response';
+      chatTranscript.push(label + ': ' + text);
+    } else {
+      const modelTurns = conversationHistory.filter(m => m.role === 'model').length;
+      const label = QUESTION_LABELS[modelTurns] || 'Response';
+      chatTranscript.push(label + ': ' + text);
+    }
+
+    clearQuickReplies();
+    hideInput();
+
+    if (useScripted) {
+      handleScriptedFlow(text);
+    } else {
+      callGemini(text);
+    }
+  }
+
+  function handleScriptedFlow(userText) {
+    scriptedStep++;
+    if (scriptedStep >= SCRIPTED_QUESTIONS.length) {
+      finishChat();
+    } else {
+      setTimeout(function () {
+        const q = SCRIPTED_QUESTIONS[scriptedStep];
+        addMessage('bot', q.text);
+        showQuickReplies(q.replies);
+        if (q.replies.length === 0) showInput();
+      }, 400);
+    }
+  }
+
+  async function callGemini(userText) {
+    if (userText !== null) {
+      conversationHistory.push({ role: 'user', parts: [{ text: userText }] });
+    }
+
+    try {
+      const body = {
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: conversationHistory
+      };
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+      );
+      if (!res.ok) throw new Error('API error ' + res.status);
+      const data = await res.json();
+      const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      conversationHistory.push({ role: 'model', parts: [{ text: replyText }] });
+
+      if (replyText.includes('<SUMMARY>')) {
+        // strip tags and finish
+        const clean = replyText.replace(/<SUMMARY>[\s\S]*<\/SUMMARY>/, '').trim();
+        if (clean) addMessage('bot', clean);
+        finishChat();
+      } else {
+        addMessage('bot', replyText);
+        // determine quick replies from current scripted step mapping
+        const qr = getGeminiQuickReplies(conversationHistory.length);
+        showQuickReplies(qr);
+        if (qr.length === 0) showInput();
+      }
+    } catch (err) {
+      // fallback to scripted
+      useScripted = true;
+      scriptedStep = Math.max(0, Math.floor(conversationHistory.filter(m => m.role === 'user').length));
+      const q = SCRIPTED_QUESTIONS[Math.min(scriptedStep, SCRIPTED_QUESTIONS.length - 1)];
+      addMessage('bot', q.text);
+      showQuickReplies(q.replies);
+      if (q.replies.length === 0) showInput();
+    }
+  }
+
+  function getGeminiQuickReplies(historyLen) {
+    // model responses are at even indices (0-based counting of model turns)
+    const modelTurns = conversationHistory.filter(m => m.role === 'model').length;
+    const map = [
+      ['Residential', 'Commercial'],
+      ['Sun Control', 'Privacy', 'Security'],
+      [],
+      ['Yes', 'No', 'Not sure'],
+      ['Yes', 'No', 'Not sure'],
+      ['Philadelphia', 'South Philly', 'Center City', 'NE Philly', 'Camden, NJ', 'Montgomery County', 'Other'],
+      ['ASAP', 'Within a month', '1–3 months', 'Just exploring'],
+    ];
+    return map[modelTurns - 1] || [];
+  }
+
+  function finishChat() {
+    addMessage('bot', 'Thanks! Sending your message now…');
+    setTimeout(function () {
+      doSubmit(chatTranscript.join('\n'));
+    }, 800);
+  }
+
+  async function doSubmit(transcript) {
+    const fd = new FormData();
+    fd.append('first_name', form.querySelector('[name=first_name]').value);
+    fd.append('last_name',  form.querySelector('[name=last_name]').value);
+    fd.append('email',      form.querySelector('[name=email]').value);
+    fd.append('phone',      form.querySelector('[name=phone]').value);
+
+    let msg = form.querySelector('[name=message]').value;
+    if (transcript) msg += '\n\n--- Project Details ---\n' + transcript;
+    fd.append('message', msg);
+
+    fd.append('_next',     'https://www.windowfilmphiladelphia.net/thank-you/');
+    fd.append('_subject',  'New Contact Form Submission — Window Film Philadelphia');
+    fd.append('_captcha',  'false');
+    fd.append('_template', 'table');
+
+    try {
+      const res = await fetch(FORMSUBMIT_URL, { method: 'POST', body: fd });
+      const json = await res.json();
+      console.log('[formsubmit]', json);
+    } catch (err) {
+      console.error('[formsubmit error]', err);
+    }
+
+    // show success regardless of network outcome
+    hide(form);
+    hide(chatWidget);
+    hide(promptCard);
+    show(successEl);
+    successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // --- UI helpers ---
+  function addMessage(role, text) {
+    const wrap = document.createElement('div');
+    wrap.className = 'ai-msg ai-msg--' + role;
+    const bubble = document.createElement('div');
+    bubble.className = 'ai-msg__bubble';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function showQuickReplies(replies) {
+    quickReplies.innerHTML = '';
+    if (!replies || replies.length === 0) { showInput(); return; }
+    hideInput();
+    replies.forEach(function (r) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-qr-btn';
+      btn.textContent = r;
+      btn.addEventListener('click', function () { handleUserInput(r); });
+      quickReplies.appendChild(btn);
+    });
+  }
+
+  function clearQuickReplies() { quickReplies.innerHTML = ''; }
+  function showInput()  { show(inputRow); chatInput.focus(); }
+  function hideInput()  { hide(inputRow); }
+})();
+</script>
 
 <style>
 /* ── PAGE BODY WRAPPER ── */
@@ -332,6 +620,191 @@ const description = 'Contact Window Film Philadelphia to schedule your free on-s
   border: none;
 }
 
+/* ── AI ELEMENTS: hidden by default ── */
+#ai-prompt-card,
+#ai-chat,
+#ai-success,
+#ai-input-row {
+  display: none;
+}
+
+/* ── AI PROMPT CARD ── */
+.ai-prompt-card {
+  margin-top: 28px;
+  background: var(--off-white, #F7F6F3);
+  border: 1px solid var(--light-gray, #EFEFED);
+  border-radius: 24px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ai-prompt-card__icon {
+  color: var(--green, #81AB4C);
+  line-height: 1;
+}
+.ai-prompt-card__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+}
+.ai-prompt-card__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.ai-prompt-card__yes,
+.ai-prompt-card__no {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 100px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  border: none;
+}
+.ai-prompt-card__yes {
+  background: var(--green, #81AB4C);
+  color: #fff;
+}
+.ai-prompt-card__yes:hover {
+  background: #6e9640;
+  transform: translateY(-1px);
+}
+.ai-prompt-card__no {
+  background: #fff;
+  color: var(--text-mid, #4a4a4a);
+  border: 1px solid #e0e0e0;
+}
+.ai-prompt-card__no:hover {
+  border-color: var(--green, #81AB4C);
+  color: var(--green, #81AB4C);
+}
+
+/* ── AI CHAT WIDGET ── */
+.ai-chat {
+  margin-top: 28px;
+  border: 1px solid var(--light-gray, #EFEFED);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.ai-chat__header {
+  background: var(--brand, #272E32);
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.ai-chat__header-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  flex-shrink: 0;
+}
+.ai-chat__messages {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+  max-height: 360px;
+  overflow-y: auto;
+  background: #fff;
+}
+/* .ai-msg, .ai-msg__bubble, .ai-qr-btn — moved to <style is:global> below
+   because these elements are created dynamically in JS and won't receive
+   Astro's scoped attribute */
+.ai-chat__quick-replies {
+  padding: 4px 16px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #fff;
+}
+.ai-chat__input-row {
+  padding: 12px 16px;
+  border-top: 1px solid var(--light-gray, #EFEFED);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+}
+.ai-chat__input {
+  flex: 1;
+  background: var(--off-white, #F7F6F3);
+  border: 1px solid transparent;
+  border-radius: 100px;
+  padding: 11px 18px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-dark, #1a1a1a);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ai-chat__input:focus {
+  border-color: var(--green, #81AB4C);
+  background: #fff;
+}
+.ai-chat__send {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand, #272E32);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.ai-chat__send:hover { background: var(--green, #81AB4C); }
+
+/* ── SUCCESS ── */
+.ai-success {
+  margin-top: 28px;
+  background: #f0f7e8;
+  border: 1px solid #c5dfa0;
+  border-radius: 24px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.ai-success__icon {
+  color: var(--green, #81AB4C);
+  line-height: 1;
+}
+.ai-success__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.ai-success__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+  line-height: 1.6;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .ct-main__inner {
@@ -348,5 +821,59 @@ const description = 'Contact Window Film Philadelphia to schedule your free on-s
   .ct-form__row { grid-template-columns: 1fr; }
   .ct-map-wrap { min-height: 320px; }
   .ct-map-wrap iframe { min-height: 320px; }
+}
+</style>
+
+<!-- Global styles for dynamically-created JS elements (not scoped by Astro) -->
+<style is:global>
+.ai-msg {
+  display: flex;
+}
+.ai-msg--bot { justify-content: flex-start; }
+.ai-msg--user { justify-content: flex-end; }
+.ai-msg__bubble {
+  max-width: 78%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.ai-msg--bot .ai-msg__bubble {
+  background: var(--off-white, #F7F6F3);
+  color: var(--text-dark, #1a1a1a);
+  border-bottom-left-radius: 4px;
+}
+.ai-msg--user .ai-msg__bubble {
+  background: var(--green, #81AB4C);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.ai-qr-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: var(--green, #81AB4C);
+  border: none;
+  outline: none;
+  border-radius: 100px;
+  padding: 9px 20px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+.ai-qr-btn:hover {
+  background: #6e9640;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(129, 171, 76, 0.3);
 }
 </style>
