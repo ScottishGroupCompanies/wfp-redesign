@@ -177,7 +177,7 @@ const description = 'Contact Window Film Philadelphia to schedule your free on-s
   const GEMINI_KEY = geminiKey || '';
   const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/contact@windowfilmphiladelphia.net';
 
-  const SYSTEM_PROMPT = `You are a friendly intake assistant for Window Film Philadelphia, a professional window film contractor serving residential and commercial properties in the Philadelphia metro area. Ask one question at a time in this order: (1) residential or commercial, (2) film type (Sun Control, Privacy, or Security), (3) list each window and approximate square footage, (4) any windows more than 8ft off the ground, (5) any existing window film, (6) city/neighborhood, (7) timeline. After all 7 questions are answered, thank them warmly and output a JSON object wrapped in <SUMMARY> tags like: <SUMMARY>{"project_type":"...","film_type":"...","windows":"...","high_windows":"...","existing_film":"...","location":"...","timeline":"..."}</SUMMARY>`;
+  const SYSTEM_PROMPT = `You are a friendly intake assistant for Window Film Philadelphia, a professional window film contractor serving residential and commercial properties in the Philadelphia metro area. Ask one question at a time in this exact order: (1) Is this a residential or commercial project? (2) What type of film are you looking for? Give these exact options: Sun Control, Privacy, or Security. (3) Can you list each window and its approximate square footage? (4) Are any of these windows more than 8 feet off the ground? (5) Do any of the windows have existing window film on them already? (6) What city or neighborhood is the project in? (7) Any urgency or timeline? After all 7 questions are answered, thank them warmly and output a JSON object wrapped in <SUMMARY> tags like: <SUMMARY>{"project_type":"...","film_type":"...","windows":"...","high_windows":"...","existing_film":"...","location":"...","timeline":"..."}</SUMMARY>`;
 
   const SCRIPTED_QUESTIONS = [
     { text: 'Is this a residential or commercial project?', replies: ['Residential', 'Commercial'] },
@@ -360,31 +360,73 @@ const description = 'Contact Window Film Philadelphia to schedule your free on-s
   }
 
   async function doSubmit(transcript) {
-    const fd = new FormData();
-    fd.append('first_name', form.querySelector('[name=first_name]').value);
-    fd.append('last_name',  form.querySelector('[name=last_name]').value);
-    fd.append('email',      form.querySelector('[name=email]').value);
-    fd.append('phone',      form.querySelector('[name=phone]').value);
+    const firstName = form.querySelector('[name=first_name]').value.trim();
+    const lastName  = form.querySelector('[name=last_name]').value.trim();
+    const email     = form.querySelector('[name=email]').value.trim();
+    const phone     = form.querySelector('[name=phone]').value.trim();
+    const baseMsg   = form.querySelector('[name=message]').value.trim();
 
-    let msg = form.querySelector('[name=message]').value;
-    if (transcript) msg += '\n\n--- Project Details ---\n' + transcript;
-    fd.append('message', msg);
+    const fullMsg = transcript
+      ? baseMsg + '\n\n--- Project Details ---\n' + transcript
+      : baseMsg;
 
-    fd.append('_next',     'https://www.windowfilmphiladelphia.net/thank-you/');
-    fd.append('_subject',  'New Contact Form Submission — Window Film Philadelphia');
-    fd.append('_captcha',  'false');
-    fd.append('_template', 'table');
-    fd.append('_cc',       'nick@scottishgroupcompanies.com,amy@scottishgroupcompanies.com,katie@scottishgroupcompanies.com,blake@scottishgroupcompanies.com,dana@scottishgroupcompanies.com');
+    // Extract Q1 answer (project type) from transcript for Zoho CRM fields
+    const ptEntry = chatTranscript.find(function (t) { return t.startsWith('Project Type: '); });
+    const projectType = ptEntry ? ptEntry.replace('Project Type: ', '').trim() : '';
 
-    try {
-      const res = await fetch(FORMSUBMIT_URL, { method: 'POST', body: fd });
-      const json = await res.json();
-      console.log('[formsubmit]', json);
-    } catch (err) {
-      console.error('[formsubmit error]', err);
+    // ── Zoho CRM WebToLeadForm ──────────────────────────────────────────
+    const zohoBody = new URLSearchParams();
+    zohoBody.set('xnQsjsdp',    'ec6cc450bd8a4db85070a7eb2f5290d2369347a626942c7cab35f26ed68008ef');
+    zohoBody.set('xmIwtLD',     '68d331a3973d119320ef53640350c14a0acaa88becba63a670ea3ba583279be07fa0bfe4674a670ea9a45b066703de40');
+    zohoBody.set('actionType',  'TGVhZHM=');
+    zohoBody.set('returnURL',   'https://windowfilmphiladelphia.net/thank-you/');
+    zohoBody.set('zc_gad',      '');
+    zohoBody.set('aG9uZXlwb3Q', '');
+    zohoBody.set('First Name',  firstName);
+    zohoBody.set('Last Name',   lastName);
+    zohoBody.set('Email',       email);
+    zohoBody.set('Phone',       phone);
+    zohoBody.set('Company',     projectType || 'Not Provided');
+    zohoBody.set('Description', fullMsg);
+    zohoBody.set('Lead Status', 'New');
+    zohoBody.set('LEADCF5',     'Web Form');
+    zohoBody.set('LEADCF4',     'Website');
+    zohoBody.set('LEADCF7',     'www.windowfilmphiladelphia.net');
+    zohoBody.set('LEADCF8',     projectType || '-None-');
+
+    const zohoFetch = fetch('https://crm.zoho.com/crm/WebToLeadForm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: zohoBody.toString(),
+    });
+
+    // ── Formsubmit.co backup email ──────────────────────────────────────
+    const fsFetch = fetch(FORMSUBMIT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name:     firstName + ' ' + lastName,
+        email:    email,
+        phone:    phone,
+        message:  fullMsg,
+        _subject: 'New Contact Form Submission — Window Film Philadelphia',
+      }),
+    });
+
+    // Run both in parallel; show success if either succeeds
+    const [zohoResult, fsResult] = await Promise.allSettled([zohoFetch, fsFetch]);
+
+    const zohoOk = zohoResult.status === 'fulfilled' && zohoResult.value.ok;
+    const fsOk   = fsResult.status === 'fulfilled';
+
+    console.log('[zoho]',       zohoOk ? 'ok' : 'failed', zohoResult.reason || '');
+    console.log('[formsubmit]', fsOk   ? 'ok' : 'failed', fsResult.reason   || '');
+
+    if (!zohoOk && !fsOk) {
+      console.error('[submission] both endpoints failed');
     }
 
-    // show success regardless of network outcome
+    // Always show success to user
     hide(form);
     hide(chatWidget);
     hide(promptCard);
