@@ -1,0 +1,321 @@
+﻿---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import InnerPageHero from '../../components/InnerPageHero.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, description, pubDate, author, image, imageAlt, tags } = post.data;
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+const canonical = `https://www.windowfilmphiladelphia.net/blog/${post.slug}/`;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+
+<InnerPageHero
+  title={title}
+  bgImage={image || '/images/wfp-premium-films-v2.jpg'}
+  desc={formatDate(pubDate)}
+/>
+
+<div class="ip-page-body">
+
+  <!-- ══════════════════════════════════════
+       POST META BAR
+       ══════════════════════════════════════ -->
+  <div class="post-meta-bar">
+    <a href="/blog/" class="post-back">&#8592; Back to Blog</a>
+    <div class="post-meta-info">
+      <span class="post-author">By {author}</span>
+      <span class="post-sep">&#183;</span>
+      <span class="post-date">{formatDate(pubDate)}</span>
+    </div>
+    {tags && tags.length > 0 && (
+      <div class="post-tags">
+        {tags.map((tag) => (
+          <span class="post-tag">{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ARTICLE CONTENT
+       ══════════════════════════════════════ -->
+  <div class="post-wrap">
+    <article class="post-prose">
+      <Content />
+    </article>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       BRAND LOGOS + CTA
+       ══════════════════════════════════════ -->
+  <BrandLogos />
+
+  <div class="ip-cta">
+    <h2>Ready to transform your <em>windows?</em></h2>
+    <div class="ip-cta__btns">
+      <a href="/contact/" class="ip-btn ip-btn--white">Get a Free Quote</a>
+      <a href="tel:+12673947980" class="ip-btn ip-btn--green">Call (267) 394-7980</a>
+    </div>
+  </div>
+
+</div><!-- end ip-page-body -->
+
+</BaseLayout>
+
+<style>
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+
+/* ── META BAR ── */
+.post-meta-bar {
+  padding: 40px 10% 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding-bottom: 32px;
+  margin-bottom: 0;
+}
+.post-back {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+  margin-right: auto;
+}
+.post-back:hover { text-decoration: underline; }
+.post-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-light, #888);
+}
+.post-author { font-weight: 600; color: var(--text-mid, #4a4a4a); }
+.post-sep { color: var(--light-gray, #EFEFED); }
+.post-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.post-tag {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--green, #81AB4C);
+  background: var(--green-light, #eef4e4);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill, 100px);
+}
+
+/* ── POST CONTENT ── */
+.post-wrap {
+  padding: 64px 10%;
+  max-width: 860px;
+}
+
+.post-prose {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+}
+
+/* Headings */
+.post-prose :global(h2) {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  color: var(--text-dark, #1a1a1a);
+  margin: 48px 0 16px;
+}
+.post-prose :global(h2:first-child) { margin-top: 0; }
+
+.post-prose :global(h3) {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-dark, #1a1a1a);
+  margin: 36px 0 12px;
+}
+
+/* Paragraphs */
+.post-prose :global(p) {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-mid, #4a4a4a);
+  margin-bottom: 22px;
+}
+
+/* Links */
+.post-prose :global(a) {
+  color: var(--green, #81AB4C);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.post-prose :global(a:hover) { color: #6e9640; }
+
+/* Lists */
+.post-prose :global(ul),
+.post-prose :global(ol) {
+  padding-left: 0;
+  margin-bottom: 22px;
+  list-style: none;
+}
+.post-prose :global(ul li) {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.7;
+  padding: 4px 0;
+}
+.post-prose :global(ul li::before) {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  margin-top: 9px;
+  flex-shrink: 0;
+}
+.post-prose :global(ol) { counter-reset: list-counter; }
+.post-prose :global(ol li) {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.7;
+  padding: 4px 0;
+  counter-increment: list-counter;
+}
+.post-prose :global(ol li::before) {
+  content: counter(list-counter);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* Blockquote */
+.post-prose :global(blockquote) {
+  border-left: 4px solid var(--green, #81AB4C);
+  background: var(--green-light, #eef4e4);
+  border-radius: 0 var(--radius-md, 16px) var(--radius-md, 16px) 0;
+  padding: 20px 24px;
+  margin: 32px 0;
+}
+.post-prose :global(blockquote p) {
+  font-size: 16px;
+  color: #3a5a1f;
+  margin: 0;
+}
+
+/* Horizontal rule */
+.post-prose :global(hr) {
+  border: none;
+  border-top: 1px solid var(--light-gray, #EFEFED);
+  margin: 40px 0;
+}
+
+/* Strong / Em */
+.post-prose :global(strong) { font-weight: 700; color: var(--text-dark, #1a1a1a); }
+.post-prose :global(em) { font-style: italic; }
+
+/* ── Buttons ── */
+.ip-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.ip-btn--white {
+  background: #fff; color: var(--brand, #272E32);
+  border-color: #fff; font-weight: 600;
+}
+.ip-btn--white:hover {
+  background: var(--off-white, #F7F6F3); transform: translateY(-2px);
+  color: var(--brand, #272E32);
+}
+.ip-btn--green {
+  background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C);
+}
+.ip-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+
+/* ── CTA BANNER ── */
+.ip-cta {
+  background: var(--brand, #272E32);
+  border-radius: var(--radius-xl, 40px);
+  padding: 64px 60px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 40px; margin: 0 5%;
+}
+.ip-cta h2 {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 32px; font-weight: 600; color: #fff;
+  line-height: 1.2; max-width: 460px; margin: 0;
+}
+.ip-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
+.ip-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .post-meta-bar { padding: 32px 5% 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .post-back { margin-right: 0; }
+  .post-wrap { padding: 40px 5%; }
+  .ip-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
+  .ip-cta h2 { font-size: 26px; max-width: 100%; }
+  .ip-cta__btns { flex-direction: column; width: 100%; }
+}
+</style>
