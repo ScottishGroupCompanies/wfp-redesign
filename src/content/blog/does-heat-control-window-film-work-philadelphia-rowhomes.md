@@ -57,7 +57,7 @@ Diffuse light and modest solar load usually make north-facing windows a secondar
 
 ### Street-Level vs. Upper Floors
 
-Street-level windows on Passyunk or Girard often need privacy as much as heat control. Low-reflective heat films keep interiors cooler without looking mirrored at night. If you also want daytime privacy patterns, pair heat control with a tasteful decorative layer. See our [privacy and decorative film options](/benefits/privacy-decorative-window-film-philadelphia/).
+Street-level windows on Passyunk or Girard often need privacy as much as heat control. Low-reflective heat films keep interiors cooler without looking mirrored at night. If you also want daytime privacy patterns, pair heat control with a tasteful decorative layer. See our [privacy window film options](/benefits/privacy-window-film-philadelphia/).
 
 Upper floors and high-rises near Rittenhouse or University City often need strong IR control with minimal reflectance to keep skyline views crisp. Ceramic and spectrally selective films are ideal.
 
@@ -98,11 +98,11 @@ Start where sun and discomfort collide. Use this quick order of operations if yo
 - Upper-story glass under dark roofs that radiate heat late in the day.
 - Street-level windows where you want both cooler interiors and subtler privacy.
 
-As comfort improves, you can extend film to secondary exposures for even appearance and full-home UV protection. For deeper detail on year-round performance, see our overview of [energy-saving window film benefits](/benefits/energy-saving-window-film-philadelphia/).
+As comfort improves, you can extend film to secondary exposures for even appearance and full-home UV protection. For deeper detail on year-round performance, see our overview of [energy-saving window film benefits](/benefits/energy-savings/).
 
 ## Apartments, Condos, and Offices
 
-Leases and condo rules sometimes specify exterior appearance. That is where low-reflective 3M Prestige and Llumar/Vista ceramics excel - high IR rejection with a neutral look. If you manage space near 30th Street Station or along Market Street and keep wondering "does heat control window film work philadelphia office suites," the answer is yes, and it can also calm screen glare across open workstations. Explore our [commercial window tinting for offices](/commercial/window-tinting-philadelphia/).
+Leases and condo rules sometimes specify exterior appearance. That is where low-reflective 3M Prestige and Llumar/Vista ceramics excel - high IR rejection with a neutral look. If you manage space near 30th Street Station or along Market Street and keep wondering "does heat control window film work philadelphia office suites," the answer is yes, and it can also calm screen glare across open workstations. Explore our [commercial office window film](/applications/office/).
 
 ## The Bottom Line for Philly Homes
 
