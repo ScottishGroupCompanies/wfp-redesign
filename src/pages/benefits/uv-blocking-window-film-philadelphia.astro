@@ -1,23 +1,60 @@
 ---
-/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
- * template: benefits.astro · anchor hue: green (#81AB4C) */
+/* Auron-inspired redesign · Window Film Philadelphia · UV Blocking page */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import { Icon } from 'astro-icon/components';
 
 const title = 'UV Blocking Window Film Philadelphia | Window Film Philadelphia';
 const description = 'Window Film Philadelphia is the trusted source for UV blocking window film in Philadelphia. Protect interiors and reduce fading. Get a quote today!';
 
+const faqItems = [
+  { question: 'How much UV does window film actually block?', answer: 'Most high quality UV blocking window films block up to 99.9% of UVA and UVB radiation — roughly equivalent to SPF 1,000 sun protection. This applies even to clear or lightly tinted films.' },
+  { question: 'Will UV blocking film stop my furniture and floors from fading?', answer: 'UV film dramatically reduces fading caused by UV radiation, which accounts for roughly 40–60% of all interior fading. While no film eliminates fading entirely, UV blocking film significantly extends the life of furniture, hardwood floors, carpets, artwork, and merchandise.' },
+  { question: 'Does UV blocking film make my windows look dark or tinted?', answer: 'Not necessarily. UV rejection is independent of visible light transmission — many of our films are nearly clear while still blocking 99.9% of UV rays. We carry spectrally selective films that maintain high visible light transmission.' },
+  { question: 'Can UV window film reduce my energy bills?', answer: 'Yes. Films that combine UV blocking with solar heat rejection reduce the amount of heat entering your building, lowering HVAC demand. Philadelphia property owners typically see cooling cost reductions of 20–30% during summer months.' },
+  { question: 'Is UV blocking window film safe for double-pane insulated glass?', answer: 'Most UV blocking films are safe for double-pane insulated glass units (IGUs). Our installation team assesses your window type before recommending a film, and we carry products specifically engineered for IGUs.' },
+  { question: 'How long does UV blocking window film last?', answer: 'Premium UV blocking films from brands like 3M, LLumar, and Vista are designed to last 10–20+ years with proper installation and care. Most manufacturer warranties cover film performance for the life of the film.' },
+];
+
+const stats = [
+  { value: '99.9%', label: 'UV Rays Blocked' },
+  { value: 'SPF 1000', label: 'Sun Protection Equivalent' },
+  { value: '40–60%', label: 'Less Interior Fading' },
+  { value: '2–5 yrs', label: 'Typical ROI Period' },
+];
+
+const features = [
+  {
+    icon: 'lucide:sun',
+    title: '99.9% UV Block',
+    body: 'Blocks virtually all UVA and UVB rays — equivalent to SPF 1,000 — from entering your space through glass.',
+  },
+  {
+    icon: 'lucide:layers',
+    title: 'Fade Protection',
+    body: 'Reduces interior fading from UV radiation by 40–60%, extending the life of furniture, flooring, and artwork.',
+  },
+  {
+    icon: 'lucide:eye',
+    title: 'Clear Views Maintained',
+    body: 'Many films are nearly invisible while still blocking maximum UV — preserving your view and natural light.',
+  },
+  {
+    icon: 'lucide:shield-check',
+    title: 'Health Protection',
+    body: 'Reduces the risk of UV-related skin and eye conditions for everyone inside your property.',
+  },
+];
+
 const featuredSections = [
   {
     number: '01',
     heading: 'UV Blocking Window Film in Philadelphia',
-    body: 'Window Film Philadelphia is the trusted source for UV blocking window film in Philadelphia, Pennsylvania. Our films block up to 99.9% of UVA and UVB rays — the equivalent of SPF 1,000 — protecting people, furniture, flooring, and artwork from invisible damage. With access to a wide selection from leading brands like 3M, Vista, LLumar, Solar Gard, and Huper Optik, clients enjoy outstanding results from a single installation. Whether you want to safeguard valuables in your commercial property or prevent hardwood floors in your home from fading, we will help you find the perfect UV blocking solution.',
+    body: 'Window Film Philadelphia is the trusted source for UV blocking window film in Philadelphia. Our films block up to 99.9% of UVA and UVB rays — the equivalent of SPF 1,000 — protecting people, furniture, flooring, and artwork from invisible damage. With access to leading brands like 3M, Vista, LLumar, Solar Gard, and Huper Optik, clients enjoy outstanding results from a single installation. Whether you want to safeguard valuables in your commercial property or prevent hardwood floors in your home from fading, we will help you find the perfect UV blocking solution.',
     img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191833_13d3bd8d-3082-4bee-ad3e-2f387aed8d69.png',
     alt: 'Philadelphia row homes with UV-protective window film installed',
-    href: '/contact/',
     cta: 'Get a Free Quote',
+    href: '/contact/',
   },
   {
     number: '02',
@@ -25,448 +62,693 @@ const featuredSections = [
     body: "The sun's UV rays are one of the leading causes of interior fading and material breakdown. Furniture, carpets, hardwood flooring, and artwork are all vulnerable to sun damage over time. UV window film acts like an invisible shield, filtering out harmful rays while still allowing natural light into your space. For homeowners, this means protecting your investment and extending the life of your decor. For businesses, it means lower maintenance costs, a more comfortable environment for employees and customers, and reduced liability from UV-related occupant health risks.",
     img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191836_b7178314-5cc4-4d6d-bb34-4e6125cc164c.png',
     alt: 'Philadelphia office interior with UV window film, no glare on screens',
-    href: '/benefits/energy-savings/',
     cta: 'Explore Energy Savings',
+    href: '/benefits/energy-savings/',
   },
   {
     number: '03',
     heading: 'Energy Savings and Return on Investment',
-    body: 'UV window films do more than protect interiors — they also improve energy efficiency. By reducing solar heat gain, film keeps indoor temperatures more consistent and reduces strain on cooling systems, often translating to significant savings on monthly energy bills. Most Philadelphia property owners see a full return on investment within two to five years through energy cost reductions alone. With rising utility rates, UV window film is one of the smartest long-term upgrades available for both residential and commercial properties.',
+    body: 'UV window films do more than protect interiors — they also improve energy efficiency. By reducing solar heat gain, film keeps indoor temperatures more consistent and reduces strain on cooling systems, often translating to significant savings on monthly energy bills. Most Philadelphia property owners see a full return on investment within two to five years through energy cost reductions alone.',
     img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191838_243b81bf-a561-4474-8c9f-06a634854e7c.png',
     alt: 'Center City Philadelphia cafe interior with UV-protective window film',
-    href: '/contact/',
     cta: 'Schedule a Consultation',
+    href: '/contact/',
   },
-];
-
-const benefitItems = [
-  { icon: 'lucide:sun',            title: '99.9% UV Block',           sub: 'Equivalent to SPF 1,000 protection' },
-  { icon: 'lucide:layers',         title: 'Fade Protection',          sub: 'Shields furniture, flooring & artwork' },
-  { icon: 'lucide:thermometer',    title: 'Solar Heat Rejection',     sub: 'Reduces cooling load year-round' },
-  { icon: 'lucide:eye',            title: 'Clear Views Maintained',   sub: 'Natural light without the damage' },
-  { icon: 'lucide:shield-check',   title: 'Health Protection',        sub: 'Reduces UV-related skin & eye risk' },
-  { icon: 'lucide:leaf',           title: 'LEED Eligible',            sub: 'Qualifies for green building credits' },
-  { icon: 'lucide:trending-down',  title: 'Energy Savings',           sub: 'Lower cooling costs from day one' },
-  { icon: 'lucide:clock',          title: 'Fast ROI',                 sub: 'Payback period of 2–5 years' },
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/uv-blocking-window-film-philadelphia/" serviceName="UV Blocking Window Film" serviceDesc="UV blocking window film installation in Philadelphia. Block up to 99% of harmful UV rays to protect furnishings, art, and flooring." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/uv-blocking-window-film-philadelphia/">
 
-<InnerPageHero
-  title="UV Blocking Window Film Philadelphia"
-  bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191831_85216807-f6f5-4f18-8504-d0ce20e58849.png"
-  desc="Block up to 99% of UV rays and protect interiors from fading."
-/>
-
-<div class="ip-page-body">
-
 <!-- ══════════════════════════════════════
-     INTRO — 2-col: big heading left, text + CTAs right
+     HERO — dark auron-style
      ══════════════════════════════════════ -->
-<section class="bp-intro">
-  <div class="bp-intro__inner">
-    <div class="bp-intro__left">
-      <span class="bp-eyebrow">UV Protection</span>
-      <h2 class="bp-intro__title">Block the Ray. Protect What's Inside.</h2>
-    </div>
-    <div class="bp-intro__right">
-      <p class="bp-intro__lead">UV blocking window film is one of the most effective — and most overlooked — upgrades for Philadelphia properties. By filtering out up to 99.9% of harmful UV radiation, film protects interiors from fading and occupants from health risks, all while reducing solar heat gain and cutting energy costs. No replacement windows. No disruption. Just immediate, lasting protection.</p>
-      <div class="bp-intro__ctas">
-        <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
-        <a href="/benefits/" class="bp-btn bp-btn--ghost">All Benefits</a>
-      </div>
+<section class="auron-hero">
+  <div class="auron-hero__img">
+    <img
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191831_85216807-f6f5-4f18-8504-d0ce20e58849.png"
+      alt="UV blocking window film protecting Philadelphia properties"
+      width="1440"
+      height="700"
+    />
+    <div class="auron-hero__overlay"></div>
+  </div>
+  <div class="auron-hero__content">
+    <span class="auron-badge auron-badge--green">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+      UV Protection
+    </span>
+    <h1 class="auron-hero__title">
+      Block the Ray.<br/>
+      <span class="auron-accent">Protect What's</span><br/>
+      Inside.
+    </h1>
+    <p class="auron-hero__sub">Up to 99.9% UV blocked — equivalent to SPF 1,000. Protect interiors, people, and furnishings from fading and damage.</p>
+    <div class="auron-hero__ctas">
+      <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Quote</a>
+      <a href="/benefits/" class="auron-btn auron-btn--outline-light">All Benefits</a>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     FEATURED SECTIONS — 3 numbered alternating rows
+     PAGE BODY
      ══════════════════════════════════════ -->
-<section class="bp-featured">
-  <div class="bp-featured__hd">
-    <span class="bp-eyebrow">How It Works</span>
-    <h2 class="bp-featured__title">Everything you need to know about<br/>UV blocking window film</h2>
-  </div>
+<div class="auron-body">
 
-  {featuredSections.map((s, i) => (
-    <div class={`bp-feat-row fade-in${i % 2 === 1 ? ' bp-feat-row--rev' : ''}`}>
-      <div class="bp-feat-row__img">
-        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-        <span class="bp-feat-row__pill">{s.heading}</span>
+  <!-- ── STATS STRIP ── -->
+  <section class="auron-stats">
+    <div class="auron-stats__inner">
+      <div class="auron-stats__text">
+        <span class="auron-badge auron-badge--lime">Your Trusted UV Expert</span>
+        <h2 class="auron-stats__heading">UV blocking window film is one of the most effective — and most overlooked — upgrades for Philadelphia properties.</h2>
+        <p>By filtering out up to 99.9% of harmful UV radiation, film protects interiors from fading and occupants from health risks, all while reducing solar heat gain and cutting energy costs. No replacement windows. No disruption.</p>
+        <a href="/contact/" class="auron-btn auron-btn--primary">Get Protected Today</a>
       </div>
-      <div class="bp-feat-row__content">
-        <span class="bp-feat-row__num">{s.number}</span>
-        <h3 class="bp-feat-row__heading">{s.heading}</h3>
-        <p class="bp-feat-row__body">{s.body}</p>
-        <a href={s.href} class="bp-feat-row__cta">
-          {s.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-        </a>
+      <div class="auron-stats__numbers">
+        {stats.map((s) => (
+          <div class="auron-stat-card">
+            <span class="auron-stat-card__value">{s.value}</span>
+            <span class="auron-stat-card__label">{s.label}</span>
+          </div>
+        ))}
       </div>
     </div>
-  ))}
-</section>
+  </section>
 
-<!-- ══════════════════════════════════════
-     BENEFITS GRID — 4-col dark icon grid
-     ══════════════════════════════════════ -->
-<section class="bp-why">
-  <div class="bp-why__hd">
-    <span class="bp-eyebrow">Key Benefits</span>
-    <h2 class="bp-why__title">Eight reasons UV blocking film is worth it</h2>
-  </div>
-  <div class="bp-why__grid">
-    {benefitItems.map((item) => (
-      <div class="bp-why__item fade-in">
-        <div class="bp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="bp-why__divider"></div>
-        <h4 class="bp-why__item-title">{item.title}</h4>
-        <p class="bp-why__item-sub">{item.sub}</p>
+  <!-- ── TRUST BANNER ── -->
+  <section class="auron-trust">
+    <div class="auron-trust__inner">
+      <p class="auron-trust__tagline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+        Trusted by 500+ Philadelphia homes &amp; businesses
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FEATURED SECTIONS ── -->
+  <section class="auron-features">
+    <div class="auron-features__hd">
+      <span class="auron-badge">How It Works</span>
+      <h2 class="auron-features__title">Everything you need to know about<br/>UV blocking window film</h2>
+    </div>
+
+    {featuredSections.map((s, i) => (
+      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
+        <div class="auron-feat__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <div class="auron-feat__img-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+            Window Film Philadelphia
+          </div>
+        </div>
+        <div class="auron-feat__content">
+          <span class="auron-feat__num">{s.number}</span>
+          <h3 class="auron-feat__heading">{s.heading}</h3>
+          <p class="auron-feat__body">{s.body}</p>
+          <a href={s.href} class="auron-feat__cta">
+            {s.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
+        </div>
       </div>
     ))}
-  </div>
-</section>
+  </section>
 
-<!-- ══════════════════════════════════════
-     FAQ ACCORDION
-     ══════════════════════════════════════ -->
-<section class="bp-faq">
-  <div class="bp-faq__hd">
-    <span class="bp-eyebrow">FAQ</span>
-    <h2 class="bp-faq__title">Common questions about UV blocking window film</h2>
-  </div>
-  <div class="bp-faq__item bp-faq__item--open">
-    <div class="bp-faq__q">How much UV does window film actually block? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Most high-quality UV blocking window films block up to 99.9% of UVA and UVB radiation — roughly equivalent to SPF 1,000 sun protection. This applies even to clear or lightly tinted films, meaning you don't need a dark film to get maximum UV protection. Our team carries films from 3M, LLumar, Vista, and Solar Gard with best-in-class UV rejection ratings.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Will UV blocking film stop my furniture and floors from fading? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">UV film dramatically reduces fading caused by UV radiation, which accounts for roughly 40–60% of all interior fading. While no film eliminates fading entirely — visible light and heat also contribute — UV blocking film significantly extends the life of furniture, hardwood floors, carpets, artwork, and merchandise. Most clients see a measurable difference in fading rates within the first year of installation.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Does UV blocking film make my windows look dark or tinted? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Not necessarily. UV rejection is independent of visible light transmission — many of our films are nearly clear while still blocking 99.9% of UV rays. If you also want solar heat rejection and glare reduction, we carry spectrally selective films that accomplish all three goals while maintaining high visible light transmission. We'll recommend the right film for your goals and aesthetic preferences.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Can UV window film reduce my energy bills? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Yes. Films that combine UV blocking with solar heat rejection reduce the amount of heat entering your building through glass, which lowers the demand on your HVAC system. Philadelphia property owners typically see cooling cost reductions of 20–30% during summer months. The result is a film that pays for itself through energy savings while also protecting your interiors — making it one of the highest-ROI window treatments available.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Is UV blocking window film safe for double-pane insulated glass? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Most UV blocking films are safe for double-pane insulated glass units (IGUs), but proper film selection matters. Certain high-reflectivity films can increase thermal stress in double-pane windows. Our installation team assesses your window type before recommending a film, and we carry products specifically engineered for IGUs. We'll never recommend a film that could void your window manufacturer's warranty.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How long does UV blocking window film last? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Premium UV blocking films from brands like 3M, LLumar, and Vista are designed to last 10–20+ years with proper installation and care. Most manufacturer warranties cover film performance, adhesion, and UV rejection levels for the life of the film. Our professional installation ensures proper application that maximizes film longevity and maintains manufacturer warranty coverage.</div>
-  </div>
-</section>
+  <!-- ── MISSION / VISION CARDS ── -->
+  <section class="auron-mission">
+    <div class="auron-mission__inner">
+      <div class="auron-mission-card fade-in">
+        <span class="auron-mission-card__num">01</span>
+        <h3 class="auron-mission-card__title">Our Mission</h3>
+        <p class="auron-mission-card__body">To protect Philadelphia properties — and everyone inside them — from the sun's invisible damage. We deliver professional UV blocking film installation that prevents fading, reduces health risks, and improves comfort without altering the look of your space.</p>
+        <a href="/contact/" class="auron-btn auron-btn--outline-dark">Get in Touch</a>
+      </div>
+      <div class="auron-mission-card fade-in">
+        <span class="auron-mission-card__num">02</span>
+        <h3 class="auron-mission-card__title">Our Vision</h3>
+        <p class="auron-mission-card__body">A Philadelphia where every home, office, and storefront is protected from harmful UV radiation — preserving the beauty and value of interiors for decades, not years.</p>
+        <a href="/benefits/" class="auron-btn auron-btn--outline-dark">Explore All Benefits</a>
+      </div>
+    </div>
+  </section>
 
-<!-- ══════════════════════════════════════
-     BRAND LOGOS
-     ══════════════════════════════════════ -->
-<BrandLogos />
+  <!-- ── BENEFITS GRID ── -->
+  <section class="auron-benefits">
+    <div class="auron-benefits__hd">
+      <span class="auron-badge">Key Benefits</span>
+      <h2 class="auron-benefits__title">Why UV blocking film is worth it</h2>
+    </div>
+    <div class="auron-benefits__grid">
+      {features.map((f) => (
+        <div class="auron-benefit fade-in">
+          <div class="auron-benefit__icon">
+            <Icon name={f.icon} width="28" height="28" />
+          </div>
+          <h4 class="auron-benefit__title">{f.title}</h4>
+          <p class="auron-benefit__body">{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-<!-- ══════════════════════════════════════
-     CTA BANNER
-     ══════════════════════════════════════ -->
-<div class="bp-cta fade-in">
-  <h2>Ready to protect your property with <em>UV blocking film?</em></h2>
-  <div class="bp-cta__btns">
-    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
+  <!-- ── FAQ ── -->
+  <section class="auron-faq">
+    <div class="auron-faq__inner">
+      <div class="auron-faq__hd">
+        <span class="auron-badge">FAQ</span>
+        <h2 class="auron-faq__title">Common questions about<br/>UV blocking window film</h2>
+      </div>
+      <div class="auron-faq__items">
+        {faqItems.map((item, i) => (
+          <div class={`auron-faq__item ${i === 0 ? 'auron-faq__item--open' : ''}`}>
+            <div class="auron-faq__q">
+              {item.question}
+              <span class="auron-faq__toggle">+</span>
+            </div>
+            <div class="auron-faq__a">{item.answer}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-</div><!-- end ip-page-body -->
+  <!-- ── BRAND LOGOS ── -->
+  <BrandLogos />
+
+  <!-- ── CTA BANNER ── -->
+  <section class="auron-cta-banner">
+    <div class="auron-cta-banner__inner">
+      <div class="auron-cta-banner__text">
+        <h2>Ready to protect your property with <em>UV blocking film?</em></h2>
+        <p>Get a free consultation and UV protection assessment for your property.</p>
+      </div>
+      <div class="auron-cta-banner__btns">
+        <a href="/contact/" class="auron-btn auron-btn--white">Get a Free Quote</a>
+        <a href="tel:+126****7980" class="auron-btn auron-btn--outline-white">Call (267) 394-7980</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end auron-body -->
 </BaseLayout>
 
 <style>
-/* ── PAGE BODY WRAPPER ── */
-.ip-page-body {
+/* ── HERO ── */
+.auron-hero {
   position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #1a3a2e;
 }
-
-/* ── EYEBROW ── */
-.bp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+.auron-hero__img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.auron-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.auron-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(26, 58, 46, 0.92) 0%,
+    rgba(26, 58, 46, 0.75) 50%,
+    rgba(26, 58, 46, 0.4) 100%
+  );
+}
+.auron-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 100px 10% 100px;
+  max-width: 800px;
+}
+.auron-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.auron-badge--green {
+  background: rgba(129, 171, 76, 0.2);
+  color: #9bff5e;
+  border: 1px solid rgba(155, 255, 94, 0.3);
+}
+.auron-badge--lime {
+  background: rgba(129, 171, 76, 0.15);
+  color: #9bff5e;
+  border: 1px solid rgba(155, 255, 94, 0.25);
+}
+.auron-badge {
+  background: rgba(129, 171, 76, 0.12);
+  color: #9bff5e;
+  border: 1px solid rgba(155, 255, 94, 0.2);
+}
+.auron-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+.auron-accent { color: #9bff5e; }
+.auron-hero__sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0 0 36px;
+  max-width: 520px;
+}
+.auron-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.auron-btn {
+  display: inline-block;
+  padding: 15px 32px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+.auron-btn--primary {
+  background: #9bff5e;
+  color: #1a3a2e;
+  border-color: #9bff5e;
+}
+.auron-btn--primary:hover {
+  background: #7de84a;
+  border-color: #7de84a;
+  transform: translateY(-2px);
+  color: #1a3a2e;
+}
+.auron-btn--outline-light {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.auron-btn--outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  transform: translateY(-2px);
+  color: #fff;
+}
+.auron-btn--outline-dark {
+  background: transparent;
+  color: #1a3a2e;
+  border-color: #1a3a2e;
+}
+.auron-btn--outline-dark:hover {
+  background: #1a3a2e;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.auron-btn--white {
+  background: #fff;
+  color: #1a3a2e;
+  border-color: #fff;
+}
+.auron-btn--white:hover {
+  background: #F7F6F3;
+  transform: translateY(-2px);
+  color: #1a3a2e;
+}
+.auron-btn--outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.auron-btn--outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  transform: translateY(-2px);
+  color: #fff;
 }
 
-/* ── BUTTONS ── */
-.bp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+/* ── PAGE BODY ── */
+.auron-body { background: #ffffff; }
 
-/* ── INTRO ── */
-.bp-intro {
-  padding: 80px 10%;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  overflow: hidden;
-}
-.bp-intro__inner {
+/* ── STATS ── */
+.auron-stats { background: #1a3a2e; padding: 80px 10%; }
+.auron-stats__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
 }
-.bp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px);
+.auron-stats__heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3vw, 40px);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a);
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+}
+.auron-stats__text p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+  margin: 0 0 28px;
+}
+.auron-stats__numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.auron-stat-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(155, 255, 94, 0.15);
+  padding: 32px 28px;
+  text-align: center;
+}
+.auron-stat-card__value {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #9bff5e;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.auron-stat-card__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── TRUST ── */
+.auron-trust { background: #9bff5e; padding: 20px 10%; }
+.auron-trust__inner { display: flex; align-items: center; justify-content: center; }
+.auron-trust__tagline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a3a2e;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   margin: 0;
 }
-.bp-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.auron-trust__tagline svg { color: #1a3a2e; flex-shrink: 0; }
 
-/* ── FEATURED SECTIONS ── */
-.bp-featured {
-  padding: 100px 10%;
-  background: var(--off-white, #F7F6F3);
-}
-.bp-featured__hd { margin-bottom: 72px; }
-.bp-featured__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px);
+/* ── FEATURES ── */
+.auron-features { padding: 100px 10%; background: #F7F6F3; }
+.auron-features__hd { margin-bottom: 72px; }
+.auron-features__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 48px);
   font-weight: 700;
+  color: #1a3a2e;
   line-height: 1.15;
   letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
+  margin: 12px 0 0;
 }
-.bp-feat-row {
+.auron-feat {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
-.bp-feat-row:last-child { margin-bottom: 0; }
-.bp-feat-row--rev .bp-feat-row__img { order: 2; }
-.bp-feat-row--rev .bp-feat-row__content { order: 1; }
-.bp-feat-row__img {
+.auron-feat:last-child { margin-bottom: 0; }
+.auron-feat--rev .auron-feat__img { order: 2; }
+.auron-feat--rev .auron-feat__content { order: 1; }
+.auron-feat__img {
   position: relative;
-  height: 480px;
-  border-radius: 32px;
+  height: 460px;
+  border-radius: 20px;
   overflow: hidden;
 }
-.bp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bp-feat-row__pill {
-  position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92);
+.auron-feat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.auron-feat__img-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 58, 46, 0.88);
   backdrop-filter: blur(8px);
-  padding: 10px 18px;
+  color: #9bff5e;
+  padding: 10px 16px;
   border-radius: 100px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600;
-  color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(155, 255, 94, 0.25);
 }
-.bp-feat-row__num {
+.auron-feat__num {
   display: block;
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px; font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1; opacity: 0.25;
-  margin-bottom: -8px;
-}
-.bp-feat-row__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px);
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
   font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
+  color: #9bff5e;
+  line-height: 1;
+  opacity: 0.35;
+  margin-bottom: -16px;
+}
+.auron-feat__heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #1a3a2e;
   line-height: 1.2;
-  margin-bottom: 20px;
-  letter-spacing: -0.3px;
+  margin: 0 0 16px;
 }
-.bp-feat-row__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+.auron-feat__body {
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
-  color: var(--text-mid, #4a4a4a);
+  color: #555;
   line-height: 1.8;
-  margin-bottom: 28px;
+  margin: 0 0 24px;
 }
-.bp-feat-row__cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600;
-  color: var(--green, #81AB4C);
+.auron-feat__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #9bff5e;
   text-decoration: none;
   transition: gap 0.2s;
 }
-.bp-feat-row__cta:hover { gap: 14px; }
+.auron-feat__cta:hover { gap: 14px; }
 
-/* ── BENEFITS GRID (dark) ── */
-.bp-why {
-  background: var(--brand, #272E32);
-  padding: 100px 10%;
+/* ── MISSION CARDS ── */
+.auron-mission { background: #1a3a2e; padding: 80px 10%; }
+.auron-mission__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.auron-mission-card {
+  border-left: 4px solid #9bff5e;
+  padding: 40px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0 16px 16px 0;
 }
-.bp-why__hd { margin-bottom: 64px; }
-.bp-why__hd .bp-eyebrow { color: var(--green, #81AB4C); }
-.bp-why__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
+.auron-mission-card__num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
   font-weight: 700;
-  color: #ffffff;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 0;
-  max-width: 600px;
+  color: #9bff5e;
+  line-height: 1;
+  opacity: 0.4;
+  margin-bottom: 8px;
 }
-.bp-why__grid {
+.auron-mission-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.auron-mission-card__body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+  margin: 0 0 28px;
+}
+
+/* ── BENEFITS GRID ── */
+.auron-benefits { background: #fff; padding: 100px 10%; }
+.auron-benefits__hd { margin-bottom: 56px; }
+.auron-benefits__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  color: #1a3a2e;
+  line-height: 1.15;
+  margin: 12px 0 0;
+}
+.auron-benefits__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
+  border: 1px solid #E8E8E0;
+  border-radius: 20px;
+  overflow: hidden;
 }
-.bp-why__item {
-  padding: 32px 28px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+.auron-benefit {
+  padding: 36px 28px;
+  border-right: 1px solid #E8E8E0;
+  border-bottom: 1px solid #E8E8E0;
 }
-.bp-why__item:nth-child(4n) { border-right: none; }
-.bp-why__item:nth-child(n+5) { border-bottom: none; }
-.bp-why__icon {
-  color: var(--green, #81AB4C);
+.auron-benefit:nth-child(4n) { border-right: none; }
+.auron-benefit:nth-child(n+5) { border-bottom: none; }
+.auron-benefit__icon {
+  color: #9bff5e;
   margin-bottom: 16px;
-  display: flex; align-items: center; line-height: 1;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
-.bp-why__icon svg { display: block; }
-.bp-why__divider {
-  width: 32px; height: 2px;
-  background: var(--green, #81AB4C);
-  margin-bottom: 16px;
+.auron-benefit__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a3a2e;
+  margin: 0 0 8px;
 }
-.bp-why__item-title {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-.bp-why__item-sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  margin: 0; line-height: 1.5;
+.auron-benefit__body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.65;
+  margin: 0;
 }
 
 /* ── FAQ ── */
-.bp-faq { padding: 100px 10%; background: #ffffff; }
-.bp-faq__hd { margin-bottom: 48px; }
-.bp-faq__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
+.auron-faq { background: #F7F6F3; padding: 100px 10%; }
+.auron-faq__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+.auron-faq__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3vw, 40px);
   font-weight: 700;
+  color: #1a3a2e;
   line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  max-width: 560px; margin: 0;
+  margin: 12px 0 0;
 }
-.bp-faq__item {
-  border-bottom: 1px solid var(--light-gray, #EFEFED);
-  padding: 24px 0;
+.auron-faq__item {
+  border-bottom: 1px solid #D8D8D0;
+  padding: 20px 0;
+}
+.auron-faq__item:first-of-type { border-top: 1px solid #D8D8D0; }
+.auron-faq__q {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a3a2e;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
   cursor: pointer;
-  max-width: 900px;
+  padding: 4px 0;
 }
-.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.bp-faq__q {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; font-weight: 600;
-  color: var(--text-dark, #1a1a1a);
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+.auron-faq__toggle {
+  color: #9bff5e;
+  font-size: 22px;
+  flex-shrink: 0;
+  font-weight: 400;
+  transition: transform 0.2s;
 }
-.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.bp-faq__a {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75;
-  margin-top: 14px; display: none;
+.auron-faq__a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.75;
+  margin-top: 10px;
+  display: none;
 }
-.bp-faq__item--open .bp-faq__a { display: block; }
-.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
+.auron-faq__item--open .auron-faq__a { display: block; }
+.auron-faq__item--open .auron-faq__toggle { transform: rotate(45deg); }
 
 /* ── CTA BANNER ── */
-.bp-cta {
-  background: var(--brand, #272E32);
-  border-radius: 40px;
-  padding: 64px 60px;
-  display: flex; align-items: center;
+.auron-cta-banner { background: #1a3a2e; padding: 80px 10%; }
+.auron-cta-banner__inner {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 40px;
-  margin: 0 5% 0;
+  gap: 60px;
 }
-.bp-cta h2 {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 32px; font-weight: 700;
-  color: #fff; line-height: 1.2;
-  max-width: 460px; margin: 0;
+.auron-cta-banner__text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0 0 8px;
 }
-.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+.auron-cta-banner__text h2 em { font-style: italic; color: #9bff5e; }
+.auron-cta-banner__text p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+.auron-cta-banner__btns { display: flex; gap: 14px; flex-shrink: 0; }
 
 /* ── FADE IN ── */
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row--rev .bp-feat-row__img { order: 0; }
-  .bp-feat-row--rev .bp-feat-row__content { order: 1; }
-  .bp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .bp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .bp-why__item:nth-child(2n) { border-right: none; }
+  .auron-stats__inner { grid-template-columns: 1fr; gap: 48px; }
+  .auron-feat { grid-template-columns: 1fr; gap: 40px; }
+  .auron-feat--rev .auron-feat__img { order: 0; }
+  .auron-feat--rev .auron-feat__content { order: 1; }
+  .auron-mission__inner { grid-template-columns: 1fr; }
+  .auron-benefits__grid { grid-template-columns: repeat(2, 1fr); }
+  .auron-benefit:nth-child(4n) { border-right: 1px solid #E8E8E0; }
+  .auron-benefit:nth-child(2n) { border-right: none; }
+  .auron-faq__inner { grid-template-columns: 1fr; gap: 40px; }
+  .auron-cta-banner__inner { flex-direction: column; text-align: center; }
 }
 @media (max-width: 768px) {
-  .bp-intro { padding: 60px 5%; }
-  .bp-featured { padding: 60px 5%; }
-  .bp-why { padding: 60px 5%; }
-  .bp-faq { padding: 60px 5%; }
-  .bp-feat-row__img { height: 300px; }
-  .bp-why__grid { grid-template-columns: 1fr; }
-  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .bp-cta h2 { font-size: 26px; max-width: 100%; }
-  .bp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) {
-  .bp-intro__ctas { flex-direction: column; }
+  .auron-hero__content { padding: 80px 5%; }
+  .auron-hero__ctas { flex-direction: column; }
+  .auron-stats, .auron-features, .auron-benefits, .auron-faq, .auron-cta-banner { padding: 60px 5%; }
+  .auron-mission { padding: 60px 5%; }
+  .auron-feat__img { height: 280px; }
+  .auron-benefits__grid { grid-template-columns: 1fr; }
+  .auron-benefit { border-right: none !important; }
+  .auron-stat-card { padding: 24px 20px; }
+  .auron-cta-banner__btns { flex-direction: column; width: 100%; }
+  .auron-hero__title { font-size: 36px; }
 }
 </style>
 
@@ -476,11 +758,11 @@ const benefitItems = [
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  document.querySelectorAll('.bp-faq__item').forEach(item => {
-    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('bp-faq__item--open');
-      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
-      if (!isOpen) item.classList.add('bp-faq__item--open');
+  document.querySelectorAll('.auron-faq__item').forEach(item => {
+    item.querySelector('.auron-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('auron-faq__item--open');
+      document.querySelectorAll('.auron-faq__item').forEach(i => i.classList.remove('auron-faq__item--open'));
+      if (!isOpen) item.classList.add('auron-faq__item--open');
     });
   });
 </script>
