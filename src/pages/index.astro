@@ -6,167 +6,210 @@ import Footer from '../components/Footer.astro';
 const title = "Window Film Philadelphia — Scottish Window Solutions";
 const description = "Professional window film installation in Philadelphia and the Delaware Valley. UV protection, energy savings, safety & security, and decorative film for homes and businesses.";
 
-// Hero comparison — same image, left side shows "untreated" treatment
-const heroBefore = "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203051_9e201b35-80e5-4e3d-bc85-32561bb9d0ee.png";
-const heroAfter = "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203051_9e201b35-80e5-4e3d-bc85-32561bb9d0ee.png";
+const heroImg = "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203051_9e201b35-80e5-4e3d-bc85-32561bb9d0ee.png";
+const featuredImages = {
+  commercial: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203053_b846664d-a70e-442d-833b-4267bf184a18.png",
+  residential: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203056_43daeb3e-3501-4a9c-8e55-14df1c103bbd.png",
+  trust: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203058_7ea2c065-74e1-4ca1-80be-bae2fec0e6af.png",
+  retail: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203100_6704eb3d-7f96-439b-a760-c0a7097bf459.png",
+  industrial: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203101_282a9879-8679-4e33-b8b3-b10a4dffdf38.png",
+};
 
 const stats = [
-  { label: "Heat Rejected", value: 78, display: "78%" },
-  { label: "Glare Cut", value: 62, display: "62%" },
-  { label: "UV Blocked", value: 99, display: "99%" },
+  { value: "18", suffix: "+", label: "Years Experience", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>` },
+  { value: "2,400", suffix: "+", label: "Projects Completed", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>` },
+  { value: "99.9", suffix: "%", label: "UV Block Rate", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>` },
+  { value: "4.9", suffix: "★", label: "Google Rating", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>` },
 ];
 
 const services = [
-  { title: "Energy Savings", desc: "Cut cooling costs up to 30% with heat-rejecting window film. Most clients see payback in under 3 years.", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203053_b846664d-a70e-442d-833b-4267bf184a18.png", stat: "30%", statLabel: "Cooling Cut", href: "/benefits/energy-savings/" },
-  { title: "UV Protection", desc: "Block 99.9% of harmful UV rays that fade furniture, damage skin, and overheat interiors.", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203056_43daeb3e-3501-4a9c-8e55-14df1c103bbd.png", stat: "99.9%", statLabel: "UV Blocked", href: "/benefits/uv-blocking/" },
-  { title: "Safety & Security", desc: "Hold glass together on impact. Delay intruders. Buy precious minutes in any emergency.", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203058_7ea2c065-74e1-4ca1-80be-bae2fec0e6af.png", stat: "4–15", statLabel: "Mil Range", href: "/benefits/safety-and-security/" },
-  { title: "Privacy & Decorative", desc: "Transform glass into frosted privacy panels, brand graphics, or custom decorative designs.", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203100_6704eb3d-7f96-439b-a760-c0a7097bf459.png", stat: "100%", statLabel: "Custom", href: "/benefits/decorative-promotional/" },
+  {
+    title: "Energy Savings",
+    desc: "Cut cooling costs up to 30% with heat-rejecting window film. Most clients see payback in under 3 years.",
+    img: featuredImages.commercial,
+    alt: "Philadelphia commercial building with energy-efficient window film",
+    href: "/benefits/energy-savings/",
+    stat: "30%",
+    statLabel: "Cooling Cost Cut",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>`,
+  },
+  {
+    title: "UV Protection",
+    desc: "Block 99.9% of harmful UV rays that fade furniture, damage skin, and heat up interiors.",
+    img: featuredImages.residential,
+    alt: "Philadelphia home interior with UV-blocking window film",
+    href: "/benefits/uv-blocking/",
+    stat: "99.9%",
+    statLabel: "UV Blocked",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+  },
+  {
+    title: "Safety & Security",
+    desc: "Hold glass together on impact. Delay intruders. Buy precious minutes in any emergency.",
+    img: featuredImages.trust,
+    alt: "Security window film protecting Philadelphia commercial building",
+    href: "/benefits/safety-and-security/",
+    stat: "4–15",
+    statLabel: "Mil Thickness",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>`,
+  },
+  {
+    title: "Privacy & Decorative",
+    desc: "Transform plain glass into frosted privacy panels, brand graphics, or custom decorative designs.",
+    img: featuredImages.retail,
+    alt: "Decorative window film on Philadelphia retail storefront",
+    href: "/benefits/decorative-promotional/",
+    stat: "100%",
+    statLabel: "Customizable",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.238-1.923l-3.876 5.814a15.995 15.995 0 01-4.764 4.648z"/></svg>`,
+  },
 ];
 
 const applications = [
-  { label: "Homes", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`, href: "/applications/residential/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203058_7ea2c065-74e1-4ca1-80be-bae2fec0e6af.png" },
-  { label: "Offices", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>`, href: "/applications/commercial/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203053_b846664d-a70e-442d-833b-4267bf184a18.png" },
-  { label: "Retail", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>`, href: "/applications/retail/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203100_6704eb3d-7f96-439b-a760-c0a7097bf459.png" },
-  { label: "Healthcare", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12.75 9 12.75s9-5.53 9-12.75z"/></svg>`, href: "/applications/healthcare/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203101_282a9879-8679-4e33-b8b3-b10a4dffdf38.png" },
-  { label: "Government", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>`, href: "/government-buildings/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203056_43daeb3e-3501-4a9c-8e55-14df1c103bbd.png" },
-  { label: "Schools", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-13.5 0A48.369 48.369 0 006.75 15.75"/></svg>`, href: "/benefits/school-security-window-film/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203058_7ea2c065-74e1-4ca1-80be-bae2fec0e6af.png" },
-  { label: "Industrial", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>`, href: "/applications/industrial/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203101_282a9879-8679-4e33-b8b3-b10a4dffdf38.png" },
-  { label: "Automotive", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>`, href: "/applications/automotive/", img: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203100_6704eb3d-7f96-439b-a760-c0a7097bf459.png" },
-];
-
-const benefits = [
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`, title: "Heat & Energy", desc: "Reject up to 78% of solar heat, cut cooling costs, and reduce hotspots in any room." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`, title: "Glare Reduction", desc: "Cut glare up to 62% and eliminate eye strain without blocking your view." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>`, title: "UV Protection", desc: "Block 99.9% of harmful UV rays. Protect furniture, flooring, art, and skin." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>`, title: "Privacy & Frost", desc: "Frosted, tinted, or decorative film. Privacy without sacrificing natural light." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>`, title: "Safety & Security", desc: "Hold glass together on impact, delay intruders, and buy critical time in emergencies." },
-  { icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.238-1.923l-3.876 5.814a15.995 15.995 0 01-4.764 4.648z"/></svg>`, title: "Decorative & Brand", desc: "Custom graphics, branding, and decorative designs for storefronts and interiors." },
+  { label: "Homes", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`, href: "/applications/residential/" },
+  { label: "Offices", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m0 0v9m0-9H3"/></svg>`, href: "/applications/commercial/" },
+  { label: "Retail", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>`, href: "/applications/retail/" },
+  { label: "Healthcare", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12.75 9 12.75s9-5.53 9-12.75z"/></svg>`, href: "/applications/healthcare/" },
+  { label: "Government", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>`, href: "/government-buildings/" },
+  { label: "Schools", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-13.5 0A48.369 48.369 0 006.75 15.75"/></svg>`, href: "/benefits/school-security-window-film/" },
+  { label: "Industrial", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>`, href: "/applications/industrial/" },
+  { label: "Automotive", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>`, href: "/applications/automotive/" },
 ];
 
 const testimonials = [
   { stars: "★★★★★", text: "Our electric bills dropped 28% the first summer after the window film was installed. The crew was professional, on time, and the install was spotless.", author: "Mike T., Fishtown" },
   { stars: "★★★★★", text: "We needed anti-graffiti film on our transit facility. Scottish handled the whole job in one weekend with zero disruption to service. Highly recommend.", author: "SEPTA Facility Manager" },
-  { stars: "★★★★★", text: "The decorative frosted film on our conference rooms is absolutely stunning. Clients comment on it every time.", author: "Sarah K., King of Prussia" },
-];
-
-const trustItems = [
-  { label: "Local Experts", sub: "Serving Philly 18+ years" },
-  { label: "3M Authorized", sub: "Certified dealer" },
-  { label: "Lifetime Warranty", sub: "On all work" },
+  { stars: "★★★★★", text: "The decorative frosted film on our conference rooms is absolutely stunning. Clients comment on it every time. Worth every penny.", author: "Sarah K., King of Prussia" },
 ];
 ---
 
 <BaseLayout title={title} description={description}>
   <Header />
 
-  <!-- ═══ HERO — SPLIT COMPARISON ═══ -->
+  <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <div class="hero__layout">
-      <!-- Left: Text -->
-      <div class="hero__text">
-        <div class="hero__badge reveal-in">
-          <span class="badge-dot"></span>
-          Philadelphia's Trusted Window Film Company
-        </div>
-        <h1 class="hero__title reveal-in delay-1">
-          See the difference<br />
-          <span class="accent">window film makes</span>
-        </h1>
-        <p class="hero__sub reveal-in delay-2">
-          Energy savings. UV protection. Safety & security.<br />
-          Decorative style. Done right, every time.
-        </p>
-        <div class="hero__ctas reveal-in delay-3">
-          <a href="/contact/" class="btn btn--primary btn--lg">
-            Get a Free Quote
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-          </a>
-          <a href="/process/" class="btn btn--outline btn--lg">Our Process</a>
-        </div>
-        <div class="hero__trust reveal-in delay-4">
-          {trustItems.map(t => (
-            <div class="trust-chip">
-              <span class="trust-chip__label">{t.label}</span>
-              <span class="trust-chip__sub">{t.sub}</span>
-            </div>
-          ))}
-        </div>
+    <div class="hero__bg">
+      <img src={heroImg} alt="Philadelphia skyline at golden hour" class="hero__bg-img" width="1440" height="800" />
+      <div class="hero__bg-overlay"></div>
+      <!-- Floating geometric shapes -->
+      <div class="hero__shape hero__shape--1"></div>
+      <div class="hero__shape hero__shape--2"></div>
+      <div class="hero__shape hero__shape--3"></div>
+    </div>
+    <div class="hero__content">
+      <div class="hero__badge animate-in">
+        <span class="hero__badge-dot"></span>
+        <span>Philadelphia's Trusted Window Film Company</span>
       </div>
-
-      <!-- Right: Before/After Comparison -->
-      <div class="hero__compare reveal-in delay-2">
-        <div class="compare" id="compareSlider">
-          <!-- After (right) — treated side -->
-          <div class="compare__after">
-            <img src={heroAfter} alt="With window film — cooler, clearer" class="compare__img" width="700" height="500" />
-            <div class="compare__label compare__label--after">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75"/></svg>
-              With Film
-            </div>
-          </div>
-          <!-- Before (left) — untreated side with overlay -->
-          <div class="compare__before" id="compareBefore">
-            <img src={heroBefore} alt="Untreated glass — harsh glare" class="compare__img" width="700" height="500" />
-            <div class="compare__label compare__label--before">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
-              Untreated
-            </div>
-          </div>
-          <!-- Divider line with handle -->
-          <div class="compare__divider" id="compareDivider">
-            <div class="compare__handle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"/></svg>
-            </div>
-          </div>
-        </div>
-        <!-- Stats below comparison -->
-        <div class="compare__stats">
-          {stats.map(s => (
-            <div class="prog-stat">
-              <div class="prog-stat__head">
-                <span class="prog-stat__label">{s.label}</span>
-                <span class="prog-stat__val">{s.display}</span>
-              </div>
-              <div class="prog-stat__bar">
-                <div class="prog-stat__fill" data-width={s.value}></div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div class="compare__hint">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>
-          Drag to compare
-        </div>
+      <h1 class="hero__title animate-in delay-1">
+        <span class="hero__title-line">Window Film</span>
+        <span class="hero__title-line hero__title-accent">Philadelphia</span>
+        <span class="hero__title-line">Depends On</span>
+      </h1>
+      <p class="hero__sub animate-in delay-2">
+        Energy savings · UV protection · Safety & security<br />
+        Decorative style · Done right, every time
+      </p>
+      <div class="hero__ctas animate-in delay-3">
+        <a href="/contact/" class="btn btn--primary btn--lg">
+          Get a Free Quote
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+        </a>
+        <a href="/process/" class="btn btn--ghost btn--lg">
+          Our Process
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </a>
       </div>
     </div>
     <!-- Scroll indicator -->
-    <div class="hero__scroll reveal-in delay-4">
+    <div class="hero__scroll animate-in delay-4">
+      <span>Scroll</span>
       <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="stats">
+    <div class="stats__grid">
+      {stats.map((s, i) => (
+        <div class={`stat-card reveal-up delay-${i}`}>
+          <div class="stat-card__icon" set:html={s.icon} />
+          <div class="stat-card__num" data-target={s.value} data-suffix={s.suffix}>{s.value}{s.suffix}</div>
+          <div class="stat-card__label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══ TRUST STRIP ═══ -->
+  <section class="trust">
+    <div class="trust__inner">
+      <div class="trust__item reveal-up">
+        <div class="trust__item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>
+        </div>
+        <div>
+          <strong>3M Authorized Dealer</strong>
+          <span>Certified window film installation</span>
+        </div>
+      </div>
+      <div class="trust__divider"></div>
+      <div class="trust__item reveal-up delay-1">
+        <div class="trust__item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>
+        </div>
+        <div>
+          <strong>Lifetime Warranty</strong>
+          <span>On materials and labor</span>
+        </div>
+      </div>
+      <div class="trust__divider"></div>
+      <div class="trust__item reveal-up delay-2">
+        <div class="trust__item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>
+        </div>
+        <div>
+          <strong>Free Consultations</strong>
+          <span>On-site or virtual</span>
+        </div>
+      </div>
+      <div class="trust__divider"></div>
+      <div class="trust__item reveal-up delay-3">
+        <div class="trust__item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-2.157-.574-4.18-1.591-5.914z"/></svg>
+        </div>
+        <div>
+          <strong>18+ Years Serving Philly</strong>
+          <span>Local team, local knowledge</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ═══ SERVICES ═══ -->
   <section class="services">
-    <div class="services__hd reveal-up">
-      <span class="eyebrow">What We Do</span>
-      <h2 class="section-title">Powerful benefits.<br/>Real results.</h2>
+    <div class="services__hd">
+      <span class="eyebrow reveal-up">What We Do</span>
+      <h2 class="services__title reveal-up delay-1">Window film solutions<br/>for every need</h2>
     </div>
     <div class="services__grid">
       {services.map((s, i) => (
-        <a href={s.href} class={`svc-card reveal-up delay-${i}`}>
+        <a href={s.href} class={`svc-card reveal-up delay-${i % 4}`}>
           <div class="svc-card__img">
-            <img src={s.img} alt={s.title} width="600" height="420" loading="lazy" />
+            <img src={s.img} alt={s.alt} width="600" height="420" loading="lazy" />
+            <div class="svc-card__img-overlay"></div>
           </div>
           <div class="svc-card__body">
+            <div class="svc-card__icon" set:html={s.icon} />
+            <h3 class="svc-card__title">{s.title}</h3>
+            <p class="svc-card__desc">{s.desc}</p>
             <div class="svc-card__stat">
               <span class="svc-card__stat-val">{s.stat}</span>
               <span class="svc-card__stat-label">{s.statLabel}</span>
             </div>
-            <h3 class="svc-card__title">{s.title}</h3>
-            <p class="svc-card__desc">{s.desc}</p>
             <div class="svc-card__cta">
               Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
             </div>
           </div>
         </a>
@@ -174,75 +217,57 @@ const trustItems = [
     </div>
   </section>
 
-  <!-- ═══ STATS BANNER ═══ -->
-  <section class="stats-banner">
-    <div class="stats-banner__inner">
-      {[
-        { num: "99%", label: "UV Blocked" },
-        { num: "78%", label: "Heat Rejected" },
-        { num: "18+", label: "Years in Philly" },
-        { num: "2,400+", label: "Projects Done" },
-        { num: "4.9★", label: "Google Rating" },
-      ].map((s, i) => (
-        <div class={`stats-banner__item reveal-up delay-${i}`}>
-          <span class="stats-banner__num">{s.num}</span>
-          <span class="stats-banner__label">{s.label}</span>
+  <!-- ═══ MISSION ═══ -->
+  <section class="mission">
+    <div class="mission__bg-shape"></div>
+    <div class="mission__inner">
+      <div class="mission__text reveal-up">
+        <span class="eyebrow eyebrow--light">Our Story</span>
+        <h2 class="mission__title">Philadelphia's trusted<br/><em>window film contractor</em></h2>
+        <p class="mission__body">Scottish Window Solutions has served the Philadelphia region for over 18 years. We've transformed thousands of homes and commercial spaces with professional window film — from Center City high-rises to suburban family homes.</p>
+        <p class="mission__body">As a 3M Authorized Dealer, we bring world-class products and certified installation to every project, backed by industry-leading warranties.</p>
+        <div class="mission__btns">
+          <a href="/about/" class="btn btn--outline-green btn--lg">About Us</a>
+          <a href="/contact/" class="btn btn--text btn--lg">Get a Free Quote →</a>
         </div>
-      ))}
-    </div>
-    <div class="stats-banner__tag">
-      REAL RESULTS · LOCAL EXPERTS · PREMIUM FILM · LIFETIME WARRANTY
-    </div>
-  </section>
-
-  <!-- ═══ EVERY SPACE ═══ -->
-  <section class="spaces">
-    <div class="spaces__hd reveal-up">
-      <span class="eyebrow">Applications</span>
-      <h2 class="section-title">Window film for<br/>every space</h2>
-    </div>
-    <div class="spaces__grid">
-      {applications.map((app, i) => (
-        <a href={app.href} class={`space-card reveal-up delay-${i % 4}`}>
-          <div class="space-card__img">
-            <img src={app.img} alt={app.label} width="400" height="280" loading="lazy" />
-            <div class="space-card__overlay"></div>
-          </div>
-          <div class="space-card__body">
-            <div class="space-card__icon" set:html={app.icon} />
-            <span class="space-card__label">{app.label}</span>
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- ═══ BENEFITS GRID ═══ -->
-  <section class="benefits">
-    <div class="benefits__inner">
-      <div class="benefits__text reveal-up">
-        <span class="eyebrow">Why Window Film?</span>
-        <h2 class="section-title">One upgrade.<br/>Six benefits.</h2>
-        <p class="benefits__sub">A single window film installation solves heat, glare, UV, privacy, safety, and style — all at once.</p>
-        <a href="/contact/" class="btn btn--primary btn--lg">Get a Free Assessment</a>
       </div>
-      <div class="benefits__grid">
-        {benefits.map((b, i) => (
-          <div class={`benefit-card reveal-up delay-${i % 3}`}>
-            <div class="benefit-card__icon" set:html={b.icon} />
-            <h3 class="benefit-card__title">{b.title}</h3>
-            <p class="benefit-card__desc">{b.desc}</p>
+      <div class="mission__cards">
+        {[
+          { num: "18+", label: "Years in Business" },
+          { num: "2,400+", label: "Projects Completed" },
+          { num: "3M", label: "Authorized Dealer" },
+          { num: "4.9★", label: "Google Rating" },
+        ].map((c, i) => (
+          <div class={`mission-card reveal-up delay-${i}`}>
+            <span class="mission-card__num">{c.num}</span>
+            <span class="mission-card__label">{c.label}</span>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- ═══ APPLICATIONS ═══ -->
+  <section class="apps">
+    <div class="apps__hd">
+      <span class="eyebrow reveal-up">Applications</span>
+      <h2 class="apps__title reveal-up delay-1">Window film for every space</h2>
+    </div>
+    <div class="apps__grid">
+      {applications.map((app, i) => (
+        <a href={app.href} class={`app-card reveal-up delay-${i % 4}`}>
+          <div class="app-card__icon" set:html={app.icon} />
+          <span class="app-card__label">{app.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <!-- ═══ TESTIMONIALS ═══ -->
   <section class="testimonials">
-    <div class="testimonials__hd reveal-up">
-      <span class="eyebrow">What Clients Say</span>
-      <h2 class="section-title">Philadelphia trusts us</h2>
+    <div class="testimonials__hd">
+      <span class="eyebrow reveal-up">What Clients Say</span>
+      <h2 class="testimonials__title reveal-up delay-1">Philadelphia trusts us</h2>
     </div>
     <div class="testimonials__grid">
       {testimonials.map((t, i) => (
@@ -255,304 +280,209 @@ const trustItems = [
     </div>
   </section>
 
-  <!-- ═══ CTA ═══ -->
-  <section class="cta">
-    <div class="cta__inner reveal-up">
-      <h2 class="cta__title">Ready for cooler rooms,<br/>lower bills, and real protection?</h2>
-      <p class="cta__sub">Free consultations. No-pressure quotes. Professional installation.</p>
-      <div class="cta__btns">
+  <!-- ═══ CTA BANNER ═══ -->
+  <section class="cta-banner">
+    <div class="cta-banner__inner reveal-up">
+      <div class="cta-banner__text">
+        <h2 class="cta-banner__title">Ready to transform your space?</h2>
+        <p class="cta-banner__sub">Free consultations. No-pressure quotes. Professional installation.</p>
+      </div>
+      <div class="cta-banner__btns">
         <a href="/contact/" class="btn btn--primary btn--lg">
           Get a Free Quote
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
         </a>
-        <a href="/process/" class="btn btn--outline btn--lg">See Our Process</a>
+        <a href="/process/" class="btn btn--ghost-white btn--lg">See Our Process</a>
       </div>
     </div>
   </section>
 
+  <Footer />
 </BaseLayout>
 
 <style>
-/* ─── HERO ─── */
+/* ── HERO ── */
 .hero {
-  background: var(--brand);
+  position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
+  align-items: center;
   overflow: hidden;
+  background: var(--brand);
 }
-.hero::before {
-  content: '';
+.hero__bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 80% 50%, rgba(129,171,76,0.07) 0%, transparent 55%);
+  z-index: 0;
+}
+.hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+.hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(39,46,50,0.88) 0%, rgba(39,46,50,0.55) 50%, rgba(39,46,50,0.25) 100%);
+}
+.hero__shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
   pointer-events: none;
 }
-.hero__layout {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 100px 60px 80px;
-  width: 100%;
+.hero__shape--1 {
+  width: 500px; height: 500px;
+  background: var(--green);
+  top: -100px; right: -100px;
+  animation: float1 8s ease-in-out infinite;
+}
+.hero__shape--2 {
+  width: 300px; height: 300px;
+  background: var(--green);
+  bottom: 50px; left: -50px;
+  animation: float2 6s ease-in-out infinite;
+}
+.hero__shape--3 {
+  width: 200px; height: 200px;
+  background: #fff;
+  top: 30%; left: 40%;
+  opacity: 0.05;
+  animation: float3 10s ease-in-out infinite;
+}
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 30px) scale(1.05); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-15px, 15px); }
+}
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 120px 80px 100px;
+  max-width: 800px;
 }
 .hero__badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(129,171,76,0.12);
-  border: 1px solid rgba(129,171,76,0.3);
+  background: rgba(129,171,76,0.15);
+  border: 1px solid rgba(129,171,76,0.35);
   color: var(--green);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 8px 18px;
   border-radius: 100px;
   margin-bottom: 28px;
 }
-.badge-dot {
+.hero__badge-dot {
   width: 8px; height: 8px;
   background: var(--green);
   border-radius: 50%;
-  animation: badgePulse 2s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
-@keyframes badgePulse {
+@keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
 }
 .hero__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
   font-weight: 700;
   color: #fff;
-  line-height: 1.08;
+  line-height: 1.05;
   margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
 }
-.accent { color: var(--green); }
+.hero__title-line {
+  display: block;
+  animation: slideUp 0.7s ease-out both;
+}
+.hero__title-accent {
+  color: var(--green);
+  position: relative;
+}
+.hero__title-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0;
+  width: 100%; height: 3px;
+  background: var(--green);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 0.6s 0.8s ease-out forwards;
+}
+@keyframes lineGrow {
+  to { transform: scaleX(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .hero__sub {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.6);
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.72);
   line-height: 1.7;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
+  max-width: 520px;
 }
 .hero__ctas {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
-}
-.hero__trust {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.trust-chip {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 10px 16px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-}
-.trust-chip:hover {
-  border-color: rgba(129,171,76,0.3);
-  background: rgba(129,171,76,0.08);
-}
-.trust-chip__label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
-}
-.trust-chip__sub {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.45);
 }
 .hero__scroll {
   position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 40px;
+  right: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 1;
 }
 .hero__scroll-line {
   width: 1px;
   height: 50px;
   background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-  animation: scrollDrop 2s ease-in-out infinite;
+  animation: scrollLine 2s ease-in-out infinite;
 }
-@keyframes scrollDrop {
-  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
   50% { transform: scaleY(1); transform-origin: top; }
   51% { transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* ─── COMPARISON SLIDER ─── */
-.hero__compare {
-  position: relative;
-}
-.compare {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: col-resize;
-  user-select: none;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-  aspect-ratio: 4/3;
-}
-.compare__after,
-.compare__before {
-  position: absolute;
-  inset: 0;
-}
-.compare__after { z-index: 1; }
-.compare__before {
-  z-index: 2;
-  clip-path: inset(0 50% 0 0);
-  transition: clip-path 0.02s;
-}
-.compare__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-  -webkit-user-drag: none;
-}
-/* CSS treatment overlay on "before" side to simulate harsh sun */
-.compare__before::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,180,60,0.15) 0%, rgba(255,140,40,0.1) 100%);
-  mix-blend-mode: screen;
-}
-.compare__label {
-  position: absolute;
-  top: 16px;
-  padding: 6px 14px;
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 5;
-}
-.compare__label--before {
-  left: 16px;
-  background: rgba(0,0,0,0.55);
-  color: rgba(255,255,255,0.9);
-  backdrop-filter: blur(8px);
-}
-.compare__label--after {
-  right: 16px;
-  background: rgba(129,171,76,0.85);
-  color: #fff;
-  backdrop-filter: blur(8px);
-}
-.compare__divider {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 3px;
-  background: #fff;
-  z-index: 10;
-  transform: translateX(-50%);
-  box-shadow: 0 0 16px rgba(0,0,0,0.4);
-  cursor: col-resize;
-}
-.compare__handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px; height: 44px;
-  background: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--brand);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
-}
-.compare:hover .compare__handle { transform: translate(-50%, -50%) scale(1.1); }
-/* Stats below comparison */
-.compare__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 16px;
-}
-.prog-stat {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 14px 16px;
-  backdrop-filter: blur(8px);
-}
-.prog-stat__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.prog-stat__label {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.prog-stat__val {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--green);
-}
-.prog-stat__bar {
-  height: 4px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.prog-stat__fill {
-  height: 100%;
-  background: var(--green);
-  border-radius: 4px;
-  width: 0%;
-  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.compare__hint {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-  color: rgba(255,255,255,0.3);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-}
-
-/* ─── BUTTONS ─── */
+/* ── BUTTONS ── */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 28px;
-  border-radius: 100px;
-  font-weight: 700;
+  padding: 12px 26px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
   font-size: 0.9rem;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -565,23 +495,158 @@ const trustItems = [
   box-shadow: 0 4px 20px rgba(129,171,76,0.3);
 }
 .btn--primary:hover {
-  background: #96c05e;
+  background: var(--color-brand-light, #96c05e);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(129,171,76,0.45);
+  box-shadow: 0 8px 30px rgba(129,171,76,0.4);
 }
-.btn--outline {
+.btn--ghost {
   background: transparent;
   color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.28);
+  border: 1.5px solid rgba(255,255,255,0.3);
 }
-.btn--outline:hover {
+.btn--ghost:hover {
   border-color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.08);
   transform: translateY(-2px);
 }
-.btn--lg { padding: 15px 34px; font-size: 0.95rem; }
+.btn--ghost-white {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.35);
+}
+.btn--ghost-white:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+.btn--outline-green {
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid rgba(129,171,76,0.45);
+}
+.btn--outline-green:hover {
+  background: rgba(129,171,76,0.1);
+  border-color: var(--green);
+}
+.btn--text {
+  background: none;
+  color: var(--green);
+  padding: 12px 0;
+  border-bottom: 1.5px solid rgba(129,171,76,0.3);
+  border-radius: 0;
+}
+.btn--text:hover { border-bottom-color: var(--green); }
+.btn--lg { padding: 15px 32px; font-size: 0.95rem; }
 
-/* ─── SECTION COMMON ─── */
+/* ── STATS ── */
+.stats {
+  background: var(--brand);
+  padding: 0;
+}
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.stat-card {
+  padding: 48px 32px;
+  text-align: center;
+  border-right: 1px solid rgba(129,171,76,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card:last-child { border-right: none; }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  transform: scaleX(0);
+  transition: transform 0.6s ease;
+}
+.stat-card:hover::before { transform: scaleX(1); }
+.stat-card__icon {
+  color: var(--green);
+  opacity: 0.6;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+.stat-card__num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-card__label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── TRUST ── */
+.trust {
+  background: var(--brand);
+  border-top: 1px solid rgba(129,171,76,0.1);
+  border-bottom: 1px solid rgba(129,171,76,0.1);
+  padding: 28px 60px;
+}
+.trust__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.trust__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 32px;
+}
+.trust__item-icon {
+  width: 40px; height: 40px;
+  background: rgba(129,171,76,0.12);
+  border: 1px solid rgba(129,171,76,0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  flex-shrink: 0;
+}
+.trust__item strong {
+  display: block;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.trust__item span {
+  display: block;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.78rem;
+}
+.trust__divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(129,171,76,0.15);
+}
+
+/* ── SERVICES ── */
+.services {
+  background: var(--off-white);
+  padding: 100px 80px;
+}
+.services__hd {
+  text-align: center;
+  margin-bottom: 64px;
+}
 .eyebrow {
   display: inline-block;
   font-size: 0.75rem;
@@ -589,29 +654,20 @@ const trustItems = [
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--green);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
-.section-title {
+.eyebrow--light { color: var(--green); opacity: 0.7; }
+.services__title, .apps__title, .testimonials__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   color: var(--brand);
   line-height: 1.15;
-}
-
-/* ─── SERVICES ─── */
-.services {
-  background: var(--off-white);
-  padding: 100px 60px;
-}
-.services__hd {
-  text-align: center;
-  margin-bottom: 56px;
 }
 .services__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1280px;
+  gap: 24px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .svc-card {
@@ -623,16 +679,17 @@ const trustItems = [
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
 }
 .svc-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
-  border-color: rgba(129,171,76,0.25);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  border-color: rgba(129,171,76,0.3);
 }
 .svc-card__img {
+  position: relative;
   overflow: hidden;
-  height: 180px;
+  height: 200px;
 }
 .svc-card__img img {
   width: 100%;
@@ -641,242 +698,20 @@ const trustItems = [
   transition: transform 0.5s ease;
 }
 .svc-card:hover .svc-card__img img { transform: scale(1.05); }
+.svc-card__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(39,46,50,0.6) 100%);
+}
 .svc-card__body {
-  padding: 20px;
-  flex: 1;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-}
-.svc-card__stat {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.svc-card__stat-val {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--green);
-}
-.svc-card__stat-label {
-  font-size: 0.75rem;
-  color: rgba(39,46,50,0.5);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.svc-card__title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--brand);
-  margin-bottom: 8px;
-}
-.svc-card__desc {
-  font-size: 0.85rem;
-  color: rgba(39,46,50,0.6);
-  line-height: 1.6;
   flex: 1;
-  margin-bottom: 16px;
 }
-.svc-card__cta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--green);
-  font-weight: 700;
-  font-size: 0.82rem;
-  transition: gap 0.2s;
-}
-.svc-card:hover .svc-card__cta { gap: 10px; }
-
-/* ─── STATS BANNER ─── */
-.stats-banner {
-  background: var(--brand);
-  padding: 64px 60px;
-  position: relative;
-  overflow: hidden;
-}
-.stats-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(129,171,76,0.06) 0%, transparent 70%);
-}
-.stats-banner__inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-  max-width: 1200px;
-  margin: 0 auto 32px;
-  position: relative;
-}
-.stats-banner__item {
-  flex: 1;
-  text-align: center;
-  padding: 0 32px;
-  position: relative;
-}
-.stats-banner__item + .stats-banner__item::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 50%;
-  transform: translateY(-50%);
-  width: 1px; height: 50px;
-  background: rgba(129,171,76,0.2);
-}
-.stats-banner__num {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.stats-banner__label {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.45);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.stats-banner__tag {
-  text-align: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.2);
-  text-transform: uppercase;
-}
-
-/* ─── SPACES ─── */
-.spaces {
-  background: var(--off-white);
-  padding: 100px 60px;
-}
-.spaces__hd {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.spaces__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 260px);
-  gap: 16px;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-.space-card {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  text-decoration: none;
-  display: block;
-}
-.space-card:nth-child(1) { grid-column: span 2; }
-.space-card:nth-child(6) { grid-column: span 2; }
-.space-card__img {
-  position: absolute;
-  inset: 0;
-}
-.space-card__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.space-card:hover .space-card__img img { transform: scale(1.06); }
-.space-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
-  transition: background 0.3s ease;
-}
-.space-card:hover .space-card__overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, rgba(129,171,76,0.1) 100%);
-}
-.space-card__body {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 24px;
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-  z-index: 1;
-}
-.space-card__icon {
-  width: 40px; height: 40px;
-  background: rgba(129,171,76,0.9);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  flex-shrink: 0;
-}
-.space-card__label {
-  font-weight: 700;
-  color: #fff;
-  font-size: 1rem;
-  letter-spacing: 0.03em;
-}
-
-/* ─── BENEFITS ─── */
-.benefits {
-  background: var(--brand);
-  padding: 100px 60px;
-  position: relative;
-  overflow: hidden;
-}
-.benefits::before {
-  content: '';
-  position: absolute;
-  top: -150px; right: -150px;
-  width: 500px; height: 500px;
-  background: var(--green);
-  border-radius: 50%;
-  opacity: 0.04;
-  filter: blur(100px);
-}
-.benefits__inner {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px;
-  align-items: start;
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-}
-.benefits__text .section-title { color: #fff; }
-.benefits__sub {
-  color: rgba(255,255,255,0.55);
-  font-size: 1rem;
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-.benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-.benefit-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 24px;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-}
-.benefit-card:hover {
-  background: rgba(129,171,76,0.08);
-  border-color: rgba(129,171,76,0.25);
-  transform: translateY(-3px);
-}
-.benefit-card__icon {
+.svc-card__icon {
   width: 44px; height: 44px;
-  background: rgba(129,171,76,0.12);
+  background: rgba(129,171,76,0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -884,23 +719,191 @@ const trustItems = [
   color: var(--green);
   margin-bottom: 14px;
 }
-.benefit-card__title {
+.svc-card__title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--brand);
   margin-bottom: 8px;
 }
-.benefit-card__desc {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
+.svc-card__desc {
+  font-size: 0.88rem;
+  color: var(--text-mid, #4a4a4a);
   line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.svc-card__stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--off-white);
+  border-radius: 10px;
+}
+.svc-card__stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green);
+}
+.svc-card__stat-label {
+  font-size: 0.78rem;
+  color: var(--text-light, #888);
+}
+.svc-card__cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: gap 0.2s;
+}
+.svc-card:hover .svc-card__cta { gap: 10px; }
+
+/* ── MISSION ── */
+.mission {
+  background: var(--brand);
+  padding: 100px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.mission__bg-shape {
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: var(--green);
+  border-radius: 50%;
+  opacity: 0.04;
+  filter: blur(100px);
+}
+.mission__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.mission__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #fff;
+  margin: 16px 0 28px;
+  line-height: 1.2;
+}
+.mission__title em { color: var(--green); font-style: normal; }
+.mission__body {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.mission__btns {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.mission__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.mission-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(129,171,76,0.15);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.mission-card:hover {
+  background: rgba(129,171,76,0.08);
+  border-color: rgba(129,171,76,0.3);
+  transform: translateY(-3px);
+}
+.mission-card__num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.mission-card__label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-/* ─── TESTIMONIALS ─── */
+/* ── APPLICATIONS ── */
+.apps {
+  background: var(--off-white);
+  padding: 100px 80px;
+}
+.apps__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.apps__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.app-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 24px;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.app-card:hover {
+  border-color: var(--green);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+}
+.app-card__icon {
+  width: 56px; height: 56px;
+  background: rgba(129,171,76,0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  transition: all 0.3s ease;
+}
+.app-card:hover .app-card__icon {
+  background: var(--green);
+  color: #fff;
+  transform: scale(1.1);
+}
+.app-card__label {
+  font-weight: 600;
+  color: var(--brand);
+  font-size: 0.95rem;
+}
+
+/* ── TESTIMONIALS ── */
 .testimonials {
   background: #fff;
-  padding: 100px 60px;
+  padding: 100px 80px;
 }
 .testimonials__hd {
   text-align: center;
@@ -910,7 +913,7 @@ const trustItems = [
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .testi-card {
@@ -918,33 +921,33 @@ const trustItems = [
   border-radius: 20px;
   padding: 32px;
   border: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 .testi-card::before {
   content: '"';
   position: absolute;
-  top: -15px; right: 20px;
+  top: -10px; right: 20px;
   font-family: 'Playfair Display', serif;
-  font-size: 7rem;
+  font-size: 8rem;
   color: var(--green);
-  opacity: 0.07;
+  opacity: 0.06;
   line-height: 1;
 }
 .testi-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
 }
 .testi-card__stars {
   color: #f59e0b;
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: 3px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .testi-card__text {
-  font-size: 0.95rem;
-  color: rgba(39,46,50,0.65);
+  font-size: 0.98rem;
+  color: var(--text-mid, #4a4a4a);
   line-height: 1.7;
   font-style: italic;
   margin-bottom: 20px;
@@ -955,37 +958,50 @@ const trustItems = [
   color: var(--brand);
 }
 
-/* ─── CTA ─── */
-.cta {
-  background: var(--off-white);
-  padding: 100px 60px;
-  text-align: center;
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: var(--brand);
+  padding: 100px 80px;
+  position: relative;
+  overflow: hidden;
 }
-.cta__inner { max-width: 700px; margin: 0 auto; }
-.cta__title {
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(129,171,76,0.08) 0%, transparent 60%);
+}
+.cta-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  gap: 40px;
+}
+.cta-banner__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  color: var(--brand);
-  margin-bottom: 16px;
-  line-height: 1.2;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: #fff;
+  margin-bottom: 12px;
 }
-.cta__sub {
+.cta-banner__sub {
   font-size: 1.05rem;
-  color: rgba(39,46,50,0.55);
-  margin-bottom: 36px;
+  color: rgba(255,255,255,0.55);
 }
-.cta__btns {
+.cta-banner__btns {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  flex-shrink: 0;
   flex-wrap: wrap;
 }
 
-/* ─── ANIMATIONS ─── */
-.reveal-in {
+/* ── SCROLL ANIMATIONS ── */
+.animate-in {
   opacity: 0;
-  transform: translateY(28px);
-  animation: fadeUp 0.75s ease-out forwards;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease-out forwards;
 }
 .delay-1 { animation-delay: 0.15s; }
 .delay-2 { animation-delay: 0.3s; }
@@ -994,105 +1010,102 @@ const trustItems = [
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
+
 .reveal-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal-up.visible { opacity: 1; transform: none; }
+.reveal-up.visible {
+  opacity: 1;
+  transform: none;
+}
 .delay-0 { transition-delay: 0s; }
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 1100px) {
-  .hero__layout { grid-template-columns: 1fr; padding: 80px 40px 60px; gap: 40px; }
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero__content { padding: 80px 40px 80px; }
+  .services, .mission, .apps, .testimonials, .cta-banner { padding-left: 40px; padding-right: 40px; }
+  .stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-card { border-right: none; border-bottom: 1px solid rgba(129,171,76,0.12); }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
-  .spaces__grid { grid-template-columns: repeat(2, 1fr); }
-  .spaces__grid { grid-template-rows: auto; }
-  .space-card:nth-child(1),
-  .space-card:nth-child(6) { grid-column: span 1; }
-  .benefits__inner { grid-template-columns: 1fr; }
-  .stats-banner__inner { flex-wrap: wrap; gap: 24px; }
-  .stats-banner__item { flex: none; width: calc(33% - 16px); }
-  .stats-banner__item::before { display: none; }
+  .mission__inner { grid-template-columns: 1fr; }
+  .apps__grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials__grid { grid-template-columns: 1fr; }
+  .cta-banner__inner { flex-direction: column; text-align: center; }
 }
 @media (max-width: 768px) {
-  .hero__layout, .services, .spaces, .benefits, .testimonials, .cta { padding-left: 24px; padding-right: 24px; }
-  .services__grid { grid-template-columns: 1fr; }
-  .testimonials__grid { grid-template-columns: 1fr; }
-  .benefits__grid { grid-template-columns: 1fr; }
+  .hero__content { padding: 70px 24px 60px; }
   .hero__ctas { flex-direction: column; }
-  .compare__stats { grid-template-columns: 1fr; }
+  .hero__scroll { display: none; }
+  .services, .mission, .apps, .testimonials, .cta-banner { padding-left: 24px; padding-right: 24px; }
+  .trust { padding: 24px; }
+  .trust__inner { flex-direction: column; gap: 16px; }
+  .trust__divider { display: none; }
+  .stats__grid { grid-template-columns: 1fr 1fr; }
+  .services__grid { grid-template-columns: 1fr; }
+  .apps__grid { grid-template-columns: repeat(2, 1fr); }
+  .mission__cards { grid-template-columns: 1fr 1fr; }
+  .mission__btns { flex-direction: column; align-items: flex-start; }
 }
 </style>
 
 <script>
-  // ── Scroll reveal ──
+  // Scroll reveal
   const observer = new IntersectionObserver(
-    entries => entries.forEach(e => {
+    (entries) => entries.forEach(e => {
       if (e.isIntersecting) e.target.classList.add('visible');
     }),
     { threshold: 0.1 }
   );
   document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
 
-  // ── Before/After Comparison Slider ──
-  const compare = document.getElementById('compareSlider');
-  const before = document.getElementById('compareBefore');
-  const divider = document.getElementById('compareDivider');
-
-  if (compare && before && divider) {
-    let isDragging = false;
-    let startX = 0;
-    let currentPos = 50;
-
-    function setClip(x) {
-      const rect = compare.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
-      currentPos = pct;
-      before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-      divider.style.left = pct + '%';
-    }
-
-    divider.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-      e.preventDefault();
-    });
-    compare.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-      setClip(e.clientX);
-    });
-    window.addEventListener('mousemove', (e) => {
-      if (isDragging) setClip(e.clientX);
-    });
-    window.addEventListener('mouseup', () => { isDragging = false; });
-
-    // Touch support
-    divider.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      startX = e.touches[0].clientX;
-    });
-    compare.addEventListener('touchmove', (e) => {
-      if (isDragging) setClip(e.touches[0].clientX);
-    });
-    window.addEventListener('touchend', () => { isDragging = false; });
+  // Animated number counters
+  function animateCounter(el) {
+    const target = el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const isDecimal = target.includes('.');
+    const numericTarget = parseFloat(target.replace(/[^0-9.]/g, ''));
+    const prefix = target.match(/^[^0-9]*/)?.[0] || '';
+    let current = 0;
+    const duration = 1800;
+    const step = 16;
+    const increments = duration / step;
+    const incrementAmount = numericTarget / increments;
+    
+    const timer = setInterval(() => {
+      current += incrementAmount;
+      if (current >= numericTarget) {
+        current = numericTarget;
+        clearInterval(timer);
+        el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString()) + suffix;
+      } else {
+        el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString()) + suffix;
+      }
+    }, step);
   }
 
-  // ── Animated progress bars on scroll ──
-  const progObserver = new IntersectionObserver(
-    entries => entries.forEach(e => {
+  const counterObserver = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
       if (e.isIntersecting) {
-        const fill = e.target;
-        const width = fill.dataset.width;
-        fill.style.width = width + '%';
-        progObserver.unobserve(fill);
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
       }
     }),
     { threshold: 0.5 }
   );
-  document.querySelectorAll('.prog-stat__fill').forEach(el => progObserver.observe(el));
+  document.querySelectorAll('.stat-card__num[data-target]').forEach(el => counterObserver.observe(el));
+
+  // Hero parallax on scroll
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero__bg-img');
+    if (hero) {
+      const scrolled = window.scrollY;
+      hero.style.transform = `scale(1.06) translateY(${scrolled * 0.15}px)`;
+    }
+  }, { passive: true });
 </script>
