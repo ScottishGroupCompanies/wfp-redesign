@@ -1,1336 +1,726 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BrandLogos from '../components/BrandLogos.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-const title = 'Window Film Philadelphia | Leading Window Film Solutions';
-const description = 'Window Film Philadelphia provides professional window film installation for homes, businesses, and commercial properties throughout the Philadelphia metro area. Free quotes!';
+const title = "Window Film Philadelphia — Scottish Window Solutions";
+const description = "Professional window film installation in Philadelphia and the Delaware Valley. UV protection, energy savings, safety & security, and decorative film for homes and businesses.";
+
+// Homepage images
+const heroImg = "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203051_9e201b35-80e5-4e3d-bc85-32561bb9d0ee.png";
+const featuredImages = {
+  commercial: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203053_b846664d-a70e-442d-833b-4267bf184a18.png",
+  residential: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203056_43daeb3e-3501-4a9c-8e55-14df1c103bbd.png",
+  trust: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203058_7ea2c065-74e1-4ca1-80be-bae2fec0e6af.png",
+  retail: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203100_6704eb3d-7f96-439b-a760-c0a7097bf459.png",
+  industrial: "https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203101_282a9879-8679-4e33-b8b3-b10a4dffdf38.png",
+};
+
+// Stats
+const stats = [
+  { value: "18+", label: "Years Experience" },
+  { value: "2,400+", label: "Projects Completed" },
+  { value: "99.9%", label: "UV Block Rate" },
+  { value: "4.9★", label: "Google Rating" },
+];
+
+// Services
+const services = [
+  {
+    title: "Energy Savings",
+    desc: "Cut cooling costs up to 30% with heat-rejecting window film. Payback in under 3 years.",
+    img: featuredImages.commercial,
+    alt: "Philadelphia commercial building with energy-efficient window film",
+    href: "/benefits/energy-savings/",
+    stat: "30%",
+    statLabel: "Cooling Cost Cut",
+  },
+  {
+    title: "UV Protection",
+    desc: "Block 99.9% of harmful UV rays. Protect your people, furniture, and merchandise.",
+    img: featuredImages.residential,
+    alt: "Philadelphia home interior with UV-blocking window film",
+    href: "/benefits/uv-blocking/",
+    stat: "99.9%",
+    statLabel: "UV Blocked",
+  },
+  {
+    title: "Safety & Security",
+    desc: "Hold glass together on impact. Delay intruders. Buy precious time in an emergency.",
+    img: featuredImages.trust,
+    alt: "Security window film protecting Philadelphia commercial building",
+    href: "/benefits/safety-and-security/",
+    stat: "4–15",
+    statLabel: "Mil Thickness",
+  },
+  {
+    title: "Privacy & Decorative",
+    desc: "Transform plain glass into frosted privacy, brand graphics, or decorative designs.",
+    img: featuredImages.retail,
+    alt: "Decorative window film on Philadelphia retail storefront",
+    href: "/benefits/decorative-promotional/",
+    stat: "100%",
+    statLabel: "Customizable",
+  },
+];
+
+// Applications
+const applications = [
+  { label: "Homes", icon: "🏠", href: "/applications/residential/" },
+  { label: "Offices", icon: "🏢", href: "/applications/commercial/" },
+  { label: "Retail", icon: "🛍️", href: "/applications/retail/" },
+  { label: "Healthcare", icon: "🏥", href: "/applications/healthcare/" },
+  { label: "Government", icon: "🏛️", href: "/government-buildings/" },
+  { label: "Schools", icon: "🎓", href: "/benefits/school-security-window-film/" },
+  { label: "Industrial", icon: "🏭", href: "/applications/industrial/" },
+  { label: "Automotive", icon: "🚗", href: "/applications/automotive/" },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/">
+<BaseLayout title={title} description={description}>
+  <Header />
 
-<!-- ══════════════════════════════════════
-     HERO — full-bleed background image
-     ══════════════════════════════════════ -->
-<section class="hp-hero">
-  <div class="hp-hero__content">
-    <h1>Window Film Philadelphia<br /><em>Done Right, Every Time</em></h1>
-    <div class="hp-hero__ctas">
-      <a href="/contact/" class="s-btn s-btn--primary">Get a Free Quote</a>
-      <a href="/process/" class="s-btn s-btn--ghost">Our Process</a>
+  <!-- HERO -->
+  <section class="auron-hero">
+    <div class="auron-hero__img">
+      <img src={heroImg} alt="Philadelphia skyline at golden hour with window film on buildings" width="1440" height="700" />
+      <div class="auron-hero__overlay"></div>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     WHITE BODY CONTENT AREA — rounded top corners
-     ══════════════════════════════════════ -->
-<section class="hp-body">
-
-<!-- FROSTED GLASS SERVICE STRIP -->
-<div class="hp-glass">
-  <div class="hp-glass__grid">
-    <div class="hp-glass__card">
-      <div class="hp-svc-card__icon hp-svc-card__icon--svg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20 10a1 1 0 1 0-2 0zM6 10a1 1 0 0 0-2 0zm14.293 2.707a1 1 0 0 0 1.414-1.414zM12 3l.707-.707a1 1 0 0 0-1.414 0zm-9.707 8.293a1 1 0 1 0 1.414 1.414zM7 22h10v-2H7zm13-3v-9h-2v9zM6 19v-9H4v9zm15.707-7.707l-9-9l-1.414 1.414l9 9zm-10.414-9l-9 9l1.414 1.414l9-9zM17 22a3 3 0 0 0 3-3h-2a1 1 0 0 1-1 1zM7 20a1 1 0 0 1-1-1H4a3 3 0 0 0 3 3z"/>
-        </svg>
+    <div class="auron-hero__content">
+      <span class="auron-badge auron-badge--green">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+        Window Film Philadelphia
+      </span>
+      <h1 class="auron-hero__title">
+        Window Film<br />
+        <span class="auron-accent">Philadelphia</span><br />
+        Trusts
+      </h1>
+      <p class="auron-hero__sub">Energy savings. UV protection. Safety & security.<br />Decorative style. Done right, every time.</p>
+      <div class="auron-hero__ctas">
+        <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Quote</a>
+        <a href="/process/" class="auron-btn auron-btn--ghost">Our Process</a>
       </div>
-      <hr class="hp-glass__hr" />
-      <h3>Residential Film</h3>
-      <p>Reduce heat, glare, and UV damage while adding privacy and style to your home. Energy savings from day one.</p>
-      <a href="/benefits/" class="hp-svc-card__link hp-svc-card__link--light">Learn more →</a>
     </div>
-    <div class="hp-glass__card">
-      <div class="hp-svc-card__icon hp-svc-card__icon--svg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="16" height="20" x="4" y="2" rx="2"/>
-          <path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
-          <path d="M12 10h.01M12 14h.01M16 10h.01M16 14h.01M16 6h.01M8 10h.01M8 14h.01M8 6h.01"/>
-        </svg>
-      </div>
-      <hr class="hp-glass__hr" />
-      <h3>Commercial Film</h3>
-      <p>Protect your assets, reduce HVAC load, and create a professional appearance for offices and retail spaces.</p>
-      <a href="/applications/" class="hp-svc-card__link hp-svc-card__link--light">Learn more →</a>
-    </div>
-    <div class="hp-glass__card">
-      <div class="hp-svc-card__icon hp-svc-card__icon--svg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2l-8 3.5v6.5c0 3.5 3.5 8 8 10c4.5-1 8-6.5 8-10v-6.5l-8-3.5Z"/>
-        </svg>
-      </div>
-      <hr class="hp-glass__hr" />
-      <h3>Security Film</h3>
-      <p>Ballistic-resistant and blast-mitigation films that hold glass together on impact — protecting people and property.</p>
-      <a href="/benefits/safety-and-security/" class="hp-svc-card__link hp-svc-card__link--light">Learn more →</a>
-    </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══════════════════════════════════════
-     WHAT WE DO — title section
-     ══════════════════════════════════════ -->
-<div class="hp-section-hd hp-section-hd--centered" style="padding: 60px 5% 150px; max-width: 1200px; margin: 0 auto;">
-  <p class="section-eyebrow">What We Do</p>
-  <h2 class="section-title">Expert film solutions for <em>every surface</em></h2>
-  <p class="hp-section-sub">From homes to high-rises, storefronts to secured facilities — we handle every project with precision and care.</p>
-</div>
-
-<!-- ══════════════════════════════════════
-     STATS — 2-col: hero image + 2×2 card grid
-     ══════════════════════════════════════ -->
-<div class="hp-stats">
-  <div class="hp-stats__inner">
-
-    <div class="hp-stats__hero-img">
-      <img src="/images/bp-stats-home-large.webp" alt="Professional window film installation Philadelphia" loading="lazy" />
-    </div>
-
-    <div class="hp-stats__cards">
-
-      <div class="hp-stat-card">
-        <div class="hp-stat-card__top">
-          <div class="hp-stat-card__label">Years of Experience</div>
-          <div class="hp-stat-card__rule"></div>
+  <!-- STATS -->
+  <section class="auron-stats">
+    <div class="auron-stats__grid">
+      {stats.map(s => (
+        <div class="auron-stat">
+          <span class="auron-stat__value" data-target={s.value}>{s.value}</span>
+          <span class="auron-stat__label">{s.label}</span>
         </div>
-        <div class="hp-stat-card__bottom">
-          <div class="hp-stat-card__num">15<span class="hp-stat-card__accent">+</span></div>
-          <div class="hp-stat-card__sub">Serving Philadelphia since 2008</div>
+      ))}
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="auron-trust">
+    <div class="auron-trust__inner">
+      <div class="auron-trust__item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+        <div>
+          <strong>3M Authorized Dealer</strong>
+          <span>Certified window film installation</span>
         </div>
       </div>
-
-      <div class="hp-stat-card">
-        <div class="hp-stat-card__top">
-          <div class="hp-stat-card__label">Projects Completed</div>
-          <div class="hp-stat-card__rule"></div>
-        </div>
-        <div class="hp-stat-card__bottom">
-          <div class="hp-stat-card__num">5k<span class="hp-stat-card__accent">+</span></div>
-          <div class="hp-stat-card__sub">Residential &amp; commercial installs</div>
+      <div class="auron-trust__item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+        <div>
+          <strong>Lifetime Warranty</strong>
+          <span>On materials and labor</span>
         </div>
       </div>
-
-      <div class="hp-stat-card">
-        <div class="hp-stat-card__top">
-          <div class="hp-stat-card__label">Cities Served</div>
-          <div class="hp-stat-card__rule"></div>
-        </div>
-        <div class="hp-stat-card__bottom">
-          <div class="hp-stat-card__num">50<span class="hp-stat-card__accent">+</span></div>
-          <div class="hp-stat-card__sub">Across Pennsylvania &amp; New Jersey</div>
+      <div class="auron-trust__item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+        <div>
+          <strong>Free Consultations</strong>
+          <span>On-site or virtual</span>
         </div>
       </div>
-
-      <div class="hp-stat-card hp-stat-card--img">
-        <img src="/images/bp-stats-home-card.webp" alt="Window film professionals Philadelphia" loading="lazy" />
+      <div class="auron-trust__item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+        <div>
+          <strong>18+ Years Serving Philly</strong>
+          <span>Local team, local knowledge</span>
+        </div>
       </div>
+    </div>
+  </section>
 
+  <!-- FEATURED SERVICES -->
+  <section class="auron-features">
+    <div class="auron-features__hd">
+      <span class="auron-badge">What We Do</span>
+      <h2 class="auron-features__title">Window film solutions for every need</h2>
     </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     WHY US — alternating rows
-     ══════════════════════════════════════ -->
-<section class="hp-why">
-  <div class="hp-section-hd">
-    <p class="section-eyebrow">Why Window Film Philadelphia</p>
-    <h2 class="section-title">The difference you'll notice from day one</h2>
-  </div>
-
-  <div class="hp-why__row fade-in">
-    <div class="hp-why__img">
-      <img src="/images/wfp-premium-films-v2.webp" alt="Premium window film installation Philadelphia" width="500" height="420" loading="lazy" />
-      <span class="hp-why__pill">Lifetime Warranty</span>
-    </div>
-    <div class="hp-why__content">
-      <div class="hp-why__num">01</div>
-      <h3>Premium films from the world's top manufacturers</h3>
-      <p>We only install films from 3M, LLumar, Vista, Solar Gard, Madico, and more — brands with proven track records and manufacturer-backed warranties that last the lifetime of your film.</p>
-      <ul class="hp-why__pts">
-        <li>Blocks up to 99% of UV radiation</li>
-        <li>Rejects up to 80% of solar heat</li>
-        <li>Scratch-resistant hard coat on all films</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="hp-why__row hp-why__row--rev fade-in">
-    <div class="hp-why__img">
-      <img src="/images/wfp-expert-installation-v1.webp" alt="Expert window film installers Philadelphia" width="500" height="420" loading="lazy" />
-      <span class="hp-why__pill">Expert Installers</span>
-    </div>
-    <div class="hp-why__content">
-      <div class="hp-why__num">02</div>
-      <h3>Installers who treat your property like their own</h3>
-      <p>Every member of our installation team is factory-trained and certified. We show up on time, work clean, and leave no trace except a flawless result — guaranteed every time.</p>
-      <ul class="hp-why__pts">
-        <li>Factory-certified installation team</li>
-        <li>Residential &amp; commercial specialists</li>
-        <li>Free on-site consultations available</li>
-      </ul>
-    </div>
-  </div>
-
-<!-- ══════════════════════════════════════
-     HOW IT WORKS — 4-step grid
-     ══════════════════════════════════════ -->
-<section class="hp-how">
-  <div class="hp-section-hd">
-    <p class="section-eyebrow">The Process</p>
-    <h2 class="section-title">From quote to done in <em>four simple steps</em></h2>
-  </div>
-  <div class="hp-steps">
-    <div class="hp-step fade-in">
-      <div class="hp-step__num">Step 01</div>
-      <div class="hp-step__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
-        </svg>
-      </div>
-      <h4>Free consultation</h4>
-      <p>Tell us about your project online or by phone. We'll recommend the right film and provide an estimate.</p>
-      <div class="hp-step__connector"></div>
-    </div>
-    <div class="hp-step fade-in fade-in-delay-1">
-      <div class="hp-step__num">Step 02</div>
-      <div class="hp-step__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
-          <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
-          <path d="M10 9H8"/>
-          <path d="M16 13H8"/>
-          <path d="M16 17H8"/>
-        </svg>
-      </div>
-      <h4>Custom proposal</h4>
-      <p>Receive a detailed written quote with film options, pricing, and an expected energy savings projection.</p>
-      <div class="hp-step__connector"></div>
-    </div>
-    <div class="hp-step fade-in fade-in-delay-2">
-      <div class="hp-step__num">Step 03</div>
-      <div class="hp-step__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-        </svg>
-      </div>
-      <h4>Professional install</h4>
-      <p>Our certified crew arrives on schedule, installs cleanly, and ensures every panel is perfect before leaving.</p>
-      <div class="hp-step__connector"></div>
-    </div>
-    <div class="hp-step fade-in fade-in-delay-3">
-      <div class="hp-step__num">Step 04</div>
-      <div class="hp-step__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-      </div>
-      <h4>Lifetime support</h4>
-      <p>Every job comes with a lifetime warranty. If anything goes wrong, we make it right — no questions asked.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     WHAT WE DO — card grid
-     ══════════════════════════════════════ -->
-<section class="hp-services">
-  <div class="hp-section-hd hp-section-hd--centered">
-    <p class="section-eyebrow">Why Window Film</p>
-    <h2 class="section-title">The benefits that make the <em>biggest difference</em></h2>
-    <p class="hp-section-sub">From cutting energy costs to protecting against UV damage and improving privacy — our films deliver real, measurable results for your home, business, or vehicle.</p>
-  </div>
-
-  <div class="hp-svc-grid">
-  <div class="hp-svc-grid__row">
-    <a href="/benefits/energy-savings/" class="hp-svc-card">
-      <h3>Energy Savings</h3>
-      <span class="hp-svc-card__btn" aria-hidden="true">↗</span>
-      <img class="hp-svc-card__img" src="/images/wfp-energy-savings-mask-v2.webp" alt="Energy saving window film icon" />
-    </a>
-    <a href="/benefits/uv-blocking-window-film-philadelphia/" class="hp-svc-card">
-      <h3>UV Protection</h3>
-      <span class="hp-svc-card__btn" aria-hidden="true">↗</span>
-      <img class="hp-svc-card__img" src="/images/wfp-uv-protection-mask-v2.webp" alt="UV protection window film icon" />
-    </a>
-    <a href="/benefits/glare-reduction/" class="hp-svc-card">
-      <h3>Glare Reduction</h3>
-      <span class="hp-svc-card__btn" aria-hidden="true">↗</span>
-      <img class="hp-svc-card__img" src="/images/wfp-glare-reduction-mask-v3.webp" alt="Glare reduction window film icon" />
-    </a>
-  </div>
-  <div class="hp-svc-grid__row hp-svc-grid__row--bottom">
-    <a href="/benefits/safety-and-security/" class="hp-svc-card hp-svc-card--wide">
-      <h3>Safety &amp; Security</h3>
-      <span class="hp-svc-card__btn" aria-hidden="true">↗</span>
-      <img class="hp-svc-card__img" src="/images/wfp-safety-security-mask-v3.webp" alt="Safety and security window film icon" />
-    </a>
-    <a href="/benefits/privacy-window-film-philadelphia/" class="hp-svc-card hp-svc-card--wide">
-      <h3>Privacy Film</h3>
-      <span class="hp-svc-card__btn" aria-hidden="true">↗</span>
-      <img class="hp-svc-card__img" src="/images/wfp-privacy-mask-v3.webp" alt="Privacy window film icon" />
-    </a>
-  </div>
-</div>
-<p class="hp-svc-grid__cta">Discover the many benefits of premium window film. <a href="/benefits/">View all Benefits</a></p>
-</section>
-</section>
-<!-- ══════════════════════════════════════
-     APPLICATIONS — sticky scroll 3-slide
-     ══════════════════════════════════════ -->
-<section class="hp-apps">
-  <div class="hp-apps__sticky">
-    <div class="hp-apps__inner">
-
-      <!-- LEFT — text slides -->
-      <div class="hp-apps__text">
-        <!-- Slide 1: Office -->
-        <div class="hp-apps__slide hp-apps__slide--active" data-slide="0">
-          <p class="hp-apps__eyebrow">Window Film Applications</p>
-          <h2 class="hp-apps__title">Transform Your Office Environment</h2>
-          <p class="hp-apps__body">Commercial window film reduces glare on screens, cuts solar heat by up to 80%, and protects furnishings from UV damage — creating a more comfortable, productive workspace without sacrificing natural light.</p>
-          <div class="hp-apps__bottom">
-            <span class="hp-apps__num">01</span>
-            <a href="/applications/office/" class="hp-apps__name">Office</a>
+    {services.map((s, i) => (
+      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
+        <div class="auron-feat__img">
+          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
+          <div class="auron-feat__img-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
+            {s.stat} — {s.statLabel}
           </div>
         </div>
-        <!-- Slide 2: Retail -->
-        <div class="hp-apps__slide" data-slide="1">
-          <p class="hp-apps__eyebrow">Window Film Applications</p>
-          <h2 class="hp-apps__title">Protect and Elevate Your Retail Space</h2>
-          <p class="hp-apps__body">Window film keeps your storefront comfortable for customers, prevents merchandise from fading, adds privacy or decorative style to your glass, and strengthens windows against smash-and-grab threats.</p>
-          <div class="hp-apps__bottom">
-            <span class="hp-apps__num">02</span>
-            <a href="/applications/retail/" class="hp-apps__name">Retail</a>
-          </div>
-        </div>
-        <!-- Slide 3: All Applications -->
-        <div class="hp-apps__slide" data-slide="2">
-          <p class="hp-apps__eyebrow">Window Film Applications</p>
-          <h2 class="hp-apps__title">Window Film for Every Type of Property</h2>
-          <p class="hp-apps__body">From government buildings and schools to healthcare facilities, restaurants, and multi-family housing — Window Film Philadelphia installs professional window film solutions for 11 different application types across the Greater Philadelphia area.</p>
-          <div class="hp-apps__bottom">
-            <span class="hp-apps__num">03</span>
-            <a href="/applications" class="hp-apps__name hp-apps__name--link">Applications</a>
-          </div>
-        </div>
-
-        <!-- Progress indicator -->
-        <div class="hp-apps__progress">
-          <span class="hp-apps__prog hp-apps__prog--active" data-goto="0"></span>
-          <span class="hp-apps__prog" data-goto="1"></span>
-          <span class="hp-apps__prog" data-goto="2"></span>
+        <div class="auron-feat__content">
+          <span class="auron-feat__num">0{i+1}</span>
+          <h3 class="auron-feat__heading">{s.title}</h3>
+          <p class="auron-feat__body">{s.desc}</p>
+          <a href={s.href} class="auron-feat__cta">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+          </a>
         </div>
       </div>
+    ))}
+  </section>
 
-      <!-- RIGHT — images -->
-      <div class="hp-apps__pics">
-        <img class="hp-apps__img hp-apps__img--active" data-slide="0" src="/images/window-film-philadelphia-office.webp" alt="Office window film" />
-        <img class="hp-apps__img" data-slide="1" src="/images/window-film-philadelphia-hotel.webp" alt="Retail window film" />
-        <img class="hp-apps__img" data-slide="2" src="/images/wfp-landing-hero.webp" alt="Window film applications" />
+  <!-- MISSION -->
+  <section class="auron-mission">
+    <div class="auron-mission__inner">
+      <div class="auron-mission__text">
+        <span class="auron-badge auron-badge--outline">Our Story</span>
+        <h2 class="auron-mission__title">Philadelphia's trusted<br/>window film contractor</h2>
+        <p class="auron-mission__body">
+          Scottish Window Solutions has served the Philadelphia region for over 18 years. We've transformed thousands of homes and commercial spaces with professional window film — from Center City high-rises to suburban family homes.
+        </p>
+        <p class="auron-mission__body">
+          As a 3M Authorized Dealer, we bring world-class products and certified installation to every project. Every installation backed by industry-leading warranties.
+        </p>
+        <a href="/about/" class="auron-btn auron-btn--outline">About Us</a>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     TESTIMONIALS — 3-col cards
-     ══════════════════════════════════════ -->
-<section class="hp-testi">
-  <div class="hp-section-hd">
-    <p class="section-eyebrow">Client Reviews</p>
-    <h2 class="section-title">What Philadelphia customers are saying</h2>
-  </div>
-  <div class="hp-testi__grid">
-    <div class="hp-testi__card fade-in">
-      <div class="hp-testi__stars">★★★★★</div>
-      <p class="hp-testi__quote">"The team was professional, fast, and the finished result looks incredible. Our living room is so much cooler now — already seeing the difference on our energy bill."</p>
-      <div class="hp-testi__author">
-        <div class="hp-testi__avatar">JR</div>
-        <div>
-          <div class="hp-testi__name">Jennifer R.</div>
-          <div class="hp-testi__loc">Residential · Philadelphia, PA</div>
+      <div class="auron-mission__cards">
+        <div class="auron-mission-card">
+          <span class="auron-mission-card__num">18+</span>
+          <span class="auron-mission-card__label">Years in Business</span>
+        </div>
+        <div class="auron-mission-card">
+          <span class="auron-mission-card__num">2,400+</span>
+          <span class="auron-mission-card__label">Projects Completed</span>
+        </div>
+        <div class="auron-mission-card">
+          <span class="auron-mission-card__num">3M</span>
+          <span class="auron-mission-card__label">Authorized Dealer</span>
+        </div>
+        <div class="auron-mission-card">
+          <span class="auron-mission-card__num">4.9★</span>
+          <span class="auron-mission-card__label">Google Rating</span>
         </div>
       </div>
     </div>
-    <div class="hp-testi__card fade-in fade-in-delay-1">
-      <div class="hp-testi__stars">★★★★★</div>
-      <p class="hp-testi__quote">"Had our entire 3rd-floor office done. The crew was on time, respectful of our workspace, and the film looks great. We'll use Window Film Philadelphia for every project."</p>
-      <div class="hp-testi__author">
-        <div class="hp-testi__avatar">MT</div>
-        <div>
-          <div class="hp-testi__name">Marcus T.</div>
-          <div class="hp-testi__loc">Commercial · Center City, PA</div>
-        </div>
+  </section>
+
+  <!-- APPLICATIONS GRID -->
+  <section class="auron-apps">
+    <div class="auron-apps__hd">
+      <span class="auron-badge">Applications</span>
+      <h2 class="auron-apps__title">Window film for every space</h2>
+    </div>
+    <div class="auron-apps__grid">
+      {applications.map(app => (
+        <a href={app.href} class="auron-app-card fade-in">
+          <span class="auron-app-card__icon">{app.icon}</span>
+          <span class="auron-app-card__label">{app.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="auron-testimonials">
+    <div class="auron-testimonials__hd">
+      <span class="auron-badge">What Clients Say</span>
+      <h2 class="auron-testimonials__title">Philadelphia trusts us</h2>
+    </div>
+    <div class="auron-testimonials__grid">
+      <div class="auron-testimonial fade-in">
+        <div class="auron-testimonial__stars">★★★★★</div>
+        <p class="auron-testimonial__text">"Our electric bills dropped 28% the first summer after the window film was installed. The crew was professional, on time, and the install was spotless."</p>
+        <span class="auron-testimonial__author">— Mike T., Fishtown</span>
+      </div>
+      <div class="auron-testimonial fade-in">
+        <div class="auron-testimonial__stars">★★★★★</div>
+        <p class="auron-testimonial__text">"We needed anti-graffiti film on our transit facility. Scottish handled the whole job in one weekend with zero disruption to service. Highly recommend."</p>
+        <span class="auron-testimonial__author">— SEPTA Facility Manager</span>
+      </div>
+      <div class="auron-testimonial fade-in">
+        <div class="auron-testimonial__stars">★★★★★</div>
+        <p class="auron-testimonial__text">"The decorative frosted film on our conference rooms is absolutely stunning. Clients comment on it every time. Worth every penny."</p>
+        <span class="auron-testimonial__author">— Sarah K., King of Prussia</span>
       </div>
     </div>
-    <div class="hp-testi__card fade-in fade-in-delay-2">
-      <div class="hp-testi__stars">★★★★★</div>
-      <p class="hp-testi__quote">"The security film on our storefront gives us real peace of mind. Professional team, clean work, and completed exactly on schedule."</p>
-      <div class="hp-testi__author">
-        <div class="hp-testi__avatar">BK</div>
-        <div>
-          <div class="hp-testi__name">Brian K.</div>
-          <div class="hp-testi__loc">Commercial · South Philly, PA</div>
-        </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="auron-cta-banner">
+    <div class="auron-cta-banner__inner">
+      <h2 class="auron-cta-banner__title">Ready to transform your space?</h2>
+      <p class="auron-cta-banner__sub">Free consultations. No-pressure quotes. Professional installation.</p>
+      <div class="auron-cta-banner__btns">
+        <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Quote</a>
+        <a href="/process/" class="auron-btn auron-btn--ghost-white">See Our Process</a>
       </div>
     </div>
-  </div>
-</section><!-- end hp-body -->
+  </section>
 
-<!-- ══════════════════════════════════════
-     BRAND LOGOS CAROUSEL
-     ══════════════════════════════════════ -->
-<BrandLogos />
-
-<style>
-  :global(.brand-logos) {
-    border-top: none;
-  }
-</style>
-
-<!-- ══════════════════════════════════════
-     CTA BANNER — dark rounded block
-     ══════════════════════════════════════ -->
-<section class="hp-cta-section">
-  <div class="hp-cta fade-in">
-    <h2>Ready to transform your <em>home or business?</em></h2>
-    <div class="hp-cta__btns">
-      <a href="/contact/" class="s-btn s-btn--white">Get a Free Quote</a>
-      <a href="tel:+12673947980" class="s-btn s-btn--green">Call (267) 394-7980</a>
-    </div>
-  </div>
-</section>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const section = document.querySelector('.hp-apps');
-  if (!section) return;
-
-  const slides = section.querySelectorAll('.hp-apps__slide');
-  const imgs = section.querySelectorAll('.hp-apps__img');
-  const progs = section.querySelectorAll('.hp-apps__prog');
-  let current = 0;
-  let ticking = false;
-
-  function goTo(index) {
-    if (index === current) return;
-    const prev = current;
-    current = index;
-
-    // Text slides
-    slides.forEach((s, i) => {
-      s.classList.toggle('hp-apps__slide--active', i === current);
-    });
-
-    // Images: outgoing slides up, incoming slides in
-    imgs.forEach((img, i) => {
-      img.classList.remove('hp-apps__img--active', 'hp-apps__img--exit');
-      if (i === current) {
-        img.classList.add('hp-apps__img--active');
-      } else if (i === prev && i > current) {
-        img.classList.add('hp-apps__img--exit');
-      }
-    });
-
-    // Progress dots
-    progs.forEach((p, i) => {
-      p.classList.toggle('hp-apps__prog--active', i === current);
-    });
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const total = section.offsetHeight - window.innerHeight;
-        const scrolled = -rect.top;
-        const pct = Math.max(0, Math.min(1, scrolled / total));
-        const idx = Math.floor(pct * 3);
-        goTo(Math.min(2, idx));
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-});
-</script>
-
+  <Footer />
 </BaseLayout>
 
 <style>
-/* ── WHITE BODY AREA — rounded top corners ── */
-.hp-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-top: -40px;
-  /* z-index: 10; */
-  overflow: visible;
-}
-
-/* ── HERO ── */
-.hp-hero {
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  background-image: url('/images/wfp-landing-hero.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-}
-.hp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-}
-.hp-hero__content {
-  position: relative;
-  z-index: 1;
-  padding: 200px 5% 400px;
-  width: 100%;
-  max-width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hp-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  backdrop-filter: blur(4px);
-}
-.hp-hero__eyebrow::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--green, #81AB4C);
-  border-radius: 50%;
-}
-
-.hp-hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(38px, 5vw, 62px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: #fff;
-  margin-bottom: 24px;
-  text-align: center;
-}
-.hp-hero h1 em { font-style: italic; color: var(--green, #81AB4C); }
-
-.hp-hero__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 18px;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.7;
-  max-width: 560px;
-  margin-bottom: 40px;
-}
-
-.hp-hero__ctas {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-/* Shared button styles scoped to homepage */
-.s-btn {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s;
-  border: 2px solid transparent;
-  white-space: nowrap;
-  cursor: pointer;
-}
-.s-btn--primary {
-  background: var(--green, #81AB4C);
-  color: #fff;
-  border-color: var(--green, #81AB4C);
-}
-.s-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.s-btn--ghost {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255,255,255,0.7);
-}
-.s-btn--ghost:hover { background: rgba(255,255,255,0.12); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.s-btn--white {
-  background: #fff;
-  color: var(--brand, #272E32);
-  border-color: #fff;
-  font-weight: 800;
-}
-.s-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); color: var(--brand, #272E32); }
-.s-btn--green {
-  background: var(--green, #81AB4C);
-  color: #fff;
-  border-color: var(--green, #81AB4C);
-}
-.s-btn--green:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-
-.hp-hero__trust {
-  margin-top: 48px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255,255,255,0.25);
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-.hp-trust-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
-.hp-trust-stat__num {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  font-weight: 800;
-  color: #fff;
-  display: block;
-}
-.hp-trust-stat__num span { color: var(--green, #81AB4C); }
-.hp-trust-stat__lbl {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px;
-  color: rgba(255,255,255,0.65);
-}
-
-/* ── LOCATION STRIP ── */
-.hp-strip { background: var(--off-white, #F7F6F3); padding: 28px 5%; overflow: hidden; }
-.hp-strip__label {
-  text-align: center;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 12px; font-weight: 800; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--text-light, #888);
-  margin-bottom: 20px;
-}
-.hp-strip__overflow { overflow: hidden; }
-.hp-strip__scroll {
-  display: flex; gap: 48px; align-items: center;
-  animation: s-scroll 28s linear infinite;
-  animation-delay: 0.5s;
-  width: max-content;
-}
-@keyframes s-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.hp-strip__item {
-  font-family: var(--font-serif);
-  font-size: 16px; font-weight: 800;
-  color: var(--text-light, #888); white-space: nowrap;
-}
-.hp-strip__sep {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  color: var(--light-gray, #EFEFED); font-size: 20px;
-}
-
-/* ── SHARED SECTION HEADER ── */
-.hp-section-hd { text-align: center; margin-bottom: 52px; }
-.hp-section-sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.7; max-width: 540px; margin: 0 auto;
-}
-.hp-section-hd .section-title { margin: 0 auto 16px; }
-
-/* ── FROSTED GLASS SERVICE STRIP ── */
-.hp-glass {
-  position: relative;
-  z-index: 20;
-  padding: 0 5% 0;
-  top: -120px;
-}
-.hp-glass__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: -160px auto 0;
-}
-.hp-glass__card {
-  background: rgba(30, 30, 30, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 60px 32px;
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-.hp-glass__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-.hp-glass__card .hp-svc-card__icon {
-  background: transparent;
-  margin-bottom: 16px;
-}
-.hp-glass__card .hp-svc-card__icon--svg {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: var(--green, #81AB4C);
-}
-.hp-glass__card .hp-glass__hr {
-  border: none;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.15);
-  margin-bottom: 16px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background 0.2s ease;
-}
-.hp-glass__card:hover .hp-glass__hr {
-  transform: scaleX(1);
-  background: var(--green, #81AB4C);
-}
-.hp-glass__card h3 {
-  font-family: var(--font-serif);
-  font-size: 20px; font-weight: 800;
-  color: #fff; margin-bottom: 12px;
-}
-.hp-glass__card p {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: rgba(255, 255, 255, 0.75);
-  line-height: 1.65; margin: 0;
-}
-.hp-svc-card__link--light {
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-.hp-svc-card__link--light:hover {
-  color: #fff !important;
-}
-
-/* ── LOCATION SCROLL STRIP ── */
-.hp-strip {
-  background: var(--off-white, #F7F6F3);
-  padding: 28px 5%;
-  overflow: hidden;
-}
-.hp-strip__label {
-  text-align: center;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 12px; font-weight: 800; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--text-light, #888);
-  margin-bottom: 20px;
-}
-.hp-strip__overflow { overflow: hidden; }
-.hp-strip__scroll {
-  display: flex; gap: 48px; align-items: center;
-  animation: s-scroll 28s linear infinite;
-  width: max-content;
-}
-@keyframes s-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.hp-strip__item {
-  font-family: var(--font-serif);
-  font-size: 16px; font-weight: 800;
-  color: var(--text-light, #888); white-space: nowrap;
-}
-.hp-strip__sep {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  color: var(--light-gray, #EFEFED); font-size: 20px;
-}
-
-/* ── SERVICES GRID (What We Do) — two-row card grid ── */
-.hp-svc-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 0 5% 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-/* Each row: 3 equal cards */
-.hp-svc-grid__row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-/* Bottom row: 2 cards, each roughly half the width of the top row's content area */
-.hp-svc-grid__row--bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  max-width: calc(1920px * 2 / 3);
-}
-/* CTA text below the card grid */
-.hp-svc-grid__cta {
-  text-align: center;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 700;
-  color: #1a1a1a;
-  padding-bottom: 20px;
-}
-.hp-svc-grid__cta a {
-  color: #1a1a1a;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.hp-svc-grid__cta a:hover {
-  color: var(--green);
-}
-/* All cards: same height (370px min) */
-
-/* Card — white background, all corners 20px */
-.hp-svc-card {
-  background-color: #FFFFFF;
-  border-radius: 20px;
-  overflow: hidden;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  position: relative;
-  min-height: 370px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Radial green fill — starts at top-right, expands outward on hover */
-.hp-svc-card::before {
-  content: '';
-  position: absolute;
-  top: -100%;
-  right: -100%;
-  width: 200%;
-  height: 200%;
-  border-radius: 50%;
-  background: var(--green, #81AB4C);
-  transform: scale(0);
-  transform-origin: center;
-  transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Image — bottom of card */
-.hp-svc-card__img {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 65%;
-  object-fit: cover;
-  object-position: bottom center;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Title — top-left */
-.hp-svc-card h3 {
-  font-family: var(--font-serif);
-  font-size: 20px;
-  font-weight: 800;
-  color: #222;
-  margin: 0;
-  line-height: 1.3;
-  position: relative;
-  z-index: 3;
-  padding: 24px 24px 0;
-  transition: color 0.3s ease;
-}
-
-/* Button — inside card, top-right */
-.hp-svc-card__btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: #FFFFFF;
-  z-index: 6;
-  transition: background 0.3s, color 0.3s;
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-/* Hover — card itself is the hover target */
-.hp-svc-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.15);
-}
-.hp-svc-card:hover::before {
-  transform: scale(2);
-}
-.hp-svc-card:hover h3 {
-  color: #fff;
-}
-.hp-svc-card:hover .hp-svc-card__btn {
-  background: #FFFFFF;
-  color: #000000;
-  border-color: var(--green, #81AB4C);
-}
-
-
-@media (max-width: 768px) {
-  .hp-svc-grid {
-    padding: 0 5% 60px;
+  /* ── HERO ── */
+  .auron-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
   }
-  .hp-svc-grid__row,
-  .hp-svc-grid__row--bottom {
-    grid-template-columns: 1fr;
+  .auron-hero__img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
   }
-  .hp-svc-card {
-    min-height: 280px;
+  .auron-hero__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
   }
-}
-
-/* ── STATS ── */
-.hp-stats {
-  background: #ffffff;
-  padding: 0 5% 80px;
-}
-.hp-stats__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: stretch;
-}
-.hp-stats__hero-img {
-  border-radius: 32px;
-  overflow: hidden;
-  min-height: 500px;
-}
-.hp-stats__hero-img img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-}
-.hp-stats__cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 16px;
-  height: 100%;
-}
-.hp-stat-card {
-  background: var(--off-white, #F7F6F3);
-  border-radius: 24px;
-  padding: 28px 28px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.hp-stat-card--img { padding: 0; overflow: hidden; }
-.hp-stat-card--img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hp-stat-card__label {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--text-light, #888);
-  margin-bottom: 10px;
-}
-.hp-stat-card__rule { width: 100%; height: 1px; background: var(--light-gray, #EFEFED); }
-.hp-stat-card__num {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(44px, 4vw, 64px); font-weight: 700;
-  color: var(--text-dark, #1a1a1a); line-height: 1; margin-bottom: 10px;
-}
-.hp-stat-card__accent { color: var(--green, #81AB4C); }
-.hp-stat-card__sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; color: var(--text-light, #888); line-height: 1.4;
-}
-
-/* ── WHY US ── */
-.hp-why { background: var(--off-white, #F7F6F3); padding: 100px 5%; }
-.hp-why__row {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center; margin-bottom: 80px;
-}
-.hp-why__row:last-of-type { margin-bottom: 0; }
-.hp-why__row--rev .hp-why__img  { order: 2; }
-.hp-why__row--rev .hp-why__content { order: 1; }
-.hp-why__img {
-  height: 420px; border-radius: var(--radius-xl, 40px);
-  overflow: hidden; background: var(--light-gray, #EFEFED); position: relative;
-}
-.hp-why__img img { width: 100%; height: 100%; object-fit: cover; }
-.hp-why__pill {
-  position: absolute; top: 24px; right: 24px;
-  background: #fff; padding: 10px 18px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 800; color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.hp-why__num {
-  font-family: var(--font-serif);
-  font-size: 64px; font-weight: 800;
-  color: var(--green); line-height: 1; margin-bottom: 4px;
-}
-.hp-why__content h3 {
-  font-family: var(--font-serif);
-  font-size: 30px; font-weight: 800;
-  color: var(--text-dark, #1a1a1a); line-height: 1.2; margin-bottom: 16px;
-}
-.hp-why__content p {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.75; margin-bottom: 24px;
-}
-.hp-why__pts { list-style: none; padding: 0; }
-.hp-why__pts li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: var(--text-mid, #4a4a4a); padding: 6px 0;
-}
-.hp-why__pts li::before {
-  content: '✓'; color: var(--green, #81AB4C);
-  font-weight: 700; font-size: 14px; margin-top: 2px; flex-shrink: 0;
-}
-
-/* ── HOW IT WORKS ── */
-.hp-how { background: var(--off-white, #F7F6F3); padding: 100px 5%; }
-.hp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.hp-step {
-  background: #fff; border-radius: var(--radius-lg, 24px);
-  padding: 32px 24px; position: relative; transition: transform 0.2s;
-}
-.hp-step:hover { transform: translateY(-4px); }
-.hp-step__num {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 800; color: var(--green, #81AB4C);
-  margin-bottom: 20px; letter-spacing: 0.5px;
-}
-.hp-step__icon {
-  width: 48px; height: 48px;
-  border-radius: var(--radius-md, 16px);
-  background: var(--green-light, #eef4e4);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-}
-.hp-step h4 {
-  font-family: var(--font-serif);
-  font-size: 18px; font-weight: 800;
-  color: var(--text-dark, #1a1a1a); margin-bottom: 10px;
-}
-.hp-step p {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.65; margin: 0;
-}
-.hp-step__connector {
-  position: absolute; top: 44px; right: -12px;
-  width: 24px; height: 2px;
-  background: var(--light-gray, #EFEFED); z-index: 1;
-}
-.hp-step:last-child .hp-step__connector { display: none; }
-
-/* ── TESTIMONIALS ── */
-.hp-testi {
-  background: #fff;
-  padding: 0px 0;
-  padding-bottom: 100px;
-}
-.hp-testi__grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 5%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.hp-testi__card {
-  background: var(--off-white, #F7F6F3);
-  border-radius: var(--radius-lg, 24px); padding: 32px 28px;
-}
-.hp-testi__stars { color: var(--green, #81AB4C); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
-.hp-testi__quote {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.75; margin-bottom: 24px; font-style: italic;
-}
-.hp-testi__author { display: flex; align-items: center; gap: 12px; }
-.hp-testi__avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--brand, #272E32); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px; font-weight: 800; flex-shrink: 0;
-}
-.hp-testi__name {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px; font-weight: 800; color: var(--text-dark, #1a1a1a);
-}
-.hp-testi__loc {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; color: var(--text-light, #888);
-}
-
-/* ── CTA SECTION (wrapper) ── */
-.hp-cta-section {
-  position: relative;
-  background: #FFFFFF;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  overflow: visible;
-  z-index: 2;
-  padding-bottom: 60px;
-}
-
-/* ── CTA BANNER ── */
-.hp-cta {
-  background: var(--brand, #272E32);
-  border-radius: var(--radius-xl, 40px);
-  padding: 72px 60px;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 40px; margin: 0 5% 100px;
-}
-.hp-cta h2 {
-  font-family: var(--font-serif);
-  font-size: 36px; font-weight: 800; color: #fff;
-  line-height: 1.2; max-width: 480px; margin: 0;
-}
-.hp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.hp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 860px) {
-  .hp-hero { padding: 80px 5% 60px; }
-  .hp-hero__content { padding: 60px 5% 160px; }
-  .hp-hero h1 { font-size: clamp(32px, 6vw, 48px); }
-  .hp-hero__ctas { flex-wrap: wrap; justify-content: center; }
-  .hp-glass { margin-top: -120px; }
-  .hp-glass__grid { margin: -120px auto 0; }
-  .hp-glass__grid { grid-template-columns: 1fr; gap: 16px; }
-  .hp-glass { padding: 0 5% 40px; }
-  .hp-services { padding: 60px 5% 80px; }
-  .hp-strip__scroll { animation-duration: 40s; }
-  .hp-stats__inner { grid-template-columns: 1fr; }
-  .hp-stats__hero-img { min-height: 360px; }
-  .hp-why__row,
-  .hp-why__row--rev { grid-template-columns: 1fr; gap: 32px; }
-  .hp-why__row--rev .hp-why__img    { order: 0; }
-  .hp-why__row--rev .hp-why__content { order: 1; }
-  .hp-why__img { height: 280px; }
-  .hp-steps { grid-template-columns: repeat(2, 1fr); }
-  .hp-step__connector { display: none; }
-  .hp-testi__grid { grid-template-columns: 1fr; }
-  .hp-cta { flex-direction: column; padding: 48px 32px; text-align: center; }
-  .hp-cta h2 { font-size: 28px; max-width: 100%; }
-}
-
-/* ── APPLICATIONS — sticky scroll section ── */
-.hp-apps {
-  position: relative;
-  height: 300vh;
-  margin: 0;
-}
-.hp-apps__sticky {
-  position: sticky;
-  top: 20vh;
-  height: 100vh;
-  overflow: hidden;
-}
-.hp-apps__inner {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  height: 85vh;
-}
-.hp-apps__text {
-  background: #1a1a1a;
-  padding: 80px 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-.hp-apps__pics {
-  position: relative;
-  overflow: hidden;
-}
-.hp-apps__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.4s ease;
-  will-change: transform;
-}
-.hp-apps__img.hp-apps__img--active {
-  transform: translateY(0);
-  opacity: 1;
-  z-index: 1;
-}
-.hp-apps__img.hp-apps__img--exit {
-  transform: translateY(-100%);
-}
-.hp-apps__slide {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 15vh;
-  left: 0;
-  padding: 80px 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: 0.2s;
-  pointer-events: none;
-}
-.hp-apps__slide--active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-.hp-apps__eyebrow {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #81AB4C;
-  margin-bottom: 24px;
-}
-.hp-apps__title {
-  font-family: var(--font-serif, 'Hind', sans-serif);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: #fff;
-  margin-bottom: 20px;
-}
-.hp-apps__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.6);
-  max-width: 420px;
-  margin-bottom: auto;
-}
-.hp-apps__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 60px;
-}
-.hp-apps__num {
-  font-family: var(--font-serif, 'Hind', sans-serif);
-  font-size: 96px;
-  font-weight: 700;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,0.25);
-}
-.hp-apps__name {
-  font-family: var(--font-serif, 'Hind', sans-serif);
-  font-size: 55px;
-  font-weight: 800;
-  color: #fff;
-  text-align: right;
-  text-decoration: none;
-}
-a.hp-apps__name--link,
-a.hp-apps__name:hover {
-  color: #fff;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-}
-.hp-apps__progress {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.hp-apps__prog {
-  display: block;
-  width: 2px;
-  height: 40px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 1px;
-  transition: background 0.3s ease;
-}
-.hp-apps__prog--active {
-  background: #81AB4C;
-}
-
-@media (max-width: 860px) {
-  .hp-apps { height: auto; }
-  .hp-apps__sticky { position: relative; top: auto; height: auto; }
-  .hp-apps__inner { grid-template-columns: 1fr; }
-  .hp-apps__pics { height: 60vw; }
-  .hp-apps__text { padding: 48px 24px; min-height: 100vh; }
-  .hp-apps__slide {
-    padding: 48px 24px;
-    bottom: 0;
+  .auron-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,58,46,0.85) 0%, rgba(26,58,46,0.4) 60%, rgba(26,58,46,0.2) 100%);
   }
-  .hp-apps__title { font-size: 32px; }
-  .hp-apps__body { font-size: 15px; }
-  .hp-apps__num { font-size: 64px; }
-  .hp-apps__name { font-size: 22px; }
-  .hp-apps__progress { display: none; }
-}
+  .auron-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 120px 60px;
+    max-width: 760px;
+  }
+  .auron-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(155,255,94,0.12);
+    border: 1px solid rgba(155,255,94,0.3);
+    color: #9bff5e;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+  .auron-badge--green { background: rgba(155,255,94,0.15); border-color: rgba(155,255,94,0.4); }
+  .auron-badge--outline { color: #9bff5e; background: transparent; border-color: rgba(155,255,94,0.3); }
+  .auron-hero__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.05;
+    margin: 20px 0 16px;
+  }
+  .auron-accent { color: #9bff5e; }
+  .auron-hero__sub {
+    font-size: 1.125rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .auron-hero__ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .auron-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .auron-btn--primary { background: #9bff5e; color: #1a3a2e; }
+  .auron-btn--primary:hover { background: #b5ff7a; transform: translateY(-1px); }
+  .auron-btn--ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+  .auron-btn--ghost:hover { border-color: #fff; }
+  .auron-btn--ghost-white { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+  .auron-btn--outline { background: transparent; color: #9bff5e; border: 1.5px solid rgba(155,255,94,0.4); }
+  .auron-btn--outline:hover { background: rgba(155,255,94,0.1); }
 
-@media (max-width: 560px) {
-  .hp-steps { grid-template-columns: 1fr; }
-  .hp-stats__hero-img { min-height: 260px; }
-  .hp-stat-card__num { font-size: clamp(36px, 9vw, 52px); }
-  .hp-cta__btns { flex-direction: column; width: 100%; }
-}
+  /* ── STATS ── */
+  .auron-stats {
+    background: #1a3a2e;
+    padding: 48px 60px;
+  }
+  .auron-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .auron-stat {
+    text-align: center;
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(155,255,94,0.15);
+  }
+  .auron-stat__value {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #9bff5e;
+    line-height: 1;
+  }
+  .auron-stat__label {
+    display: block;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TRUST ── */
+  .auron-trust {
+    background: #0f2a1e;
+    padding: 32px 60px;
+    border-top: 1px solid rgba(155,255,94,0.1);
+    border-bottom: 1px solid rgba(155,255,94,0.1);
+  }
+  .auron-trust__inner {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .auron-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #9bff5e;
+  }
+  .auron-trust__item svg { flex-shrink: 0; }
+  .auron-trust__item strong {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  .auron-trust__item span {
+    display: block;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+  }
+
+  /* ── FEATURES ── */
+  .auron-features {
+    padding: 100px 60px;
+    background: #f7f6f3;
+  }
+  .auron-features__hd {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .auron-features__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #1a3a2e;
+    margin-top: 16px;
+    line-height: 1.2;
+  }
+  .auron-feat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+  }
+  .auron-feat--rev { direction: rtl; }
+  .auron-feat--rev > * { direction: ltr; }
+  .auron-feat__img {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .auron-feat__img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+  .auron-feat__img-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(26,58,46,0.85);
+    backdrop-filter: blur(8px);
+    color: #9bff5e;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(155,255,94,0.2);
+  }
+  .auron-feat__num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(26,58,46,0.07);
+    line-height: 1;
+    margin-bottom: -16px;
+  }
+  .auron-feat__heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #1a3a2e;
+    margin-bottom: 16px;
+  }
+  .auron-feat__body {
+    font-size: 1.05rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .auron-feat__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #1a3a2e;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 2px solid #9bff5e;
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .auron-feat__cta:hover { gap: 10px; }
+
+  /* ── MISSION ── */
+  .auron-mission {
+    background: #1a3a2e;
+    padding: 100px 60px;
+  }
+  .auron-mission__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .auron-mission__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    color: #fff;
+    margin: 20px 0 24px;
+    line-height: 1.2;
+  }
+  .auron-mission__body {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .auron-mission__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .auron-mission-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(155,255,94,0.15);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .auron-mission-card__num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #9bff5e;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .auron-mission-card__label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── APPLICATIONS GRID ── */
+  .auron-apps {
+    background: #f7f6f3;
+    padding: 100px 60px;
+  }
+  .auron-apps__hd {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .auron-apps__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #1a3a2e;
+    margin-top: 16px;
+  }
+  .auron-apps__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .auron-app-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .auron-app-card:hover {
+    border-color: #9bff5e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .auron-app-card__icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+  .auron-app-card__label {
+    font-weight: 600;
+    color: #1a3a2e;
+    font-size: 0.95rem;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .auron-testimonials {
+    background: #fff;
+    padding: 100px 60px;
+  }
+  .auron-testimonials__hd {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .auron-testimonials__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #1a3a2e;
+    margin-top: 16px;
+  }
+  .auron-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .auron-testimonial {
+    background: #f7f6f3;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .auron-testimonial__stars {
+    color: #f59e0b;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+  .auron-testimonial__text {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .auron-testimonial__author {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a3a2e;
+  }
+
+  /* ── CTA BANNER ── */
+  .auron-cta-banner {
+    background: linear-gradient(135deg, #1a3a2e 0%, #0f2a1e 100%);
+    padding: 100px 60px;
+    text-align: center;
+  }
+  .auron-cta-banner__inner { max-width: 700px; margin: 0 auto; }
+  .auron-cta-banner__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .auron-cta-banner__sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+  }
+  .auron-cta-banner__btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .auron-features__hd, .auron-apps__hd, .auron-testimonials__hd { text-align: left; }
+    .auron-feat { grid-template-columns: 1fr; gap: 32px; }
+    .auron-feat--rev { direction: ltr; }
+    .auron-mission__inner { grid-template-columns: 1fr; }
+    .auron-apps__grid { grid-template-columns: repeat(2, 1fr); }
+    .auron-testimonials__grid { grid-template-columns: 1fr; }
+    .auron-stats__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .auron-hero__content { padding: 80px 28px; }
+    .auron-stats, .auron-trust, .auron-features, .auron-mission, .auron-apps, .auron-testimonials, .auron-cta-banner { padding-left: 28px; padding-right: 28px; }
+    .auron-hero__ctas { flex-direction: column; }
+    .auron-apps__grid { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 
 <script>
-  // Apply data-bg backgrounds to cards
-  document.querySelectorAll('.hp-svc-card[data-bg]').forEach(card => {
-    card.style.backgroundImage = `url('${card.dataset.bg}')`;
-  });
-
-  // Run IntersectionObserver when the browser is idle — keeps it off
-  // the critical path during initial paint.
-  const registerFadeIns = () => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  };
-
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(registerFadeIns);
-  } else {
-    // Fallback for Safari < 16
-    setTimeout(registerFadeIns, 200);
-  }
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
