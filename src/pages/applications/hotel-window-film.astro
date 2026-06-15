@@ -1,497 +1,1230 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 
-const title = 'Hotel Window Film in Philadelphia | Guest Comfort, Energy Savings & Privacy';
-const description = 'Window film for Philadelphia hotels and hospitality: reduce energy costs, protect furnishings from UV fading, enhance guest privacy. Luxury look, professional installation.';
+const title = 'Hotel Window Film in Philadelphia | Guest Comfort, UV Protection & Energy Savings';
+const description = 'Window film for Philadelphia hotels and hospitality: reduce glare, block 99% of UV rays, protect furnishings, improve guest comfort, and cut energy costs. Professional phased installation by certified technicians.';
 
-const gallery = [
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163338_97d1e02a-3bf3-4ae4-a436-199ae46d8b17.png',
-    label: 'Guest Room Comfort',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163341_bdd5ec56-1d62-4d32-857d-06179e31d16b.png',
-    label: 'Energy Savings',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163344_ac6c6e0d-3ed1-4900-a641-d836da40ba67.png',
-    label: 'Privacy',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163348_450f2fd8-2333-42dd-928f-9775a84e2391.png',
-    label: 'UV Protection',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163351_c7fe9042-5571-4cae-be7e-e5b62bc242d3.png',
-    label: 'Furnishing Protection',
-  },
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175420_23d59d17-196e-4a13-850a-159c4f820c0c.png', label: 'Hotel Lobby' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175422_aa0bb363-c6c7-4447-a368-97e5167957ff.png', label: 'UV Protection' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175423_96c9742c-51a2-44ff-8cfa-c82e2f6c95c5.png', label: 'Energy Savings' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175424_8a9b40dd-62e9-4147-944d-2358004277eb.png', label: 'Guest Privacy' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175424_5f45f6cb-80f8-442e-88e5-abe42eeb68e2.png', label: 'Hospitality Install' },
 ];
 
-const benefits = [
-  {
-    title: 'UV Protection',
-    body: 'Block 99% of UV rays, protecting furniture, carpets and artwork from fading.',
-    stat: '99%',
-    statLabel: 'UV Blocked',
-  },
-  {
-    title: 'Energy Efficiency',
-    body: 'Reduce HVAC costs by up to 30% with heat-rejecting film.',
-    stat: '30%',
-    statLabel: 'Energy Saved',
-  },
-  {
-    title: 'Privacy',
-    body: 'One-way mirror and frosted film options for guest privacy.',
-    stat: '100%',
-    statLabel: 'Privacy Options',
-  },
-  {
-    title: 'Guest Comfort',
-    body: 'Consistent room temperature, no hot or cold spots near windows.',
-    stat: '86°F',
-    statLabel: 'Heat Reduced',
-  },
+const newImages = {
+  hotelInterior: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175420_23d59d17-196e-4a13-850a-159c4f820c0c.png',
+  uvProtection: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175422_aa0bb363-c6c7-4447-a368-97e5167957ff.png',
+  energySavings: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175423_96c9742c-51a2-44ff-8cfa-c82e2f6c95c5.png',
+  guestPrivacy: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175424_8a9b40dd-62e9-4147-944d-2358004277eb.png',
+};
+
+const faqItems = [
+  { question: 'Will film affect the hotel\'s exterior appearance?', answer: 'No. We offer a range of film options from nearly invisible clear films to subtle tinted films that complement your building\'s architecture. We work with Philadelphia\'s historic preservation guidelines and can provide samples for your review before any installation. Most guests and visitors never notice the film — only the comfort improvement.' },
+  { question: 'How do you work around guests in occupied rooms?', answer: 'We specialize in phased installation that works around your occupancy. Hotels typically schedule installations between guest departures and arrivals, or room-by-room over a multi-day period. Our team is experienced in working within active hospitality environments — we coordinate with your housekeeping and front desk, minimize noise during guest hours, and leave rooms spotless.' },
+  { question: 'Can film be removed without damaging historic glass?', answer: 'Yes. Professional-grade window film is designed to be removable without damaging glass when properly installed and removed by trained technicians. This is especially important for Philadelphia\'s historic boutique hotels, where original glass is often irreplaceable. We assess each window\'s condition and use the appropriate adhesive system for the glass type.' },
+  { question: 'Does window film help with noise reduction?', answer: 'Standard window film provides minimal noise reduction. However, we do offer specialty acoustical films that add a dampening layer to glass, reducing external noise by up to 30%. For hotels near Philadelphia\'s airport, stadium, or high-traffic areas, this can be a meaningful guest comfort upgrade.' },
+  { question: 'What is the ROI for a boutique hotel?', answer: 'Most boutique hotels see a full return within 2–4 years through reduced cooling costs, extended HVAC maintenance cycles, protected furnishings and artwork, and improved guest satisfaction scores. Window film is one of the highest-ROI capital improvements a hotel can make — especially in south- and west-facing rooms that experience the most solar heat gain.' },
 ];
 
-const stats = [
-  { value: '86°F', label: 'Heat Reduction' },
-  { value: '30%', label: 'Energy Savings' },
-  { value: '5-Star', label: 'Reviews' },
+const processSteps = [
+  { num: '01', title: 'On-Site Consultation', desc: 'We visit your property and conduct a thermal analysis of each facade. You receive a detailed proposal within 24 hours — film recommendations by room orientation, phased installation schedule, and a clear cost breakdown. No obligation.' },
+  { num: '02', title: 'Phased Installation Plan', desc: 'We work with your management team to build a room-by-room installation schedule that respects guest occupancy. Most hotels complete a full property installation in 1–2 weeks using a floor-by-floor or wing-by-wing approach that never takes rooms offline unexpectedly.' },
+  { num: '03', title: 'Professional Installation', desc: 'Our factory-trained technicians install each window to manufacturer specifications. We use drop cloths, keep work areas contained, and coordinate with your housekeeping staff. We never leave a room in a state that would affect a guest\'s stay.' },
+  { num: '04', title: 'Quality Assurance Walkthrough', desc: 'Before we consider the job complete, we walk every installed room with your management team. We inspect for perfect adhesion, clarity, and edge seal. Every installation is backed by our labor warranty and the manufacturer\'s material warranty.' },
 ];
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  canonical="https://www.windowfilmphiladelphia.net/applications/hotel-window-film/"
-  serviceName="Hotel Window Film"
-  serviceDesc="Hotel window film installation in Philadelphia. Energy savings, privacy, and aesthetic solutions for hospitality properties."
-  serviceUrl="https://www.windowfilmphiladelphia.net/applications/hotel-window-film/"
+  serviceName="Hotel Window Film Installation"
+  serviceDesc="Professional window film installation for Philadelphia hotels and hospitality properties — guest comfort, UV protection, energy savings, and privacy."
+  serviceUrl="https://www.windowfilmphiladelphia.com/applications/hotel-window-film"
+  faqItems={faqItems}
 >
-
-<InnerPageHero
-  title="Hotel &amp; Hospitality Window Film"
-  desc="Guest Comfort · Energy Savings · UV Protection"
-  bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161451_ddf5ce59-4e3d-408b-8d0c-87182d748e11.png"
-/>
-
-<div class="ip-page-body">
-
-  <!-- ── Gallery Section ── -->
-  <section class="sec-gallery">
-    <div class="sec-gallery__inner">
-      <div class="gallery-grid">
-        {gallery.slice(0, 3).map((item) => (
-          <div class="gallery-item fade-in">
-            <img src={item.src} alt={item.label} loading="lazy" />
-            <div class="gallery-item__overlay">
-              <span class="gallery-item__label">{item.label}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="gallery-row-two">
-        {gallery.slice(3).map((item) => (
-          <div class="gallery-item fade-in">
-            <img src={item.src} alt={item.label} loading="lazy" />
-            <div class="gallery-item__overlay">
-              <span class="gallery-item__label">{item.label}</span>
-            </div>
-          </div>
-        ))}
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={newImages.hotelInterior} alt="Philadelphia hotel lobby with window film installed" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
+    </div>
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        Hospitality Window Solutions
+      </span>
+      <h1 class="swt-hero__title">
+        Guest Comfort.<br/>
+        <em>Energy Savings.</em><br/>
+        Protected Furnishings.
+      </h1>
+      <p class="swt-hero__sub">Block 99% of UV rays, eliminate sun glare in guest rooms, and cut cooling costs by up to 30% — installed in your Philadelphia hotel with zero guest disruption.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
       </div>
     </div>
   </section>
 
-  <!-- ── Benefits Section ── -->
-  <section class="sec-benefits">
-    <div class="sec-benefits__inner">
-      <div class="sec-hd">
-        <span class="eyebrow">Key Benefits</span>
-        <h2 class="sec-title">Why hotels choose window film</h2>
-        <p class="sec-lead">From guest comfort to operational savings, window film delivers measurable results across every touchpoint of the hospitality experience.</p>
-      </div>
-      <div class="benefits-grid">
-        {benefits.map((b) => (
-          <div class="benefit-card fade-in">
-            <div class="benefit-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                {b.title === 'UV Protection' && <path d="M12 2v8m0 12v.01M2 12h8m12 0h-8"/>}
-                {b.title === 'Energy Efficiency' && <><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></>}
-                {b.title === 'Privacy' && <><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></>}
-                {b.title === 'Guest Comfort' && <><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></>}
-              </svg>
-            </div>
-            <div class="benefit-card__stat">{b.stat}</div>
-            <div class="benefit-card__stat-label">{b.statLabel}</div>
-            <h3 class="benefit-card__title">{b.title}</h3>
-            <p class="benefit-card__body">{b.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <div class="swt-body">
 
-  <!-- ── Statistics Row ── -->
-  <section class="sec-stats">
-    <div class="sec-stats__inner">
-      {stats.map((s) => (
-        <div class="stat-item fade-in">
-          <span class="stat-item__value">{s.value}</span>
-          <span class="stat-item__label">{s.label}</span>
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by Philadelphia hospitality businesses</p>
+        <BrandLogos />
+      </div>
+    </section>
+
+    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="problem">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Challenge</span>
+            <h2 class="swt-h2 swt-h2--light">Philadelphia Hotels Are Losing the Battle Against Their Windows</h2>
+            <p>Large glass facades and floor-to-ceiling windows look stunning in hotel photography. In practice, they create chronic problems — west-facing guest rooms that become solar ovens by mid-afternoon, UV damage to antique furniture and original artwork, and HVAC systems working overtime to compensate.</p>
+            <p>Philadelphia's changing climate has made this worse. The city now sees over 30% more extreme heat days per decade. UV rays pass straight through standard glass, fading carpets, destroying upholstery, and making guest rooms uncomfortable during the peak travel season.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">Solar Heat Gain</span>
+              <span class="swt-tag swt-tag--red">UV Fading</span>
+              <span class="swt-tag swt-tag--red">Guest Complaints</span>
+              <span class="swt-tag swt-tag--red">HVAC Overload</span>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.hotelInterior} alt="Philadelphia hotel with large sun-exposed windows" loading="lazy" />
+          </div>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ── Brand Logos ── -->
-  <BrandLogos />
-
-  <!-- ── CTA Section ── -->
-  <section class="sec-cta">
-    <div class="sec-cta__inner">
-      <h2 class="sec-cta__title">Ready to upgrade your property?</h2>
-      <p class="sec-cta__sub">Get a free consultation and see how window film can transform your Philadelphia hotel.</p>
-      <div class="sec-cta__btns">
-        <a href="/contact/" class="btn btn--green">Get a Free Quote</a>
-        <a href="tel:+1267****7980" class="btn btn--outline">Call (267) 394-7980</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-</div>
+    <!-- SECTION 2: UV — white bg, image left, text right -->
+    <section class="swt-split" id="uv">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.uvProtection} alt="UV protection demonstration on hotel windows" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>99%</strong>
+              <span>UV Blocked</span>
+            </div>
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Block 99% of Harmful UV Rays — Protect Your Furnishings and Guests</h2>
+            <p>UV-A and UV-B rays pass straight through untreated glass. In hotels, this means chronic fading of carpets, drapes, leather furniture, and original artwork — the very elements that define a boutique property's character. UV is responsible for up to 40% of interior fading, far outpacing foot traffic and age.</p>
+            <p>Beyond protecting your assets, window film reduces UV exposure for guests working or relaxing near windows. Our films block up to 99% of UV transmission, extending the life of everything inside your property and reducing liability exposure.</p>
+            <ul class="swt-check-list">
+              <li>Protected antique furniture, artwork, and branded interiors from fading</li>
+              <li>Reduced UV exposure risk for window-proximate guests</li>
+              <li>Extended replacement cycles for soft furnishings and carpeting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- SECTION 3: ENERGY — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="energy">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">Cut Cooling Costs by 30% Without Replacing a Single Window</h2>
+            <p>The solar heat entering through untreated glass is the single largest driver of summer cooling loads in Philadelphia hotels. A south- or west-facing wall of windows can add the equivalent heat output of multiple space heaters per floor. Your HVAC system fights this around the clock during peak season.</p>
+            <p>Heat-rejecting window film is a fraction of the cost of replacement windows — typically 1/10th the price — and takes days to install rather than months. The payback period is usually 2–4 years, after which the savings are pure operational benefit.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">30%</span>
+                <span class="swt-metric__label">Avg. Cooling Cost Reduction</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">2–4yr</span>
+                <span class="swt-metric__label">Typical Payback Period</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.energySavings} alt="Philadelphia hotel building HVAC working hard in summer heat" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PRIVACY — white bg, image left, text right -->
+    <section class="swt-split" id="privacy">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.guestPrivacy} alt="Philadelphia hotel guest room privacy with window film" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Guest Privacy Without Compromising Your Views</h2>
+            <p>Philadelphia's most desirable hotel rooms — those with dramatic skyline or historic district views — are also the most exposed. Guests in ground-floor or street-facing rooms often struggle with privacy, drawing blinds and missing the views they paid a premium for.</p>
+            <p>Our privacy and decorative films solve this without sacrificing natural light or views. We offer frosted films for bathrooms and conference areas, one-way vision films for street-facing rooms, and specialty films that look completely clear from the inside while preventing outside visibility during daytime hours.</p>
+            <blockquote class="swt-inline-quote">
+              "Our repeat guest scores for room comfort went up measurably after the film installation. Guests stop drawing the blinds and actually enjoy the views again."
+              <cite>— General Manager, boutique hotel, Society Hill Philadelphia</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: HVAC MAINTENANCE — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="maintenance">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Reduce HVAC Maintenance Cycles and Extend Equipment Life</h2>
+            <p>Philadelphia hotels with significant solar heat gain through glass experience a predictable pattern: HVAC units work harder, fail earlier, and require more frequent service. This is especially true for properties with PTAC units in individual rooms — a common setup in older historic hotels.</p>
+            <p>By reducing the solar heat load entering through windows, film allows your HVAC system to operate within its designed parameters. Properties report fewer service calls, longer equipment life, and measurably lower maintenance budgets within the first year of installation.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Reduced Compressor Strain</strong>
+                  <p>Lower heat load means units cycle less frequently and run within normal parameters</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Fewer Service Calls</strong>
+                  <p>Properties typically report 20–40% reduction in HVAC service requests post-installation</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Extended Equipment Life</strong>
+                  <p>Reduced cycling and lower thermal stress extends the lifespan of compressors and components</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.energySavings} alt="Hotel HVAC system maintenance" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Hotel Window Film — In Action</h2>
+          <p class="swt-subhead">From historic Society Hill inns to Center City high-rises — here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">16+</span>
+            <span class="swt-stats__label">Years in Philadelphia</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">500+</span>
+            <span class="swt-stats__label">Commercial Projects</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">99%</span>
+            <span class="swt-stats__label">UV Rays Blocked</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">30%</span>
+            <span class="swt-stats__label">Avg. Energy Savings</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 4 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">4 Steps to a Better Hotel Environment</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>On-Site Consultation</h3>
+              <p>We visit your property and conduct a thermal analysis of each facade. You receive a detailed proposal within 24 hours — film recommendations by room orientation, phased installation schedule, and a clear cost breakdown. No obligation.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Phased Installation Plan</h3>
+              <p>We work with your management team to build a room-by-room installation schedule that respects guest occupancy. Most hotels complete a full property installation in 1–2 weeks using a floor-by-floor or wing-by-wing approach that never takes rooms offline unexpectedly.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>Professional Installation</h3>
+              <p>Our factory-trained technicians install each window to manufacturer specifications. We use drop cloths, keep work areas contained, and coordinate with your housekeeping staff. We never leave a room in a state that would affect a guest's stay.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 240ms">
+            <div class="swt-process__num">04</div>
+            <div class="swt-process__body">
+              <h3>Quality Assurance Walkthrough</h3>
+              <p>Before we consider the job complete, we walk every installed room with your management team. We inspect for perfect adhesion, clarity, and edge seal. Every installation is backed by our labor warranty and the manufacturer's material warranty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Hospitality Businesses</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          <div class="swt-testimonial fade-in">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We have a 19th-century building with original windows — replacing them was never an option. Window film was the only sensible solution. The installation was done room-by-room with zero disruption to guests. The difference in guest comfort — especially on the west side of the building — was immediate.</p>
+            <div class="swt-testimonial__author">
+              <strong>Jennifer L.</strong>
+              <span>Owner, Historic Inn, Society Hill Philadelphia</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 80ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>Our repeat guest scores for room comfort went up measurably after the film installation. Guests stop drawing the blinds and actually enjoy the views again. The UV protection for our antique furniture and original artwork was a major consideration — we're protecting the character of the property.</p>
+            <div class="swt-testimonial__author">
+              <strong>Marcus T.</strong>
+              <span>General Manager, Boutique Hotel, Old City Philadelphia</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 160ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>As a property owner with three hotels in Center City, I'm always looking for capital improvements with real, measurable ROI. Window film in all three properties paid for itself in under three years. The energy savings are documented and the maintenance calls for HVAC issues dropped noticeably.</p>
+            <div class="swt-testimonial__author">
+              <strong>Robert K.</strong>
+              <span>Property Owner, Center City Hospitality Group</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>transform</em> your hotel?</h2>
+          <p>Get a free consultation and thermal analysis. No obligation, no pressure — just honest advice.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-/* ── Page body wrapper ── */
-.ip-page-body {
-  position: relative;
-  background: var(--off-white, #F7F6F3);
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 0;
-}
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
 
-/* ── Gallery Section ── */
-.sec-gallery {
-  padding: 64px 5% 0;
-  background: var(--off-white, #F7F6F3);
-}
-.sec-gallery__inner { max-width: 1200px; margin: 0 auto; }
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
+  }
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+  }
 
-.gallery-row-two {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 16px;
-  max-width: calc(66.667% - 8px);
-}
+  /* ══════════════════════════════════════
+     BODY CONTAINER
+     ══════════════════════════════════════ */
+  .swt-body {
+    position: relative;
+  }
 
-.gallery-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.45s ease;
-  display: block;
-}
-.gallery-item:hover img {
-  transform: scale(1.04);
-}
-.gallery-item__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(39, 46, 50, 0.65) 0%,
-    rgba(39, 46, 50, 0.1) 50%,
-    transparent 100%
-  );
-  display: flex;
-  align-items: flex-end;
-  padding: 24px;
-  transition: background 0.35s ease;
-}
-.gallery-item:hover .gallery-item__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(39, 46, 50, 0.8) 0%,
-    rgba(39, 46, 50, 0.25) 60%,
-    transparent 100%
-  );
-}
-.gallery-item__label {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.2px;
-}
+  /* ══════════════════════════════════════
+     TRUST BAR
+     ══════════════════════════════════════ */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 48px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .swt-trust__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    margin: 0 0 28px;
+  }
 
-/* ── Shared typography ── */
-.eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.sec-hd {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.sec-title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(30px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0 0 16px;
-}
-.sec-lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  line-height: 1.75;
-  color: var(--text-mid, #4a4a4a);
-  max-width: 620px;
-  margin: 0 auto;
-}
+  /* ══════════════════════════════════════
+     SPLIT SECTIONS
+     ══════════════════════════════════════ */
+  .swt-split {
+    padding: 100px 0;
+  }
+  .swt-split .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .swt-split__grid--rev {
+    direction: rtl;
+  }
+  .swt-split__grid--rev > * {
+    direction: ltr;
+  }
+  .swt-split__text {
+    padding-right: 24px;
+  }
+  .swt-split__grid--rev .swt-split__text {
+    padding-right: 0;
+    padding-left: 24px;
+  }
+  .swt-split__img {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+  }
+  .swt-split__img img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--swt-radius);
+  }
+  .swt-split--dark {
+    background: var(--swt-dark);
+  }
+  .swt-split--dark .swt-h2--light {
+    color: var(--swt-white);
+  }
+  .swt-split--dark p {
+    color: rgba(255,255,255,0.65);
+  }
+  .swt-split--alt {
+    background: var(--swt-alt);
+  }
+  .swt-split--alt p {
+    color: var(--swt-text-sec);
+  }
+  .swt-split p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0 0 16px;
+  }
 
-/* ── Benefits Section ── */
-.sec-benefits {
-  padding: 80px 5% 90px;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  margin-top: 48px;
-}
-.sec-benefits__inner { max-width: 1200px; margin: 0 auto; }
+  /* ══════════════════════════════════════
+     TYPOGRAPHY
+     ══════════════════════════════════════ */
+  .swt-eyebrow {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green {
+    color: var(--swt-green-accent);
+  }
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 20px;
+    color: var(--swt-dark);
+  }
+  .swt-h2--center {
+    text-align: center;
+  }
+  .swt-subhead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    max-width: 540px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.7;
+  }
 
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
+  /* ══════════════════════════════════════
+     PROBLEM TAGS
+     ══════════════════════════════════════ */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .swt-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .swt-tag--red {
+    background: rgba(180, 60, 60, 0.15);
+    color: #e8a0a0;
+    border: 1px solid rgba(180, 60, 60, 0.25);
+  }
 
-.benefit-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 36px 28px;
-  box-shadow: 0 4px 24px rgba(39, 46, 50, 0.08), 0 1px 4px rgba(39, 46, 50, 0.04);
-  border: 1px solid rgba(39, 46, 50, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  text-align: center;
-}
-.benefit-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(39, 46, 50, 0.12), 0 2px 8px rgba(39, 46, 50, 0.06);
-}
-.benefit-card__icon {
-  width: 56px;
-  height: 56px;
-  background: var(--green, #81AB4C);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  margin: 0 auto 20px;
-}
-.benefit-card__stat {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  letter-spacing: -1px;
-  margin-bottom: 4px;
-}
-.benefit-card__stat-label {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-light, #888888);
-  margin-bottom: 20px;
-}
-.benefit-card__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0 0 12px;
-  letter-spacing: -0.2px;
-}
-.benefit-card__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-mid, #4a4a4a);
-  margin: 0;
-}
+  /* ══════════════════════════════════════
+     IMG BADGE
+     ══════════════════════════════════════ */
+  .swt-img-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: var(--swt-dark);
+    color: var(--swt-white);
+    padding: 12px 18px;
+    border-radius: var(--swt-radius);
+    text-align: center;
+  }
+  .swt-img-badge strong {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--swt-green-accent);
+  }
+  .swt-img-badge span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
 
-/* ── Statistics Section ── */
-.sec-stats {
-  background: var(--brand, #272E32);
-  padding: 80px 5%;
-}
-.sec-stats__inner {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  text-align: center;
-}
-.stat-item {
-  padding: 0 40px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-.stat-item:last-child { border-right: none; }
-.stat-item__value {
-  display: block;
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(48px, 5vw, 72px);
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  margin-bottom: 10px;
-  letter-spacing: -2px;
-}
-.stat-item__label {
-  display: block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.55);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
+  /* ══════════════════════════════════════
+     CHECK LIST
+     ══════════════════════════════════════ */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+  }
+  .swt-check-list li {
+    position: relative;
+    padding-left: 28px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--swt-text-sec);
+    margin-bottom: 10px;
+  }
+  .swt-check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 16px;
+    height: 16px;
+    background: var(--swt-green);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-/* ── CTA Section ── */
-.sec-cta {
-  background: var(--brand, #272E32);
-  border-radius: 40px;
-  margin: 0 5% 80px;
-  padding: 72px 60px;
-}
-.sec-cta__inner { text-align: center; max-width: 640px; margin: 0 auto; }
-.sec-cta__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.15;
-  margin: 0 0 12px;
-  letter-spacing: -0.5px;
-}
-.sec-cta__sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 36px;
-  line-height: 1.6;
-}
-.sec-cta__btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  /* ══════════════════════════════════════
+     ENERGY METRICS
+     ══════════════════════════════════════ */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--swt-border);
+  }
+  .swt-metric__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--swt-green);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .swt-metric__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--swt-text-sec);
+    text-transform: uppercase;
+  }
 
-/* ── Buttons ── */
-.btn {
-  display: inline-block;
-  padding: 15px 30px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  white-space: nowrap;
-}
-.btn--green {
-  background: var(--green, #81AB4C);
-  color: #ffffff;
-  border-color: var(--green, #81AB4C);
-}
-.btn--green:hover {
-  background: #6e9640;
-  border-color: #6e9640;
-  transform: translateY(-2px);
-  color: #ffffff;
-}
-.btn--outline {
-  background: transparent;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.35);
-}
-.btn--outline:hover {
-  border-color: #ffffff;
-  transform: translateY(-2px);
-  color: #ffffff;
-}
+  /* ══════════════════════════════════════
+     INLINE QUOTE
+     ══════════════════════════════════════ */
+  .swt-inline-quote {
+    margin: 28px 0 0;
+    padding: 20px 24px;
+    border-left: 3px solid var(--swt-green);
+    background: rgba(78,107,42,0.06);
+    border-radius: 0 var(--swt-radius) var(--swt-radius) 0;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--swt-text-sec);
+  }
+  .swt-inline-quote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+  }
 
-/* ── Fade-in animation ── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  /* ══════════════════════════════════════
+     SECURITY FEATURES
+     ══════════════════════════════════════ */
+  .swt-security-features {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .swt-security-feature {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--swt-green-accent);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 4px;
+  }
+  .swt-split--dark .swt-security-feature p {
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+    font-size: 14px;
+  }
+  .swt-split--dark .swt-security-feature strong {
+    color: var(--swt-white);
+  }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-row-two { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
-  .sec-stats__inner { grid-template-columns: repeat(3, 1fr); }
-  .stat-item:nth-child(2) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .sec-gallery { padding: 48px 5% 0; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-row-two { grid-template-columns: repeat(2, 1fr); }
-  .sec-benefits { padding: 60px 5% 70px; margin-top: 32px; }
-  .benefits-grid { grid-template-columns: 1fr; }
-  .sec-stats { padding: 60px 5%; }
-  .sec-stats__inner { grid-template-columns: 1fr; gap: 40px 0; }
-  .stat-item { border-right: none !important; padding: 0; }
-  .sec-cta { margin: 0 3% 60px; padding: 48px 28px; }
-  .sec-cta__btns { flex-direction: column; width: 100%; }
-  .sec-cta__btns .btn { width: 100%; text-align: center; }
-}
+  /* ══════════════════════════════════════
+     GALLERY
+     ══════════════════════════════════════ */
+  .swt-gallery {
+    padding: 100px 0;
+    background: var(--swt-cream);
+  }
+  .swt-gallery .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .swt-gallery__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .swt-gallery__header .swt-eyebrow {
+    display: block;
+  }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+  }
+  .swt-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .swt-gallery__item:hover img {
+    transform: scale(1.05);
+  }
+  .swt-gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(42,36,30,0.85) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay {
+    opacity: 1;
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-white);
+  }
+
+  /* ══════════════════════════════════════
+     STATS
+     ══════════════════════════════════════ */
+  .swt-stats {
+    background: var(--swt-green);
+    padding: 72px 0;
+  }
+  .swt-stats .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .swt-stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swt-stats__item {
+    text-align: center;
+    padding: 0 48px;
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--swt-white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .swt-stats__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ══════════════════════════════════════
+     PROCESS
+     ══════════════════════════════════════ */
+  .swt-process {
+    padding: 100px 0;
+    background: var(--swt-white);
+  }
+  .swt-process .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .swt-process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .swt-process__step {
+    position: relative;
+    padding-top: 56px;
+  }
+  .swt-process__num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--swt-green);
+    opacity: 0.2;
+    line-height: 1;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--swt-dark);
+    margin: 0 0 12px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--swt-text-sec);
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════ */
+  .swt-testimonials {
+    background: var(--swt-dark);
+    padding: 100px 0;
+  }
+  .swt-testimonials .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--swt-radius);
+    padding: 36px;
+    position: relative;
+  }
+  .swt-testimonial__quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 72px;
+    color: var(--swt-green);
+    line-height: 1;
+    margin-bottom: -16px;
+    opacity: 0.5;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+  }
+  .swt-testimonial__author {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 4px;
+  }
+  .swt-testimonial__author span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ══════════════════════════════════════
+     FAQ
+     ══════════════════════════════════════ */
+  .swt-faq {
+    padding: 100px 0;
+    background: var(--swt-cream);
+  }
+  .swt-faq .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .swt-faq__header {
+    position: sticky;
+    top: 40px;
+  }
+  .swt-faq__header .swt-eyebrow {
+    display: block;
+  }
+  .swt-faq__header .swt-h2 {
+    margin-bottom: 16px;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--swt-text-sec);
+    margin-bottom: 28px;
+  }
+  .swt-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-faq__item:first-child {
+    border-top: 1px solid var(--swt-border);
+  }
+  .swt-faq__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0;
+    cursor: pointer;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    gap: 16px;
+  }
+  .swt-faq__toggle {
+    font-size: 22px;
+    color: var(--swt-green);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .swt-faq__a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .swt-faq__a p {
+    padding-bottom: 20px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--swt-text-sec);
+    margin: 0;
+  }
+  .swt-faq__item.is-open .swt-faq__a {
+    max-height: 400px;
+  }
+  .swt-faq__item.is-open .swt-faq__toggle {
+    transform: rotate(45deg);
+  }
+
+  /* ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ */
+  .swt-cta {
+    background: var(--swt-dark);
+    padding: 80px 0;
+  }
+  .swt-cta__inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    margin: 0 0 12px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  /* ══════════════════════════════════════
+     FADE-IN ANIMATION
+     ══════════════════════════════════════ */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+     ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .swt-gallery__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .swt-process__steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .swt-testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .swt-split__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .swt-split__grid--rev {
+      direction: ltr;
+    }
+    .swt-split__img img {
+      height: 300px;
+    }
+    .swt-gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .swt-stats__row {
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .swt-stats__div {
+      display: none;
+    }
+    .swt-process__steps {
+      grid-template-columns: 1fr;
+    }
+    .swt-testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+    .swt-faq__layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .swt-faq__header {
+      position: static;
+    }
+    .swt-cta__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .swt-energy-metrics {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
 </style>
-
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-</script>

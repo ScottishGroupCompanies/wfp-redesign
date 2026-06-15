@@ -1,500 +1,1091 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 
-const title = 'Museum & Library Window Film in Philadelphia | UV Protection for Artifacts & Collections';
-const description = 'Window film for Philadelphia museums and libraries: protect priceless artifacts, documents, and collections from harmful UV rays. Maintain perfect viewing conditions with professional installation.';
+const title = 'Museum & Library Window Film in Philadelphia | Preservation, UV Protection & Energy Savings';
+const description = 'Window film for Philadelphia museums and libraries: block 99% of UV rays to protect priceless artifacts, control glare for visitors, and reduce energy costs. Professional installation by certified technicians.';
 
-const heroImage = 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161453_dd0988e5-3650-4928-b7e8-05cab024928f.png';
-
-const gallery = [
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163404_0869fb3d-e841-4709-85fc-2113e3147633.png',
-    label: 'Collection Protection',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163401_f68228ec-fe56-48e5-94f3-aa085c691e64.png',
-    label: 'UV Blocked',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163906_e0f8ee22-fdd4-42a4-b1bf-b025b1926c55.png',
-    label: 'Museum Exterior',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163909_b8bfca96-2bb4-4601-91b9-e688ae6686b7.png',
-    label: 'Archive Preservation',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163511_a650aea4-54d3-4da7-ac89-5368bdf6fdcd.png',
-    label: 'Reading Room Comfort',
-  },
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175438_b9076a71-84ca-42f8-a050-52c4251c8cda.png', label: 'Artifact Preservation' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175440_a021f403-4b19-4661-89fc-f9f8748ade26.png', label: 'Energy Efficiency' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175441_2bf7f7ee-b250-4b07-a109-514c7ef21e2c.png', label: 'Museum Interior' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175441_b8d644eb-5c77-4ff0-862a-0cea6fb6b9f2.png', label: 'Security Film' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175443_6dae7fb2-0daa-4b21-ae3f-59fe7f464458.png', label: 'Glare-Free Viewing' },
 ];
 
-const benefits = [
-  {
-    heading: 'UV Protection',
-    body: 'Block 99% of harmful UV rays, protecting priceless artifacts and documents from irreversible damage.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
-  },
-  {
-    heading: 'Climate Control',
-    body: 'Maintain stable temperature and humidity levels, ideal for sensitive collections.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>`,
-  },
-  {
-    heading: 'Glare Reduction',
-    body: 'Eliminate glare on display cases and reading areas for better viewing.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></svg>`,
-  },
-  {
-    heading: 'Privacy',
-    body: 'Control visibility into private archives and restricted areas.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
-  },
-];
+const newImages = {
+  hero: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175441_2bf7f7ee-b250-4b07-a109-514c7ef21e2c.png',
+  uv: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175438_b9076a71-84ca-42f8-a050-52c4251c8cda.png',
+  energy: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175440_a021f403-4b19-4661-89fc-f9f8748ade26.png',
+  security: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175441_b8d644eb-5c77-4ff0-862a-0cea6fb6b9f2.png',
+};
 
-const stats = [
-  { value: '99%', label: 'UV Blocked' },
-  { value: '50+', label: 'Cultural Institutions' },
-  { value: '16+', label: 'Years Experience' },
+const faqItems = [
+  { question: 'How does UV film compare to UV-filtering glass?', answer: 'UV-filtering glass is a permanent replacement option but costs 5–10x more than window film and requires full glass replacement. UV-blocking window film achieves 99% UV rejection at a fraction of the cost, installs in days, and can be removed or replaced without altering the building. For most museums, film is the more practical and cost-effective solution.' },
+  { question: 'Can film be installed on stained glass windows?', answer: 'Yes — but it requires specialized conservation-grade films and careful assessment by a trained installer. We work with conservators and curators to select films that provide UV protection without altering the color or appearance of stained glass. This is one of our most delicate specialty installations.' },
+  { question: 'Does window film affect the appearance of historic buildings?', answer: 'We understand the sensitivity around historic preservation. We offer nearly invisible clear films that provide UV protection and some thermal benefit with virtually no change to the exterior appearance. For buildings with strict historic review requirements, we can provide documentation and samples for review before any installation.' },
+  { question: 'How much can museums save on energy costs?', answer: 'Museums and libraries with large glass areas — atriums, skylights, and east/west-facing galleries — often see 20–30% reductions in cooling costs after film installation. Because these institutions typically run HVAC continuously to protect collections, the savings compound year-round. Many clients see payback within 3–5 years.' },
+  { question: 'Is security film visible on glass?', answer: 'Security film is designed to be optically clear. From the street or gallery standpoint, it looks identical to untreated glass. The difference only becomes apparent under impact — where it holds shattered panes in the frame. We can combine security and solar-control films in a single installation when needed.' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/museums-libraries/" serviceName="Museum & Library Window Film" serviceDesc="UV-blocking and solar control window film for museums and libraries in Philadelphia. Protect collections and artifacts from UV damage." serviceUrl="https://www.windowfilmphiladelphia.net/applications/museums-libraries/">
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="Museum & Library Window Film Installation"
+  serviceDesc="Professional window film installation for Philadelphia museums and libraries — UV protection for priceless collections, climate control, and display security."
+  serviceUrl="https://www.windowfilmphiladelphia.com/applications/museums-libraries"
+  faqItems={faqItems}
+>
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={newImages.hero} alt="Philadelphia museum with window film protecting priceless collections" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
+    </div>
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        Cultural Institution Solutions
+      </span>
+      <h1 class="swt-hero__title">
+        Preserve Your Collection.<br/>
+        <em>Protect Your Visitors.</em><br/>
+        Sustain Your Institution.
+      </h1>
+      <p class="swt-hero__sub">Block 99% of UV rays, regulate gallery climate, and eliminate glare — window film solutions engineered for Philadelphia's museums and libraries.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Assessment</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
+      </div>
+    </div>
+  </section>
 
-<InnerPageHero
-  title="Museum & Library Window Film"
-  desc="Protect Collections · Block 99% UV · Preserve History"
-  bgImage={heroImage}
-/>
+  <div class="swt-body">
 
-<div class="ip-page-body">
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by Philadelphia's leading cultural institutions</p>
+        <BrandLogos />
+      </div>
+    </section>
 
-  <!-- Gallery Section -->
-  <section class="gallery-section">
-    <div class="gallery-section__inner">
-      <div class="gallery-row gallery-row--top">
-        {gallery.slice(0, 3).map((img) => (
-          <div class="gallery-item fade-in">
-            <img src={img.src} alt={img.label} loading="lazy" />
-            <div class="gallery-item__overlay">
-              <span class="gallery-item__label">{img.label}</span>
+    <!-- SECTION 1: THE CHALLENGE — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="challenge">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Challenge</span>
+            <h2 class="swt-h2 swt-h2--light">Philadelphia's Museums Are in a Constant Battle Against Their Own Windows</h2>
+            <p>Natural light is among the most damaging forces a museum or library faces. UV rays, visible light, and infrared radiation pass through standard glass continuously — fading pigments, drying out organic materials, and degrading paper, textiles, and coatings at a molecular level.</p>
+            <p>Philadelphia's historic buildings compound this problem. Many institutions occupy century-old structures with original single-pane glass — beautiful but thermally inefficient. The result is chronic climate instability, excessive energy costs, and gradual, irreversible damage to collections.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">UV Degradation</span>
+              <span class="swt-tag swt-tag--red">Climate Fluctuation</span>
+              <span class="swt-tag swt-tag--red">Glare on Displays</span>
+              <span class="swt-tag swt-tag--red">Display Case Vulnerability</span>
             </div>
           </div>
-        ))}
-      </div>
-      <div class="gallery-row gallery-row--bottom">
-        {gallery.slice(3).map((img) => (
-          <div class="gallery-item fade-in">
-            <img src={img.src} alt={img.label} loading="lazy" />
-            <div class="gallery-item__overlay">
-              <span class="gallery-item__label">{img.label}</span>
-            </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.uv} alt="UV light damage on museum artifacts and documents" loading="lazy" />
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Benefits Section -->
-  <section class="benefits-section">
-    <div class="benefits-section__inner">
-      <div class="benefits-section__hd">
-        <span class="eyebrow">Key Benefits</span>
-        <h2 class="benefits-section__title">Why Museums & Libraries Choose Window Film</h2>
-      </div>
-      <div class="benefits-grid">
-        {benefits.map((b) => (
-          <div class="benefit-card fade-in">
-            <div class="benefit-card__icon" set:html={b.icon} />
-            <h3 class="benefit-card__heading">{b.heading}</h3>
-            <p class="benefit-card__body">{b.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Museums Section -->
-  <section class="why-museums">
-    <div class="why-museums__inner">
-      <span class="eyebrow">Collection Preservation</span>
-      <h2 class="why-museums__title">Protecting Cultural Heritage for Future Generations</h2>
-      <p class="why-museums__lead">Museums and libraries hold some of the world's most irreplaceable collections — manuscripts, textiles, paintings, and historical artifacts that must be preserved for generations. Harmful ultraviolet light is one of the leading causes of irreversible damage to these materials, causing fading, brittleness, and discoloration. Our specialized window film solutions filter out up to 99% of UV rays while preserving crystal-clear glass visibility, so your visitors enjoy unobstructed views of your collections without compromise. Combined with solar heat reduction and glare control, window film creates the stable, low-UV environment that archivists and conservators recommend.</p>
-    </div>
-  </section>
-
-  <!-- Statistics Row -->
-  <section class="stats-section">
-    <div class="stats-section__inner">
-      {stats.map((s) => (
-        <div class="stat-card fade-in">
-          <span class="stat-card__value">{s.value}</span>
-          <span class="stat-card__label">{s.label}</span>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-section__inner">
-      <h2 class="cta-section__title">Protect Your Collections Today</h2>
-      <p class="cta-section__sub">Get a free consultation and discover how window film can transform your facility.</p>
-      <div class="cta-buttons">
-        <a href="/contact/" class="cta-btn">Get a Free Quote</a>
-        <a href="tel:+12155551234" class="cta-phone">(215) 555-1234</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <BrandLogos />
+    <!-- SECTION 2: UV — white bg, image left, text right -->
+    <section class="swt-split" id="uv">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.uv} alt="UV protection film installed on museum gallery windows" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>99%</strong>
+              <span>UV Blocked</span>
+            </div>
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Block 99% of UV Rays — Stop Fading Before It Starts</h2>
+            <p>Fading from UV exposure is cumulative and irreversible. Once the pigments in a textile, painting, or document have broken down, nothing can restore them. Prevention is the only effective strategy — and window film is one of the most cost-effective prevention tools available.</p>
+            <p>Conservation-grade UV-blocking films reject up to 99% of UV-A and UV-B radiation without significantly altering the appearance of your windows. For institutions with historic glass, stained glass, or sensitive east and west elevations, this is often the only practical solution that doesn't require glass replacement.</p>
+            <ul class="swt-check-list">
+              <li>Extended lifespan for paintings, textiles, and paper collections</li>
+              <li>Reduced need for rotation of light-sensitive works</li>
+              <li>Conservation-grade films compatible with archival display standards</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <!-- SECTION 3: ENERGY — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="energy">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">Climate Control Without Compromising Your Collection — or Your Budget</h2>
+            <p>Museums and libraries maintain strict environmental controls to protect collections — but HVAC systems working against single-pane, unfilmed glass in historic buildings run expensively and constantly. Solar heat gain through untreated glass forces systems to work hardest precisely when they should be resting.</p>
+            <p>Heat-rejecting window film reduces solar heat gain by up to 78%, allowing your HVAC system to operate more efficiently and consistently. The result is a more stable interior environment for both visitors and collections — at a fraction of the cost of replacing the glass itself.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">30%</span>
+                <span class="swt-metric__label">Avg. Cooling Cost Reduction</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">3–5yr</span>
+                <span class="swt-metric__label">Typical Payback Period</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.energy} alt="Philadelphia museum building exterior with efficient climate control" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- SECTION 4: GLARE — white bg, image left, text right -->
+    <section class="swt-split" id="glare">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.hero} alt="Museum gallery with glare-free natural lighting for visitors" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Eliminate Display Glare — Give Visitors the Experience They Came For</h2>
+            <p>Glare doesn't just make it harder to read exhibit labels or view artwork — it creates an uncomfortable, lower-quality experience that undermines the institution's investment in its collections and programming. Visitors migrate away from glare-affected galleries, reducing engagement with entire wings.</p>
+            <p>Glare-control window film selectively filters the wavelengths responsible for screen and surface glare while maintaining full natural daylight. The result is soft, even illumination throughout the gallery — the kind that makes collections look their best and keeps visitors停留 longer.</p>
+            <blockquote class="swt-inline-quote">
+              "Our east galleries were nearly unusable in the morning. After the film installation, they're some of our most popular spaces."
+              <cite>— Curator of Exhibitions, Philadelphia cultural institution</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SECURITY — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="security">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Security Film for Display Cases and Entrance Glass — Protection Without Compromise</h2>
+            <p>Display cases and entrance glass are among the most vulnerable points in any museum or library. Security window film holds glass in the frame on impact — preventing the cascade of shards that causes injury and enabling faster emergency response. It slows forced entry by several critical minutes.</p>
+            <p>For institutions displaying high-value artifacts, rare manuscripts, or serving high-traffic public hours, security film is a sensible, cost-effective layer of protection that doesn't alter the building's historic character or require replacing existing glass.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Display Case Protection</strong>
+                  <p>Glass stays intact on impact — protecting artifacts and visitors alike</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Entrance Glass Security</strong>
+                  <p>Delayed entry provides critical response time for staff and authorities</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Storm Protection</strong>
+                  <p>Philadelphia weather events are increasingly severe — film helps glass withstand impact</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.security} alt="Museum security film protecting display cases and entrance glass" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Window Film — In Action</h2>
+          <p class="swt-subhead">From gallery UV protection to climate control and security — here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">16+</span>
+            <span class="swt-stats__label">Years in Philadelphia</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">500+</span>
+            <span class="swt-stats__label">Commercial Projects</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">99%</span>
+            <span class="swt-stats__label">UV Rays Blocked</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">30%</span>
+            <span class="swt-stats__label">Avg. Energy Savings</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 4 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">4 Steps to a Better-Preserved Institution</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>Collection Survey & Risk Assessment</h3>
+              <p>We conduct a thorough survey of your facility's glass — identifying which elevations, galleries, and display cases pose the greatest risk to your collections. We document light levels, UV index, and thermal conditions throughout the building to build a film specification matched to your specific needs.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Conservation-Grade Film Selection</h3>
+              <p>We work with curators and conservators to select the appropriate film for each zone — prioritizing optical clarity and conservation standards. For historic buildings, we provide samples and documentation for review by historic preservation officers or review boards before proceeding.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>Precision Installation</h3>
+              <p>Our factory-trained installers work around your public hours and programming schedule. We use techniques calibrated for historic and heritage glass — avoiding any risk of thermal stress or frame damage. Installations are completed in discrete phases to avoid disrupting ongoing exhibitions.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 240ms">
+            <div class="swt-process__num">04</div>
+            <div class="swt-process__body">
+              <h3>Ongoing Preservation Monitoring</h3>
+              <p>We return annually to verify film performance and document any changes in light levels or UV transmission. Our conservation partners can provide detailed fading rate analysis using calibrated instruments — giving you quantifiable evidence of the film's protective effect over time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Institutions</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          <div class="swt-testimonial fade-in">
+            <div class="swt-testimonial__quote">"</div>
+            <p>Our painting conservator was skeptical — she'd seen other "solutions" come and go. But after 18 months of data, she's a believer. The fading rate in our west gallery dropped measurably after the film went in. We wish we'd done it a decade ago.</p>
+            <div class="swt-testimonial__author">
+              <strong>Dr. Anne K.</strong>
+              <span>Chief Conservator, Philadelphia museum</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 80ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We serve school groups every morning, and the glare in our main reading room was making it impossible for kids to see the books they were looking at. The film made an immediate difference. The children can read comfortably now, and our librarians stopped getting headaches.</p>
+            <div class="swt-testimonial__author">
+              <strong>Thomas R.</strong>
+              <span>Director, Philadelphia research library</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 160ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>Historic preservation board approval was a real concern. We needed documentation, samples, and a detailed appearance analysis before they'd approve anything. The team provided all of it — and the film is essentially invisible from the street. The board was satisfied and our collections are better protected.</p>
+            <div class="swt-testimonial__author">
+              <strong>Maria L.</strong>
+              <span>Facilities Director, historic Philadelphia cultural institution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been protecting Philadelphia's collections for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>protect</em> your collection for the next generation?</h2>
+          <p>Get a free collection risk assessment and UV analysis. No obligation, no pressure — just honest, conservation-focused advice.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Assessment</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-
-/* Eyebrow */
-.eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-
-/* Gallery Section */
-.gallery-section {
-  padding: 80px 10% 60px;
-}
-.gallery-section__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.gallery-row {
-  display: grid;
-  gap: 20px;
-}
-.gallery-row--top {
-  grid-template-columns: repeat(3, 1fr);
-}
-.gallery-row--bottom {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: calc(66.667% - 10px);
-  margin-left: 0;
-  padding-left: calc(33.333% + 10px);
-}
-.gallery-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.gallery-item__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(39, 46, 50, 0.8) 0%, transparent 60%);
-  display: flex;
-  align-items: flex-end;
-  padding: 24px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.gallery-item__label {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: 0.3px;
-}
-.gallery-item:hover img {
-  transform: scale(1.04);
-}
-.gallery-item:hover .gallery-item__overlay {
-  opacity: 1;
-}
-
-/* Benefits Section */
-.benefits-section {
-  padding: 80px 10%;
-}
-.benefits-section__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.benefits-section__hd {
-  margin-bottom: 56px;
-}
-.benefits-section__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-}
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.benefit-card {
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  padding: 36px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.benefit-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-}
-.benefit-card__icon {
-  width: 56px;
-  height: 56px;
-  background: var(--green-light, #eef4e4);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: var(--green, #81AB4C);
-}
-.benefit-card__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0 0 12px;
-}
-.benefit-card__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* Why Museums Section */
-.why-museums {
-  padding: 80px 10%;
-  background: var(--off-white, #F7F6F3);
-}
-.why-museums__inner {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-.why-museums__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0 0 24px;
-}
-.why-museums__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.8;
-  margin: 0;
-}
-
-/* Statistics Section */
-.stats-section {
-  padding: 80px 10%;
-  background: var(--brand, #272E32);
-}
-.stats-section__inner {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 40px;
-}
-.stat-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1;
-}
-.stat-card__value {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(48px, 6vw, 80px);
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.stat-card__label {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-/* CTA Section */
-.cta-section {
-  padding: 80px 10%;
-  background: var(--brand, #272E32);
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-}
-.cta-section__inner {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-.cta-section__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.2;
-  margin: 0 0 16px;
-}
-.cta-section__sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 36px;
-  line-height: 1.6;
-}
-.cta-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.cta-btn {
-  display: inline-block;
-  padding: 16px 40px;
-  border-radius: 100px;
-  background: var(--green, #81AB4C);
-  color: #ffffff;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 2px solid var(--green, #81AB4C);
-}
-.cta-btn:hover {
-  background: #6e9640;
-  border-color: #6e9640;
-  transform: translateY(-2px);
-}
-.cta-phone {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.cta-phone:hover {
-  color: #ffffff;
-}
-
-/* Fade in animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
   }
-  .gallery-row--top {
-    grid-template-columns: repeat(3, 1fr);
+
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
   }
-  .gallery-row--bottom {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
-    padding-left: 0;
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
   }
-  .stats-section__inner {
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ══════════════════════════════════════
+     SHARED
+     ══════════════════════════════════════ */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body { background: var(--swt-white); }
+
+  .swt-eyebrow {
+    display: inline-block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green { color: var(--swt-green-accent); }
+
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--swt-dark);
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
+
+  .swt-subhead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    margin: 8px 0 0;
+    text-align: center;
+  }
+
+  /* ── Trust Bar ── */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+
+  /* ── Split Sections ── */
+  .swt-split {
+    padding: 96px 0;
+    background: var(--swt-white);
+  }
+  .swt-split--dark { background: var(--swt-dark); }
+  .swt-split--alt { background: var(--swt-alt); }
+
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .swt-split__grid--rev .swt-split__img { order: -1; }
+
+  .swt-split__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--swt-text-sec);
+    margin: 0 0 14px;
+  }
+  .swt-split--dark .swt-split__text p { color: rgba(255,255,255,0.55); }
+
+  .swt-split__img {
+    position: relative;
+  }
+  .swt-split__img img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--swt-radius);
+    display: block;
+    box-shadow: 0 20px 60px rgba(42,36,30,0.12);
+  }
+
+  .swt-img-badge {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-radius: var(--swt-radius);
+    padding: 16px 24px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(42,36,30,0.2);
+  }
+  .swt-img-badge strong {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .swt-img-badge span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  /* ── Problem Tags ── */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .swt-tag {
+    padding: 8px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .swt-tag--red {
+    background: rgba(180,60,60,0.1);
+    color: #e8a0a0;
+    border: 1px solid rgba(180,60,60,0.2);
+  }
+
+  /* ── Check List ── */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0 0;
+  }
+  .swt-check-list li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    padding: 9px 0;
+    border-bottom: 1px solid var(--swt-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .swt-check-list li::before {
+    content: '';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(78,107,42,0.1);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234E6B2A' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── Energy Metrics ── */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 36px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--swt-border);
+  }
+  .swt-split--dark .swt-energy-metrics {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+  .swt-metric__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+  }
+  .swt-metric__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Security Features ── */
+  .swt-security-features {
+    display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 16px;
+    margin-top: 28px;
   }
-}
-@media (max-width: 768px) {
-  .gallery-section {
-    padding: 60px 5% 40px;
+  .swt-security-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
   }
-  .benefits-section {
-    padding: 60px 5%;
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--swt-green-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
   }
-  .why-museums {
-    padding: 60px 5%;
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 4px;
   }
-  .stats-section {
-    padding: 60px 5%;
+  .swt-security-feature p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
   }
-  .cta-section {
-    padding: 60px 5%;
+
+  /* ── Inline Quote ── */
+  .swt-inline-quote {
+    border-left: 3px solid var(--swt-green);
+    padding-left: 18px;
+    margin: 22px 0 0;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--swt-text-sec);
+    line-height: 1.7;
   }
-  .benefits-grid {
-    grid-template-columns: 1fr;
+  .swt-inline-quote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    color: var(--swt-text-sec);
+    opacity: 0.65;
+    margin-top: 8px;
+    font-weight: 600;
   }
-  .gallery-row--top {
-    grid-template-columns: 1fr 1fr;
+
+  /* ── Gallery ── */
+  .swt-gallery {
+    background: var(--swt-white);
+    padding: 96px 0;
   }
-  .gallery-row--top .gallery-item:last-child {
-    grid-column: 1 / -1;
+  .swt-gallery__header { margin-bottom: 48px; }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
   }
-  .gallery-row--bottom {
-    grid-template-columns: 1fr 1fr;
+  .swt-gallery__item {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
   }
-}
+  .swt-gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    display: block;
+  }
+  .swt-gallery__item:hover img { transform: scale(1.06); }
+  .swt-gallery__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 12px 12px;
+    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--swt-white);
+    display: block;
+    text-align: center;
+  }
+
+  /* ── Stats Bar ── */
+  .swt-stats {
+    background: var(--swt-green-accent);
+    padding: 72px 0;
+  }
+  .swt-stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    padding: 0 40px;
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1;
+  }
+  .swt-stats__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── Process ── */
+  .swt-process {
+    background: var(--swt-cream);
+    padding: 96px 0;
+  }
+  .swt-process__steps { margin-top: 48px; }
+  .swt-process__step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 36px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--swt-border);
+    align-items: start;
+  }
+  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
+  .swt-process__num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+    opacity: 0.55;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--swt-dark);
+    margin: 0 0 10px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--swt-text-sec);
+    margin: 0;
+  }
+
+  /* ── Testimonials ── */
+  .swt-testimonials {
+    background: var(--swt-dark);
+    padding: 96px 0;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--swt-radius);
+    padding: 32px;
+  }
+  .swt-testimonial__quote {
+    font-family: Georgia, serif;
+    font-size: 68px;
+    line-height: 0.7;
+    color: var(--swt-green-accent);
+    opacity: 0.35;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 22px;
+    font-style: italic;
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+  }
+  .swt-testimonial__author span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  /* ── FAQ ── */
+  .swt-faq {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--swt-text-sec);
+    margin: 14px 0 24px;
+  }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+    padding: 18px 0;
+  }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 3px 0;
+  }
+  .swt-faq__toggle {
+    color: var(--swt-green);
+    font-size: 22px;
+    flex-shrink: 0;
+    font-weight: 400;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .swt-faq__a {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--swt-text-sec);
+    line-height: 1.8;
+    margin-top: 10px;
+    display: none;
+  }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+
+  /* ── CTA Banner ── */
+  .swt-cta {
+    background: var(--swt-dark);
+    padding: 80px 5%;
+  }
+  .swt-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Fade In ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .swt-split__grid { gap: 48px; }
+    .swt-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    .swt-testimonials__grid { grid-template-columns: 1fr; }
+    .swt-stats__row { flex-wrap: wrap; gap: 24px; }
+    .swt-stats__div { display: none; }
+    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
+    .swt-cta__inner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 768px) {
+    .swt-split__grid { grid-template-columns: 1fr; gap: 32px; }
+    .swt-split__grid--rev .swt-split__img { order: 0; }
+    .swt-split__img img { height: 280px; }
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
+    .swt-process__num { font-size: 36px; }
+    .swt-hero__content { padding: 80px 5%; }
+    .swt-cta__btns { flex-direction: column; width: 100%; }
+    .swt-hero__ctas { flex-direction: column; }
+    .swt-energy-metrics { flex-direction: column; gap: 16px; }
+  }
+  @media (max-width: 480px) {
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-split { padding: 64px 0; }
+    .swt-stats__row { flex-direction: column; }
+  }
 </style>
 
 <script>
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target as HTMLElement;
+        const delay = el.style.getPropertyValue('--delay') || '0ms';
+        setTimeout(() => el.classList.add('visible'), parseInt(delay));
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
 </script>
