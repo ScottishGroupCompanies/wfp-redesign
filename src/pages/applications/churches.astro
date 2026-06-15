@@ -3,50 +3,97 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 
-const title = 'Church Window Film in Philadelphia | UV Protection, Privacy & Aesthetic Preservation';
+const title = 'Church Window Film in Philadelphia | Historic Preservation, UV Protection & Congregational Comfort';
 const description = 'Window film for Philadelphia churches: protect historic stained glass, reduce UV exposure for congregations, improve comfort. Respectful installation that preserves architectural beauty.';
 
 const heroImage = 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161507_0fcd75a1-4235-4a9d-b519-9a25205ae475.png';
 
+const gallery = [
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163926_a0742db8-7e9d-4fc9-8447-440ad2a10de4.png',
+    label: 'Historic Preservation',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163514_e4feb8fd-4211-4893-8043-0589e4f3ffab.png',
+    label: 'Security Film',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163517_647bfe12-0409-4166-bf2f-a22e340c4150.png',
+    label: 'UV Protection',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163541_4b9604e6-d2ad-4d2e-8ed1-07682b53d706.png',
+    label: 'Privacy',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163930_e4b47cd4-9972-47ea-9af1-05f0861ded3e.png',
+    label: 'Historic Church Interior',
+  },
+];
+
 const benefits = [
   {
     title: 'UV Protection',
-    body: 'Block up to 99% of harmful UV rays, protecting congregation members and preserving historic stained glass, wood finishes, and upholstered seating from sun damage.',
+    body: 'Block 99% of harmful UV rays, protecting congregation members and historic interiors',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`,
   },
   {
     title: 'Privacy',
-    body: 'Frosted and decorative window films provide congregations with privacy without sacrificing natural light — ideal for confessionals, meeting rooms, and street-facing windows.',
+    body: 'Frosted and decorative films for fellowship halls and private meeting areas',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
   },
   {
     title: 'Aesthetic Preservation',
-    body: 'Our films are designed to respect the historic character of Philadelphia\'s churches. Choose from nearly invisible solar films or decorative options that complement — not replace — original architecture.',
+    body: 'Protect beautiful stained glass windows while maintaining their appearance',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
   },
   {
     title: 'Energy Savings',
-    body: 'Reduce cooling costs in large sanctuaries with tall windows. Solar control films reject heat gain, easing HVAC load and keeping congregations comfortable year-round.',
+    body: 'Reduce heating and cooling costs, freeing resources for mission work',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
   },
 ];
 
 const stats = [
   { value: '99%', label: 'UV Blocked' },
-  { value: '15+', label: 'Years Serving Philly Churches' },
-  { value: '5,000+', label: 'Projects Completed' },
+  { value: 'Historic Preservation', label: '' },
+  { value: '16+', label: 'Years Experience' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/churches/" serviceName="Church Window Film" serviceDesc="Window film for churches and houses of worship in Philadelphia. UV protection, privacy, and aesthetic preservation." serviceUrl="https://www.windowfilmphiladelphia.net/applications/churches/">
+<BaseLayout title={title} description={description}>
 
 <InnerPageHero
   title="Church Window Film"
-  desc="Historic preservation · UV protection · Congregational comfort"
+  desc="Historic Preservation · UV Protection · Congregational Comfort"
   bgImage={heroImage}
 />
 
 <div class="ip-page-body">
+
+  <!-- Gallery Section -->
+  <section class="church-gallery">
+    <div class="gallery-grid">
+      {gallery.slice(0, 3).map((img) => (
+        <div class="gallery-item fade-in">
+          <img src={img.src} alt={img.label} loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">{img.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="gallery-grid gallery-grid--bottom">
+      {gallery.slice(3).map((img) => (
+        <div class="gallery-item fade-in">
+          <img src={img.src} alt={img.label} loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">{img.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
   <!-- Benefits Section -->
   <section class="church-benefits">
@@ -58,7 +105,9 @@ const stats = [
     <div class="church-benefits__grid">
       {benefits.map((b) => (
         <div class="benefit-card fade-in">
-          <div class="benefit-card__icon" set:html={b.icon} />
+          <div class="benefit-card__icon-wrap">
+            <div class="benefit-card__icon" set:html={b.icon} />
+          </div>
           <h3 class="benefit-card__title">{b.title}</h3>
           <p class="benefit-card__body">{b.body}</p>
         </div>
@@ -77,20 +126,29 @@ const stats = [
 
   <!-- Statistics Row -->
   <section class="church-stats">
-    {stats.map((s) => (
-      <div class="stat-card fade-in">
-        <span class="stat-card__value">{s.value}</span>
-        <span class="stat-card__label">{s.label}</span>
-      </div>
-    ))}
+    <div class="stat-card fade-in">
+      <span class="stat-card__value">99%</span>
+      <span class="stat-card__label">UV Blocked</span>
+    </div>
+    <div class="stat-card fade-in">
+      <span class="stat-card__value">Historic Preservation</span>
+      <span class="stat-card__label">&nbsp;</span>
+    </div>
+    <div class="stat-card fade-in">
+      <span class="stat-card__value">16+</span>
+      <span class="stat-card__label">Years Experience</span>
+    </div>
   </section>
 
   <!-- CTA Section -->
   <section class="church-cta">
     <div class="church-cta__inner">
-      <h2 class="church-cta__title">Ready to protect your <em>house of worship?</em></h2>
+      <h2 class="church-cta__title">Protect your congregation today</h2>
       <p class="church-cta__body">Our team provides free consultations for churches throughout Philadelphia and southern New Jersey.</p>
-      <a href="/contact/" class="cta-btn-green">Get a Free Quote</a>
+      <div class="church-cta__actions">
+        <a href="/contact/" class="cta-btn-green">Get a Free Quote</a>
+        <a href="tel:+12155551234" class="cta-phone">(215) 555-1234</a>
+      </div>
     </div>
   </section>
 
@@ -123,6 +181,59 @@ const stats = [
   text-transform: uppercase;
   color: var(--green, #81AB4C);
   margin-bottom: 16px;
+}
+
+/* Gallery */
+.church-gallery {
+  padding: 80px 10% 0;
+  background: var(--off-white, #F7F6F3);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-grid--bottom {
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 16px;
+  max-width: calc(66.667% - 8px);
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(39, 46, 50, 0.75) 0%, transparent 50%);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+.gallery-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 /* Benefits */
@@ -166,9 +277,18 @@ const stats = [
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.10);
 }
+.benefit-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  background: var(--green-light, #eef4e4);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 .benefit-card__icon {
   color: var(--green, #81AB4C);
-  margin-bottom: 20px;
   display: flex;
 }
 .benefit-card__icon svg { display: block; }
@@ -231,7 +351,7 @@ const stats = [
 .stat-card:last-child { border-right: none; }
 .stat-card__value {
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(32px, 4vw, 52px);
   font-weight: 700;
   color: var(--green, #81AB4C);
   line-height: 1;
@@ -248,33 +368,38 @@ const stats = [
 /* CTA */
 .church-cta {
   padding: 80px 10%;
-  background: var(--off-white, #F7F6F3);
+  background: var(--brand, #272E32);
 }
 .church-cta__inner {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
   gap: 20px;
   max-width: 680px;
+  margin: 0 auto;
 }
 .church-cta__title {
   font-family: var(--font-serif, 'Playfair Display', serif);
   font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
+  color: #ffffff;
   line-height: 1.2;
   margin: 0;
-}
-.church-cta__title em {
-  font-style: italic;
-  color: var(--green, #81AB4C);
 }
 .church-cta__body {
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 16px;
-  color: var(--text-mid, #4a4a4a);
+  color: rgba(255,255,255,0.65);
   line-height: 1.7;
   margin: 0;
+}
+.church-cta__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .cta-btn-green {
   display: inline-block;
@@ -293,6 +418,17 @@ const stats = [
   transform: translateY(-2px);
   color: #ffffff;
 }
+.cta-phone {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.cta-phone:hover {
+  color: var(--green, #81AB4C);
+}
 
 /* Animations */
 .fade-in {
@@ -308,9 +444,12 @@ const stats = [
 /* Responsive */
 @media (max-width: 1024px) {
   .church-benefits__grid { grid-template-columns: repeat(2, 1fr); }
-  .church-stats { grid-template-columns: repeat(3, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid--bottom { max-width: 100%; }
 }
 @media (max-width: 768px) {
+  .church-gallery { padding: 60px 5% 0; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
   .church-benefits { padding: 60px 5%; }
   .church-benefits__grid { grid-template-columns: 1fr; }
   .church-why { padding: 60px 5%; }
