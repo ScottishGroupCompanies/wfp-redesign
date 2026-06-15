@@ -1,409 +1,1207 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
-const title = 'Retail Window Film in Philadelphia | Storefront UV Protection, Glare & Customer Comfort';
-const description = 'Window film for Philadelphia retail stores: reduce glare on displays, protect merchandise from UV fading, improve customer comfort. Professional installation with minimal disruption.';
+const title = 'Retail Window Film in Philadelphia | UV Protection, Energy Savings & Store Security';
+const description = 'Window film for Philadelphia retail stores: protect merchandise from UV fading, reduce cooling costs, improve customer comfort, and enhance store security. Professional installation by certified technicians.';
 
-const gallery = [
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163348_c7fe9042-5571-4cae-be7e-e5b62bc242d3.png',
-    label: 'Storefront Display',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163401_f68228ec-fe56-48e5-94f3-aa085c691e64.png',
-    label: 'UV Protection',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163912_f2b923a2-19cc-4e76-b031-f8e1a11dad3a.png',
-    label: 'Energy Savings',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163418_19954ca7-f4a4-4aab-89bb-cb193cb2249e.png',
-    label: 'Security Film',
-  },
-  {
-    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163401_f68228ec-fe56-48e5-94f3-aa085c691e64.png',
-    label: 'Decorative Film',
-  },
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175444_b1c0fb4b-7e18-435c-ac74-ba416ff51fe1.png', label: 'Retail Storefront' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175446_f320deaf-2e71-4adf-917d-371be97bdf92.png', label: 'Boutique Interior' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175728_a7ad634b-4336-45a2-a8a4-b760f30566c9.png', label: 'Mall Store' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175448_2451a1a4-f064-491b-90fe-f63b8877331c.png', label: 'Jewelry Store Security' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175513_9a474dbe-6be1-4a2b-8bb9-8ef4cbf58388.png', label: 'Decorative Film' },
 ];
 
-const benefits = [
-  {
-    icon: 'lucide:sun',
-    title: 'UV Protection',
-    body: 'Block 99% of UV rays, preventing merchandise fading and customer discomfort',
-  },
-  {
-    icon: 'lucide:glasses',
-    title: 'Glare Reduction',
-    body: 'Eliminate glare on display windows and product shelves',
-  },
-  {
-    icon: 'lucide:store',
-    title: 'Brand Appearance',
-    body: 'Custom decorative and frosted films to elevate your storefront aesthetic',
-  },
-  {
-    icon: 'lucide:zap',
-    title: 'Energy Savings',
-    body: 'Reduce cooling costs by up to 30%, lowering operating expenses',
-  },
-];
+const newImages = {
+  hero: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175444_b1c0fb4b-7e18-435c-ac74-ba416ff51fe1.png',
+  uvInterior: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175446_f320deaf-2e71-4adf-917d-371be97bdf92.png',
+  energyMall: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175728_a7ad634b-4336-45a2-a8a4-b760f30566c9.png',
+  securityJewelry: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175448_2451a1a4-f064-491b-90fe-f63b8877331c.png',
+};
 
-const stats = [
-  { value: '99%', label: 'UV Blocked' },
-  { value: '40%', label: 'Glare Reduction' },
-  { value: '30%', label: 'Energy Savings' },
+const faqItems = [
+  { question: 'How does window film prevent merchandise fading?', answer: 'Window film blocks up to 99% of UV-A and UV-B rays — the primary cause of fading in fabrics, artwork, leather goods, and branded displays. Even indirect UV passing through glass causes cumulative, irreversible damage over time. Our films stop it at the source.' },
+  { question: 'Will customers feel the heat difference immediately?', answer: 'Yes. Heat-rejecting window film reduces solar heat transmission significantly. On hot Philadelphia summer days, customers will notice the difference the moment they walk in — especially near large display windows. This improves comfort, extends browsing time, and reduces your air conditioning load.' },
+  { question: 'Can decorative film match our brand colors?', answer: 'Absolutely. Decorative and frosted films come in a wide range of colors, patterns, and opacity levels. We can create custom designs that incorporate your brand palette — perfect for fitting rooms, partition walls, store entryways, and feature windows.' },
+  { question: 'How effective is security film against smash-and-grab?', answer: 'Security film holds glass together on impact, making it significantly harder and slower to break through. For smash-and-grab threats — a growing concern for Philadelphia retailers — this delay (3–7 minutes) is often enough to deter opportunists or allow security response. It also reduces liability from glass shards.' },
+  { question: 'Does film affect visibility of products from outside?', answer: 'It depends on the film type. Clear safety and UV films are virtually invisible. Privacy films create a one-way effect during daytime. Decorative frosted films obscure the interior while maintaining a premium appearance. We\'ll help you choose the right balance for your store\'s display strategy.' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/retail/" serviceName="Retail Window Film" serviceDesc="Retail window film installation in Philadelphia. Reduce glare, protect merchandise from UV fading, and enhance storefront aesthetics." serviceUrl="https://www.windowfilmphiladelphia.net/applications/retail/">
-
-<InnerPageHero
-  title="Retail Window Film"
-  desc="Protect Merchandise · Reduce Glare · Customer Comfort"
-  bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161459_a9669100-320a-4c7d-a59b-ced3fb335c53.png"
-/>
-
-<div class="ip-page-body">
-
-  <!-- ══════════════════════════════════════
-       IMAGE GALLERY — 3+2 grid
-       ══════════════════════════════════════ -->
-  <section class="gallery-section">
-    <div class="gallery-grid">
-      {gallery.slice(0, 3).map((img) => (
-        <div class="gallery-item fade-in">
-          <img src={img.src} alt={img.label} loading="lazy" />
-          <div class="gallery-overlay">
-            <span class="gallery-label">{img.label}</span>
-          </div>
-        </div>
-      ))}
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="Retail Window Film Installation"
+  serviceDesc="Professional window film installation for Philadelphia retail stores — UV protection, energy efficiency, customer comfort, security, and decorative branding."
+  serviceUrl="https://www.windowfilmphiladelphia.com/applications/retail"
+  faqItems={faqItems}
+>
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={newImages.hero} alt="Retail storefront with window glare issues" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
     </div>
-    <div class="gallery-grid gallery-grid--bottom">
-      {gallery.slice(3).map((img) => (
-        <div class="gallery-item fade-in">
-          <img src={img.src} alt={img.label} loading="lazy" />
-          <div class="gallery-overlay">
-            <span class="gallery-label">{img.label}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       BENEFITS SECTION
-       ══════════════════════════════════════ -->
-  <section class="benefits">
-    <div class="benefits__hd">
-      <span class="eyebrow">Why Window Film</span>
-      <h2 class="benefits__title">Retail window film benefits</h2>
-    </div>
-    <div class="benefits__grid">
-      {benefits.map((b) => (
-        <div class="benefit-card fade-in">
-          <div class="benefit-card__icon">
-            <Icon name={b.icon} width="28" height="28" />
-          </div>
-          <h3 class="benefit-card__title">{b.title}</h3>
-          <p class="benefit-card__body">{b.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       STATISTICS ROW
-       ══════════════════════════════════════ -->
-  <section class="stats-row">
-    {stats.map((s) => (
-      <div class="stat-card fade-in">
-        <span class="stat-card__value">{s.value}</span>
-        <span class="stat-card__label">{s.label}</span>
-      </div>
-    ))}
-  </section>
-
-  <!-- ══════════════════════════════════════
-       CTA SECTION
-       ══════════════════════════════════════ -->
-  <section class="cta-section">
-    <div class="cta-section__inner">
-      <h2 class="cta-section__title">Ready to upgrade your storefront?</h2>
-      <div class="cta-section__actions">
-        <a href="/contact/" class="cta-btn">Get a Free Quote</a>
-        <a href="tel:+12155551234" class="cta-phone">(215) 555-1234</a>
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        Retail Window Solutions
+      </span>
+      <h1 class="swt-hero__title">
+        Protect Your Merchandise.<br/>
+        <em>Delight Your Customers.</em><br/>
+        Cut Your Energy Bills.
+      </h1>
+      <p class="swt-hero__sub">Block 99% of UV rays, eliminate storefront glare, and cut cooling costs by up to 30% — installed in your Philadelphia retail space with minimal disruption to your business.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       BRAND LOGOS
-       ══════════════════════════════════════ -->
-  <BrandLogos />
+  <div class="swt-body">
 
-</div><!-- end ip-page-body -->
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by leading Philadelphia retailers</p>
+        <BrandLogos />
+      </div>
+    </section>
 
+    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="problem">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Challenge</span>
+            <h2 class="swt-h2 swt-h2--light">Philadelphia Retailers Are Losing Revenue to Their Own Windows</h2>
+            <p>Large display windows are a retailer's best marketing tool — and their biggest operational liability. Philadelphia's intense summer sun floods through untreated glass, heating your store, fading your merchandise, and making customers uncomfortable within minutes of walking in.</p>
+            <p>UV rays don't just fade clothing and accessories. They degrade leather goods, artwork, signage, and point-of-purchase displays. Every hour your best-sellers sit in that sunlit window is an hour of irreversible damage and perceived value loss.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">UV Fading</span>
+              <span class="swt-tag swt-tag--red">Solar Heat Gain</span>
+              <span class="swt-tag swt-tag--red">Customer Discomfort</span>
+              <span class="swt-tag swt-tag--red">Security Risk</span>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.hero} alt="Retail storefront suffering from sun glare and heat" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: UV — white bg, image left, text right -->
+    <section class="swt-split" id="uv">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.uvInterior} alt="Upscale boutique interior with UV protection film" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>99%</strong>
+              <span>UV Blocked</span>
+            </div>
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Block 99% of UV Rays — Stop Merchandise Fading at the Source</h2>
+            <p>UV radiation is the primary driver of fading in retail merchandise. Fabrics, leather, artwork, and branded displays all degrade irreversibly under chronic UV exposure. Your most expensive items — displayed prominently in sunlit windows — are the most vulnerable.</p>
+            <p>Our window films block up to 99% of UV transmission, extending the life and appearance of everything in your store. This means less spoilage, fewer markdowns on sun-damaged goods, and protected brand presentation.</p>
+            <ul class="swt-check-list">
+              <li>Protected merchandise from irreversible UV fading</li>
+              <li>Extended lifespan of leather goods and premium displays</li>
+              <li>Reduced spoilage and markdown requirements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ENERGY — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="energy">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">Cut Cooling Costs by 30% — Without Renovating Your Store</h2>
+            <p>Large storefront windows are the primary driver of summer cooling loads in Philadelphia retail spaces. A sun-facing wall of glass can add the equivalent heat of a 6,000 BTU heater per window. Your HVAC system runs constantly to compensate, and your energy bills reflect it.</p>
+            <p>Heat-rejecting window film is a fraction of the cost of window replacement — typically 1/10th — and installs in hours rather than weeks. The payback period is usually 2–4 years, after which the savings are pure operational profit.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">30%</span>
+                <span class="swt-metric__label">Avg. Cooling Cost Reduction</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">2–4yr</span>
+                <span class="swt-metric__label">Typical Payback Period</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.energyMall} alt="Philadelphia mall corridor with large glass storefronts" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: COMFORT — white bg, image left, text right -->
+    <section class="swt-split" id="comfort">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.uvInterior} alt="Comfortable retail shopping environment with window film" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Keep Customers Browsing Longer — Not Fleeing the Heat</h2>
+            <p>Customer comfort directly affects purchase behavior. When shoppers enter a store that's significantly warmer near the windows, they instinctively gravitate toward the cooler back sections — missing your prime window displays entirely. Worse, they cut their visit short.</p>
+            <p>Our films reduce hot spots and eliminate the oppressive feeling of standing near sunlit glass. Customers stay longer, browse more thoroughly, and associate your store with a comfortable, premium shopping experience.</p>
+            <blockquote class="swt-inline-quote">
+              "Customers used to comment on how hot it was near our entrance. After the film, nobody says anything — because there's nothing to notice. The comfort is just... normal now."
+              <cite>— Store Manager, boutique, Reading Terminal Market</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SECURITY — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="security">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Security Film: Deter Smash-and-Grab with Glass That Holds</h2>
+            <p>Philadelphia retailers face growing smash-and-grab risk. Standard glass shatters on impact, giving thieves instant access. Security window film holds shattered panes in the frame — making forced entry dramatically harder and slower. That 3–7 minute delay often changes a thief's calculus entirely.</p>
+            <p>Beyond theft deterrence, security film reduces liability from dangerous glass shards and protects your storefront from storm damage — a real consideration for Philadelphia's occasional severe weather events.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Smash-and-Grab Deterrence</strong>
+                  <p>Glass holds in frame on impact — critical delay for security response</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Storm Protection</strong>
+                  <p>Holds glass together during severe weather and wind events</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Reduced Liability</strong>
+                  <p>No dangerous glass shards — protects staff and customers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.securityJewelry} alt="Jewelry store with security window film protection" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Window Film — In Action</h2>
+          <p class="swt-subhead">From high-end boutiques to large retail chains — here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">16+</span>
+            <span class="swt-stats__label">Years in Philadelphia</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">500+</span>
+            <span class="swt-stats__label">Commercial Projects</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">99%</span>
+            <span class="swt-stats__label">UV Rays Blocked</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">30%</span>
+            <span class="swt-stats__label">Avg. Energy Savings</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 4 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">4 Simple Steps to a Better Retail Space</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>Store Assessment</h3>
+              <p>We visit your retail location and analyze window orientation, sun exposure patterns, and security needs. You receive a detailed proposal within 24 hours with the optimal film recommendations for your merchandise and budget.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Custom Film Recommendations</h3>
+              <p>From clear UV protection to decorative branding films, we match the right product to your specific needs — considering aesthetics, heat rejection, security, and your brand identity.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>After-Hours Installation</h3>
+              <p>We schedule installation around your business hours — typically evenings or weekends — so your store stays open. Our professional installers work cleanly and efficiently, leaving your space spotless.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 240ms">
+            <div class="swt-process__num">04</div>
+            <div class="swt-process__body">
+              <h3>Display Reconfiguration</h3>
+              <p>After installation, we help you reorganize your window displays to take full advantage of your new comfortable, UV-protected environment. Your best merchandise deserves to be seen in its best light — literally.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Retailers</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          <div class="swt-testimonial fade-in">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We had a jewelry display near the window that kept getting cloudy and tarnished within weeks. UV film completely solved it — the pieces stay pristine now. The ROI was obvious within the first month.</p>
+            <div class="swt-testimonial__author">
+              <strong>Amanda K.</strong>
+              <span>Owner, Diamonds & Dust, Manayunk</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 80ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>My boutique is small and every square foot matters. The film made the front of the store so much more comfortable that customers are actually shopping that section now. Before, they would literally walk past the window displays to get to the back.</p>
+            <div class="swt-testimonial__author">
+              <strong>Marcus J.</strong>
+              <span>Owner, Thread & Needle, South Street</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 160ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>After-hours installation was a game-changer for us. We didn't lose a single day of sales. The team was professional, fast, and left the store spotless. I was skeptical it could be that smooth — it was.</p>
+            <div class="swt-testimonial__author">
+              <strong>Patricia M.</strong>
+              <span>Store Director, lifestyle brand, King of Prussia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>transform</em> your retail space?</h2>
+          <p>Get a free consultation and thermal analysis. No obligation, no pressure — just honest advice.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-/* ── PAGE BODY WRAPPER ── */
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
 
-/* ── EYEBROW ── */
-.eyebrow {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
+  }
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
-/* ── GALLERY ── */
-.gallery-section {
-  padding: 64px 5% 0;
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.gallery-grid--bottom {
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: 16px;
-  max-width: calc(66.667% + 16px);
-}
-.gallery-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(39, 46, 50, 0.7) 0%, transparent 50%);
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.gallery-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-}
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
-}
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+  }
+  .swt-btn--ghost {
+    background: transparent;
+    color: var(--swt-green);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--ghost:hover {
+    background: var(--swt-green);
+    color: var(--swt-white);
+  }
 
-/* ── BENEFITS ── */
-.benefits {
-  padding: 80px 5% 60px;
-}
-.benefits__hd {
-  margin-bottom: 48px;
-}
-.benefits__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 0;
-}
-.benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.benefit-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 32px 28px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.benefit-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-}
-.benefit-card__icon {
-  width: 52px;
-  height: 52px;
-  background: var(--green-light, #eef4e4);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: var(--green, #81AB4C);
-}
-.benefit-card__icon svg { display: block; }
-.benefit-card__title {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  margin-bottom: 12px;
-}
-.benefit-card__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.7;
-  margin: 0;
-}
+  /* ══════════════════════════════════════
+     TRUST BAR
+     ══════════════════════════════════════ */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust__label {
+    text-align: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    margin: 0 0 20px;
+  }
 
-/* ── STATISTICS ── */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 60px 5%;
-  background: var(--brand, #272E32);
-}
-.stat-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 32px 20px;
-}
-.stat-card__value {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 6vw, 72px);
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  margin-bottom: 12px;
-}
-.stat-card__label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
+  /* ══════════════════════════════════════
+     BODY WRAPPER
+     ══════════════════════════════════════ */
+  .swt-body {
+    background: var(--swt-white);
+  }
 
-/* ── CTA SECTION ── */
-.cta-section {
-  padding: 60px 5%;
-  background: var(--brand, #272E32);
-  display: flex;
-  justify-content: center;
-}
-.cta-section__inner {
-  text-align: center;
-  max-width: 560px;
-}
-.cta-section__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.2;
-  margin: 0 0 32px;
-}
-.cta-section__actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.cta-btn {
-  display: inline-block;
-  padding: 14px 36px;
-  background: var(--green, #81AB4C);
-  color: #ffffff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 100px;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-.cta-btn:hover {
-  background: #6e9640;
-  transform: translateY(-2px);
-}
-.cta-phone {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.cta-phone:hover {
-  color: var(--green, #81AB4C);
-}
+  /* ══════════════════════════════════════
+     EYEBROW
+     ══════════════════════════════════════ */
+  .swt-eyebrow {
+    display: inline-block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green {
+    color: var(--swt-green-accent);
+  }
 
-/* ── FADE IN ── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  /* ══════════════════════════════════════
+     H2 / H3
+     ══════════════════════════════════════ */
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    color: var(--swt-dark);
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .swt-h2--light {
+    color: var(--swt-white);
+  }
+  .swt-h2--center {
+    text-align: center;
+  }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .benefits__grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid--bottom { max-width: 100%; }
-}
-@media (max-width: 768px) {
-  .benefits__grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
-  .gallery-grid--bottom { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: 1fr; gap: 16px; }
-  .stat-card { padding: 24px 20px; }
-  .cta-section__actions { flex-direction: column; gap: 16px; }
-}
+  /* ══════════════════════════════════════
+     SPLIT SECTIONS
+     ══════════════════════════════════════ */
+  .swt-split {
+    padding: 90px 0;
+  }
+  .swt-split--dark {
+    background: var(--swt-dark);
+  }
+  .swt-split--alt {
+    background: var(--swt-alt);
+  }
+  .swt-split .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .swt-split__grid--rev {
+    direction: rtl;
+  }
+  .swt-split__grid--rev > * {
+    direction: ltr;
+  }
+  .swt-split__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--swt-text-sec);
+    margin: 0 0 16px;
+  }
+  .swt-split__text p:last-child {
+    margin-bottom: 0;
+  }
+  .swt-split__img {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: visible;
+  }
+  .swt-split__img img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: var(--swt-radius);
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     PROBLEM TAGS
+     ══════════════════════════════════════ */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .swt-tag {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: var(--swt-radius);
+  }
+  .swt-tag--red {
+    background: rgba(180, 60, 60, 0.15);
+    color: #e8a0a0;
+    border: 1px solid rgba(180, 60, 60, 0.3);
+  }
+
+  /* ══════════════════════════════════════
+     IMAGE BADGE
+     ══════════════════════════════════════ */
+  .swt-img-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: var(--swt-dark);
+    color: var(--swt-white);
+    padding: 12px 18px;
+    border-radius: var(--swt-radius);
+    text-align: center;
+    line-height: 1;
+  }
+  .swt-img-badge strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--swt-green-accent);
+  }
+  .swt-img-badge span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     CHECK LIST
+     ══════════════════════════════════════ */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+  .swt-check-list li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: var(--swt-green);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L3.5 6L9 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ══════════════════════════════════════
+     ENERGY METRICS
+     ══════════════════════════════════════ */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+  }
+  .swt-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .swt-metric__num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+  }
+  .swt-metric__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════════════════════════════════════
+     INLINE QUOTE
+     ══════════════════════════════════════ */
+  .swt-inline-quote {
+    margin: 24px 0 0;
+    padding: 16px 20px;
+    border-left: 3px solid var(--swt-green);
+    background: rgba(78,107,42,0.06);
+    border-radius: 0 var(--swt-radius) var(--swt-radius) 0;
+  }
+  .swt-inline-quote p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--swt-text-sec);
+    line-height: 1.6;
+    margin: 0 0 8px;
+  }
+  .swt-inline-quote cite {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+  }
+
+  /* ══════════════════════════════════════
+     SECURITY FEATURES
+     ══════════════════════════════════════ */
+  .swt-security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .swt-security-feature {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--swt-green-accent);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 2px;
+  }
+  .swt-security-feature p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+     ══════════════════════════════════════ */
+  .swt-gallery {
+    padding: 90px 0;
+    background: var(--swt-cream);
+  }
+  .swt-gallery .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-gallery__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .swt-gallery__header .swt-eyebrow {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .swt-gallery__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: var(--swt-text-sec);
+    margin: 12px 0 0;
+  }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--swt-radius);
+    cursor: pointer;
+    animation-delay: var(--delay, 0ms);
+  }
+  .swt-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .swt-gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(42,36,30,0.85) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--swt-white);
+  }
+  .swt-gallery__item:hover img {
+    transform: scale(1.05);
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay {
+    opacity: 1;
+  }
+
+  /* ══════════════════════════════════════
+     STATS
+     ══════════════════════════════════════ */
+  .swt-stats {
+    background: var(--swt-green);
+    padding: 60px 0;
+  }
+  .swt-stats__row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    animation-delay: var(--delay, 0ms);
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .swt-stats__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ══════════════════════════════════════
+     PROCESS
+     ══════════════════════════════════════ */
+  .swt-process {
+    padding: 90px 0;
+    background: var(--swt-white);
+  }
+  .swt-process .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  .swt-process__step {
+    position: relative;
+    padding: 28px 24px;
+    border: 1px solid var(--swt-border);
+    border-radius: var(--swt-radius);
+    animation-delay: var(--delay, 0ms);
+  }
+  .swt-process__num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--swt-dark);
+    margin: 0 0 10px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--swt-text-sec);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════ */
+  .swt-testimonials {
+    padding: 90px 0;
+    background: var(--swt-dark);
+  }
+  .swt-testimonials .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 50px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--swt-radius);
+    padding: 32px;
+    position: relative;
+    animation-delay: var(--delay, 0ms);
+  }
+  .swt-testimonial__quote {
+    font-family: 'Fraunces', serif;
+    font-size: 72px;
+    line-height: 0.6;
+    color: var(--swt-green);
+    margin-bottom: 16px;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin: 0 0 20px;
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 2px;
+  }
+  .swt-testimonial__author span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ══════════════════════════════════════
+     FAQ
+     ══════════════════════════════════════ */
+  .swt-faq {
+    padding: 90px 0;
+    background: var(--swt-white);
+  }
+  .swt-faq .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .swt-faq__header .swt-eyebrow {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    line-height: 1.65;
+    margin: 16px 0 24px;
+  }
+  .swt-faq__list {
+    display: flex;
+    flex-direction: column;
+  }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-faq__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    gap: 16px;
+  }
+  .swt-faq__toggle {
+    font-size: 20px;
+    color: var(--swt-green);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .swt-faq__a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .swt-faq__a p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    line-height: 1.7;
+    padding-bottom: 20px;
+    margin: 0;
+  }
+  .swt-faq__item.is-open .swt-faq__a {
+    max-height: 300px;
+  }
+  .swt-faq__item.is-open .swt-faq__toggle {
+    transform: rotate(45deg);
+  }
+
+  /* ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ */
+  .swt-cta {
+    background: var(--swt-green);
+    padding: 80px 0;
+  }
+  .swt-cta__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    margin: 0 0 10px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .swt-cta__btns .swt-btn--primary {
+    background: var(--swt-white);
+    color: var(--swt-green);
+    border-color: var(--swt-white);
+  }
+  .swt-cta__btns .swt-btn--primary:hover {
+    background: var(--swt-cream);
+    border-color: var(--swt-cream);
+  }
+
+  /* ══════════════════════════════════════
+     FADE-IN ANIMATION
+     ══════════════════════════════════════ */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+     ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .swt-gallery__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .swt-process__steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .swt-testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 768px) {
+    .swt-split__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .swt-split__grid--rev {
+      direction: ltr;
+    }
+    .swt-gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .swt-process__steps {
+      grid-template-columns: 1fr;
+    }
+    .swt-faq__layout {
+      grid-template-columns: 1fr;
+    }
+    .swt-cta__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .swt-stats__row {
+      flex-wrap: wrap;
+    }
+    .swt-stats__div {
+      display: none;
+    }
+    .swt-stats__item {
+      flex: 0 0 50%;
+    }
+  }
 </style>
-
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-</script>
