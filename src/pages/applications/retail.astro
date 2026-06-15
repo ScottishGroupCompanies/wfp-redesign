@@ -5,35 +5,58 @@ import BrandLogos from '../../components/BrandLogos.astro';
 import { Icon } from 'astro-icon/components';
 
 const title = 'Retail Window Film in Philadelphia | Storefront UV Protection, Glare & Customer Comfort';
-const description = 'Window film for Philadelphia retail stores and restaurants: reduce glare on displays, protect merchandise from UV fading, improve customer comfort. Professional installation.';
+const description = 'Window film for Philadelphia retail stores: reduce glare on displays, protect merchandise from UV fading, improve customer comfort. Professional installation with minimal disruption.';
+
+const gallery = [
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163348_c7fe9042-5571-4cae-be7e-e5b62bc242d3.png',
+    label: 'Storefront Display',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163401_f68228ec-fe56-48e5-94f3-aa085c691e64.png',
+    label: 'UV Protection',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163912_f2b923a2-19cc-4e76-b031-f8e1a11dad3a.png',
+    label: 'Energy Savings',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163418_19954ca7-f4a4-4aab-89bb-cb193cb2249e.png',
+    label: 'Security Film',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163401_f68228ec-fe56-48e5-94f3-aa085c691e64.png',
+    label: 'Decorative Film',
+  },
+];
 
 const benefits = [
   {
     icon: 'lucide:sun',
     title: 'UV Protection',
-    body: 'Block up to 99% of harmful UV rays that cause merchandise fading, fabric degradation, and damage to products displayed near windows.',
+    body: 'Block 99% of UV rays, preventing merchandise fading and customer discomfort',
   },
   {
     icon: 'lucide:glasses',
     title: 'Glare Reduction',
-    body: 'Eliminate harsh glare on storefront windows and interior displays, creating a more comfortable shopping environment for customers.',
+    body: 'Eliminate glare on display windows and product shelves',
   },
   {
     icon: 'lucide:store',
     title: 'Brand Appearance',
-    body: 'Enhance your storefront\'s visual appeal with a clean, professional look while protecting interior aesthetics from sun damage.',
+    body: 'Custom decorative and frosted films to elevate your storefront aesthetic',
   },
   {
     icon: 'lucide:zap',
     title: 'Energy Savings',
-    body: 'Reduce cooling costs by rejecting solar heat — keeping your retail space comfortable and your energy bills lower year-round.',
+    body: 'Reduce cooling costs by up to 30%, lowering operating expenses',
   },
 ];
 
 const stats = [
   { value: '99%', label: 'UV Blocked' },
   { value: '40%', label: 'Glare Reduction' },
-  { value: '30%', label: 'Cooling Cost Savings' },
+  { value: '30%', label: 'Energy Savings' },
 ];
 ---
 
@@ -41,11 +64,37 @@ const stats = [
 
 <InnerPageHero
   title="Retail Window Film"
-  desc="Protect merchandise · Reduce glare · Customer comfort"
+  desc="Protect Merchandise · Reduce Glare · Customer Comfort"
   bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161459_a9669100-320a-4c7d-a59b-ced3fb335c53.png"
 />
 
 <div class="ip-page-body">
+
+  <!-- ══════════════════════════════════════
+       IMAGE GALLERY — 3+2 grid
+       ══════════════════════════════════════ -->
+  <section class="gallery-section">
+    <div class="gallery-grid">
+      {gallery.slice(0, 3).map((img) => (
+        <div class="gallery-item fade-in">
+          <img src={img.src} alt={img.label} loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">{img.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="gallery-grid gallery-grid--bottom">
+      {gallery.slice(3).map((img) => (
+        <div class="gallery-item fade-in">
+          <img src={img.src} alt={img.label} loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">{img.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
   <!-- ══════════════════════════════════════
        BENEFITS SECTION
@@ -69,17 +118,6 @@ const stats = [
   </section>
 
   <!-- ══════════════════════════════════════
-       WHY RETAIL SECTION
-       ══════════════════════════════════════ -->
-  <section class="why-retail">
-    <div class="why-retail__inner">
-      <span class="eyebrow">For Philadelphia Retailers</span>
-      <h2 class="why-retail__title">Why retailers choose window film</h2>
-      <p class="why-retail__lead">Philadelphia's retail environment demands both aesthetic appeal and practical protection. Window film delivers both — shielding your merchandise from UV fading while creating a more comfortable, inviting space for customers. Whether you run a boutique in Old City, a restaurant in Fishtown, or a storefront on South Street, professional window film installation keeps your products looking great and your customers coming back.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
        STATISTICS ROW
        ══════════════════════════════════════ -->
   <section class="stats-row">
@@ -96,9 +134,11 @@ const stats = [
        ══════════════════════════════════════ -->
   <section class="cta-section">
     <div class="cta-section__inner">
-      <h2 class="cta-section__title">Ready to protect your storefront?</h2>
-      <p class="cta-section__sub">Get a free consultation and quote for your Philadelphia retail space.</p>
-      <a href="/contact/" class="cta-btn">Get a Free Quote</a>
+      <h2 class="cta-section__title">Ready to upgrade your storefront?</h2>
+      <div class="cta-section__actions">
+        <a href="/contact/" class="cta-btn">Get a Free Quote</a>
+        <a href="tel:+12155551234" class="cta-phone">(215) 555-1234</a>
+      </div>
     </div>
   </section>
 
@@ -138,6 +178,57 @@ const stats = [
   margin-bottom: 16px;
 }
 
+/* ── GALLERY ── */
+.gallery-section {
+  padding: 64px 5% 0;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-grid--bottom {
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 16px;
+  max-width: calc(66.667% + 16px);
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(39, 46, 50, 0.7) 0%, transparent 50%);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
 /* ── BENEFITS ── */
 .benefits {
   padding: 80px 5% 60px;
@@ -171,10 +262,15 @@ const stats = [
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 .benefit-card__icon {
-  color: var(--green, #81AB4C);
-  margin-bottom: 20px;
+  width: 52px;
+  height: 52px;
+  background: var(--green-light, #eef4e4);
+  border-radius: 12px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--green, #81AB4C);
 }
 .benefit-card__icon svg { display: block; }
 .benefit-card__title {
@@ -189,31 +285,6 @@ const stats = [
   font-size: 14px;
   color: var(--text-mid, #4a4a4a);
   line-height: 1.7;
-  margin: 0;
-}
-
-/* ── WHY RETAIL ── */
-.why-retail {
-  padding: 60px 5%;
-  background: var(--off-white, #F7F6F3);
-}
-.why-retail__inner {
-  max-width: 720px;
-}
-.why-retail__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 0 0 20px;
-}
-.why-retail__lead {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.8;
   margin: 0;
 }
 
@@ -266,14 +337,14 @@ const stats = [
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
-  margin: 0 0 16px;
-}
-.cta-section__sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
   margin: 0 0 32px;
-  line-height: 1.6;
+}
+.cta-section__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 .cta-btn {
   display: inline-block;
@@ -291,6 +362,17 @@ const stats = [
   background: #6e9640;
   transform: translateY(-2px);
 }
+.cta-phone {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.cta-phone:hover {
+  color: var(--green, #81AB4C);
+}
 
 /* ── FADE IN ── */
 .fade-in {
@@ -306,12 +388,16 @@ const stats = [
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .benefits__grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid--bottom { max-width: 100%; }
 }
 @media (max-width: 768px) {
   .benefits__grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid--bottom { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: 1fr; gap: 16px; }
   .stat-card { padding: 24px 20px; }
+  .cta-section__actions { flex-direction: column; gap: 16px; }
 }
 </style>
 
