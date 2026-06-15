@@ -5,48 +5,96 @@ import BrandLogos from '../../components/BrandLogos.astro';
 import { Icon } from 'astro-icon/components';
 
 const title = 'Arena & Stadium Window Film in Philadelphia | Safety, UV & Glare for Sports Venues';
-const description = 'Window film for Philadelphia arenas and stadiums: safety and security film, UV protection, glare reduction. Keep fans comfortable and buildings secure.';
+const description = 'Window film for Philadelphia arenas and stadiums: safety and security film, UV protection, glare reduction. Keep fans comfortable and buildings secure at any scale.';
+
+const gallery = [
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163916_8e68f6c9-9c0b-4c70-b195-d9da467839b1.png',
+    label: 'Arena Safety',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163920_10944058-a5bb-4715-9381-3261c2c364f0.png',
+    label: 'Security Film',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163920_10944058-a5bb-4715-9381-3261c2c364f0.png',
+    label: 'VIP Suites',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163923_764fdb8a-ab16-49ca-95c8-2905c140937e.png',
+    label: 'UV Protection',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163924_0b743798-4037-4b8a-903d-e83f051875d0.png',
+    label: 'Fan Comfort',
+  },
+];
 
 const benefits = [
   {
     icon: 'lucide:shield-check',
     title: 'Safety & Security',
-    body: 'Security window film holds shattered glass in place, protecting fans and staff from injury during impacts, storms, or vandalism. Essential for high-occupancy venues.',
+    body: 'Hold glass together on impact, protecting thousands of fans from injury',
   },
   {
     icon: 'lucide:sun',
     title: 'UV Protection',
-    body: 'Block up to 99% of harmful UV rays, protecting fans, players, and staff from sun exposure while reducing fabric and upholstery fading in your venue.',
+    body: 'Block 99% of harmful UV rays in seating areas and suites',
   },
   {
     icon: 'lucide:glasses',
     title: 'Glare Reduction',
-    body: 'Eliminate harsh glare on scoreboards, concourse displays, and seating areas, creating a more comfortable and visually clear experience for everyone.',
+    body: 'Eliminate sun glare through roof panels and glass facades',
   },
   {
     icon: 'lucide:zap',
     title: 'Energy Efficiency',
-    body: 'Reduce solar heat gain through expansive glass facades, lowering HVAC costs and creating consistent indoor temperatures across all seating zones.',
+    body: 'Reduce arena cooling costs with heat-rejecting film on glass',
   },
 ];
 
 const stats = [
+  { value: '10,000+', label: 'Fans Protected Per Venue' },
   { value: '99%', label: 'UV Blocked' },
-  { value: '40%', label: 'Heat Reduction' },
-  { value: '3–5 yr', label: 'ROI Timeline' },
+  { value: '16+', label: 'Years Experience' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/" serviceName="Arena & Stadium Window Film" serviceDesc="Window film for Philadelphia arenas and stadiums: safety and security film, UV protection, glare reduction. Keep fans comfortable and buildings secure." serviceUrl="https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/">
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/" serviceName="Arena & Stadium Window Film" serviceDesc={description} serviceUrl="https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/">
 
 <InnerPageHero
   title="Arena & Stadium Window Film"
   bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161502_42844d1e-6f6a-4636-ae2c-cd6cb623280b.png"
-  desc="Safety · UV protection · Fan comfort"
+  desc="Safety · UV Protection · Fan Comfort"
 />
 
 <div class="ip-page-body">
 
+  <!-- Image Gallery -->
+  <section class="gallery">
+    <div class="gallery__row gallery__row--top">
+      {gallery.slice(0, 3).map((img) => (
+        <div class="gallery__item fade-in">
+          <img src={img.src} alt={img.label} class="gallery__img" loading="lazy" />
+          <div class="gallery__overlay">
+            <span class="gallery__label">{img.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="gallery__row gallery__row--bottom">
+      {gallery.slice(3).map((img) => (
+        <div class="gallery__item fade-in">
+          <img src={img.src} alt={img.label} class="gallery__img" loading="lazy" />
+          <div class="gallery__overlay">
+            <span class="gallery__label">{img.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
   <section class="benefits">
     <div class="benefits__hd">
       <span class="eyebrow">Key Benefits</span>
@@ -65,12 +113,7 @@ const stats = [
     </div>
   </section>
 
-  <section class="why-arenas">
-    <span class="eyebrow">For Large Venues</span>
-    <h2 class="why-arenas__title">Built for the scale and demands of major sports venues</h2>
-    <p class="why-arenas__lead">Philadelphia's arenas and stadiums face unique challenges: massive glass facades, thousands of daily visitors, and constant exposure to the elements. Window film provides a cost-effective, passive solution that enhances safety, comfort, and energy performance — without the cost or disruption of full glass replacement. From solar control for fan comfort to security film for blast mitigation, our films are engineered for large-scale commercial applications.</p>
-  </section>
-
+  <!-- Statistics Row -->
   <section class="stats">
     <div class="stats__inner">
       {stats.map((s) => (
@@ -84,13 +127,17 @@ const stats = [
 
   <BrandLogos />
 
+  <!-- CTA Section -->
   <section class="cta">
     <div class="cta__inner">
       <div class="cta__content">
         <h2 class="cta__title">Ready to protect your venue?</h2>
         <p class="cta__sub">Get a free on-site consultation and quote for your arena or stadium.</p>
       </div>
-      <a href="/contact/" class="cta__btn">Get a Free Quote</a>
+      <div class="cta__actions">
+        <a href="/contact/" class="cta__btn">Get a Free Quote</a>
+        <a href="tel:+12158885555" class="cta__phone">(215) 888-5555</a>
+      </div>
     </div>
   </section>
 
@@ -112,6 +159,68 @@ const stats = [
   padding-bottom: 80px;
 }
 
+/* Gallery */
+.gallery {
+  padding: 80px 10% 0;
+}
+
+.gallery__row {
+  display: grid;
+  gap: 20px;
+}
+
+.gallery__row--top {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery__row--bottom {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: calc(66.667% + 40px);
+  margin-top: 20px;
+}
+
+.gallery__item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(39, 46, 50, 0.75) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery__item:hover .gallery__overlay {
+  opacity: 1;
+}
+
+.gallery__item:hover .gallery__img {
+  transform: scale(1.04);
+}
+
+.gallery__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Benefits */
 .eyebrow {
   display: inline-block;
   font-family: var(--font-body, 'DM Sans', sans-serif);
@@ -126,8 +235,6 @@ const stats = [
 .benefits {
   padding: 100px 10%;
   background: var(--off-white, #F7F6F3);
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
 }
 
 .benefits__hd {
@@ -192,32 +299,7 @@ const stats = [
   margin: 0;
 }
 
-.why-arenas {
-  padding: 100px 10%;
-  background: #ffffff;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.why-arenas__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0 0 28px;
-}
-
-.why-arenas__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.8;
-  margin: 0;
-}
-
+/* Stats */
 .stats {
   padding: 80px 10%;
   background: var(--brand, #272E32);
@@ -252,6 +334,7 @@ const stats = [
   letter-spacing: 1px;
 }
 
+/* CTA */
 .cta {
   padding: 80px 10%;
   background: var(--brand, #272E32);
@@ -284,6 +367,13 @@ const stats = [
   margin: 0;
 }
 
+.cta__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
 .cta__btn {
   display: inline-block;
   padding: 16px 36px;
@@ -297,13 +387,25 @@ const stats = [
   border: 2px solid var(--green, #81AB4C);
   transition: all 0.2s;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .cta__btn:hover {
   background: #6e9640;
   border-color: #6e9640;
   transform: translateY(-2px);
+}
+
+.cta__phone {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cta__phone:hover {
+  color: var(--green, #81AB4C);
 }
 
 .fade-in {
@@ -321,16 +423,25 @@ const stats = [
   .benefits__grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .stats__inner {
+  .gallery__row--top {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery__row--bottom {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  .benefits {
-    padding: 60px 5%;
+  .gallery {
+    padding: 60px 5% 0;
   }
-  .why-arenas {
+  .gallery__row--top {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery__row--bottom {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .benefits {
     padding: 60px 5%;
   }
   .stats {
@@ -349,15 +460,24 @@ const stats = [
     flex-direction: column;
     text-align: center;
   }
+  .cta__actions {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
   .cta__btn {
     width: 100%;
-    justify-content: center;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .benefits__grid {
     grid-template-columns: 1fr;
+  }
+  .gallery__row--top,
+  .gallery__row--bottom {
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>
