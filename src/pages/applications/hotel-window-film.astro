@@ -2,62 +2,64 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
 const title = 'Hotel Window Film in Philadelphia | Guest Comfort, Energy Savings & Privacy';
-const description = 'Window film for Philadelphia hotels and hospitality: reduce energy costs, protect furnishings from UV fading, enhance guest privacy.';
+const description = 'Window film for Philadelphia hotels and hospitality: reduce energy costs, protect furnishings from UV fading, enhance guest privacy. Luxury look, professional installation.';
 
-const benefits = [
+const gallery = [
   {
-    icon: 'lucide:sun',
-    title: 'UV Protection',
-    body: 'Block up to 99% of harmful UV rays to protect guests, staff, and interiors from sun damage while extending the life of furnishings and artwork.',
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163338_97d1e02a-3bf3-4ae4-a436-199ae46d8b17.png',
+    label: 'Guest Room Comfort',
   },
   {
-    icon: 'lucide:zap',
-    title: 'Energy Efficiency',
-    body: 'Reduce HVAC costs by up to 30% with solar control films that reject heat in summer and retain warmth in winter — year-round savings.',
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163341_bdd5ec56-1d62-4d32-857d-06179e31d16b.png',
+    label: 'Energy Savings',
   },
   {
-    icon: 'lucide:eye-off',
-    title: 'Guest Privacy',
-    body: 'Give guests the privacy they expect without sacrificing natural light. Ideal for ground-floor rooms, balconies, and common areas.',
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163344_ac6c6e0d-3ed1-4900-a641-d836da40ba67.png',
+    label: 'Privacy',
   },
   {
-    icon: 'lucide:sparkles',
-    title: 'Aesthetic Appeal',
-    body: 'Modernize your property\'s exterior and interior with decorative and architectural films that elevate the guest experience.',
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163348_450f2fd8-2333-42dd-928f-9775a84e2391.png',
+    label: 'UV Protection',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163351_c7fe9042-5571-4cae-be7e-e5b62bc242d3.png',
+    label: 'Furnishing Protection',
   },
 ];
 
-const whyItems = [
+const benefits = [
   {
-    icon: 'lucide:shield-check',
-    title: 'Minimize Disruption',
-    sub: 'Our team schedules work around your operations — often floor-by-floor, during off-peak hours — so your property stays open.',
+    title: 'UV Protection',
+    body: 'Block 99% of UV rays, protecting furniture, carpets and artwork from fading.',
+    stat: '99%',
+    statLabel: 'UV Blocked',
   },
   {
-    icon: 'lucide:thermometer',
-    title: 'Consistent Comfort',
-    sub: 'Eliminate hot and cold spots near windows. Every guest room stays comfortable regardless of sun exposure or floor level.',
+    title: 'Energy Efficiency',
+    body: 'Reduce HVAC costs by up to 30% with heat-rejecting film.',
+    stat: '30%',
+    statLabel: 'Energy Saved',
   },
   {
-    icon: 'lucide:trending-down',
-    title: 'Fast ROI',
-    sub: 'Most hospitality properties see full payback within 3–5 years through reduced energy bills and extended furniture replacement cycles.',
+    title: 'Privacy',
+    body: 'One-way mirror and frosted film options for guest privacy.',
+    stat: '100%',
+    statLabel: 'Privacy Options',
   },
   {
-    icon: 'lucide:palette',
-    title: 'Custom Aesthetics',
-    sub: 'From frosted lobby panels to branded conference room graphics — decorative films refresh spaces without construction or replacement.',
+    title: 'Guest Comfort',
+    body: 'Consistent room temperature, no hot or cold spots near windows.',
+    stat: '86°F',
+    statLabel: 'Heat Reduced',
   },
 ];
 
 const stats = [
-  { value: '99%', label: 'UV Rejected' },
-  { value: '30%', label: 'Energy Cost Reduction' },
-  { value: '3–5 yrs', label: 'Average ROI' },
-  { value: '15+', label: 'Years Serving Philly' },
+  { value: '86°F', label: 'Heat Reduction' },
+  { value: '30%', label: 'Energy Savings' },
+  { value: '5-Star', label: 'Reviews' },
 ];
 ---
 
@@ -72,13 +74,39 @@ const stats = [
 
 <InnerPageHero
   title="Hotel &amp; Hospitality Window Film"
-  desc="Guest comfort · Energy savings · UV protection"
+  desc="Guest Comfort · Energy Savings · UV Protection"
   bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161451_ddf5ce59-4e3d-408b-8d0c-87182d748e11.png"
 />
 
 <div class="ip-page-body">
 
-  <!-- Benefits Section -->
+  <!-- ── Gallery Section ── -->
+  <section class="sec-gallery">
+    <div class="sec-gallery__inner">
+      <div class="gallery-grid">
+        {gallery.slice(0, 3).map((item) => (
+          <div class="gallery-item fade-in">
+            <img src={item.src} alt={item.label} loading="lazy" />
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__label">{item.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="gallery-row-two">
+        {gallery.slice(3).map((item) => (
+          <div class="gallery-item fade-in">
+            <img src={item.src} alt={item.label} loading="lazy" />
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__label">{item.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Benefits Section ── -->
   <section class="sec-benefits">
     <div class="sec-benefits__inner">
       <div class="sec-hd">
@@ -90,8 +118,15 @@ const stats = [
         {benefits.map((b) => (
           <div class="benefit-card fade-in">
             <div class="benefit-card__icon">
-              <Icon name={b.icon} width="28" height="28" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                {b.title === 'UV Protection' && <path d="M12 2v8m0 12v.01M2 12h8m12 0h-8"/>}
+                {b.title === 'Energy Efficiency' && <><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></>}
+                {b.title === 'Privacy' && <><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></>}
+                {b.title === 'Guest Comfort' && <><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></>}
+              </svg>
             </div>
+            <div class="benefit-card__stat">{b.stat}</div>
+            <div class="benefit-card__stat-label">{b.statLabel}</div>
             <h3 class="benefit-card__title">{b.title}</h3>
             <p class="benefit-card__body">{b.body}</p>
           </div>
@@ -100,30 +135,7 @@ const stats = [
     </div>
   </section>
 
-  <!-- Why Hospitality Section -->
-  <section class="sec-why-hosp">
-    <div class="sec-why-hosp__inner">
-      <div class="sec-hd">
-        <span class="eyebrow">Built for Hospitality</span>
-        <h2 class="sec-title sec-title--light">Window film solutions that respect your property</h2>
-        <p class="sec-lead sec-lead--light">We understand that hotels and resorts operate on tight schedules and demand minimal disruption. Our team has installed window film in hundreds of active hospitality properties across the Philadelphia region.</p>
-      </div>
-      <div class="why-grid">
-        {whyItems.map((item) => (
-          <div class="why-item fade-in">
-            <div class="why-item__icon">
-              <Icon name={item.icon} width="24" height="24" />
-            </div>
-            <div class="why-item__divider"></div>
-            <h4 class="why-item__title">{item.title}</h4>
-            <p class="why-item__sub">{item.sub}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Statistics Row -->
+  <!-- ── Statistics Row ── -->
   <section class="sec-stats">
     <div class="sec-stats__inner">
       {stats.map((s) => (
@@ -135,17 +147,17 @@ const stats = [
     </div>
   </section>
 
-  <!-- Brand Logos -->
+  <!-- ── Brand Logos ── -->
   <BrandLogos />
 
-  <!-- CTA Section -->
+  <!-- ── CTA Section ── -->
   <section class="sec-cta">
     <div class="sec-cta__inner">
       <h2 class="sec-cta__title">Ready to upgrade your property?</h2>
       <p class="sec-cta__sub">Get a free consultation and see how window film can transform your Philadelphia hotel.</p>
       <div class="sec-cta__btns">
         <a href="/contact/" class="btn btn--green">Get a Free Quote</a>
-        <a href="tel:+12673947980" class="btn btn--outline">Call (267) 394-7980</a>
+        <a href="tel:+1267****7980" class="btn btn--outline">Call (267) 394-7980</a>
       </div>
     </div>
   </section>
@@ -155,7 +167,7 @@ const stats = [
 </BaseLayout>
 
 <style>
-/* ── Global page wrapper ── */
+/* ── Page body wrapper ── */
 .ip-page-body {
   position: relative;
   background: var(--off-white, #F7F6F3);
@@ -167,6 +179,74 @@ const stats = [
   z-index: 10;
   overflow: visible;
   padding-bottom: 0;
+}
+
+/* ── Gallery Section ── */
+.sec-gallery {
+  padding: 64px 5% 0;
+  background: var(--off-white, #F7F6F3);
+}
+.sec-gallery__inner { max-width: 1200px; margin: 0 auto; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gallery-row-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  max-width: calc(66.667% - 8px);
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+  display: block;
+}
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+.gallery-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(39, 46, 50, 0.65) 0%,
+    rgba(39, 46, 50, 0.1) 50%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  transition: background 0.35s ease;
+}
+.gallery-item:hover .gallery-item__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(39, 46, 50, 0.8) 0%,
+    rgba(39, 46, 50, 0.25) 60%,
+    transparent 100%
+  );
+}
+.gallery-item__label {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
 }
 
 /* ── Shared typography ── */
@@ -193,7 +273,6 @@ const stats = [
   color: var(--text-dark, #1a1a1a);
   margin: 0 0 16px;
 }
-.sec-title--light { color: #ffffff; }
 .sec-lead {
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 17px;
@@ -202,7 +281,6 @@ const stats = [
   max-width: 620px;
   margin: 0 auto;
 }
-.sec-lead--light { color: rgba(255,255,255,0.65); }
 
 /* ── Benefits Section ── */
 .sec-benefits {
@@ -210,6 +288,7 @@ const stats = [
   background: #ffffff;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
+  margin-top: 48px;
 }
 .sec-benefits__inner { max-width: 1200px; margin: 0 auto; }
 
@@ -226,20 +305,39 @@ const stats = [
   box-shadow: 0 4px 24px rgba(39, 46, 50, 0.08), 0 1px 4px rgba(39, 46, 50, 0.04);
   border: 1px solid rgba(39, 46, 50, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
 }
 .benefit-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(39, 46, 50, 0.12), 0 2px 8px rgba(39, 46, 50, 0.06);
 }
 .benefit-card__icon {
-  width: 52px;
-  height: 52px;
-  background: var(--green-light, #eef4e4);
+  width: 56px;
+  height: 56px;
+  background: var(--green, #81AB4C);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
+  margin: 0 auto 20px;
+}
+.benefit-card__stat {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 40px;
+  font-weight: 700;
   color: var(--green, #81AB4C);
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+.benefit-card__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-light, #888888);
   margin-bottom: 20px;
 }
 .benefit-card__title {
@@ -258,78 +356,32 @@ const stats = [
   margin: 0;
 }
 
-/* ── Why Hospitality Section ── */
-.sec-why-hosp {
-  background: var(--brand, #272E32);
-  padding: 90px 5%;
-}
-.sec-why-hosp__inner { max-width: 1200px; margin: 0 auto; }
-
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-.why-item {
-  padding: 36px 28px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.why-item:nth-child(4n) { border-right: none; }
-.why-item:nth-child(n+5) { border-bottom: none; }
-.why-item__icon {
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-}
-.why-item__divider {
-  width: 28px;
-  height: 2px;
-  background: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.why-item__title {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 8px;
-}
-.why-item__sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.6;
-  margin: 0;
-}
-
 /* ── Statistics Section ── */
 .sec-stats {
-  background: var(--off-white, #F7F6F3);
+  background: var(--brand, #272E32);
   padding: 80px 5%;
 }
 .sec-stats__inner {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
+  text-align: center;
 }
 .stat-item {
-  text-align: center;
-  padding: 0 24px;
-  border-right: 1px solid rgba(39, 46, 50, 0.1);
+  padding: 0 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 .stat-item:last-child { border-right: none; }
 .stat-item__value {
   display: block;
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(48px, 5vw, 72px);
   font-weight: 700;
   color: var(--green, #81AB4C);
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   letter-spacing: -2px;
 }
 .stat-item__label {
@@ -337,16 +389,16 @@ const stats = [
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-mid, #4a4a4a);
+  color: rgba(255, 255, 255, 0.55);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
 /* ── CTA Section ── */
 .sec-cta {
   background: var(--brand, #272E32);
   border-radius: 40px;
-  margin: 0 5%;
+  margin: 0 5% 80px;
   padding: 72px 60px;
 }
 .sec-cta__inner { text-align: center; max-width: 640px; margin: 0 auto; }
@@ -362,7 +414,7 @@ const stats = [
 .sec-cta__sub {
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 17px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   margin: 0 0 36px;
   line-height: 1.6;
 }
@@ -395,7 +447,7 @@ const stats = [
 .btn--outline {
   background: transparent;
   color: #ffffff;
-  border-color: rgba(255,255,255,0.35);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 .btn--outline:hover {
   border-color: #ffffff;
@@ -417,23 +469,21 @@ const stats = [
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  .why-grid { grid-template-columns: repeat(2, 1fr); }
-  .why-item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.08); }
-  .why-item:nth-child(2n) { border-right: none; }
-  .why-item:nth-child(n+5) { border-bottom: none; }
-  .sec-stats__inner { grid-template-columns: repeat(2, 1fr); gap: 40px 0; }
-  .stat-item:nth-child(2n) { border-right: none; }
-  .stat-item:nth-child(n+3) { border-bottom: none; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-row-two { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+  .sec-stats__inner { grid-template-columns: repeat(3, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
 }
 @media (max-width: 768px) {
-  .sec-benefits { padding: 60px 5% 70px; }
-  .sec-why-hosp { padding: 60px 5%; }
-  .sec-stats { padding: 60px 5%; }
+  .sec-gallery { padding: 48px 5% 0; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-row-two { grid-template-columns: repeat(2, 1fr); }
+  .sec-benefits { padding: 60px 5% 70px; margin-top: 32px; }
   .benefits-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .why-item { border-right: none !important; }
-  .sec-stats__inner { grid-template-columns: repeat(2, 1fr); }
-  .sec-cta { margin: 0 3%; padding: 48px 28px; }
+  .sec-stats { padding: 60px 5%; }
+  .sec-stats__inner { grid-template-columns: 1fr; gap: 40px 0; }
+  .stat-item { border-right: none !important; padding: 0; }
+  .sec-cta { margin: 0 3% 60px; padding: 48px 28px; }
   .sec-cta__btns { flex-direction: column; width: 100%; }
   .sec-cta__btns .btn { width: 100%; text-align: center; }
 }
