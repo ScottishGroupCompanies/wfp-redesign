@@ -1,48 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BackAndForthSection from '../components/BackAndForthSection.astro';
+import InnerPageHero from '../components/InnerPageHero.astro';
 import BrandLogos from '../components/BrandLogos.astro';
 import CTAStrip from '../components/CTAStrip.astro';
 
-const title = 'Installation Process | Window Film Philadelphia | Auron Solar Style';
-const description = 'Step-by-step window film installation process in Philadelphia — consultation, prep, precision application, and final inspection. Free consultation available.';
+const title = 'Our Process | Free Consultation to Professional Installation | Philadelphia';
+const description = 'See how Scottish Window Film handles your project: free consultation, expert measurement, professional installation, and quality guarantee.';
 
-const steps = [
+const heroImage = 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_154522_89e9101b-2c5e-4f46-8dd7-062eea44f9c4.png';
+
+const processSteps = [
   {
-    heading: 'Step One: Free Consultation & Window Assessment',
-    body: 'We begin every project with a thorough, no-obligation consultation. Our window film specialists assess your glass surfaces, discuss your goals — whether it\'s energy savings, UV protection, privacy, safety, or aesthetics — and recommend the ideal film solution for your property. Same-day quotes are available.',
-    imageSrc: '/images/2021-10-window-film-process-philadelphia.jpg',
-    imageAlt: 'Window film consultation Philadelphia',
+    num: '01',
+    title: 'Free Consultation',
+    desc: 'We assess your windows, discuss your goals, and provide a detailed quote — all at no obligation.',
   },
   {
-    heading: 'Step Two: Precise Measurement & Custom Film Cutting',
-    body: 'Accurate measurements are critical for a flawless fit. Our technicians measure every window pane individually and custom-cut the film to exact dimensions, minimizing waste and ensuring seamless edges. Each panel is labeled for efficient installation.',
-    imageSrc: '/images/2021-10-window-film-measurement-philadelphia.jpg',
-    imageAlt: 'Window film measurement Philadelphia',
+    num: '02',
+    title: 'Expert Measurement',
+    desc: 'Every pane is measured precisely so film is custom-cut for a flawless fit with zero waste.',
   },
   {
-    heading: 'Step Three: Professional Glass Preparation',
-    body: 'Proper adhesion starts with a perfectly clean surface. Our installers thoroughly clean the glass using specialized razor blades, squeegees, and pH-balanced cleaning solutions to remove all dirt, residue, and contaminants. This step is the foundation of a long-lasting bond.',
-    imageSrc: '/images/2021-10-window-film-preparation-philadelphia.jpg',
-    imageAlt: 'Window film preparation Philadelphia',
+    num: '03',
+    title: 'Professional Installation',
+    desc: 'Certified installers prep the glass and apply film with care, working out all air and water.',
   },
   {
-    heading: 'Step Four: Precision Film Application',
-    body: 'Using slip solution to position the film correctly, our trained installers apply the film with care, working out air bubbles and water from the center outward. For exterior films or high-exposure applications, we apply C-Bond adhesion technology for faster cure times and superior bond strength.',
-    imageSrc: '/images/2021-10-window-film-installation-philadelphia.jpg',
-    imageAlt: 'Window film installation Philadelphia',
-  },
-  {
-    heading: 'Step Five: Edge Sealing & Quality Inspection',
-    body: 'Once the film is positioned, we perform a meticulous edge-sealing process to lock in the bond and prevent moisture infiltration. Every installation undergoes a multi-point quality inspection to verify clarity, adhesion, and a flawless finish before we consider the job complete.',
-    imageSrc: '/images/2021-10-window-film-edge-sealing-philadelphia.jpg',
-    imageAlt: 'Window film edge sealing Philadelphia',
-  },
-  {
-    heading: 'Step Six: Final Walkthrough & Care Instructions',
-    body: 'We conclude every project with a full walkthrough, demonstrating how to care for your new window film and answering any questions. Important: do not clean your window film for 30 days after installation to allow the adhesive to fully cure. We also review your manufacturer warranty coverage.',
-    imageSrc: '/images/2021-10-window-film-final-inspection-philadelphia.jpg',
-    imageAlt: 'Window film final inspection Philadelphia',
+    num: '04',
+    title: 'Quality Guarantee',
+    desc: 'Multi-point inspection, edge sealing, and a full walkthrough with care instructions and warranty.',
   },
 ];
 
@@ -79,246 +65,518 @@ const faqs = [
 ---
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/process/'>
+  <InnerPageHero
+    title="How It Works"
+    bgImage={heroImage}
+    desc="Simple process · Expert execution · Guaranteed results"
+  />
 
-  <!-- Hero -->
-  <section class="page-hero" style="background-image: linear-gradient(rgba(30,30,30,0.72), rgba(30,30,30,0.82)), url('/images/2021-10-window-film-process-philadelphia.jpg'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1>Our Installation Process</h1>
-      <p>A transparent, six-step approach — from initial consultation to final walkthrough. Philadelphia's most trusted window film experts, delivering precision results every time.</p>
-    </div>
-  </section>
+  <div class="ip-page-body">
 
-  <!-- Process Overview Strip -->
-  <section class="process-strip">
-    <div class="container">
-      <div class="process-strip__grid">
-        <div class="process-strip__item">
-          <span class="process-strip__num">01</span>
-          <span class="process-strip__label">Consultation</span>
-        </div>
-        <div class="process-strip__sep">→</div>
-        <div class="process-strip__item">
-          <span class="process-strip__num">02</span>
-          <span class="process-strip__label">Measurement</span>
-        </div>
-        <div class="process-strip__sep">→</div>
-        <div class="process-strip__item">
-          <span class="process-strip__num">03</span>
-          <span class="process-strip__label">Preparation</span>
-        </div>
-        <div class="process-strip__sep">→</div>
-        <div class="process-strip__item">
-          <span class="process-strip__num">04</span>
-          <span class="process-strip__label">Application</span>
-        </div>
-        <div class="process-strip__sep">→</div>
-        <div class="process-strip__item">
-          <span class="process-strip__num">05</span>
-          <span class="process-strip__label">Inspection</span>
-        </div>
-        <div class="process-strip__sep">→</div>
-        <div class="process-strip__item">
-          <span class="process-strip__num">06</span>
-          <span class="process-strip__label">Walkthrough</span>
+    <!-- ── Process Steps Strip ── -->
+    <section class="steps-section">
+      <div class="steps-container">
+        <div class="steps-track">
+          {processSteps.map((step, i) => (
+            <div class="step-item">
+              <div class="step-num">{step.num}</div>
+              <div class="step-body">
+                <h3 class="step-title">{step.title}</h3>
+                <p class="step-desc">{step.desc}</p>
+              </div>
+              {i < processSteps.length - 1 && <div class="step-connector" />}
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 6 Installation Steps -->
-  <BackAndForthSection
-    heading={steps[0].heading}
-    body={steps[0].body}
-    imageSrc={steps[0].imageSrc}
-    imageAlt={steps[0].imageAlt}
-    flip={false}
-    altBg={false}
-  />
+    <!-- ── Process Detail Cards ── -->
+    <section class="process-detail">
+      <div class="container">
+        <div class="process-detail__grid">
+          {processSteps.map((step, i) => (
+            <div class="process-card">
+              <div class="process-card__num">{step.num}</div>
+              <h3 class="process-card__title">{step.title}</h3>
+              <p class="process-card__desc">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-  <BackAndForthSection
-    heading={steps[1].heading}
-    body={steps[1].body}
-    imageSrc={steps[1].imageSrc}
-    imageAlt={steps[1].imageAlt}
-    flip={true}
-    altBg={true}
-  />
-
-  <BackAndForthSection
-    heading={steps[2].heading}
-    body={steps[2].body}
-    imageSrc={steps[2].imageSrc}
-    imageAlt={steps[2].imageAlt}
-    flip={false}
-    altBg={false}
-  />
-
-  <BackAndForthSection
-    heading={steps[3].heading}
-    body={steps[3].body}
-    imageSrc={steps[3].imageSrc}
-    imageAlt={steps[3].imageAlt}
-    flip={true}
-    altBg={true}
-  />
-
-  <BackAndForthSection
-    heading={steps[4].heading}
-    body={steps[4].body}
-    imageSrc={steps[4].imageSrc}
-    imageAlt={steps[4].imageAlt}
-    flip={false}
-    altBg={false}
-  />
-
-  <BackAndForthSection
-    heading={steps[5].heading}
-    body={steps[5].body}
-    imageSrc={steps[5].imageSrc}
-    imageAlt={steps[5].imageAlt}
-    flip={true}
-    altBg={true}
-  />
-
-  <!-- FAQ Section -->
-  <section class="section-pad faq-section">
-    <div class="container">
-      <h2 class="faq-section__title">Frequently Asked Questions — Window Film Installation</h2>
-      <div class="faq-list">
-        {faqs.map((item) => (
-          <div class="faq-item">
-            <h3>{item.q}</h3>
-            <p>{item.a}</p>
+    <!-- ── Trust Banner ── -->
+    <section class="trust-banner">
+      <div class="container">
+        <div class="trust-banner__inner">
+          <div class="trust-banner__text">
+            <h2>Philadelphia's Trusted Window Film Experts</h2>
+            <p>From first call to final walkthrough, our certified team delivers precision results on every project — residential or commercial.</p>
           </div>
-        ))}
+          <div class="trust-banner__actions">
+            <a href="/contact/" class="btn btn--primary">Schedule Free Consultation</a>
+            <a href="tel:2150000000" class="btn btn--outline">Call Us Today</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Trust CTA -->
-  <BackAndForthSection
-    heading={"Work With Philadelphia's Trusted Window Film Installation Experts"}
-    body={"Window Film Philadelphia's certified installation team brings precision, professionalism, and deep product knowledge to every project — residential or commercial. Whether you're upgrading a single window or outfitting an entire building, we deliver solutions with a great ROI and award-winning customer service. Contact us today to schedule your free consultation."}
-    imageSrc={'/images/2021-10-llumar-window-film-contractor-philadelphia.jpg'}
-    imageAlt={'Window film installation experts Philadelphia'}
-    flip={false}
-    altBg={false}
-    ctaLabel={'Schedule a Free Consultation'}
-    ctaHref={'/contact/'}
-  />
+    <!-- ── FAQ Section ── -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="faq-section__title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {faqs.map((item, i) => (
+            <div class="faq-item" data-faq>
+              <button class="faq-trigger" aria-expanded="false" aria-controls={`faq-body-${i}`}>
+                <span class="faq-q">{item.q}</span>
+                <span class="faq-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-body" id={`faq-body-${i}`} hidden>
+                <p>{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-  <BrandLogos />
-  <CTAStrip />
+    <BrandLogos />
+    <CTAStrip />
 
+  </div>
 </BaseLayout>
 
 <style>
-/* ============================================================
-   Process Strip — numbered step indicator
-   ============================================================ */
-.process-strip {
-  background: var(--color-charcoal, #2c2c2c);
-  padding: 2.5rem var(--section-pad-x);
-}
-
-.process-strip__grid {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.process-strip__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.process-strip__num {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-brand-light, #f5a623);
-  line-height: 1;
-}
-
-.process-strip__label {
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.75);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.process-strip__sep {
-  color: rgba(255,255,255,0.3);
-  font-size: 1.25rem;
-  padding: 0 0.25rem;
-  margin-bottom: 1.2rem;
-}
-
-@media (max-width: 640px) {
-  .process-strip__grid {
-    gap: 0.25rem;
+  /* ── ip-page-body wrapper ── */
+  .ip-page-body {
+    position: relative;
+    background: #ffffff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    margin-top: -40px;
+    z-index: 10;
+    overflow: visible;
+    padding-bottom: 80px;
   }
-  .process-strip__sep {
-    display: none;
+
+  /* ── Steps Strip ── */
+  .steps-section {
+    background: var(--brand);
+    padding: 4rem 5% 3rem;
+    position: relative;
+    overflow: hidden;
   }
-  .process-strip__label {
-    font-size: 0.6rem;
+
+  .steps-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--green), #a8c97e, var(--green));
   }
-}
 
-/* ============================================================
-   FAQ Section
-   ============================================================ */
-.faq-section {
-  background: var(--color-bg-section);
-}
+  .steps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-.faq-section__title {
-  margin-bottom: 1.75rem;
-  text-align: center;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-}
+  .steps-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
 
-.faq-list {
-  max-width: 760px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    position: relative;
+  }
 
-.faq-item {
-  background: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-brand, #2e7d32);
-  border-radius: 0 8px 8px 0;
-  padding: 1.25rem 1.5rem;
-  transition: box-shadow 200ms ease;
-}
+  .step-num {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #ffffff;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 0 6px rgba(129, 171, 76, 0.2);
+  }
 
-.faq-item:hover {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
+  .step-connector {
+    position: absolute;
+    top: 36px;
+    left: calc(50% + 36px);
+    width: calc(100% - 72px);
+    height: 2px;
+    background: linear-gradient(to right, rgba(129, 171, 76, 0.5), rgba(129, 171, 76, 0.15));
+    z-index: 1;
+  }
 
-.faq-item h3 {
-  font-size: 0.975rem;
-  color: var(--color-charcoal, #2c2c2c);
-  margin-bottom: 0.6rem;
-  font-weight: 700;
-}
+  .step-body {
+    max-width: 200px;
+  }
 
-.faq-item p {
-  font-size: 0.9rem;
-  margin: 0;
-  color: var(--color-text-secondary);
-  line-height: 1.65;
-}
+  .step-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.6rem;
+    line-height: 1.2;
+  }
+
+  .step-desc {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Process Detail Cards ── */
+  .process-detail {
+    padding: 5rem 5%;
+    background: var(--off-white);
+  }
+
+  .process-detail .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .process-detail__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .process-card {
+    background: #ffffff;
+    border-radius: var(--radius-lg, 24px);
+    padding: 2rem 1.75rem;
+    position: relative;
+    border: 1px solid var(--light-gray, #EFEFED);
+    transition: box-shadow 300ms ease, transform 300ms ease;
+  }
+
+  .process-card:hover {
+    box-shadow: 0 8px 32px rgba(39, 46, 50, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .process-card__num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+
+  .process-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brand);
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+
+  .process-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-mid, #4a4a4a);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── Trust Banner ── */
+  .trust-banner {
+    background: var(--brand);
+    padding: 5rem 5%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trust-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_154522_89e9101b-2c5e-4f46-8dd7-062eea44f9c4.png') center/cover no-repeat;
+    opacity: 0.08;
+  }
+
+  .trust-banner__inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-banner__text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+
+  .trust-banner__text p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 520px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .trust-banner__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius-pill, 100px);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 200ms ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn--primary {
+    background: var(--green);
+    color: #ffffff;
+    border: 2px solid var(--green);
+  }
+
+  .btn--primary:hover {
+    background: #6e9640;
+    border-color: #6e9640;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(129, 171, 76, 0.4);
+  }
+
+  .btn--outline {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .btn--outline:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* ── FAQ Section ── */
+  .faq-section {
+    padding: 5rem 5%;
+    background: #ffffff;
+  }
+
+  .faq-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-section__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--brand);
+    text-align: center;
+    margin: 0 0 3rem;
+    line-height: 1.2;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    border: 1px solid var(--light-gray, #EFEFED);
+    border-radius: var(--radius-md, 16px);
+    overflow: hidden;
+    transition: box-shadow 300ms ease;
+    background: #ffffff;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 4px 16px rgba(39, 46, 50, 0.06);
+  }
+
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 200ms ease;
+    background: #ffffff;
+  }
+
+  .faq-trigger:hover {
+    background: var(--off-white);
+  }
+
+  .faq-q {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brand);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    color: var(--green);
+    transition: transform 300ms ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-item[data-open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item[data-open] .faq-trigger {
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .faq-body {
+    padding: 1.25rem 1.5rem;
+    background: #ffffff;
+  }
+
+  .faq-body p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--text-mid, #4a4a4a);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .steps-track {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 1rem;
+    }
+
+    .step-connector {
+      display: none;
+    }
+
+    .step-item:nth-child(odd)::after {
+      display: none;
+    }
+
+    .process-detail__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .steps-track {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .steps-section {
+      padding: 3rem 5% 2.5rem;
+    }
+
+    .process-detail__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-banner__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .trust-banner__actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
 </style>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('[data-faq]').forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger') as HTMLButtonElement;
+    const body = item.querySelector('.faq-body') as HTMLElement;
+
+    if (!trigger || !body) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.getAttribute('data-open') === 'true';
+
+      // Close all
+      document.querySelectorAll('[data-faq]').forEach((el) => {
+        el.setAttribute('data-open', 'false');
+        const elBody = el.querySelector('.faq-body') as HTMLElement;
+        const elTrigger = el.querySelector('.faq-trigger') as HTMLButtonElement;
+        if (elBody) elBody.hidden = true;
+        if (elTrigger) elTrigger.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle current
+      if (!isOpen) {
+        item.setAttribute('data-open', 'true');
+        body.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
