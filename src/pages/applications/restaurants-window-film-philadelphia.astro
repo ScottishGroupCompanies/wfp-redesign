@@ -4,93 +4,132 @@ import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import { Icon } from 'astro-icon/components';
 
-const title = 'Restaurant Window Film in Philadelphia | UV Protection, Glare & Customer Comfort';
-const description = 'Window film for Philadelphia restaurants and dining spaces: protect guests from UV rays, reduce glare on tables, save on energy costs. Professional installation.';
+const title = 'Restaurant Window Film in Philadelphia | UV Protection, Glare Reduction & Customer Comfort';
+const description = 'Window film for Philadelphia restaurants and dining spaces: protect guests from UV rays, reduce glare on tables, save on energy costs. Professional installation with minimal disruption.';
+
+const gallery = [
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163523_b110f470-e491-4f16-9670-c3a1599873e7.png',
+    label: 'Dining Comfort',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163526_7f9874e4-c3aa-4214-abf0-225f3da90c07.png',
+    label: 'Exterior Ambiance',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163530_0cbed74e-3031-47f7-b98a-e019da13ed5c.png',
+    label: 'UV Protection',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163534_8047d912-c1f2-4898-8912-6b211ce47013.png',
+    label: 'Kitchen Comfort',
+  },
+  {
+    src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163555_9fadf611-a42f-48ac-8b4b-e8b7632c5853.png',
+    label: 'Bar Area Privacy',
+  },
+];
 
 const benefits = [
   {
-    icon: 'lucide:sun',
     title: 'UV Protection',
-    body: 'Block up to 99% of harmful UV rays, protecting guests, staff, and furnishings from sun damage while maintaining natural brightness.',
+    body: 'Block 99% of harmful UV rays, protecting guests and staff from sun exposure.',
   },
   {
-    icon: 'lucide:glasses',
     title: 'Glare Reduction',
-    body: 'Eliminate harsh glare on dining tables and bar seating, so guests can read menus and enjoy their meal without squinting.',
+    body: 'Eliminate glare on dining tables and bar counters for comfortable dining.',
   },
   {
-    icon: 'lucide:zap',
     title: 'Energy Savings',
-    body: 'Reduce heat buildup in summer and heat loss in winter, lowering HVAC costs year-round without sacrificing natural light.',
+    body: 'Reduce HVAC costs by up to 30%, lowering restaurant operating expenses.',
   },
   {
-    icon: 'lucide:lamp',
-    title: 'Ambient Ambiance',
-    body: 'Create a consistently comfortable dining atmosphere — warm in winter, cool in summer — that keeps guests coming back.',
+    title: 'Privacy',
+    body: 'One-way mirror and frosted film options for private dining areas and bars.',
   },
 ];
 
 const stats = [
-  { value: '99%', label: 'UV Rays Blocked' },
-  { value: '40%', label: 'Glare Reduction' },
-  { value: '30%', label: 'Energy Cost Savings' },
+  { value: '99%', label: 'UV Blocked' },
+  { value: '30%', label: 'Energy Savings' },
+  { value: '16+', label: 'Years Experience' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/restaurants-window-film-philadelphia/" serviceName="Restaurant Window Film" serviceDesc="Window film for Philadelphia restaurants: UV protection, glare reduction, and energy savings for dining spaces." serviceUrl="https://www.windowfilmphiladelphia.net/applications/restaurants-window-film-philadelphia/">
+<BaseLayout title={title} description={description}>
 
 <InnerPageHero
   title="Restaurant Window Film"
   bgImage="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_161712_f3d7c784-873c-4b35-bd02-ae590b144072.jpeg"
-  desc="Guest comfort · UV protection · Energy savings"
+  desc="Guest Comfort · UV Protection · Energy Savings"
 />
 
 <div class="ip-page-body">
 
-  <section class="bp-intro">
-    <div class="bp-intro__inner">
-      <div class="bp-intro__left">
-        <span class="bp-eyebrow">Restaurants & Hospitality</span>
-        <h1 class="bp-intro__title">Window Film Solutions for Philadelphia Restaurants</h1>
-      </div>
-      <div class="bp-intro__right">
-        <p class="bp-intro__lead">Philadelphia restaurants face a unique challenge: guests expect bright, airy spaces with abundant natural light, but uncontrolled sun creates glare, heat, and UV exposure that diminishes the dining experience. Our window film solutions address all three — protecting your guests, preserving your interiors, and reducing your operating costs.</p>
-        <div class="bp-intro__ctas">
-          <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
-          <a href="/benefits/" class="bp-btn bp-btn--ghost">View Film Benefits</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bp-benefits">
-    <div class="bp-benefits__hd">
-      <span class="bp-eyebrow">Key Benefits</span>
-      <h2 class="bp-benefits__title">Why window film is a smart investment for restaurants</h2>
-    </div>
-    <div class="bp-benefits__grid">
-      {benefits.map((b) => (
-        <div class="bp-benefit-card fade-in">
-          <div class="bp-benefit-card__icon">
-            <Icon name={b.icon} width="28" height="28" />
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <div class="gallery-grid">
+      {gallery.map((item, i) => (
+        <div class="gallery-item" style={`--delay: ${i * 80}ms`}>
+          <img src={item.src} alt={item.label} loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-label">{item.label}</span>
           </div>
-          <h3 class="bp-benefit-card__title">{b.title}</h3>
-          <p class="bp-benefit-card__body">{b.body}</p>
         </div>
       ))}
     </div>
   </section>
 
-  <section class="bp-stats">
-    <div class="bp-stats__hd">
-      <span class="bp-eyebrow">By the Numbers</span>
-      <h2 class="bp-stats__title">Measurable results for Philadelphia restaurants</h2>
+  <!-- Intro -->
+  <section class="intro-section">
+    <div class="intro-inner">
+      <div class="intro-left">
+        <span class="eyebrow">Restaurants & Hospitality</span>
+        <h1 class="intro-title">Window Film Solutions for Philadelphia Restaurants</h1>
+      </div>
+      <div class="intro-right">
+        <p class="intro-lead">Philadelphia restaurants face a unique challenge: guests expect bright, airy spaces with abundant natural light, but uncontrolled sun creates glare, heat, and UV exposure that diminishes the dining experience. Our window film solutions address all three — protecting your guests, preserving your interiors, and reducing your operating costs.</p>
+        <div class="intro-ctas">
+          <a href="/contact/" class="btn btn-primary">Get a Free Quote</a>
+          <a href="/benefits/" class="btn btn-ghost">View Film Benefits</a>
+        </div>
+      </div>
     </div>
-    <div class="bp-stats__row">
-      {stats.map((s) => (
-        <div class="bp-stat-card fade-in">
-          <span class="bp-stat-card__value">{s.value}</span>
-          <span class="bp-stat-card__label">{s.label}</span>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits-section">
+    <div class="benefits-hd">
+      <span class="eyebrow">Key Benefits</span>
+      <h2 class="benefits-title">Why window film is a smart investment for restaurants</h2>
+    </div>
+    <div class="benefits-grid">
+      {benefits.map((b, i) => (
+        <div class="benefit-card fade-in" style={`--delay: ${i * 100}ms`}>
+          <div class="benefit-icon">
+            {i === 0 && <Icon name="lucide:sun" width="24" height="24" />}
+            {i === 1 && <Icon name="lucide:glasses" width="24" height="24" />}
+            {i === 2 && <Icon name="lucide:zap" width="24" height="24" />}
+            {i === 3 && <Icon name="lucide:eye-off" width="24" height="24" />}
+          </div>
+          <h3 class="benefit-card-title">{b.title}</h3>
+          <p class="benefit-card-body">{b.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Statistics -->
+  <section class="stats-section">
+    <div class="stats-hd">
+      <span class="eyebrow eyebrow-light">By the Numbers</span>
+      <h2 class="stats-title">Measurable results for Philadelphia restaurants</h2>
+    </div>
+    <div class="stats-row">
+      {stats.map((s, i) => (
+        <div class="stat-card fade-in" style={`--delay: ${i * 120}ms`}>
+          <span class="stat-value">{s.value}</span>
+          <span class="stat-label">{s.label}</span>
         </div>
       ))}
     </div>
@@ -98,225 +137,492 @@ const stats = [
 
   <BrandLogos />
 
-  <div class="bp-cta fade-in">
-    <h2>Ready to upgrade your <em>Philadelphia restaurant?</em></h2>
-    <div class="bp-cta__btns">
-      <a href="/contact/" class="bp-btn bp-btn--green">Get a Free Quote</a>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-heading">Ready to upgrade your <em>restaurant?</em></h2>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn-green-pill">Get a Free Quote</a>
+        <a href="tel:+12155551234" class="cta-phone">
+          <Icon name="lucide:phone" width="18" height="18" />
+          <span>(215) 555-1234</span>
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
 
 </div>
 
 </BaseLayout>
 
 <style>
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-.bp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.bp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+  .ip-page-body {
+    position: relative;
+    background: var(--off-white, #F7F6F3);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    margin-top: -40px;
+    z-index: 10;
+    overflow: visible;
+    padding-bottom: 80px;
+  }
 
-/* Intro */
-.bp-intro {
-  padding: 80px 10%;
-}
-.bp-intro__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.bp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-}
-.bp-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green, #81AB4C);
+    margin-bottom: 16px;
+  }
 
-/* Benefits */
-.bp-benefits {
-  padding: 100px 10%;
-  background: var(--off-white, #F7F6F3);
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-}
-.bp-benefits__hd { margin-bottom: 64px; }
-.bp-benefits__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-  max-width: 560px;
-}
-.bp-benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.bp-benefit-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 32px 28px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-}
-.bp-benefit-card__icon {
-  color: var(--green, #81AB4C);
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-}
-.bp-benefit-card__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-.bp-benefit-card__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.7;
-  margin: 0;
-}
+  .eyebrow-light {
+    color: var(--green, #81AB4C);
+  }
 
-/* Stats */
-.bp-stats {
-  background: var(--brand, #272E32);
-  padding: 100px 10%;
-}
-.bp-stats__hd { margin-bottom: 64px; }
-.bp-stats__hd .bp-eyebrow { color: var(--green, #81AB4C); }
-.bp-stats__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 0;
-  max-width: 500px;
-}
-.bp-stats__row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-.bp-stat-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.bp-stat-card__value {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(48px, 6vw, 80px);
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-}
-.bp-stat-card__label {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+    white-space: nowrap;
+  }
 
-/* CTA */
-.bp-cta {
-  background: var(--brand, #272E32);
-  border-radius: 40px;
-  padding: 64px 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  margin: 0 5% 0;
-}
-.bp-cta h2 {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 32px; font-weight: 700;
-  color: #fff; line-height: 1.2;
-  max-width: 460px; margin: 0;
-}
-.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+  .btn-primary {
+    background: var(--green, #81AB4C);
+    color: #fff;
+    border-color: var(--green, #81AB4C);
+  }
 
-/* Fade-in */
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+  .btn-primary:hover {
+    background: #6e9640;
+    border-color: #6e9640;
+    transform: translateY(-2px);
+    color: #fff;
+  }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .bp-benefits__grid { grid-template-columns: repeat(2, 1fr); }
-  .bp-stats__row { grid-template-columns: repeat(2, 1fr); }
-  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .bp-cta h2 { font-size: 26px; max-width: 100%; }
-  .bp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 768px) {
-  .bp-intro { padding: 60px 5%; }
-  .bp-benefits { padding: 60px 5%; }
-  .bp-stats { padding: 60px 5%; }
-  .bp-benefits__grid { grid-template-columns: 1fr; }
-  .bp-stats__row { grid-template-columns: 1fr; }
-}
-@media (max-width: 480px) {
-  .bp-intro__ctas { flex-direction: column; }
-}
+  .btn-ghost {
+    background: transparent;
+    color: var(--brand, #272E32);
+    border-color: var(--brand, #272E32);
+  }
+
+  .btn-ghost:hover {
+    background: var(--brand, #272E32);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .btn-green-pill {
+    background: var(--green, #81AB4C);
+    color: #fff;
+    border-color: var(--green, #81AB4C);
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .btn-green-pill:hover {
+    background: #6e9640;
+    border-color: #6e9640;
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  /* Gallery */
+  .gallery-section {
+    padding: 80px 10% 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(39, 46, 50, 0.75) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-label {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  /* 3+2 grid: last 2 items span 1 column each, centered */
+  .gallery-item:nth-child(4) {
+    grid-column: 2 / 3;
+  }
+
+  .gallery-item:nth-child(5) {
+    grid-column: 3 / 4;
+  }
+
+  /* Intro */
+  .intro-section {
+    padding: 80px 10%;
+    background: #ffffff;
+  }
+
+  .intro-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .intro-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0;
+  }
+
+  .intro-lead {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 17px;
+    color: var(--text-mid, #4a4a4a);
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .intro-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Benefits */
+  .benefits-section {
+    padding: 100px 10%;
+    background: var(--off-white, #F7F6F3);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  .benefits-hd {
+    margin-bottom: 64px;
+  }
+
+  .benefits-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .benefit-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--green-light, #eef4e4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green, #81AB4C);
+    margin-bottom: 20px;
+  }
+
+  .benefit-card-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark, #1a1a1a);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .benefit-card-body {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 14px;
+    color: var(--text-mid, #4a4a4a);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Stats */
+  .stats-section {
+    background: var(--brand, #272E32);
+    padding: 100px 10%;
+  }
+
+  .stats-hd {
+    margin-bottom: 64px;
+  }
+
+  .stats-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-value {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 700;
+    color: var(--green, #81AB4C);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--brand, #272E32);
+    border-radius: 40px;
+    padding: 64px 60px;
+    margin: 0 5%;
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .cta-heading {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    max-width: 460px;
+    margin: 0;
+  }
+
+  .cta-heading em {
+    font-style: italic;
+    color: var(--green, #81AB4C);
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
+  }
+
+  .cta-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .cta-phone:hover {
+    color: var(--green, #81AB4C);
+  }
+
+  /* Fade-in */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease var(--delay, 0ms), transform 0.65s ease var(--delay, 0ms);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: 1 / 2;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: 2 / 3;
+    }
+
+    .intro-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-inner {
+      flex-direction: column;
+      padding: 40px 28px;
+      text-align: center;
+    }
+
+    .cta-heading {
+      font-size: 26px;
+      max-width: 100%;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-section {
+      padding: 60px 5% 0;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intro-section {
+      padding: 60px 5%;
+    }
+
+    .benefits-section {
+      padding: 60px 5%;
+    }
+
+    .stats-section {
+      padding: 60px 5%;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-row {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-section {
+      border-radius: 24px;
+      margin: 0 4%;
+      padding: 40px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .intro-ctas {
+      flex-direction: column;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
 </style>
 
 <script>
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
   }, { threshold: 0.1 });
+
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
