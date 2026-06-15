@@ -1,348 +1,1157 @@
 ---
-/* Auron-inspired redesign · Window Film Philadelphia · Decorative & Promotional page */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
-const title = 'Decorative & Promotional Window Film Philadelphia | Window Film Philadelphia';
-const description = 'Transform your glass with decorative and promotional window film from Window Film Philadelphia. Custom graphics, frosted designs, and brand-forward glass for Philadelphia businesses.';
+const title = 'Decorative & Promotional Window Film in Philadelphia | Custom Graphics on Glass';
+const description = 'Transform your Philadelphia glass with custom printed graphics, frosted privacy patterns, brand messaging, and promotional window film. Professional design and installation.';
+
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181649_c92f558e-5eea-42cf-961f-5d503e133b1b.jpeg', label: 'Custom Brand Graphics' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png', label: 'Frosted Privacy Film' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png', label: 'Promotional Displays' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163229_6541b9dc-3f99-46f5-bc6f-5aecd8fd77ae.png', label: 'Wayfinding Films' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163859_fabc7e12-368e-49f3-8971-08b76bbdd518.png', label: 'Seasonal Promotions' },
+];
+
+const newImages = {
+  decorativeInterior: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181649_c92f558e-5eea-42cf-961f-5d503e133b1b.jpeg',
+  brandGraphics: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181649_c92f558e-5eea-42cf-961f-5d503e133b1b.jpeg',
+  frostedPrivacy: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181649_c92f558e-5eea-42cf-961f-5d503e133b1b.jpeg',
+  wayfinding: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181649_c92f558e-5eea-42cf-961f-5d503e133b1b.jpeg',
+};
 
 const faqItems = [
-  { question: 'What can decorative window film be used for?', answer: 'Decorative window film can be used for: frosted glass effects and privacy screens, custom brand graphics and logos on glass, promotional sale and event signage, decorative patterns and textures, architectural accent elements, and wayfinding and directional graphics. It is a versatile medium for transforming the appearance of glass without replacement.' },
-  { question: 'Can decorative film be customized with our brand logo?', answer: 'Yes. We can create custom decorative film designs incorporating your company logo, brand colors, and messaging. Custom graphics are produced using high-resolution printing on vinyl-compatible film media, then applied to your glass surfaces. Lead time for custom designs is typically 5–10 business days depending on complexity.' },
-  { question: 'How long does decorative film last?', answer: 'Interior decorative film typically lasts 5–10 years, depending on the media type and exposure to direct sunlight. Exterior or high-exposure applications may have shorter service lives. All our decorative film installations include a manufacturer warranty covering adhesion, fading, and delamination.' },
-  { question: 'Can decorative film be removed and replaced?', answer: 'Yes. Decorative film is designed to be removable — though it is a permanent installation in practice. The removal process involves heating the film and peeling it off, with adhesive residue cleaned from the glass surface. Replacement is straightforward with a new custom design if desired.' },
-  { question: 'Is decorative film only for businesses?', answer: 'No. Decorative film is used extensively in residential settings as well — for bathroom windows and shower enclosures (frosted effect), decorative patterns on front door glass, room dividers, and interior glass partitions. The same film products and design capabilities apply to both residential and commercial projects.' },
-  { question: 'How does decorative film compare to etched glass?', answer: 'Decorative film can replicate the appearance of sandblasted or etched glass at a fraction of the cost, and it is fully customizable in design. Etched glass is permanent and cannot be changed; decorative film can be updated if your branding or preferences change. Film also allows for full-color graphics and promotional content that etched glass cannot accommodate.' },
-];
-
-const stats = [
-  { value: '100%', label: 'Customizable Designs' },
-  { value: '5–10', label: 'Year Interior Lifespan' },
-  { value: '24h', label: 'Custom Graphic Turnaround' },
-  { value: '200+', label: 'Pattern Options' },
-];
-
-const features = [
-  { icon: 'lucide:paintbrush', title: 'Custom Brand Graphics', body: 'Full-color custom graphics printed directly on film — logos, campaigns, and brand visuals on any glass surface.' },
-  { icon: 'lucide:square', title: 'Frosted Glass Effects', body: 'Create elegant frosted, etched, or textured glass appearances that transform privacy and aesthetics without replacing glass.' },
-  { icon: 'lucide:megaphone', title: 'Promotional Displays', body: 'Temporary or permanent promotional window signage — sales, events, openings, and seasonal campaigns applied directly to glass.' },
-  { icon: 'lucide:layers', title: 'Architectural Accents', body: 'Decorative patterns, borders, and architectural glass elements that add visual interest and brand personality to any space.' },
-];
-
-const featuredSections = [
-  {
-    number: '01',
-    heading: 'Decorative & Promotional Window Film for Philadelphia Businesses',
-    body: 'Your glass surfaces are prime real estate — visible to every customer, visitor, and passerby who walks by. Decorative and promotional window film lets you transform that space into a powerful brand and communication tool. From elegant frosted privacy screens to full-color custom graphics, decorative film turns ordinary glass into something extraordinary — at a fraction of the cost of replacing the glass itself.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_201129_db569d87-0023-4279-9ec3-7f9c47102299.png',
-    alt: 'Philadelphia hotel lobby with decorative frosted window film',
-    cta: 'Get a Free Design Consultation',
-    href: '/contact/',
-  },
-  {
-    number: '02',
-    heading: 'How Decorative Film Works',
-    body: 'Decorative window film comes in two main types: cast film (for frosted, textured, and patterned effects) and printed film (for custom graphics and full-color designs). Cast films are applied like standard window film — trimmed to fit and adhered to the glass. Printed films are custom-designed using your artwork or our design team, produced on wide-format printers, and then applied by our professional installers for a seamless result.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_202129_2fcae86a-64e2-4e20-aa11-2b7f105527ec.png',
-    alt: 'Custom decorative window film application in Philadelphia',
-    cta: 'See Pattern Options',
-    href: '/resources/window-film-fact-sheet/',
-  },
-  {
-    number: '03',
-    heading: 'Philadelphia\'s Decorative Film Experts',
-    body: 'Window Film Philadelphia has created custom decorative film installations for restaurants, retail stores, hotels, offices, and residential clients throughout the Philadelphia region. Our in-house design team can concept, proof, and produce custom graphics for any glass application — from simple frosted panels to full-building exterior promotional wraps.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_202304_c5668858-7ee0-48ed-b712-7716c05c4ec1.png',
-    alt: 'Philadelphia retail store with custom promotional window film',
-    cta: 'Schedule a Consultation',
-    href: '/contact/',
-  },
+  { question: 'Can we print our brand logo on the film?', answer: 'Yes. We create custom decorative film designs incorporating your company logo, brand colors, and messaging. Custom graphics are produced using high-resolution printing on vinyl-compatible film media, then applied to your glass surfaces. Our in-house design team handles everything from concept to final installation.' },
+  { question: 'How long does custom printing take?', answer: 'Custom printed decorative film typically takes 5–10 business days from design approval to final production, depending on complexity. Simple frosted patterns or standard designs can be produced faster. We also offer rush turnaround for time-sensitive promotional campaigns and events.' },
+  { question: 'Can decorative film be removed and replaced?', answer: 'Yes. Decorative film is designed to be removable. The process involves heating the film and peeling it off, with adhesive residue cleaned from the glass surface. This makes it ideal for seasonal promotions — swap out holiday graphics for spring promotions without replacing the glass.' },
+  { question: 'Does print quality hold up in sunlight?', answer: 'Our custom printed films use UV-resistant inks and protective overlaminates designed for long-term durability in sun-exposed applications. Interior installations typically last 5–10 years with no visible fading. For high-exposure exterior applications, we use specialized UV-stable media to ensure long-term color retention.' },
+  { question: 'What is the minimum order for custom prints?', answer: 'There is no strict minimum order — single-panel custom installations are common, especially for residential or small business projects. For larger commercial orders, volume pricing applies and the per-panel cost decreases significantly. We provide a detailed quote for any quantity.' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/decorative-promotional/" serviceName="Decorative & Promotional Window Film" serviceDesc="Custom decorative and promotional window film in Philadelphia. Frosted effects, brand graphics, and promotional displays for glass." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/decorative-promotional/">
-
-<section class="auron-hero">
-  <div class="auron-hero__img">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_200138_add7d568-3620-447a-b7b9-33892b1e3792.png" alt="Decorative window film for Philadelphia businesses" width="1440" height="700" />
-    <div class="auron-hero__overlay"></div>
-  </div>
-  <div class="auron-hero__content">
-    <span class="auron-badge auron-badge--green">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-      Decorative &amp; Promotional
-    </span>
-    <h1 class="auron-hero__title">
-      Your Glass,<br/>
-      <span class="auron-accent">Your Brand,</span><br/>
-      Amplified.
-    </h1>
-    <p class="auron-hero__sub">Transform any glass surface into a custom brand canvas — frosted effects, promotional graphics, and decorative designs that turn heads.</p>
-    <div class="auron-hero__ctas">
-      <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Design Consultation</a>
-      <a href="/benefits/" class="auron-btn auron-btn--outline-light">All Benefits</a>
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="Decorative & Promotional Window Film"
+  serviceDesc="Custom printed graphics, frosted privacy patterns, brand messaging, and promotional window film for Philadelphia businesses."
+  serviceUrl="https://www.windowfilmphiladelphia.com/benefits/decorative-promotional"
+  faqItems={faqItems}
+>
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={newImages.decorativeInterior} alt="Decorative window film with custom brand graphics on Philadelphia glass" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
     </div>
-  </div>
-</section>
-
-<div class="auron-body">
-
-  <section class="auron-stats">
-    <div class="auron-stats__inner">
-      <div class="auron-stats__text">
-        <span class="auron-badge auron-badge--lime">Make Glass Work For You</span>
-        <h2 class="auron-stats__heading">Your glass surfaces are some of the most visible real estate your brand has — and decorative film lets you make the most of every square inch.</h2>
-        <p>Decorative and promotional window film transforms ordinary glass into a dynamic brand and communication tool. From frosted privacy panels to full-color custom graphics, our design and installation team delivers results that look like custom glass fabrication — at a fraction of the cost and time.</p>
-        <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Design Consultation</a>
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        Decorative & Promotional Film
+      </span>
+      <h1 class="swt-hero__title">
+        Your Glass.<br/>
+        <em>Your Brand,</em><br/>
+        Amplified.
+      </h1>
+      <p class="swt-hero__sub">Custom printed graphics, frosted privacy patterns, brand messaging, and promotional window film — transforming Philadelphia glass into a dynamic brand and communication tool.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Design Consultation</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
       </div>
-      <div class="auron-stats__numbers">
-        {stats.map((s) => (
-          <div class="auron-stat-card">
-            <span class="auron-stat-card__value counter" data-target={s.value}>{s.value}</span>
-            <span class="auron-stat-card__label">{s.label}</span>
+    </div>
+  </section>
+
+  <div class="swt-body">
+
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by leading Philadelphia businesses</p>
+        <BrandLogos />
+      </div>
+    </section>
+
+    <!-- SECTION 1: THE OPPORTUNITY — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="opportunity">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Opportunity</span>
+            <h2 class="swt-h2 swt-h2--light">Your Glass Is Prime Real Estate — and It's Going to Waste</h2>
+            <p>Every window, glass partition, and storefront panel in your building is a silent billboard visible to customers, visitors, and passersby. Most Philadelphia businesses leave that space completely blank — or settle for generic frosted film that does nothing for their brand.</p>
+            <p>Decorative and promotional window film changes that. It turns glass into a canvas for custom brand graphics, elegant frosted privacy screens, wayfinding systems, and seasonal promotions — at a fraction of the cost of replacing glass or traditional signage.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">Unused Glass Surface</span>
+              <span class="swt-tag swt-tag--red">Generic Appearance</span>
+              <span class="swt-tag swt-tag--red">No Brand Expression</span>
+              <span class="swt-tag swt-tag--red">Missed Marketing Space</span>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="auron-trust">
-    <div class="auron-trust__inner">
-      <p class="auron-trust__tagline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-        Trusted by 500+ Philadelphia homes &amp; businesses
-      </p>
-    </div>
-  </section>
-
-  <section class="auron-features">
-    <div class="auron-features__hd">
-      <span class="auron-badge">How It Works</span>
-      <h2 class="auron-features__title">Everything you need to know about<br/>decorative &amp; promotional window film</h2>
-    </div>
-    {featuredSections.map((s, i) => (
-      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
-        <div class="auron-feat__img">
-          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-          <div class="auron-feat__img-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-            Window Film Philadelphia
+          <div class="swt-split__img fade-in">
+            <img src={newImages.brandGraphics} alt="Custom brand graphics printed on decorative window film" loading="lazy" />
           </div>
         </div>
-        <div class="auron-feat__content">
-          <span class="auron-feat__num">{s.number}</span>
-          <h3 class="auron-feat__heading">{s.heading}</h3>
-          <p class="auron-feat__body">{s.body}</p>
-          <a href={s.href} class="auron-feat__cta">{s.cta}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></a>
-        </div>
       </div>
-    ))}
-  </section>
+    </section>
 
-  <section class="auron-mission">
-    <div class="auron-mission__inner">
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">01</span>
-        <h3 class="auron-mission-card__title">Our Mission</h3>
-        <p class="auron-mission-card__body">To help Philadelphia businesses and homeowners unlock the creative potential of their glass surfaces — through custom decorative film that transforms space, communicates brand, and delivers visual impact at a fraction of the cost of glass replacement.</p>
-        <a href="/contact/" class="auron-btn auron-btn--outline-dark">Get in Touch</a>
-      </div>
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">02</span>
-        <h3 class="auron-mission-card__title">Our Vision</h3>
-        <p class="auron-mission-card__body">A Philadelphia where glass surfaces are recognized as a premium communication medium — beautiful, functional, and brand-forward — not blank walls waiting for something better.</p>
-        <a href="/benefits/" class="auron-btn auron-btn--outline-dark">Explore All Benefits</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="auron-benefits">
-    <div class="auron-benefits__hd">
-      <span class="auron-badge">Key Benefits</span>
-      <h2 class="auron-benefits__title">Why decorative film is worth it</h2>
-    </div>
-    <div class="auron-benefits__grid">
-      {features.map((f) => (
-        <div class="auron-benefit fade-in">
-          <div class="auron-benefit__icon"><Icon name={f.icon} width="28" height="28" /></div>
-          <h4 class="auron-benefit__title">{f.title}</h4>
-          <p class="auron-benefit__body">{f.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="auron-faq">
-    <div class="auron-faq__inner">
-      <div class="auron-faq__hd">
-        <span class="auron-badge">FAQ</span>
-        <h2 class="auron-faq__title">Common questions about decorative<br/>&amp; promotional window film</h2>
-      </div>
-      <div class="auron-faq__items">
-        {faqItems.map((item, i) => (
-          <div class={`auron-faq__item ${i === 0 ? 'auron-faq__item--open' : ''}`}>
-            <div class="auron-faq__q">{item.question}<span class="auron-faq__toggle">+</span></div>
-            <div class="auron-faq__a">{item.answer}</div>
+    <!-- SECTION 2: CUSTOM GRAPHICS — white bg, image left, text right -->
+    <section class="swt-split" id="graphics">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.decorativeInterior} alt="Philadelphia restaurant with custom printed window graphics" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>100%</strong>
+              <span>Customizable</span>
+            </div>
           </div>
-        ))}
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Custom Printed Graphics on Glass — Your Brand, in Full Color</h2>
+            <p>From logos and brand campaigns to full photographic imagery, our wide-format printers produce stunning custom graphics on vinyl-compatible film media. The result looks like the design was printed directly on the glass — because in a sense, it was.</p>
+            <p>Custom printed decorative film is ideal for storefronts, office glass partitions, conference rooms, lobby walls, and any glass surface where brand expression matters. The film adheres seamlessly and removes cleanly when it's time for a refresh.</p>
+            <ul class="swt-check-list">
+              <li>Full-color custom graphics with photographic quality</li>
+              <li>Logo, branding, and promotional content on any glass</li>
+              <li>Easy removal and replacement for updates and campaigns</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <BrandLogos />
-
-  <section class="auron-cta-banner">
-    <div class="auron-cta-banner__inner">
-      <div class="auron-cta-banner__text">
-        <h2>Ready to transform <em>your glass?</em></h2>
-        <p>Get a free design consultation and quote for your project.</p>
+    <!-- SECTION 3: FROSTED PRIVACY — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="frosted">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">Frosted Privacy Patterns — Elegant Glass Transformation</h2>
+            <p>Frosted decorative film replicates the appearance of sandblasted or etched glass at a fraction of the cost — and with full design flexibility. Choose from hundreds of existing patterns, or work with our design team to create something completely custom for your brand.</p>
+            <p>Frosted film is one of the most versatile applications: conference rooms, bathroom windows, lobby entries, glass partitions, and executive offices all benefit from the elegant, diffused privacy it provides. Natural light passes through while the view is elegantly obscured.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">200+</span>
+                <span class="swt-metric__label">Pattern Options</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">5–10yr</span>
+                <span class="swt-metric__label">Interior Lifespan</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.frostedPrivacy} alt="Elegant frosted privacy window film on Philadelphia office glass" loading="lazy" />
+          </div>
+        </div>
       </div>
-      <div class="auron-cta-banner__btns">
-        <a href="/contact/" class="auron-btn auron-btn--white">Get a Free Quote</a>
-        <a href="tel:+126****7980" class="auron-btn auron-btn--outline-white">Call (267) 394-7980</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-</div>
+    <!-- SECTION 4: BRAND MESSAGING — white bg, image left, text right -->
+    <section class="swt-split" id="branding">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.decorativeInterior} alt="Philadelphia retail store with brand messaging on glass" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Brand Messaging on Glass — Tell Your Story Before They Walk In</h2>
+            <p>Your storefront and lobby glass is the first thing potential customers see. Decorative film lets you control that first impression with brand-forward messaging, values statements, and visual identity elements that communicate who you are before a single word is spoken.</p>
+            <p>From "Welcome" panels with your logo to full-wall exterior wraps, brand messaging film turns glass into a silent salesperson that works 24/7 — visible to every person who passes by your building.</p>
+            <blockquote class="swt-inline-quote">
+              "Our lobby glass now communicates our brand values before clients even sit down. It's the best first impression upgrade we've made."
+              <cite>— Office Manager, consulting firm, Center City Philadelphia</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: WAYFINDING — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="wayfinding">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Wayfinding & Directory Films — Glass That Guides</h2>
+            <p>Large buildings, medical offices, hotels, and corporate campuses need clear wayfinding — but traditional signage on glass is obtrusive and expensive. Decorative wayfinding film solves this by integrating directional information, room numbers, and directory content directly into your glass surfaces.</p>
+            <p>The result is clean, professional, and brand-consistent. Visitors receive clear guidance without the visual clutter of hanging signs. It's particularly effective in buildings with modern glass architecture where traditional signage feels out of place.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Seamless Integration</strong>
+                  <p>Wayfinding blends with glass — no bulky signs or surface-mounted hardware</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Brand Consistent</strong>
+                  <p>Matches your visual identity — fonts, colors, and design language all aligned</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Easy Updates</strong>
+                  <p>Replacement films update directories without replacing glass or removing fixtures</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.wayfinding} alt="Philadelphia office building wayfinding window film on glass directories" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Decorative Film — In Action</h2>
+          <p class="swt-subhead">From frosted office partitions to full-color storefront graphics — here's what we create.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">100%</span>
+            <span class="swt-stats__label">Customizable Designs</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">200+</span>
+            <span class="swt-stats__label">Pattern Options</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">5–10yr</span>
+            <span class="swt-stats__label">Interior Lifespan</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">24h</span>
+            <span class="swt-stats__label">Rush Turnaround Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 3 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">3 Simple Steps to Custom Decorative Film</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>Free Design Consultation</h3>
+              <p>We meet at your location to understand your goals, brand, and glass surfaces. Our design team then creates mockups showing exactly how the finished film will look — no obligation, just a clear vision of what's possible.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Custom Production & Professional Installation</h3>
+              <p>Once you approve the design, we produce the film in our facility and schedule professional installation. Our installers ensure a seamless, bubble-free application on every panel — typically completed within 1–2 days.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>Inspection & Long-Term Warranty</h3>
+              <p>We walk the space with you before considering the job done. Every installation is backed by our labor warranty and the manufacturer's material warranty covering adhesion, fading, and delamination.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Businesses</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          <div class="swt-testimonial fade-in">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We had our logo and brand story printed on the lobby glass — it looks like custom glass fabrication. Clients comment on it constantly. The installation was fast and the quality exceeded what we expected at this price point.</p>
+            <div class="swt-testimonial__author">
+              <strong>Rachel T.</strong>
+              <span>Marketing Director, boutique hotel, Old City Philadelphia</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 80ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>Our conference rooms were always too exposed — you could see straight through from the hallway. Frosted film completely solved the privacy issue while keeping the modern glass aesthetic. Staff and clients both notice the upgrade.</p>
+            <div class="swt-testimonial__author">
+              <strong>James K.</strong>
+              <span>Operations Manager, financial services, Rittenhouse area</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 160ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We switch out our storefront graphics for every seasonal promotion — Halloween, Thanksgiving, holiday, Valentine's Day. The film swaps out cleanly and the cost is a fraction of what custom signage would have been. Game changer for our marketing calendar.</p>
+            <div class="swt-testimonial__author">
+              <strong>Maria S.</strong>
+              <span>Owner, retail boutique, South Street, Philadelphia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>transform</em> your glass?</h2>
+          <p>Get a free design consultation and mockup for your project. No obligation, no pressure — just a clear vision of what's possible.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-.auron-hero { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; background: var(--brand); }
-.auron-hero__img { position: absolute; inset: 0; z-index: 0; }
-.auron-hero__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-hero__overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(26,58,46,0.92) 0%, rgba(26,58,46,0.75) 50%, rgba(26,58,46,0.4) 100%); }
-.auron-hero__content { position: relative; z-index: 2; padding: 100px 10%; max-width: 800px; }
-.auron-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 14px; border-radius: 100px; margin-bottom: 24px; }
-.auron-badge--green { background: rgba(129,171,76,0.2); color: var(--green); border: 1px solid rgba(129,171,76,0.3); }
-.auron-badge--lime { background: rgba(129,171,76,0.15); color: var(--green); border: 1px solid rgba(129,171,76,0.25); }
-.auron-badge { background: rgba(129,171,76,0.12); color: var(--green); border: 1px solid rgba(129,171,76,0.2); }
-.auron-hero__title { font-family: 'Playfair Display', serif; font-size: clamp(42px,5.5vw,72px); font-weight: 700; line-height: 1.05; letter-spacing: -1.5px; color: #fff; margin: 0 0 20px; }
-.auron-accent { color: var(--green); }
-.auron-hero__sub { font-family: 'DM Sans', sans-serif; font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0 0 36px; max-width: 520px; }
-.auron-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.auron-btn { display: inline-block; padding: 15px 32px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 2px solid transparent; white-space: nowrap; }
-.auron-btn--primary { background: var(--green); color: var(--brand); border-color: var(--green); }
-.auron-btn--primary:hover { background: #7de84a; border-color: #7de84a; transform: translateY(-2px); color: var(--brand); }
-.auron-btn--outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
-.auron-btn--outline-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.auron-btn--outline-dark { background: transparent; color: var(--brand); border-color: var(--brand); }
-.auron-btn--outline-dark:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
-.auron-btn--white { background: #fff; color: var(--brand); border-color: #fff; }
-.auron-btn--white:hover { background: #F7F6F3; transform: translateY(-2px); color: var(--brand); }
-.auron-btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
-.auron-btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.auron-body { background: #ffffff; }
-.auron-stats { background: var(--brand); padding: 80px 10%; }
-.auron-stats__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.auron-stats__heading { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,40px); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.5px; margin: 0 0 16px; }
-.auron-stats__text p { font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0 0 28px; }
-.auron-stats__numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-.auron-stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(129,171,76,0.15); padding: 32px 28px; text-align: center; }
-.auron-stat-card__value { display: block; font-family: 'Playfair Display', serif; font-size: clamp(28px,3.5vw,44px); font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 8px; }
-.auron-stat-card__label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
-.auron-trust { background: var(--green); padding: 20px 10%; }
-.auron-trust__inner { display: flex; align-items: center; justify-content: center; }
-.auron-trust__tagline { display: flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: 1.5px; margin: 0; }
-.auron-trust__tagline svg { color: var(--brand); flex-shrink: 0; }
-.auron-features { padding: 100px 10%; background: #F7F6F3; }
-.auron-features__hd { margin-bottom: 72px; }
-.auron-features__title { font-family: 'Playfair Display', serif; font-size: clamp(30px,3.5vw,48px); font-weight: 700; color: var(--brand); line-height: 1.15; letter-spacing: -0.5px; margin: 12px 0 0; }
-.auron-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
-.auron-feat:last-child { margin-bottom: 0; }
-.auron-feat--rev .auron-feat__img { order: 2; }
-.auron-feat--rev .auron-feat__content { order: 1; }
-.auron-feat__img { position: relative; height: 460px; border-radius: 20px; overflow: hidden; }
-.auron-feat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-feat__img-badge { position: absolute; bottom: 20px; left: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(26,58,46,0.88); backdrop-filter: blur(8px); color: var(--green); padding: 10px 16px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; border: 1px solid rgba(129,171,76,0.25); }
-.auron-feat__num { display: block; font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 700; color: var(--green); line-height: 1; opacity: 0.35; margin-bottom: -16px; }
-.auron-feat__heading { font-family: 'Playfair Display', serif; font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--brand); line-height: 1.2; margin: 0 0 16px; }
-.auron-feat__body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #555; line-height: 1.8; margin: 0 0 24px; }
-.auron-feat__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); text-decoration: none; transition: gap 0.2s; }
-.auron-feat__cta:hover { gap: 14px; }
-.auron-mission { background: var(--brand); padding: 80px 10%; }
-.auron-mission__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.auron-mission-card { border-left: 4px solid var(--green); padding: 40px 40px; background: rgba(255,255,255,0.05); border-radius: 0 16px 16px 0; }
-.auron-mission-card__num { display: block; font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 700; color: var(--green); line-height: 1; opacity: 0.4; margin-bottom: 8px; }
-.auron-mission-card__title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; margin: 0 0 16px; }
-.auron-mission-card__body { font-family: 'DM Sans', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0 0 28px; }
-.auron-benefits { background: #fff; padding: 100px 10%; }
-.auron-benefits__hd { margin-bottom: 56px; }
-.auron-benefits__title { font-family: 'Playfair Display', serif; font-size: clamp(28px,3vw,44px); font-weight: 700; color: var(--brand); line-height: 1.15; margin: 12px 0 0; }
-.auron-benefits__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid #E8E8E0; border-radius: 20px; overflow: hidden; }
-.auron-benefit { padding: 36px 28px; border-right: 1px solid #E8E8E0; border-bottom: 1px solid #E8E8E0; }
-.auron-benefit:nth-child(4n) { border-right: none; }
-.auron-benefit:nth-child(n+5) { border-bottom: none; }
-.auron-benefit__icon { color: var(--green); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
-.auron-benefit__title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--brand); margin: 0 0 8px; }
-.auron-benefit__body { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #666; line-height: 1.65; margin: 0; }
-.auron-faq { background: #F7F6F3; padding: 100px 10%; }
-.auron-faq__inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
-.auron-faq__title { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,40px); font-weight: 700; color: var(--brand); line-height: 1.15; margin: 12px 0 0; }
-.auron-faq__item { border-bottom: 1px solid #D8D8D0; padding: 20px 0; }
-.auron-faq__item:first-of-type { border-top: 1px solid #D8D8D0; }
-.auron-faq__q { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--brand); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 4px 0; }
-.auron-faq__toggle { color: var(--green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; }
-.auron-faq__a { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #555; line-height: 1.75; margin-top: 10px; display: none; }
-.auron-faq__item--open .auron-faq__a { display: block; }
-.auron-faq__item--open .auron-faq__toggle { transform: rotate(45deg); }
-.auron-cta-banner { background: var(--brand); padding: 80px 10%; }
-.auron-cta-banner__inner { display: flex; align-items: center; justify-content: space-between; gap: 60px; }
-.auron-cta-banner__text h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px,3vw,42px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 8px; }
-.auron-cta-banner__text h2 em { font-style: italic; color: var(--green); }
-.auron-cta-banner__text p { font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.6); margin: 0; }
-.auron-cta-banner__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.counter { animation: countUp 0.6s ease-out forwards; }
-@media (max-width: 1024px) {
-  .auron-stats__inner { grid-template-columns: 1fr; gap: 48px; }
-  .auron-feat { grid-template-columns: 1fr; gap: 40px; }
-  .auron-feat--rev .auron-feat__img { order: 0; }
-  .auron-feat--rev .auron-feat__content { order: 1; }
-  .auron-mission__inner { grid-template-columns: 1fr; }
-  .auron-benefits__grid { grid-template-columns: repeat(2,1fr); }
-  .auron-faq__inner { grid-template-columns: 1fr; gap: 40px; }
-  .auron-cta-banner__inner { flex-direction: column; text-align: center; }
-}
-@media (max-width: 768px) {
-  .auron-hero__content { padding: 80px 5%; }
-  .auron-hero__ctas { flex-direction: column; }
-  .auron-stats, .auron-features, .auron-benefits, .auron-faq, .auron-cta-banner { padding: 60px 5%; }
-  .auron-mission { padding: 60px 5%; }
-  .auron-feat__img { height: 280px; }
-  .auron-benefits__grid { grid-template-columns: 1fr; }
-  .auron-benefit { border-right: none !important; }
-  .auron-stat-card { padding: 24px 20px; }
-  .auron-cta-banner__btns { flex-direction: column; width: 100%; }
-  .auron-hero__title { font-size: 36px; }
-}
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
+
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
+  }
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ══════════════════════════════════════
+     LAYOUT
+     ══════════════════════════════════════ */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body {
+    background: var(--swt-white);
+  }
+
+  /* ══════════════════════════════════════
+     TRUST BAR
+     ══════════════════════════════════════ */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 28px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+  }
+
+  /* ══════════════════════════════════════
+     EYEBROW
+     ══════════════════════════════════════ */
+  .swt-eyebrow {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green {
+    color: var(--swt-green-accent);
+  }
+
+  /* ══════════════════════════════════════
+     SPLIT SECTIONS
+     ══════════════════════════════════════ */
+  .swt-split {
+    padding: 100px 0;
+  }
+  .swt-split--dark {
+    background: var(--swt-dark);
+  }
+  .swt-split--alt {
+    background: var(--swt-alt);
+  }
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .swt-split__grid--rev .swt-split__img { order: 2; }
+  .swt-split__grid--rev .swt-split__text { order: 1; }
+  .swt-split__text { }
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 400;
+    color: var(--swt-dark);
+    line-height: 1.15;
+    margin: 0 0 20px;
+    letter-spacing: -0.3px;
+  }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center {
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .swt-split__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    line-height: 1.8;
+    margin: 0 0 16px;
+  }
+  .swt-split--dark .swt-split__text p {
+    color: rgba(255,255,255,0.6);
+  }
+  .swt-split__img {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .swt-split__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     PROBLEM TAGS
+     ══════════════════════════════════════ */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .swt-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .swt-tag--red {
+    background: rgba(180, 60, 60, 0.15);
+    color: #e8a0a0;
+    border: 1px solid rgba(180, 60, 60, 0.25);
+  }
+
+  /* ══════════════════════════════════════
+     IMAGE BADGE
+     ══════════════════════════════════════ */
+  .swt-img-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(42,36,30,0.88);
+    backdrop-filter: blur(8px);
+    color: var(--swt-white);
+    padding: 10px 16px;
+    border-radius: var(--swt-radius);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .swt-img-badge strong {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--swt-green-accent);
+    line-height: 1;
+  }
+  .swt-img-badge span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ══════════════════════════════════════
+     CHECK LIST
+     ══════════════════════════════════════ */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .swt-check-list li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    padding-left: 28px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .swt-check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    background: var(--swt-green);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ══════════════════════════════════════
+     ENERGY METRICS
+     ══════════════════════════════════════ */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+  }
+  .swt-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .swt-metric__num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--swt-green);
+    line-height: 1;
+  }
+  .swt-metric__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════════════════════
+     INLINE QUOTE
+     ══════════════════════════════════════ */
+  .swt-inline-quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--swt-text-sec);
+    border-left: 3px solid var(--swt-green);
+    padding-left: 20px;
+    margin: 24px 0 0;
+    line-height: 1.6;
+  }
+  .swt-inline-quote cite {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    color: var(--swt-text-sec);
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+
+  /* ══════════════════════════════════════
+     SECURITY FEATURES
+     ══════════════════════════════════════ */
+  .swt-security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .swt-security-feature {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--swt-green-accent);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 2px;
+  }
+  .swt-security-feature p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+     ══════════════════════════════════════ */
+  .swt-gallery {
+    padding: 100px 0;
+    background: var(--swt-cream);
+  }
+  .swt-gallery__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .swt-gallery__header .swt-eyebrow {
+    margin-bottom: 12px;
+  }
+  .swt-subhead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    margin: 12px auto 0;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .swt-gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .swt-gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(42,36,30,0.85) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--swt-white);
+  }
+  .swt-gallery__item:hover img { transform: scale(1.05); }
+  .swt-gallery__item:hover .swt-gallery__overlay { opacity: 1; }
+
+  /* ══════════════════════════════════════
+     STATS
+     ══════════════════════════════════════ */
+  .swt-stats {
+    background: var(--swt-green);
+    padding: 60px 0;
+  }
+  .swt-stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--swt-white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .swt-stats__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     PROCESS
+     ══════════════════════════════════════ */
+  .swt-process {
+    padding: 100px 0;
+    background: var(--swt-white);
+  }
+  .swt-process__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 800px;
+    margin: 56px auto 0;
+  }
+  .swt-process__step {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
+  .swt-process__num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--swt-green);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 72px;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--swt-dark);
+    margin: 0 0 10px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════ */
+  .swt-testimonials {
+    background: var(--swt-dark);
+    padding: 100px 0;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--swt-radius);
+    padding: 36px;
+  }
+  .swt-testimonial__quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--swt-green-accent);
+    line-height: 0.8;
+    margin-bottom: 16px;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    margin: 0 0 24px;
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+  }
+  .swt-testimonial__author span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  /* ══════════════════════════════════════
+     FAQ
+     ══════════════════════════════════════ */
+  .swt-faq {
+    padding: 100px 0;
+    background: var(--swt-alt);
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .swt-faq__header {
+    position: sticky;
+    top: 100px;
+  }
+  .swt-faq__header .swt-h2 {
+    margin-bottom: 16px;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    line-height: 1.7;
+    margin: 0 0 28px;
+  }
+  .swt-faq__list { }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+    padding: 20px 0;
+  }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 4px 0;
+  }
+  .swt-faq__q span:first-child {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    line-height: 1.5;
+  }
+  .swt-faq__toggle {
+    font-size: 22px;
+    color: var(--swt-green);
+    flex-shrink: 0;
+    font-weight: 400;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .swt-faq__a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .swt-faq__a p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    line-height: 1.75;
+    margin: 0;
+    padding-top: 12px;
+  }
+  .swt-faq__item--open .swt-faq__a { max-height: 400px; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+
+  /* ══════════════════════════════════════
+     CTA BANNER
+     ══════════════════════════════════════ */
+  .swt-cta {
+    background: var(--swt-green);
+    padding: 80px 0;
+  }
+  .swt-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-dark);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     FADE-IN ANIMATION
+     ══════════════════════════════════════ */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+     ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .swt-split__grid { grid-template-columns: 1fr; gap: 40px; }
+    .swt-split__grid--rev .swt-split__img { order: 0; }
+    .swt-split__grid--rev .swt-split__text { order: 1; }
+    .swt-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    .swt-testimonials__grid { grid-template-columns: 1fr; }
+    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
+    .swt-faq__header { position: static; }
+    .swt-cta__inner { flex-direction: column; text-align: center; }
+    .swt-stats__row { flex-wrap: wrap; }
+    .swt-stats__item { flex: 0 0 50%; padding: 16px; }
+    .swt-stats__div { display: none; }
+  }
+  @media (max-width: 768px) {
+    .swt-hero__content { padding: 80px 5%; }
+    .swt-hero__ctas { flex-direction: column; }
+    .swt-split { padding: 60px 0; }
+    .swt-gallery { padding: 60px 0; }
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-stats { padding: 40px 0; }
+    .swt-stats__num { font-size: 36px; }
+    .swt-process { padding: 60px 0; }
+    .swt-testimonials { padding: 60px 0; }
+    .swt-faq { padding: 60px 0; }
+    .swt-cta { padding: 60px 0; }
+    .swt-cta__btns { flex-direction: column; width: 100%; }
+    .swt-process__step { flex-direction: column; gap: 12px; }
+    .swt-process__num { width: auto; }
+  }
 </style>
 
 <script>
+  // FAQ accordion
+  document.querySelectorAll('.swt-faq__q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.swt-faq__item');
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
+
+  // Fade-in observer
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.auron-faq__item').forEach(item => {
-    item.querySelector('.auron-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('auron-faq__item--open');
-      document.querySelectorAll('.auron-faq__item').forEach(i => i.classList.remove('auron-faq__item--open'));
-      if (!isOpen) item.classList.add('auron-faq__item--open');
-    });
-  });
-  const counters = document.querySelectorAll('.counter');
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-        entry.target.classList.add('counted');
-        entry.target.style.animation = 'none';
-        entry.target.offsetHeight;
-        entry.target.style.animation = 'countUp 0.6s ease-out forwards';
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => countObs.observe(c));
 </script>
