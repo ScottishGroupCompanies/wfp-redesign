@@ -1,768 +1,1106 @@
 ---
-/* Auron-inspired redesign · Window Film Philadelphia · Privacy page */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
-const title = 'Privacy Window Film in Philadelphia | Window Film Philadelphia';
-const description = 'Window Film Philadelphia delivers high-quality privacy window film in Philadelphia to protect your interiors and increase your comfort.';
+const title = 'Privacy Window Film in Philadelphia | Frosted, Decorative & One-Way Mirror Films';
+const description = 'Privacy window film for Philadelphia offices and homes: frosted film, one-way mirror film, and decorative patterns. Maintain natural light while blocking unwanted views. Professional installation.';
+
+const heroImage = 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181859_31ec3d4f-26af-4deb-8e15-706faf51648b.png';
+
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163219_ef8a6773-eb18-43d3-a8cf-305c12c72dd2.png', label: 'Frosted Conference Room' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png', label: 'One-Way Mirror Office' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png', label: 'Decorative Pattern Film' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163229_6541b9dc-3f99-46f5-bc6f-5aecd8fd77ae.png', label: 'Privacy for Ground Floor' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170332_7a02abaf-9a99-4d42-b4d6-965dcbfe18ea.png', label: 'Bathroom Privacy Film' },
+];
 
 const faqItems = [
-  { question: 'Can I still see out of the window with privacy film applied?', answer: 'It depends on the type of privacy film selected. One-way mirror film maintains clear outward views from the inside while blocking the view from outside — provided the interior is darker than the exterior (which is the case during daylight hours). Frosted and opaque films diffuse light and obscure views in both directions.' },
-  { question: 'What types of privacy window film are available?', answer: 'We carry a comprehensive range of privacy film options including one-way mirror film (daytime privacy with clear interior views), frosted film (diffuses views and light), opaque film (completely blocks views and light), etched-look decorative film, and custom-printed privacy film. Each type is available in multiple densities and finishes.' },
-  { question: 'Does one-way privacy film work at night?', answer: 'One-way mirror film works based on the light differential between the interior and exterior. During daylight hours, the exterior is brighter than the interior, making the film appear reflective from outside. At night, when interior lights are on and the exterior is darker, the effect reverses. For nighttime privacy, frosted or opaque film is the more reliable solution.' },
-  { question: 'Is privacy film suitable for commercial spaces?', answer: 'Privacy film is excellent for commercial applications. One-way mirror film is ideal for street-facing retail and office windows. Frosted decorative film transforms conference rooms, lobbies, and glass partitions into private, professional spaces. We have installed privacy film in offices, restaurants, medical practices, and retail stores throughout Philadelphia.' },
-  { question: 'Can privacy film be removed or changed later?', answer: 'Professionally installed privacy film can be removed without damaging the underlying glass — though the process is best handled by our team. If your privacy needs change, we can remove the existing film and apply a new type or density of film, often in the same appointment.' },
-  { question: 'Does privacy film affect natural light?', answer: 'Most privacy films are designed to maintain natural light levels while providing privacy. Frosted and etched films diffuse light beautifully, creating a bright but private ambience. One-way mirror film can slightly reduce light transmission depending on the product selected. Our team will always recommend a film that balances your privacy needs with your desired light levels.' },
-];
-
-const stats = [
-  { value: '100%', label: 'Daytime Privacy Available' },
-  { value: 'Day', label: 'Natural Light Preserved' },
-  { value: '50+', label: 'Film Options & Finishes' },
-  { value: 'Same', label: 'Day Installation' },
-];
-
-const features = [
-  {
-    icon: 'lucide:eye-off',
-    title: 'One-Way Privacy',
-    body: 'Block outside views during daylight hours while maintaining clear visibility from inside — perfect for street-facing properties.',
-  },
-  {
-    icon: 'lucide:sun',
-    title: 'Natural Light Maintained',
-    body: 'Privacy without sacrificing daylight. Frosted and etched films diffuse light beautifully while obscuring views.',
-  },
-  {
-    icon: 'lucide:palette',
-    title: 'Design Options',
-    body: 'Choose from frosted, opaque, etched-look, one-way mirror, and custom decorative finishes to suit any aesthetic.',
-  },
-  {
-    icon: 'lucide:building',
-    title: 'Commercial Applications',
-    body: 'Conference rooms, lobbies, glass partitions, storefronts, and office suites — professional results every time.',
-  },
-];
-
-const featuredSections = [
-  {
-    number: '01',
-    heading: 'Privacy Window Film for Philadelphia Properties',
-    body: 'Privacy concerns can affect any property type — whether your home or business is located close to other buildings, along a busy street, or simply lacks surrounding foliage. Privacy issues lead to discomfort, reduced productivity, and genuine safety concerns. Window Film Philadelphia provides a comprehensive selection of privacy window film solutions for residential and commercial properties throughout the Philadelphia metro area, delivering the right balance of privacy, natural light, and aesthetics for every application.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191850_ab14940b-df9a-4710-8601-5b99abe4e010.png',
-    alt: 'Philadelphia row home living room with frosted privacy window film',
-    cta: 'Get a Free Quote',
-    href: '/contact/',
-  },
-  {
-    number: '02',
-    heading: 'Privacy Film Options for Every Space',
-    body: 'Our premium privacy solutions are designed for both exterior windows and interior glass features. One-way mirror film blocks outside views while maintaining optically clear visibility from inside. For offices, interior decorative privacy films enhance conference rooms, lobbies, and open-plan spaces without sacrificing natural sunlight. With countless finishes, patterns, and hues available — from frosted and opaque to etched-look and reflective — privacy film can completely transform your property.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191853_e985e99f-7895-49ee-9313-ecf461e061ff.png',
-    alt: 'Modern office frosted glass conference room with privacy film',
-    cta: 'Schedule a Consultation',
-    href: '/contact/',
-  },
-  {
-    number: '03',
-    heading: "Philadelphia's Leading Privacy Window Film Contractor",
-    body: 'Window Film Philadelphia provides expert privacy window film services for residential and commercial properties throughout the Philadelphia area. Our experienced team assesses your specific privacy needs, recommends the most appropriate film, and delivers professional installation that transforms your space immediately. We have helped countless buildings improve privacy, security, and aesthetics — and we would love the opportunity to help your property.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191853_e985e99f-7895-49ee-9313-ecf461e061ff.png',
-    alt: 'Modern Philadelphia office with frosted privacy glass partitions',
-    cta: 'Contact Our Team',
-    href: '/contact/',
-  },
+  { question: "What's the difference between frosted film and one-way mirror film?", answer: "Frosted film creates a uniformly translucent, etched-glass look — it blocks visibility equally from both sides and is ideal for bathrooms, conference rooms, and private offices. One-way mirror film (also called day-night privacy film) uses a reflective coating to create a mirror-like appearance from the outside during daylight hours while allowing clear visibility from inside. The effect reverses at night when interior lights are on, so supplemental treatments may be needed for round-the-clock privacy." },
+  { question: "Does privacy film work at night when interior lights are on?", answer: "One-way mirror films lose their mirror effect at night when interior lighting is brighter than exterior light — people outside can see in. For nighttime privacy, we recommend pairing one-way film with blinds or curtains, or choosing frosted decorative film which works 24/7 regardless of lighting conditions. We can assess your building's lighting environment and recommend the right solution." },
+  { question: "Can privacy film be removed and reused?", answer: "Privacy films are designed for permanent installation and are not typically reusable if removed. The adhesive bonds strongly over time, and removing and reapplying will usually damage the film. However, film is relatively inexpensive to replace compared to frosted glass, so a new installation is often the more practical approach if your needs change." },
+  { question: "What's the best privacy film for bathrooms?", answer: "For bathrooms, we strongly recommend frosted film — either a standard frosted finish or a decorative patterned frosted. Frosted film provides consistent privacy regardless of lighting conditions, resists moisture, and is easy to clean. It also avoids the mirror effect that can feel uncomfortable in private spaces. We offer several opacity levels and patterns so you can control exactly how much light filters through." },
+  { question: "Does film affect emergency egress visibility?", answer: "Privacy films — especially frosted films — can reduce visibility through glass, which is an important consideration for emergency egress windows and fire-rated assemblies. If the affected windows serve as emergency exits, we select films that meet applicable safety standards and we clearly advise on any restrictions. Most standard privacy films do not affect the structural integrity of the glass or impede emergency egress in non-fire-rated applications." },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/privacy-window-film-philadelphia/" serviceName="Privacy Window Film" serviceDesc="Privacy window film installation in Philadelphia for homes, offices, and commercial spaces. Frosted, one-way, and decorative options." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/privacy-window-film-philadelphia/">
-
-<!-- ══════════════════════════════════════
-     HERO — dark auron-style
-     ══════════════════════════════════════ -->
-<section class="auron-hero">
-  <div class="auron-hero__img">
-    <img
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191850_ab14940b-df9a-4710-8601-5b99abe4e010.png"
-      alt="Privacy window film for Philadelphia homes and businesses"
-      width="1440"
-      height="700"
-    />
-    <div class="auron-hero__overlay"></div>
-  </div>
-  <div class="auron-hero__content">
-    <span class="auron-badge auron-badge--green">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-      Privacy Solutions
-    </span>
-    <h1 class="auron-hero__title">
-      Privacy You Can<br/>
-      <span class="auron-accent">See Through.</span><br/>
-      One Way.
-    </h1>
-    <p class="auron-hero__sub">One-way and frosted film for homes, offices, and storefronts — privacy without sacrificing natural light.</p>
-    <div class="auron-hero__ctas">
-      <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Quote</a>
-      <a href="/benefits/" class="auron-btn auron-btn--outline-light">All Benefits</a>
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="Privacy Window Film Installation"
+  serviceDesc="Professional privacy window film installation for Philadelphia homes and offices — frosted, decorative, and one-way mirror films that block views while letting in natural light."
+  serviceUrl="https://www.windowfilmphiladelphia.com/benefits/privacy-window-film-philadelphia"
+  faqItems={faqItems}
+>
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={heroImage} alt="Privacy window film installed in Philadelphia office" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     PAGE BODY
-     ══════════════════════════════════════ -->
-<div class="auron-body">
-
-  <!-- ── STATS STRIP ── -->
-  <section class="auron-stats">
-    <div class="auron-stats__inner">
-      <div class="auron-stats__text">
-        <span class="auron-badge auron-badge--lime">Your Privacy Experts</span>
-        <h2 class="auron-stats__heading">Privacy window film gives Philadelphia homes and businesses the discretion they need — without sacrificing natural light or views.</h2>
-        <p>Whether you need one-way mirror film for a street-facing office, frosted film for a conference room, or decorative privacy film for an interior glass wall, Window Film Philadelphia has a solution that balances privacy, aesthetics, and functionality perfectly.</p>
-        <a href="/contact/" class="auron-btn auron-btn--primary">Find Your Solution</a>
-      </div>
-      <div class="auron-stats__numbers">
-        {stats.map((s) => (
-          <div class="auron-stat-card">
-            <span class="auron-stat-card__value">{s.value}</span>
-            <span class="auron-stat-card__label">{s.label}</span>
-          </div>
-        ))}
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        Privacy & Light Control
+      </span>
+      <h1 class="swt-hero__title">
+        The Privacy You Need.<br/>
+        <em>The Light You Want.</em><br/>
+        Without Replacing Your Glass.
+      </h1>
+      <p class="swt-hero__sub">Frosted, decorative, and one-way mirror films for Philadelphia offices and homes — professional installation in 1–2 days at a fraction of the cost of frosted glass.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Options</a>
       </div>
     </div>
   </section>
 
-  <!-- ── TRUST BANNER ── -->
-  <section class="auron-trust">
-    <div class="auron-trust__inner">
-      <p class="auron-trust__tagline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-        Trusted by 500+ Philadelphia homes &amp; businesses
-      </p>
-    </div>
-  </section>
+  <div class="swt-body">
 
-  <!-- ── FEATURED SECTIONS ── -->
-  <section class="auron-features">
-    <div class="auron-features__hd">
-      <span class="auron-badge">How It Works</span>
-      <h2 class="auron-features__title">Everything you need to know about<br/>privacy window film</h2>
-    </div>
-
-    {featuredSections.map((s, i) => (
-      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
-        <div class="auron-feat__img">
-          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-          <div class="auron-feat__img-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-            Window Film Philadelphia
-          </div>
-        </div>
-        <div class="auron-feat__content">
-          <span class="auron-feat__num">{s.number}</span>
-          <h3 class="auron-feat__heading">{s.heading}</h3>
-          <p class="auron-feat__body">{s.body}</p>
-          <a href={s.href} class="auron-feat__cta">
-            {s.cta}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-          </a>
-        </div>
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by leading Philadelphia businesses</p>
+        <BrandLogos />
       </div>
-    ))}
-  </section>
+    </section>
 
-  <!-- ── MISSION / VISION CARDS ── -->
-  <section class="auron-mission">
-    <div class="auron-mission__inner">
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">01</span>
-        <h3 class="auron-mission-card__title">Our Mission</h3>
-        <p class="auron-mission-card__body">To give every Philadelphia property owner the right level of privacy — without compromise. We assess your specific needs, recommend the ideal film type, and deliver installation that transforms your space immediately, cleanly, and affordably.</p>
-        <a href="/contact/" class="auron-btn auron-btn--outline-dark">Get in Touch</a>
-      </div>
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">02</span>
-        <h3 class="auron-mission-card__title">Our Vision</h3>
-        <p class="auron-mission-card__body">A Philadelphia where every home and business has access to smart, beautiful privacy solutions that preserve natural light, enhance aesthetics, and give property owners complete control over their space.</p>
-        <a href="/benefits/" class="auron-btn auron-btn--outline-dark">Explore All Benefits</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── BENEFITS GRID ── -->
-  <section class="auron-benefits">
-    <div class="auron-benefits__hd">
-      <span class="auron-badge">Key Benefits</span>
-      <h2 class="auron-benefits__title">Why privacy film is the smart choice</h2>
-    </div>
-    <div class="auron-benefits__grid">
-      {features.map((f) => (
-        <div class="auron-benefit fade-in">
-          <div class="auron-benefit__icon">
-            <Icon name={f.icon} width="28" height="28" />
-          </div>
-          <h4 class="auron-benefit__title">{f.title}</h4>
-          <p class="auron-benefit__body">{f.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ── FAQ ── -->
-  <section class="auron-faq">
-    <div class="auron-faq__inner">
-      <div class="auron-faq__hd">
-        <span class="auron-badge">FAQ</span>
-        <h2 class="auron-faq__title">Common questions about<br/>privacy window film</h2>
-      </div>
-      <div class="auron-faq__items">
-        {faqItems.map((item, i) => (
-          <div class={`auron-faq__item ${i === 0 ? 'auron-faq__item--open' : ''}`}>
-            <div class="auron-faq__q">
-              {item.question}
-              <span class="auron-faq__toggle">+</span>
+    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="problem">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Challenge</span>
+            <h2 class="swt-h2 swt-h2--light">Every Glass Surface Is a Privacy Compromise</h2>
+            <p>Large windows and glass doors are a liability in offices, medical buildings, ground-floor retail, and any space where privacy matters. Without treatment, anyone walking past can see directly in — your conversations, your screens, your workspace.</p>
+            <p>Philadelphia's dense urban environment makes this worse. Street-level offices, ground-floor exam rooms, and open-plan workspaces are constantly visible to pedestrians, neighboring tenants, and passersby. Blinds help, but they also block your light and send the signal that you have something to hide.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">Open Office Visibility</span>
+              <span class="swt-tag swt-tag--red">Ground-Floor Exposure</span>
+              <span class="swt-tag swt-tag--red">Conference Room Privacy</span>
+              <span class="swt-tag swt-tag--red">Blinds Blocking Light</span>
             </div>
-            <div class="auron-faq__a">{item.answer}</div>
           </div>
-        ))}
+          <div class="swt-split__img fade-in">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170332_7a02abaf-9a99-4d42-b4d6-965dcbfe18ea.png" alt="Exposed office windows lacking privacy" loading="lazy" />
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── BRAND LOGOS ── -->
-  <BrandLogos />
-
-  <!-- ── CTA BANNER ── -->
-  <section class="auron-cta-banner">
-    <div class="auron-cta-banner__inner">
-      <div class="auron-cta-banner__text">
-        <h2>Ready to add <em>privacy</em> to your property?</h2>
-        <p>Get a free consultation and privacy film recommendation for your space.</p>
+    <!-- SECTION 2: FROSTED FILM — white bg, image left, text right -->
+    <section class="swt-split" id="frosted">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={heroImage} alt="Frosted privacy film on office conference room windows" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>100%</strong>
+              <span>Day & Night Privacy</span>
+            </div>
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Frosted Film: Elegant Privacy That Works 24/7</h2>
+            <p>Frosted window film transforms any glass surface into the appearance of etched or sandblasted glass — at roughly 1/10th the cost of real frosted glass. It provides consistent, reliable privacy regardless of the time of day or lighting conditions, making it ideal for offices, conference rooms, executive suites, and medical facilities.</p>
+            <p>Unlike blinds or curtains, frosted film doesn't require maintenance, can't be accidentally left open, and never looks cluttered. It filters light beautifully, maintaining a bright, open feel while keeping the view private.</p>
+            <ul class="swt-check-list">
+              <li>Works around the clock — no lighting-dependent effectiveness</li>
+              <li>Professional appearance for offices, medical, and client-facing spaces</li>
+              <li>Available in multiple opacity levels to control light and privacy</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="auron-cta-banner__btns">
-        <a href="/contact/" class="auron-btn auron-btn--white">Get a Free Quote</a>
-        <a href="tel:+126****7980" class="auron-btn auron-btn--outline-white">Call (267) 394-7980</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-</div><!-- end auron-body -->
+    <!-- SECTION 3: ONE-WAY MIRROR — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="oneway">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">One-Way Mirror Film: Daytime Privacy Without Changing Your View</h2>
+            <p>One-way mirror film — also called day-night privacy film — uses a reflective coating to create a mirror-like surface on the exterior side during daylight hours. From inside, you maintain a clear, unobstructed view of the outside. From outside, onlookers see only their own reflection.</p>
+            <p>This is an ideal solution for street-facing offices, retail storefronts, and ground-floor workspaces where you want to see out without being seen in. It's also an excellent choice for second-floor windows overlooking public areas.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">1-Way</span>
+                <span class="swt-metric__label">Daytime Privacy</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">Clear</span>
+                <span class="swt-metric__label">Inside-Out View</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png" alt="One-way mirror privacy film blocking exterior view" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: DECORATIVE — white bg, image left, text right -->
+    <section class="swt-split" id="decorative">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png" alt="Decorative privacy film with custom pattern for office branding" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Decorative Patterns: Turn Privacy Into a Design Feature</h2>
+            <p>Decorative window film isn't just functional — it can become a branding element, a design statement, or an architectural feature. We offer a range of patterns including geometric lattices, frosted gradients, company logos, custom graphics, and colored films that complement your interior design.</p>
+            <p>Lobby entrances, conference rooms, and glass partition walls are particularly well-suited to decorative film. The result looks intentional and premium, not like an afterthought — and it gives visitors a clear signal that privacy is valued in your space.</p>
+            <blockquote class="swt-inline-quote">
+              "The decorative film in our lobby looks like it cost ten times what it did. Clients constantly ask about it."
+              <cite>— Office Manager, financial services firm, Center City Philadelphia</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: LIGHT + PRIVACY BALANCE — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="lightbalance">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Maintain Natural Light While Blocking Unwanted Views</h2>
+            <p>The most common objection to privacy solutions is that they darken a space. Privacy film eliminates this trade-off. Frosted and decorative films filter and diffuse light beautifully — spaces feel bright and open rather than closed off. One-way mirror film doesn't reduce light transmission at all.</p>
+            <p>For offices, this matters: employees near windows perform better in natural light, and studies consistently show that daylight exposure improves mood, focus, and productivity. Privacy film lets you have both — natural light and a private, professional environment.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Natural Daylight Preserved</strong>
+                  <p>Film filters and softens light without blocking it — spaces stay bright</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>No Closing Blinds Required</strong>
+                  <p>Privacy without the clutter, maintenance, or "closed in" feel of blinds</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Employee Comfort & Focus</strong>
+                  <p>Natural light without visibility distraction — better for concentration</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163229_6541b9dc-3f99-46f5-bc6f-5aecd8fd77ae.png" alt="Bright office interior with privacy film maintaining natural light" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: COST BENEFIT — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="affordable">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 05</span>
+            <h2 class="swt-h2">A Fraction of the Cost of Frosted Glass — In a Fraction of the Time</h2>
+            <p>Real frosted glass requires full replacement — the old glass is removed and new frosted or laminated glass is installed. The cost runs $75–$150 per square foot installed, plus the cost of removing and disposing of existing glass. The project timeline is weeks.</p>
+            <p>Privacy window film costs $8–$25 per square foot installed, requires no glass removal, and is completed in 1–2 days in most commercial spaces. For a typical 200-square-foot office, that's a difference of tens of thousands of dollars and weeks of downtime.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">90%</span>
+                <span class="swt-metric__label">Lower Cost Than Frosted Glass</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">1–2</span>
+                <span class="swt-metric__label">Days to Install</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170307_c36c9b4c-09ec-4e15-b334-d83e9f590a89.png" alt="Professional window film installer working in Philadelphia office" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Privacy Film — In Action</h2>
+          <p class="swt-subhead">From corporate headquarters to medical offices — here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">16+</span>
+            <span class="swt-stats__label">Years in Philadelphia</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">500+</span>
+            <span class="swt-stats__label">Commercial Projects</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">24/7</span>
+            <span class="swt-stats__label">Frosted Film Privacy</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">90%</span>
+            <span class="swt-stats__label">Cost vs. Frosted Glass</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 3 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">3 Simple Steps to Complete Privacy</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>Free Consultation & Film Selection</h3>
+              <p>We visit your space and walk through the options — frosted, one-way mirror, decorative, or a combination. We bring samples so you can see exactly how each film looks in your lighting. You get a detailed proposal within 24 hours with no obligation.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Professional Installation in 1–2 Days</h3>
+              <p>Our factory-trained installers handle everything — we protect your furniture and flooring, apply the film precisely, and leave the space spotless. For most commercial offices, the entire installation is completed in a single day.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>Walk-Through & Long-Term Warranty</h3>
+              <p>We walk the space with you before considering the job done. Every installation is backed by our labor warranty and the manufacturer's material warranty — typically 10–15 years on commercial films.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Businesses</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          <div class="swt-testimonial fade-in">
+            <div class="swt-testimonial__quote">"</div>
+            <p>Our conference room faced the street and every passing pedestrian could see inside during meetings. The frosted film completely solved it. The room still gets great natural light — it's just that no one can see in anymore. Installation was done in a single afternoon.</p>
+            <div class="swt-testimonial__author">
+              <strong>Rebecca K.</strong>
+              <span>Operations Director, Midtown Philadelphia law firm</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 80ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We needed privacy for our open-plan office but didn't want to darken the space — we needed the light for the plants and the people. The one-way mirror film was the perfect solution. The team was professional, fast, and the cost was far less than we expected.</p>
+            <div class="swt-testimonial__author">
+              <strong>Marcus T.</strong>
+              <span>Founder, creative agency, Northern Liberties</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 160ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We installed decorative film with our logo pattern in the lobby glass — it looks incredibly premium, genuinely like it was etched into the glass. We've had multiple tenants ask if we replaced the glass entirely. The cost was a small fraction of real etched glass.</p>
+            <div class="swt-testimonial__author">
+              <strong>Amanda L.</strong>
+              <span>Building Manager, commercial property, Old City Philadelphia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>take back</em> your privacy?</h2>
+          <p>Get a free consultation and film sample kit. No obligation, no pressure — just honest advice.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-/* ── HERO ── */
-.auron-hero {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--brand);
-}
-.auron-hero__img {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.auron-hero__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.auron-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(26, 58, 46, 0.92) 0%,
-    rgba(26, 58, 46, 0.75) 50%,
-    rgba(26, 58, 46, 0.4) 100%
-  );
-}
-.auron-hero__content {
-  position: relative;
-  z-index: 2;
-  padding: 100px 10% 100px;
-  max-width: 760px;
-}
-.auron-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 7px 14px;
-  border-radius: 100px;
-  margin-bottom: 24px;
-}
-.auron-badge--green {
-  background: rgba(129, 171, 76, 0.2);
-  color: var(--green);
-  border: 1px solid rgba(155, 255, 94, 0.3);
-}
-.auron-badge--lime {
-  background: rgba(129, 171, 76, 0.15);
-  color: var(--green);
-  border: 1px solid rgba(155, 255, 94, 0.25);
-}
-.auron-badge {
-  background: rgba(129, 171, 76, 0.12);
-  color: var(--green);
-  border: 1px solid rgba(155, 255, 94, 0.2);
-}
-.auron-hero__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(42px, 5.5vw, 72px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  color: #ffffff;
-  margin: 0 0 20px;
-}
-.auron-accent { color: var(--green); }
-.auron-hero__sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
-  margin: 0 0 36px;
-  max-width: 520px;
-}
-.auron-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.auron-btn {
-  display: inline-block;
-  padding: 15px 32px;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  border: 2px solid transparent;
-  white-space: nowrap;
-}
-.auron-btn--primary {
-  background: var(--green);
-  color: var(--brand);
-  border-color: var(--green);
-}
-.auron-btn--primary:hover {
-  background: #7de84a;
-  border-color: #7de84a;
-  transform: translateY(-2px);
-  color: var(--brand);
-}
-.auron-btn--outline-light {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.auron-btn--outline-light:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
-  transform: translateY(-2px);
-  color: #fff;
-}
-.auron-btn--outline-dark {
-  background: transparent;
-  color: var(--brand);
-  border-color: var(--brand);
-}
-.auron-btn--outline-dark:hover {
-  background: var(--brand);
-  color: #fff;
-  transform: translateY(-2px);
-}
-.auron-btn--white {
-  background: #fff;
-  color: var(--brand);
-  border-color: #fff;
-}
-.auron-btn--white:hover {
-  background: #F7F6F3;
-  transform: translateY(-2px);
-  color: var(--brand);
-}
-.auron-btn--outline-white {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.auron-btn--outline-white:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
-  transform: translateY(-2px);
-  color: #fff;
-}
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
 
-/* ── PAGE BODY ── */
-.auron-body { background: #ffffff; }
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
+  }
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
-/* ── STATS ── */
-.auron-stats { background: var(--brand); padding: 80px 10%; }
-.auron-stats__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.auron-stats__heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3vw, 40px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin: 0 0 16px;
-}
-.auron-stats__text p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.75;
-  margin: 0 0 28px;
-}
-.auron-stats__numbers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-.auron-stat-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(155, 255, 94, 0.15);
-  padding: 32px 28px;
-  text-align: center;
-}
-.auron-stat-card__value {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3.5vw, 46px);
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.auron-stat-card__label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+  }
 
-/* ── TRUST ── */
-.auron-trust { background: var(--green); padding: 20px 10%; }
-.auron-trust__inner { display: flex; align-items: center; justify-content: center; }
-.auron-trust__tagline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--brand);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin: 0;
-}
-.auron-trust__tagline svg { color: var(--brand); flex-shrink: 0; }
+  /* ══════════════════════════════════════
+     SHARED
+     ══════════════════════════════════════ */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body { background: var(--swt-white); }
 
-/* ── FEATURES ── */
-.auron-features { padding: 100px 10%; background: #F7F6F3; }
-.auron-features__hd { margin-bottom: 72px; }
-.auron-features__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 3.5vw, 48px);
-  font-weight: 700;
-  color: var(--brand);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 12px 0 0;
-}
-.auron-feat {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-bottom: 80px;
-}
-.auron-feat:last-child { margin-bottom: 0; }
-.auron-feat--rev .auron-feat__img { order: 2; }
-.auron-feat--rev .auron-feat__content { order: 1; }
-.auron-feat__img {
-  position: relative;
-  height: 460px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.auron-feat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-feat__img-badge {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(26, 58, 46, 0.88);
-  backdrop-filter: blur(8px);
-  color: var(--green);
-  padding: 10px 16px;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  border: 1px solid rgba(155, 255, 94, 0.25);
-}
-.auron-feat__num {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 80px;
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1;
-  opacity: 0.35;
-  margin-bottom: -16px;
-}
-.auron-feat__heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22px, 2.5vw, 32px);
-  font-weight: 700;
-  color: var(--brand);
-  line-height: 1.2;
-  margin: 0 0 16px;
-}
-.auron-feat__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: #555;
-  line-height: 1.8;
-  margin: 0 0 24px;
-}
-.auron-feat__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--green);
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-.auron-feat__cta:hover { gap: 14px; }
+  .swt-eyebrow {
+    display: inline-block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green { color: var(--swt-green-accent); }
 
-/* ── MISSION CARDS ── */
-.auron-mission { background: var(--brand); padding: 80px 10%; }
-.auron-mission__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.auron-mission-card {
-  border-left: 4px solid var(--green);
-  padding: 40px 40px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0 16px 16px 0;
-}
-.auron-mission-card__num {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 64px;
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1;
-  opacity: 0.4;
-  margin-bottom: 8px;
-}
-.auron-mission-card__title {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 16px;
-}
-.auron-mission-card__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.75;
-  margin: 0 0 28px;
-}
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--swt-dark);
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
 
-/* ── BENEFITS GRID ── */
-.auron-benefits { background: #fff; padding: 100px 10%; }
-.auron-benefits__hd { margin-bottom: 56px; }
-.auron-benefits__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 700;
-  color: var(--brand);
-  line-height: 1.15;
-  margin: 12px 0 0;
-}
-.auron-benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border: 1px solid #E8E8E0;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.auron-benefit {
-  padding: 36px 28px;
-  border-right: 1px solid #E8E8E0;
-  border-bottom: 1px solid #E8E8E0;
-}
-.auron-benefit:nth-child(4n) { border-right: none; }
-.auron-benefit:nth-child(n+5) { border-bottom: none; }
-.auron-benefit__icon {
-  color: var(--green);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-.auron-benefit__title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--brand);
-  margin: 0 0 8px;
-}
-.auron-benefit__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.65;
-  margin: 0;
-}
+  .swt-subhead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    margin: 8px 0 0;
+    text-align: center;
+  }
 
-/* ── FAQ ── */
-.auron-faq { background: #F7F6F3; padding: 100px 10%; }
-.auron-faq__inner {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 80px;
-  align-items: start;
-}
-.auron-faq__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3vw, 40px);
-  font-weight: 700;
-  color: var(--brand);
-  line-height: 1.15;
-  margin: 12px 0 0;
-}
-.auron-faq__item {
-  border-bottom: 1px solid #D8D8D0;
-  padding: 20px 0;
-}
-.auron-faq__item:first-of-type { border-top: 1px solid #D8D8D0; }
-.auron-faq__q {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--brand);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  cursor: pointer;
-  padding: 4px 0;
-}
-.auron-faq__toggle {
-  color: var(--green);
-  font-size: 22px;
-  flex-shrink: 0;
-  font-weight: 400;
-  transition: transform 0.2s;
-}
-.auron-faq__a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  color: #555;
-  line-height: 1.75;
-  margin-top: 10px;
-  display: none;
-}
-.auron-faq__item--open .auron-faq__a { display: block; }
-.auron-faq__item--open .auron-faq__toggle { transform: rotate(45deg); }
+  /* ── Trust Bar ── */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
 
-/* ── CTA BANNER ── */
-.auron-cta-banner { background: var(--brand); padding: 80px 10%; }
-.auron-cta-banner__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-}
-.auron-cta-banner__text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  margin: 0 0 8px;
-}
-.auron-cta-banner__text h2 em { font-style: italic; color: var(--green); }
-.auron-cta-banner__text p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0;
-}
-.auron-cta-banner__btns { display: flex; gap: 14px; flex-shrink: 0; }
+  /* ── Split Sections ── */
+  .swt-split {
+    padding: 96px 0;
+    background: var(--swt-white);
+  }
+  .swt-split--dark { background: var(--swt-dark); }
+  .swt-split--alt { background: var(--swt-alt); }
 
-/* ── FADE IN ── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .swt-split__grid--rev .swt-split__img { order: -1; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .auron-stats__inner { grid-template-columns: 1fr; gap: 48px; }
-  .auron-feat { grid-template-columns: 1fr; gap: 40px; }
-  .auron-feat--rev .auron-feat__img { order: 0; }
-  .auron-feat--rev .auron-feat__content { order: 1; }
-  .auron-mission__inner { grid-template-columns: 1fr; }
-  .auron-benefits__grid { grid-template-columns: repeat(2, 1fr); }
-  .auron-benefit:nth-child(4n) { border-right: 1px solid #E8E8E0; }
-  .auron-benefit:nth-child(2n) { border-right: none; }
-  .auron-faq__inner { grid-template-columns: 1fr; gap: 40px; }
-  .auron-cta-banner__inner { flex-direction: column; text-align: center; }
-}
-@media (max-width: 768px) {
-  .auron-hero__content { padding: 80px 5%; }
-  .auron-hero__ctas { flex-direction: column; }
-  .auron-stats, .auron-features, .auron-benefits, .auron-faq, .auron-cta-banner { padding: 60px 5%; }
-  .auron-mission { padding: 60px 5%; }
-  .auron-feat__img { height: 280px; }
-  .auron-benefits__grid { grid-template-columns: 1fr; }
-  .auron-benefit { border-right: none !important; }
-  .auron-stat-card { padding: 24px 20px; }
-  .auron-cta-banner__btns { flex-direction: column; width: 100%; }
-  .auron-hero__title { font-size: 36px; }
-}
+  .swt-split__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--swt-text-sec);
+    margin: 0 0 14px;
+  }
+  .swt-split--dark .swt-split__text p { color: rgba(255,255,255,0.55); }
+
+  .swt-split__img {
+    position: relative;
+  }
+  .swt-split__img img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--swt-radius);
+    display: block;
+    box-shadow: 0 20px 60px rgba(42,36,30,0.12);
+  }
+
+  .swt-img-badge {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-radius: var(--swt-radius);
+    padding: 16px 24px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(42,36,30,0.2);
+  }
+  .swt-img-badge strong {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .swt-img-badge span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  /* ── Problem Tags ── */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .swt-tag {
+    padding: 8px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .swt-tag--red {
+    background: rgba(180,60,60,0.1);
+    color: #e8a0a0;
+    border: 1px solid rgba(180,60,60,0.2);
+  }
+
+  /* ── Check List ── */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0 0;
+  }
+  .swt-check-list li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    padding: 9px 0;
+    border-bottom: 1px solid var(--swt-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .swt-check-list li::before {
+    content: '';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(78,107,42,0.1);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234E6B2A' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── Energy Metrics ── */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 36px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--swt-border);
+  }
+  .swt-split--dark .swt-energy-metrics {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+  .swt-metric__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+  }
+  .swt-metric__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Security Features ── */
+  .swt-security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .swt-security-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--swt-green-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 4px;
+  }
+  .swt-security-feature p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+
+  /* ── Inline Quote ── */
+  .swt-inline-quote {
+    border-left: 3px solid var(--swt-green);
+    padding-left: 18px;
+    margin: 22px 0 0;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--swt-text-sec);
+    line-height: 1.7;
+  }
+  .swt-inline-quote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    color: var(--swt-text-sec);
+    opacity: 0.65;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* ── Gallery ── */
+  .swt-gallery {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-gallery__header { margin-bottom: 48px; }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
+  }
+  .swt-gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    display: block;
+  }
+  .swt-gallery__item:hover img { transform: scale(1.06); }
+  .swt-gallery__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 12px 12px;
+    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--swt-white);
+    display: block;
+    text-align: center;
+  }
+
+  /* ── Stats Bar ── */
+  .swt-stats {
+    background: var(--swt-green-accent);
+    padding: 72px 0;
+  }
+  .swt-stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    padding: 0 40px;
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1;
+  }
+  .swt-stats__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── Process ── */
+  .swt-process {
+    background: var(--swt-cream);
+    padding: 96px 0;
+  }
+  .swt-process__steps { margin-top: 48px; }
+  .swt-process__step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 36px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--swt-border);
+    align-items: start;
+  }
+  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
+  .swt-process__num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+    opacity: 0.55;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--swt-dark);
+    margin: 0 0 10px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--swt-text-sec);
+    margin: 0;
+  }
+
+  /* ── Testimonials ── */
+  .swt-testimonials {
+    background: var(--swt-dark);
+    padding: 96px 0;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--swt-radius);
+    padding: 32px;
+  }
+  .swt-testimonial__quote {
+    font-family: Georgia, serif;
+    font-size: 68px;
+    line-height: 0.7;
+    color: var(--swt-green-accent);
+    opacity: 0.35;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 22px;
+    font-style: italic;
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+  }
+  .swt-testimonial__author span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  /* ── FAQ ── */
+  .swt-faq {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--swt-text-sec);
+    margin: 14px 0 24px;
+  }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+    padding: 18px 0;
+  }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 3px 0;
+  }
+  .swt-faq__toggle {
+    color: var(--swt-green);
+    font-size: 22px;
+    flex-shrink: 0;
+    font-weight: 400;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .swt-faq__a {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--swt-text-sec);
+    line-height: 1.8;
+    margin-top: 10px;
+    display: none;
+  }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+
+  /* ── CTA Banner ── */
+  .swt-cta {
+    background: var(--swt-dark);
+    padding: 80px 5%;
+  }
+  .swt-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Fade In ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .swt-split__grid { gap: 48px; }
+    .swt-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    .swt-testimonials__grid { grid-template-columns: 1fr; }
+    .swt-stats__row { flex-wrap: wrap; gap: 24px; }
+    .swt-stats__div { display: none; }
+    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
+    .swt-cta__inner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 768px) {
+    .swt-split__grid { grid-template-columns: 1fr; gap: 32px; }
+    .swt-split__grid--rev .swt-split__img { order: 0; }
+    .swt-split__img img { height: 280px; }
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
+    .swt-process__num { font-size: 36px; }
+    .swt-hero__content { padding: 80px 5%; }
+    .swt-cta__btns { flex-direction: column; width: 100%; }
+    .swt-hero__ctas { flex-direction: column; }
+    .swt-energy-metrics { flex-direction: column; gap: 16px; }
+  }
+  @media (max-width: 480px) {
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-split { padding: 64px 0; }
+    .swt-stats__row { flex-direction: column; }
+  }
 </style>
 
 <script>
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target as HTMLElement;
+        const delay = el.style.getPropertyValue('--delay') || '0ms';
+        setTimeout(() => el.classList.add('visible'), parseInt(delay));
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  document.querySelectorAll('.auron-faq__item').forEach(item => {
-    item.querySelector('.auron-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('auron-faq__item--open');
-      document.querySelectorAll('.auron-faq__item').forEach(i => i.classList.remove('auron-faq__item--open'));
-      if (!isOpen) item.classList.add('auron-faq__item--open');
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
     });
   });
 </script>
