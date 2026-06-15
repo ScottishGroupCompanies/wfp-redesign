@@ -1,828 +1,1091 @@
 ---
-/* Auron-inspired redesign · Window Film Philadelphia · Energy Savings page */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
-const title = 'Energy Saving Window Film Philadelphia | Solar Films';
-const description = 'Looking to cut energy costs? Window Film Philadelphia offers high-quality energy-saving window films in Philadelphia. Get a Quote Now!';
+const title = 'Energy Savings Window Film Philadelphia | Cut Cooling Costs 30%';
+const description = 'Window film that pays for itself. Reject 78% of solar heat, cut cooling costs significantly, and enjoy year-round comfort. Professional installation in Philadelphia.';
+
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181647_234b5a3b-2c0b-4a99-b2e2-d80621d3ecd2.png', label: 'Energy Savings Film' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170300_522f3006-3bdb-434a-a84b-472b0b56e0e8.png', label: 'HVAC Relief' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170335_205f9050-c15e-4135-9684-8380335dac7c.png', label: 'Commercial Application' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png', label: 'UV Protection' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163219_ef8a6773-eb18-43d3-a8cf-305c12c72dd2.png', label: 'Professional Install' },
+];
+
+const newImages = {
+  hero: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181647_234b5a3b-2c0b-4a99-b2e2-d80621d3ecd2.png',
+  heatRejection: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170335_205f9050-c15e-4135-9684-8380335dac7c.png',
+  coolingSavings: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170300_522f3006-3bdb-434a-a84b-472b0b56e0e8.png',
+  hvac: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170324_f2fb6bcd-4ac1-4aae-a52b-d57053ccab28.png',
+  comfort: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png',
+  warranty: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170332_7a02abaf-9a99-4d42-b4d6-965dcbfe18ea.png',
+};
 
 const faqItems = [
-  { question: 'How much can energy saving film reduce my energy costs?', answer: 'Most property owners see a 20–30% reduction in cooling costs during summer months and 10–15% savings on heating in winter. Commercial buildings with large glass facades tend to see the highest impact.' },
-  { question: 'Does window film work for both summer cooling and winter heating savings?', answer: 'Yes. Solar control films reject heat in summer, while Low-E films add an insulating layer that retains interior heat during winter. Many of our films are spectrally selective — rejecting infrared heat while allowing visible light through — delivering performance in both seasons.' },
-  { question: 'What is the difference between Low-E film and solar control film?', answer: 'Solar control film primarily rejects solar heat in summer, reducing the cooling load on your HVAC system. Low-E film adds a reflective metallic layer that retains interior warmth in winter — making it ideal for year-round energy savings in climates like Philadelphia.' },
-  { question: 'Will energy saving film change the appearance or natural light in my space?', answer: 'Modern energy saving films are engineered to be nearly invisible while still performing at a high level. Many spectrally selective films allow 50–70% of visible light through while rejecting up to 80% of solar heat.' },
-  { question: 'How long does it take for energy saving window film to pay for itself?', answer: 'For most commercial properties, energy saving film has a payback period of 3–5 years through HVAC energy savings alone. Residential payback varies by home size and glazing area, typically within 5–7 years.' },
-  { question: 'Does energy saving window film qualify for tax credits or utility rebates?', answer: 'Certain energy saving window films may qualify for utility company rebates and can contribute to LEED certification credits for commercial buildings. Our team can provide documentation to support any rebate or credit application.' },
+  { question: 'How much can I save on cooling costs with window film?', answer: 'Most Philadelphia property owners see a 25–35% reduction in summer cooling costs after installing heat-rejecting window film. The exact savings depend on your building\'s glass orientation, square footage, and current HVAC efficiency — but even a modest installation typically pays for itself within 2–3 years.' },
+  { question: 'Does window film work on double-pane glass?', answer: 'Yes. Modern spectrally selective films are specifically engineered for dual-pane and even triple-pane glass. They reject solar heat without trapping energy between panes, so there\'s no risk of thermal stress or seal failure when professionally installed on the correct film type for your glass.' },
+  { question: 'How long until window film pays for itself?', answer: 'For most commercial buildings in Philadelphia, the payback period is 2–4 years through cooling cost reductions alone. Residential installations typically see 4–7 years, but when you factor in reduced HVAC wear, UV protection for furnishings, and increased comfort, the real-world ROI is significantly faster.' },
+  { question: 'Does window film reduce heating costs in winter?', answer: 'Yes — especially Low-E window film. While standard solar control films focus on rejecting heat in summer, Low-E films add an insulating metallic layer that reflects interior heat back into your building during winter. This can reduce winter heating costs by 10–15% in Philadelphia\'s climate.' },
+  { question: 'What is the warranty on energy performance?', answer: 'Every energy-saving film we install is backed by the manufacturer\'s warranty covering film performance — including solar heat rejection ratings and fade protection — typically 10–15 years on commercial films and lifetime on residential. We also provide a labor warranty on every installation.' },
 ];
 
-const stats = [
-  { value: '30%', label: 'Cooling Cost Reduction' },
-  { value: '80%', label: 'Solar Heat Rejected' },
-  { value: '3–5 yrs', label: 'Typical ROI Period' },
-  { value: '99.9%', label: 'UV Rays Blocked' },
-];
-
-const features = [
+const testimonials = [
   {
-    icon: 'lucide:thermometer',
-    title: 'Solar Heat Rejection',
-    body: 'Cuts solar heat gain by up to 80%, keeping interiors cool even on the hottest Philadelphia summer days.',
+    quote: 'Our electric bill dropped nearly $400 in the first summer after the film was installed. The building is actually comfortable in the afternoon now — before, the west side was unbearable.',
+    author: 'Jennifer K.',
+    role: 'Property Manager, Society Hill Condominiums',
   },
   {
-    icon: 'lucide:layers',
-    title: 'Double-Pane Performance',
-    body: 'Turns single-pane windows into double-pane equivalents — no glass replacement, no renovation needed.',
+    quote: 'I was skeptical because we\'d tried blinds and tinted blinds before. But window film actually solved the problem — no more adjusting blinds, no more squinting. The HVAC ran half as much.',
+    author: 'Marcus T.',
+    role: 'Office Manager, Consulting Firm, Center City',
   },
   {
-    icon: 'lucide:leaf',
-    title: 'LEED Eligible',
-    body: 'Qualifies for green building credits. We provide all documentation for rebate and certification applications.',
-  },
-  {
-    icon: 'lucide:shield-check',
-    title: 'Lifetime Warranty',
-    body: 'Every install is backed by a manufacturer lifetime warranty covering labour and materials.',
-  },
-];
-
-const featuredSections = [
-  {
-    number: '01',
-    heading: 'Energy Saving Window Film for Philadelphia Properties',
-    body: 'Energy costs are a concern for any residential or commercial property owner. Window film offers a powerful way to address rising utility bills without the high cost and disruption of full window replacement. Window Film Philadelphia provides comprehensive energy-saving window film options from 3M, LLumar, Vista, Solar Gard, and other industry-leading brands — whether you need Low-E film for a Center City office or heat-blocking film for a Chestnut Hill home.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191843_0e99b16b-3200-4b5f-a18c-024b7e847dbd.png',
-    alt: 'Energy-saving window film close-up Philadelphia',
-    cta: 'Get a Free Quote',
-    href: '/contact/',
-  },
-  {
-    number: '02',
-    heading: 'How Energy Saving Window Film Works',
-    body: "In Philadelphia, where summer temperatures peak at 86°F and winters drive high heating demand, energy-saving window film is a crucial addition to any building. Film significantly rejects solar heat and insulates glass windows and doors — reducing the need for costly air conditioning in summer and heating in winter. By mitigating heat gain and blocking UV rays, it maintains consistent indoor temperatures and addresses uncomfortable hot and cold spots.",
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191845_96ad6abf-2a5b-4cd5-bf34-afbd1c9b2066.png',
-    alt: 'Philadelphia suburban home with energy-efficient window film installed',
-    cta: 'View Film Fact Sheet',
-    href: '/resources/window-film-fact-sheet/',
-  },
-  {
-    number: '03',
-    heading: 'Save Money & Improve Comfort Year-Round',
-    body: 'Energy saving window film delivers measurable, immediate results from the day it\'s installed. Property owners see an average of 30% reduction in cooling costs during summer months and 10–15% savings on heating costs in winter. The film eliminates uncomfortable hot and cold spots, improves the productivity of building occupants, and extends the life of furnishings and flooring by blocking UV radiation — all with no operational downtime during installation.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191848_731aaa0a-653a-44ad-af6b-4ad9abda6f22.jpeg',
-    alt: 'Philadelphia skyline at sunset with energy-efficient buildings',
-    cta: 'Schedule a Consultation',
-    href: '/contact/',
+    quote: 'As a building engineer, I\'ve watched film save thousands of dollars in HVAC calls over the years. The ROI is real and documentable. We specify it on every retrofit now.',
+    author: 'Robert H.',
+    role: 'Chief Engineer, Commercial Property Group, Philadelphia',
   },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/energy-savings/" faqItems={faqItems} serviceName="Energy Saving Window Film" serviceDesc="Professional energy saving window film installation in Philadelphia. Reduce HVAC costs 20–30% with solar control and Low-E films for homes and commercial buildings." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/energy-savings/">
-
-<!-- ══════════════════════════════════════
-     HERO — dark auron-style
-     ══════════════════════════════════════ -->
-<section class="auron-hero">
-  <div class="auron-hero__img">
-    <img
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260605_191840_c98239e1-d9c5-4afd-b969-53422bb107e0.png"
-      alt="Energy saving window film installed on Philadelphia building"
-      width="1440"
-      height="700"
-    />
-    <div class="auron-hero__overlay"></div>
-  </div>
-  <div class="auron-hero__content">
-    <span class="auron-badge auron-badge--green">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-      Energy Performance
-    </span>
-    <h1 class="auron-hero__title">
-      Lower Bills. Greater <span class="auron-accent">Comfort.</span><br/>
-      One Simple Upgrade.
-    </h1>
-    <p class="auron-hero__sub">Cut cooling costs and reduce solar heat gain year-round — with no window replacement needed.</p>
-    <div class="auron-hero__ctas">
-      <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Quote</a>
-      <a href="/benefits/" class="auron-btn auron-btn--outline-light">All Benefits</a>
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="Energy Savings Window Film"
+  serviceDesc="Reduce cooling costs 25–35% with professional window film installation in Philadelphia. Heat rejection, Low-E films, and year-round comfort."
+  serviceUrl="https://www.windowfilmphiladelphia.com/benefits/energy-savings"
+  faqItems={faqItems}
+>
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={newImages.hero} alt="Energy-efficient window film installation Philadelphia" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     PAGE BODY
-     ══════════════════════════════════════ -->
-<div class="auron-body">
-
-  <!-- ── STATS STRIP ── -->
-  <section class="auron-stats">
-    <div class="auron-stats__inner">
-      <div class="auron-stats__text">
-        <span class="auron-badge auron-badge--lime">Your Trusted Partner</span>
-        <h2 class="auron-stats__heading">Energy saving window film is one of the highest-ROI upgrades available for Philadelphia properties.</h2>
-        <p>By rejecting solar heat and insulating your existing glass, film reduces your reliance on HVAC systems — delivering measurable savings from day one without replacing a single pane of glass.</p>
-        <a href="/contact/" class="auron-btn auron-btn--primary">Get Started Today</a>
-      </div>
-      <div class="auron-stats__numbers">
-        {stats.map((s) => (
-          <div class="auron-stat-card">
-            <span class="auron-stat-card__value">{s.value}</span>
-            <span class="auron-stat-card__label">{s.label}</span>
-          </div>
-        ))}
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        Energy Performance
+      </span>
+      <h1 class="swt-hero__title">
+        Cut Your Cooling Costs.<br/>
+        <em>Live Comfortable.</em><br/>
+        Year Round.
+      </h1>
+      <p class="swt-hero__sub">Window film that rejects 78% of solar heat and pays for itself in 2–4 years — no window replacement needed.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
       </div>
     </div>
   </section>
 
-  <!-- ── TRUST BANNER ── -->
-  <section class="auron-trust">
-    <div class="auron-trust__inner">
-      <p class="auron-trust__tagline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-        Trusted by 500+ Philadelphia homes &amp; businesses
-      </p>
-    </div>
-  </section>
+  <div class="swt-body">
 
-  <!-- ── FEATURED SECTIONS ── -->
-  <section class="auron-features">
-    <div class="auron-features__hd">
-      <span class="auron-badge">How It Works</span>
-      <h2 class="auron-features__title">Everything you need to know about<br/>energy saving window film</h2>
-    </div>
-
-    {featuredSections.map((s, i) => (
-      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
-        <div class="auron-feat__img">
-          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-          <div class="auron-feat__img-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-            Window Film Philadelphia
-          </div>
-        </div>
-        <div class="auron-feat__content">
-          <span class="auron-feat__num">{s.number}</span>
-          <h3 class="auron-feat__heading">{s.heading}</h3>
-          <p class="auron-feat__body">{s.body}</p>
-          <a href={s.href} class="auron-feat__cta">
-            {s.cta}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-          </a>
-        </div>
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by 500+ Philadelphia homes and businesses</p>
+        <BrandLogos />
       </div>
-    ))}
-  </section>
+    </section>
 
-  <!-- ── MISSION / VISION CARDS ── -->
-  <section class="auron-mission">
-    <div class="auron-mission__inner">
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">01</span>
-        <h3 class="auron-mission-card__title">Our Mission</h3>
-        <p class="auron-mission-card__body">To help every Philadelphia property owner reduce energy costs and improve indoor comfort through professional, high-performance window film solutions — with no disruption and no window replacement.</p>
-        <a href="/contact/" class="auron-btn auron-btn--outline-dark">Get in Touch</a>
-      </div>
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">02</span>
-        <h3 class="auron-mission-card__title">Our Vision</h3>
-        <p class="auron-mission-card__body">A Philadelphia where every building — from Center City row homes to suburban offices — is energy-efficient, comfortable, and protected from the sun's heat and UV rays year-round.</p>
-        <a href="/benefits/" class="auron-btn auron-btn--outline-dark">Explore All Benefits</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── BENEFITS GRID ── -->
-  <section class="auron-benefits">
-    <div class="auron-benefits__hd">
-      <span class="auron-badge">Key Benefits</span>
-      <h2 class="auron-benefits__title">Why energy saving film is worth it</h2>
-    </div>
-    <div class="auron-benefits__grid">
-      {features.map((f) => (
-        <div class="auron-benefit fade-in">
-          <div class="auron-benefit__icon">
-            <Icon name={f.icon} width="28" height="28" />
-          </div>
-          <h4 class="auron-benefit__title">{f.title}</h4>
-          <p class="auron-benefit__body">{f.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ── FAQ ── -->
-  <section class="auron-faq">
-    <div class="auron-faq__inner">
-      <div class="auron-faq__hd">
-        <span class="auron-badge">FAQ</span>
-        <h2 class="auron-faq__title">Common questions about<br/>energy saving window film</h2>
-      </div>
-      <div class="auron-faq__items">
-        {faqItems.map((item, i) => (
-          <div class={`auron-faq__item ${i === 0 ? 'auron-faq__item--open' : ''}`}>
-            <div class="auron-faq__q">
-              {item.question}
-              <span class="auron-faq__toggle">+</span>
+    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="problem">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Challenge</span>
+            <h2 class="swt-h2 swt-h2--light">Philadelphia Buildings Are Losing Cool Air Through Every Window</h2>
+            <p>Philadelphia summers push glass buildings into solar overload. A single west-facing window can add the equivalent heat output of a small space heater — all day, every afternoon. Your HVAC system fights this relentlessly, burning energy and lifespan with every cycle.</p>
+            <p>The problem isn't just summer. In winter, single-pane and poorly insulated glass becomes a one-way heat valve — radiating interior warmth straight outside while cold air seeps in. Most buildings lose 15–25% of their heating energy through windows alone.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">Solar Heat Gain</span>
+              <span class="swt-tag swt-tag--red">HVAC Overload</span>
+              <span class="swt-tag swt-tag--red">Winter Heat Loss</span>
+              <span class="swt-tag swt-tag--red">Inconsistent Comfort</span>
             </div>
-            <div class="auron-faq__a">{item.answer}</div>
           </div>
-        ))}
+          <div class="swt-split__img fade-in">
+            <img src={newImages.hvac} alt="Philadelphia HVAC system working hard due to poor window insulation" loading="lazy" />
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── BRAND LOGOS ── -->
-  <BrandLogos />
-
-  <!-- ── CTA BANNER ── -->
-  <section class="auron-cta-banner">
-    <div class="auron-cta-banner__inner">
-      <div class="auron-cta-banner__text">
-        <h2>Ready to start saving on your <em>energy bills?</em></h2>
-        <p>Get a free consultation and energy savings projection for your property.</p>
+    <!-- SECTION 2: HEAT REJECTION — white bg, image left, text right -->
+    <section class="swt-split" id="heat-rejection">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.heatRejection} alt="Heat-rejecting window film installed on Philadelphia commercial building" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>78%</strong>
+              <span>Heat Rejected</span>
+            </div>
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Reject 78% of Solar Heat — Without Changing Your Windows</h2>
+            <p>High-performance solar control film is applied directly to your existing glass and immediately begins rejecting the infrared and ultraviolet wavelengths that drive heat gain. A single film application can block 78% of incoming solar heat — the equivalent of upgrading to premium low-E glass, at a fraction of the cost.</p>
+            <p>Philadelphia's south and west-facing buildings see the greatest benefit, but every orientation sees measurable improvement. The film works immediately upon installation — no adjustment period, no system changes required.</p>
+            <ul class="swt-check-list">
+              <li>Up to 78% solar heat rejection on day one of installation</li>
+              <li>Works on single-pane, double-pane, and triple-pane glass</li>
+              <li>No window replacement, no renovation, no system downtime</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="auron-cta-banner__btns">
-        <a href="/contact/" class="auron-btn auron-btn--white">Get a Free Quote</a>
-        <a href="tel:+126****7980" class="auron-btn auron-btn--outline-white">Call (267) 394-7980</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-</div><!-- end auron-body -->
+    <!-- SECTION 3: COOLING SAVINGS — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="cooling">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">Cut Cooling Costs Significantly — The Numbers Are Real</h2>
+            <p>Philadelphia commercial properties with substantial glass exposure typically see a 25–35% reduction in summer cooling costs after window film installation. For a building spending $3,000/month on cooling, that's $750–$1,050 back in your operating budget every month during summer months.</p>
+            <p>Residential properties see proportionally similar results — a typical Philadelphia row home can save $150–$300 per summer on utility bills. These aren't estimates or projections; they're documented results from properties in this exact climate.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">35%</span>
+                <span class="swt-metric__label">Max Cooling Cost Reduction</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">2–4yr</span>
+                <span class="swt-metric__label">Typical Payback Period</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.coolingSavings} alt="Philadelphia office with energy-efficient window film reducing cooling costs" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: YEAR-ROUND COMFORT — white bg, image left, text right -->
+    <section class="swt-split" id="comfort">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.comfort} alt="Comfortable Philadelphia workspace with window film controlling temperature year-round" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Year-Round Comfort — Not Just Summer Relief</h2>
+            <p>Most energy-saving discussions focus on cooling. But Philadelphia's climate demands year-round thinking. Heat-rejecting films work in summer; Low-E films add a metallic insulating layer that reflects interior warmth back inside during winter — addressing both extremes without replacing a single window.</p>
+            <p>The result is consistent, comfortable indoor temperature from January to December. Hot spots near windows disappear. Cold drafts from glass surfaces stop. Employees stop fighting the thermostat and the environment around them.</p>
+            <blockquote class="swt-inline-quote">
+              "We stopped having arguments about who gets the desk away from the windows. Everyone is comfortable now — summer and winter."
+              <cite>— Office Manager, tech firm, Old City Philadelphia</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: HVAC RELIEF — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="hvac">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Less Strain on Your HVAC System — Longer Equipment Life</h2>
+            <p>Every degree your HVAC doesn't have to work to compensate for is wear it doesn't accumulate. Heat-rejecting window film reduces the thermal load on your building continuously — not just during peak afternoon hours, but all day, every day of the cooling season.</p>
+            <p>Building engineers and property managers consistently report fewer HVAC service calls, longer intervals between major maintenance, and measurably lower operational costs after film installation. Your heating and cooling system was never designed to fight your windows — film corrects that.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Reduced Thermal Load</strong>
+                  <p>Your HVAC runs less to achieve the same indoor temperature</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Fewer Service Calls</strong>
+                  <p>Documented reduction in HVAC repairs after film installation</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Extended Equipment Life</strong>
+                  <p>Less cycling means longer-lasting mechanical systems</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.warranty} alt="HVAC system running efficiently with window film installed Philadelphia" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Energy-Saving Film — In Action</h2>
+          <p class="swt-subhead">From Center City high-rises to suburban homes — here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">78%</span>
+            <span class="swt-stats__label">Solar Heat Rejected</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">35%</span>
+            <span class="swt-stats__label">Max Cooling Cost Reduction</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">2–4yr</span>
+            <span class="swt-stats__label">Typical Payback Period</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">15yr</span>
+            <span class="swt-stats__label">Warranty on Performance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 3 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">3 Simple Steps to Lower Energy Bills</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>Free Thermal Analysis & Consultation</h3>
+              <p>We visit your property and use thermal imaging to identify exactly where heat enters and escapes. You receive a detailed proposal within 24 hours with the optimal film for your glass type, building orientation, and energy goals. No obligation.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Professional Installation in 1–2 Days</h3>
+              <p>Our factory-trained installers complete the job cleanly and efficiently — typically 1–2 days for residential and 2–5 days for commercial properties. We work around your schedule and leave the building spotless.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>Inspection & Long-Term Warranty</h3>
+              <p>We walk the space with you before considering the job done. Every installation is backed by our labor warranty and the manufacturer's performance warranty — typically 10–15 years on commercial films, lifetime on residential.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Property Owners</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          {testimonials.map((t, i) => (
+            <div class="swt-testimonial fade-in" style={`--delay: ${i * 80}ms`}>
+              <div class="swt-testimonial__quote">"</div>
+              <p>{t.quote}</p>
+              <div class="swt-testimonial__author">
+                <strong>{t.author}</strong>
+                <span>{t.role}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>cut your energy bills?</em></h2>
+          <p>Get a free consultation and thermal analysis. No obligation, no pressure — just honest advice.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-/* ── HERO ── */
-.auron-hero {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: #1a3a2e;
-}
-.auron-hero__img {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.auron-hero__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.auron-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(26, 58, 46, 0.92) 0%,
-    rgba(26, 58, 46, 0.75) 50%,
-    rgba(26, 58, 46, 0.4) 100%
-  );
-}
-.auron-hero__content {
-  position: relative;
-  z-index: 2;
-  padding: 100px 10% 100px;
-  max-width: 760px;
-}
-.auron-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 7px 14px;
-  border-radius: 100px;
-  margin-bottom: 24px;
-}
-.auron-badge--green {
-  background: rgba(129, 171, 76, 0.2);
-  color: #9bff5e;
-  border: 1px solid rgba(155, 255, 94, 0.3);
-}
-.auron-badge--lime {
-  background: rgba(129, 171, 76, 0.15);
-  color: #9bff5e;
-  border: 1px solid rgba(155, 255, 94, 0.25);
-}
-.auron-badge {
-  background: rgba(129, 171, 76, 0.12);
-  color: #9bff5e;
-  border: 1px solid rgba(155, 255, 94, 0.2);
-}
-.auron-hero__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(42px, 5.5vw, 72px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  color: #ffffff;
-  margin: 0 0 20px;
-}
-.auron-accent {
-  color: #9bff5e;
-}
-.auron-hero__sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
-  margin: 0 0 36px;
-  max-width: 520px;
-}
-.auron-hero__ctas {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.auron-btn {
-  display: inline-block;
-  padding: 15px 32px;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  border: 2px solid transparent;
-  white-space: nowrap;
-}
-.auron-btn--primary {
-  background: #9bff5e;
-  color: #1a3a2e;
-  border-color: #9bff5e;
-}
-.auron-btn--primary:hover {
-  background: #7de84a;
-  border-color: #7de84a;
-  transform: translateY(-2px);
-  color: #1a3a2e;
-}
-.auron-btn--outline-light {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.auron-btn--outline-light:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
-  transform: translateY(-2px);
-  color: #fff;
-}
-.auron-btn--outline-dark {
-  background: transparent;
-  color: #1a3a2e;
-  border-color: #1a3a2e;
-}
-.auron-btn--outline-dark:hover {
-  background: #1a3a2e;
-  color: #fff;
-  transform: translateY(-2px);
-}
-.auron-btn--white {
-  background: #fff;
-  color: #1a3a2e;
-  border-color: #fff;
-}
-.auron-btn--white:hover {
-  background: #F7F6F3;
-  transform: translateY(-2px);
-  color: #1a3a2e;
-}
-.auron-btn--outline-white {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.auron-btn--outline-white:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
-  transform: translateY(-2px);
-  color: #fff;
-}
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
 
-/* ── PAGE BODY ── */
-.auron-body {
-  background: #ffffff;
-}
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
+  }
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
-/* ── STATS ── */
-.auron-stats {
-  background: #1a3a2e;
-  padding: 80px 10%;
-}
-.auron-stats__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.auron-stats__heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin: 0 0 16px;
-}
-.auron-stats__text p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.75;
-  margin: 0 0 28px;
-}
-.auron-stats__numbers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-.auron-stat-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(155, 255, 94, 0.15);
-  padding: 32px 28px;
-  text-align: center;
-}
-.auron-stat-card__value {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 4vw, 52px);
-  font-weight: 700;
-  color: #9bff5e;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.auron-stat-card__label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+  }
 
-/* ── TRUST ── */
-.auron-trust {
-  background: #9bff5e;
-  padding: 20px 10%;
-}
-.auron-trust__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.auron-trust__tagline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #1a3a2e;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin: 0;
-}
-.auron-trust__tagline svg {
-  color: #1a3a2e;
-  flex-shrink: 0;
-}
+  /* ══════════════════════════════════════
+     SHARED
+     ══════════════════════════════════════ */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body { background: var(--swt-white); }
 
-/* ── FEATURES ── */
-.auron-features {
-  padding: 100px 10%;
-  background: #F7F6F3;
-}
-.auron-features__hd {
-  margin-bottom: 72px;
-}
-.auron-features__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 3.5vw, 48px);
-  font-weight: 700;
-  color: #1a3a2e;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 12px 0 0;
-}
-.auron-feat {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-bottom: 80px;
-}
-.auron-feat:last-child { margin-bottom: 0; }
-.auron-feat--rev .auron-feat__img { order: 2; }
-.auron-feat--rev .auron-feat__content { order: 1; }
-.auron-feat__img {
-  position: relative;
-  height: 460px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.auron-feat__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.auron-feat__img-badge {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(26, 58, 46, 0.88);
-  backdrop-filter: blur(8px);
-  color: #9bff5e;
-  padding: 10px 16px;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  border: 1px solid rgba(155, 255, 94, 0.25);
-}
-.auron-feat__num {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 80px;
-  font-weight: 700;
-  color: #9bff5e;
-  line-height: 1;
-  opacity: 0.35;
-  margin-bottom: -16px;
-}
-.auron-feat__heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22px, 2.5vw, 32px);
-  font-weight: 700;
-  color: #1a3a2e;
-  line-height: 1.2;
-  margin: 0 0 16px;
-}
-.auron-feat__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: #555;
-  line-height: 1.8;
-  margin: 0 0 24px;
-}
-.auron-feat__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #9bff5e;
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-.auron-feat__cta:hover { gap: 14px; }
+  .swt-eyebrow {
+    display: inline-block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green { color: var(--swt-green-accent); }
 
-/* ── MISSION CARDS ── */
-.auron-mission {
-  background: #1a3a2e;
-  padding: 80px 10%;
-}
-.auron-mission__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-.auron-mission-card {
-  border-left: 4px solid #9bff5e;
-  padding: 40px 40px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0 16px 16px 0;
-}
-.auron-mission-card__num {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 64px;
-  font-weight: 700;
-  color: #9bff5e;
-  line-height: 1;
-  opacity: 0.4;
-  margin-bottom: 8px;
-}
-.auron-mission-card__title {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 16px;
-}
-.auron-mission-card__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.75;
-  margin: 0 0 28px;
-}
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--swt-dark);
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
 
-/* ── BENEFITS GRID ── */
-.auron-benefits {
-  background: #fff;
-  padding: 100px 10%;
-}
-.auron-benefits__hd {
-  margin-bottom: 56px;
-}
-.auron-benefits__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 700;
-  color: #1a3a2e;
-  line-height: 1.15;
-  margin: 12px 0 0;
-}
-.auron-benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border: 1px solid #E8E8E0;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.auron-benefit {
-  padding: 36px 28px;
-  border-right: 1px solid #E8E8E0;
-  border-bottom: 1px solid #E8E8E0;
-}
-.auron-benefit:nth-child(4n) { border-right: none; }
-.auron-benefit:nth-child(n+5) { border-bottom: none; }
-.auron-benefit__icon {
-  color: #9bff5e;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-.auron-benefit__title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #1a3a2e;
-  margin: 0 0 8px;
-}
-.auron-benefit__body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.65;
-  margin: 0;
-}
+  .swt-subhead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    margin: 8px 0 0;
+    text-align: center;
+  }
 
-/* ── FAQ ── */
-.auron-faq {
-  background: #F7F6F3;
-  padding: 100px 10%;
-}
-.auron-faq__inner {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 80px;
-  align-items: start;
-}
-.auron-faq__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3vw, 40px);
-  font-weight: 700;
-  color: #1a3a2e;
-  line-height: 1.15;
-  margin: 12px 0 0;
-}
-.auron-faq__item {
-  border-bottom: 1px solid #D8D8D0;
-  padding: 20px 0;
-}
-.auron-faq__item:first-of-type { border-top: 1px solid #D8D8D0; }
-.auron-faq__q {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1a3a2e;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  cursor: pointer;
-  padding: 4px 0;
-}
-.auron-faq__toggle {
-  color: #9bff5e;
-  font-size: 22px;
-  flex-shrink: 0;
-  font-weight: 400;
-  transition: transform 0.2s;
-}
-.auron-faq__a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  color: #555;
-  line-height: 1.75;
-  margin-top: 10px;
-  display: none;
-}
-.auron-faq__item--open .auron-faq__a { display: block; }
-.auron-faq__item--open .auron-faq__toggle { transform: rotate(45deg); }
+  /* ── Trust Bar ── */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
 
-/* ── CTA BANNER ── */
-.auron-cta-banner {
-  background: #1a3a2e;
-  padding: 80px 10%;
-}
-.auron-cta-banner__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-}
-.auron-cta-banner__text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  margin: 0 0 8px;
-}
-.auron-cta-banner__text h2 em {
-  font-style: italic;
-  color: #9bff5e;
-}
-.auron-cta-banner__text p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0;
-}
-.auron-cta-banner__btns {
-  display: flex;
-  gap: 14px;
-  flex-shrink: 0;
-}
+  /* ── Split Sections ── */
+  .swt-split {
+    padding: 96px 0;
+    background: var(--swt-white);
+  }
+  .swt-split--dark { background: var(--swt-dark); }
+  .swt-split--alt { background: var(--swt-alt); }
 
-/* ── FADE IN ── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .swt-split__grid--rev .swt-split__img { order: -1; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .auron-stats__inner { grid-template-columns: 1fr; gap: 48px; }
-  .auron-feat { grid-template-columns: 1fr; gap: 40px; }
-  .auron-feat--rev .auron-feat__img { order: 0; }
-  .auron-feat--rev .auron-feat__content { order: 1; }
-  .auron-mission__inner { grid-template-columns: 1fr; }
-  .auron-benefits__grid { grid-template-columns: repeat(2, 1fr); }
-  .auron-benefit:nth-child(4n) { border-right: 1px solid #E8E8E0; }
-  .auron-benefit:nth-child(2n) { border-right: none; }
-  .auron-benefit:nth-child(n+5) { border-bottom: 1px solid #E8E8E0; }
-  .auron-benefit:nth-child(3n) { border-bottom: none; }
-  .auron-faq__inner { grid-template-columns: 1fr; gap: 40px; }
-  .auron-cta-banner__inner { flex-direction: column; text-align: center; }
-}
-@media (max-width: 768px) {
-  .auron-hero__content { padding: 80px 5%; }
-  .auron-hero__ctas { flex-direction: column; }
-  .auron-stats, .auron-features, .auron-benefits, .auron-faq, .auron-cta-banner { padding: 60px 5%; }
-  .auron-mission { padding: 60px 5%; }
-  .auron-feat__img { height: 280px; }
-  .auron-benefits__grid { grid-template-columns: 1fr; }
-  .auron-benefit { border-right: none !important; }
-  .auron-stat-card { padding: 24px 20px; }
-  .auron-cta-banner__btns { flex-direction: column; width: 100%; }
-  .auron-hero__title { font-size: 36px; }
-}
+  .swt-split__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--swt-text-sec);
+    margin: 0 0 14px;
+  }
+  .swt-split--dark .swt-split__text p { color: rgba(255,255,255,0.55); }
+
+  .swt-split__img {
+    position: relative;
+  }
+  .swt-split__img img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--swt-radius);
+    display: block;
+    box-shadow: 0 20px 60px rgba(42,36,30,0.12);
+  }
+
+  .swt-img-badge {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-radius: var(--swt-radius);
+    padding: 16px 24px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(42,36,30,0.2);
+  }
+  .swt-img-badge strong {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .swt-img-badge span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  /* ── Problem Tags ── */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .swt-tag {
+    padding: 8px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .swt-tag--red {
+    background: rgba(180,60,60,0.1);
+    color: #e8a0a0;
+    border: 1px solid rgba(180,60,60,0.2);
+  }
+
+  /* ── Check List ── */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0 0;
+  }
+  .swt-check-list li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    padding: 9px 0;
+    border-bottom: 1px solid var(--swt-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .swt-check-list li::before {
+    content: '';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(78,107,42,0.1);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234E6B2A' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── Energy Metrics ── */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 36px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--swt-border);
+  }
+  .swt-split--dark .swt-energy-metrics {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+  .swt-metric__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+  }
+  .swt-metric__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Security Features ── */
+  .swt-security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .swt-security-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--swt-green-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 4px;
+  }
+  .swt-security-feature p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+
+  /* ── Inline Quote ── */
+  .swt-inline-quote {
+    border-left: 3px solid var(--swt-green);
+    padding-left: 18px;
+    margin: 22px 0 0;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--swt-text-sec);
+    line-height: 1.7;
+  }
+  .swt-inline-quote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    color: var(--swt-text-sec);
+    opacity: 0.65;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* ── Gallery ── */
+  .swt-gallery {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-gallery__header { margin-bottom: 48px; }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
+  }
+  .swt-gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    display: block;
+  }
+  .swt-gallery__item:hover img { transform: scale(1.06); }
+  .swt-gallery__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 12px 12px;
+    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--swt-white);
+    display: block;
+    text-align: center;
+  }
+
+  /* ── Stats Bar ── */
+  .swt-stats {
+    background: var(--swt-green-accent);
+    padding: 72px 0;
+  }
+  .swt-stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    padding: 0 40px;
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1;
+  }
+  .swt-stats__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── Process ── */
+  .swt-process {
+    background: var(--swt-cream);
+    padding: 96px 0;
+  }
+  .swt-process__steps { margin-top: 48px; }
+  .swt-process__step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 36px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--swt-border);
+    align-items: start;
+  }
+  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
+  .swt-process__num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+    opacity: 0.55;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--swt-dark);
+    margin: 0 0 10px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--swt-text-sec);
+    margin: 0;
+  }
+
+  /* ── Testimonials ── */
+  .swt-testimonials {
+    background: var(--swt-dark);
+    padding: 96px 0;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--swt-radius);
+    padding: 32px;
+  }
+  .swt-testimonial__quote {
+    font-family: Georgia, serif;
+    font-size: 68px;
+    line-height: 0.7;
+    color: var(--swt-green-accent);
+    opacity: 0.35;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 22px;
+    font-style: italic;
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+  }
+  .swt-testimonial__author span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  /* ── FAQ ── */
+  .swt-faq {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--swt-text-sec);
+    margin: 14px 0 24px;
+  }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+    padding: 18px 0;
+  }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 3px 0;
+  }
+  .swt-faq__toggle {
+    color: var(--swt-green);
+    font-size: 22px;
+    flex-shrink: 0;
+    font-weight: 400;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .swt-faq__a {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--swt-text-sec);
+    line-height: 1.8;
+    margin-top: 10px;
+    display: none;
+  }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+
+  /* ── CTA Banner ── */
+  .swt-cta {
+    background: var(--swt-dark);
+    padding: 80px 5%;
+  }
+  .swt-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Fade In ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .swt-split__grid { gap: 48px; }
+    .swt-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    .swt-testimonials__grid { grid-template-columns: 1fr; }
+    .swt-stats__row { flex-wrap: wrap; gap: 24px; }
+    .swt-stats__div { display: none; }
+    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
+    .swt-cta__inner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 768px) {
+    .swt-split__grid { grid-template-columns: 1fr; gap: 32px; }
+    .swt-split__grid--rev .swt-split__img { order: 0; }
+    .swt-split__img img { height: 280px; }
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
+    .swt-process__num { font-size: 36px; }
+    .swt-hero__content { padding: 80px 5%; }
+    .swt-cta__btns { flex-direction: column; width: 100%; }
+    .swt-hero__ctas { flex-direction: column; }
+    .swt-energy-metrics { flex-direction: column; gap: 16px; }
+  }
+  @media (max-width: 480px) {
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-split { padding: 64px 0; }
+    .swt-stats__row { flex-direction: column; }
+  }
 </style>
 
 <script>
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target as HTMLElement;
+        const delay = el.style.getPropertyValue('--delay') || '0ms';
+        setTimeout(() => el.classList.add('visible'), parseInt(delay));
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  document.querySelectorAll('.auron-faq__item').forEach(item => {
-    item.querySelector('.auron-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('auron-faq__item--open');
-      document.querySelectorAll('.auron-faq__item').forEach(i => i.classList.remove('auron-faq__item--open'));
-      if (!isOpen) item.classList.add('auron-faq__item--open');
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
     });
   });
 </script>
