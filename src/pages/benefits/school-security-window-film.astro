@@ -1,348 +1,1086 @@
 ---
-/* Auron-inspired redesign · Window Film Philadelphia · School Security Film page */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
-const title = 'School Security Window Film Philadelphia | Window Film Philadelphia';
-const description = 'Protect students and staff with school security window film from Window Film Philadelphia. Shatter-resistant glass film for K-12, universities, and childcare facilities.';
+const title = 'School Security Window Film Philadelphia | Affordable Protection for K-12 & Universities';
+const description = 'School security window film holds glass during active threats, giving students and staff critical time to shelter in place. Quick summer installation. Serving Philadelphia K-12, universities & childcare facilities.';
+
+const galleryImages = [
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181654_97c89d71-1268-4c53-92f5-e397e2e5507f.png', label: 'School Entrance Protection' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png', label: '99% UV Blocked' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png', label: 'Security & Safety' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163229_6541b9dc-3f99-46f5-bc6f-5aecd8fd77ae.png', label: 'Classroom Windows' },
+  { src: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163859_fabc7e12-368e-49f3-8971-08b76bbdd518.png', label: 'Energy Efficiency' },
+];
+
+const newImages = {
+  schoolExterior: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181654_97c89d71-1268-4c53-92f5-e397e2e5507f.png',
+  glassHolding: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png',
+  summerInstall: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png',
+  invisibleFilm: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163229_6541b9dc-3f99-46f5-bc6f-5aecd8fd77ae.png',
+  shelterInPlace: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170335_205f9050-c15e-4135-9684-8380335dac7c.png',
+};
 
 const faqItems = [
-  { question: 'Why do schools need security window film?', answer: 'Schools face genuine risks from broken glass — whether from accidental impact, severe weather events, or deliberate attacks. Security window film holds broken glass in place, preventing dangerous shards from injuring students and staff. In an forced-entry scenario, filmed glass delays intruders significantly, giving law enforcement more time to respond and potentially deterring the attempt entirely.' },
-  { question: 'Does security film meet school safety regulations?', answer: 'School safety requirements vary by district, state, and building code. Security window film is generally compatible with most school safety standards — and in many cases actively supports compliance with fire exit glazing requirements because filmed glass remains intact and prevents dangerous glass shards from blocking emergency exits. We work with school administrators and security consultants to ensure installations meet applicable standards.' },
-  { question: 'How does security film compare to security screens or bars?', answer: 'Security film is a passive system — it works automatically without activation or human intervention. Unlike bars or screens, it does not impair the appearance of the school, does not create a "prison" aesthetic, and does not block light or views. It also does not create a safety hazard in fires (unlike bars). The primary tradeoff is that extreme force can eventually breach filmed glass — though the delay and noise typically trigger alarms and deter attempts.' },
-  { question: 'Can security film be applied to existing school windows?', answer: 'Yes. One of the key advantages of security window film is that it can be retrofitted to existing glass without replacing the windows. This makes it a far more affordable option for schools that need to upgrade security but do not have the budget to replace all glass with impact-resistant glazing. Our team can assess each window in your school and apply the appropriate film system.' },
-  { question: 'What about window film and fire exit requirements?', answer: 'Fire codes require certain egress windows to be "easily breakable" for emergency escape. Adding film to egress windows requires careful specification to avoid compromising fire safety compliance. We assess each window\'s function as part of every school security project and specify films that meet both security and fire code requirements.' },
-  { question: 'How do we get a school security film project started?', answer: 'Contact Window Film Philadelphia for a no-cost security assessment. Our team will survey your school\'s windows, identify priority areas, assess glass types and building code requirements, and provide a detailed proposal. Many schools also qualify for safety grant funding or can incorporate security film upgrades into existing facility improvement budgets.' },
-];
-
-const stats = [
-  { value: '4–15', label: 'Mils Film Thickness' },
-  { value: '3–7', label: 'Minutes Entry Delay' },
-  { value: '99%', label: 'UV Blocked' },
-  { value: 'AAMA', label: 'Certified Glass System' },
-];
-
-const features = [
-  { icon: 'lucide:graduation-cap', title: 'Student & Staff Protection', body: 'Holds broken glass in place — preventing dangerous glass shard injuries during impacts or attacks.' },
-  { icon: 'lucide:shield-check', title: 'Entry Delay & Deterrence', body: 'Makes windows substantially harder and slower to breach — adding critical minutes for law enforcement response.' },
-  { icon: 'lucide:building-2', title: 'Retrofit Existing Glass', body: 'Applied to existing windows without replacement — making it an affordable upgrade for schools on tight budgets.' },
-  { icon: 'lucide:clipboard-check', title: 'Safety Standard Compliant', body: 'Compatible with most K-12 and university safety standards. We assess every school against applicable codes.' },
-];
-
-const featuredSections = [
-  {
-    number: '01',
-    heading: 'School Security Window Film for Philadelphia Facilities',
-    body: 'School safety is not optional — and glass vulnerability is one of the most overlooked risks in school security planning. Standard window glass shatters dangerously on impact, sending shards flying and creating immediate hazards for students and staff. Security window film addresses this directly: it holds broken glass in place, prevents dangerous glass projectiles, and makes forced entry through windows substantially more difficult and time-consuming.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_201134_5744df7d-bd2b-4b96-8bd2-32e29c97efc5.png',
-    alt: 'Philadelphia school with security window film protecting entrance glass',
-    cta: 'Get a Free Security Assessment',
-    href: '/contact/',
-  },
-  {
-    number: '02',
-    heading: 'How School Security Film Works',
-    body: 'Security window film is a thick, high-tensile polyester applied to the interior surface of glass. When impact shatters the glass — from forced entry attempts, severe weather debris, or accidental impact — the film\'s tensile strength holds the broken pieces together in a membrane rather than allowing them to explode inward as dangerous projectiles. The film also adds significant resistance to forced break-in attempts, slowing intruders and creating noise that can trigger alarms.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_202132_ee078c33-c7af-40bb-8926-7c45e887418c.png',
-    alt: 'Security window film holding broken glass safely in place',
-    cta: 'See How It Works',
-    href: '/resources/window-film-fact-sheet/',
-  },
-  {
-    number: '03',
-    heading: 'Philadelphia\'s School Security Film Experts',
-    body: 'Window Film Philadelphia has worked with Philadelphia-area schools to assess glass vulnerability and install security film where it matters most — main entrances, classroom wings, gymnasiums, and ground-floor corridors. We work directly with school administrators, facilities managers, and security consultants to deliver solutions that meet both safety standards and budget realities.',
-    img: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_202309_5107ca01-018d-4ad1-b743-ab56e211c26d.png',
-    alt: 'Philadelphia childcare facility with security window film installed',
-    cta: 'Schedule a Consultation',
-    href: '/contact/',
-  },
+  { question: 'How does school security film compare to bulletproof glass?', answer: 'Security film is a fraction of the cost of bulletproof or laminated glass replacement — typically 1/5th to 1/10th the price. It holds broken glass in place the same way laminated glass does, preventing dangerous shards from entering the room. The key difference is that extreme force can eventually breach filmed glass, while laminated glass is structurally reinforced. However, the delay and noise created by filmed glass almost always triggers an alarm and deters the attempt before breach occurs.' },
+  { question: 'Can film be installed without disrupting the school schedule?', answer: 'Yes. Interior film installation is fast, quiet, and produces no dust or fumes. We can work around class schedules, focus on specific wings or buildings after hours, and time installations to coincide with summer breaks, holidays, or in-service days. Most schools are fully installed within 1–3 weeks depending on building size, with minimal to no impact on daily operations.' },
+  { question: 'Does film work on historic school buildings?', answer: 'Historic schools often have original single-pane glass that is particularly vulnerable. Security film can be retrofitted to these windows without altering the historic character of the building — no glass replacement, no frame changes, no visible hardware. This makes it an ideal solution for schools in historic districts or buildings with preservation requirements, where aesthetic changes may be restricted.' },
+  { question: "What's the maintenance cost after installation?", answer: 'There is virtually no ongoing maintenance cost. Once installed, security film requires no servicing, no adjustments, and no replacement for 15–20 years on commercial-grade films. Unlike mechanical security systems, there are no sensors, batteries, or components that wear out. The only occasional maintenance is normal glass cleaning — film is washed just like untreated glass.' },
+  { question: 'How quickly can windows be secured after a break-in attempt?', answer: 'If an existing window is damaged during a break-in attempt or vandalism, we can often apply security film to that window within 24–48 hours as an emergency response. For ongoing security upgrades, most schools are fully assessed, quoted, and installed within a few weeks. After a documented threat or incident, we work on expedited timelines to secure your facility as quickly as possible.' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/school-security-window-film/" serviceName="School Security Window Film" serviceDesc="School security window film installation in Philadelphia. Shatter-resistant protection for K-12 schools, universities, and childcare facilities." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/school-security-window-film/">
-
-<section class="auron-hero">
-  <div class="auron-hero__img">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_200141_607801f4-cb2d-463a-971b-5a83332ac60f.png" alt="School security window film protecting Philadelphia school entrance" width="1440" height="700" />
-    <div class="auron-hero__overlay"></div>
-  </div>
-  <div class="auron-hero__content">
-    <span class="auron-badge auron-badge--green">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-      School Security
-    </span>
-    <h1 class="auron-hero__title">
-      Protect Our<br/>
-      <span class="auron-accent">Students</span><br/>
-      First.
-    </h1>
-    <p class="auron-hero__sub">Security window film holds broken glass in place — preventing dangerous glass shard injuries and slowing intruders until help arrives.</p>
-    <div class="auron-hero__ctas">
-      <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Security Assessment</a>
-      <a href="/benefits/" class="auron-btn auron-btn--outline-light">All Benefits</a>
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="School Security Window Film Installation"
+  serviceDesc="Shatter-resistant security window film for Philadelphia K-12 schools, universities, and childcare facilities. Holds glass during active threats and gives students critical time to shelter in place."
+  serviceUrl="https://www.windowfilmphiladelphia.com/benefits/school-security-window-film"
+  faqItems={faqItems}
+>
+  <!-- HERO -->
+  <section class="swt-hero">
+    <div class="swt-hero__img">
+      <img src={newImages.schoolExterior} alt="Philadelphia school protected with security window film" width="1440" height="700" />
+      <div class="swt-hero__overlay"></div>
     </div>
-  </div>
-</section>
-
-<div class="auron-body">
-
-  <section class="auron-stats">
-    <div class="auron-stats__inner">
-      <div class="auron-stats__text">
-        <span class="auron-badge auron-badge--lime">School Safety Solutions</span>
-        <h2 class="auron-stats__heading">Glass is the most overlooked vulnerability in school security — and security film is the most affordable way to fix it.</h2>
-        <p>Security window film is one of the most cost-effective school safety upgrades available. It can be retrofitted to existing glass without window replacement, installed during school breaks, and delivers immediate protection without changing the appearance or function of your school. The investment is modest compared to the peace of mind it provides.</p>
-        <a href="/contact/" class="auron-btn auron-btn--primary">Get a Free Security Assessment</a>
+    <div class="swt-hero__content">
+      <span class="swt-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
+        School Safety Solutions
+      </span>
+      <h1 class="swt-hero__title">
+        Hold Glass.<br/>
+        Buy Time.<br/>
+        <em>Protect Students.</em>
+      </h1>
+      <p class="swt-hero__sub">Security window film holds shattered glass in place during active threat situations — giving students and staff the critical minutes they need to shelter in place.</p>
+      <div class="swt-hero__ctas">
+        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Security Assessment</a>
+        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
       </div>
-      <div class="auron-stats__numbers">
-        {stats.map((s) => (
-          <div class="auron-stat-card">
-            <span class="auron-stat-card__value counter" data-target={s.value}>{s.value}</span>
-            <span class="auron-stat-card__label">{s.label}</span>
+    </div>
+  </section>
+
+  <div class="swt-body">
+
+    <!-- TRUST BAR -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by leading Philadelphia schools and universities</p>
+        <BrandLogos />
+      </div>
+    </section>
+
+    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="problem">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">The Vulnerability</span>
+            <h2 class="swt-h2 swt-h2--light">Standard School Windows Are One of the Most Dangerous Overlooked Risks in K-12 Safety</h2>
+            <p>When a window breaks during an active threat — whether from forced entry, severe weather, or accidental impact — glass shards become projectiles. In a school full of children, those shards cause the most serious injuries, not the initial breach itself.</p>
+            <p>Philadelphia schools face genuine glass vulnerability. Ground-floor classroom windows, gymnasium glass, main entrance systems, and corridor panels are all common weak points. Most were never designed with security in mind — they were designed to look good and let in light.</p>
+            <div class="swt-problem-tags">
+              <span class="swt-tag swt-tag--red">Shattered Glass Projectiles</span>
+              <span class="swt-tag swt-tag--red">Unprotected Entrances</span>
+              <span class="swt-tag swt-tag--red">Ground-Floor Vulnerability</span>
+              <span class="swt-tag swt-tag--red">No Entry Delay</span>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="auron-trust">
-    <div class="auron-trust__inner">
-      <p class="auron-trust__tagline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-        Trusted by 500+ Philadelphia homes &amp; businesses
-      </p>
-    </div>
-  </section>
-
-  <section class="auron-features">
-    <div class="auron-features__hd">
-      <span class="auron-badge">How It Works</span>
-      <h2 class="auron-features__title">Everything you need to know about<br/>school security window film</h2>
-    </div>
-    {featuredSections.map((s, i) => (
-      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
-        <div class="auron-feat__img">
-          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-          <div class="auron-feat__img-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-            Window Film Philadelphia
+          <div class="swt-split__img fade-in">
+            <img src={newImages.glassHolding} alt="Security window film holding shattered glass in place" loading="lazy" />
           </div>
         </div>
-        <div class="auron-feat__content">
-          <span class="auron-feat__num">{s.number}</span>
-          <h3 class="auron-feat__heading">{s.heading}</h3>
-          <p class="auron-feat__body">{s.body}</p>
-          <a href={s.href} class="auron-feat__cta">{s.cta}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></a>
-        </div>
       </div>
-    ))}
-  </section>
+    </section>
 
-  <section class="auron-mission">
-    <div class="auron-mission__inner">
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">01</span>
-        <h3 class="auron-mission-card__title">Our Mission</h3>
-        <p class="auron-mission-card__body">To help every Philadelphia school — public and private, K-12 and higher education — eliminate the dangerous glass vulnerability that standard windows create. We believe that protecting students and staff should not require replacing every window in the building.</p>
-        <a href="/contact/" class="auron-btn auron-btn--outline-dark">Get in Touch</a>
-      </div>
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">02</span>
-        <h3 class="auron-mission-card__title">Our Vision</h3>
-        <p class="auron-mission-card__body">A Philadelphia where every school has assessed its glass vulnerabilities and taken practical, affordable steps to protect students — making schools safer without making them feel like prisons.</p>
-        <a href="/benefits/" class="auron-btn auron-btn--outline-dark">Explore All Benefits</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="auron-benefits">
-    <div class="auron-benefits__hd">
-      <span class="auron-badge">Key Benefits</span>
-      <h2 class="auron-benefits__title">Why school security film is worth it</h2>
-    </div>
-    <div class="auron-benefits__grid">
-      {features.map((f) => (
-        <div class="auron-benefit fade-in">
-          <div class="auron-benefit__icon"><Icon name={f.icon} width="28" height="28" /></div>
-          <h4 class="auron-benefit__title">{f.title}</h4>
-          <p class="auron-benefit__body">{f.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="auron-faq">
-    <div class="auron-faq__inner">
-      <div class="auron-faq__hd">
-        <span class="auron-badge">FAQ</span>
-        <h2 class="auron-faq__title">Common questions about<br/>school security window film</h2>
-      </div>
-      <div class="auron-faq__items">
-        {faqItems.map((item, i) => (
-          <div class={`auron-faq__item ${i === 0 ? 'auron-faq__item--open' : ''}`}>
-            <div class="auron-faq__q">{item.question}<span class="auron-faq__toggle">+</span></div>
-            <div class="auron-faq__a">{item.answer}</div>
+    <!-- SECTION 2: ACTIVE THREAT — white bg, image left, text right -->
+    <section class="swt-split" id="threat">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.schoolExterior} alt="Philadelphia school with security window film on entrance" loading="lazy" />
+            <div class="swt-img-badge">
+              <strong>3–7</strong>
+              <span>Minutes of Delay</span>
+            </div>
           </div>
-        ))}
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 01</span>
+            <h2 class="swt-h2">Holds Glass During Active Threat Situations</h2>
+            <p>When someone attempts to break through a window during a security incident, security film is the difference between a room full of dangerous glass shards and a room where the glass stays in the frame. The high-tensile polyester membrane holds the broken pane together, preventing glass from becoming a weapon itself.</p>
+            <p>This delay also creates noise and resistance that triggers alarms — and every second of delay is a second that law enforcement is closer. In shelter-in-place scenarios, keeping glass contained means students and staff are genuinely protected while they wait for the all-clear.</p>
+            <ul class="swt-check-list">
+              <li>Prevents dangerous glass shard injuries during impact events</li>
+              <li>Creates alarm-triggering resistance during forced entry attempts</li>
+              <li>Keeps students safe during shelter-in-place situations</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <BrandLogos />
-
-  <section class="auron-cta-banner">
-    <div class="auron-cta-banner__inner">
-      <div class="auron-cta-banner__text">
-        <h2>Ready to secure your school <em>the right way?</em></h2>
-        <p>Get a free security assessment for your school or facility.</p>
+    <!-- SECTION 3: AFFORDABLE — alt cream bg, text left, image right -->
+    <section class="swt-split swt-split--alt" id="affordable">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 02</span>
+            <h2 class="swt-h2">An Affordable Layer of Protection for Any School Budget</h2>
+            <p>Replacing existing glass with laminated or bulletproof glazing costs $40–$100+ per square foot and requires full window frame replacement. Security window film costs $8–$18 per square foot — applied directly to existing glass with no frame modification needed.</p>
+            <p>For a typical Philadelphia K-8 school with 200 windows, a full security film installation costs less than a single athletic facility renovation. It is one of the highest-impact safety investments a school can make relative to its cost — and it qualifies in most cases for facility improvement budgets without requiring a bond referendum.</p>
+            <div class="swt-energy-metrics">
+              <div class="swt-metric">
+                <span class="swt-metric__num">5–10x</span>
+                <span class="swt-metric__label">Lower Cost Than Replacement Glass</span>
+              </div>
+              <div class="swt-metric">
+                <span class="swt-metric__num">15–20yr</span>
+                <span class="swt-metric__label">Expected Film Lifespan</span>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.summerInstall} alt="Summer window film installation at Philadelphia school" loading="lazy" />
+          </div>
+        </div>
       </div>
-      <div class="auron-cta-banner__btns">
-        <a href="/contact/" class="auron-btn auron-btn--white">Get a Free Quote</a>
-        <a href="tel:+126****7980" class="auron-btn auron-btn--outline-white">Call (267) 394-7980</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-</div>
+    <!-- SECTION 4: QUICK INSTALL — white bg, image left, text right -->
+    <section class="swt-split" id="installation">
+      <div class="container">
+        <div class="swt-split__grid swt-split__grid--rev">
+          <div class="swt-split__img fade-in">
+            <img src={newImages.invisibleFilm} alt="Invisible security film on school windows — no aesthetic impact" loading="lazy" />
+          </div>
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow">Benefit 03</span>
+            <h2 class="swt-h2">Quick Installation Over Summer Breaks — Zero Disruption to Learning</h2>
+            <p>Security film installation is fast, clean, and silent — no power tools, no dust, no fumes. Our crews can work around your school calendar, installing during summer breaks, in-service days, or after school hours to avoid any impact on instruction.</p>
+            <p>A complete K-8 school installation typically takes 1–2 weeks. We focus on priority areas first — entrances, ground-floor corridors, gymnasium, and admin areas — so your school has immediate protection while we complete the full installation.</p>
+            <blockquote class="swt-inline-quote">
+              "They installed film in our gym and all ground-floor corridors over a single summer break. By the time students returned, every window was protected — and no one even noticed the work was being done."
+              <cite>— Facilities Director, public elementary school, Northeast Philadelphia</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: INVISIBLE — dark bg, text left, image right -->
+    <section class="swt-split swt-split--dark" id="invisible">
+      <div class="container">
+        <div class="swt-split__grid">
+          <div class="swt-split__text fade-in">
+            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
+            <h2 class="swt-h2 swt-h2--light">Invisible Until It's Needed — No Prison Aesthetic</h2>
+            <p>Security film is virtually invisible. From the outside, no one can tell which windows are filmed and which are not. The school looks like a school — not a detention facility. This matters enormously for school culture, community perception, and student wellbeing.</p>
+            <p>Unlike security bars, screens, or impact-resistant glass replacements, film does not impair natural daylight, block views from inside, or create a sense of confinement. Students still learn next to bright, open windows — with protection they will never see unless they need it.</p>
+            <div class="swt-security-features">
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Zero Aesthetic Impact</strong>
+                  <p>Film is optically clear — indistinguishable from untreated glass</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>Preserves Daylight and Views</strong>
+                  <p>No reduction in natural light or visual connection to outdoors</p>
+                </div>
+              </div>
+              <div class="swt-security-feature">
+                <div class="swt-feature-dot"></div>
+                <div>
+                  <strong>No Ongoing Maintenance</strong>
+                  <p>15–20 year film lifespan with zero servicing requirements</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swt-split__img fade-in">
+            <img src={newImages.shelterInPlace} alt="Philadelphia school hallway with security film installed" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — 5 images -->
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">School Security Film — In Action</h2>
+          <p class="swt-subhead">From K-8 elementary schools to university campuses — here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR — accent green -->
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item fade-in">
+            <span class="swt-stats__num">16+</span>
+            <span class="swt-stats__label">Years in Philadelphia</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 80ms">
+            <span class="swt-stats__num">500+</span>
+            <span class="swt-stats__label">Commercial Projects</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 160ms">
+            <span class="swt-stats__num">3–7</span>
+            <span class="swt-stats__label">Minutes Entry Delay</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item fade-in" style="--delay: 240ms">
+            <span class="swt-stats__num">15–20yr</span>
+            <span class="swt-stats__label">Film Lifespan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — 3 steps -->
+    <section class="swt-process">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">How It Works</span>
+          <h2 class="swt-h2 swt-h2--center">3 Simple Steps to a Safer School</h2>
+        </div>
+        <div class="swt-process__steps">
+          <div class="swt-process__step fade-in">
+            <div class="swt-process__num">01</div>
+            <div class="swt-process__body">
+              <h3>Free Security Assessment</h3>
+              <p>We survey every window in your school, identify priority areas based on building layout and current threat assessments, and provide a detailed proposal within 24 hours. No obligation — just honest, school-specific advice.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 80ms">
+            <div class="swt-process__num">02</div>
+            <div class="swt-process__body">
+              <h3>Professional Summer Installation</h3>
+              <p>Our factory-trained installers work around your academic calendar. We install in phases if needed, prioritizing entrances and ground-floor corridors. The process is clean, quiet, and completed without disrupting instruction.</p>
+            </div>
+          </div>
+          <div class="swt-process__step fade-in" style="--delay: 160ms">
+            <div class="swt-process__num">03</div>
+            <div class="swt-process__body">
+              <h3>Inspection & Long-Term Warranty</h3>
+              <p>We walk every space with your facilities team before considering the job done. Every installation is backed by our labor warranty and the manufacturer's 15–20 year material warranty — no ongoing maintenance, no recurring costs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — dark bg -->
+    <section class="swt-testimonials">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
+          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Schools</h2>
+        </div>
+        <div class="swt-testimonials__grid">
+          <div class="swt-testimonial fade-in">
+            <div class="swt-testimonial__quote">"</div>
+            <p>After we had a window smash during a break-in attempt, we knew we had to act. The film installation was fast, affordable, and non-disruptive. We now have every ground-floor window protected and I sleep better at night knowing our kids are safer.</p>
+            <div class="swt-testimonial__author">
+              <strong>Maria T.</strong>
+              <span>Principal, K-5 public school, West Philadelphia</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 80ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>We were quoted $180,000 to replace our gymnasium glass with laminated panels. Security film gave us the same shatter-resistance for about $22,000. The installation was done in four days over spring break. It was the obvious choice.</p>
+            <div class="swt-testimonial__author">
+              <strong>James R.</strong>
+              <span>Facilities Director, charter school network, South Philadelphia</span>
+            </div>
+          </div>
+          <div class="swt-testimonial fade-in" style="--delay: 160ms">
+            <div class="swt-testimonial__quote">"</div>
+            <p>Our historic building had original single-pane windows in every classroom — beautiful but fragile. We couldn't replace them without changing the building's character. Film was the perfect retrofitted solution that preserved the look and added real protection.</p>
+            <div class="swt-testimonial__author">
+              <strong>Sandra L.</strong>
+              <span>Head of School, private K-8, Society Hill</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="swt-cta">
+      <div class="swt-cta__inner">
+        <div class="swt-cta__text">
+          <h2>Ready to <em>protect</em> your students?</h2>
+          <p>Get a free security assessment and proposal for your school. No obligation — just honest advice.</p>
+        </div>
+        <div class="swt-cta__btns">
+          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
+          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
-.auron-hero { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; background: var(--brand); }
-.auron-hero__img { position: absolute; inset: 0; z-index: 0; }
-.auron-hero__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-hero__overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(26,58,46,0.92) 0%, rgba(26,58,46,0.75) 50%, rgba(26,58,46,0.4) 100%); }
-.auron-hero__content { position: relative; z-index: 2; padding: 100px 10%; max-width: 800px; }
-.auron-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 14px; border-radius: 100px; margin-bottom: 24px; }
-.auron-badge--green { background: rgba(129,171,76,0.2); color: var(--green); border: 1px solid rgba(129,171,76,0.3); }
-.auron-badge--lime { background: rgba(129,171,76,0.15); color: var(--green); border: 1px solid rgba(129,171,76,0.25); }
-.auron-badge { background: rgba(129,171,76,0.12); color: var(--green); border: 1px solid rgba(129,171,76,0.2); }
-.auron-hero__title { font-family: 'Playfair Display', serif; font-size: clamp(42px,5.5vw,72px); font-weight: 700; line-height: 1.05; letter-spacing: -1.5px; color: #fff; margin: 0 0 20px; }
-.auron-accent { color: var(--green); }
-.auron-hero__sub { font-family: 'DM Sans', sans-serif; font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0 0 36px; max-width: 520px; }
-.auron-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.auron-btn { display: inline-block; padding: 15px 32px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 2px solid transparent; white-space: nowrap; }
-.auron-btn--primary { background: var(--green); color: var(--brand); border-color: var(--green); }
-.auron-btn--primary:hover { background: #7de84a; border-color: #7de84a; transform: translateY(-2px); color: var(--brand); }
-.auron-btn--outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
-.auron-btn--outline-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.auron-btn--outline-dark { background: transparent; color: var(--brand); border-color: var(--brand); }
-.auron-btn--outline-dark:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
-.auron-btn--white { background: #fff; color: var(--brand); border-color: #fff; }
-.auron-btn--white:hover { background: #F7F6F3; transform: translateY(-2px); color: var(--brand); }
-.auron-btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
-.auron-btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.auron-body { background: #ffffff; }
-.auron-stats { background: var(--brand); padding: 80px 10%; }
-.auron-stats__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.auron-stats__heading { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,40px); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.5px; margin: 0 0 16px; }
-.auron-stats__text p { font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0 0 28px; }
-.auron-stats__numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-.auron-stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(129,171,76,0.15); padding: 32px 28px; text-align: center; }
-.auron-stat-card__value { display: block; font-family: 'Playfair Display', serif; font-size: clamp(28px,3.5vw,44px); font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 8px; }
-.auron-stat-card__label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
-.auron-trust { background: var(--green); padding: 20px 10%; }
-.auron-trust__inner { display: flex; align-items: center; justify-content: center; }
-.auron-trust__tagline { display: flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: 1.5px; margin: 0; }
-.auron-trust__tagline svg { color: var(--brand); flex-shrink: 0; }
-.auron-features { padding: 100px 10%; background: #F7F6F3; }
-.auron-features__hd { margin-bottom: 72px; }
-.auron-features__title { font-family: 'Playfair Display', serif; font-size: clamp(30px,3.5vw,48px); font-weight: 700; color: var(--brand); line-height: 1.15; letter-spacing: -0.5px; margin: 12px 0 0; }
-.auron-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
-.auron-feat:last-child { margin-bottom: 0; }
-.auron-feat--rev .auron-feat__img { order: 2; }
-.auron-feat--rev .auron-feat__content { order: 1; }
-.auron-feat__img { position: relative; height: 460px; border-radius: 20px; overflow: hidden; }
-.auron-feat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-feat__img-badge { position: absolute; bottom: 20px; left: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(26,58,46,0.88); backdrop-filter: blur(8px); color: var(--green); padding: 10px 16px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; border: 1px solid rgba(129,171,76,0.25); }
-.auron-feat__num { display: block; font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 700; color: var(--green); line-height: 1; opacity: 0.35; margin-bottom: -16px; }
-.auron-feat__heading { font-family: 'Playfair Display', serif; font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--brand); line-height: 1.2; margin: 0 0 16px; }
-.auron-feat__body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #555; line-height: 1.8; margin: 0 0 24px; }
-.auron-feat__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); text-decoration: none; transition: gap 0.2s; }
-.auron-feat__cta:hover { gap: 14px; }
-.auron-mission { background: var(--brand); padding: 80px 10%; }
-.auron-mission__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.auron-mission-card { border-left: 4px solid var(--green); padding: 40px 40px; background: rgba(255,255,255,0.05); border-radius: 0 16px 16px 0; }
-.auron-mission-card__num { display: block; font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 700; color: var(--green); line-height: 1; opacity: 0.4; margin-bottom: 8px; }
-.auron-mission-card__title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; margin: 0 0 16px; }
-.auron-mission-card__body { font-family: 'DM Sans', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0 0 28px; }
-.auron-benefits { background: #fff; padding: 100px 10%; }
-.auron-benefits__hd { margin-bottom: 56px; }
-.auron-benefits__title { font-family: 'Playfair Display', serif; font-size: clamp(28px,3vw,44px); font-weight: 700; color: var(--brand); line-height: 1.15; margin: 12px 0 0; }
-.auron-benefits__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid #E8E8E0; border-radius: 20px; overflow: hidden; }
-.auron-benefit { padding: 36px 28px; border-right: 1px solid #E8E8E0; border-bottom: 1px solid #E8E8E0; }
-.auron-benefit:nth-child(4n) { border-right: none; }
-.auron-benefit:nth-child(n+5) { border-bottom: none; }
-.auron-benefit__icon { color: var(--green); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
-.auron-benefit__title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--brand); margin: 0 0 8px; }
-.auron-benefit__body { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #666; line-height: 1.65; margin: 0; }
-.auron-faq { background: #F7F6F3; padding: 100px 10%; }
-.auron-faq__inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
-.auron-faq__title { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,40px); font-weight: 700; color: var(--brand); line-height: 1.15; margin: 12px 0 0; }
-.auron-faq__item { border-bottom: 1px solid #D8D8D0; padding: 20px 0; }
-.auron-faq__item:first-of-type { border-top: 1px solid #D8D8D0; }
-.auron-faq__q { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--brand); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 4px 0; }
-.auron-faq__toggle { color: var(--green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; }
-.auron-faq__a { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #555; line-height: 1.75; margin-top: 10px; display: none; }
-.auron-faq__item--open .auron-faq__a { display: block; }
-.auron-faq__item--open .auron-faq__toggle { transform: rotate(45deg); }
-.auron-cta-banner { background: var(--brand); padding: 80px 10%; }
-.auron-cta-banner__inner { display: flex; align-items: center; justify-content: space-between; gap: 60px; }
-.auron-cta-banner__text h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px,3vw,42px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 8px; }
-.auron-cta-banner__text h2 em { font-style: italic; color: var(--green); }
-.auron-cta-banner__text p { font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.6); margin: 0; }
-.auron-cta-banner__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.counter { animation: countUp 0.6s ease-out forwards; }
-@media (max-width: 1024px) {
-  .auron-stats__inner { grid-template-columns: 1fr; gap: 48px; }
-  .auron-feat { grid-template-columns: 1fr; gap: 40px; }
-  .auron-feat--rev .auron-feat__img { order: 0; }
-  .auron-feat--rev .auron-feat__content { order: 1; }
-  .auron-mission__inner { grid-template-columns: 1fr; }
-  .auron-benefits__grid { grid-template-columns: repeat(2,1fr); }
-  .auron-faq__inner { grid-template-columns: 1fr; gap: 40px; }
-  .auron-cta-banner__inner { flex-direction: column; text-align: center; }
-}
-@media (max-width: 768px) {
-  .auron-hero__content { padding: 80px 5%; }
-  .auron-hero__ctas { flex-direction: column; }
-  .auron-stats, .auron-features, .auron-benefits, .auron-faq, .auron-cta-banner { padding: 60px 5%; }
-  .auron-mission { padding: 60px 5%; }
-  .auron-feat__img { height: 280px; }
-  .auron-benefits__grid { grid-template-columns: 1fr; }
-  .auron-benefit { border-right: none !important; }
-  .auron-stat-card { padding: 24px 20px; }
-  .auron-cta-banner__btns { flex-direction: column; width: 100%; }
-  .auron-hero__title { font-size: 36px; }
-}
+  /* ══════════════════════════════════════
+     BRAND TOKENS (local override)
+     ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-cream:        #F4EFE6;
+    --swt-alt:          #ECE4D4;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-gold:         #846212;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
+
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .swt-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .swt-hero__img {
+    position: absolute;
+    inset: 0;
+  }
+  .swt-hero__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .swt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+  }
+  .swt-hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 110px 8% 90px;
+    max-width: 720px;
+  }
+  .swt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(78,107,42,0.25);
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(78,107,42,0.4);
+  }
+  .swt-hero__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 66px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+  .swt-hero__title em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-hero__sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 500px;
+  }
+  .swt-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ══════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════ */
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .swt-btn--primary {
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-color: var(--swt-green);
+  }
+  .swt-btn--primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .swt-btn--ghost-light {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .swt-btn--ghost-light:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+  }
+
+  /* ══════════════════════════════════════
+     SHARED
+     ══════════════════════════════════════ */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body { background: var(--swt-white); }
+
+  .swt-eyebrow {
+    display: inline-block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--swt-green);
+    margin-bottom: 12px;
+  }
+  .swt-eyebrow--green { color: var(--swt-green-accent); }
+
+  .swt-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    color: var(--swt-dark);
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
+
+  .swt-subhead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--swt-text-sec);
+    margin: 8px 0 0;
+    text-align: center;
+  }
+
+  /* ── Trust Bar ── */
+  .swt-trust {
+    background: var(--swt-cream);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--swt-border);
+  }
+  .swt-trust__label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--swt-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+
+  /* ── Split Sections ── */
+  .swt-split {
+    padding: 96px 0;
+    background: var(--swt-white);
+  }
+  .swt-split--dark { background: var(--swt-dark); }
+  .swt-split--alt { background: var(--swt-alt); }
+
+  .swt-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .swt-split__grid--rev .swt-split__img { order: -1; }
+
+  .swt-split__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--swt-text-sec);
+    margin: 0 0 14px;
+  }
+  .swt-split--dark .swt-split__text p { color: rgba(255,255,255,0.55); }
+
+  .swt-split__img {
+    position: relative;
+  }
+  .swt-split__img img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--swt-radius);
+    display: block;
+    box-shadow: 0 20px 60px rgba(42,36,30,0.12);
+  }
+
+  .swt-img-badge {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    background: var(--swt-green);
+    color: var(--swt-white);
+    border-radius: var(--swt-radius);
+    padding: 16px 24px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(42,36,30,0.2);
+  }
+  .swt-img-badge strong {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .swt-img-badge span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  /* ── Problem Tags ── */
+  .swt-problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .swt-tag {
+    padding: 8px 16px;
+    border-radius: var(--swt-radius);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .swt-tag--red {
+    background: rgba(180,60,60,0.1);
+    color: #e8a0a0;
+    border: 1px solid rgba(180,60,60,0.2);
+  }
+
+  /* ── Check List ── */
+  .swt-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0 0;
+  }
+  .swt-check-list li {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--swt-text-sec);
+    padding: 9px 0;
+    border-bottom: 1px solid var(--swt-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .swt-check-list li::before {
+    content: '';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(78,107,42,0.1);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234E6B2A' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── Energy Metrics ── */
+  .swt-energy-metrics {
+    display: flex;
+    gap: 36px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--swt-border);
+  }
+  .swt-split--dark .swt-energy-metrics {
+    border-top-color: rgba(255,255,255,0.1);
+  }
+  .swt-metric__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+  }
+  .swt-metric__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--swt-text-sec);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Security Features ── */
+  .swt-security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .swt-security-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .swt-feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--swt-green-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .swt-security-feature strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--swt-white);
+    margin-bottom: 4px;
+  }
+  .swt-security-feature p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+
+  /* ── Inline Quote ── */
+  .swt-inline-quote {
+    border-left: 3px solid var(--swt-green);
+    padding-left: 18px;
+    margin: 22px 0 0;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--swt-text-sec);
+    line-height: 1.7;
+  }
+  .swt-inline-quote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    color: var(--swt-text-sec);
+    opacity: 0.65;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* ── Gallery ── */
+  .swt-gallery {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-gallery__header { margin-bottom: 48px; }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
+  }
+  .swt-gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    display: block;
+  }
+  .swt-gallery__item:hover img { transform: scale(1.06); }
+  .swt-gallery__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 12px 12px;
+    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--swt-white);
+    display: block;
+    text-align: center;
+  }
+
+  /* ── Stats Bar ── */
+  .swt-stats {
+    background: var(--swt-green-accent);
+    padding: 72px 0;
+  }
+  .swt-stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    padding: 0 40px;
+  }
+  .swt-stats__num {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1;
+  }
+  .swt-stats__label {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .swt-stats__div {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── Process ── */
+  .swt-process {
+    background: var(--swt-cream);
+    padding: 96px 0;
+  }
+  .swt-process__steps { margin-top: 48px; }
+  .swt-process__step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 36px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--swt-border);
+    align-items: start;
+  }
+  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
+  .swt-process__num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--swt-green);
+    line-height: 1;
+    opacity: 0.55;
+  }
+  .swt-process__body h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--swt-dark);
+    margin: 0 0 10px;
+  }
+  .swt-process__body p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--swt-text-sec);
+    margin: 0;
+  }
+
+  /* ── Testimonials ── */
+  .swt-testimonials {
+    background: var(--swt-dark);
+    padding: 96px 0;
+  }
+  .swt-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .swt-testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--swt-radius);
+    padding: 32px;
+  }
+  .swt-testimonial__quote {
+    font-family: Georgia, serif;
+    font-size: 68px;
+    line-height: 0.7;
+    color: var(--swt-green-accent);
+    opacity: 0.35;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .swt-testimonial p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 22px;
+    font-style: italic;
+  }
+  .swt-testimonial__author strong {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--swt-white);
+  }
+  .swt-testimonial__author span {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  /* ── FAQ ── */
+  .swt-faq {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-faq__layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .swt-faq__header p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--swt-text-sec);
+    margin: 14px 0 24px;
+  }
+  .swt-faq__item {
+    border-bottom: 1px solid var(--swt-border);
+    padding: 18px 0;
+  }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--swt-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 3px 0;
+  }
+  .swt-faq__toggle {
+    color: var(--swt-green);
+    font-size: 22px;
+    flex-shrink: 0;
+    font-weight: 400;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .swt-faq__a {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--swt-text-sec);
+    line-height: 1.8;
+    margin-top: 10px;
+    display: none;
+  }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+
+  /* ── CTA Banner ── */
+  .swt-cta {
+    background: var(--swt-dark);
+    padding: 80px 5%;
+  }
+  .swt-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .swt-cta__text h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--swt-white);
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+  .swt-cta__text h2 em {
+    font-style: italic;
+    color: var(--swt-green-accent);
+  }
+  .swt-cta__text p {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+  .swt-cta__btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Fade In ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .swt-split__grid { gap: 48px; }
+    .swt-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    .swt-testimonials__grid { grid-template-columns: 1fr; }
+    .swt-stats__row { flex-wrap: wrap; gap: 24px; }
+    .swt-stats__div { display: none; }
+    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
+    .swt-cta__inner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 768px) {
+    .swt-split__grid { grid-template-columns: 1fr; gap: 32px; }
+    .swt-split__grid--rev .swt-split__img { order: 0; }
+    .swt-split__img img { height: 280px; }
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
+    .swt-process__num { font-size: 36px; }
+    .swt-hero__content { padding: 80px 5%; }
+    .swt-cta__btns { flex-direction: column; width: 100%; }
+    .swt-hero__ctas { flex-direction: column; }
+    .swt-energy-metrics { flex-direction: column; gap: 16px; }
+  }
+  @media (max-width: 480px) {
+    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .swt-split { padding: 64px 0; }
+    .swt-stats__row { flex-direction: column; }
+  }
 </style>
 
 <script>
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.auron-faq__item').forEach(item => {
-    item.querySelector('.auron-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('auron-faq__item--open');
-      document.querySelectorAll('.auron-faq__item').forEach(i => i.classList.remove('auron-faq__item--open'));
-      if (!isOpen) item.classList.add('auron-faq__item--open');
-    });
-  });
-  const counters = document.querySelectorAll('.counter');
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-        entry.target.classList.add('counted');
-        entry.target.style.animation = 'none';
-        entry.target.offsetHeight;
-        entry.target.style.animation = 'countUp 0.6s ease-out forwards';
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target as HTMLElement;
+        const delay = el.style.getPropertyValue('--delay') || '0ms';
+        setTimeout(() => el.classList.add('visible'), parseInt(delay));
+        obs.unobserve(el);
       }
     });
-  }, { threshold: 0.5 });
-  counters.forEach(c => countObs.observe(c));
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
 </script>
