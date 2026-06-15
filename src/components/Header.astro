@@ -363,7 +363,8 @@ const currentPath = Astro.url.pathname;
   z-index: 300;
 }
 .site-header__nav-item:hover .site-header__dropdown,
-.site-header__dropdown:hover {
+.site-header__dropdown:hover,
+.site-header__nav-item.dropdown-open .site-header__dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
@@ -733,7 +734,29 @@ const currentPath = Astro.url.pathname;
   closeBtn?.addEventListener('click', closeMobile);
   overlay?.addEventListener('click', closeMobile);
 
-  // Mobile submenu toggles
+  // Desktop dropdown — keep open while mouse travels between nav link and dropdown
+  document.querySelectorAll('.site-header__nav-item.has-dropdown').forEach(item => {
+    let leaveTimer = null;
+
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(leaveTimer);
+      item.classList.add('dropdown-open');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      leaveTimer = setTimeout(() => {
+        item.classList.remove('dropdown-open');
+      }, 120); // small delay so mouse can travel to dropdown
+    });
+
+    const dropdown = item.querySelector('.site-header__dropdown');
+    if (dropdown) {
+      dropdown.addEventListener('mouseenter', () => clearTimeout(leaveTimer));
+      dropdown.addEventListener('mouseleave', () => {
+        leaveTimer = setTimeout(() => item.classList.remove('dropdown-open'), 120);
+      });
+    }
+  });
   document.querySelectorAll('.mobile-nav-group__toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
