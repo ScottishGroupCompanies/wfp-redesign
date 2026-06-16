@@ -60,7 +60,7 @@ const currentPath = Astro.url.pathname;
 
     <!-- Logo -->
     <a href="/" class="site-header__logo" aria-label="Window Film Philadelphia">
-      <img src="/images/window-film-philadelphia-logo.svg" alt="Window Film Philadelphia" height="52" style="height:52px;width:auto;" />
+      <img src="/images/window-film-philadelphia-logo.svg" alt="Window Film Philadelphia" height="52" style="height:52px;width:180px!important;" />
     </a>
 
     <!-- Nav -->
@@ -95,8 +95,15 @@ const currentPath = Astro.url.pathname;
 
     <!-- Right actions -->
     <div class="site-header__right">
-      <a href={`mailto:${email}`} class="site-header__email" aria-label="Email us">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <a href={`tel:+1${phone.replace(/\D/g,'')}`} class="site-header__contact-item" aria-label="Call us">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+        </svg>
+        <span>{phone}</span>
+      </a>
+      <div class="site-header__divider" aria-hidden="true"></div>
+      <a href={`mailto:${email}`} class="site-header__contact-item" aria-label="Email us">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
         </svg>
         <span>{email}</span>
@@ -181,8 +188,8 @@ const currentPath = Astro.url.pathname;
   z-index: 200;
   /* Dark background — always visible so logo text reads correctly */
   background: #2A241E;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: none;
+  transition: background 0.4s ease;
 }
 
 /* ════════════════════════════════════
@@ -203,33 +210,51 @@ const currentPath = Astro.url.pathname;
    LOGO
    ════════════════════════════════════ */
 .site-header__logo img {
-  width: 200px !important;
+  width: 190px !important;
   height: auto !important;
-  max-height: 72px;
+  max-height: 60px;
   object-fit: contain;
   object-position: left center;
   flex-shrink: 0;
+  display: block;
 }
 
 @media (max-width: 768px) {
   .site-header__logo img {
-    width: 160px !important;
-    max-height: 56px;
+    width: 150px !important;
+    max-height: 50px;
   }
 }
 
-.site-header__email {
+.site-header__contact-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.65);
   text-decoration: none;
-  transition: color 0.25s;
+  transition: color 0.2s;
 }
-.site-header__email:hover { color: #fff; }
+.site-header__contact-item:hover { color: #fff; }
+
+.site-header__divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,0.18);
+  flex-shrink: 0;
+}
+
+.site-header__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (max-width: 1100px) {
+  .site-header__contact-item .site-header__contact-item span { display: none; }
+}
 
 .site-header__logo-mark {
   flex-shrink: 0;
