@@ -24,32 +24,40 @@ const applications = [
   <!-- ═══════════════════════════════════════════════════════
        SECTION 2: HERO — 100vh, dark overlay, centered content
   ═══════════════════════════════════════════════════════ -->
-  <section class="hero">
-    <div class="hero__bg">
-      <img src="/images/wfp-landing-hero.webp" alt="Philadelphia skyline" class="hero__bg-img" width="1440" height="900" />
-      <div class="hero__bg-overlay"></div>
-    </div>
-    <div class="hero__content">
-      <p class="hero__eyebrow">SCOTTISH WINDOW SOLUTIONS</p>
-      <h1 class="hero__h1">
+  <!-- ═══════════════════════════════════════════════════════════
+     HERO — modern split layout
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="hero-new">
+    <div class="hero-new__left">
+      <p class="hero-new__eyebrow">SCOTTISH WINDOW SOLUTIONS</p>
+      <h1 class="hero-new__h1">
         <span class="hero-word">Philadelphia's</span>
         <span class="hero-word">glass,</span>
         <span class="hero-word">transformed.</span>
       </h1>
-      <p class="hero__sub">Professional window film for homes and businesses across the Delaware Valley</p>
-      <div class="hero__ctas">
-        <a href="/contact/" class="btn btn--primary btn--lg">Get a free quote</a>
-        <a href="/benefits/energy-savings/" class="btn btn--ghost-white btn--lg">See our services</a>
+      <p class="hero-new__sub">Professional window film for homes and businesses across the Delaware Valley. Energy savings. UV protection. Safety & security. Done right, every time.</p>
+      <div class="hero-new__ctas">
+        <a href="/contact/" class="hero-new__cta-primary">Get a free quote</a>
+        <a href="/benefits/" class="hero-new__cta-ghost">See our services</a>
+      </div>
+      <div class="hero-new__features">
+        <div class="hero-new__feat">
+          <span class="hero-new__feat-num">78%</span>
+          <span class="hero-new__feat-label">Heat rejected</span>
+        </div>
+        <div class="hero-new__feat">
+          <span class="hero-new__feat-num">99%</span>
+          <span class="hero-new__feat-label">UV blocked</span>
+        </div>
+        <div class="hero-new__feat">
+          <span class="hero-new__feat-num">15yr+</span>
+          <span class="hero-new__feat-label">In business</span>
+        </div>
       </div>
     </div>
-    <div class="hero__stats-bar">
-      <span>99% UV blocked</span>
-      <span class="sep">·</span>
-      <span>78% Heat rejected</span>
-      <span class="sep">·</span>
-      <span>500+ Philly installs</span>
-      <span class="sep">·</span>
-      <span>15yr+ in business</span>
+    <div class="hero-new__right">
+      <img src="/images/wfp-landing-hero.webp" alt="Philadelphia home with window film" class="hero-new__img" />
+      <div class="hero-new__img-overlay"></div>
     </div>
   </section>
 
@@ -342,95 +350,164 @@ const applications = [
 </BaseLayout>
 
 <style>
-/* ─── HERO ─── */
-.hero {
-  position: relative;
+/* ─── HERO NEW — split layout, superpower.com style ─── */
+.hero-new {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--brand, #2A241E);
+  overflow: hidden;
+}
+.hero-new__left {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  padding: 8rem 5rem 5rem 5rem;
+  position: relative;
+  z-index: 2;
+}
+.hero-new__right {
+  position: relative;
   overflow: hidden;
-  background: var(--brand);
 }
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.hero__bg-img {
+.hero-new__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center;
+  display: block;
 }
-.hero__bg-overlay {
+.hero-new__img-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(42,36,30,0.72);
+  background: linear-gradient(to right, var(--brand, #2A241E) 0%, transparent 30%);
 }
-.hero__content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 120px 2rem 140px;
-  max-width: 900px;
-}
-.hero__eyebrow {
+.hero-new__eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--green-accent);
+  letter-spacing: 0.2em;
+  color: var(--green-accent, #83A94A);
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
-.hero__h1 {
-  font-family: var(--font-serif);
+.hero-new__h1 {
+  font-family: var(--font-serif, 'Fraunces', serif);
   font-weight: 800;
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
   color: #fff;
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 1.5rem;
 }
-.hero__sub {
-  font-family: var(--font-body);
+.hero-new__sub {
+  font-family: var(--font-body, 'Hanken Grotesk', sans-serif);
   font-weight: 300;
-  font-size: 1.2rem;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hero__ctas {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.hero__stats-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  background: var(--brand);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 18px 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: 1.05rem;
   color: rgba(255,255,255,0.7);
-  flex-wrap: wrap;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
 }
-.hero__stats-bar .sep { color: var(--green-accent); }
+.hero-new__ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+.hero-new__cta-primary {
+  background: var(--green, #4E6B2A);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+.hero-new__cta-primary:hover {
+  background: var(--green-hover, #3D5620);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.hero-new__cta-ghost {
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+.hero-new__cta-ghost:hover {
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.hero-new__features {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.hero-new__feat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-new__feat-num {
+  font-family: var(--font-serif, 'Fraunces', serif);
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--green-accent, #83A94A);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hero-new__feat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.5);
+}
 
+/* Hero word animation */
+.hero-word {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  display: inline-block;
+  margin-right: 0.28em;
+  white-space: nowrap;
+}
+.hero-word.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .hero-new {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-new__left {
+    padding: 7rem 1.5rem 3rem;
+    order: 2;
+  }
+  .hero-new__right {
+    height: 55vw;
+    min-height: 260px;
+    order: 1;
+  }
+  .hero-new__img-overlay {
+    background: linear-gradient(to bottom, transparent 50%, var(--brand, #2A241E) 100%);
+  }
+  .hero-new__h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .hero-new__features { gap: 1.5rem; }
+}
 /* ─── MARQUEE ─── */
 .marquee-wrap {
   overflow: hidden;
@@ -1115,6 +1192,12 @@ if (slider) {
   // Touch support
   slider.addEventListener('touchmove', (e) => { if (isDragging) update(e.touches[0].clientX); }, { passive: true });
 }
+
+// ── Hero word stagger on load ──
+const words = document.querySelectorAll('.hero-word');
+words.forEach((word, i) => {
+  setTimeout(() => word.classList.add('visible'), 80 + i * 110);
+});
 
 // ── Quote form ──
 const quoteForm = document.getElementById('quoteForm');
