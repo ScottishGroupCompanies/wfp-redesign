@@ -684,14 +684,7 @@ const description = "Professional window film installation in Philadelphia and t
   ═══════════════════════════════════════════════════════ -->
   <section class="contact-split" id="contact">
     <div class="contact-split__left">
-      <img
-        src="https://res.cloudinary.com/deunehrew/image/upload/v1781641993/hf_20260616_203233_d09396c7-1b40-44d0-854e-f4e601c1dcc4_mh8tdh.png"
-        alt="Window film installation by Window Film Philadelphia"
-        class="contact-split__photo"
-        width="900"
-        height="240"
-        loading="lazy"
-      />
+      <div class="contact-split__overlay"></div>
       <div class="contact-split__dark">
         <p class="contact-split__eyebrow">GET STARTED</p>
         <h2 class="contact-split__heading">Ready to transform your space?</h2>
@@ -2547,26 +2540,33 @@ const description = "Professional window film installation in Philadelphia and t
   display: flex;
   flex-direction: row;
   min-height: auto;
-  max-height: 620px;
   overflow: hidden;
 }
 .contact-split__left {
   flex: 0 0 50%;
-  background: #14201A;
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://res.cloudinary.com/deunehrew/image/upload/v1781641993/hf_20260616_203233_d09396c7-1b40-44d0-854e-f4e601c1dcc4_mh8tdh.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
 }
-.contact-split__photo {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  flex-shrink: 0;
+.contact-split__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 26, 20, 0.72);
+  z-index: 1;
 }
+.contact-split__photo { display: none; }
 .contact-split__dark {
-  padding: 36px 40px;
+  position: relative;
+  z-index: 2;
+  padding: 60px 48px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .contact-split__eyebrow {
   font-family: 'Space Mono', monospace;
