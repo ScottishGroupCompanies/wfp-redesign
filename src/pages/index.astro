@@ -689,12 +689,12 @@ const description = "Professional window film installation in Philadelphia and t
         alt="Window film installation by Window Film Philadelphia"
         class="contact-split__photo"
         width="900"
-        height="280"
+        height="240"
         loading="lazy"
       />
       <div class="contact-split__dark">
         <p class="contact-split__eyebrow">GET STARTED</p>
-        <h2 class="contact-split__heading">Ready to transform<br>your space?</h2>
+        <h2 class="contact-split__heading">Ready to transform your space?</h2>
         <p class="contact-split__body">Free consultation. Same-day quotes.<br/>Done right, every time.</p>
         <div class="contact-split__trust">
           <div class="contact-split__trust-item">
@@ -721,7 +721,6 @@ const description = "Professional window film installation in Philadelphia and t
         <p class="contact-split__form-sub">We'll get back to you within 24 hours.</p>
 
         <form class="contact-split__form" id="contactForm">
-
           <!-- Row 1: Name + Phone -->
           <div class="contact-split__row contact-split__row--2col">
             <div class="contact-split__field">
@@ -753,8 +752,8 @@ const description = "Professional window film installation in Philadelphia and t
             </div>
           </div>
 
-          <!-- Row 3: Service Interest -->
-          <div class="contact-split__row">
+          <!-- Row 3: Service Interest (full width) -->
+          <div class="contact-split__row contact-split__row--full">
             <div class="contact-split__field">
               <label class="contact-split__label" for="c-service">Service Interest</label>
               <select id="c-service" name="service_interest" required>
@@ -769,20 +768,19 @@ const description = "Professional window film installation in Philadelphia and t
             </div>
           </div>
 
-          <!-- Row 4: Message -->
-          <div class="contact-split__row">
+          <!-- Row 4: Message (full width) -->
+          <div class="contact-split__row contact-split__row--full">
             <div class="contact-split__field">
               <label class="contact-split__label" for="c-message">Message</label>
               <textarea id="c-message" name="message" rows="3" placeholder="Tell us about your project..."></textarea>
             </div>
           </div>
 
-          <!-- Row 5: Submit -->
-          <div class="contact-split__row">
+          <!-- Row 5: Submit (full width) -->
+          <div class="contact-split__row contact-split__row--full">
             <button type="submit" class="contact-split__submit">Get My Free Quote →</button>
-            <p class="contact-split__privacy">No spam. No pressure. We respect your privacy.</p>
+            <p class="contact-split__privacy">No spam. No pressure.</p>
           </div>
-
         </form>
       </div>
     </div>
@@ -2547,7 +2545,10 @@ const description = "Professional window film installation in Philadelphia and t
 /* ─── CONTACT SPLIT — 50/50 ─── */
 .contact-split {
   display: flex;
+  flex-direction: row;
   min-height: auto;
+  max-height: 620px;
+  overflow: hidden;
 }
 .contact-split__left {
   flex: 0 0 50%;
@@ -2557,28 +2558,28 @@ const description = "Professional window film installation in Philadelphia and t
 }
 .contact-split__photo {
   width: 100%;
-  height: 280px;
+  height: 240px;
   object-fit: cover;
   object-position: center;
   display: block;
   flex-shrink: 0;
 }
 .contact-split__dark {
+  padding: 36px 40px;
   flex: 1;
-  padding: 40px 48px;
 }
 .contact-split__eyebrow {
   font-family: 'Space Mono', monospace;
   font-size: 10px;
   color: #7CB342;
   letter-spacing: 0.15em;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .contact-split__heading {
   font-family: 'Playfair Display', serif;
-  font-size: 36px;
+  font-size: 28px;
   color: #fff;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: 12px;
 }
 .contact-split__body {
@@ -2586,18 +2587,18 @@ const description = "Professional window film installation in Philadelphia and t
   font-size: 14px;
   color: rgba(255,255,255,0.65);
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .contact-split__trust {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 .contact-split__trust-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   color: #fff;
@@ -2605,19 +2606,19 @@ const description = "Professional window film installation in Philadelphia and t
 .contact-split__phone {
   display: block;
   font-family: 'Inter', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  margin-bottom: 8px;
+  margin-top: 16px;
   transition: color 0.2s;
 }
 .contact-split__phone:hover { color: #7CB342; }
 .contact-split__email {
   display: block;
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.60);
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -2628,66 +2629,56 @@ const description = "Professional window film installation in Philadelphia and t
   flex: 0 0 50%;
   background: #FFFFFF;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
-  padding: 48px 56px;
+  padding: 40px 48px;
 }
 .contact-split__form-card {
   width: 100%;
-  max-width: 480px;
 }
 .contact-split__form-title {
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #14201A;
   margin-bottom: 6px;
 }
 .contact-split__form-sub {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   color: #4A5C48;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .contact-split__form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-.contact-split__row {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.contact-split__row--2col {
-  flex-direction: row;
-  gap: 12px;
-}
-.contact-split__row--2col .contact-split__field {
-  flex: 1;
+.contact-split__row--full {
+  grid-column: 1 / -1;
 }
 .contact-split__field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 .contact-split__label {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   color: #4A5C48;
-  font-weight: 500;
+  font-weight: 700;
   display: block;
 }
 .contact-split__field input,
 .contact-split__field select,
 .contact-split__field textarea {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #14201A;
   background: #F8FAF7;
   border: 1.5px solid #D0D9CE;
   border-radius: 8px;
-  height: 44px;
+  height: 42px;
   padding: 10px 14px;
   width: 100%;
   box-sizing: border-box;
@@ -2699,7 +2690,7 @@ const description = "Professional window film installation in Philadelphia and t
 .contact-split__field textarea {
   height: auto;
   resize: vertical;
-  min-height: 80px;
+  min-height: 72px;
 }
 .contact-split__field input::placeholder,
 .contact-split__field textarea::placeholder {
@@ -2721,11 +2712,11 @@ const description = "Professional window film installation in Philadelphia and t
   background: #7CB342;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   border: none;
   border-radius: 8px;
-  height: 48px;
+  height: 46px;
   width: 100%;
   cursor: pointer;
   transition: background 0.2s;
@@ -2740,19 +2731,20 @@ const description = "Professional window film installation in Philadelphia and t
 
 /* Mobile */
 @media (max-width: 768px) {
-  .contact-split { flex-direction: column; }
+  .contact-split { flex-direction: column; max-height: none; }
   .contact-split__left { flex: none; }
-  .contact-split__photo { height: 220px; }
-  .contact-split__dark { padding: 32px 24px; }
-  .contact-split__heading { font-size: 28px; }
-  .contact-split__phone { font-size: 20px; }
-  .contact-split__right { padding: 40px 24px; }
+  .contact-split__photo { height: 200px; }
+  .contact-split__dark { padding: 28px 24px; }
+  .contact-split__heading { font-size: 24px; }
+  .contact-split__phone { font-size: 18px; }
+  .contact-split__right { padding: 32px 24px; }
+  .contact-split__form { grid-template-columns: 1fr; }
   .contact-split__row--2col { flex-direction: column; }
 }
 @media (max-width: 480px) {
   .contact-split__dark { padding: 24px 20px; }
-  .contact-split__right { padding: 32px 20px; }
-  .contact-split__form-title { font-size: 18px; }
+  .contact-split__right { padding: 28px 20px; }
+  .contact-split__form-title { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
