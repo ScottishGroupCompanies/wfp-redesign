@@ -511,6 +511,12 @@ const description = "Professional window film installation in Philadelphia and t
 
     <!-- Carousel -->
     <div class="reviews__carousel-outer">
+      <!-- Left Arrow -->
+      <button class="reviews__arrow reviews__arrow--left" id="reviewsArrowLeft" aria-label="Previous review">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <!-- Track -->
       <div class="reviews__carousel" id="reviewsTrack">
 
         <!-- Card 1 — Sarah M. -->
@@ -520,7 +526,7 @@ const description = "Professional window film installation in Philadelphia and t
             alt="Sarah M."
             class="reviews__card-photo"
             width="420"
-            height="420"
+            height="400"
             loading="lazy"
           />
           <div class="reviews__card-body">
@@ -544,7 +550,7 @@ const description = "Professional window film installation in Philadelphia and t
             alt="David R."
             class="reviews__card-photo"
             width="420"
-            height="420"
+            height="400"
             loading="lazy"
           />
           <div class="reviews__card-body">
@@ -568,7 +574,7 @@ const description = "Professional window film installation in Philadelphia and t
             alt="Michael T."
             class="reviews__card-photo"
             width="420"
-            height="420"
+            height="400"
             loading="lazy"
           />
           <div class="reviews__card-body">
@@ -592,7 +598,7 @@ const description = "Professional window film installation in Philadelphia and t
             alt="Janet K."
             class="reviews__card-photo"
             width="420"
-            height="420"
+            height="400"
             loading="lazy"
           />
           <div class="reviews__card-body">
@@ -616,7 +622,7 @@ const description = "Professional window film installation in Philadelphia and t
             alt="Alex & Maria"
             class="reviews__card-photo"
             width="420"
-            height="420"
+            height="400"
             loading="lazy"
           />
           <div class="reviews__card-body">
@@ -640,7 +646,7 @@ const description = "Professional window film installation in Philadelphia and t
             alt="James W."
             class="reviews__card-photo"
             width="420"
-            height="420"
+            height="400"
             loading="lazy"
           />
           <div class="reviews__card-body">
@@ -657,8 +663,14 @@ const description = "Professional window film installation in Philadelphia and t
           </div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /reviews__carousel -->
+
+      <!-- Right Arrow -->
+      <button class="reviews__arrow reviews__arrow--right" id="reviewsArrowRight" aria-label="Next review">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+    </div><!-- /reviews__carousel-outer -->
 
     <!-- Footer: dots + CTA -->
     <div class="reviews__footer">
@@ -2026,7 +2038,7 @@ const description = "Professional window film installation in Philadelphia and t
 }
 
 .reviews__header {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto 48px;
   padding: 0 80px;
   text-align: left;
@@ -2055,39 +2067,43 @@ const description = "Professional window film installation in Philadelphia and t
   margin: 0;
 }
 
+/* ── Carousel outer: NO mask, full-width padding ── */
 .reviews__carousel-outer {
   position: relative;
-  overflow: hidden;
-  padding: 0 calc(50vw - 280px);
-  mask-image: linear-gradient(to right, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+  overflow: visible;
+  padding: 0 80px;
 }
 
 .reviews__carousel {
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  gap: 24px;
   overflow-x: scroll;
+  overflow-y: visible;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE */
   cursor: grab;
   padding: 8px 0 24px;
+  -webkit-overflow-scrolling: touch;
+  align-items: flex-start;
 }
 
 .reviews__carousel::-webkit-scrollbar { display: none; }
 .reviews__carousel:active { cursor: grabbing; }
 
 .reviews__card {
-  flex: 0 0 420px;
+  min-width: 420px;
+  max-width: 420px;
+  flex-shrink: 0;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
 }
 
 .reviews__card-photo {
-  width: 420px;
-  height: 420px;
+  width: 100%;
+  height: 400px;
   border-radius: 12px;
   object-fit: cover;
   object-position: top center;
@@ -2130,12 +2146,43 @@ const description = "Professional window film installation in Philadelphia and t
   margin: 0;
 }
 
+/* ── Arrow buttons ── */
+.reviews__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #E5E5E5;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: #14201A;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.reviews__arrow:hover {
+  background: #7CB342;
+  border-color: #7CB342;
+  color: #fff;
+}
+
+.reviews__arrow--left  { left: 24px; }
+.reviews__arrow--right { right: 24px; }
+.reviews__arrow.hidden { display: none; }
+
+/* ── Footer: dots + CTA ── */
 .reviews__footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  margin-top: 48px;
+  margin-top: 40px;
 }
 
 .reviews__dots {
@@ -2146,16 +2193,18 @@ const description = "Professional window film installation in Philadelphia and t
 }
 
 .reviews__dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #ccc;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
 }
 
 .reviews__dot.active {
-  width: 18px;
+  width: 24px;
   border-radius: 9px;
   background: #7CB342;
 }
@@ -2178,23 +2227,32 @@ const description = "Professional window film installation in Philadelphia and t
   color: #fff;
 }
 
-@media (max-width: 768px) {
-  .reviews { padding: 80px 0 60px; }
-  .reviews__header { padding: 0 5vw 40px; }
-  .reviews__carousel-outer { padding: 0 calc(50vw - 38vw); }
-  .reviews__carousel-outer::before,
-  .reviews__carousel-outer::after { width: calc(50vw - 38vw); }
-  .reviews__card { flex: 0 0 min(340px, 84vw); }
-  .reviews__card-photo { height: 320px; }
-  .reviews__footer { gap: 20px; padding-top: 24px; }
-}
-@media (max-width: 480px) {
-  .reviews__card { flex: 0 0 88vw; }
-  .reviews__carousel-outer { padding: 0 6vw; }
-  .reviews__carousel-outer::before,
-  .reviews__carousel-outer::after { width: 6vw; }
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .reviews__carousel-outer { padding: 0 40px; }
+  .reviews__card { min-width: 340px; max-width: 340px; }
+  .reviews__card-photo { height: 340px; }
+  .reviews__arrow--left  { left: 8px; }
+  .reviews__arrow--right { right: 8px; }
 }
 
+@media (max-width: 768px) {
+  .reviews { padding: 80px 0 60px; }
+  .reviews__header { padding: 0 24px 40px; }
+  .reviews__carousel-outer { padding: 0 24px; }
+  .reviews__card { min-width: 280px; max-width: 280px; }
+  .reviews__card-photo { height: 280px; }
+  .reviews__arrow { display: none; }
+  .reviews__footer { gap: 20px; padding-top: 24px; }
+  .reviews__title { font-size: 36px; }
+}
+
+@media (max-width: 480px) {
+  .reviews__header { padding: 0 16px 32px; }
+  .reviews__carousel-outer { padding: 0 16px; }
+  .reviews__card { min-width: 240px; max-width: 240px; }
+  .reviews__card-photo { height: 240px; }
+}
 
 
 /* ─── CONTACT SPLIT ─── */
@@ -3003,6 +3061,72 @@ window.addEventListener('DOMContentLoaded', () => {
 
   updateDots();
 });
+
+// ── Reviews carousel: arrows + dots + drag ──
+(function initReviewsCarousel() {
+  const track   = document.getElementById('reviewsTrack');
+  const dotsEl  = document.getElementById('reviewsDots');
+  const btnLeft  = document.getElementById('reviewsArrowLeft');
+  const btnRight = document.getElementById('reviewsArrowRight');
+  if (!track) return;
+
+  const CARD = 444; // card(420) + gap(24)
+
+  // Build dots — one per card
+  if (dotsEl) {
+    const cards = track.querySelectorAll('.reviews__card');
+    dotsEl.innerHTML = '';
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'reviews__dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Go to review ${i + 1}`);
+      d.addEventListener('click', () => scrollToCard(i));
+      dotsEl.appendChild(d);
+    });
+  }
+
+  function scrollToCard(index) {
+    const cards = track.querySelectorAll('.reviews__card');
+    const clamped = Math.max(0, Math.min(index, cards.length - 1));
+    track.scrollTo({ left: clamped * CARD, behavior: 'smooth' });
+  }
+
+  function updateDots() {
+    if (!dotsEl) return;
+    const cards = track.querySelectorAll('.reviews__card');
+    const scrollLeft = track.scrollLeft;
+    const idx = Math.round(scrollLeft / CARD);
+    dotsEl.querySelectorAll('.reviews__dot').forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+    });
+    // Arrow visibility
+    if (btnLeft)  btnLeft.classList.toggle('hidden', idx === 0);
+    if (btnRight) btnRight.classList.toggle('hidden', idx >= cards.length - 1);
+  }
+
+  // Arrow clicks
+  if (btnLeft)  btnLeft.addEventListener('click',  () => scrollToCard(Math.round(track.scrollLeft / CARD) - 1));
+  if (btnRight) btnRight.addEventListener('click', () => scrollToCard(Math.round(track.scrollLeft / CARD) + 1));
+
+  // Sync dots + arrows on scroll
+  track.addEventListener('scroll', updateDots, { passive: true });
+  updateDots();
+
+  // Drag-to-scroll
+  let isDown = false, startX = 0, scrollLeft = 0;
+  track.addEventListener('mousedown', (e) => {
+    isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+    track.style.cursor = 'grabbing';
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mouseup',   () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX);
+  });
+})();
 
 // ── Contact form ──
 const contactForm = document.getElementById('contactForm');
