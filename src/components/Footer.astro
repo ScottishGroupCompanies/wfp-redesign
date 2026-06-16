@@ -2,37 +2,59 @@
 const phone = '(267) 394-7980';
 const email = 'info@windowfilmphl.com';
 const tagline = 'Done right, every time.';
+const currentYear = new Date().getFullYear();
 
-const footerLinks = {
-  services: [
-    { label: 'Residential Film',   href: '/services/residential/' },
-    { label: 'Commercial Film',    href: '/services/commercial/' },
-    { label: 'Safety & Security', href: '/services/security/' },
-    { label: 'Decorative Film',   href: '/services/decorative/' },
-    { label: 'Anti-Graffiti',     href: '/services/anti-graffiti/' },
-  ],
-  applications: [
-    { label: 'Homes & Condos',      href: '/applications/homes-condos/' },
-    { label: 'Office Buildings',      href: '/applications/office-buildings/' },
-    { label: 'Retail & Storefronts', href: '/applications/retail-storefronts/' },
-    { label: 'Schools & Healthcare',  href: '/applications/schools-healthcare/' },
-    { label: 'Government & Municipal', href: '/applications/government-municipal/' },
-  ],
-  cities: [
-    { label: 'Philadelphia',       href: '/cities/philadelphia/' },
-    { label: 'Main Line',         href: '/cities/main-line/' },
-    { label: 'Cherry Hill, NJ',   href: '/cities/cherry-hill/' },
-    { label: 'South Jersey',      href: '/cities/south-jersey/' },
-    { label: 'Bucks County',      href: '/cities/bucks-county/' },
-  ],
-  company: [
-    { label: 'About Us',   href: '/about/' },
-    { label: 'Contact',    href: '/contact/' },
-    { label: 'Warranty',   href: '/warranty/' },
-    { label: 'Products',   href: '/products/' },
-    { label: 'Get a Quote', href: '/contact/' },
-  ],
-};
+const services = [
+  { label: 'Residential Window Film',  href: '/services/residential/' },
+  { label: 'Commercial Window Film',   href: '/services/commercial/' },
+  { label: 'Safety & Security Film',   href: '/services/security/' },
+  { label: 'Decorative Film',         href: '/services/decorative/' },
+  { label: 'Anti-Graffiti Film',       href: '/services/anti-graffiti/' },
+  { label: 'Solar Control Film',      href: '/services/solar/' },
+  { label: 'Privacy Film',            href: '/services/privacy/' },
+];
+
+const applications = [
+  { label: 'Homes & Condos',         href: '/applications/homes/' },
+  { label: 'Office Buildings',        href: '/applications/offices/' },
+  { label: 'Retail & Storefronts',    href: '/applications/retail/' },
+  { label: 'Schools & Universities',  href: '/applications/schools/' },
+  { label: 'Healthcare Facilities',   href: '/applications/healthcare/' },
+  { label: 'Government Buildings',    href: '/applications/government/' },
+  { label: 'Hotels & Hospitality',    href: '/applications/hotels/' },
+  { label: 'Museums & Libraries',     href: '/applications/museums/' },
+];
+
+const cities = [
+  { label: 'Philadelphia, PA',       href: '/cities/philadelphia/' },
+  { label: 'Main Line, PA',          href: '/cities/main-line/' },
+  { label: 'Cherry Hill, NJ',         href: '/cities/cherry-hill/' },
+  { label: 'South Jersey',            href: '/cities/south-jersey/' },
+  { label: 'Montgomery County',       href: '/cities/montgomery-county/' },
+  { label: 'Bucks County',            href: '/cities/bucks-county/' },
+  { label: 'Delaware County',         href: '/cities/delaware-county/' },
+  { label: 'Chester County',          href: '/cities/chester-county/' },
+];
+
+const resources = [
+  { label: 'Blog & Tips',            href: '/blog/' },
+  { label: 'Window Film Guide',      href: '/resources/guide/' },
+  { label: 'Energy Savings Facts',    href: '/resources/energy/' },
+  { label: 'UV Protection Facts',    href: '/resources/uv-protection/' },
+  { label: 'Before & After Gallery', href: '/gallery/' },
+  { label: 'Film Brands We Carry',   href: '/products/' },
+  { label: 'FAQs',                   href: '/faqs/' },
+  { label: 'Get a Free Quote',       href: '/contact/' },
+];
+
+const company = [
+  { label: 'About Us',              href: '/about/' },
+  { label: 'Our Process',           href: '/process/' },
+  { label: 'Warranty',              href: '/warranty/' },
+  { label: 'Contact Us',            href: '/contact/' },
+  { label: 'Privacy Policy',        href: '/privacy/' },
+  { label: 'Terms of Service',      href: '/terms/' },
+];
 
 const socialLinks = [
   {
@@ -51,42 +73,32 @@ const socialLinks = [
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
   },
 ];
-
-const currentYear = new Date().getFullYear();
 ---
 
 <footer class="wfp-footer">
 
-  <!-- CTA Band -->
+  <!-- ═══ CTA STRIP ═══ -->
   <div class="wfp-footer__cta">
     <div class="wfp-footer__cta-inner">
-      <div class="wfp-footer__cta-text">
-        <p class="eyebrow">Free Consultation</p>
-        <h2 class="wfp-footer__cta-headline">Ready to transform your space?</h2>
-        <p class="wfp-footer__cta-sub">No-pressure consultation. Professional installation. Lifetime warranty.</p>
-      </div>
-      <div class="wfp-footer__cta-actions">
-        <a href="/contact/" class="btn btn--primary">
-          Get a Free Quote
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-        </a>
-        <a href={`tel:+1${phone.replace(/\D/g,'')}`} class="wfp-footer__phone-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-          {phone}
-        </a>
+      <h3 class="wfp-footer__cta-headline">Ready to transform your space?</h3>
+      <p class="wfp-footer__cta-sub">Free consultation. Same-day quotes.<br/>Done right, every time.</p>
+      <div class="wfp-footer__cta-btns">
+        <a href="/contact/" class="wfp-footer__cta-btn-primary">Get a Free Quote →</a>
+        <a href="tel:+12673947980" class="wfp-footer__cta-btn-ghost">☎ (267) 394-7980</a>
       </div>
     </div>
   </div>
 
-  <!-- Main Footer Body -->
+  <!-- ═══ MAIN FOOTER BODY ═══ -->
   <div class="wfp-footer__body">
 
-    <!-- Brand Column -->
+    <!-- Column 1: Brand -->
     <div class="wfp-footer__col wfp-footer__col--brand">
       <a href="/" class="wfp-footer__logo" aria-label="Window Film Philadelphia — Home">
-        <img src="/images/window-film-philadelphia-logo-white.png" alt="Window Film Philadelphia" width="240" height="60" style="width:240px;height:auto;" />
+        <img src="/images/window-film-philadelphia-logo-white.png" alt="Window Film Philadelphia" width="180" height="45" style="width:180px;height:auto;filter:brightness(0) invert(1);" />
       </a>
-      <p class="wfp-footer__tagline">{tagline}<br/>Serving Philadelphia and the Delaware Valley since 2008.</p>
+      <p class="wfp-footer__tagline">Done right, every time.</p>
+      <p class="wfp-footer__brand-body">Philadelphia's trusted window film professionals since 2008. Serving the Delaware Valley with premium residential and commercial window film solutions.</p>
       <div class="wfp-footer__social" role="list" aria-label="Social media links">
         {socialLinks.map(s => (
           <a href={s.href} class="wfp-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label={`Window Film Philadelphia on ${s.label}`} role="listitem">
@@ -94,68 +106,80 @@ const currentYear = new Date().getFullYear();
           </a>
         ))}
       </div>
+      <div class="wfp-footer__rating">
+        <span class="wfp-footer__stars">★★★★★</span>
+        <span class="wfp-footer__rating-text">4.9 Google Reviews</span>
+      </div>
     </div>
 
-    <!-- Services Column -->
+    <!-- Column 2: Services -->
     <div class="wfp-footer__col">
       <h3 class="wfp-footer__col-heading">Services</h3>
       <ul class="wfp-footer__links" role="list">
-        {footerLinks.services.map(l => (
+        {services.map(l => (
           <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
         ))}
       </ul>
     </div>
 
-    <!-- Applications Column -->
+    <!-- Column 3: Applications -->
     <div class="wfp-footer__col">
       <h3 class="wfp-footer__col-heading">Applications</h3>
       <ul class="wfp-footer__links" role="list">
-        {footerLinks.applications.map(l => (
+        {applications.map(l => (
           <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
         ))}
       </ul>
     </div>
 
-    <!-- Cities Column -->
+    <!-- Column 4: Cities Served -->
     <div class="wfp-footer__col">
       <h3 class="wfp-footer__col-heading">Cities Served</h3>
       <ul class="wfp-footer__links" role="list">
-        {footerLinks.cities.map(l => (
+        {cities.map(l => (
           <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
         ))}
       </ul>
     </div>
 
-    <!-- Company Column -->
+    <!-- Column 5: Resources -->
+    <div class="wfp-footer__col">
+      <h3 class="wfp-footer__col-heading">Resources</h3>
+      <ul class="wfp-footer__links" role="list">
+        {resources.map(l => (
+          <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Column 6: Company -->
     <div class="wfp-footer__col">
       <h3 class="wfp-footer__col-heading">Company</h3>
       <ul class="wfp-footer__links" role="list">
-        {footerLinks.company.map(l => (
+        {company.map(l => (
           <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
         ))}
       </ul>
       <div class="wfp-footer__contact">
-        <a href={`tel:+1${phone.replace(/\D/g,'')}`} class="wfp-footer__contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-          {phone}
-        </a>
-        <a href={`mailto:${email}`} class="wfp-footer__contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-          {email}
-        </a>
+        <a href="tel:+12673947980" class="wfp-footer__contact-item">📞 (267) 394-7980</a>
+        <a href="mailto:info@windowfilmphl.com" class="wfp-footer__contact-item">✉ info@windowfilmphl.com</a>
+        <span class="wfp-footer__contact-item wfp-footer__contact-item--plain">📍 Serving Greater Philadelphia</span>
       </div>
     </div>
 
   </div>
 
-  <!-- Bottom Row -->
+  <!-- ═══ BOTTOM BAR ═══ -->
   <div class="wfp-footer__bottom">
     <div class="wfp-footer__bottom-inner">
-      <p class="wfp-footer__copy">&copy; {currentYear} Window Film Philadelphia. All rights reserved.</p>
+      <p class="wfp-footer__copy">© {currentYear} Window Film Philadelphia. All rights reserved.</p>
+      <p class="wfp-footer__brands">3M™ Authorized · LLumar · SunTek · Vista</p>
       <div class="wfp-footer__bottom-links">
-        <a href="/privacy-policy/" class="wfp-footer__bottom-link">Privacy Policy</a>
-        <span aria-hidden="true">&middot;</span>
-        <a href="/terms-of-service/" class="wfp-footer__bottom-link">Terms of Service</a>
+        <a href="/privacy/" class="wfp-footer__bottom-link">Privacy Policy</a>
+        <span>&middot;</span>
+        <a href="/terms/" class="wfp-footer__bottom-link">Terms</a>
+        <span>&middot;</span>
+        <a href="/sitemap/" class="wfp-footer__bottom-link">Sitemap</a>
       </div>
     </div>
   </div>
@@ -163,221 +187,299 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style>
+/* ─── FOOTER BASE ─── */
 .wfp-footer {
-  background: var(--dark-bg, #14201A);
-  color: rgba(255,255,255,0.65);
-  font-family: var(--font-body, 'Inter', sans-serif);
+  background: #0d1a0f;
+  color: rgba(255,255,255,0.55);
+  font-family: 'Inter', sans-serif;
 }
 
-/* ── CTA Band ── */
+/* ─── CTA STRIP ─── */
 .wfp-footer__cta {
-  background: linear-gradient(135deg, #1a2e1f 0%, #14201A 60%);
-  border-top: 1px solid rgba(124,179,66,0.15);
-  padding: 72px 40px;
-  position: relative;
-  overflow: hidden;
-}
-.wfp-footer__cta::before {
-  content: '';
-  position: absolute;
-  top: -100px; left: -100px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,179,66,0.06) 0%, transparent 70%);
-  pointer-events: none;
+  background: #14201A;
+  padding: 60px 80px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
 }
 .wfp-footer__cta-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
 }
 .wfp-footer__cta-headline {
-  font-family: var(--font-display, 'Playfair Display', serif);
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 8px;
   line-height: 1.1;
+  margin: 0 0 16px;
 }
 .wfp-footer__cta-sub {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.5);
-  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  margin: 0 0 32px;
 }
-.wfp-footer__cta-actions {
+.wfp-footer__cta-btns {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
-  flex-shrink: 0;
   flex-wrap: wrap;
 }
-.wfp-footer__phone-link {
-  display: flex;
+.wfp-footer__cta-btn-primary {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 24px;
-  border: 1.5px solid rgba(255,255,255,0.2);
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  transition: all 0.2s;
-}
-.wfp-footer__phone-link:hover {
-  border-color: rgba(124,179,66,0.5);
+  padding: 14px 32px;
+  background: #7CB342;
   color: #fff;
-  background: rgba(124,179,66,0.08);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(124,179,66,0.4);
+}
+.wfp-footer__cta-btn-primary:hover {
+  background: #2E6B30;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.wfp-footer__cta-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: transparent;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  transition: border-color 0.2s, background 0.2s;
+}
+.wfp-footer__cta-btn-ghost:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
 }
 
-/* ── Main Body ── */
+/* ─── MAIN BODY — 6 COLUMNS ─── */
 .wfp-footer__body {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 72px 40px 56px;
+  padding: 80px 80px 60px;
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
 }
 
-/* ── Brand ── */
+/* ─── BRAND COLUMN ─── */
 .wfp-footer__logo {
   display: inline-block;
   margin-bottom: 16px;
   text-decoration: none;
 }
-.wfp-footer__logo img { opacity: 0.9; transition: opacity 0.2s; }
-.wfp-footer__logo:hover img { opacity: 1; }
+.wfp-footer__logo img { display: block; }
 .wfp-footer__tagline {
-  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.4;
+}
+.wfp-footer__brand-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
   line-height: 1.7;
-  color: rgba(255,255,255,0.4);
   margin: 0 0 24px;
 }
-.wfp-footer__social { display: flex; gap: 8px; }
+.wfp-footer__social {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
 .wfp-footer__social-link {
-  width: 38px; height: 38px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
 .wfp-footer__social-link:hover {
-  background: rgba(124,179,66,0.15);
-  color: var(--green, #7CB342);
+  border-color: #7CB342;
+  color: #7CB342;
   transform: translateY(-2px);
 }
-
-/* ── Column Headings ── */
-.wfp-footer__col-heading {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin: 0 0 18px;
-}
-
-/* ── Links ── */
-.wfp-footer__links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  list-style: none;
-  padding: 0; margin: 0;
-}
-.wfp-footer__link {
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  transition: color 0.2s;
-}
-.wfp-footer__link::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; left: 0;
-  width: 0; height: 1px;
-  background: var(--green, #7CB342);
-  transition: width 0.25s ease;
-}
-.wfp-footer__link:hover { color: rgba(255,255,255,0.9); }
-.wfp-footer__link:hover::after { width: 100%; }
-
-/* ── Contact ── */
-.wfp-footer__contact {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.wfp-footer__contact-item {
+.wfp-footer__rating {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.5);
+  margin-top: 20px;
+}
+.wfp-footer__stars {
+  color: #7CB342;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.wfp-footer__rating-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #fff;
+}
+
+/* ─── COLUMN HEADINGS ─── */
+.wfp-footer__col-heading {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7CB342;
+  margin: 0 0 20px;
+  line-height: 1;
+}
+
+/* ─── LINKS ─── */
+.wfp-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.wfp-footer__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.60);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  transition: color 0.2s ease;
+  line-height: 2.2;
+}
+.wfp-footer__link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ─── CONTACT INFO ─── */
+.wfp-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+.wfp-footer__contact-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.60);
   text-decoration: none;
   transition: color 0.2s;
+  line-height: 1.4;
 }
-.wfp-footer__contact-item:hover { color: var(--green, #7CB342); }
+a.wfp-footer__contact-item:hover {
+  color: #7CB342;
+}
+.wfp-footer__contact-item--plain {
+  cursor: default;
+}
 
-/* ── Bottom ── */
+/* ─── BOTTOM BAR ─── */
 .wfp-footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 80px;
+  display: flex;
+  align-items: center;
 }
 .wfp-footer__bottom-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 40px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 .wfp-footer__copy {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.25);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+}
+.wfp-footer__brands {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
   margin: 0;
 }
 .wfp-footer__bottom-links {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.2);
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
 }
 .wfp-footer__bottom-link {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.45);
   text-decoration: none;
   transition: color 0.2s;
 }
-.wfp-footer__bottom-link:hover { color: rgba(255,255,255,0.6); }
+.wfp-footer__bottom-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 
-/* ── Responsive ── */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 1100px) {
-  .wfp-footer__body { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+  .wfp-footer__body {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 60px 48px 48px;
+  }
   .wfp-footer__col--brand { grid-column: 1 / -1; }
+  .wfp-footer__cta { padding: 60px 48px; }
+  .wfp-footer__bottom { padding: 24px 48px; }
 }
 @media (max-width: 768px) {
   .wfp-footer__cta { padding: 48px 24px; }
-  .wfp-footer__cta-inner { flex-direction: column; align-items: flex-start; }
-  .wfp-footer__body { grid-template-columns: 1fr 1fr; padding: 48px 24px 40px; }
-  .wfp-footer__bottom-inner { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+  .wfp-footer__cta-headline { font-size: 28px; }
+  .wfp-footer__body {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 48px 24px 40px;
+  }
+  .wfp-footer__bottom {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .wfp-footer__bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .wfp-footer__brands { display: none; }
 }
 @media (max-width: 480px) {
   .wfp-footer__body { grid-template-columns: 1fr; }
+  .wfp-footer__cta-btns { flex-direction: column; width: 100%; }
+  .wfp-footer__cta-btn-primary,
+  .wfp-footer__cta-btn-ghost { width: 100%; justify-content: center; }
 }
 </style>
