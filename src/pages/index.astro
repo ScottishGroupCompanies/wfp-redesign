@@ -260,6 +260,105 @@ const applications = [
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
+     HOW IT WORKS — bg image + left text + right steps + accordion
+  ═══════════════════════════════════════════════════════ -->
+  <section class="hiw">
+    <div class="hiw__bg">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80"
+        alt="Modern Philadelphia home"
+        class="hiw__bg-img"
+        width="1600"
+        height="900"
+        loading="lazy"
+      />
+      <div class="hiw__bg-overlay"></div>
+    </div>
+
+    <div class="hiw__inner">
+
+      <!-- Left: title + accordion -->
+      <div class="hiw__left">
+        <div class="hiw__heading">
+          <h2 class="hiw__title">Window film that<br/>pays for itself.</h2>
+          <p class="hiw__sub">Professional installation across the Delaware Valley. Most jobs done in a single day — no mess, no hassle.</p>
+        </div>
+
+        <div class="hiw__accordion">
+          <div class="hiw__acc-item" data-acc>
+            <button class="hiw__acc-trigger" aria-expanded="false">
+              <span>How long does installation take?</span>
+              <span class="hiw__acc-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              </span>
+            </button>
+            <div class="hiw__acc-body" hidden>
+              <p>Most residential installations are completed in a single day. Larger commercial projects may take 2–3 days. Our team arrives early and leaves your space spotless.</p>
+            </div>
+          </div>
+
+          <div class="hiw__acc-item" data-acc>
+            <button class="hiw__acc-trigger" aria-expanded="false">
+              <span>Will window film damage my windows?</span>
+              <span class="hiw__acc-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              </span>
+            </button>
+            <div class="hiw__acc-body" hidden>
+              <p>No. When professionally installed by our certified team, window film is completely safe for your glass. We use manufacturer-approved methods and materials on every job.</p>
+            </div>
+          </div>
+
+          <div class="hiw__acc-item" data-acc>
+            <button class="hiw__acc-trigger" aria-expanded="false">
+              <span>Is there a warranty?</span>
+              <span class="hiw__acc-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              </span>
+            </button>
+            <div class="hiw__acc-body" hidden>
+              <p>Yes. All installations are backed by the manufacturer's warranty — typically 5 to 15 years depending on the film. We handle any warranty claims directly on your behalf.</p>
+            </div>
+          </div>
+
+          <div class="hiw__acc-item" data-acc>
+            <button class="hiw__acc-trigger" aria-expanded="false">
+              <span>Can I install it myself?</span>
+              <span class="hiw__acc-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              </span>
+            </button>
+            <div class="hiw__acc-body" hidden>
+              <p>DIY kits exist, but bubbles, peeling edges, and scratches are common. Our professional installation ensures a flawless finish and full warranty coverage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: numbered steps -->
+      <div class="hiw__steps">
+        <div class="hiw__step">
+          <span class="hiw__step-num">01</span>
+          <span class="hiw__step-text hiw__step-text--active">Free in-home consultation</span>
+        </div>
+        <div class="hiw__step">
+          <span class="hiw__step-num">02</span>
+          <span class="hiw__step-text">Custom film selection</span>
+        </div>
+        <div class="hiw__step">
+          <span class="hiw__step-num">03</span>
+          <span class="hiw__step-text">Expert installation</span>
+        </div>
+        <div class="hiw__step">
+          <span class="hiw__step-num">04</span>
+          <span class="hiw__step-text">Backed by manufacturer warranty</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
        SECTION 6: PERFORMANCE NUMBERS
   ═══════════════════════════════════════════════════════ -->
   <section class="perf-section">
@@ -1064,6 +1163,174 @@ const applications = [
 .ba-label--before { left: 20px; }
 .ba-label--after { right: 20px; }
 
+
+/* ─── HOW IT WORKS — bg image + steps + accordion ─── */
+.hiw {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hiw__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hiw__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(20%) brightness(0.92);
+}
+.hiw__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(240,244,240,0.82);
+}
+
+.hiw__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+/* Left: heading + accordion */
+.hiw__heading { margin-bottom: 2.5rem; }
+.hiw__title {
+  font-family: var(--font-serif, 'Fraunces', serif);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 3.8vw, 4rem);
+  color: #2A241E;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.hiw__sub {
+  font-family: var(--font-body, 'Hanken Grotesk', sans-serif);
+  font-size: 1rem;
+  font-weight: 300;
+  color: #6E665C;
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+/* Accordion */
+.hiw__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hiw__acc-item {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(42,36,30,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.hiw__acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body, 'Hanken Grotesk', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2A241E;
+  text-align: left;
+  gap: 1rem;
+}
+.hiw__acc-trigger span:first-child { flex: 1; }
+.hiw__acc-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(42,36,30,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2A241E;
+  transition: transform 0.25s ease, background 0.2s;
+}
+.hiw__acc-item.is-open .hiw__acc-icon {
+  transform: rotate(45deg);
+  background: var(--green, #4E6B2A);
+  color: #fff;
+}
+.hiw__acc-body {
+  padding: 0 1.4rem 1.2rem;
+  font-family: var(--font-body, 'Hanken Grotesk', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #6E665C;
+  line-height: 1.7;
+}
+.hiw__acc-body p { margin: 0; }
+
+/* Right: numbered steps */
+.hiw__steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding-top: 2rem;
+}
+.hiw__step {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 1.2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(42,36,30,0.10);
+}
+.hiw__step:first-child { border-top: 1px solid rgba(42,36,30,0.10); }
+.hiw__step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(42,36,30,0.25);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.hiw__step-text {
+  font-family: var(--font-body, 'Hanken Grotesk', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(42,36,30,0.45);
+  text-align: right;
+}
+.hiw__step-text--active {
+  font-weight: 700;
+  color: #2A241E;
+}
+
+@media (max-width: 900px) {
+  .hiw__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 5rem 6vw;
+  }
+  .hiw__steps { padding-top: 0; }
+  .hiw__step { justify-content: flex-start; gap: 1rem; }
+  .hiw__step-text { text-align: left; }
+  .hiw__step-num { font-size: 0.9rem; }
+}
+
+
 /* ─── PERFORMANCE NUMBERS ─── */
 .perf-section {
   background: var(--brand);
@@ -1460,6 +1727,31 @@ const words = document.querySelectorAll('.hero-word');
 words.forEach((word, i) => {
   setTimeout(() => word.classList.add('visible'), 80 + i * 110);
 });
+
+
+// ── FAQ accordion ──
+document.querySelectorAll('[data-acc]').forEach(item => {
+  item.addEventListener('acc:toggle', () => {
+    const isOpen = item.classList.contains('is-open');
+    // close all
+    document.querySelectorAll('[data-acc]').forEach(i => {
+      i.classList.remove('is-open');
+      i.querySelector('.hiw__acc-body').hidden = true;
+      i.querySelector('.hiw__acc-trigger').setAttribute('aria-expanded', 'false');
+    });
+    // open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('is-open');
+      item.querySelector('.hiw__acc-body').hidden = false;
+      item.querySelector('.hiw__acc-trigger').setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  item.querySelector('.hiw__acc-trigger').addEventListener('click', () => {
+    item.dispatchEvent(new Event('acc:toggle'));
+  });
+});
+
 
 // ── Quote form ──
 const quoteForm = document.getElementById('quoteForm');
