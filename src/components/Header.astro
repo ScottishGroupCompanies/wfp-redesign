@@ -7,15 +7,15 @@ const navItems = [
     label: 'Services',
     href: '/services/',
     type: 'mega',
-    image: '/images/philadelphia-building-hero.jpg', // placeholder, add actual image
+    image: '/images/philadelphia-commercial-building.jpg',
     imageLabel: 'Services',
     columns: [
       {
         header: 'RESIDENTIAL',
         links: [
           { label: 'Home Window Tinting', href: '/services/residential/' },
-          { label: 'UV & Heat Protection', href: '/services/uv-protection/' },
           { label: 'Privacy Film', href: '/services/privacy/' },
+          { label: 'UV Protection Film', href: '/services/uv-protection/' },
           { label: 'Safety Film', href: '/services/security/' },
           { label: 'Decorative Film', href: '/services/decorative/' },
         ],
@@ -23,21 +23,21 @@ const navItems = [
       {
         header: 'COMMERCIAL',
         links: [
-          { label: 'Office & Corporate', href: '/applications/office-buildings/' },
-          { label: 'Retail & Storefronts', href: '/applications/retail-storefronts/' },
+          { label: 'Commercial Window Tinting', href: '/services/commercial/' },
           { label: 'Solar Control Film', href: '/services/solar/' },
           { label: 'Anti-Graffiti Film', href: '/services/anti-graffiti/' },
           { label: 'Safety & Security Film', href: '/services/security/' },
+          { label: 'Decorative & Branding Film', href: '/services/decorative/' },
         ],
       },
       {
         header: 'GOVERNMENT & PUBLIC',
         links: [
-          { label: 'Government Buildings', href: '/applications/government-municipal/' },
-          { label: 'Schools & Universities', href: '/applications/schools-healthcare/' },
-          { label: 'Museums & Libraries', href: '/applications/museums/' },
-          { label: 'Churches & Faith Centers', href: '/applications/churches/' },
-          { label: 'Mass Transit', href: '/applications/mass-transit/' },
+          { label: 'Government Window Film', href: '/applications/government-municipal/' },
+          { label: 'School Security Film', href: '/benefits/school-security-window-film/' },
+          { label: 'Transit Window Film', href: '/applications/mass-transit/' },
+          { label: 'Museum Conservation Film', href: '/applications/museums/' },
+          { label: 'Church Window Film', href: '/applications/churches/' },
         ],
       },
       {
@@ -52,34 +52,38 @@ const navItems = [
       },
     ],
     footer: 'Not sure which film is right for you? We will help you choose — free consultation.',
+    footerLink: { label: 'See All Services →', href: '/services/' },
   },
   {
     label: 'Applications',
     href: '/applications/',
     type: 'mega',
-    image: '/images/philadelphia-cityscape.jpg', // placeholder, add actual image
+    image: '/images/philadelphia-skyline.jpg',
     imageLabel: 'Applications',
     columns: [
       {
         header: null,
         links: [
           { label: 'Homes & Condos', href: '/applications/homes-condos/' },
+          { label: 'Office Buildings', href: '/applications/office-buildings/' },
           { label: 'Retail & Restaurants', href: '/applications/retail-storefronts/' },
-          { label: 'Schools & Universities', href: '/applications/schools-healthcare/' },
-          { label: 'Churches & Faith Centers', href: '/applications/churches/' },
+          { label: 'Hotels & Hospitality', href: '/applications/hotels/' },
+          { label: 'Mass Transit', href: '/applications/mass-transit/' },
         ],
       },
       {
         header: null,
         links: [
-          { label: 'Office Buildings', href: '/applications/office-buildings/' },
+          { label: 'Schools & Universities', href: '/applications/schools-healthcare/' },
           { label: 'Hospitals & Healthcare', href: '/applications/healthcare/' },
           { label: 'Government Buildings', href: '/applications/government-municipal/' },
-          { label: 'Hotels & Hospitality', href: '/applications/hotels/' },
+          { label: 'Museums & Libraries', href: '/applications/museums/' },
+          { label: 'Churches & Faith Centers', href: '/applications/churches/' },
         ],
       },
     ],
     footer: null,
+    footerLink: { label: 'See All Applications →', href: '/applications/' },
   },
   {
     label: 'Benefits',
@@ -233,7 +237,18 @@ const currentPath = Astro.url.pathname;
                     ))}
                   </div>
                 </div>
-                {item.footer && <div class="mega__footer">{item.footer}</div>}
+                {(item.footer || item.footerLink) && (
+                  <div class="mega__footer">
+                    <div class="mega__footer-inner">
+                      {item.footer && <span class="mega__footer-text">{item.footer}</span>}
+                      {item.footerLink && (
+                        <a href={item.footerLink.href} class="mega__footer-link">
+                          {item.footerLink.label}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
             {item.type === 'simple' && (
@@ -485,7 +500,7 @@ const currentPath = Astro.url.pathname;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   z-index: 300;
   width: max-content;
-  min-width: 800px;
+  min-width: 900px;
   max-width: 1200px;
 }
 .site-header__nav-item:hover .site-header__mega,
@@ -510,49 +525,66 @@ const currentPath = Astro.url.pathname;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 400px;
 }
-.mega__grid--4 .mega__image { width: 25%; }
-.mega__grid--2 .mega__image { width: 33.333%; }
+.mega__grid--4 .mega__image { width: 260px; }
+.mega__grid--2 .mega__image { width: 320px; }
 
 .mega__image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 .mega__image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(20,32,26,0.85) 0%, rgba(46,107,48,0.75) 100%);
+  background: linear-gradient(135deg, rgba(20,32,26,0.88) 0%, rgba(46,107,48,0.78) 100%);
+  z-index: 1;
 }
 .mega__image-label {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-family: 'Playfair Display', serif;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
 .mega__grid {
   display: grid;
-  gap: 32px;
-  padding: 32px 36px;
+  gap: 40px;
+  padding: 40px 48px;
   flex: 1;
 }
 .mega__grid--4 { grid-template-columns: repeat(4, 1fr); }
 .mega__grid--2 { grid-template-columns: repeat(2, 1fr); }
 
-.mega__col {}
+/* Dividers between columns */
+.mega__col {
+  position: relative;
+}
+.mega__col:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20px;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+}
 
 .mega__header {
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #7CB342;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 
 .mega__links {
@@ -561,20 +593,21 @@ const currentPath = Astro.url.pathname;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .mega__link {
   display: block;
-  padding: 8px 12px;
+  padding: 10px 12px;
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+  font-size: 14px;
   font-weight: 400;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
   border-radius: 6px;
   border-left: 2px solid transparent;
   transition: all 0.2s;
+  line-height: 1.4;
 }
 .mega__link:hover {
   color: #7CB342;
@@ -583,14 +616,35 @@ const currentPath = Astro.url.pathname;
 }
 
 .mega__footer {
-  padding: 16px 36px;
-  background: rgba(0,0,0,0.15);
+  background: #14201A;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-radius: 0 0 12px 12px;
+}
+.mega__footer-inner {
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.mega__footer-text {
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 13px;
   font-style: italic;
   color: rgba(255,255,255,0.5);
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  flex: 1;
+}
+.mega__footer-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7CB342;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.mega__footer-link:hover {
+  color: #8fc452;
 }
 
 /* ════════════════════════════════════
@@ -606,7 +660,7 @@ const currentPath = Astro.url.pathname;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   z-index: 300;
-  min-width: 240px;
+  min-width: 260px;
 }
 .site-header__nav-item:hover .site-header__simple,
 .site-header__simple:hover {
@@ -619,15 +673,26 @@ const currentPath = Astro.url.pathname;
 .simple__grid {
   background: #14201A;
   border-radius: 12px;
-  padding: 16px;
+  padding: 32px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   display: grid;
-  gap: 24px;
+  gap: 32px;
 }
 .simple__grid--1 { grid-template-columns: 1fr; }
 .simple__grid--2 { grid-template-columns: repeat(2, 1fr); }
 
-.simple__col {}
+.simple__col {
+  position: relative;
+}
+.simple__grid--2 .simple__col:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -16px;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+}
 
 .simple__links {
   list-style: none;
@@ -635,21 +700,22 @@ const currentPath = Astro.url.pathname;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .simple__link {
   display: block;
-  padding: 8px 12px;
+  padding: 10px 12px;
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+  font-size: 14px;
   font-weight: 400;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
   border-radius: 6px;
   border-left: 2px solid transparent;
   transition: all 0.2s;
   white-space: nowrap;
+  line-height: 1.4;
 }
 .simple__link:hover {
   color: #7CB342;
@@ -658,15 +724,16 @@ const currentPath = Astro.url.pathname;
 }
 
 .simple__footer {
-  padding: 12px 16px;
-  margin-top: 8px;
-  background: rgba(0,0,0,0.15);
+  padding: 16px 20px;
+  margin-top: 16px;
+  background: rgba(0,0,0,0.2);
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 13px;
   font-style: italic;
   color: rgba(255,255,255,0.5);
   text-align: center;
   border-radius: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ════════════════════════════════════
@@ -847,7 +914,7 @@ const currentPath = Astro.url.pathname;
   background: rgba(0,0,0,0.15);
 }
 .mobile-nav-group__sub.is-open {
-  max-height: 800px;
+  max-height: 1000px;
 }
 .mobile-nav-group__sub-link {
   display: block;
