@@ -179,23 +179,34 @@
   display: flex;
   flex-direction: column;
   min-height: 600px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* PHOTO — top, no overlay, no text */
-.benefits__photo {
+/* PHOTO CONTAINER — fixed height, no overlap */
+.benefits__photo-container {
   width: 100%;
   height: 260px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.benefits__photo {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* CONTENT AREA — below photo, clean background */
+/* CONTENT AREA — below photo, solid background, separate container */
 .benefits__content {
   background: #111f14;
   padding: 40px 56px;
   flex: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .benefits__label {
@@ -292,7 +303,7 @@
   transition: opacity 0.15s ease;
 }
 
-.benefits__panel.fade-in .benefits__photo {
+.benefits__panel.fade-in .benefits__photo-container {
   animation: photoIn 0.35s ease-out forwards;
 }
 
@@ -385,7 +396,7 @@
   .benefits__tab--active .benefits__tab-icon {
     color: #fff;
   }
-  .benefits__photo {
+  .benefits__photo-container {
     height: 200px;
   }
   .benefits__content {
@@ -519,7 +530,9 @@ function renderBenefitContent(benefitKey) {
   const panel = document.getElementById('benefitsPanel');
   
   panel.innerHTML = `
-    <img src="${data.photo}" alt="${data.title}" class="benefits__photo" width="1400" height="260" loading="lazy" />
+    <div class="benefits__photo-container">
+      <img src="${data.photo}" alt="${data.title}" class="benefits__photo" width="1400" height="260" loading="lazy" />
+    </div>
     <div class="benefits__content">
       <span class="benefits__label">${data.label}</span>
       <h3 class="benefits__content-title">${data.title}</h3>
