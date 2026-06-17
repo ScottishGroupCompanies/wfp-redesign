@@ -571,23 +571,21 @@ const description = "Professional window film installation in Philadelphia and t
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       MESSAGE FROM THE OWNER — editorial 60/40 split
+       MESSAGE FROM THE OWNER — centered card
   ═══════════════════════════════════════════════════════════ -->
   <section class="owner-msg scroll-reveal">
-    <div class="owner-msg__grid">
-      <!-- LEFT: Photo -->
+    <div class="owner-msg__card">
+
+      <!-- LEFT: Circular photo -->
       <div class="owner-msg__photo-col">
-        <div class="owner-msg__photo-wrap">
-          <img
-            src="/images/martin-faith.jpg"
-            alt="Martin Faith, Founder & Owner"
-            class="owner-msg__photo"
-            width="400"
-            height="480"
-            loading="lazy"
-          />
-          <div class="owner-msg__photo-overlay"></div>
-        </div>
+        <img
+          src="/images/martin-faith.jpg"
+          alt="Martin Faith, Founder & Owner"
+          class="owner-msg__photo"
+          width="100"
+          height="100"
+          loading="lazy"
+        />
       </div>
 
       <!-- RIGHT: Quote & info -->
@@ -604,6 +602,7 @@ const description = "Professional window film installation in Philadelphia and t
         <p class="owner-msg__title">Founder &amp; Owner, Window Film Philadelphia</p>
         <p class="owner-msg__detail">SERVING PHILADELPHIA SINCE 2008</p>
       </div>
+
     </div>
   </section>
 
@@ -2134,141 +2133,110 @@ const description = "Professional window film installation in Philadelphia and t
 }
 
 
-/* ─── MESSAGE FROM THE OWNER ─── */
+/* ─── MESSAGE FROM THE OWNER — centered card ─── */
 .owner-msg {
   background: #F3F6F1;
-  overflow: hidden;
-  padding: 64px 0;
+  padding: 48px 80px;
 }
 
-.owner-msg__grid {
-  display: grid;
-  grid-template-columns: 38% 62%;
-  min-height: 360px;
-  max-height: 380px;
+.owner-msg__card {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-/* LEFT — Photo column */
+/* LEFT — circular photo */
 .owner-msg__photo-col {
-  position: relative;
-  overflow: hidden;
-}
-
-.owner-msg__photo-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 360px;
-  max-height: 380px;
+  flex-shrink: 0;
 }
 
 .owner-msg__photo {
-  width: 100%;
-  height: 100%;
-  max-height: 380px;
-  object-fit: contain;
-  object-position: center center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid #7CB342;
   display: block;
-  background: #e8ede6;
 }
 
-.owner-msg__photo-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(20, 32, 26, 0.35) 0%, transparent 30%);
-  pointer-events: none;
-}
-
-/* RIGHT — Content */
+/* RIGHT — content */
 .owner-msg__content {
-  background: #ffffff;
-  padding: 56px 52px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex: 1;
 }
 
 .owner-msg__quote-mark {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 120px;
+  font-size: 32px;
   color: #7CB342;
-  opacity: 0.3;
-  line-height: 0;
-  margin-bottom: -20px;
+  line-height: 1;
+  margin-bottom: -4px;
   user-select: none;
 }
 
 .owner-msg__quote {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 24px;
+  font-size: 18px;
   font-style: italic;
   font-weight: 400;
   color: #14201A;
   line-height: 1.7;
-  max-width: 580px;
+  max-width: 560px;
   margin: 0 0 0 0;
 }
 
 .owner-msg__divider {
-  width: 60px;
-  height: 2px;
+  width: 40px;
+  height: 1px;
   background: #7CB342;
-  margin: 32px 0;
+  margin: 16px 0;
 }
 
 .owner-msg__name {
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: #14201A;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .owner-msg__title {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   color: #4A5C48;
-  margin: 0 0 16px 0;
+  margin: 0 0 4px 0;
 }
 
 .owner-msg__detail {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   color: #7CB342;
   margin: 0;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
 }
 
-/* Mobile responsive */
+/* Mobile */
 @media (max-width: 768px) {
   .owner-msg {
-    padding: 48px 0;
-  }
-
-  .owner-msg__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .owner-msg__photo-col {
-    height: 320px;
-  }
-
-  .owner-msg__photo-wrap {
-    min-height: 320px;
-    height: 320px;
-  }
-
-  .owner-msg__photo {
-    height: 320px;
-  }
-
-  .owner-msg__content {
     padding: 40px 24px;
   }
 
+  .owner-msg__card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
   .owner-msg__quote {
-    font-size: 20px;
+    font-size: 16px;
+  }
+
+  .owner-msg__divider {
+    margin: 16px auto;
   }
 }
 
