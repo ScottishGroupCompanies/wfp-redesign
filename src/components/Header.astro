@@ -193,6 +193,8 @@ const currentPath = Astro.url.pathname;
             <a
               href={item.href}
               class={`site-header__nav-link${currentPath.startsWith(item.href) && item.href !== '/' ? ' is-active' : ''}`}
+              aria-haspopup={item.type ? "true" : undefined}
+              aria-expanded={item.type ? "false" : undefined}
             >
               {item.label}
               {item.type && (
@@ -202,7 +204,7 @@ const currentPath = Astro.url.pathname;
               )}
             </a>
             {item.type === 'mega' && (
-              <div class="site-header__mega" role="region" aria-label={`${item.label} menu`}>
+              <div class="site-header__mega" role="menu" aria-label={`${item.label} menu`}>
                 <div class="mega__inner">
                   <div class="mega__image-panel">
                     <img src={item.imageUrl} alt={item.imageLabel} class="mega__image-bg" />
@@ -215,7 +217,7 @@ const currentPath = Astro.url.pathname;
                         {col.header && <h3 class="mega__header">{col.header}</h3>}
                         <ul class="mega__links">
                           {col.links.map((link) => (
-                            <li><a href={link.href} class="mega__link">{link.label}</a></li>
+                            <li><a href={link.href} class="mega__link" role="menuitem">{link.label}</a></li>
                           ))}
                         </ul>
                       </div>
@@ -237,13 +239,13 @@ const currentPath = Astro.url.pathname;
               </div>
             )}
             {item.type === 'simple' && (
-              <div class="site-header__simple" role="region" aria-label={`${item.label} menu`}>
+              <div class="site-header__simple" role="menu" aria-label={`${item.label} menu`}>
                 <div class={`simple__grid simple__grid--${item.columns.length}`}>
                   {item.columns.map((col) => (
                     <div class="simple__col">
                       <ul class="simple__links">
                         {col.links.map((link) => (
-                          <li><a href={link.href} class="simple__link">{link.label}</a></li>
+                          <li><a href={link.href} class="simple__link" role="menuitem">{link.label}</a></li>
                         ))}
                       </ul>
                     </div>
