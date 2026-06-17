@@ -1,0 +1,529 @@
+---
+// Benefits — 8-tab interactive section with left tabs + right content panel
+---
+
+<section class="benefits" id="benefits">
+  <div class="benefits__header">
+    <p class="benefits__eyebrow">BENEFITS</p>
+    <h2 class="benefits__title">Why Philadelphia chooses window film</h2>
+    <p class="benefits__subtitle">Click any benefit to explore</p>
+  </div>
+
+  <div class="benefits__main">
+    <!-- LEFT TABS COLUMN -->
+    <div class="benefits__tabs" id="benefitsTabs">
+      <button class="benefits__tab benefits__tab--active" data-benefit="energy">
+        Energy Savings
+      </button>
+      <button class="benefits__tab" data-benefit="uv">
+        UV Protection
+      </button>
+      <button class="benefits__tab" data-benefit="privacy">
+        Privacy Film
+      </button>
+      <button class="benefits__tab" data-benefit="glare">
+        Glare Reduction
+      </button>
+      <button class="benefits__tab" data-benefit="graffiti">
+        Anti-Graffiti
+      </button>
+      <button class="benefits__tab" data-benefit="safety">
+        Safety & Security
+      </button>
+      <button class="benefits__tab" data-benefit="decorative">
+        Decorative Film
+      </button>
+      <button class="benefits__tab" data-benefit="solar">
+        Solar Control
+      </button>
+    </div>
+
+    <!-- RIGHT CONTENT PANEL -->
+    <div class="benefits__panel" id="benefitsPanel">
+      <!-- Content for active benefit will be rendered here by JavaScript -->
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── BENEFITS SECTION ─── */
+.benefits {
+  background: #0d1a0f;
+  width: 100%;
+  overflow: hidden;
+  padding: 100px 0;
+}
+
+.benefits__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.benefits__eyebrow {
+  color: #7CB342;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  margin-bottom: 16px;
+}
+
+.benefits__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 52px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.benefits__subtitle {
+  font-family: 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+}
+
+.benefits__main {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* LEFT TABS COLUMN */
+.benefits__tabs {
+  background: #0a150c;
+  width: 320px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.benefits__tab {
+  padding: 22px 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.benefits__tab:hover {
+  color: rgba(255, 255, 255, 0.75);
+  border-left-color: rgba(124, 179, 66, 0.3);
+}
+
+.benefits__tab--active {
+  color: #fff;
+  background: linear-gradient(to right, rgba(124, 179, 66, 0.12), transparent);
+  border-left-color: #7CB342;
+}
+
+.benefits__tab--active::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7CB342;
+}
+
+.benefits__tab--active {
+  padding-left: 48px;
+}
+
+/* RIGHT CONTENT PANEL */
+.benefits__panel {
+  flex: 1;
+  background: #0d1a0f;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+.benefits__photo {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+}
+
+.benefits__photo-wrap {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.benefits__photo-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, #0d1a0f 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.benefits__content {
+  padding: 48px 64px;
+}
+
+.benefits__label {
+  color: #7CB342;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.benefits__content-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.benefits__body p {
+  font-family: 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+.benefits__stat {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.benefits__stat-number {
+  font-family: 'Space Mono', monospace;
+  color: #7CB342;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.benefits__stat-label {
+  font-family: 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  max-width: 140px;
+}
+
+.benefits__cta {
+  margin-top: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7CB342;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.benefits__cta:hover {
+  opacity: 0.7;
+}
+
+/* FADE ANIMATIONS */
+.benefits__panel.fade-out {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.benefits__panel.fade-in .benefits__photo {
+  animation: photoIn 0.4s ease-out forwards;
+}
+
+.benefits__panel.fade-in .benefits__content {
+  animation: contentIn 0.35s ease 0.1s forwards;
+  opacity: 0;
+}
+
+@keyframes photoIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contentIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .benefits__tabs {
+    width: 280px;
+  }
+  .benefits__content {
+    padding: 40px 48px;
+  }
+  .benefits__title {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits {
+    padding: 80px 0;
+  }
+  .benefits__header {
+    margin-bottom: 40px;
+    padding: 0 24px;
+  }
+  .benefits__title {
+    font-size: 36px;
+  }
+  .benefits__main {
+    flex-direction: column;
+  }
+  .benefits__tabs {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: #0a150c;
+    padding: 0 24px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .benefits__tab {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-size: 13px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+  }
+  .benefits__tab--active {
+    background: #7CB342;
+    border-color: #7CB342;
+    color: #fff;
+    padding-left: 20px;
+  }
+  .benefits__tab--active::before {
+    display: none;
+  }
+  .benefits__photo-wrap {
+    height: 220px;
+  }
+  .benefits__content {
+    padding: 28px 24px;
+  }
+  .benefits__content-title {
+    font-size: 28px;
+  }
+  .benefits__body p {
+    font-size: 14px;
+  }
+  .benefits__stat {
+    margin-top: 28px;
+    gap: 20px;
+  }
+  .benefits__stat-number {
+    font-size: 42px;
+  }
+}
+</style>
+
+<script>
+// Benefits content data
+const benefitsData = {
+  energy: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205338_4306c30d-a629-427e-ba93-fabda5d217ea.png',
+    label: 'ENERGY SAVINGS',
+    title: 'Cut Your Energy Bills Year-Round',
+    body: `<p>Philadelphia summers are brutal. With temperatures regularly climbing above 90°F, air conditioning systems work overtime to keep homes and businesses comfortable. High-performance solar control window film blocks up to 80% of solar heat before it ever enters your space, dramatically reducing the load on your HVAC system.</p>
+<p>Most Window Film Philadelphia clients report a noticeable drop in their energy bills within the first cooling season. For commercial properties along Market Street or in Center City office towers, the savings can be substantial — sometimes offsetting the cost of installation within two to three years.</p>
+<p>Our solar films work year-round. In winter, certain ceramic and spectrally selective films help retain interior heat, reducing heating costs as well. The result is a more comfortable, energy-efficient space in every season.</p>
+<p>Whether you own a rowhouse in Fishtown, a retail space in Old City, or a corporate office in King of Prussia, energy-saving window film is one of the smartest investments you can make in your property.</p>`,
+    statNumber: '30%',
+    statLabel: 'Average Energy Reduction',
+    link: '/benefits/energy-savings/'
+  },
+  uv: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205351_6885da35-271a-4bbd-8eac-3a06292446aa.png',
+    label: 'UV PROTECTION',
+    title: 'Block 99% of Harmful UV Rays',
+    body: `<p>Ultraviolet radiation is invisible, but its damage is not. UV rays cause hardwood floors to fade, furniture fabrics to bleach, artwork to deteriorate, and merchandise displays to lose their color. In Philadelphia homes and businesses, south and west-facing windows receive particularly intense UV exposure throughout the year.</p>
+<p>Window Film Philadelphia installs UV-blocking films that reject up to 99% of harmful ultraviolet radiation while keeping your interiors bright and inviting. Unlike tinted glass or heavy curtains, our films let natural light in while filtering out the damaging wavelengths.</p>
+<p>This protection matters for homeowners in Chestnut Hill or the Main Line who have invested in quality furniture and finishes. It matters equally for retailers on Walnut Street protecting their merchandise, and for museums and galleries protecting irreplaceable collections.</p>
+<p>UV protection film is also a health consideration. Prolonged UV exposure through glass contributes to skin aging and increases the risk of skin cancer. Our films provide an added layer of protection for your family, employees, and customers every single day.</p>`,
+    statNumber: '99%',
+    statLabel: 'UV Block Rate',
+    link: '/benefits/uv-blocking-window-film-philadelphia/'
+  },
+  privacy: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205353_ae059be3-abf8-477b-863d-29155fb219fc.png',
+    label: 'PRIVACY FILM',
+    title: 'See Out. Not In.',
+    body: `<p>Privacy is one of the most requested benefits of window film, and for good reason. Whether you live on a busy Philadelphia street, run a ground-floor office, or manage a healthcare facility, unwanted visibility into your space is a real concern.</p>
+<p>Our privacy films are engineered to let occupants see out clearly while making it difficult or impossible to see in from the outside. Daytime one-way privacy films use reflective technology to create a mirror effect on the exterior while maintaining a clear outward view from inside.</p>
+<p>For conference rooms, legal offices, medical facilities, and financial institutions across Philadelphia, frosted and opaque decorative films offer complete privacy while adding a clean, professional aesthetic. These films can be cut to any shape or pattern, making them a versatile design tool as well as a functional solution.</p>
+<p>Residential clients in Rittenhouse Square, Society Hill, and Northern Liberties particularly benefit from privacy film on street-level windows, bathroom glass, and bedroom windows — adding comfort and security without sacrificing natural light or requiring permanent changes to the glass.</p>`,
+    statNumber: '100%',
+    statLabel: 'Custom Coverage Options',
+    link: '/benefits/privacy-window-film-philadelphia/'
+  },
+  glare: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205354_32b72cfc-9638-4577-9c0a-35b16cdd5a6d.png',
+    label: 'GLARE REDUCTION',
+    title: 'Eliminate Eye Strain and Screen Glare',
+    body: `<p>Glare is one of the most disruptive and least discussed problems in modern homes and workplaces. When direct sunlight or reflected light hits a screen, a whiteboard, or a work surface, it creates eye strain, reduces concentration, and forces people to close blinds — defeating the purpose of having windows at all.</p>
+<p>Window Film Philadelphia installs anti-glare films that reduce glare by up to 87% while preserving natural daylight and your view. In Philadelphia offices where open-plan layouts put employees near floor-to-ceiling glass, glare reduction film makes a measurable difference in comfort and productivity.</p>
+<p>For homeowners, glare reduction film means being able to watch television, work from home, or simply relax near windows without squinting or closing the shades. South and west-facing rooms in Philadelphia row homes and new construction condos are especially prone to afternoon glare.</p>
+<p>Our films are available in a range of densities — from barely-there neutral options that maintain full clarity to more substantial tints that dramatically cut afternoon sun. Our specialists will assess your space and recommend the right option for your light conditions and lifestyle.</p>`,
+    statNumber: '87%',
+    statLabel: 'Glare Reduction',
+    link: '/benefits/glare-reduction/'
+  },
+  graffiti: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205356_066fdc59-30f1-4fd5-b6ae-c76724452d04.png',
+    label: 'ANTI-GRAFFITI',
+    title: 'Protect Your Glass from Vandalism',
+    body: `<p>Graffiti and vandalism cost Philadelphia businesses thousands of dollars every year. Storefront glass, mirrors, elevator panels, and bathroom partitions are frequent targets. When etching or spray paint damages glass, replacement is expensive, disruptive, and time-consuming.</p>
+<p>Anti-graffiti window film from Window Film Philadelphia provides a sacrificial protective layer over your glass and mirror surfaces. When vandalized, only the film needs to be replaced — not the glass itself. The cost difference is dramatic: replacing a film costs a fraction of replacing a glass panel, and our team can often complete the replacement the same day.</p>
+<p>Our anti-graffiti solutions are widely used by Philadelphia retailers, restaurant owners, property managers, and transit facilities. We work in Old City, South Philadelphia, Kensington, and throughout the metro area — anywhere that high foot traffic and public access create vulnerability.</p>
+<p>The film is optically clear and virtually invisible once applied. Customers and visitors will never know it is there — until the day it saves you from a costly glass replacement.</p>`,
+    statNumber: '90%',
+    statLabel: 'Cost Savings vs Glass Replacement',
+    link: '/benefits/anti-graffiti/'
+  },
+  safety: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205359_fbdf856f-b753-4049-a791-661998b13420.png',
+    label: 'SAFETY & SECURITY',
+    title: 'Hold Glass Together When It Matters',
+    body: `<p>Glass is the most vulnerable point of entry in any building. Whether the threat is a break-in, a severe storm, an accident, or in worst-case scenarios a blast event, untreated glass shatters into dangerous shards that cause injury and create an immediate security breach.</p>
+<p>Safety and security window film holds broken glass in place. When glass breaks, the film keeps the fragments bonded together, significantly reducing the risk of injury and slowing or preventing entry. For Philadelphia schools, government buildings, retail stores, and homes in high-traffic neighborhoods, this is a critical layer of protection.</p>
+<p>Our safety films meet ANSI Z97.1 and GSA standards and are approved for use in government and institutional facilities. We install safety film on entry doors, ground-floor windows, skylights, and any glass surface where security is a concern.</p>
+<p>Beyond forced entry, safety film protects against accidental breakage — a baseball through a window, a child running into glass, or equipment striking a pane. For families with young children, for medical facilities, and for any business open to the public, safety film is an investment that pays for itself the moment it prevents an injury.</p>`,
+    statNumber: '400%',
+    statLabel: 'Stronger Than Untreated Glass',
+    link: '/benefits/safety-and-security/'
+  },
+  decorative: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205401_70ab0fbe-30b2-4deb-b2ac-587f2ac9c38c.png',
+    label: 'DECORATIVE FILM',
+    title: 'Transform Any Glass Surface',
+    body: `<p>Decorative window film is one of the most creative and cost-effective ways to upgrade the look of any space. From frosted glass partitions in modern Philadelphia offices to custom-etched patterns on residential windows, decorative film turns ordinary glass into a design feature.</p>
+<p>Unlike sandblasted or etched glass, decorative film requires no permanent alteration to the surface. It can be removed and replaced, making it ideal for rental properties, leased commercial spaces, and anyone who wants flexibility. It can also be customized with logos, patterns, gradients, and architectural designs that match your brand or interior style.</p>
+<p>Philadelphia businesses use decorative film to brand conference rooms, create privacy in open-plan offices, add elegance to reception areas, and differentiate storefronts. Homeowners use it on bathroom windows, front door sidelights, staircase railings, and anywhere they want privacy with style.</p>
+<p>Our design team works with you to create a solution that is functional, beautiful, and true to your vision. From simple frosted bands to full custom graphics, the possibilities are limited only by your imagination.</p>`,
+    statNumber: '50+',
+    statLabel: 'Design Options Available',
+    link: '/benefits/decorative-promotional/'
+  },
+  solar: {
+    photo: 'https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_205403_571bf8a2-e358-4779-b12d-bef0d39d1ca5.png',
+    label: 'SOLAR CONTROL',
+    title: 'Stay Cool Without Blocking Your View',
+    body: `<p>Philadelphia gets hot. From June through September, solar heat gain through windows makes indoor temperatures uncomfortable and forces air conditioning systems to work constantly. Solar control window film is the most effective way to address this problem without replacing your windows or obstructing your view.</p>
+<p>Our solar control films are engineered to reject solar heat while maintaining clarity and natural light. Spectrally selective films — our most advanced option — reject heat-producing infrared wavelengths while allowing visible light to pass through. The result is a space that stays cooler and more comfortable without the dark cave-like feeling of heavily tinted glass.</p>
+<p>For Philadelphia high-rises, Center City office buildings, and Main Line homes with large glass facades, solar control film delivers measurable results from the first warm day. Building managers report significant reductions in HVAC runtime, and occupants notice the difference in comfort immediately.</p>
+<p>Solar control film is also an investment in your HVAC equipment. By reducing the thermal load on your system, the film extends the life of your air conditioning units, reduces maintenance costs, and contributes to your building's overall energy efficiency and sustainability profile.</p>`,
+    statNumber: '80%',
+    statLabel: 'Solar Heat Rejection',
+    link: '/benefits/'
+  }
+};
+
+// Render content function
+function renderBenefitContent(benefitKey) {
+  const data = benefitsData[benefitKey];
+  const panel = document.getElementById('benefitsPanel');
+  
+  panel.innerHTML = `
+    <div class="benefits__photo-wrap">
+      <img src="${data.photo}" alt="${data.title}" class="benefits__photo" width="1400" height="320" loading="lazy" />
+    </div>
+    <div class="benefits__content">
+      <span class="benefits__label">${data.label}</span>
+      <h3 class="benefits__content-title">${data.title}</h3>
+      <div class="benefits__body">
+        ${data.body}
+      </div>
+      <div class="benefits__stat">
+        <div class="benefits__stat-number">${data.statNumber}</div>
+        <div class="benefits__stat-label">${data.statLabel}</div>
+      </div>
+      <a href="${data.link}" class="benefits__cta">Learn More →</a>
+    </div>
+  `;
+}
+
+// Tab switching logic
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.benefits__tab');
+  const panel = document.getElementById('benefitsPanel');
+  
+  // Render initial content
+  renderBenefitContent('energy');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      const benefitKey = this.dataset.benefit;
+      
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove('benefits__tab--active'));
+      
+      // Add active class to clicked tab
+      this.classList.add('benefits__tab--active');
+      
+      // Fade out
+      panel.classList.add('fade-out');
+      
+      setTimeout(() => {
+        // Render new content
+        renderBenefitContent(benefitKey);
+        
+        // Fade in
+        panel.classList.remove('fade-out');
+        panel.classList.add('fade-in');
+        
+        setTimeout(() => {
+          panel.classList.remove('fade-in');
+        }, 450);
+      }, 150);
+    });
+  });
+});
+</script>
