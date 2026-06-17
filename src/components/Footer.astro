@@ -4,56 +4,13 @@ const email = 'info@windowfilmphl.com';
 const tagline = 'Done right, every time.';
 const currentYear = new Date().getFullYear();
 
-const services = [
-  { label: 'Residential Window Film',  href: '/services/residential/' },
-  { label: 'Commercial Window Film',   href: '/services/commercial/' },
-  { label: 'Safety & Security Film',   href: '/services/security/' },
-  { label: 'Decorative Film',         href: '/services/decorative/' },
-  { label: 'Anti-Graffiti Film',       href: '/services/anti-graffiti/' },
-  { label: 'Solar Control Film',      href: '/services/solar/' },
-  { label: 'Privacy Film',            href: '/services/privacy/' },
-];
-
-const applications = [
-  { label: 'Homes & Condos',         href: '/applications/homes/' },
-  { label: 'Office Buildings',        href: '/applications/offices/' },
-  { label: 'Retail & Storefronts',    href: '/applications/retail/' },
-  { label: 'Schools & Universities',  href: '/applications/schools/' },
-  { label: 'Healthcare Facilities',   href: '/applications/healthcare/' },
-  { label: 'Government Buildings',    href: '/applications/government/' },
-  { label: 'Hotels & Hospitality',    href: '/applications/hotels/' },
-  { label: 'Museums & Libraries',     href: '/applications/museums/' },
-];
-
-const cities = [
-  { label: 'Philadelphia, PA',       href: '/cities/philadelphia/' },
-  { label: 'Main Line, PA',          href: '/cities/main-line/' },
-  { label: 'Cherry Hill, NJ',         href: '/cities/cherry-hill/' },
-  { label: 'South Jersey',            href: '/cities/south-jersey/' },
-  { label: 'Montgomery County',       href: '/cities/montgomery-county/' },
-  { label: 'Bucks County',            href: '/cities/bucks-county/' },
-  { label: 'Delaware County',         href: '/cities/delaware-county/' },
-  { label: 'Chester County',          href: '/cities/chester-county/' },
-];
-
 const resources = [
-  { label: 'Blog & Tips',            href: '/blog/' },
+  { label: 'Blog & Tips',           href: '/blog/' },
   { label: 'Window Film Guide',      href: '/resources/guide/' },
-  { label: 'Energy Savings Facts',    href: '/resources/energy/' },
-  { label: 'UV Protection Facts',    href: '/resources/uv-protection/' },
-  { label: 'Before & After Gallery', href: '/gallery/' },
-  { label: 'Film Brands We Carry',   href: '/products/' },
-  { label: 'FAQs',                   href: '/faqs/' },
-  { label: 'Get a Free Quote',       href: '/contact/' },
-];
-
-const company = [
-  { label: 'About Us',              href: '/about/' },
-  { label: 'Our Process',           href: '/process/' },
-  { label: 'Warranty',              href: '/warranty/' },
-  { label: 'Contact Us',            href: '/contact/' },
-  { label: 'Privacy Policy',        href: '/privacy/' },
-  { label: 'Terms of Service',      href: '/terms/' },
+  { label: 'Energy Savings Facts',   href: '/resources/energy/' },
+  { label: 'UV Protection Facts',   href: '/resources/uv-protection/' },
+  { label: 'Before & After Gallery',href: '/gallery/' },
+  { label: 'FAQs',                  href: '/faqs/' },
 ];
 
 const socialLinks = [
@@ -73,9 +30,31 @@ const socialLinks = [
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
   },
 ];
+
+// Cities for ticker band
+const cities = [
+  'Philadelphia', 'Main Line', 'Cherry Hill NJ', 'South Jersey',
+  'Montgomery County', 'Bucks County', 'Delaware County', 'Chester County',
+  'Center City', 'Manayunk', 'Fishtown', 'Old City', 'Rittenhouse Square',
+  'Society Hill', 'Chestnut Hill', 'Northeast Philadelphia', 'Ardmore',
+  'Wayne', 'Bryn Mawr', 'Haverford', 'Narberth', 'Newtown Square',
+];
+// Duplicate for seamless loop
+const tickerCities = [...cities, ...cities];
 ---
 
 <footer class="wfp-footer">
+
+  <!-- ═══ CITIES TICKER BAND ═══ -->
+  <div class="cities-ticker" aria-hidden="true">
+    <div class="cities-ticker__track">
+      {tickerCities.map((city) => (
+        <span class="cities-ticker__item">
+          {city}<span class="cities-ticker__sep">·</span>
+        </span>
+      ))}
+    </div>
+  </div>
 
   <!-- ═══ MAIN FOOTER BODY ═══ -->
   <div class="wfp-footer__body">
@@ -83,89 +62,72 @@ const socialLinks = [
     <!-- Column 1: Brand -->
     <div class="wfp-footer__col wfp-footer__col--brand">
       <a href="/" class="wfp-footer__logo" aria-label="Window Film Philadelphia — Home">
-        <img src="https://res.cloudinary.com/deunehrew/image/upload/v1781645318/46_v0rlvs.png" alt="Window Film Philadelphia" width="200" height="50" style="width:200px;height:auto;object-fit:contain;background:transparent;" />
+        <img
+          src="https://res.cloudinary.com/deunehrew/image/upload/v1781645318/46_v0rlvs.png"
+          alt="Window Film Philadelphia"
+          width="180"
+          height="45"
+          style="width:180px;height:auto;object-fit:contain;background:transparent;display:block;"
+        />
       </a>
       <p class="wfp-footer__tagline">Done right, every time.</p>
-      <p class="wfp-footer__brand-body">Philadelphia's trusted window film professionals since 2008. Serving the Delaware Valley with premium residential and commercial window film solutions.</p>
+      <p class="wfp-footer__brand-body">
+        Philadelphia's trusted window film<br />professionals since 2008.
+      </p>
+
       <div class="wfp-footer__social" role="list" aria-label="Social media links">
         {socialLinks.map(s => (
-          <a href={s.href} class="wfp-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label={`Window Film Philadelphia on ${s.label}`} role="listitem">
+          <a
+            href={s.href}
+            class="wfp-footer__social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Window Film Philadelphia on ${s.label}`}
+            role="listitem"
+          >
             <span set:html={s.icon} />
           </a>
         ))}
       </div>
+
       <div class="wfp-footer__rating">
         <span class="wfp-footer__stars">★★★★★</span>
         <span class="wfp-footer__rating-text">4.9 Google Reviews</span>
       </div>
     </div>
 
-    <!-- Column 2: Services -->
-    <div class="wfp-footer__col">
-      <h3 class="wfp-footer__col-heading">Services</h3>
-      <ul class="wfp-footer__links" role="list">
-        {services.map(l => (
-          <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Column 3: Applications -->
-    <div class="wfp-footer__col">
-      <h3 class="wfp-footer__col-heading">Applications</h3>
-      <ul class="wfp-footer__links" role="list">
-        {applications.map(l => (
-          <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Column 4: Cities Served -->
-    <div class="wfp-footer__col">
-      <h3 class="wfp-footer__col-heading">Cities Served</h3>
-      <ul class="wfp-footer__links" role="list">
-        {cities.map(l => (
-          <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Column 5: Resources -->
+    <!-- Column 2: Resources -->
     <div class="wfp-footer__col">
       <h3 class="wfp-footer__col-heading">Resources</h3>
       <ul class="wfp-footer__links" role="list">
         {resources.map(l => (
-          <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
+          <li>
+            <a href={l.href} class="wfp-footer__link">{l.label}</a>
+          </li>
         ))}
       </ul>
     </div>
 
-    <!-- Column 6: Company -->
+    <!-- Column 3: Contact -->
     <div class="wfp-footer__col">
-      <h3 class="wfp-footer__col-heading">Company</h3>
-      <ul class="wfp-footer__links" role="list">
-        {company.map(l => (
-          <li><a href={l.href} class="wfp-footer__link">{l.label}</a></li>
-        ))}
-      </ul>
-      <div class="wfp-footer__contact">
-        <a href="tel:+12673947980" class="wfp-footer__contact-row">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .92h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.83-.83a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          <span>(267) 394-7980</span>
-        </a>
-        <a href="mailto:info@windowfilmphl.com" class="wfp-footer__contact-row">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-          <span>info@windowfilmphl.com</span>
-        </a>
-        <span class="wfp-footer__contact-row wfp-footer__contact-row--plain">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Serving Greater Philadelphia</span>
-        </span>
-        <span class="wfp-footer__contact-row wfp-footer__contact-row--plain">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span>Mon–Sat: 8am – 6pm</span>
-        </span>
-      </div>
+      <h3 class="wfp-footer__col-heading">Get in Touch</h3>
+
+      <a href={`tel:+1${phone.replace(/\D/g,'')}`} class="wfp-footer__phone">
+        {phone}
+      </a>
+
+      <a href={`mailto:${email}`} class="wfp-footer__email">
+        {email}
+      </a>
+
+      <p class="wfp-footer__hours">Mon–Sat: 8am – 6pm</p>
+
+      <a href="/contact/" class="wfp-footer__cta-btn">
+        Get a Free Quote
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+        </svg>
+      </a>
     </div>
 
   </div>
@@ -173,13 +135,14 @@ const socialLinks = [
   <!-- ═══ BOTTOM BAR ═══ -->
   <div class="wfp-footer__bottom">
     <div class="wfp-footer__bottom-inner">
-      <p class="wfp-footer__copy">© {currentYear} Window Film Philadelphia. All rights reserved.</p>
-      <p class="wfp-footer__brands">3M™ Authorized · LLumar · SunTek · Vista</p>
+      <p class="wfp-footer__copy">
+        &copy; {currentYear} Window Film Philadelphia
+      </p>
       <div class="wfp-footer__bottom-links">
-        <a href="/privacy/" class="wfp-footer__bottom-link">Privacy Policy</a>
-        <span>&middot;</span>
+        <a href="/privacy/" class="wfp-footer__bottom-link">Privacy</a>
+        <span aria-hidden="true">&middot;</span>
         <a href="/terms/" class="wfp-footer__bottom-link">Terms</a>
-        <span>&middot;</span>
+        <span aria-hidden="true">&middot;</span>
         <a href="/sitemap/" class="wfp-footer__bottom-link">Sitemap</a>
       </div>
     </div>
@@ -188,33 +151,81 @@ const socialLinks = [
 </footer>
 
 <style>
-/* ─── FOOTER BASE ─── */
+/* ══════════════════════════════════════════
+   CITIES TICKER BAND
+   ══════════════════════════════════════════ */
+.cities-ticker {
+  background: #7CB342;
+  height: 44px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.cities-ticker__track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.cities-ticker__track:hover {
+  animation-play-state: paused;
+}
+
+.cities-ticker__item {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cities-ticker__sep {
+  margin-left: 14px;
+  opacity: 0.5;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════════
+   FOOTER BASE
+   ══════════════════════════════════════════ */
 .wfp-footer {
   background: #0d1a0f;
   color: rgba(255,255,255,0.55);
   font-family: 'Inter', sans-serif;
 }
 
-/* ─── MAIN BODY — 6 COLUMNS ─── */
+/* ─── MAIN BODY — 3 COLUMNS ─── */
 .wfp-footer__body {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 80px 60px;
+  padding: 60px 80px;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 64px;
 }
 
 /* ─── BRAND COLUMN ─── */
 .wfp-footer__logo {
   display: inline-block;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   text-decoration: none;
   background: transparent;
+  line-height: 0;
 }
 .wfp-footer__logo img {
   display: block;
-  width: 200px;
+  width: 180px;
   height: auto;
   object-fit: contain;
   background: transparent;
@@ -224,20 +235,20 @@ const socialLinks = [
   font-size: 15px;
   font-weight: 500;
   color: #fff;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   line-height: 1.4;
 }
 .wfp-footer__brand-body {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   color: rgba(255,255,255,0.55);
-  line-height: 1.7;
-  margin: 0 0 24px;
+  line-height: 1.65;
+  margin: 0;
 }
 .wfp-footer__social {
   display: flex;
   gap: 10px;
-  margin-top: 24px;
+  margin-top: 20px;
 }
 .wfp-footer__social-link {
   width: 40px;
@@ -246,21 +257,22 @@ const socialLinks = [
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.65);
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s, background 0.2s;
 }
 .wfp-footer__social-link:hover {
   border-color: #7CB342;
   color: #7CB342;
+  background: rgba(124,179,66,0.08);
   transform: translateY(-2px);
 }
 .wfp-footer__rating {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .wfp-footer__stars {
   color: #7CB342;
@@ -289,7 +301,7 @@ const socialLinks = [
 .wfp-footer__links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -297,58 +309,86 @@ const socialLinks = [
 .wfp-footer__link {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(255,255,255,0.60);
+  color: rgba(255,255,255,0.55);
   text-decoration: none;
   display: inline-block;
-  position: relative;
   transition: color 0.2s ease;
-  line-height: 2.2;
+  line-height: 2.5;
 }
 .wfp-footer__link:hover {
   color: #fff;
-  text-decoration: underline;
 }
 
-/* ─── CONTACT INFO ─── */
-.wfp-footer__contact {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 24px;
+/* ─── CONTACT COLUMN ─── */
+.wfp-footer__phone {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  line-height: 1.2;
 }
-.wfp-footer__contact-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 0;
+.wfp-footer__phone:hover { color: #7CB342; }
+
+.wfp-footer__email {
+  display: block;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(255,255,255,0.70);
+  color: rgba(255,255,255,0.65);
   text-decoration: none;
+  margin-bottom: 8px;
   transition: color 0.2s;
-  flex-shrink: 0;
 }
-.wfp-footer__contact-row svg {
-  flex-shrink: 0;
+.wfp-footer__email:hover { color: rgba(255,255,255,0.9); }
+
+.wfp-footer__hours {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.40);
+  margin: 0 0 0;
+  line-height: 1.5;
 }
-a.wfp-footer__contact-row:hover {
+
+.wfp-footer__cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  margin-top: 24px;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(124,179,66,0.3);
+}
+.wfp-footer__cta-btn:hover {
+  background: #8fc452;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(124,179,66,0.4);
   color: #fff;
 }
-.wfp-footer__contact-row--plain {
-  cursor: default;
-}
+.wfp-footer__cta-btn:active { transform: translateY(0); }
+.wfp-footer__cta-btn svg { transition: transform 0.2s; }
+.wfp-footer__cta-btn:hover svg { transform: translateX(3px); }
 
 /* ─── BOTTOM BAR ─── */
 .wfp-footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 24px 80px;
-  display: flex;
-  align-items: center;
+  padding: 20px 80px;
 }
 .wfp-footer__bottom-inner {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -357,14 +397,8 @@ a.wfp-footer__contact-row:hover {
 }
 .wfp-footer__copy {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  margin: 0;
-}
-.wfp-footer__brands {
-  font-family: 'Inter', sans-serif;
   font-size: 12px;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.40);
   margin: 0;
 }
 .wfp-footer__bottom-links {
@@ -372,55 +406,51 @@ a.wfp-footer__contact-row:hover {
   align-items: center;
   gap: 10px;
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  color: rgba(255,255,255,0.40);
 }
 .wfp-footer__bottom-link {
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.40);
   text-decoration: none;
   transition: color 0.2s;
 }
-.wfp-footer__bottom-link:hover {
-  color: #fff;
-  text-decoration: underline;
-}
+.wfp-footer__bottom-link:hover { color: rgba(255,255,255,0.75); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1100px) {
   .wfp-footer__body {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    padding: 60px 48px 48px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 56px 48px 48px;
   }
   .wfp-footer__col--brand { grid-column: 1 / -1; }
-  .wfp-footer__cta { padding: 60px 48px; }
-  .wfp-footer__bottom { padding: 24px 48px; }
+  .wfp-footer__bottom { padding: 20px 48px; }
 }
+
 @media (max-width: 768px) {
-  .wfp-footer__cta { padding: 48px 24px; }
-  .wfp-footer__cta-headline { font-size: 28px; }
+  .cities-ticker { height: 40px; }
+  .cities-ticker__item { font-size: 11px; }
+
   .wfp-footer__body {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 40px;
     padding: 48px 24px 40px;
   }
+  .wfp-footer__col--brand { grid-column: auto; }
+
   .wfp-footer__bottom {
-    padding: 24px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    padding: 20px 24px;
   }
   .wfp-footer__bottom-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
-  .wfp-footer__brands { display: none; }
 }
+
 @media (max-width: 480px) {
-  .wfp-footer__body { grid-template-columns: 1fr; }
-  .wfp-footer__cta-btns { flex-direction: column; width: 100%; }
-  .wfp-footer__cta-btn-primary,
-  .wfp-footer__cta-btn-ghost { width: 100%; justify-content: center; }
+  .wfp-footer__body { padding: 40px 20px 32px; }
+  .wfp-footer__bottom { padding: 16px 20px; }
+  .wfp-footer__phone { font-size: 20px; }
 }
 </style>
