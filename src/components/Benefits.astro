@@ -1,5 +1,5 @@
 ---
-// Benefits — 8-tab interactive section with left tabs + right content panel
+// Benefits — 8-tab interactive section with icons, photo top, content below
 ---
 
 <section class="benefits" id="benefits">
@@ -13,28 +13,63 @@
     <!-- LEFT TABS COLUMN -->
     <div class="benefits__tabs" id="benefitsTabs">
       <button class="benefits__tab benefits__tab--active" data-benefit="energy">
-        Energy Savings
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <span>Energy Savings</span>
       </button>
       <button class="benefits__tab" data-benefit="uv">
-        UV Protection
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>UV Protection</span>
       </button>
       <button class="benefits__tab" data-benefit="privacy">
-        Privacy Film
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+          <line x1="1" y1="1" x2="23" y2="23"/>
+        </svg>
+        <span>Privacy Film</span>
       </button>
       <button class="benefits__tab" data-benefit="glare">
-        Glare Reduction
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+        </svg>
+        <span>Glare Reduction</span>
       </button>
       <button class="benefits__tab" data-benefit="graffiti">
-        Anti-Graffiti
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <span>Anti-Graffiti</span>
       </button>
       <button class="benefits__tab" data-benefit="safety">
-        Safety & Security
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span>Safety &amp; Security</span>
       </button>
       <button class="benefits__tab" data-benefit="decorative">
-        Decorative Film
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        <span>Decorative Film</span>
       </button>
       <button class="benefits__tab" data-benefit="solar">
-        Solar Control
+        <svg class="benefits__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+        </svg>
+        <span>Solar Control</span>
       </button>
     </div>
 
@@ -92,7 +127,7 @@
 /* LEFT TABS COLUMN */
 .benefits__tabs {
   background: #0a150c;
-  width: 320px;
+  width: 300px;
   flex-shrink: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
@@ -100,7 +135,7 @@
 }
 
 .benefits__tab {
-  padding: 22px 32px;
+  padding: 20px 28px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -112,7 +147,15 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   cursor: pointer;
   transition: all 0.2s ease;
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.benefits__tab-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .benefits__tab:hover {
@@ -126,59 +169,33 @@
   border-left-color: #7CB342;
 }
 
-.benefits__tab--active::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #7CB342;
-}
-
-.benefits__tab--active {
-  padding-left: 48px;
+.benefits__tab--active .benefits__tab-icon {
+  color: #7CB342;
 }
 
 /* RIGHT CONTENT PANEL */
 .benefits__panel {
   flex: 1;
-  background: #0d1a0f;
   display: flex;
   flex-direction: column;
   min-height: 600px;
 }
 
+/* PHOTO — top, no overlay, no text */
 .benefits__photo {
   width: 100%;
-  height: 320px;
+  height: 260px;
   object-fit: cover;
   object-position: center;
   display: block;
-  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.benefits__photo-wrap {
-  position: relative;
-  height: 320px;
-  overflow: hidden;
-}
-
-.benefits__photo-wrap::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to top, #0d1a0f 0%, transparent 65%);
-  pointer-events: none;
-}
-
+/* CONTENT AREA — below photo, clean background */
 .benefits__content {
-  padding: 48px 64px;
+  background: #111f14;
+  padding: 40px 56px;
+  flex: 1;
 }
 
 .benefits__label {
@@ -195,31 +212,48 @@
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   color: #fff;
-  font-size: 36px;
+  font-size: 32px;
   line-height: 1.2;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+}
+
+.benefits__body {
+  max-width: 680px;
 }
 
 .benefits__body p {
   font-family: 'Inter', sans-serif;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 15px;
-  line-height: 1.9;
-  margin-bottom: 20px;
-  max-width: 700px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+.benefits__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 28px 0;
+  max-width: 680px;
+}
+
+.benefits__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 680px;
+  gap: 32px;
 }
 
 .benefits__stat {
-  margin-top: 40px;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 20px;
 }
 
 .benefits__stat-number {
   font-family: 'Space Mono', monospace;
   color: #7CB342;
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 700;
   line-height: 1;
 }
@@ -230,22 +264,26 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  max-width: 140px;
+  max-width: 120px;
 }
 
 .benefits__cta {
-  margin-top: 32px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #7CB342;
   text-decoration: none;
   display: inline-block;
-  transition: opacity 0.2s ease;
+  padding: 10px 24px;
+  border: 1px solid #7CB342;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .benefits__cta:hover {
-  opacity: 0.7;
+  background: #7CB342;
+  color: #fff;
 }
 
 /* FADE ANIMATIONS */
@@ -255,18 +293,18 @@
 }
 
 .benefits__panel.fade-in .benefits__photo {
-  animation: photoIn 0.4s ease-out forwards;
+  animation: photoIn 0.35s ease-out forwards;
 }
 
 .benefits__panel.fade-in .benefits__content {
-  animation: contentIn 0.35s ease 0.1s forwards;
+  animation: contentIn 0.3s ease 0.08s forwards;
   opacity: 0;
 }
 
 @keyframes photoIn {
   from {
     opacity: 0;
-    transform: translateX(16px);
+    transform: translateX(12px);
   }
   to {
     opacity: 1;
@@ -277,7 +315,7 @@
 @keyframes contentIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -291,7 +329,7 @@
     width: 280px;
   }
   .benefits__content {
-    padding: 40px 48px;
+    padding: 36px 40px;
   }
   .benefits__title {
     font-size: 42px;
@@ -326,41 +364,50 @@
   }
   .benefits__tab {
     flex-shrink: 0;
-    padding: 10px 20px;
+    padding: 10px 18px;
     font-size: 13px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     border-left: 1px solid rgba(255, 255, 255, 0.15);
     white-space: nowrap;
+    gap: 8px;
+  }
+  .benefits__tab-icon {
+    width: 16px;
+    height: 16px;
   }
   .benefits__tab--active {
     background: #7CB342;
     border-color: #7CB342;
     color: #fff;
-    padding-left: 20px;
   }
-  .benefits__tab--active::before {
-    display: none;
+  .benefits__tab--active .benefits__tab-icon {
+    color: #fff;
   }
-  .benefits__photo-wrap {
-    height: 220px;
+  .benefits__photo {
+    height: 200px;
   }
   .benefits__content {
-    padding: 28px 24px;
+    padding: 24px;
   }
   .benefits__content-title {
-    font-size: 28px;
+    font-size: 26px;
   }
   .benefits__body p {
     font-size: 14px;
   }
-  .benefits__stat {
-    margin-top: 28px;
+  .benefits__footer {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
   }
   .benefits__stat-number {
-    font-size: 42px;
+    font-size: 38px;
+  }
+  .benefits__cta {
+    align-self: stretch;
+    text-align: center;
   }
 }
 </style>
@@ -472,20 +519,21 @@ function renderBenefitContent(benefitKey) {
   const panel = document.getElementById('benefitsPanel');
   
   panel.innerHTML = `
-    <div class="benefits__photo-wrap">
-      <img src="${data.photo}" alt="${data.title}" class="benefits__photo" width="1400" height="320" loading="lazy" />
-    </div>
+    <img src="${data.photo}" alt="${data.title}" class="benefits__photo" width="1400" height="260" loading="lazy" />
     <div class="benefits__content">
       <span class="benefits__label">${data.label}</span>
       <h3 class="benefits__content-title">${data.title}</h3>
       <div class="benefits__body">
         ${data.body}
       </div>
-      <div class="benefits__stat">
-        <div class="benefits__stat-number">${data.statNumber}</div>
-        <div class="benefits__stat-label">${data.statLabel}</div>
+      <div class="benefits__divider"></div>
+      <div class="benefits__footer">
+        <div class="benefits__stat">
+          <div class="benefits__stat-number">${data.statNumber}</div>
+          <div class="benefits__stat-label">${data.statLabel}</div>
+        </div>
+        <a href="${data.link}" class="benefits__cta">Learn More →</a>
       </div>
-      <a href="${data.link}" class="benefits__cta">Learn More →</a>
     </div>
   `;
 }
@@ -521,7 +569,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
           panel.classList.remove('fade-in');
-        }, 450);
+        }, 380);
       }, 150);
     });
   });
