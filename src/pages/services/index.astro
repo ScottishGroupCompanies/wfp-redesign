@@ -1,479 +1,744 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const title = "Professional Window Film Services in Philadelphia | Window Film Philadelphia";
-const description = "Residential, commercial, government, and specialty window film installation services across Philadelphia and the Delaware Valley. UV protection, energy savings, security film, and more. Free consultation.";
-
-const serviceCategories = [
-  {
-    id: 'residential',
-    title: 'Residential',
-    subtitle: 'Home Window Film',
-    icon: '🏠',
-    gradient: 'from-emerald-500 to-teal-600',
-    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_180830_3d905ef9-c9c0-480a-86ed-7b1a99d67033.png',
-    description: `Transform your home with professional window film that blocks 99% UV rays, reduces energy costs, and enhances privacy—all while maintaining your views.`,
-    features: [
-      { label: 'UV Protection', value: '99%', icon: '☀️' },
-      { label: 'Energy Savings', value: '30%', icon: '⚡' },
-      { label: 'Privacy', value: '100%', icon: '🔒' },
-    ],
-    href: '/services/residential-window-film',
-  },
-  {
-    id: 'commercial',
-    title: 'Commercial',
-    subtitle: 'Office & Retail',
-    icon: '🏢',
-    gradient: 'from-blue-500 to-indigo-600',
-    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_180834_da6c0b4c-131e-4533-a508-e5062f7151bf.png',
-    description: `Professional-grade window film for commercial properties. Lower HVAC costs, improve employee comfort, and protect your assets.`,
-    features: [
-      { label: 'Cost Reduction', value: '30%', icon: '💰' },
-      { label: 'Glare Control', value: '95%', icon: '👁️' },
-      { label: 'LEED Certified', value: '✓', icon: '🌱' },
-    ],
-    href: '/services/commercial-window-film',
-  },
-  {
-    id: 'government',
-    title: 'Government',
-    subtitle: 'Public Buildings',
-    icon: '🏛️',
-    gradient: 'from-purple-500 to-pink-600',
-    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_180838_c6204d09-6df5-4ce1-9ce1-88e6beb2edf3.png',
-    description: `GSA-compliant security film for government facilities, schools, and public institutions. Blast mitigation and forced-entry protection.`,
-    features: [
-      { label: 'GSA Approved', value: '✓', icon: '🛡️' },
-      { label: 'Blast Protection', value: 'Level 3', icon: '💥' },
-      { label: 'Safety Rating', value: 'A+++', icon: '⭐' },
-    ],
-    href: '/services/government-public',
-  },
-  {
-    id: 'specialty',
-    title: 'Specialty',
-    subtitle: 'Advanced Solutions',
-    icon: '⚙️',
-    gradient: 'from-orange-500 to-red-600',
-    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_180843_4208f147-4ab4-48b8-a0b3-2dfac307e265.png',
-    description: `Bomb blast protection, ballistic resistance, bird strike prevention, and exterior refinishing—engineered to your exact specifications.`,
-    features: [
-      { label: 'Blast Rated', value: 'DoD', icon: '💣' },
-      { label: 'Ballistic', value: 'UL 752', icon: '🎯' },
-      { label: 'Bird Safe', value: '90%', icon: '🦅' },
-    ],
-    href: '/services/specialty',
-  },
-];
-
-const neighborhoods = [
-  'Center City', 'Rittenhouse Square', 'Fishtown', 'Chestnut Hill',
-  'Old City', 'University City', 'Northern Liberties', 'Queen Village',
-  'Society Hill', 'Graduate Hospital', 'Manayunk', 'East Falls',
-  'Fairmount', 'Passyunk Square', 'Bella Vista', 'Washington Square West',
-  'Mt. Airy', 'West Philadelphia', 'South Philadelphia',
-];
-
-const processSteps = [
-  {
-    number: '01',
-    title: 'Free Consultation',
-    description: `We visit your property, assess your needs, and recommend the right film for your specific challenges—whether it's heat, glare, privacy, or security.`,
-  },
-  {
-    number: '02',
-    title: 'Precise Measurement',
-    description: `Every window is measured to the millimeter. We template complex shapes and custom cuts in our shop before installation day.`,
-  },
-  {
-    number: '03',
-    title: 'Expert Installation',
-    description: `Factory-trained technicians apply film using professional tools and techniques. Most projects complete in 1-2 days with minimal disruption.`,
-  },
-  {
-    number: '04',
-    title: 'Lifetime Warranty',
-    description: `All installations backed by manufacturer and workmanship warranties. We stand behind our work—done right, every time.`,
-  },
-];
-
-const stats = [
-  { value: '2,500+', label: 'Installations', icon: '📊' },
-  { value: '15+', label: 'Years Experience', icon: '🏆' },
-  { value: '4.9/5', label: 'Rating', icon: '⭐' },
-  { value: '99%', label: 'Satisfaction', icon: '💯' },
-];
+const title = "Window Film Services in Philadelphia | Residential & Commercial Installation";
+const description = "Professional window film installation services in Philadelphia. Residential, commercial, government, and specialty solutions. Free consultation and expert installation.";
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Hero Section with Animated Gradient Background -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Animated Gradient Mesh Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-      <div class="absolute inset-0 opacity-30">
-        <div class="absolute top-0 -left-4 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+  <!-- Hero Section -->
+  <section class="services-hero">
+    <div class="services-hero__container">
+      <div class="services-hero__content">
+        <div class="services-hero__eyebrow">Professional Installation</div>
+        <h1 class="services-hero__title">Complete Window Film Solutions for Philadelphia</h1>
+        <p class="services-hero__subtitle">From residential homes to commercial buildings, we provide expert window film installation services across the Greater Philadelphia area.</p>
+        <div class="services-hero__ctas">
+          <a href="/contact/" class="btn btn--primary">Get Free Quote</a>
+          <a href="tel:2673947980" class="btn btn--outline-light">(267) 394-7980</a>
+        </div>
+      </div>
+      <div class="services-hero__image">
+        <img 
+          src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_180830_3d905ef9-c9c0-480a-86ed-7b1a99d67033.png"
+          alt="Professional window film installation in Philadelphia home"
+          class="services-hero__img"
+        />
       </div>
     </div>
+  </section>
 
-    <!-- Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-      <!-- Floating Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg mb-8 animate-fade-in-down">
-        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-        <span class="text-sm font-medium text-gray-700">Philadelphia's Trusted Window Film Experts</span>
+  <!-- Services Grid -->
+  <section class="services-types">
+    <div class="container">
+      <div class="services-types__header">
+        <h2 class="section-h2">Our Services</h2>
+        <p class="section-sub">Expert window film installation for every application</p>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 animate-fade-in-up">
-        Professional
-        <span class="block bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-          Window Film Services
-        </span>
-      </h1>
-
-      <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 animate-fade-in-up animation-delay-200">
-        Transform your space with advanced window film technology. Energy savings, UV protection, security, and privacy solutions for homes and businesses across Philadelphia.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-400">
-        <a 
-          href="/contact" 
-          class="group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
-        >
-          <span class="relative z-10">Get Free Quote</span>
-          <div class="absolute inset-0 bg-gradient-to-r from-teal-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </a>
-        <a 
-          href="tel:2673947980" 
-          class="px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-900 font-semibold rounded-full border-2 border-gray-200 hover:border-emerald-500 transition-all duration-300 hover:shadow-xl"
-        >
-          (267) 394-7980
-        </a>
-      </div>
-
-      <!-- Floating Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-4xl mx-auto">
-        {stats.map((stat, i) => (
-          <div 
-            class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up"
-            style={`animation-delay: ${600 + i * 100}ms`}
-          >
-            <div class="text-4xl mb-2">{stat.icon}</div>
-            <div class="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-            <div class="text-sm text-gray-600">{stat.label}</div>
+      <div class="services-types__grid">
+        
+        <!-- Residential -->
+        <div class="service-card">
+          <div class="service-card__image">
+            <img 
+              src="/images/wfp-landing-hero.webp"
+              alt="Residential window film installation Philadelphia"
+            />
           </div>
-        ))}
-      </div>
-    </div>
+          <div class="service-card__content">
+            <h3 class="service-card__title">Residential Window Film</h3>
+            <p class="service-card__description">Protect your home from UV rays, reduce energy costs, and increase privacy with professional residential window film installation.</p>
+            <ul class="service-card__features">
+              <li>UV Protection (99%)</li>
+              <li>Energy Savings up to 30%</li>
+              <li>Glare Reduction</li>
+              <li>Privacy Enhancement</li>
+              <li>Fade Protection for Furniture</li>
+            </ul>
+            <a href="/services/residential-window-film/" class="service-card__link">Learn More →</a>
+          </div>
+        </div>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
+        <!-- Commercial -->
+        <div class="service-card">
+          <div class="service-card__image">
+            <img 
+              src="/images/Window-film-Philadelphia-office-1.webp"
+              alt="Commercial window film installation Philadelphia office"
+            />
+          </div>
+          <div class="service-card__content">
+            <h3 class="service-card__title">Commercial Window Film</h3>
+            <p class="service-card__description">Enhance your workspace with energy-efficient, professional-grade window film solutions designed for commercial properties.</p>
+            <ul class="service-card__features">
+              <li>Reduce HVAC Costs by 30%</li>
+              <li>Improve Employee Comfort</li>
+              <li>LEED Certification Support</li>
+              <li>Branded & Decorative Options</li>
+              <li>Fast Installation, Minimal Disruption</li>
+            </ul>
+            <a href="/services/commercial-window-film/" class="service-card__link">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Government & Public -->
+        <div class="service-card">
+          <div class="service-card__image">
+            <img 
+              src="/images/university-window-film-philadelphia.webp"
+              alt="Government building window film Philadelphia"
+            />
+          </div>
+          <div class="service-card__content">
+            <h3 class="service-card__title">Government & Public Buildings</h3>
+            <p class="service-card__description">GSA-approved security film solutions for government facilities, schools, and public institutions.</p>
+            <ul class="service-card__features">
+              <li>GSA Approved Products</li>
+              <li>Blast & Impact Resistance</li>
+              <li>Safety & Security Film</li>
+              <li>ANSI Z97.1 Certified</li>
+              <li>Compliance with Federal Standards</li>
+            </ul>
+            <a href="/services/government-public/" class="service-card__link">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Specialty -->
+        <div class="service-card">
+          <div class="service-card__image">
+            <img 
+              src="/images/safety-window-film-philadelphia.webp"
+              alt="Specialty window film installation Philadelphia"
+            />
+          </div>
+          <div class="service-card__content">
+            <h3 class="service-card__title">Specialty Film Solutions</h3>
+            <p class="service-card__description">Custom and specialty window film applications for unique requirements including security, anti-graffiti, and decorative films.</p>
+            <ul class="service-card__features">
+              <li>Bomb Blast Protection</li>
+              <li>Ballistic & Bullet Resistant Film</li>
+              <li>Anti-Graffiti Film</li>
+              <li>Decorative & Frosted Film</li>
+              <li>Custom Solutions</li>
+            </ul>
+            <a href="/services/specialty/" class="service-card__link">Learn More →</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- Service Categories - Bento Grid -->
-  <section class="py-32 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-20">
-        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-          Our <span class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Services</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Specialized window film solutions for every application
-        </p>
+  <!-- Process Section -->
+  <section class="services-process">
+    <div class="container">
+      <div class="services-process__header">
+        <h2 class="section-h2">Our Installation Process</h2>
+        <p class="section-sub">Professional installation from start to finish</p>
       </div>
 
-      <!-- Bento Grid Layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {serviceCategories.map((service, index) => (
-          <a 
-            href={service.href}
-            class="group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            style={`animation: fade-in-up 0.6s ease-out ${index * 0.1}s both`}
-          >
-            <!-- Background Image with Parallax Effect -->
-            <div class="absolute inset-0 overflow-hidden">
-              <img 
-                src={service.image} 
-                alt={service.title}
-                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-60 group-hover:opacity-70 transition-opacity`}></div>
-            </div>
+      <div class="services-process__steps">
+        
+        <div class="process-step">
+          <div class="process-step__number">01</div>
+          <h3 class="process-step__title">Free Consultation</h3>
+          <p class="process-step__description">We assess your needs, measure your windows, and recommend the best film solutions for your goals and budget.</p>
+        </div>
 
-            <!-- Content -->
-            <div class="relative z-10 p-8 md:p-12 min-h-[500px] flex flex-col justify-between">
-              <!-- Top Section -->
-              <div>
-                <div class="text-6xl mb-4 transform group-hover:scale-110 transition-transform">{service.icon}</div>
-                <h3 class="text-4xl font-bold text-white mb-2">{service.title}</h3>
-                <p class="text-xl text-white/90 mb-6">{service.subtitle}</p>
-                <p class="text-white/80 text-lg leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
+        <div class="process-step">
+          <div class="process-step__number">02</div>
+          <h3 class="process-step__title">Custom Quote</h3>
+          <p class="process-step__description">Receive a detailed written quote with product options, pricing, and timeline. No hidden fees.</p>
+        </div>
 
-              <!-- Features Grid -->
-              <div class="grid grid-cols-3 gap-4 mt-8">
-                {service.features.map(feature => (
-                  <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <div class="text-2xl mb-1">{feature.icon}</div>
-                    <div class="text-2xl font-bold text-white mb-1">{feature.value}</div>
-                    <div class="text-xs text-white/80">{feature.label}</div>
-                  </div>
-                ))}
-              </div>
+        <div class="process-step">
+          <div class="process-step__number">03</div>
+          <h3 class="process-step__title">Expert Installation</h3>
+          <p class="process-step__description">Our certified installers complete the job efficiently with minimal disruption to your home or business.</p>
+        </div>
 
-              <!-- Learn More Button -->
-              <div class="mt-8 flex items-center text-white font-semibold group-hover:gap-4 gap-2 transition-all">
-                <span>Learn More</span>
-                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </div>
-            </div>
-          </a>
-        ))}
+        <div class="process-step">
+          <div class="process-step__number">04</div>
+          <h3 class="process-step__title">Quality Guarantee</h3>
+          <p class="process-step__description">All installations backed by our satisfaction guarantee and manufacturer warranty coverage.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Process Section with Timeline -->
-  <section class="py-32 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
-    </div>
+  <!-- Why Choose Us -->
+  <section class="services-why">
+    <div class="container">
+      <div class="services-why__grid">
+        <div class="services-why__content">
+          <div class="eyebrow">Why Choose Window Film Philadelphia</div>
+          <h2 class="section-h2">Over 15 Years of Excellence</h2>
+          <p>Since 2009, we've been Philadelphia's trusted window film experts, serving over 2,500 satisfied customers across residential, commercial, and government sectors.</p>
+          
+          <ul class="services-why__list">
+            <li>
+              <strong>15+ Years Experience</strong> — Trusted by Philadelphia homeowners and businesses since 2009
+            </li>
+            <li>
+              <strong>2,500+ Installations</strong> — Proven track record across residential, commercial, and government projects
+            </li>
+            <li>
+              <strong>Factory-Trained Installers</strong> — Certified by leading manufacturers including 3M, LLumar, and Madico
+            </li>
+            <li>
+              <strong>Premium Products</strong> — We only use top-tier films from trusted brands
+            </li>
+            <li>
+              <strong>Lifetime Warranty</strong> — Manufacturer warranty plus our installation guarantee
+            </li>
+            <li>
+              <strong>Free Consultation</strong> — No-obligation assessment and quote
+            </li>
+          </ul>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-20">
-        <h2 class="text-5xl md:text-6xl font-bold mb-4">
-          How It <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Works</span>
-        </h2>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-          Professional installation in 4 simple steps
-        </p>
-      </div>
+          <a href="/contact/" class="btn btn--primary">Schedule Free Consultation</a>
+        </div>
 
-      <!-- Timeline -->
-      <div class="relative">
-        <!-- Vertical Line -->
-        <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-teal-500 to-cyan-500"></div>
-
-        <!-- Steps -->
-        <div class="space-y-16">
-          {processSteps.map((step, index) => (
-            <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-              <!-- Number Circle -->
-              <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-2xl z-10">
-                <span class="text-2xl font-bold">{step.number}</span>
-              </div>
-
-              <!-- Content Card -->
-              <div class={`ml-24 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'} md:w-1/2`}>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                  <h3 class="text-2xl font-bold mb-3">{step.title}</h3>
-                  <p class="text-gray-300 leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div class="services-why__image">
+          <img 
+            src="/images/madico-window-film-contractor-philadelphia.png"
+            alt="Window Film Philadelphia certified installer"
+          />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Neighborhoods Section - Glassmorphism Cards -->
-  <section class="py-32 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-          Serving <span class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Philadelphia</span>
-        </h2>
-        <p class="text-xl text-gray-600">
-          Professional window film installation across the Delaware Valley
-        </p>
+  <!-- Service Areas -->
+  <section class="services-areas">
+    <div class="container">
+      <div class="services-areas__header">
+        <h2 class="section-h2">Serving Greater Philadelphia</h2>
+        <p class="section-sub">Professional window film installation across the region</p>
       </div>
 
-      <!-- Glassmorphism Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {neighborhoods.map((hood, i) => (
-          <div 
-            class="group relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-md border border-white/20 p-6 hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-xl"
-            style={`animation: fade-in-up 0.4s ease-out ${i * 0.02}s both`}
-          >
-            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <p class="relative z-10 text-center font-semibold text-gray-800 group-hover:text-emerald-700 transition-colors">
-              {hood}
-            </p>
+      <div class="services-areas__grid">
+        <div class="area-card">
+          <h3>Philadelphia</h3>
+          <p>Center City, University City, South Philly, Northeast, Northwest</p>
+        </div>
+        <div class="area-card">
+          <h3>Montgomery County</h3>
+          <p>King of Prussia, Norristown, Lansdale, Ambler</p>
+        </div>
+        <div class="area-card">
+          <h3>Delaware County</h3>
+          <p>Media, Broomall, Havertown, Springfield</p>
+        </div>
+        <div class="area-card">
+          <h3>Chester County</h3>
+          <p>West Chester, Exton, Malvern, Phoenixville</p>
+        </div>
+        <div class="area-card">
+          <h3>Bucks County</h3>
+          <p>Doylestown, Newtown, Warrington, Yardley</p>
+        </div>
+        <div class="area-card">
+          <h3>Camden County</h3>
+          <p>Cherry Hill, Voorhees, Haddonfield, Marlton</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="services-faq">
+    <div class="container">
+      <div class="services-faq__header">
+        <h2 class="section-h2">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="services-faq__list">
+        
+        <details class="faq-item">
+          <summary class="faq-item__question">How long does window film installation take?</summary>
+          <div class="faq-item__answer">
+            <p>Most residential projects take 4-6 hours. Commercial projects vary based on square footage, but we work efficiently to minimize disruption to your business operations.</p>
           </div>
-        ))}
-      </div>
+        </details>
 
-      <div class="text-center mt-12">
-        <p class="text-gray-600 mb-6">Plus Cherry Hill, Camden, Wilmington, and the entire Delaware Valley</p>
-        <a 
-          href="/contact" 
-          class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:shadow-2xl hover:scale-105 transition-all"
-        >
-          <span>Schedule Free Consultation</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
+        <details class="faq-item">
+          <summary class="faq-item__question">What's the warranty on window film?</summary>
+          <div class="faq-item__answer">
+            <p>All our films come with manufacturer warranties ranging from 10 years to lifetime, depending on the product. We also guarantee our installation workmanship.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">Will window film damage my windows?</summary>
+          <div class="faq-item__answer">
+            <p>No. Professional-grade window film is safe for all window types when properly installed. Our certified installers ensure proper application to prevent any damage.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">Can window film help reduce energy costs?</summary>
+          <div class="faq-item__answer">
+            <p>Yes! Energy-efficient window film can reduce HVAC costs by up to 30% by blocking heat in summer and retaining warmth in winter.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">Do you offer free consultations?</summary>
+          <div class="faq-item__answer">
+            <p>Absolutely. We provide free, no-obligation consultations including on-site assessment, measurements, and detailed quotes with product recommendations.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">What brands of window film do you install?</summary>
+          <div class="faq-item__answer">
+            <p>We install premium films from industry-leading manufacturers including 3M, LLumar, Madico, Solar Gard, and Vista. We'll help you choose the best product for your needs.</p>
+          </div>
+        </details>
+
       </div>
     </div>
   </section>
 
-  <!-- Final CTA Section -->
-  <section class="py-32 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 opacity-20">
-      <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-    </div>
-
-    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-5xl md:text-6xl font-bold mb-6">
-        Ready to Transform Your Windows?
-      </h2>
-      <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-        Get a free consultation and quote. Our experts will assess your needs and recommend the perfect window film solution.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a 
-          href="/contact" 
-          class="px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-full text-lg hover:shadow-2xl hover:scale-105 transition-all"
-        >
-          Get Free Quote
-        </a>
-        <a 
-          href="tel:2673947980" 
-          class="px-10 py-5 bg-white/10 backdrop-blur-sm text-white font-bold rounded-full text-lg border-2 border-white/20 hover:bg-white/20 transition-all"
-        >
-          (267) 394-7980
-        </a>
+  <!-- Final CTA -->
+  <section class="services-cta">
+    <div class="container">
+      <div class="services-cta__content">
+        <h2 class="services-cta__title">Ready to Get Started?</h2>
+        <p class="services-cta__subtitle">Schedule your free consultation today and discover how window film can transform your space.</p>
+        <div class="services-cta__buttons">
+          <a href="/contact/" class="btn btn--primary btn--large">Get Free Quote</a>
+          <a href="tel:2673947980" class="btn btn--outline-dark btn--large">(267) 394-7980</a>
+        </div>
       </div>
-
-      <p class="mt-8 text-gray-400">
-        Done right, every time. <span class="text-emerald-400">Lifetime warranty on all installations.</span>
-      </p>
     </div>
   </section>
 
-  <!-- Schema Markup -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Window Film Installation",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Window Film Philadelphia",
-      "telephone": "(267) 394-7980",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Philadelphia",
-        "addressRegion": "PA"
-      }
-    },
-    "areaServed": neighborhoods.map(hood => ({
-      "@type": "City",
-      "name": hood + ", Philadelphia, PA"
-    }))
-  })} />
-
-  <!-- Custom Animations -->
-  <style>
-    @keyframes fade-in-down {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fade-in-up {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes blob {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(30px, -50px) scale(1.1);
-      }
-      66% {
-        transform: translate(-20px, 20px) scale(0.9);
-      }
-    }
-
-    .animate-fade-in-down {
-      animation: fade-in-down 0.6s ease-out;
-    }
-
-    .animate-fade-in-up {
-      animation: fade-in-up 0.6s ease-out;
-    }
-
-    .animate-blob {
-      animation: blob 7s infinite;
-    }
-
-    .animation-delay-200 {
-      animation-delay: 200ms;
-    }
-
-    .animation-delay-400 {
-      animation-delay: 400ms;
-    }
-
-    .animation-delay-2000 {
-      animation-delay: 2s;
-    }
-
-    .animation-delay-4000 {
-      animation-delay: 4s;
-    }
-
-    /* Smooth scroll behavior */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Glassmorphism effect */
-    .backdrop-blur-sm {
-      backdrop-filter: blur(8px);
-    }
-
-    .backdrop-blur-md {
-      backdrop-filter: blur(12px);
-    }
-  </style>
 </BaseLayout>
+
+<style>
+/* ─── HERO ─── */
+.services-hero {
+  position: relative;
+  background: #14201A;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+.services-hero__container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.services-hero__eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7CB342;
+  margin-bottom: 16px;
+}
+.services-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.services-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 32px;
+}
+.services-hero__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.services-hero__image {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.services-hero__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── SERVICES TYPES ─── */
+.services-types {
+  padding: 100px 0;
+  background: #F3F6F1;
+}
+.services-types__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.services-types__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+.service-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(20,32,26,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(20,32,26,0.16);
+}
+.service-card__image {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-card__content {
+  padding: 32px;
+}
+.service-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #14201A;
+  margin-bottom: 12px;
+}
+.service-card__description {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4A5C48;
+  margin-bottom: 20px;
+}
+.service-card__features {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+.service-card__features li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #14201A;
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+}
+.service-card__features li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #7CB342;
+  font-weight: 700;
+}
+.service-card__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7CB342;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.service-card__link:hover {
+  color: #2E6B30;
+}
+
+/* ─── PROCESS ─── */
+.services-process {
+  padding: 100px 0;
+  background: #fff;
+}
+.services-process__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.services-process__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+.process-step {
+  text-align: center;
+}
+.process-step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.process-step__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #14201A;
+  margin-bottom: 12px;
+}
+.process-step__description {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4A5C48;
+}
+
+/* ─── WHY CHOOSE US ─── */
+.services-why {
+  padding: 100px 0;
+  background: #F3F6F1;
+}
+.services-why__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.services-why__list {
+  list-style: none;
+  margin: 32px 0;
+  padding: 0;
+}
+.services-why__list li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #14201A;
+  padding: 12px 0;
+  padding-left: 32px;
+  position: relative;
+}
+.services-why__list li:before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #7CB342;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.services-why__list strong {
+  color: #7CB342;
+  font-weight: 600;
+}
+.services-why__image {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(20,32,26,0.12);
+}
+.services-why__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── SERVICE AREAS ─── */
+.services-areas {
+  padding: 100px 0;
+  background: #fff;
+}
+.services-areas__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.services-areas__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.area-card {
+  background: #F3F6F1;
+  border-radius: 12px;
+  padding: 28px;
+  border-left: 4px solid #7CB342;
+}
+.area-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #14201A;
+  margin-bottom: 8px;
+}
+.area-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #4A5C48;
+  margin: 0;
+}
+
+/* ─── FAQ ─── */
+.services-faq {
+  padding: 100px 0;
+  background: #F3F6F1;
+}
+.services-faq__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.services-faq__list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  padding: 24px 28px;
+  border-left: 4px solid #7CB342;
+}
+.faq-item__question {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #14201A;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 32px;
+}
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+.faq-item__question:after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #7CB342;
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition: transform 0.3s;
+}
+.faq-item[open] .faq-item__question:after {
+  transform: rotate(45deg);
+}
+.faq-item__answer {
+  padding-top: 16px;
+}
+.faq-item__answer p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4A5C48;
+  margin: 0;
+}
+
+/* ─── FINAL CTA ─── */
+.services-cta {
+  padding: 100px 0;
+  background: #14201A;
+  text-align: center;
+}
+.services-cta__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.services-cta__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.services-cta__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn--large {
+  padding: 16px 36px;
+  font-size: 1rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 992px) {
+  .services-hero__container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .services-why__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .services-why__image {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-hero {
+    padding: 80px 0 60px;
+  }
+  .services-hero__container {
+    padding: 0 24px;
+  }
+  .services-types,
+  .services-process,
+  .services-why,
+  .services-areas,
+  .services-faq,
+  .services-cta {
+    padding: 60px 0;
+  }
+  .services-types__grid {
+    grid-template-columns: 1fr;
+  }
+  .services-process__steps {
+    grid-template-columns: 1fr;
+  }
+  .services-areas__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+// Smooth scroll reveal
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .process-step, .area-card, .faq-item').forEach(el => {
+  observer.observe(el);
+});
+</script>
