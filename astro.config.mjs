@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://www.windowfilmphiladelphia.net',
@@ -9,6 +10,9 @@ export default defineConfig({
     assets: '_assets',
   },
   integrations: [
+    tailwind({
+      applyBaseStyles: false, // We have custom base styles in global.css
+    }),
     sitemap({
       filter: (page) => !page.includes('/thank-you/'),
     }),
