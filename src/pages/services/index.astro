@@ -97,6 +97,21 @@ const description = "Professional window film installation services in Philadelp
     </div>
   </div>
 
+  <!-- Animated Statement — highlight on scroll -->
+  <section class="statement-highlight">
+    <div class="statement-highlight__container">
+      <div class="statement-highlight__text" data-statement>
+        <span class="line">In Philadelphia's heat, glare, and weather,</span>
+        <span class="line">your glass should work for you, not against you.</span>
+        <span class="line">
+          <span class="highlight-wrapper">
+            <span class="highlight-text">We make it done right, every time.</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </section>
+
   <!-- Our Services - Bento Grid with Images -->
   <section class="services-bento">
     <div class="services-bento__container">
@@ -664,6 +679,99 @@ const description = "Professional window film installation services in Philadelp
 @keyframes scroll-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* ─── STATEMENT HIGHLIGHT ─── */
+.statement-highlight {
+  position: relative;
+  background: #0d1a0f;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Dot grid pattern overlay */
+.statement-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.statement-highlight__container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px;
+  z-index: 2;
+}
+
+.statement-highlight__text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.4;
+  color: #fff;
+  text-align: center;
+}
+
+.statement-highlight__text .line {
+  display: block;
+  margin-bottom: 0.25em;
+  opacity: 0.3;
+  transition: opacity 0.6s ease-out;
+}
+
+.statement-highlight__text.active .line {
+  opacity: 1;
+}
+
+.statement-highlight__text .line:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.statement-highlight__text .line:nth-child(2) {
+  transition-delay: 0.3s;
+}
+
+.statement-highlight__text .line:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.highlight-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-text {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #7CB342, #2E6B30);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  transition: background-size 0.6s ease-out 0.7s;
+}
+
+.statement-highlight__text.active .highlight-text {
+  background-size: 100% 100%;
+}
+
+@media (max-width: 768px) {
+  .statement-highlight {
+    padding: 80px 0;
+  }
+  
+  .statement-highlight__container {
+    padding: 0 24px;
+  }
 }
 
 /* ─── HERO CINEMATIC ─── */
@@ -1750,4 +1858,23 @@ document.querySelectorAll('.accordion-item').forEach(item => {
     }
   });
 });
+
+// ─── STATEMENT HIGHLIGHT ANIMATION ─── 
+const statementObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('active')) {
+      entry.target.classList.add('active');
+      // Unobserve after activation (animation runs once)
+      statementObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.3,
+  rootMargin: '0px 0px -100px 0px'
+});
+
+const statementElement = document.querySelector('[data-statement]');
+if (statementElement) {
+  statementObserver.observe(statementElement);
+}
 </script>
