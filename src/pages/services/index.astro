@@ -1,0 +1,1335 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: 'Window Film Services in Philadelphia, PA | Window Film Philadelphia',
+  description: 'Professional residential, commercial, government, and specialty window film installation across Philadelphia and the Delaware Valley. Trusted by thousands since 2008.',
+  canonical: 'https://windowfilmphiladelphia.net/services/',
+};
+
+const heroImage = 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_1920/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_175602_3ec0c373-ae60-4251-9694-bd03190474d1.png';
+
+const serviceCategories = [
+  {
+    id: 'residential',
+    title: 'Residential Window Film',
+    href: '/services/residential-window-film',
+    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181539_c13b0b5a-dd9e-4dac-9e2d-0652b6d18f74.jpg',
+    description: `Transform your home with professional window film installation designed for Philadelphia's climate. Our residential window tinting solutions protect your family from harmful UV rays—blocking up to 99% of UV radiation that causes skin damage and fades your furniture, floors, and artwork. Reduce summer cooling costs by rejecting solar heat before it enters your home, while maintaining natural light and unobstructed views. Privacy window film gives you one-way daytime privacy for street-facing windows in neighborhoods like Fishtown, Rittenhouse, and Chestnut Hill. Safety film holds shattered glass together during storms or break-in attempts, meeting ANSI safety standards. Decorative window film transforms bathrooms, front doors, and sidelights with elegant frosted, etched, or custom patterns. Every installation is backed by our lifetime warranty and performed by factory-trained technicians who treat your home with care.`,
+    subServices: [
+      'Home Window Tinting',
+      'Privacy Film',
+      'UV Protection',
+      'Safety Film',
+      'Decorative Film'
+    ],
+    imageLeft: true
+  },
+  {
+    id: 'commercial',
+    title: 'Commercial Window Film',
+    href: '/services/commercial-window-film',
+    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181423_e9ac5ea2-6893-4e10-bfed-31e3edb2b18c.jpg',
+    description: `Reduce energy costs and enhance comfort across your Philadelphia commercial property. Our commercial window tinting solutions deliver measurable ROI through lower HVAC loads—solar control film can reduce cooling costs by up to 30% in buildings along Market Street, Center City, and the Navy Yard. Anti-graffiti film protects storefronts and ground-floor glass from vandalism with a sacrificial barrier that's easily replaced instead of the entire pane. Safety and security film meets GSA and ANSI Z97 standards for blast mitigation and forced-entry resistance, protecting employees and assets in government buildings, banks, and corporate offices. Decorative and branding film transforms conference rooms, lobbies, and retail spaces with custom logos, frosted privacy panels, or full-coverage manifestations that meet ADA visibility requirements. Glare reduction film improves employee productivity by eliminating screen glare without darkening the workspace. LEED-eligible solutions support your green building certifications.`,
+    subServices: [
+      'Solar Control',
+      'Anti-Graffiti',
+      'Safety & Security',
+      'Decorative & Branding'
+    ],
+    imageLeft: false
+  },
+  {
+    id: 'government',
+    title: 'Government & Public Buildings',
+    href: '/services/government-public',
+    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181642_e3d927f8-82fa-4d22-90b1-0623e6b68c5a.jpg',
+    description: `Meeting the demanding security and safety standards required for government buildings, schools, universities, museums, libraries, houses of worship, and mass transit facilities across Philadelphia and the Delaware Valley. Our government-grade window film solutions exceed GSA, ANSI, and CPNI specifications for blast mitigation and forced-entry delay. School security film protects students and staff by holding glass together during active-threat events or severe weather, meeting ASTM safety standards adopted by the School District of Philadelphia. Museum conservation film blocks 99.9% of UV radiation to preserve priceless collections, paintings, manuscripts, and artifacts from light damage—without altering exhibit visibility. Transit window film withstands daily wear, vandalism, and impact on SEPTA buses and rail cars. Church window film protects historic stained glass while reducing fading of textiles, wood, and interior finishes. All installations comply with local fire codes, ADA requirements, and historic preservation guidelines.`,
+    subServices: [
+      'Government Window Film',
+      'School Security',
+      'Museum Conservation',
+      'Church Window Film'
+    ],
+    imageLeft: true
+  },
+  {
+    id: 'specialty',
+    title: 'Specialty Films',
+    href: '/services/specialty',
+    image: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181727_08f3b54f-b81c-4f45-89f6-1fbb5d0ce2bc.jpg',
+    description: `Advanced window film solutions for demanding applications where standard products won't meet your needs. Bomb blast protection film mitigates glass fragmentation during explosive events, meeting GSA and DoD standards for government facilities, embassies, and critical infrastructure. Ballistic resistant film provides bullet resistance when paired with appropriate glazing systems, tested to UL 752 standards for financial institutions and high-security environments. Bird strike prevention film reduces avian collisions by up to 90% using visible patterns that alert birds while remaining nearly invisible to humans—required by LEED for buildings near migratory paths. Exterior refinishing film transforms aging metal panels, spandrel glass, and curtain walls with durable color-stable finishes that withstand UV exposure and weathering. Mirror refinishing film renews scratched or corroded mirrors in commercial restrooms and fitness centers at a fraction of replacement cost. Every specialty installation is engineered to your specific requirements with technical documentation and performance verification.`,
+    subServices: [
+      'Bomb Blast Protection',
+      'Ballistic Resistant',
+      'Bird Strike Film',
+      'Exterior Refinishing'
+    ],
+    imageLeft: false
+  }
+];
+
+const faqItems = [
+  {
+    question: 'How much does window film cost in Philadelphia?',
+    answer: `Residential window film typically ranges from $8 to $18 per square foot installed, depending on the type of film and project size. Commercial projects start at $6 per square foot for large buildings. Specialty films like security or decorative can range from $12 to $25 per square foot. Every project is unique—we provide free on-site consultations and transparent quotes with no hidden fees. Financing options available.`
+  },
+  {
+    question: 'How long does installation take?',
+    answer: `Most residential homes (10-20 windows) take 1 full day to complete. Commercial projects vary based on square footage and access—an average office building (50-100 windows) takes 2-3 days. We work around your schedule, including evenings and weekends for occupied buildings. Minimal disruption to your operations or daily routine.`
+  },
+  {
+    question: 'What brands of window film do you install?',
+    answer: `We install premium films from 3M, LLumar, Vista, Solar Gard, Hüper Optik, Madico, and other leading manufacturers. All products come with manufacturer warranties (10 years to lifetime depending on the film). We select the right product for your specific needs—not what's easiest to install.`
+  },
+  {
+    question: 'Is window film worth it for Philadelphia weather?',
+    answer: `Absolutely. Philadelphia's hot, humid summers drive up cooling costs—window film blocks up to 80% of solar heat before it enters your building, reducing AC load significantly. Our UV-blocking film works year-round to protect against sun damage (UV rays penetrate glass even in winter). Safety film provides storm protection during severe weather events common to the Delaware Valley.`
+  },
+  {
+    question: 'Will window film make my rooms too dark?',
+    answer: `No. Modern window films maintain natural light while reducing glare and heat. We offer a range of visible light transmission levels—from nearly clear UV-blocking film (80%+ light) to moderate tint (50% light) to darker privacy film (20% light). During your free consultation, we'll show samples and help you choose the right balance of light, heat rejection, and privacy for each room or exposure.`
+  },
+  {
+    question: 'Does window film come with a warranty?',
+    answer: `Yes. Manufacturer warranties range from 10 years to lifetime depending on the product and application (residential vs. commercial). Our installation workmanship is covered by our own lifetime labor warranty—if the film bubbles, peels, or delaminates due to installation error, we'll replace it at no charge. All warranties are transferable if you sell your property.`
+  }
+];
+
+const neighborhoods = [
+  'Philadelphia', 'Center City', 'Old City', 'Fishtown', 'Northern Liberties', 'South Philadelphia',
+  'Rittenhouse Square', 'University City', 'Chestnut Hill', 'Manayunk', 'Germantown',
+  'Main Line', 'Cherry Hill NJ', 'Camden NJ', 'South Jersey', 'Montgomery County',
+  'Bucks County', 'Delaware County', 'Chester County'
+];
+
+const processSteps = [
+  {
+    num: '01',
+    title: 'Free Consultation',
+    description: `Schedule a free on-site consultation. We'll assess your windows, discuss your goals (energy savings, UV protection, privacy, security), show product samples, and provide expert recommendations based on your specific needs and budget.`
+  },
+  {
+    num: '02',
+    title: 'Custom Quote',
+    description: `Receive a detailed, transparent quote with no hidden fees. We'll break down costs by window type and film selection, explain warranty coverage, and answer all your questions. Most quotes are delivered within 24-48 hours.`
+  },
+  {
+    num: '03',
+    title: 'Expert Installation',
+    description: `Our factory-trained technicians arrive on time with all materials and equipment. We prepare the work area, clean every window thoroughly, apply the film using professional techniques, and inspect for quality. Minimal disruption to your home or business.`
+  },
+  {
+    num: '04',
+    title: 'Lifetime Warranty',
+    description: `Enjoy peace of mind with full manufacturer product warranties (10 years to lifetime) plus our own lifetime workmanship warranty. If any installation issue arises—bubbling, peeling, delamination—we'll fix it at no charge. Transferable if you sell.`
+  }
+];
+---
+
+<BaseLayout {meta}>
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- HERO -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-hero">
+    <div class="services-hero__bg">
+      <img src={heroImage} alt="Philadelphia skyline at golden hour" width="1920" height="1080" />
+    </div>
+    <div class="services-hero__overlay"></div>
+    <div class="services-hero__content">
+      <div class="services-hero__breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Services</span>
+      </div>
+      <p class="services-hero__label">OUR SERVICES</p>
+      <h1 class="services-hero__title">Window Film Services in Philadelphia</h1>
+      <p class="services-hero__subtitle">
+        Professional residential, commercial, government, and specialty window film installation across Philadelphia and the Delaware Valley. Trusted by thousands of homeowners and businesses since 2008.
+      </p>
+      <div class="services-hero__stats">
+        <div class="services-hero__stat">
+          <span class="services-hero__stat-num">20+</span>
+          <span class="services-hero__stat-label">YEARS IN BUSINESS</span>
+        </div>
+        <div class="services-hero__stat-divider"></div>
+        <div class="services-hero__stat">
+          <span class="services-hero__stat-num">2,400+</span>
+          <span class="services-hero__stat-label">PROJECTS</span>
+        </div>
+        <div class="services-hero__stat-divider"></div>
+        <div class="services-hero__stat">
+          <span class="services-hero__stat-num">99%</span>
+          <span class="services-hero__stat-label">UV BLOCK</span>
+        </div>
+        <div class="services-hero__stat-divider"></div>
+        <div class="services-hero__stat">
+          <span class="services-hero__stat-num">4.9★</span>
+          <span class="services-hero__stat-label">GOOGLE</span>
+        </div>
+      </div>
+      <a href="/contact/" class="services-hero__cta">Get a Free Quote →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- INTRO SPLIT -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-intro">
+    <div class="services-intro__container">
+      <div class="services-intro__grid">
+        <div class="services-intro__images">
+          <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_400/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181539_c13b0b5a-dd9e-4dac-9e2d-0652b6d18f74.jpg" alt="Philadelphia office building" loading="lazy" width="400" height="400" />
+          <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_400/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181423_e9ac5ea2-6893-4e10-bfed-31e3edb2b18c.jpg" alt="Philadelphia residential home" loading="lazy" width="400" height="400" />
+          <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_400/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181642_e3d927f8-82fa-4d22-90b1-0623e6b68c5a.jpg" alt="Philadelphia museum" loading="lazy" width="400" height="400" />
+          <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_400/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181727_08f3b54f-b81c-4f45-89f6-1fbb5d0ce2bc.jpg" alt="Philadelphia retail storefront" loading="lazy" width="400" height="400" />
+        </div>
+        <div class="services-intro__text">
+          <p class="services-intro__label">WHY CHOOSE US</p>
+          <h2 class="services-intro__title">Philadelphia's trusted window film professionals</h2>
+          <p class="services-intro__body">
+            Since 2008, Window Film Philadelphia has been the Delaware Valley's premier window film installation company. We're factory-trained and certified by the industry's leading manufacturers—3M, LLumar, Vista, and Solar Gard. Our technicians bring decades of combined experience to every project, delivering precision installations that last a lifetime. We serve homeowners across Philadelphia neighborhoods—from Fishtown row homes to Chestnut Hill estates—and businesses throughout Center City, the Main Line, South Jersey, and the tri-county area. Our commitment is simple: do it right, every time. That's why we stand behind every installation with comprehensive manufacturer warranties and our own lifetime workmanship guarantee.
+          </p>
+          <div class="services-intro__features">
+            <div class="services-intro__feature">
+              <div class="services-intro__feature-icon">✓</div>
+              <div>
+                <h4>Certified Experts</h4>
+                <p>Factory-trained, certified installers</p>
+              </div>
+            </div>
+            <div class="services-intro__feature">
+              <div class="services-intro__feature-icon">✓</div>
+              <div>
+                <h4>Premium Films</h4>
+                <p>3M, LLumar, and top brands</p>
+              </div>
+            </div>
+            <div class="services-intro__feature">
+              <div class="services-intro__feature-icon">✓</div>
+              <div>
+                <h4>Same-Day Quotes</h4>
+                <p>Fast, transparent pricing</p>
+              </div>
+            </div>
+            <div class="services-intro__feature">
+              <div class="services-intro__feature-icon">✓</div>
+              <div>
+                <h4>Lifetime Warranty</h4>
+                <p>We stand behind every install</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- SERVICE CATEGORIES (4 alternating rows) -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  {serviceCategories.map((service, idx) => (
+    <section class={`services-cat ${idx % 2 === 0 ? 'services-cat--light' : 'services-cat--white'}`}>
+      <div class="services-cat__container">
+        <div class={`services-cat__grid ${service.imageLeft ? 'services-cat__grid--image-left' : ''}`}>
+          <div class="services-cat__image">
+            <img src={service.image} alt={service.title} loading="lazy" width="800" height="600" />
+          </div>
+          <div class="services-cat__text">
+            <h2 class="services-cat__title">{service.title}</h2>
+            <p class="services-cat__desc">{service.description}</p>
+            <div class="services-cat__links">
+              {service.subServices.map(sub => (
+                <span class="services-cat__link-item">• {sub}</span>
+              ))}
+            </div>
+            <a href={service.href} class="services-cat__cta">Learn more →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- DARK POWER SECTION -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-power">
+    <div class="services-power__container">
+      <h2 class="services-power__title">The power of professional window film</h2>
+      <div class="services-power__content">
+        <div class="services-power__image-wrap">
+          <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_181423_e9ac5ea2-6893-4e10-bfed-31e3edb2b18c.jpg" alt="Professional window film installation results" loading="lazy" width="800" height="600" />
+          <div class="services-power__stat-card">
+            <div class="services-power__stat-num">30%</div>
+            <div class="services-power__stat-label">Average cooling cost reduction</div>
+          </div>
+        </div>
+        <div class="services-power__text">
+          <p>
+            Our clients see real results: lower energy bills, cooler rooms in summer, protected furniture and floors, improved privacy, and enhanced security. Philadelphia homeowners report up to 30% reductions in cooling costs after installing solar control film. Commercial clients benefit from improved employee comfort, reduced glare on screens, and LEED-eligible solutions that support green building certifications. Every installation is backed by comprehensive warranties and performed by technicians who treat your property with care.
+          </p>
+          <a href="/contact/" class="services-power__cta">Get a Free Quote →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- NEIGHBORHOODS WE SERVE -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-neighborhoods">
+    <div class="services-neighborhoods__container">
+      <h2 class="services-neighborhoods__title">Serving Philadelphia and the Delaware Valley</h2>
+      <p class="services-neighborhoods__intro">
+        We proudly serve Philadelphia and the greater Delaware Valley region, including Center City, Old City, Fishtown, Northern Liberties, South Philadelphia, Rittenhouse Square, University City, Chestnut Hill, Manayunk, and Germantown. Our service area extends across the Main Line, Cherry Hill and South Jersey, Montgomery County, Bucks County, Delaware County, and Chester County. Whether you're in a historic Philadelphia row home, a modern Center City high-rise, a suburban office park, or a commercial building in the tri-state area, we bring the same level of expertise and commitment to every project. No job is too small or too large—from single-window residential installations to multi-building commercial campuses.
+      </p>
+      <div class="services-neighborhoods__grid">
+        {neighborhoods.map(city => (
+          <span class="services-neighborhoods__city">{city}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- PROCESS -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-process">
+    <div class="services-process__container">
+      <p class="services-process__label">HOW IT WORKS</p>
+      <h2 class="services-process__title">Our simple 4-step process</h2>
+      <div class="services-process__grid">
+        {processSteps.map(step => (
+          <div class="services-process__card">
+            <div class="services-process__num">{step.num}</div>
+            <h3 class="services-process__card-title">{step.title}</h3>
+            <p class="services-process__card-desc">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- FAQ -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-faq">
+    <div class="services-faq__container">
+      <div class="services-faq__header">
+        <p class="services-faq__label">FAQ</p>
+        <h2 class="services-faq__title">Common questions about window film</h2>
+      </div>
+      <div class="services-faq__list">
+        {faqItems.map((item, idx) => (
+          <div class="services-faq__item">
+            <button class="services-faq__question" aria-expanded="false" data-faq-toggle={idx}>
+              <span>{item.question}</span>
+              <span class="services-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="services-faq__answer" data-faq-answer={idx} style="display:none;">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- FINAL CTA -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="services-cta">
+    <div class="services-cta__container">
+      <h2 class="services-cta__title">Ready to transform your glass?</h2>
+      <p class="services-cta__subtitle">
+        Get a free on-site consultation and transparent quote from Philadelphia's most trusted window film installer. No obligation, no pressure—just expert advice and competitive pricing.
+      </p>
+      <div class="services-cta__actions">
+        <a href="/contact/" class="services-cta__btn services-cta__btn--primary">Get a Free Quote</a>
+        <a href="tel:+12673947980" class="services-cta__btn services-cta__btn--ghost">(267) 394-7980</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SCHEMA MARKUP -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "Window Film Philadelphia",
+      "image": "https://windowfilmphiladelphia.net/images/logo.png",
+      "telephone": "(267) 394-7980",
+      "email": "info@windowfilmphl.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Philadelphia",
+        "addressRegion": "PA",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.9526,
+        "longitude": -75.1652
+      },
+      "url": "https://windowfilmphiladelphia.net/services/",
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Philadelphia",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Pennsylvania"
+          }
+        },
+        {
+          "@type": "State",
+          "name": "Delaware Valley"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Window Film Installation",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Window Film Philadelphia"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Pennsylvania"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Window Film Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential Window Film",
+              "description": "Home window tinting, privacy film, UV protection, safety film, decorative film"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Window Film",
+              "description": "Solar control, anti-graffiti, safety & security, decorative & branding"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Government & Public Buildings",
+              "description": "Government window film, school security, museum conservation, church window film"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Specialty Films",
+              "description": "Bomb blast protection, ballistic resistant, bird strike film, exterior refinishing"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://windowfilmphiladelphia.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://windowfilmphiladelphia.net/services/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does window film cost in Philadelphia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Residential window film typically ranges from $8 to $18 per square foot installed, depending on the type of film and project size. Commercial projects start at $6 per square foot for large buildings. Specialty films like security or decorative can range from $12 to $25 per square foot. Every project is unique—we provide free on-site consultations and transparent quotes with no hidden fees. Financing options available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does installation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most residential homes (10-20 windows) take 1 full day to complete. Commercial projects vary based on square footage and access—an average office building (50-100 windows) takes 2-3 days. We work around your schedule, including evenings and weekends for occupied buildings. Minimal disruption to your operations or daily routine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What brands of window film do you install?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We install premium films from 3M, LLumar, Vista, Solar Gard, Hüper Optik, Madico, and other leading manufacturers. All products come with manufacturer warranties (10 years to lifetime depending on the film). We select the right product for your specific needs—not what's easiest to install."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is window film worth it for Philadelphia weather?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Philadelphia's hot, humid summers drive up cooling costs—window film blocks up to 80% of solar heat before it enters your building, reducing AC load significantly. Our UV-blocking film works year-round to protect against sun damage (UV rays penetrate glass even in winter). Safety film provides storm protection during severe weather events common to the Delaware Valley."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will window film make my rooms too dark?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Modern window films maintain natural light while reducing glare and heat. We offer a range of visible light transmission levels—from nearly clear UV-blocking film (80%+ light) to moderate tint (50% light) to darker privacy film (20% light). During your free consultation, we'll show samples and help you choose the right balance of light, heat rejection, and privacy for each room or exposure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does window film come with a warranty?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Manufacturer warranties range from 10 years to lifetime depending on the product and application (residential vs. commercial). Our installation workmanship is covered by our own lifetime labor warranty—if the film bubbles, peels, or delaminates due to installation error, we'll replace it at no charge. All warranties are transferable if you sell your property."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // FAQ accordion
+    document.querySelectorAll('[data-faq-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.getAttribute('data-faq-toggle');
+        const answer = document.querySelector(`[data-faq-answer="${idx}"]`);
+        const icon = btn.querySelector('.services-faq__icon');
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        
+        btn.setAttribute('aria-expanded', (!isExpanded).toString());
+        answer.style.display = isExpanded ? 'none' : 'block';
+        icon.textContent = isExpanded ? '+' : '×';
+      });
+    });
+  });
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════ */
+/* HERO */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.services-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.services-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.services-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(13,26,15,0.85), rgba(13,26,15,0.4));
+}
+
+.services-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 7vw;
+  width: 100%;
+}
+
+.services-hero__breadcrumb {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+}
+
+.services-hero__breadcrumb a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.services-hero__breadcrumb a:hover {
+  color: #7CB342;
+}
+
+.services-hero__breadcrumb span {
+  margin: 0 0.5rem;
+}
+
+.services-hero__label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7CB342;
+  margin-bottom: 1rem;
+}
+
+.services-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+
+.services-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+}
+
+.services-hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.services-hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.services-hero__stat-num {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #7CB342;
+}
+
+.services-hero__stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.services-hero__stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+}
+
+.services-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.services-hero__cta:hover {
+  background: #2E6B30;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .services-hero__stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+  .services-hero__stat-divider {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* INTRO SPLIT */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-intro {
+  background: #F3F6F1;
+  padding: 80px 0;
+}
+
+.services-intro__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 7vw;
+}
+
+.services-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.services-intro__images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.services-intro__images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 1;
+}
+
+.services-intro__label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7CB342;
+  margin-bottom: 1rem;
+}
+
+.services-intro__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.875rem, 3vw, 2.375rem);
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.services-intro__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4A5C48;
+  margin-bottom: 2rem;
+}
+
+.services-intro__features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.services-intro__feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.services-intro__feature-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #7CB342;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.services-intro__feature h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #14201A;
+  margin: 0 0 0.25rem;
+}
+
+.services-intro__feature p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #4A5C48;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .services-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* SERVICE CATEGORIES */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-cat {
+  padding: 80px 0;
+}
+
+.services-cat--light {
+  background: #F3F6F1;
+}
+
+.services-cat--white {
+  background: #fff;
+}
+
+.services-cat__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 7vw;
+}
+
+.services-cat__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.services-cat__grid--image-left .services-cat__image {
+  order: -1;
+}
+
+.services-cat__image img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(42,36,30,0.12);
+}
+
+.services-cat__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.875rem, 3vw, 2.375rem);
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.services-cat__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4A5C48;
+  margin-bottom: 2rem;
+}
+
+.services-cat__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.services-cat__link-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7CB342;
+}
+
+.services-cat__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7CB342;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.services-cat__cta:hover {
+  gap: 10px;
+}
+
+@media (max-width: 992px) {
+  .services-cat__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .services-cat__grid--image-left .services-cat__image {
+    order: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* POWER SECTION */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-power {
+  background: #0d1a0f;
+  padding: 80px 0;
+}
+
+.services-power__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 7vw;
+}
+
+.services-power__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-power__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.services-power__image-wrap {
+  position: relative;
+}
+
+.services-power__image-wrap img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.services-power__stat-card {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  background: #7CB342;
+  padding: 24px 28px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.services-power__stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.services-power__stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  margin-top: 0.5rem;
+}
+
+.services-power__text p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2rem;
+}
+
+.services-power__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.services-power__cta:hover {
+  background: #2E6B30;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+  .services-power__content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* NEIGHBORHOODS */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-neighborhoods {
+  background: #F3F6F1;
+  padding: 80px 0;
+}
+
+.services-neighborhoods__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 7vw;
+}
+
+.services-neighborhoods__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.services-neighborhoods__intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4A5C48;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.services-neighborhoods__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.services-neighborhoods__city {
+  display: inline-block;
+  background: rgba(124,179,66,0.1);
+  border: 1px solid rgba(124,179,66,0.2);
+  padding: 10px 18px;
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2E6B30;
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* PROCESS */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-process {
+  background: #fff;
+  padding: 80px 0;
+}
+
+.services-process__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 7vw;
+}
+
+.services-process__label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7CB342;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.services-process__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.services-process__card {
+  background: #F3F6F1;
+  padding: 32px;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.services-process__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(42,36,30,0.1);
+}
+
+.services-process__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.services-process__card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #14201A;
+  margin-bottom: 0.75rem;
+}
+
+.services-process__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4A5C48;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .services-process__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-process__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* FAQ */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-faq {
+  background: #F3F6F1;
+  padding: 80px 0;
+}
+
+.services-faq__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 7vw;
+}
+
+.services-faq__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-faq__label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7CB342;
+  margin-bottom: 1rem;
+}
+
+.services-faq__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.services-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services-faq__item {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.services-faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #14201A;
+  transition: background 0.2s;
+}
+
+.services-faq__question:hover {
+  background: rgba(124,179,66,0.05);
+}
+
+.services-faq__icon {
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 300;
+  color: #7CB342;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+.services-faq__question[aria-expanded="true"] .services-faq__icon {
+  transform: rotate(45deg);
+}
+
+.services-faq__answer {
+  padding: 0 28px 24px;
+  border-top: 1px solid rgba(124,179,66,0.1);
+}
+
+.services-faq__answer p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4A5C48;
+  margin: 16px 0 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* FINAL CTA */
+/* ═══════════════════════════════════════════════════════════════════ */
+.services-cta {
+  background: #0d1a0f;
+  padding: 80px 0;
+}
+
+.services-cta__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 7vw;
+  text-align: center;
+}
+
+.services-cta__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.services-cta__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2.5rem;
+}
+
+.services-cta__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.services-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.services-cta__btn--primary {
+  background: #7CB342;
+  color: #fff;
+}
+
+.services-cta__btn--primary:hover {
+  background: #2E6B30;
+  transform: translateY(-2px);
+}
+
+.services-cta__btn--ghost {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+.services-cta__btn--ghost:hover {
+  border-color: #7CB342;
+  background: rgba(124,179,66,0.1);
+  transform: translateY(-2px);
+}
+</style>
