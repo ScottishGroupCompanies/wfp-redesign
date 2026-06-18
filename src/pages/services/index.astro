@@ -7,6 +7,24 @@ const description = "Professional window film installation services in Philadelp
 
 <BaseLayout title={title} description={description}>
   
+  <!-- Full-Bleed Hero -->
+  <section class="hero-fullbleed">
+    <div class="hero-fullbleed__overlay"></div>
+    <div class="hero-fullbleed__container">
+      <div class="hero-fullbleed__breadcrumb">Home / Services</div>
+      <div class="hero-fullbleed__label">OUR SERVICES</div>
+      <h1 class="hero-fullbleed__title">Window Film Services in Philadelphia</h1>
+      <p class="hero-fullbleed__subtitle">Professional residential, commercial, government, and specialty window film installation across Philadelphia and the Delaware Valley. Trusted since 2008.</p>
+      <div class="hero-fullbleed__stats">
+        <span class="hero-stat">20+ Years in Business</span>
+        <span class="hero-stat">2,400+ Projects</span>
+        <span class="hero-stat">99% UV Block</span>
+        <span class="hero-stat">4.9★ Google</span>
+      </div>
+      <a href="/contact/" class="btn-pill btn-pill--primary btn-pill--large">Get Your Free Estimate →</a>
+    </div>
+  </section>
+
   <!-- Hero Section - Split Screen -->
   <section class="hero-split">
     <div class="hero-split__container">
@@ -17,7 +35,7 @@ const description = "Professional window film installation services in Philadelp
           Your Assurance Of Quality Service
         </h1>
         <p class="hero-split__text">From residential homes to commercial buildings, we provide expert window film installation services across the Greater Philadelphia area. Our certified installers deliver exceptional results every time.</p>
-        <a href="/contact/" class="btn-pill btn-pill--primary">Work With Us</a>
+        <a href="/contact/" class="btn-pill btn-pill--primary">Get Your Free Estimate</a>
       </div>
       <div class="hero-split__images">
         <div class="hero-split__main-image">
@@ -512,6 +530,7 @@ const description = "Professional window film installation services in Philadelp
 
 <style>
 /* ─── MODERN RESET ─── */
+.hero-fullbleed,
 .hero-split,
 .stats-modern,
 .services-bento,
@@ -529,6 +548,96 @@ const description = "Professional window film installation services in Philadelp
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HERO FULL-BLEED ─── */
+.hero-fullbleed {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/services-hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.hero-fullbleed__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(13,26,15,0.85), rgba(13,26,15,0.4));
+  z-index: 1;
+}
+.hero-fullbleed__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  text-align: center;
+}
+.hero-fullbleed__breadcrumb {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+.hero-fullbleed__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7CB342;
+  margin-bottom: 24px;
+}
+.hero-fullbleed__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-fullbleed__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 36px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-fullbleed__stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-stat {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7CB342;
+  letter-spacing: 0.05em;
+}
+.hero-stat::before {
+  content: '•';
+  margin-right: 12px;
+  color: rgba(255,255,255,0.5);
+}
+.hero-stat:first-child::before {
+  display: none;
 }
 
 /* ─── HERO SPLIT ─── */
@@ -1339,6 +1448,15 @@ const description = "Professional window film installation services in Philadelp
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
+  .hero-fullbleed__container {
+    padding: 60px 30px;
+  }
+  .hero-fullbleed__stats {
+    gap: 20px;
+  }
+  .hero-stat {
+    font-size: 0.8rem;
+  }
   .hero-split__container,
   .process-split__container,
   .why-modern__container {
@@ -1373,6 +1491,20 @@ const description = "Professional window film installation services in Philadelp
 }
 
 @media (max-width: 640px) {
+  .hero-fullbleed {
+    min-height: 60vh;
+  }
+  .hero-fullbleed__container {
+    padding: 40px 20px;
+  }
+  .hero-fullbleed__stats {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .hero-stat::before {
+    display: none;
+  }
   .stats-modern__container {
     grid-template-columns: 1fr;
   }
