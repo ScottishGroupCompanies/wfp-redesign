@@ -123,7 +123,7 @@ const navItems = [
   {
     label: 'Products',
     href: '/products/',
-    type: null, // Direct link, no dropdown
+    type: null,
   },
   {
     label: 'About',
@@ -188,13 +188,18 @@ const currentPath = Astro.url.pathname;
     <!-- Desktop Nav -->
     <nav class="site-header__nav" aria-label="Main navigation">
       <ul class="site-header__nav-list">
-        {navItems.map((item) => (
-          <li class={`site-header__nav-item${item.type ? ' has-dropdown' : ''}`}>
+        {navItems.map((item, idx) => (
+          <li 
+            class={`site-header__nav-item${item.type ? ' has-dropdown' : ''}`}
+            data-nav-group
+          >
             <a
               href={item.href}
               class={`site-header__nav-link${currentPath.startsWith(item.href) && item.href !== '/' ? ' is-active' : ''}`}
               aria-haspopup={item.type ? "true" : undefined}
               aria-expanded={item.type ? "false" : undefined}
+              data-nav-trigger={item.type ? "true" : undefined}
+              data-nav-index={idx}
             >
               {item.label}
               {item.type && (
@@ -204,7 +209,15 @@ const currentPath = Astro.url.pathname;
               )}
             </a>
             {item.type === 'mega' && (
-              <div class="site-header__mega" role="menu" aria-label={`${item.label} menu`}>
+              <div 
+                class="site-header__mega" 
+                role="menu" 
+                aria-label={`${item.label} menu`}
+                data-nav-panel
+                data-nav-index={idx}
+              >
+                {/* Invisible bridge fills the gap between nav trigger and panel */}
+                <div class="nav-bridge" data-nav-bridge data-nav-index={idx}></div>
                 <div class="mega__inner">
                   <div class="mega__image-panel">
                     <img src={item.imageUrl} alt={item.imageLabel} class="mega__image-bg" />
@@ -239,7 +252,14 @@ const currentPath = Astro.url.pathname;
               </div>
             )}
             {item.type === 'simple' && (
-              <div class="site-header__simple" role="menu" aria-label={`${item.label} menu`}>
+              <div 
+                class="site-header__simple" 
+                role="menu" 
+                aria-label={`${item.label} menu`}
+                data-nav-panel
+                data-nav-index={idx}
+              >
+                <div class="nav-bridge" data-nav-bridge data-nav-index={idx}></div>
                 <div class={`simple__grid simple__grid--${item.columns.length}`}>
                   {item.columns.map((col) => (
                     <div class="simple__col">
@@ -439,8 +459,10 @@ const currentPath = Astro.url.pathname;
   gap: 2px;
 }
 
+/* Nav item — the HOVER GROUP parent */
 .site-header__nav-item { position: relative; }
 
+/* Nav link — the trigger */
 .site-header__nav-link {
   display: flex;
   align-items: center;
@@ -454,6 +476,8 @@ const currentPath = Astro.url.pathname;
   border-radius: 8px;
   transition: color 0.2s, background 0.2s;
   white-space: nowrap;
+  position: relative;
+  z-index: 10;
 }
 .site-header__nav-link:hover {
   color: #fff;
@@ -465,9 +489,10 @@ const currentPath = Astro.url.pathname;
 
 .nav-chevron {
   opacity: 0.5;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease, opacity 0.2s;
 }
-.site-header__nav-item:hover .nav-chevron {
+/* Chevron rotates when dropdown is open (JS-controlled) */
+.site-header__nav-item.is-open .nav-chevron {
   transform: rotate(180deg);
   opacity: 0.8;
 }
@@ -475,25 +500,42 @@ const currentPath = Astro.url.pathname;
 /* ════════════════════════════════════
    MEGA MENU
    ════════════════════════════════════ */
+/* Invisible bridge — fills the gap between nav trigger and panel.
+   This is the KEY fix: the cursor never leaves a hoverable area
+   when moving from trigger to panel. */
+.nav-bridge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Extend from bottom of nav item up to the panel */
+  height: 14px;
+  top: -14px;
+  pointer-events: auto;
+  z-index: 5;
+}
+
 .site-header__mega {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 14px); /* was +10px, now matches bridge height */
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
   width: 900px;
   max-width: 90vw;
   background: #14201A;
   border-radius: 14px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.08);
-  overflow: hidden;
+  overflow: visible; /* changed from hidden so bridge can extend */
+  z-index: 201;
 }
 
-.site-header__nav-item:hover .site-header__mega {
+/* JS-controlled open state — nav item and panel share hover state */
+.site-header__nav-item.is-open .site-header__mega,
+.site-header__nav-item.is-open .site-header__simple {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -503,6 +545,8 @@ const currentPath = Astro.url.pathname;
 .mega__inner {
   display: flex;
   gap: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Left image panel — portrait photo with overlay + label */
@@ -551,9 +595,7 @@ const currentPath = Astro.url.pathname;
 .mega__grid--4 { grid-template-columns: repeat(4, 1fr); }
 .mega__grid--2 { grid-template-columns: repeat(2, 1fr); }
 
-.mega__col {
-  /* No ::after, no dividers — clean spacing only */
-}
+.mega__col { /* No dividers — clean spacing only */ }
 
 .mega__header {
   font-family: 'Inter', sans-serif;
@@ -623,13 +665,13 @@ const currentPath = Astro.url.pathname;
    ════════════════════════════════════ */
 .site-header__simple {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 14px); /* matches bridge height */
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
   width: max-content;
   min-width: 220px;
   max-width: 90vw;
@@ -638,18 +680,15 @@ const currentPath = Astro.url.pathname;
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.08);
   padding: 32px;
-}
-
-.site-header__nav-item:hover .site-header__simple {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  overflow: visible;
+  z-index: 201;
 }
 
 .simple__grid {
   display: grid;
   gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 .simple__grid--1 { grid-template-columns: 1fr; }
 .simple__grid--2 { grid-template-columns: repeat(2, 1fr); }
@@ -691,16 +730,6 @@ const currentPath = Astro.url.pathname;
   display: block;
 }
 .simple__link:hover { color: #7CB342; }
-
-.simple__footer {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-style: italic;
-  color: rgba(255,255,255,0.5);
-}
 
 /* ════════════════════════════════════
    RIGHT ACTIONS
@@ -935,7 +964,165 @@ const currentPath = Astro.url.pathname;
 </style>
 
 <script>
-// Mobile nav toggle
+// ═══════════════════════════════════════════════════════════════
+//  MEGA MENU — HOVER INTENT FIX
+//  Fixes the "dead space gap" problem where the dropdown closes
+//  before the cursor reaches it when moving from nav → dropdown.
+// ═══════════════════════════════════════════════════════════════
+
+const CLOSE_DELAY = 250; // ms before closing — gives user time to cross the gap
+
+// Track open state and close timers per nav group
+const navGroups = document.querySelectorAll('[data-nav-group]');
+const closeTimers = new Map(); // navIndex → setTimeout id
+
+function openDropdown(navIndex) {
+  // Clear any pending close timer
+  const timer = closeTimers.get(navIndex);
+  if (timer) {
+    clearTimeout(timer);
+    closeTimers.delete(navIndex);
+  }
+
+  // Open the nav item
+  const group = navGroups[navIndex];
+  if (!group) return;
+
+  group.classList.add('is-open');
+
+  // Update ARIA
+  const trigger = group.querySelector('[data-nav-trigger]');
+  if (trigger) {
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function scheduleClose(navIndex) {
+  // Don't schedule if already scheduled
+  if (closeTimers.has(navIndex)) return;
+
+  const timer = setTimeout(() => {
+    closeDropdown(navIndex);
+  }, CLOSE_DELAY);
+  closeTimers.set(navIndex, timer);
+}
+
+function clearClose(navIndex) {
+  const timer = closeTimers.get(navIndex);
+  if (timer) {
+    clearTimeout(timer);
+    closeTimers.delete(navIndex);
+  }
+}
+
+function closeDropdown(navIndex) {
+  const group = navGroups[navIndex];
+  if (!group) return;
+
+  group.classList.remove('is-open');
+
+  // Update ARIA
+  const trigger = group.querySelector('[data-nav-trigger]');
+  if (trigger) {
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  closeTimers.delete(navIndex);
+}
+
+// Initialize all nav groups with hover + keyboard/click handlers
+navGroups.forEach((group, navIndex) => {
+  const trigger = group.querySelector('[data-nav-trigger]');
+  const panel = group.querySelector('[data-nav-panel]');
+  const bridge = group.querySelector('[data-nav-bridge]');
+
+  if (!trigger || !panel) return; // No dropdown — skip
+
+  // --- MOUSE ENTER trigger → open immediately, cancel close ---
+  trigger.addEventListener('mouseenter', () => {
+    clearClose(navIndex);
+    openDropdown(navIndex);
+  });
+
+  // --- MOUSE LEAVE trigger → schedule close ---
+  trigger.addEventListener('mouseleave', (e) => {
+    // Don't close immediately — let the user reach the panel/bridge
+    scheduleClose(navIndex);
+  });
+
+  // --- MOUSE ENTER panel → cancel scheduled close ---
+  panel.addEventListener('mouseenter', () => {
+    clearClose(navIndex);
+    openDropdown(navIndex); // ensure it's open
+  });
+
+  // --- MOUSE LEAVE panel → schedule close ---
+  panel.addEventListener('mouseleave', (e) => {
+    // Only close if mouse actually left the whole nav group area
+    scheduleClose(navIndex);
+  });
+
+  // --- Bridge: mouseenter prevents close ---
+  if (bridge) {
+    bridge.addEventListener('mouseenter', () => {
+      clearClose(navIndex);
+      openDropdown(navIndex);
+    });
+    bridge.addEventListener('mouseleave', (e) => {
+      scheduleClose(navIndex);
+    });
+  }
+
+  // --- Click on trigger (mobile/touch or keyboard) ---
+  trigger.addEventListener('click', (e) => {
+    // If dropdown is open, clicking again closes it
+    if (group.classList.contains('is-open')) {
+      e.preventDefault(); // prevent navigation if re-clicking
+      closeDropdown(navIndex);
+    } else {
+      // Open it (clicking nav link also navigates)
+      openDropdown(navIndex);
+    }
+  });
+
+  // --- Keyboard: Escape closes dropdown ---
+  panel.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeDropdown(navIndex);
+      trigger.focus();
+    }
+  });
+
+  // --- Focus trap inside panel ---
+  const panelLinks = panel.querySelectorAll('a');
+  if (panelLinks.length > 0) {
+    panelLinks[0].addEventListener('keydown', (e) => {
+      if (e.key === 'Tab' && e.shiftKey) {
+        // Shift+Tab from first link → focus trigger
+        e.preventDefault();
+        trigger.focus();
+        closeDropdown(navIndex);
+      }
+    });
+    panelLinks[panelLinks.length - 1].addEventListener('keydown', (e) => {
+      if (e.key === 'Tab' && !e.shiftKey) {
+        // Tab from last link → close and move on
+        closeDropdown(navIndex);
+      }
+    });
+  }
+});
+
+// Close all dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('[data-nav-group]')) {
+    navGroups.forEach((_, idx) => closeDropdown(idx));
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════
+//  MOBILE NAV
+// ═══════════════════════════════════════════════════════════════
 const navBurger = document.getElementById('navBurger');
 const navMobile = document.getElementById('navMobile');
 const navMobileClose = document.getElementById('navMobileClose');
@@ -960,7 +1147,7 @@ navBurger?.addEventListener('click', openMobileNav);
 navMobileClose?.addEventListener('click', closeMobileNav);
 navOverlay?.addEventListener('click', closeMobileNav);
 
-// Mobile accordion
+// Mobile accordion — tap to expand/collapse
 document.querySelectorAll('.mobile-nav-group__toggle').forEach((toggle) => {
   toggle.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
@@ -968,7 +1155,9 @@ document.querySelectorAll('.mobile-nav-group__toggle').forEach((toggle) => {
   });
 });
 
-// Scroll detection
+// ═══════════════════════════════════════════════════════════════
+//  SCROLL DETECTION
+// ═══════════════════════════════════════════════════════════════
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
