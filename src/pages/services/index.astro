@@ -876,7 +876,19 @@ const description = "Professional window film installation services in Philadelp
   </script>
 
   <!-- Final CTA -->
-  <section class="cta-modern">
+  <!-- Final CTA with Video Background -->
+  <section class="cta-modern cta-video">
+    <video
+      class="cta-video__background"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster="https://res.cloudinary.com/deunehrew/video/upload/f_auto,q_auto,so_0/v1781723919/film_install_lam4dj.jpg"
+      src="https://res.cloudinary.com/deunehrew/video/upload/f_auto,q_auto,vc_auto/v1781723919/film_install_lam4dj.mov">
+    </video>
+    <div class="cta-video__overlay"></div>
     <div class="cta-modern__container">
       <h2 class="cta-modern__title">Ready To Transform Your Space?</h2>
       <p class="cta-modern__subtitle">Schedule your free consultation today and discover how window film can enhance comfort, reduce costs, and protect your property.</p>
@@ -2541,13 +2553,38 @@ const description = "Professional window film installation services in Philadelp
   margin: 0;
 }
 
-/* ─── CTA MODERN ─── */
+/* ─── CTA MODERN (Video Background) ─── */
 .cta-modern {
+  position: relative;
   padding: 120px 0;
-  background: #14201A;
   text-align: center;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-video__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.cta-video__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(13,26,15,0.7), rgba(13,26,15,0.8));
+  z-index: 1;
 }
 .cta-modern__container {
+  position: relative;
+  z-index: 2;
   max-width: 800px;
   margin: 0 auto;
   padding: 0 40px;
@@ -2564,7 +2601,7 @@ const description = "Professional window film installation services in Philadelp
   font-family: 'Inter', sans-serif;
   font-size: 1.125rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.9);
   margin-bottom: 40px;
 }
 .cta-modern__buttons {
@@ -2576,6 +2613,8 @@ const description = "Professional window film installation services in Philadelp
 .cta-modern .btn-pill--outline {
   border-color: #fff;
   color: #fff;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
 }
 .cta-modern .btn-pill--outline:hover {
   background: #fff;
