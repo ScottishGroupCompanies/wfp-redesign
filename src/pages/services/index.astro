@@ -412,24 +412,28 @@ const description = "Professional window film installation services in Philadelp
   <!-- Why Choose Us - Split with Bubbles -->
   <section class="why-modern">
     <div class="why-modern__container">
-      <div class="why-modern__image">
+      <div class="why-modern__image-container">
         <img 
-          src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_900/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_193107_9f66bcac-605c-48dc-92b1-b0d89b56fa6c.png"
-          alt="Professional window film installation"
-          class="rounded-image-large"
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
+          alt="Professional Window Film Philadelphia certified installer applying tinted film to modern office building glass"
+          class="why-modern__image"
         />
-        <div class="bubble-stat bubble-stat--1">
-          <div class="bubble-stat__number">15+</div>
-          <div class="bubble-stat__label">Years</div>
+        <div class="glass-stat glass-stat--1" data-parallax="0.3">
+          <div class="glass-stat__number">100%</div>
+          <div class="glass-stat__label">Satisfaction</div>
         </div>
-        <div class="bubble-stat bubble-stat--2">
-          <div class="bubble-stat__number">100%</div>
-          <div class="bubble-stat__label">Satisfaction</div>
+        <div class="glass-stat glass-stat--2" data-parallax="0.5">
+          <div class="glass-stat__number">20+</div>
+          <div class="glass-stat__label">Years</div>
+        </div>
+        <div class="glass-stat glass-stat--3" data-parallax="0.4">
+          <div class="glass-stat__number">2,400+</div>
+          <div class="glass-stat__label">Installs</div>
         </div>
       </div>
       <div class="why-modern__content">
         <div class="eyebrow-modern">Why Choose Window Film Philadelphia</div>
-        <h2 class="section-title-modern">Trusted By Philadelphia Since 2009</h2>
+        <h2 class="section-title-modern">Trusted By Philadelphia Since 2008</h2>
         <p class="why-modern__text">We've built our reputation on quality workmanship, premium products, and exceptional customer service. Our team is factory-trained and certified by leading manufacturers including 3M, LLumar, and Madico.</p>
         
         <div class="feature-list">
@@ -472,7 +476,7 @@ const description = "Professional window film installation services in Philadelp
             <div class="feature-item__icon">✓</div>
             <div class="feature-item__content">
               <strong>Local Philadelphia Company</strong>
-              <span">Based in Philadelphia, serving the region for 15+ years</span>
+              <span>Based in Philadelphia, serving the region for 20+ years</span>
             </div>
           </div>
         </div>
@@ -1635,44 +1639,99 @@ const description = "Professional window film installation services in Philadelp
   gap: 80px;
   align-items: center;
 }
+.why-modern__image-container {
+  position: relative;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.why-modern__image-container.visible {
+  opacity: 1;
+  transform: scale(1);
+}
 .why-modern__image {
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(20,32,26,0.2);
   position: relative;
 }
-.bubble-stat {
+.why-modern__image::after {
+  content: '';
   position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(13,26,15,0.15) 0%,
+    rgba(13,26,15,0.05) 40%,
+    rgba(13,26,15,0.25) 100%
+  );
+  pointer-events: none;
+}
+
+/* Glassmorphism Stat Cards */
+.glass-stat {
+  position: absolute;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  padding: 20px 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 40px rgba(20,32,26,0.2);
-  animation: float 6s ease-in-out infinite;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.3s ease-out, opacity 0.6s ease-out;
 }
-.bubble-stat--1 {
-  top: 40px;
-  right: -20px;
-  animation-delay: 0s;
+.why-modern__image-container.visible .glass-stat {
+  opacity: 1;
+  transform: translateY(0);
 }
-.bubble-stat--2 {
-  bottom: 60px;
-  left: -30px;
-  animation-delay: 3s;
+.glass-stat--1 {
+  top: -20px;
+  left: -40px;
+  transition-delay: 0.2s;
 }
-.bubble-stat__number {
-  font-family: 'Playfair Display', serif;
+.glass-stat--2 {
+  bottom: 40px;
+  right: -30px;
+  transition-delay: 0.4s;
+}
+.glass-stat--3 {
+  top: 50%;
+  left: -35px;
+  transform: translateY(-50%);
+  transition-delay: 0.6s;
+}
+.why-modern__image-container.visible .glass-stat--3 {
+  transform: translateY(-50%);
+}
+.glass-stat__number {
+  font-family: 'Space Mono', monospace;
   font-size: 2rem;
   font-weight: 700;
   color: #7CB342;
   line-height: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-.bubble-stat__label {
+.glass-stat__label {
   font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
-  color: #4A5C48;
-  margin-top: 4px;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 .why-modern__text {
   font-family: 'Inter', sans-serif;
@@ -1962,8 +2021,20 @@ const description = "Professional window film installation services in Philadelp
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .why-modern__image {
+  .why-modern__image-container {
     order: -1;
+  }
+  .why-modern__image {
+    min-height: 550px;
+  }
+  .glass-stat--1 {
+    left: -20px;
+  }
+  .glass-stat--2 {
+    right: -20px;
+  }
+  .glass-stat--3 {
+    left: -20px;
   }
   .stats-modern__container {
     grid-template-columns: repeat(2, 1fr);
@@ -2061,6 +2132,30 @@ const description = "Professional window film installation services in Philadelp
   }
   .bento-stat__number {
     font-size: 2.75rem;
+  }
+  .why-modern__image {
+    min-height: 450px;
+  }
+  .glass-stat {
+    padding: 16px 20px;
+  }
+  .glass-stat--1 {
+    top: 10px;
+    left: 10px;
+  }
+  .glass-stat--2 {
+    bottom: 10px;
+    right: 10px;
+  }
+  .glass-stat--3 {
+    top: 50%;
+    left: 10px;
+  }
+  .glass-stat__number {
+    font-size: 1.5rem;
+  }
+  .glass-stat__label {
+    font-size: 0.65rem;
   }
   .benefits-grid {
     grid-template-columns: 1fr;
@@ -2183,5 +2278,65 @@ const statementObserver = new IntersectionObserver((entries) => {
 const statementElement = document.querySelector('[data-statement]');
 if (statementElement) {
   statementObserver.observe(statementElement);
+}
+
+// ─── WHY MODERN: IMAGE CONTAINER FADE-IN & PARALLAX ───
+const whyImageContainer = document.querySelector('.why-modern__image-container');
+if (whyImageContainer) {
+  // Fade in image container on scroll into view
+  const whyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        whyObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  whyObserver.observe(whyImageContainer);
+
+  // Parallax effect on glass-stat cards (desktop only)
+  if (window.innerWidth > 1024) {
+    const glassStats = document.querySelectorAll('.glass-stat');
+    let ticking = false;
+
+    function updateParallax() {
+      const rect = whyImageContainer.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (isInView) {
+        const scrollPercentage = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        
+        glassStats.forEach((stat: HTMLElement) => {
+          const speed = parseFloat(stat.getAttribute('data-parallax') || '0.3');
+          const movement = (scrollPercentage - 0.5) * 40 * speed;
+          
+          // Preserve the vertical centering for glass-stat--3
+          if (stat.classList.contains('glass-stat--3')) {
+            stat.style.transform = `translateY(calc(-50% + ${movement}px))`;
+          } else {
+            stat.style.transform = `translateY(${movement}px)`;
+          }
+        });
+      }
+      
+      ticking = false;
+    }
+
+    function requestParallax() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestParallax, { passive: true });
+    window.addEventListener('resize', requestParallax, { passive: true });
+    
+    // Initial position
+    updateParallax();
+  }
 }
 </script>
