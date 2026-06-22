@@ -6,10 +6,7 @@ const description = "Professional window film installation services in Philadelp
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-    crossorigin="" slot="head" />
+  <!-- Static map image used instead of Leaflet (more reliable) -->
   
   <!-- Full-Bleed Cinematic Hero -->
   <section class="hero-cinematic">
@@ -601,9 +598,55 @@ const description = "Professional window film installation services in Philadelp
       </div>
 
       <div class="areas-split">
-        <!-- Left: Interactive Map -->
+        <!-- Left: Static Map Image with Pins -->
         <div class="areas-map-wrapper">
-          <div id="service-area-map" class="service-map"></div>
+          <div class="service-map">
+            <img 
+              src="/images/services-map.png" 
+              alt="Map of Window Film Philadelphia service area across Greater Philadelphia and the Delaware Valley"
+              class="service-map__image"
+            />
+            <!-- Green Location Pins -->
+            <div class="map-pin map-pin--philadelphia" title="Philadelphia">
+              <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12c0 9 12 24 12 24s12-15 12-24c0-6.62742-5.37258-12-12-12z" fill="#7CB342"/>
+                <circle cx="12" cy="12" r="5" fill="white"/>
+              </svg>
+              <span class="map-pin__label">Philadelphia</span>
+            </div>
+            <div class="map-pin map-pin--king-of-prussia" title="King of Prussia">
+              <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12c0 9 12 24 12 24s12-15 12-24c0-6.62742-5.37258-12-12-12z" fill="#7CB342"/>
+                <circle cx="12" cy="12" r="5" fill="white"/>
+              </svg>
+            </div>
+            <div class="map-pin map-pin--media" title="Media">
+              <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12c0 9 12 24 12 24s12-15 12-24c0-6.62742-5.37258-12-12-12z" fill="#7CB342"/>
+                <circle cx="12" cy="12" r="5" fill="white"/>
+              </svg>
+            </div>
+            <div class="map-pin map-pin--west-chester" title="West Chester">
+              <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12c0 9 12 24 12 24s12-15 12-24c0-6.62742-5.37258-12-12-12z" fill="#7CB342"/>
+                <circle cx="12" cy="12" r="5" fill="white"/>
+              </svg>
+            </div>
+            <div class="map-pin map-pin--doylestown" title="Doylestown">
+              <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12c0 9 12 24 12 24s12-15 12-24c0-6.62742-5.37258-12-12-12z" fill="#7CB342"/>
+                <circle cx="12" cy="12" r="5" fill="white"/>
+              </svg>
+            </div>
+            <div class="map-pin map-pin--cherry-hill" title="Cherry Hill, NJ">
+              <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12c0 9 12 24 12 24s12-15 12-24c0-6.62742-5.37258-12-12-12z" fill="#7CB342"/>
+                <circle cx="12" cy="12" r="5" fill="white"/>
+              </svg>
+            </div>
+            <!-- Badge -->
+            <div class="service-map__badge">Serving Greater Philadelphia & the Delaware Valley</div>
+          </div>
         </div>
 
         <!-- Right: County List -->
@@ -898,149 +941,6 @@ const description = "Professional window film installation services in Philadelp
       </div>
     </div>
   </section>
-
-  <!-- Leaflet JS -->
-  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-    crossorigin=""></script>
-
-  <!-- Interactive Map Script -->
-  <script is:inline>
-    // Wait for DOM and Leaflet to be ready
-    window.addEventListener('DOMContentLoaded', function() {
-      // Check if Leaflet is loaded
-      if (typeof L === 'undefined') {
-        console.error('Leaflet not loaded');
-        return;
-      }
-
-      // Service area markers with correct coordinates
-      const markers = {
-        philadelphia: { 
-          coords: [39.9526, -75.1652], 
-          name: 'Philadelphia',
-          description: 'Center City & surrounding neighborhoods'
-        },
-        montgomery: { 
-          coords: [40.0893, -75.3960], 
-          name: 'Montgomery County',
-          description: 'King of Prussia, Norristown & more'
-        },
-        delaware: { 
-          coords: [39.9168, -75.3877], 
-          name: 'Delaware County',
-          description: 'Media, Broomall, Havertown & more'
-        },
-        chester: { 
-          coords: [39.9607, -75.6055], 
-          name: 'Chester County',
-          description: 'West Chester, Exton, Malvern & more'
-        },
-        bucks: { 
-          coords: [40.3101, -75.1299], 
-          name: 'Bucks County',
-          description: 'Doylestown, Newtown, Warrington & more'
-        },
-        camden: { 
-          coords: [39.9348, -75.0307], 
-          name: 'Camden County, NJ',
-          description: 'Cherry Hill, Voorhees, Haddonfield & more'
-        }
-      };
-
-      // Wait for container to have computed dimensions
-      setTimeout(function() {
-        const container = document.getElementById('service-area-map');
-        if (!container) {
-          console.error('Map container not found');
-          return;
-        }
-
-        // Verify container has dimensions
-        const rect = container.getBoundingClientRect();
-        if (rect.height === 0 || rect.width === 0) {
-          console.error('Map container has no dimensions:', rect);
-          return;
-        }
-
-        // Initialize map centered on Philadelphia metro area
-        const map = L.map('service-area-map', {
-          center: [39.9526, -75.1652],
-          zoom: 10,
-          scrollWheelZoom: false, // Prevent scroll-trap on mobile
-          zoomControl: true,
-          preferCanvas: false
-        });
-
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          maxZoom: 18,
-          minZoom: 8
-        }).addTo(map);
-
-        // CRITICAL: Force map to recalculate size after tiles start loading
-        setTimeout(function() {
-          map.invalidateSize();
-        }, 100);
-
-        // Second invalidateSize after tiles fully load
-        setTimeout(function() {
-          map.invalidateSize();
-        }, 300);
-
-        // Custom green marker icon using brand color #7CB342
-        const greenIcon = L.divIcon({
-          className: 'custom-marker-green',
-          html: '<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.163 0 0 7.163 0 16c0 10.5 16 26 16 26s16-15.5 16-26c0-8.837-7.163-16-16-16zm0 22c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="#7CB342"/></svg>',
-          iconSize: [32, 42],
-          iconAnchor: [16, 42],
-          popupAnchor: [0, -42]
-        });
-
-        // Add markers for each service area
-        const mapMarkers = {};
-        Object.entries(markers).forEach(([key, data]) => {
-          const marker = L.marker(data.coords, { icon: greenIcon })
-            .addTo(map)
-            .bindPopup(`<div style="font-family: 'Inter', sans-serif; text-align: center; padding: 4px;"><strong style="color: #14201A; font-size: 1rem; display: block; margin-bottom: 4px;">${data.name}</strong><span style="color: #4A5C48; font-size: 0.85rem; display: block; margin-bottom: 6px;">${data.description}</span><span style="color: #7CB342; font-size: 0.8rem; font-weight: 600;">We serve this area</span></div>`);
-          
-          // Store marker reference for click interaction
-          marker._areaKey = key;
-          mapMarkers[key] = marker;
-        });
-
-        // County item click interaction - pan map to marker and open popup
-        document.querySelectorAll('.area-item').forEach(item => {
-          item.addEventListener('click', function() {
-            const markerKey = this.getAttribute('data-marker');
-            if (markers[markerKey] && mapMarkers[markerKey]) {
-              // Pan to marker and zoom in slightly
-              map.setView(markers[markerKey].coords, 12, { 
-                animate: true,
-                duration: 0.8
-              });
-              
-              // Open the popup after animation
-              setTimeout(function() {
-                mapMarkers[markerKey].openPopup();
-              }, 500);
-            }
-          });
-        });
-
-        // Re-invalidate on window resize (responsive fix)
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(function() {
-            map.invalidateSize();
-          }, 250);
-        });
-
-      }, 150); // Increased delay to ensure container has dimensions
-    });
-  </script>
 
 </BaseLayout>
 
@@ -2367,30 +2267,109 @@ const description = "Professional window film installation services in Philadelp
   height: 100%;
   min-height: 600px;
   border-radius: 16px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Right column: County list */
-.areas-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.service-map__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
-/* Custom Leaflet marker styling */
-/* Custom green marker styles */
-.custom-marker-green {
-  background: none !important;
-  border: none !important;
+/* Map badge overlay */
+.service-map__badge {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 32, 26, 0.9);
+  color: #F3F6F1;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  z-index: 10;
 }
 
-/* Leaflet popup styles */
-.leaflet-popup-content-wrapper {
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(20, 32, 26, 0.15);
+/* Map pins */
+.map-pin {
+  position: absolute;
+  width: 32px;
+  height: 42px;
+  transform: translate(-50%, -100%);
+  z-index: 5;
+  animation: pin-pulse 2s ease-in-out infinite;
 }
 
-.leaflet-popup-tip {
-  box-shadow: 0 2px 8px rgba(20, 32, 26, 0.1);
+.map-pin svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.map-pin__label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  background: #14201A;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.map-pin:hover .map-pin__label {
+  opacity: 1;
+}
+
+@keyframes pin-pulse {
+  0%, 100% {
+    transform: translate(-50%, -100%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -100%) scale(1.05);
+  }
+}
+
+/* Pin positions - adjust these percentages based on the generated map image */
+.map-pin--philadelphia {
+  top: 52%;
+  left: 48%;
+}
+
+.map-pin--king-of-prussia {
+  top: 45%;
+  left: 35%;
+}
+
+.map-pin--media {
+  top: 58%;
+  left: 42%;
+}
+
+.map-pin--west-chester {
+  top: 62%;
+  left: 28%;
+}
+
+.map-pin--doylestown {
+  top: 30%;
+  left: 52%;
+}
+
+.map-pin--cherry-hill {
+  top: 65%;
+  left: 58%;
 }
 
 .area-item {
@@ -2405,6 +2384,13 @@ const description = "Professional window film installation services in Philadelp
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(20, 32, 26, 0.1);
   background: #fff;
+}
+
+/* Right column: County list */
+.areas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .area-item__header {
