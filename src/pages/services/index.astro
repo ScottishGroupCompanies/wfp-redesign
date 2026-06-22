@@ -802,55 +802,69 @@ const description = "Professional window film installation services in Philadelp
         }
       };
 
-      // Initialize map centered on Philadelphia metro area
-      const map = L.map('service-area-map', {
-        center: [40.0, -75.2],
-        zoom: 10,
-        scrollWheelZoom: false, // Disable scroll zoom to prevent scroll trap on mobile
-        zoomControl: true
-      });
+      // Wait for container to have dimensions, then initialize map
+      setTimeout(function() {
+        const container = document.getElementById('service-area-map');
+        if (!container) {
+          console.error('Map container not found');
+          return;
+        }
 
-      // Add OpenStreetMap tiles
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 19
-      }).addTo(map);
-
-      // Custom green marker icon using brand color #7CB342
-      const greenIcon = L.divIcon({
-        className: 'custom-marker',
-        html: '<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.163 0 0 7.163 0 16c0 10.5 16 26 16 26s16-15.5 16-26c0-8.837-7.163-16-16-16zm0 22c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="#7CB342"/></svg>',
-        iconSize: [32, 42],
-        iconAnchor: [16, 42],
-        popupAnchor: [0, -42]
-      });
-
-      // Add markers for each service area
-      Object.entries(markers).forEach(([key, data]) => {
-        const marker = L.marker(data.coords, { icon: greenIcon })
-          .addTo(map)
-          .bindPopup(`<div style="font-family: 'Inter', sans-serif; text-align: center;"><strong style="color: #14201A; font-size: 1rem;">${data.name}</strong><br/><span style="color: #4A5C48; font-size: 0.85rem;">${data.description}</span><br/><span style="color: #7CB342; font-size: 0.8rem; font-weight: 600; margin-top: 4px; display: inline-block;">We serve this area</span></div>`);
-        
-        // Store marker reference for click interaction
-        marker._areaKey = key;
-      });
-
-      // County item hover/click interaction - pan map to marker
-      document.querySelectorAll('.area-item').forEach(item => {
-        item.addEventListener('click', function() {
-          const markerKey = this.getAttribute('data-marker');
-          if (markers[markerKey]) {
-            map.setView(markers[markerKey].coords, 12, { animate: true });
-            
-            // Find and open the popup for this marker
-            map.eachLayer(layer => {
-              if (layer instanceof L.Marker && layer._areaKey === markerKey) {
-                layer.openPopup();
-              }
-            });
-          }
+        // Initialize map centered on Philadelphia metro area
+        const map = L.map('service-area-map', {
+          center: [40.0, -75.2],
+          zoom: 10,
+          scrollWheelZoom: false, // Disable scroll zoom to prevent scroll trap on mobile
+          zoomControl: true
         });
-      });
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Force map to recalculate size after tiles load
+        setTimeout(function() {
+          map.invalidateSize();
+        }, 200);
+
+        // Custom green marker icon using brand color #7CB342
+        const greenIcon = L.divIcon({
+          className: 'custom-marker',
+          html: '<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.163 0 0 7.163 0 16c0 10.5 16 26 16 26s16-15.5 16-26c0-8.837-7.163-16-16-16zm0 22c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="#7CB342"/></svg>',
+          iconSize: [32, 42],
+          iconAnchor: [16, 42],
+          popupAnchor: [0, -42]
+        });
+
+        // Add markers for each service area
+        Object.entries(markers).forEach(([key, data]) => {
+          const marker = L.marker(data.coords, { icon: greenIcon })
+            .addTo(map)
+            .bindPopup(`<div style="font-family: 'Inter', sans-serif; text-align: center;"><strong style="color: #14201A; font-size: 1rem;">${data.name}</strong><br/><span style="color: #4A5C48; font-size: 0.85rem;">${data.description}</span><br/><span style="color: #7CB342; font-size: 0.8rem; font-weight: 600; margin-top: 4px; display: inline-block;">We serve this area</span></div>`);
+          
+          // Store marker reference for click interaction
+          marker._areaKey = key;
+        });
+
+        // County item hover/click interaction - pan map to marker
+        document.querySelectorAll('.area-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const markerKey = this.getAttribute('data-marker');
+            if (markers[markerKey]) {
+              map.setView(markers[markerKey].coords, 12, { animate: true });
+              
+              // Find and open the popup for this marker
+              map.eachLayer(layer => {
+                if (layer instanceof L.Marker && layer._areaKey === markerKey) {
+                  layer.openPopup();
+                }
+              });
+            }
+          });
+        });
+      }, 100);
     });
   </script>
 
@@ -2168,6 +2182,7 @@ const description = "Professional window film installation services in Philadelp
   position: relative;
   width: 100%;
   height: 600px;
+  min-height: 600px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(20, 32, 26, 0.12);
@@ -2176,6 +2191,7 @@ const description = "Professional window film installation services in Philadelp
 .service-map {
   width: 100%;
   height: 100%;
+  min-height: 600px;
   border-radius: 16px;
 }
 
