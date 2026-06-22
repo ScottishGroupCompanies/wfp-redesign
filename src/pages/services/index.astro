@@ -6,6 +6,10 @@ const description = "Professional window film installation services in Philadelp
 ---
 
 <BaseLayout title={title} description={description}>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+    crossorigin="" slot="head" />
   
   <!-- Full-Bleed Cinematic Hero -->
   <section class="hero-cinematic">
@@ -596,30 +600,73 @@ const description = "Professional window film installation services in Philadelp
         <p class="areas-modern__intro">We proudly serve residential, commercial, and government clients throughout the Philadelphia metropolitan area and surrounding counties.</p>
       </div>
 
-      <div class="areas-grid">
-        <div class="area-bubble">
-          <h3>Philadelphia</h3>
-          <p>Center City · University City · South Philadelphia · Northeast Philadelphia · Northwest Philadelphia · Manayunk · Chestnut Hill · Roxborough</p>
+      <div class="areas-split">
+        <!-- Left: Interactive Map -->
+        <div class="areas-map-wrapper">
+          <div id="service-area-map" class="service-map"></div>
         </div>
-        <div class="area-bubble">
-          <h3>Montgomery County</h3>
-          <p>King of Prussia · Norristown · Lansdale · Ambler · Blue Bell · Willow Grove · Abington · Jenkintown · Cheltenham</p>
-        </div>
-        <div class="area-bubble">
-          <h3>Delaware County</h3>
-          <p>Media · Broomall · Havertown · Springfield · Upper Darby · Drexel Hill · Swarthmore · Wayne · Radnor</p>
-        </div>
-        <div class="area-bubble">
-          <h3>Chester County</h3>
-          <p>West Chester · Exton · Malvern · Phoenixville · Downingtown · Kennett Square · Paoli · Devon</p>
-        </div>
-        <div class="area-bubble">
-          <h3>Bucks County</h3>
-          <p>Doylestown · Newtown · Warrington · Yardley · Langhorne · Levittown · Bensalem · Warminster</p>
-        </div>
-        <div class="area-bubble">
-          <h3>Camden County, NJ</h3>
-          <p>Cherry Hill · Voorhees · Haddonfield · Marlton · Mount Laurel · Collingswood · Camden</p>
+
+        <!-- Right: County List -->
+        <div class="areas-list">
+          <div class="area-item" data-marker="philadelphia">
+            <div class="area-item__header">
+              <svg class="area-item__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              <h3 class="area-item__title">Philadelphia</h3>
+            </div>
+            <p class="area-item__cities">Center City · University City · South Philadelphia · Northeast Philadelphia · Northwest Philadelphia · Manayunk · Chestnut Hill · Roxborough</p>
+          </div>
+
+          <div class="area-item" data-marker="montgomery">
+            <div class="area-item__header">
+              <svg class="area-item__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              <h3 class="area-item__title">Montgomery County</h3>
+            </div>
+            <p class="area-item__cities">King of Prussia · Norristown · Lansdale · Ambler · Blue Bell · Willow Grove · Abington · Jenkintown · Cheltenham</p>
+          </div>
+
+          <div class="area-item" data-marker="delaware">
+            <div class="area-item__header">
+              <svg class="area-item__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              <h3 class="area-item__title">Delaware County</h3>
+            </div>
+            <p class="area-item__cities">Media · Broomall · Havertown · Springfield · Upper Darby · Drexel Hill · Swarthmore · Wayne · Radnor</p>
+          </div>
+
+          <div class="area-item" data-marker="chester">
+            <div class="area-item__header">
+              <svg class="area-item__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              <h3 class="area-item__title">Chester County</h3>
+            </div>
+            <p class="area-item__cities">West Chester · Exton · Malvern · Phoenixville · Downingtown · Kennett Square · Paoli · Devon</p>
+          </div>
+
+          <div class="area-item" data-marker="bucks">
+            <div class="area-item__header">
+              <svg class="area-item__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              <h3 class="area-item__title">Bucks County</h3>
+            </div>
+            <p class="area-item__cities">Doylestown · Newtown · Warrington · Yardley · Langhorne · Levittown · Bensalem · Warminster</p>
+          </div>
+
+          <div class="area-item" data-marker="camden">
+            <div class="area-item__header">
+              <svg class="area-item__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              <h3 class="area-item__title">Camden County, NJ</h3>
+            </div>
+            <p class="area-item__cities">Cherry Hill · Voorhees · Haddonfield · Marlton · Mount Laurel · Collingswood · Camden</p>
+          </div>
         </div>
       </div>
     </div>
@@ -706,6 +753,106 @@ const description = "Professional window film installation services in Philadelp
       </div>
     </div>
   </section>
+
+  <!-- Leaflet JS -->
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+    crossorigin=""></script>
+
+  <!-- Interactive Map Script -->
+  <script is:inline>
+    // Wait for DOM and Leaflet to be ready
+    window.addEventListener('DOMContentLoaded', function() {
+      if (typeof L === 'undefined') {
+        console.error('Leaflet not loaded');
+        return;
+      }
+
+      // Service area markers with coordinates
+      const markers = {
+        philadelphia: { 
+          coords: [39.9526, -75.1652], 
+          name: 'Philadelphia',
+          description: 'Center City & surrounding neighborhoods'
+        },
+        montgomery: { 
+          coords: [40.1545, -75.2557], 
+          name: 'Montgomery County',
+          description: 'King of Prussia, Norristown & more'
+        },
+        delaware: { 
+          coords: [39.9167, -75.3878], 
+          name: 'Delaware County',
+          description: 'Media, Broomall, Havertown & more'
+        },
+        chester: { 
+          coords: [39.9607, -75.6085], 
+          name: 'Chester County',
+          description: 'West Chester, Exton, Malvern & more'
+        },
+        bucks: { 
+          coords: [40.3382, -75.1329], 
+          name: 'Bucks County',
+          description: 'Doylestown, Newtown, Warrington & more'
+        },
+        camden: { 
+          coords: [39.9334, -75.0182], 
+          name: 'Camden County, NJ',
+          description: 'Cherry Hill, Voorhees, Haddonfield & more'
+        }
+      };
+
+      // Initialize map centered on Philadelphia metro area
+      const map = L.map('service-area-map', {
+        center: [40.0, -75.2],
+        zoom: 10,
+        scrollWheelZoom: false, // Disable scroll zoom to prevent scroll trap on mobile
+        zoomControl: true
+      });
+
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+      }).addTo(map);
+
+      // Custom green marker icon using brand color #7CB342
+      const greenIcon = L.divIcon({
+        className: 'custom-marker',
+        html: '<svg width="32" height="42" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.163 0 0 7.163 0 16c0 10.5 16 26 16 26s16-15.5 16-26c0-8.837-7.163-16-16-16zm0 22c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" fill="#7CB342"/></svg>',
+        iconSize: [32, 42],
+        iconAnchor: [16, 42],
+        popupAnchor: [0, -42]
+      });
+
+      // Add markers for each service area
+      Object.entries(markers).forEach(([key, data]) => {
+        const marker = L.marker(data.coords, { icon: greenIcon })
+          .addTo(map)
+          .bindPopup(`<div style="font-family: 'Inter', sans-serif; text-align: center;"><strong style="color: #14201A; font-size: 1rem;">${data.name}</strong><br/><span style="color: #4A5C48; font-size: 0.85rem;">${data.description}</span><br/><span style="color: #7CB342; font-size: 0.8rem; font-weight: 600; margin-top: 4px; display: inline-block;">We serve this area</span></div>`);
+        
+        // Store marker reference for click interaction
+        marker._areaKey = key;
+      });
+
+      // County item hover/click interaction - pan map to marker
+      document.querySelectorAll('.area-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const markerKey = this.getAttribute('data-marker');
+          if (markers[markerKey]) {
+            map.setView(markers[markerKey].coords, 12, { animate: true });
+            
+            // Find and open the popup for this marker
+            map.eachLayer(layer => {
+              if (layer instanceof L.Marker && layer._areaKey === markerKey) {
+                layer.openPopup();
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
 
 </BaseLayout>
 
@@ -2007,34 +2154,87 @@ const description = "Professional window film installation services in Philadelp
   max-width: 700px;
   margin: 20px auto 0;
 }
-.areas-grid {
+
+/* Two-column split: map + list */
+.areas-split {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 55% 45%;
+  gap: 48px;
+  align-items: start;
 }
-.area-bubble {
+
+/* Left column: Map wrapper */
+.areas-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(20, 32, 26, 0.12);
+}
+
+.service-map {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+/* Right column: County list */
+.areas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Custom Leaflet marker styling */
+.custom-marker {
+  background: none !important;
+  border: none !important;
+}
+
+.area-item {
   background: #F5F3EE;
-  border-radius: 20px;
-  padding: 36px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 16px;
+  padding: 24px 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
-.area-bubble:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(20,32,26,0.12);
+
+.area-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(20, 32, 26, 0.1);
+  background: #fff;
 }
-.area-bubble h3 {
+
+.area-item__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.area-item__icon {
+  width: 24px;
+  height: 24px;
+  color: #7CB342;
+  flex-shrink: 0;
+}
+
+.area-item__title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #14201A;
-  margin-bottom: 12px;
+  margin: 0;
 }
-.area-bubble p {
+
+.area-item__cities {
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   line-height: 1.6;
   color: #4A5C48;
+  margin: 0;
+  padding-left: 36px;
 }
 
 /* ─── FAQ MODERN ─── */
@@ -2217,8 +2417,12 @@ const description = "Professional window film installation services in Philadelp
   .brands-grid-cinematic {
     grid-template-columns: repeat(2, 1fr);
   }
-  .areas-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .areas-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .areas-map-wrapper {
+    height: 450px;
   }
   .faq-grid {
     grid-template-columns: 1fr;
@@ -2324,8 +2528,11 @@ const description = "Professional window film installation services in Philadelp
   .brands-grid-cinematic {
     grid-template-columns: 1fr;
   }
-  .areas-grid {
-    grid-template-columns: 1fr;
+  .areas-map-wrapper {
+    height: 320px;
+  }
+  .area-item__cities {
+    font-size: 0.85rem;
   }
   .hero-split {
     padding: 100px 0 60px;
