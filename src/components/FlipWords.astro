@@ -1,0 +1,97 @@
+---
+interface Props {
+  words: string[];
+  staticText?: string;
+  tag?: string;
+  class?: string;
+}
+
+const { words, staticText = '', tag = 'span', class: className } = Astro.props;
+const id = `fw-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<span class={`flipwords-wrap ${className || ''}`} id={id} data-static={staticText} data-words={JSON.stringify(words)}>
+  {staticText && <span class="fw-static">{staticText}</span>}
+  <span class="fw-word-col" aria-live="polite" aria-atomic="true">
+    {words.map((word, i) => (
+      <span class={`fw-word${i === 0 ? ' is-active' : ''}`} data-index={i}>{word}</span>
+    ))}
+  </span>
+</span>
+
+<style>
+.flipwords-wrap {
+  display: inline;
+  white-space: nowrap;
+}
+
+.fw-static {
+  white-space: nowrap;
+}
+
+.fw-word-col {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  /* Reserve width for the longest word — prevents layout shift */
+  min-width: 7.5ch;
+  vertical-align: bottom;
+  line-height: 1.2;
+}
+
+/* Each word stacked vertically; active one is visible */
+.fw-word {
+  display: block;
+  min-width: 7.5ch;
+  white-space: nowrap;
+  color: #7CB342;
+  opacity: 0;
+  transform: translateY(105%) rotateX(-20deg);
+  transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.35s ease;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+/* Active word — shown */
+.fw-word.is-active {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+  position: relative;
+}
+</style>
+
+<script define:vars={{ id }}>
+(function () {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+
+  const wordEls = Array.from(wrap.querySelectorAll('.fw-word'));
+  if (wordEls.length <= 1) return;
+
+  let current = 0;
+
+  function setHeight() {
+    const col = wrap.querySelector('.fw-word-col');
+    if (!col) return;
+    const lineH = parseFloat(window.getComputedStyle(col).fontSize) * 1.2;
+    col.style.height = `${lineH}px`;
+  }
+
+  function nextWord() {
+    wordEls[current].classList.remove('is-active');
+    current = (current + 1) % wordEls.length;
+    wordEls[current].classList.add('is-active');
+  }
+
+  setTimeout(() => {
+    setHeight();
+    setInterval(nextWord, 3000);
+  }, 700);
+})();
+</script>
