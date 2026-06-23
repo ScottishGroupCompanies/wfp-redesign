@@ -34,7 +34,7 @@ const id = `fw-${Math.random().toString(36).slice(2, 8)}`;
   flex-direction: column;
   position: relative;
   /* Reserve width for the longest word — prevents layout shift */
-  min-width: 7.5ch;
+  min-width: 8.5ch;
   vertical-align: bottom;
   line-height: 1.2;
 }
@@ -42,26 +42,28 @@ const id = `fw-${Math.random().toString(36).slice(2, 8)}`;
 /* Each word stacked vertically; active one is visible */
 .fw-word {
   display: block;
-  min-width: 7.5ch;
+  min-width: 8.5ch;
   white-space: nowrap;
   color: #7CB342;
   opacity: 0;
-  transform: translateY(105%) rotateX(-20deg);
-  transform-origin: bottom;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-              opacity 0.35s ease;
+  filter: blur(4px);
+  transform: translateY(10px);
+  transition: filter 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.4s ease,
+              transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  will-change: transform, opacity;
+  will-change: filter, transform, opacity;
 }
 
 /* Active word — shown */
 .fw-word.is-active {
   opacity: 1;
-  transform: translateY(0) rotateX(0deg);
+  filter: blur(0px);
+  transform: translateY(0);
   position: relative;
 }
 </style>
