@@ -947,20 +947,38 @@ const heroImage = "/images/uv-protection-hero-philadelphia.png";
     </div>
   </section>
 
-  <!-- Video CTA Section -->
-  <section class="cta-video-section">
-    <div class="cta-video-section__bg">
-      <video autoplay muted loop playsinline preload="none" poster="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,so_0/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/film_install_lam4dj.mov">
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37D/film_install_lam4dj.mov" type="video/mp4" />
+  <!-- Cinematic Video CTA Section -->
+  <section class="cinematic-cta">
+    <div class="cinematic-cta__media" aria-hidden="true">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%230d1a0f'/%3E%3C/svg%3E"
+      >
+        <source src="https://res.cloudinary.com/deunehrew/video/upload/f_auto,q_auto,vc_auto/v1781723919/film_install_lam4dj.mov" type="video/mp4" />
       </video>
     </div>
-    <div class="cta-video-section__overlay"></div>
-    <div class="cta-video-section__content">
-      <h2 class="cta-video-section__title">Ready to Protect Your Philadelphia Property?</h2>
-      <p class="cta-video-section__text">Block 99% of harmful UV rays and preserve your investment for decades. Professional installation, premium films, lifetime warranties.</p>
-      <div class="cta-video-section__buttons">
-        <a href="/contact/" class="btn-pill btn-pill--primary btn-pill--large">Get Your Free Estimate</a>
-        <a href="tel:2673947980" class="btn-pill btn-pill--outline-white btn-pill--large">(267) 394-7980</a>
+
+    <!-- Layered overlays: gradient + dark -->
+    <div class="cinematic-cta__overlay" aria-hidden="true"></div>
+    <div class="cinematic-cta__vignette" aria-hidden="true"></div>
+
+    <div class="cinematic-cta__content">
+      <h2 class="cinematic-cta__title">Ready to Protect Your Philadelphia Property?</h2>
+      <p class="cinematic-cta__text">
+        Block up to 99% of harmful UV rays while preserving the floors, furnishings, artwork, and interiors sunlight touches every day.
+      </p>
+      <div class="cinematic-cta__actions">
+        <a href="/contact/" class="cinematic-cta__btn-primary">Get Your Free Estimate</a>
+        <a href="tel:2673947980" class="cinematic-cta__btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/>
+          </svg>
+          (267) 394-7980
+        </a>
       </div>
     </div>
   </section>
@@ -2966,61 +2984,139 @@ const heroImage = "/images/uv-protection-hero-philadelphia.png";
   }
 }
 
-/* CTA Video Section */
-.cta-video-section {
+/* Cinematic Video CTA Section */
+.cinematic-cta {
   position: relative;
-  padding: 120px 24px;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.cta-video-section__bg {
+/* Video background */
+.cinematic-cta__media {
   position: absolute;
   inset: 0;
 }
 
-.cta-video-section__bg video {
+.cinematic-cta__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.cta-video-section__overlay {
+/* Layered overlays */
+.cinematic-cta__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    rgba(13, 26, 15, 0.8),
-    rgba(13, 26, 15, 0.9)
+    135deg,
+    rgba(13, 26, 15, 0.88) 0%,
+    rgba(46, 107, 48, 0.75) 40%,
+    rgba(13, 26, 15, 0.88) 100%
   );
 }
 
-.cta-video-section__content {
+.cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(13, 26, 15, 0.2) 0%,
+    rgba(13, 26, 15, 0.6) 100%
+  );
+}
+
+/* Content */
+.cinematic-cta__content {
   position: relative;
   z-index: 10;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 760px;
+  padding: 80px 24px;
   text-align: center;
 }
 
-.cta-video-section__title {
+.cinematic-cta__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
   font-weight: 700;
   color: #F3F6F1;
   margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.cta-video-section__text {
-  font-size: 1.125rem;
-  color: rgba(243, 246, 241, 0.85);
-  margin-bottom: 40px;
-  line-height: 1.7;
+.cinematic-cta__text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243, 246, 241, 0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
 }
 
-.cta-video-section__buttons {
+/* CTA buttons */
+.cinematic-cta__actions {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+.cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124, 179, 66, 0.35);
+}
+
+.cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.cinematic-cta__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(124, 179, 66, 0.6);
+  color: #F3F6F1;
+  transform: translateY(-2px);
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-cta__btn-primary:hover,
+  .cinematic-cta__btn-secondary:hover {
+    transform: none;
+  }
 }
 
 /* Cities Ticker */
@@ -3316,6 +3412,44 @@ const heroImage = "/images/uv-protection-hero-philadelphia.png";
 
   .areas-section {
     padding: 60px 16px;
+  }
+}
+
+/* Cinematic CTA — responsive */
+@media (max-width: 768px) {
+  .cinematic-cta {
+    min-height: 520px;
+  }
+
+  .cinematic-cta__content {
+    padding: 60px 20px;
+  }
+
+  .cinematic-cta__actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cinematic-cta {
+    min-height: 580px;
+  }
+
+  .cinematic-cta__content {
+    padding: 48px 16px;
+  }
+
+  .cinematic-cta__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cinematic-cta__btn-primary,
+  .cinematic-cta__btn-secondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
   }
 }
 
