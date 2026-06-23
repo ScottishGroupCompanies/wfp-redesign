@@ -216,12 +216,15 @@ const heroImage = "/images/uv-protection-hero-philadelphia.png";
       <span>Philadelphia</span>
     </div>
     <h2 class="flip-statement__headline">
-      Sunlight should brighten your space &mdash; not fade your
-      <FlipWords
-        words={["floors", "furniture", "artwork", "interiors", "storefront"]}
-        staticText=""
-        class="flip-statement__flip"
-      />
+      <span class="flip-statement__line1">Sunlight should brighten your</span>
+      <span class="flip-statement__line2">
+        space, not fade your
+        <FlipWords
+          words={["floors", "furniture", "artwork", "interiors", "storefront"]}
+          staticText=""
+          class="flip-statement__flip"
+        />
+      </span>
     </h2>
     <p class="flip-statement__sub">
       UV protection film blocks up to 99% of harmful UV rays while keeping the natural light you love.
@@ -1032,6 +1035,16 @@ const heroImage = "/images/uv-protection-hero-philadelphia.png";
   position: relative;
   z-index: 1;
   letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05em;
+}
+
+.flip-statement__line1,
+.flip-statement__line2 {
+  display: block;
+  white-space: nowrap;
 }
 
 /* FlipWords inside the headline — inherits color, handles its own animation */
@@ -1914,6 +1927,12 @@ const heroImage = "/images/uv-protection-hero-philadelphia.png";
   }
 
   .flip-statement__headline {
+    text-align: center;
+  }
+
+  .flip-statement__line1,
+  .flip-statement__line2 {
+    white-space: normal;
     text-align: center;
   }
 }
