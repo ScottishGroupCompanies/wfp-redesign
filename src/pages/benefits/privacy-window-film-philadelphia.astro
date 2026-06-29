@@ -353,24 +353,59 @@ Privacy Meets Design.</h2>
       </div>
     </section>
 
-    <!-- GALLERY - 5 images -->
-    <section class="swt-gallery" id="gallery">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">Our Work</span>
-          <h2 class="swt-h2 swt-h2--center">Privacy Window Film in Action - Philadelphia Installations</h2>
-          <p class="swt-subhead">From corporate headquarters to medical offices - here's what we install.</p>
+    <!-- GALLERY - Cinematic Panel Strip -->
+    <section class="priv-panels">
+      <div class="priv-panels__heading">
+        <p class="priv-panels__eyebrow">WHERE WE INSTALL</p>
+        <h2 class="priv-panels__title">Privacy Window Film<br/>for Every Philadelphia Space</h2>
+        <p class="priv-panels__sub">From law offices on Market Street to residential bathrooms in Rittenhouse — here’s where privacy window film in Philadelphia makes the biggest difference.</p>
+      </div>
+      <div class="priv-panels__grid">
+
+        <div class="priv-panels__panel">
+          <img src="/images/privacy-film-philadelphia-law-office.jpg" alt="Frosted privacy window film in a Philadelphia law firm conference room" class="priv-panels__img" loading="lazy" />
+          <div class="priv-panels__overlay"></div>
+          <div class="priv-panels__content">
+            <h3 class="priv-panels__title-sm">Law &amp; Professional Offices</h3>
+            <p class="priv-panels__sub-sm">Confidentiality at the glass</p>
+            <p class="priv-panels__desc">Attorney-client privilege and professional discretion demand visual privacy. Frosted conference room glass signals professionalism while protecting what happens inside.</p>
+          </div>
+          <div class="priv-panels__line"></div>
         </div>
-        <div class="swt-gallery__grid">
-          {galleryImages.map((img, i) => (
-            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
-              <img src={img.src} alt={img.label} loading="lazy" />
-              <div class="swt-gallery__overlay">
-                <span>{img.label}</span>
-              </div>
-            </div>
-          ))}
+
+        <div class="priv-panels__panel">
+          <img src="/images/privacy-film-philadelphia-medical.jpg" alt="Frosted privacy window film on Philadelphia medical exam room door" class="priv-panels__img" loading="lazy" />
+          <div class="priv-panels__overlay"></div>
+          <div class="priv-panels__content">
+            <h3 class="priv-panels__title-sm">Medical &amp; Clinical Spaces</h3>
+            <p class="priv-panels__sub-sm">HIPAA-compliant privacy</p>
+            <p class="priv-panels__desc">Exam rooms, reception areas, and clinical spaces require consistent, reliable privacy. Frosted film delivers 24/7 protection regardless of lighting conditions.</p>
+          </div>
+          <div class="priv-panels__line"></div>
         </div>
+
+        <div class="priv-panels__panel">
+          <img src="/images/privacy-film-philadelphia-retail.jpg" alt="One-way mirror privacy window film on Philadelphia retail storefront" class="priv-panels__img" loading="lazy" />
+          <div class="priv-panels__overlay"></div>
+          <div class="priv-panels__content">
+            <h3 class="priv-panels__title-sm">Retail &amp; Street-Facing Offices</h3>
+            <p class="priv-panels__sub-sm">See out, not in</p>
+            <p class="priv-panels__desc">One-way mirror film gives Walnut Street retail and ground-floor offices a polished exterior while preserving full visibility from inside during daylight hours.</p>
+          </div>
+          <div class="priv-panels__line"></div>
+        </div>
+
+        <div class="priv-panels__panel">
+          <img src="/images/privacy-film-philadelphia-residential.jpg" alt="Frosted privacy window film in a Philadelphia home bathroom" class="priv-panels__img" loading="lazy" />
+          <div class="priv-panels__overlay"></div>
+          <div class="priv-panels__content">
+            <h3 class="priv-panels__title-sm">Residential &amp; Bathrooms</h3>
+            <p class="priv-panels__sub-sm">Privacy at home, all day</p>
+            <p class="priv-panels__desc">Bathrooms, ground-floor living rooms, and street-facing bedrooms in Philadelphia rowhomes and brownstones get permanent, maintenance-free privacy without blocking light.</p>
+          </div>
+          <div class="priv-panels__line"></div>
+        </div>
+
       </div>
     </section>
 
@@ -515,6 +550,33 @@ Privacy Meets Design.</h2>
 </BaseLayout>
 
 <style>
+  /* ── Cinematic Panel Strip ── */
+  .priv-panels { background: #fff; }
+  .priv-panels__heading { padding: 80px 7vw 48px; text-align: center; }
+  .priv-panels__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+  .priv-panels__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #14201A; letter-spacing: -0.02em; line-height: 1.15; max-width: 600px; margin: 0 auto 1rem; }
+  .priv-panels__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; margin: 0; }
+  .priv-panels__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; width: 100%; }
+  .priv-panels__panel { position: relative; min-height: 600px; overflow: hidden; display: block; opacity: 0; transform: translateY(40px); animation: priv-fade-in 0.8s ease forwards; }
+  @keyframes priv-fade-in { to { opacity: 1; transform: translateY(0); } }
+  .priv-panels__panel:nth-child(1) { animation-delay: 0s; }
+  .priv-panels__panel:nth-child(2) { animation-delay: 0.1s; }
+  .priv-panels__panel:nth-child(3) { animation-delay: 0.2s; }
+  .priv-panels__panel:nth-child(4) { animation-delay: 0.3s; }
+  .priv-panels__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.6s ease; }
+  .priv-panels__panel:hover .priv-panels__img { transform: scale(1.05); }
+  .priv-panels__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); pointer-events: none; transition: background 0.4s ease; }
+  .priv-panels__panel:hover .priv-panels__overlay { background: linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.1) 100%); }
+  .priv-panels__content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; z-index: 2; }
+  .priv-panels__title-sm { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+  .priv-panels__sub-sm { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.75); margin: 0 0 12px; line-height: 1.5; }
+  .priv-panels__desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #fff; line-height: 1.7; margin: 0; max-width: 90%; opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .priv-panels__panel:hover .priv-panels__desc { opacity: 1; transform: translateY(0); }
+  .priv-panels__line { position: absolute; bottom: 0; left: 0; height: 3px; width: 0; background: #7CB342; transition: width 0.4s ease; z-index: 3; }
+  .priv-panels__panel:hover .priv-panels__line { width: 100%; }
+  @media (max-width: 1024px) { .priv-panels__grid { grid-template-columns: repeat(2, 1fr); } .priv-panels__panel { min-height: 480px; } }
+  @media (max-width: 600px) { .priv-panels__grid { grid-template-columns: 1fr; } .priv-panels__panel { min-height: 380px; } .priv-panels__desc { opacity: 1; transform: none; } }
+
   /* ── Bento Grid ── */
   .priv-bento { background: #0d1a0f; padding: 100px 24px; }
   .priv-bento__container { max-width: 1200px; margin: 0 auto; }
