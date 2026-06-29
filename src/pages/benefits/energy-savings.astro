@@ -591,43 +591,24 @@ const testimonials = [
     </section>
 
     <!-- GALLERY - 5 images -->
-    <section class="es-appgrid">
-      <div class="es-appgrid__header">
-        <p class="es-appgrid__eyebrow">OUR WORK</p>
-        <h2 class="es-appgrid__title">Energy-Saving Film<br/>in Action</h2>
-      </div>
-      <div class="es-appgrid__grid">
+    <section class="swt-gallery" id="gallery">
+      <div class="container">
+        <div class="swt-gallery__header fade-in">
+          <span class="swt-eyebrow">Our Work</span>
+          <h2 class="swt-h2 swt-h2--center">Energy-Saving Film - In Action</h2>
+          <p class="swt-subhead">From Center City high-rises to suburban homes - here's what we install.</p>
+        </div>
+        <div class="swt-gallery__grid">
 
-          <div class="es-appgrid__card">
-            <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181647_234b5a3b-2c0b-4a99-b2e2-d80621d3ecd2.png" alt="Solar control film on a Center City high-rise" class="es-appgrid__card-img" loading="lazy" />
-            <div class="es-appgrid__card-overlay"></div>
-            <span class="es-appgrid__card-label">Solar control — Center City high-rise</span>
-          </div>
-          <div class="es-appgrid__card">
-            <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170300_522f3006-3bdb-434a-a84b-472b0b56e0e8.png" alt="Glare reduction in a Philly office" class="es-appgrid__card-img" loading="lazy" />
-            <div class="es-appgrid__card-overlay"></div>
-            <span class="es-appgrid__card-label">Glare reduction — Philly office</span>
-          </div>
-          <div class="es-appgrid__card">
-            <img src="/images/es-gallery-rowhome-interior.png" alt="Solar film on a South Philly rowhome" class="es-appgrid__card-img" loading="lazy" />
-            <div class="es-appgrid__card-overlay"></div>
-            <span class="es-appgrid__card-label">Residential solar film — South Philly</span>
-          </div>
-          <div class="es-appgrid__card">
-            <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163222_79b81cd9-fd33-453a-8c62-ab37d4d031d1.png" alt="UV protection film measured on site" class="es-appgrid__card-img" loading="lazy" />
-            <div class="es-appgrid__card-overlay"></div>
-            <span class="es-appgrid__card-label">UV protection — on-site measurement</span>
-          </div>
-          <div class="es-appgrid__card">
-            <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163219_ef8a6773-eb18-43d3-a8cf-305c12c72dd2.png" alt="Professional window film installation" class="es-appgrid__card-img" loading="lazy" />
-            <div class="es-appgrid__card-overlay"></div>
-            <span class="es-appgrid__card-label">Professional installation — residential</span>
-          </div>
-          <div class="es-appgrid__card">
-            <img src="/images/es-gallery-lowe-film.jpg" alt="Low-E film year-round comfort" class="es-appgrid__card-img" loading="lazy" />
-            <div class="es-appgrid__card-overlay"></div>
-            <span class="es-appgrid__card-label">Low-E film — year-round comfort</span>
-          </div>
+          {galleryImages.map((img, i) => (
+            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
+              <img src={img.src} alt={img.label} loading="lazy" />
+              <div class="swt-gallery__overlay">
+                <span>{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -2126,20 +2107,48 @@ const testimonials = [
   }
 
   /* ── Gallery ── */
-  /* ── App Grid ── */
-  .es-appgrid { background: #fff; padding: 80px 0; }
-  .es-appgrid__header { max-width: 1300px; margin: 0 auto; padding: 0 7vw 48px; }
-  .es-appgrid__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #7CB342; margin: 0 0 0.875rem; display: block; }
-  .es-appgrid__title { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 400; color: #14201A; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
-  .es-appgrid__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 1300px; margin: 0 auto; padding: 0 7vw; }
-  .es-appgrid__card { display: block; position: relative; height: 280px; border-radius: 12px; overflow: hidden; cursor: pointer; }
-  .es-appgrid__card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.3s ease; }
-  .es-appgrid__card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.40); border-radius: 12px; transition: background 0.3s ease; }
-  .es-appgrid__card-label { position: absolute; bottom: 16px; left: 16px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; z-index: 1; letter-spacing: 0.01em; }
-  .es-appgrid__card:hover .es-appgrid__card-img { transform: scale(1.03); }
-  .es-appgrid__card:hover .es-appgrid__card-overlay { background: rgba(0,0,0,0.25); }
-  @media (max-width: 1024px) { .es-appgrid__grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .es-appgrid__grid { grid-template-columns: repeat(2, 1fr); gap: 8px; } .es-appgrid__card { height: 200px; } .es-appgrid__header { padding: 0 5vw 24px; } }
+  .swt-gallery {
+    background: var(--swt-white);
+    padding: 96px 0;
+  }
+  .swt-gallery__header { margin-bottom: 48px; }
+  .swt-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+  }
+  .swt-gallery__item {
+    position: relative;
+    border-radius: var(--swt-radius);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
+  }
+  .swt-gallery__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    display: block;
+  }
+  .swt-gallery__item:hover img { transform: scale(1.06); }
+  .swt-gallery__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 12px 12px;
+    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+  }
+  .swt-gallery__item:hover .swt-gallery__overlay { opacity: 1; transform: translateY(0); }
+  .swt-gallery__overlay span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--swt-white);
+    display: block;
+    text-align: center;
+  }
 
   /* ── Stats Bar ── */
   .swt-stats {
