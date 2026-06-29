@@ -20,7 +20,7 @@ const faqItems = [
 
 <InnerPageHero
   title="Window Film Solutions<br />Reading, PA"
-  bgImage="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png"
+  bgImage="/images/reading-pa-hero.png"
   desc="Serving Reading and greater Berks County homeowners and businesses since 2008."
 />
 
@@ -49,7 +49,7 @@ const faqItems = [
      ══════════════════════════════════════ -->
 <div class="ip-hero-img-wrap">
   <div class="ip-hero-img fade-in">
-    <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png" alt="Window film installation Reading PA" width="1200" height="380" loading="lazy" />
+    <img src="/images/reading-pa-hero.png" alt="Window film Reading PA — downtown Reading, Pennsylvania with historic brick buildings on Penn Street corridor" width="1200" height="380" loading="lazy" />
     <span class="ip-hero-img__caption">📍 Serving Reading, Wyomissing, and all Berks County communities</span>
   </div>
 </div>
@@ -97,6 +97,11 @@ const faqItems = [
       </div>
     </div>
 
+    <figure class="ip-inline-image">
+      <img src="/images/reading-solar-home.png" alt="Window film installation on a brick rowhome in Reading PA, solar control film applied to reduce energy costs" width="1200" height="675" loading="lazy" />
+
+    </figure>
+
     <h2>Why Reading Properties Choose Window Film Philadelphia</h2>
     <ul>
       <li>15+ years serving Philadelphia and Berks County</li>
@@ -106,6 +111,11 @@ const faqItems = [
       <li>Free in-home and on-site consultations</li>
       <li>Philadelphia's most reviewed window film contractor</li>
     </ul>
+
+    <figure class="ip-inline-image ip-inline-image--right">
+      <img src="/images/reading-pro-installer.png" alt="Certified window film installer working on a Reading PA residential property" width="800" height="450" loading="lazy" />
+
+    </figure>
 
     <h2>Our Reading Installation Process</h2>
     <p>Call or submit a quote request and receive a detailed estimate within 24 hours. Our Reading-area crew arrives on schedule, preps the surface, installs the film, and leaves your space spotless. Most residential jobs are completed in a single day.</p>
@@ -200,6 +210,12 @@ const faqItems = [
 <!-- ══════════════════════════════════════
      FAQ ACCORDION
      ══════════════════════════════════════ -->
+
+<figure class="ip-inline-image">
+  <img src="/images/reading-commercial.png" alt="Window film installation team completing a commercial project in Reading PA, security film on storefront glass" width="1200" height="675" loading="lazy" />
+
+</figure>
+
 <div class="ip-faq">
   <div class="ip-faq__hd">
     <p class="section-eyebrow">FAQ</p>
@@ -752,4 +768,45 @@ const faqItems = [
     grid-template-columns: 1fr;
   }
 }
+
+/* ── INLINE CONTENT IMAGES ── */
+.ip-inline-image {
+  margin: 32px 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ip-inline-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+.ip-inline-image--right {
+  float: right;
+  margin: 0 0 24px 32px;
+  max-width: 48%;
+}
+@media (max-width: 768px) {
+  .ip-inline-image--right {
+    float: none;
+    margin: 24px 0;
+    max-width: 100%;
+  }
+}
+
 </style>
+
+<script>
+// FAQ accordion toggle
+document.querySelectorAll('.ip-faq__item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isOpen = item.classList.contains('ip-faq__item--open');
+    // Close all
+    document.querySelectorAll('.ip-faq__item--open').forEach(open => {
+      open.classList.remove('ip-faq__item--open');
+    });
+    // Toggle clicked
+    if (!isOpen) item.classList.add('ip-faq__item--open');
+  });
+});
+</script>

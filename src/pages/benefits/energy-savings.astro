@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import FlipWords from '../../components/FlipWords.astro';
 
 const title = 'Energy Savings Window Film Philadelphia | Cut Cooling Costs 30%';
 const description = 'Window film that pays for itself. Reject 78% of solar heat, cut cooling costs significantly, and enjoy year-round comfort. Professional installation in Philadelphia.';
@@ -23,21 +24,21 @@ const newImages = {
 };
 
 const faqItems = [
-  { question: 'How much can I save on cooling costs with window film?', answer: 'Most Philadelphia property owners see a 25–35% reduction in summer cooling costs after installing heat-rejecting window film. The exact savings depend on your building\'s glass orientation, square footage, and current HVAC efficiency — but even a modest installation typically pays for itself within 2–3 years.' },
+  { question: 'How much can I save on cooling costs with window film?', answer: 'Most Philadelphia property owners see a 25-35% reduction in summer cooling costs after installing heat-rejecting window film. The exact savings depend on your building\'s glass orientation, square footage, and current HVAC efficiency - but even a modest installation typically pays for itself within 2-3 years.' },
   { question: 'Does window film work on double-pane glass?', answer: 'Yes. Modern spectrally selective films are specifically engineered for dual-pane and even triple-pane glass. They reject solar heat without trapping energy between panes, so there\'s no risk of thermal stress or seal failure when professionally installed on the correct film type for your glass.' },
-  { question: 'How long until window film pays for itself?', answer: 'For most commercial buildings in Philadelphia, the payback period is 2–4 years through cooling cost reductions alone. Residential installations typically see 4–7 years, but when you factor in reduced HVAC wear, UV protection for furnishings, and increased comfort, the real-world ROI is significantly faster.' },
-  { question: 'Does window film reduce heating costs in winter?', answer: 'Yes — especially Low-E window film. While standard solar control films focus on rejecting heat in summer, Low-E films add an insulating metallic layer that reflects interior heat back into your building during winter. This can reduce winter heating costs by 10–15% in Philadelphia\'s climate.' },
-  { question: 'What is the warranty on energy performance?', answer: 'Every energy-saving film we install is backed by the manufacturer\'s warranty covering film performance — including solar heat rejection ratings and fade protection — typically 10–15 years on commercial films and lifetime on residential. We also provide a labor warranty on every installation.' },
+  { question: 'How long until window film pays for itself?', answer: 'For most commercial buildings in Philadelphia, the payback period is 2-4 years through cooling cost reductions alone. Residential installations typically see 4-7 years, but when you factor in reduced HVAC wear, UV protection for furnishings, and increased comfort, the real-world ROI is significantly faster.' },
+  { question: 'Does window film reduce heating costs in winter?', answer: 'Yes - especially Low-E window film. While standard solar control films focus on rejecting heat in summer, Low-E films add an insulating metallic layer that reflects interior heat back into your building during winter. This can reduce winter heating costs by 10-15% in Philadelphia\'s climate.' },
+  { question: 'What is the warranty on energy performance?', answer: 'Every energy-saving film we install is backed by the manufacturer\'s warranty covering film performance - including solar heat rejection ratings and fade protection - typically 10-15 years on commercial films and lifetime on residential. We also provide a labor warranty on every installation.' },
 ];
 
 const testimonials = [
   {
-    quote: 'Our electric bill dropped nearly $400 in the first summer after the film was installed. The building is actually comfortable in the afternoon now — before, the west side was unbearable.',
+    quote: 'Our electric bill dropped nearly $400 in the first summer after the film was installed. The building is actually comfortable in the afternoon now - before, the west side was unbearable.',
     author: 'Jennifer K.',
     role: 'Property Manager, Society Hill Condominiums',
   },
   {
-    quote: 'I was skeptical because we\'d tried blinds and tinted blinds before. But window film actually solved the problem — no more adjusting blinds, no more squinting. The HVAC ran half as much.',
+    quote: 'I was skeptical because we\'d tried blinds and tinted blinds before. But window film actually solved the problem - no more adjusting blinds, no more squinting. The HVAC ran half as much.',
     author: 'Marcus T.',
     role: 'Office Manager, Consulting Firm, Center City',
   },
@@ -53,31 +54,71 @@ const testimonials = [
   title={title}
   description={description}
   serviceName="Energy Savings Window Film"
-  serviceDesc="Reduce cooling costs 25–35% with professional window film installation in Philadelphia. Heat rejection, Low-E films, and year-round comfort."
+  serviceDesc="Reduce cooling costs 25-35% with professional window film installation in Philadelphia. Heat rejection, Low-E films, and year-round comfort."
   serviceUrl="https://www.windowfilmphiladelphia.com/benefits/energy-savings"
   faqItems={faqItems}
 >
   <!-- HERO -->
-  <section class="swt-hero">
-    <div class="swt-hero__img">
-      <img src={newImages.hero} alt="Energy-efficient window film installation Philadelphia" width="1440" height="700" />
-      <div class="swt-hero__overlay"></div>
-    </div>
-    <div class="swt-hero__content">
-      <span class="swt-badge">
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
-        Energy Performance
-      </span>
-      <h1 class="swt-hero__title">
-        Cut Your Cooling Costs.<br/>
-        <em>Live Comfortable.</em><br/>
-        Year Round.
-      </h1>
-      <p class="swt-hero__sub">Window film that rejects 78% of solar heat and pays for itself in 2–4 years — no window replacement needed.</p>
-      <div class="swt-hero__ctas">
-        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
+  <section class="es-hero">
+    <div class="es-hero__bg" style={`background-image: url('${newImages.hero}')`} role="img" aria-label="Energy savings window film on a Philadelphia home reducing solar heat gain"></div>
+    <div class="es-hero__overlay"></div>
+    <div class="es-hero__content">
+
+      <div class="es-hero__eyebrow">
+        <span>Energy Savings Window Film</span>
+        <span class="es-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia, PA</span>
+        <span class="es-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Since 2008</span>
       </div>
+
+      <h1 class="es-hero__title">Energy Savings Window Film<br class="es-hero__br"/> for Philadelphia</h1>
+
+      <p class="es-hero__animated-line">
+        Reduce your
+        <FlipWords
+          words={["cooling costs", "energy bills", "HVAC load", "discomfort", "heat gain"]}
+          staticText=""
+          class="es-hero__flip"
+        />.
+      </p>
+
+      <p class="es-hero__subtitle">
+        Reject 78% of solar heat and cut cooling costs 25-35% - without replacing your windows. Professional installation across Philadelphia and the Delaware Valley.
+      </p>
+
+      <div class="es-hero__cta">
+        <a href="/contact/" class="es-hero__btn-primary">Get Your Free Estimate</a>
+        <a href="tel:2673947980" class="es-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
+        </a>
+      </div>
+
+      <div class="es-hero__stats-panel" aria-label="Key statistics">
+        <div class="es-hero__stats-inner">
+          <div class="es-hero__stat">
+            <span class="es-hero__stat-number">78%</span>
+            <span class="es-hero__stat-label">Solar Heat Rejected</span>
+          </div>
+          <div class="es-hero__stat-divider" aria-hidden="true"></div>
+          <div class="es-hero__stat">
+            <span class="es-hero__stat-number">2008</span>
+            <span class="es-hero__stat-label">Serving Philadelphia Since</span>
+          </div>
+          <div class="es-hero__stat-divider" aria-hidden="true"></div>
+          <div class="es-hero__stat">
+            <span class="es-hero__stat-number">2,400+</span>
+            <span class="es-hero__stat-label">Projects Completed</span>
+          </div>
+          <div class="es-hero__stat-divider" aria-hidden="true"></div>
+          <div class="es-hero__stat">
+            <span class="es-hero__stat-number">2-4 Yrs</span>
+            <span class="es-hero__stat-label">Avg. Payback Period</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -91,150 +132,471 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="problem">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">The Challenge</span>
-            <h2 class="swt-h2 swt-h2--light">Philadelphia Buildings Are Losing Cool Air Through Every Window</h2>
-            <p>Philadelphia summers push glass buildings into solar overload. A single west-facing window can add the equivalent heat output of a small space heater — all day, every afternoon. Your HVAC system fights this relentlessly, burning energy and lifespan with every cycle.</p>
-            <p>The problem isn't just summer. In winter, single-pane and poorly insulated glass becomes a one-way heat valve — radiating interior warmth straight outside while cold air seeps in. Most buildings lose 15–25% of their heating energy through windows alone.</p>
-            <div class="swt-problem-tags">
-              <span class="swt-tag swt-tag--red">Solar Heat Gain</span>
-              <span class="swt-tag swt-tag--red">HVAC Overload</span>
-              <span class="swt-tag swt-tag--red">Winter Heat Loss</span>
-              <span class="swt-tag swt-tag--red">Inconsistent Comfort</span>
+    <!-- SECTION 1: THE PROBLEM - UV-style split layout -->
+    <section class="es-why" id="problem">
+      <div class="es-why__container">
+
+        <!-- Left: image with floating stat card -->
+        <div class="es-why__image-wrap">
+          <img
+            src="/images/es-why-problem.png"
+            alt="Woman standing near sun-drenched windows in a hot Philadelphia home, squinting from the glare and heat"
+            width="720"
+            height="900"
+            loading="lazy"
+            class="es-why__image"
+          />
+          <div class="es-why__stat-card">
+            <div class="es-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>78% solar heat rejected</span>
+            </div>
+            <div class="es-why__stat-divider"></div>
+            <div class="es-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>2-4 year average payback</span>
             </div>
           </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.hvac} alt="Philadelphia HVAC system working hard due to poor window insulation" loading="lazy" />
+        </div>
+
+        <!-- Right: content -->
+        <div class="es-why__content">
+          <div class="eyebrow-modern">Why It Matters</div>
+          <h2 class="es-why__headline">Philadelphia Buildings Are Losing Energy Through Every Window</h2>
+          <p class="es-why__intro">Philadelphia summers push glass buildings into solar overload. A single west-facing window can add the equivalent heat of a small space heater - all day, every afternoon. Your HVAC fights this relentlessly, burning energy and lifespan with every cycle.</p>
+          <ul class="es-why__bullets">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              In summer, untreated windows let in solar heat that overwhelms your air conditioning.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              In winter, poorly insulated glass radiates interior warmth outside - buildings lose 15-25% of heating energy through windows alone.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Window film addresses both - no replacement, no renovation, no downtime.
+            </li>
+          </ul>
+          <p class="es-why__closing">Since 2008, Window Film Philadelphia has helped hundreds of homes and businesses across the Delaware Valley cut energy costs with professional-grade solar control and Low-E films.</p>
+          <a href="/contact/" class="es-why__cta">
+            Get a free energy assessment
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPACT BENTO BAND -->
+    <section class="es-bento">
+      <div class="es-bento__header">
+        <h2 class="es-bento__title">Save Energy Without Replacing Your Windows</h2>
+        <p class="es-bento__sub">Professional window film delivers real energy performance - no renovation, no mess, no window replacement needed.</p>
+      </div>
+      <div class="es-bento__compact">
+
+        <div class="es-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="9" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M14 7v2M14 19v2M7 14h2M19 14h2" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="3" fill="#7CB342" fill-opacity="0.15" stroke="#7CB342" stroke-width="1"/>
+          </svg>
+          <div>
+            <h3 class="es-bento-item__title">Reject 78% of Solar Heat</h3>
+            <p class="es-bento-item__text">High-performance solar control films block the majority of incoming heat on day one - no window replacement required.</p>
           </div>
+        </div>
+
+        <div class="es-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="4" y="6" width="20" height="16" rx="2" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M9 14h10M9 18h6" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 6V4M16 6V4" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3 class="es-bento-item__title">Cut Cooling Costs 25-35%</h3>
+            <p class="es-bento-item__text">Most Philadelphia properties see significant reductions in summer cooling bills within the first season after installation.</p>
+          </div>
+        </div>
+
+        <div class="es-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4l-2.5 7.5H4l6.25 5L7.5 24 14 19l6.5 5-2.75-7.5L24 11.5h-7.5L14 4z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <div>
+            <h3 class="es-bento-item__title">Year-Round Performance</h3>
+            <p class="es-bento-item__text">Low-E films add winter insulation too - reflecting interior heat back inside during Philadelphia's cold months to reduce heating costs.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KEY BENEFITS BENTO GRID -->
+    <section class="kb-section">
+      <div class="kb-section__container">
+
+        <div class="kb-section__header">
+          <div class="eyebrow-modern">Key Benefits</div>
+          <h2 class="kb-section__headline">What Energy Savings Window Film Does for Your Building</h2>
+          <p class="kb-section__sub">From summer cooling relief to winter insulation, professional window film delivers measurable energy performance across every season.</p>
+        </div>
+
+        <div class="kb-grid">
+
+          <!-- Card 1: Hero - 78% Heat Rejected -->
+          <div class="kb-card kb-card--hero">
+            <div class="kb-card__hero-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="10" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M24 6v4M24 38v4M6 24h4M38 24h4M10.1 10.1l2.83 2.83M35.07 35.07l2.83 2.83M10.1 37.9l2.83-2.83M35.07 12.93l2.83-2.83" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="kb-card__hero-title">78% Solar Heat Rejected on Day One</h3>
+            <p class="kb-card__hero-text">High-performance spectrally selective films block the majority of incoming solar heat immediately after installation - without changing how your windows look from the outside or making rooms feel dark.</p>
+            <div class="kb-card__pill">No Window Replacement</div>
+          </div>
+
+          <!-- Card 2: Summer Cooling - photo -->
+          <div class="kb-card kb-card--photo">
+            <img
+              src="/images/es-kb-summer-cooling.png"
+              alt="Bright Philadelphia rowhouse living room with natural light and a woman relaxing comfortably"
+              width="400"
+              height="560"
+              loading="lazy"
+              class="kb-card__img"
+            />
+            <div class="kb-card__photo-overlay"></div>
+            <div class="kb-card__photo-content">
+              <h3 class="kb-card__photo-title">Summer Cooling</h3>
+              <p class="kb-card__photo-text">Keep every room at a comfortable temperature all afternoon.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Year-Round Comfort - photo -->
+          <div class="kb-card kb-card--photo">
+            <img
+              src="/images/es-kb-year-round-comfort.png"
+              alt="Cozy Philadelphia home living room with family relaxing comfortably in warm autumn light"
+              width="400"
+              height="560"
+              loading="lazy"
+              class="kb-card__img"
+            />
+            <div class="kb-card__photo-overlay"></div>
+            <div class="kb-card__photo-content">
+              <h3 class="kb-card__photo-title">Year-Round Comfort</h3>
+              <p class="kb-card__photo-text">Consistent temperatures from floor to ceiling, every season.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Winter Insulation - dark accent -->
+          <div class="kb-card kb-card--dark-accent">
+            <div class="kb-card__accent-line" aria-hidden="true"></div>
+            <div class="kb-card__icon-row">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                <path d="M18 4v28M4 18h28" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M9 9l18 18M27 9L9 27" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <circle cx="18" cy="18" r="3" fill="rgba(124,179,66,0.2)" stroke="#7CB342" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="kb-card__dark-title">Winter Insulation</h3>
+            <p class="kb-card__dark-text">Low-E films add an insulating layer that reflects interior heat back inside during Philadelphia's cold months, reducing heating costs 10-15%.</p>
+            <div class="kb-card__micro-pill">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Low-E Film Available
+            </div>
+          </div>
+
+          <!-- Card 5: Commercial Buildings - dark pattern -->
+          <div class="kb-card kb-card--dark-pattern">
+            <div class="kb-card__icon-row">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                <rect x="4" y="6" width="28" height="24" rx="2" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M4 14h28M4 22h28" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M12 6v24M20 6v24" stroke="rgba(124,179,66,0.35)" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="kb-card__dark-title">Residential &amp; Commercial</h3>
+            <p class="kb-card__dark-text">From South Philly rowhomes to Center City office towers - window film works on any glass, any size, any building type across the Delaware Valley.</p>
+            <div class="kb-card__micro-pill">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#7CB342" stroke-width="2"/><path d="M8 21h8m-4-4v4" stroke="#7CB342" stroke-width="2" stroke-linecap="round"/></svg>
+              All Property Types
+            </div>
+          </div>
+
+          <!-- Card 6: ROI - dark image card -->
+          <div class="kb-card kb-card--retail">
+            <img
+              src="/images/es-kb-payback.png"
+              alt="Philadelphia commercial and residential buildings on a sunny urban street showing both markets served"
+              width="520"
+              height="360"
+              loading="lazy"
+              class="kb-card__img"
+            />
+            <div class="kb-card__retail-overlay"></div>
+            <div class="kb-card__retail-content">
+              <div class="kb-card__retail-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Real ROI
+              </div>
+              <h3 class="kb-card__retail-title">2-4 Year Payback</h3>
+              <p class="kb-card__retail-text">Most installations pay for themselves through energy savings alone within 2-4 years - then keep saving for 15+ years.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: HEAT REJECTION — white bg, image left, text right -->
-    <section class="swt-split" id="heat-rejection">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.heatRejection} alt="Heat-rejecting window film installed on Philadelphia commercial building" loading="lazy" />
-            <div class="swt-img-badge">
-              <strong>78%</strong>
-              <span>Heat Rejected</span>
-            </div>
+    <!-- FILM TYPES - cinematic panel strip (homepage style) -->
+    <section class="ef-section">
+
+      <div class="ef__heading">
+        <p class="ef__eyebrow">FILM TYPES</p>
+        <h2 class="ef__title">The Right Film<br/>for Every Building</h2>
+        <p class="ef__sub">Not all window film is the same. We match the right technology to your building, climate, and goals.</p>
+      </div>
+
+      <div class="ef__panels">
+
+        <div class="ef__panel" style="animation-delay: 0s">
+          <img src="/images/es-film-lowe.png" alt="Low-E window film Philadelphia rowhouse in winter" class="ef__panel-img" />
+          <div class="ef__panel-overlay"></div>
+          <div class="ef__panel-content">
+            <h3 class="ef__panel-title">Low-E Film</h3>
+            <p class="ef__panel-subtitle">Year-round insulation</p>
+            <p class="ef__panel-desc">Reflects interior heat back inside during winter while blocking solar heat in summer. Ideal for older single-pane windows in Philadelphia rowhomes that lose heat in cold months.</p>
           </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 01</span>
-            <h2 class="swt-h2">Reject 78% of Solar Heat — Without Changing Your Windows</h2>
-            <p>High-performance solar control film is applied directly to your existing glass and immediately begins rejecting the infrared and ultraviolet wavelengths that drive heat gain. A single film application can block 78% of incoming solar heat — the equivalent of upgrading to premium low-E glass, at a fraction of the cost.</p>
-            <p>Philadelphia's south and west-facing buildings see the greatest benefit, but every orientation sees measurable improvement. The film works immediately upon installation — no adjustment period, no system changes required.</p>
-            <ul class="swt-check-list">
-              <li>Up to 78% solar heat rejection on day one of installation</li>
-              <li>Works on single-pane, double-pane, and triple-pane glass</li>
-              <li>No window replacement, no renovation, no system downtime</li>
+          <div class="ef__panel-line"></div>
+        </div>
+
+        <div class="ef__panel" style="animation-delay: 0.1s">
+          <img src="/images/es-film-heat-blocking.png" alt="Heat blocking window film on Philadelphia commercial building" class="ef__panel-img" />
+          <div class="ef__panel-overlay"></div>
+          <div class="ef__panel-content">
+            <h3 class="ef__panel-title">Heat Blocking Film</h3>
+            <p class="ef__panel-subtitle">Stop solar heat at the glass</p>
+            <p class="ef__panel-desc">Absorbs and reflects incoming solar energy before it becomes heat inside your building. Best for south- and west-facing commercial windows with heavy afternoon sun exposure.</p>
+          </div>
+          <div class="ef__panel-line"></div>
+        </div>
+
+        <div class="ef__panel" style="animation-delay: 0.2s">
+          <img src="/images/es-film-nanoceramic.png" alt="Nanoceramic window film on clear Philadelphia apartment windows" class="ef__panel-img" />
+          <div class="ef__panel-overlay"></div>
+          <div class="ef__panel-content">
+            <h3 class="ef__panel-title">Nanoceramic Film</h3>
+            <p class="ef__panel-subtitle">High performance, crystal clear</p>
+            <p class="ef__panel-desc">Uses nano-sized ceramic particles to reject heat and UV without any metallic tint or signal interference. Virtually invisible - perfect for condos, historic buildings, and HOA-restricted properties.</p>
+          </div>
+          <div class="ef__panel-line"></div>
+        </div>
+
+        <div class="ef__panel" style="animation-delay: 0.3s">
+          <img src="/images/es-film-spectrally-selective.png" alt="Spectrally selective window film in bright Philadelphia home" class="ef__panel-img" />
+          <div class="ef__panel-overlay"></div>
+          <div class="ef__panel-content">
+            <h3 class="ef__panel-title">Spectrally Selective</h3>
+            <p class="ef__panel-subtitle">Light in, heat out</p>
+            <p class="ef__panel-desc">Filters out infrared heat while allowing maximum visible light through. You get a bright, naturally lit space without the heat gain - no dark tint, no compromised views.</p>
+          </div>
+          <div class="ef__panel-line"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BENEFIT FEATURE ROWS - UV page editorial style -->
+    <section class="res-features">
+      <div class="res-features__container">
+
+        <div class="res-features__header">
+          <div class="eyebrow-modern">The Benefits</div>
+          <h2 class="res-features__headline">Energy Savings. Season After Season.</h2>
+          <p class="res-features__intro">Window film doesn't just solve a summer problem. From blocking solar heat to insulating against winter cold, the right film delivers measurable performance every month of the year.</p>
+        </div>
+
+        <!-- Row 1: Image LEFT, Text RIGHT - Heat Rejection -->
+        <div class="res-row">
+          <div class="res-row__image">
+            <img
+              src="/images/es-benefit-heat.png"
+              alt="Intense afternoon sun on the glass facade of a Philadelphia office building"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="res-row__text">
+            <div class="eyebrow-modern res-row__eyebrow">Solar Heat Rejection</div>
+            <h3 class="res-row__title">Reject 78% of solar heat - without changing your windows</h3>
+            <p class="res-row__body">High-performance solar control film is applied directly to your existing glass and immediately begins rejecting the infrared wavelengths that drive heat gain. A single film application can block 78% of incoming solar heat - the equivalent of upgrading to premium low-E glass, at a fraction of the cost.</p>
+            <ul class="res-row__bullets">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 78% solar heat rejection on day one</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Works on single-pane, double-pane, and triple-pane glass</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No window replacement, no renovation, no downtime</li>
             </ul>
           </div>
         </div>
+
+        <!-- Row 2: Text LEFT, Image RIGHT - Cooling Costs -->
+        <div class="res-row res-row--reversed">
+          <div class="res-row__image">
+            <img
+              src="/images/es-benefit-cooling.png"
+              alt="Philadelphia homeowner looking at lower utility bill in bright comfortable home"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="res-row__text">
+            <div class="eyebrow-modern res-row__eyebrow">Cooling Cost Savings</div>
+            <h3 class="res-row__title">Cut cooling costs 25-35% - the numbers are real</h3>
+            <p class="res-row__body">Philadelphia commercial properties with heavy glass exposure typically see a 25–35% reduction in summer cooling costs after window film installation. Residential rowhomes with south- or west-facing windows — especially those with bay windows — can see cooling cost reductions of 10–30% in summer months after installing quality window film, according to <a href="https://www.3m.com/3M/en_US/building-window-solutions-us/solutions/energy/" target="_blank" rel="noopener">3M's window film energy savings data</a> and the <a href="https://www.energy.gov/energysaver/energy-efficient-window-coverings" target="_blank" rel="noopener">U.S. Department of Energy's guidance on energy-efficient window coverings</a>.</p>
+            <ul class="res-row__bullets">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>25-35% reduction in summer cooling bills</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Average payback period of 2-4 years</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Applies to homes, offices, retail, and commercial buildings</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 3: Image LEFT, Text RIGHT - Year-Round Comfort -->
+        <div class="res-row">
+          <div class="res-row__image">
+            <img
+              src="/images/es-benefit-comfort.png"
+              alt="Team working comfortably in a bright Philadelphia office with large windows"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="res-row__text">
+            <div class="eyebrow-modern res-row__eyebrow">Year-Round Comfort</div>
+            <h3 class="res-row__title">Not just summer relief - comfort in every season</h3>
+            <p class="res-row__body">Heat-rejecting films work in summer; Low-E films reflect interior warmth back inside during winter - addressing both extremes without replacing a single window. Hot spots near glass disappear. Cold drafts stop. The result is consistent, comfortable temperature from January through December.</p>
+            <ul class="res-row__bullets">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Eliminates hot spots near south- and west-facing windows</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Low-E options reduce winter heat loss 10-15%</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Works in homes, offices, and multi-family buildings alike</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 4: Text LEFT, Image RIGHT - HVAC Relief -->
+        <div class="res-row res-row--reversed">
+          <div class="res-row__image">
+            <img
+              src="/images/es-benefit-hvac.png"
+              alt="Rooftop HVAC system on a Philadelphia commercial building running efficiently"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="res-row__text">
+            <div class="eyebrow-modern res-row__eyebrow">HVAC Relief</div>
+            <h3 class="res-row__title">Less strain on your system - longer equipment life</h3>
+            <p class="res-row__body">Every degree your HVAC doesn't have to fight for is wear it doesn't accumulate. Window film reduces your building's thermal load continuously - all day, every day of the cooling season. Building engineers consistently report fewer service calls, longer maintenance intervals, and lower operational costs after film installation.</p>
+            <ul class="res-row__bullets">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Reduced thermal load means your HVAC runs less</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Fewer service calls and extended equipment lifespan</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Lower long-term operational costs for commercial properties</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- SECTION 3: COOLING SAVINGS — alt cream bg, text left, image right -->
-    <section class="swt-split swt-split--alt" id="cooling">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 02</span>
-            <h2 class="swt-h2">Cut Cooling Costs Significantly — The Numbers Are Real</h2>
-            <p>Philadelphia commercial properties with substantial glass exposure typically see a 25–35% reduction in summer cooling costs after window film installation. For a building spending $3,000/month on cooling, that's $750–$1,050 back in your operating budget every month during summer months.</p>
-            <p>Residential properties see proportionally similar results — a typical Philadelphia row home can save $150–$300 per summer on utility bills. These aren't estimates or projections; they're documented results from properties in this exact climate.</p>
-            <div class="swt-energy-metrics">
-              <div class="swt-metric">
-                <span class="swt-metric__num">35%</span>
-                <span class="swt-metric__label">Max Cooling Cost Reduction</span>
+    <!-- ENERGY SAVINGS SLIDER - Commercial vs Residential -->
+    <section class="es-slider" id="esSlider">
+      <div class="es-slider__track" id="esTrack">
+
+        <!-- SLIDE 01: Commercial -->
+        <div class="es-slider__slide" data-slide="0">
+          <img src="/images/es-slide-commercial.png" alt="Commercial energy saving window film on Philadelphia office building" class="es-slider__bg" />
+          <div class="es-slider__overlay"></div>
+          <div class="es-slider__content">
+            <div class="es-slider__step">01</div>
+            <h2 class="es-slider__title">Commercial buildings.<br/>Bigger glass. Bigger savings.</h2>
+            <p class="es-slider__desc">Philadelphia offices, retail spaces, and commercial properties with significant glass exposure can see 25-35% reductions in cooling costs - often paying back the investment within 2-4 years.</p>
+            <div class="es-slider__faq">
+              <div class="es-slider__faq-item">
+                <button class="es-slider__faq-q" aria-expanded="false">How quickly does commercial film pay for itself?<span class="es-slider__faq-icon" aria-hidden="true">+</span></button>
+                <div class="es-slider__faq-a" hidden>Most commercial installations see payback within 2-4 years through cooling cost reductions alone. Larger glass footprints and south- or west-facing exposures accelerate that timeline significantly.</div>
               </div>
-              <div class="swt-metric">
-                <span class="swt-metric__num">2–4yr</span>
-                <span class="swt-metric__label">Typical Payback Period</span>
+              <div class="es-slider__faq-item">
+                <button class="es-slider__faq-q" aria-expanded="false">Does window film work on large commercial glass?<span class="es-slider__faq-icon" aria-hidden="true">+</span></button>
+                <div class="es-slider__faq-a" hidden>Yes - commercial window film is specifically engineered for large glass surfaces. It's applied in panels with nearly invisible seams and performs consistently across floor-to-ceiling curtain wall systems.</div>
+              </div>
+              <div class="es-slider__faq-item">
+                <button class="es-slider__faq-q" aria-expanded="false">Will installation disrupt my business?<span class="es-slider__faq-icon" aria-hidden="true">+</span></button>
+                <div class="es-slider__faq-a" hidden>Minimal disruption. Our crews work floor by floor, often during off-hours or weekends if needed. Most commercial installations are complete within 1-3 days with no impact on daily operations.</div>
               </div>
             </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.coolingSavings} alt="Philadelphia office with energy-efficient window film reducing cooling costs" loading="lazy" />
+            <a href="/contact/" class="es-slider__cta">Get a commercial estimate →</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- SECTION 4: YEAR-ROUND COMFORT — white bg, image left, text right -->
-    <section class="swt-split" id="comfort">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.comfort} alt="Comfortable Philadelphia workspace with window film controlling temperature year-round" loading="lazy" />
-          </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 03</span>
-            <h2 class="swt-h2">Year-Round Comfort — Not Just Summer Relief</h2>
-            <p>Most energy-saving discussions focus on cooling. But Philadelphia's climate demands year-round thinking. Heat-rejecting films work in summer; Low-E films add a metallic insulating layer that reflects interior warmth back inside during winter — addressing both extremes without replacing a single window.</p>
-            <p>The result is consistent, comfortable indoor temperature from January to December. Hot spots near windows disappear. Cold drafts from glass surfaces stop. Employees stop fighting the thermostat and the environment around them.</p>
-            <blockquote class="swt-inline-quote">
-              "We stopped having arguments about who gets the desk away from the windows. Everyone is comfortable now — summer and winter."
-              <cite>— Office Manager, tech firm, Old City Philadelphia</cite>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: HVAC RELIEF — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="hvac">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
-            <h2 class="swt-h2 swt-h2--light">Less Strain on Your HVAC System — Longer Equipment Life</h2>
-            <p>Every degree your HVAC doesn't have to work to compensate for is wear it doesn't accumulate. Heat-rejecting window film reduces the thermal load on your building continuously — not just during peak afternoon hours, but all day, every day of the cooling season.</p>
-            <p>Building engineers and property managers consistently report fewer HVAC service calls, longer intervals between major maintenance, and measurably lower operational costs after film installation. Your heating and cooling system was never designed to fight your windows — film corrects that.</p>
-            <div class="swt-security-features">
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Reduced Thermal Load</strong>
-                  <p>Your HVAC runs less to achieve the same indoor temperature</p>
-                </div>
+        <!-- SLIDE 02: Residential -->
+        <div class="es-slider__slide" data-slide="1">
+          <img src="/images/es-slide-residential.png" alt="Residential energy saving window film in a Philadelphia rowhouse" class="es-slider__bg" />
+          <div class="es-slider__overlay"></div>
+          <div class="es-slider__content">
+            <div class="es-slider__step">02</div>
+            <h2 class="es-slider__title">Rowhomes. Brownstones.<br/>Every window.</h2>
+            <p class="es-slider__desc">Philadelphia homes lose significant energy through south- and west-facing windows every summer. The right film reduces heat gain, cuts cooling bills, and makes every room livable - no renovation needed.</p>
+            <div class="es-slider__faq">
+              <div class="es-slider__faq-item">
+                <button class="es-slider__faq-q" aria-expanded="false">How much can I save on my home energy bills?<span class="es-slider__faq-icon" aria-hidden="true">+</span></button>
+                <div class="es-slider__faq-a" hidden>Philadelphia rowhomes with south- or west-facing windows — especially those with bay windows — can see cooling cost reductions of 10–30% in summer months after installing quality window film, according to <a href="https://www.3m.com/3M/en_US/building-window-solutions-us/solutions/energy/" target="_blank" rel="noopener">3M's window film energy savings data</a> and the <a href="https://www.energy.gov/energysaver/energy-efficient-window-coverings" target="_blank" rel="noopener">U.S. Department of Energy's guidance on energy-efficient window coverings</a>.</div>
               </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Fewer Service Calls</strong>
-                  <p>Documented reduction in HVAC repairs after film installation</p>
-                </div>
+              <div class="es-slider__faq-item">
+                <button class="es-slider__faq-q" aria-expanded="false">Will the film make my rooms look dark?<span class="es-slider__faq-icon" aria-hidden="true">+</span></button>
+                <div class="es-slider__faq-a" hidden>Not with the right film. Spectrally selective and nanoceramic options block heat while preserving 70-80% of visible light. Many homeowners say their rooms feel brighter and more comfortable after installation.</div>
               </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Extended Equipment Life</strong>
-                  <p>Less cycling means longer-lasting mechanical systems</p>
-                </div>
+              <div class="es-slider__faq-item">
+                <button class="es-slider__faq-q" aria-expanded="false">Can I get film on older single-pane windows?<span class="es-slider__faq-icon" aria-hidden="true">+</span></button>
+                <div class="es-slider__faq-a" hidden>Yes - single-pane windows actually benefit the most from window film. We'll recommend the right film type for your specific glass to maximize performance and ensure long-term durability.</div>
               </div>
             </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.warranty} alt="HVAC system running efficiently with window film installed Philadelphia" loading="lazy" />
+            <a href="/contact/" class="es-slider__cta">Get a home estimate →</a>
           </div>
         </div>
+
       </div>
+
+      <!-- Right nav -->
+      <nav class="es-slider__nav" aria-label="Slide navigation">
+        <button class="es-slider__nav-item es-slider__nav-item--active" data-esnav="0">
+          <span class="es-slider__nav-line"></span>
+          <span class="es-slider__nav-label">Commercial</span>
+        </button>
+        <button class="es-slider__nav-item" data-esnav="1">
+          <span class="es-slider__nav-line"></span>
+          <span class="es-slider__nav-label">Residential</span>
+        </button>
+      </nav>
+
+      <!-- Arrows -->
+      <button class="es-slider__arrow es-slider__arrow--prev" id="esPrev" aria-label="Previous slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="es-slider__arrow es-slider__arrow--next" id="esNext" aria-label="Next slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Progress bar -->
+      <div class="es-slider__progress"><div class="es-slider__progress-bar" id="esProgressBar"></div></div>
+
     </section>
 
-    <!-- GALLERY — 5 images -->
+    <!-- GALLERY - 5 images -->
     <section class="swt-gallery" id="gallery">
       <div class="container">
         <div class="swt-gallery__header fade-in">
           <span class="swt-eyebrow">Our Work</span>
-          <h2 class="swt-h2 swt-h2--center">Energy-Saving Film — In Action</h2>
-          <p class="swt-subhead">From Center City high-rises to suburban homes — here's what we install.</p>
+          <h2 class="swt-h2 swt-h2--center">Energy-Saving Film - In Action</h2>
+          <p class="swt-subhead">From Center City high-rises to suburban homes - here's what we install.</p>
         </div>
         <div class="swt-gallery__grid">
           {galleryImages.map((img, i) => (
@@ -249,7 +611,7 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- STATS BAR — accent green -->
+    <!-- STATS BAR - accent green -->
     <section class="swt-stats">
       <div class="container">
         <div class="swt-stats__row">
@@ -264,7 +626,7 @@ const testimonials = [
           </div>
           <div class="swt-stats__div"></div>
           <div class="swt-stats__item fade-in" style="--delay: 160ms">
-            <span class="swt-stats__num">2–4yr</span>
+            <span class="swt-stats__num">2-4yr</span>
             <span class="swt-stats__label">Typical Payback Period</span>
           </div>
           <div class="swt-stats__div"></div>
@@ -276,7 +638,7 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- PROCESS — 3 steps -->
+    <!-- PROCESS - 3 steps -->
     <section class="swt-process">
       <div class="container">
         <div class="swt-gallery__header fade-in">
@@ -294,22 +656,22 @@ const testimonials = [
           <div class="swt-process__step fade-in" style="--delay: 80ms">
             <div class="swt-process__num">02</div>
             <div class="swt-process__body">
-              <h3>Professional Installation in 1–2 Days</h3>
-              <p>Our factory-trained installers complete the job cleanly and efficiently — typically 1–2 days for residential and 2–5 days for commercial properties. We work around your schedule and leave the building spotless.</p>
+              <h3>Professional Installation in 1-2 Days</h3>
+              <p>Our factory-trained installers complete the job cleanly and efficiently - typically 1-2 days for residential and 2-5 days for commercial properties. We work around your schedule and leave the building spotless.</p>
             </div>
           </div>
           <div class="swt-process__step fade-in" style="--delay: 160ms">
             <div class="swt-process__num">03</div>
             <div class="swt-process__body">
               <h3>Inspection & Long-Term Warranty</h3>
-              <p>We walk the space with you before considering the job done. Every installation is backed by our labor warranty and the manufacturer's performance warranty — typically 10–15 years on commercial films, lifetime on residential.</p>
+              <p>We walk the space with you before considering the job done. Every installation is backed by our labor warranty and the manufacturer's performance warranty - typically 10-15 years on commercial films, lifetime on residential.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS — dark bg -->
+    <!-- TESTIMONIALS - dark bg -->
     <section class="swt-testimonials">
       <div class="container">
         <div class="swt-gallery__header fade-in">
@@ -363,7 +725,7 @@ const testimonials = [
       <div class="swt-cta__inner">
         <div class="swt-cta__text">
           <h2>Ready to <em>cut your energy bills?</em></h2>
-          <p>Get a free consultation and thermal analysis. No obligation, no pressure — just honest advice.</p>
+          <p>Get a free consultation and thermal analysis. No obligation, no pressure - just honest advice.</p>
         </div>
         <div class="swt-cta__btns">
           <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
@@ -395,73 +757,209 @@ const testimonials = [
   /* ══════════════════════════════════════
      HERO
      ══════════════════════════════════════ */
-  .swt-hero {
+  .es-hero {
     position: relative;
-    min-height: 85vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
-  .swt-hero__img {
+  .es-hero__bg {
     position: absolute;
     inset: 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
   }
-  .swt-hero__img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .swt-hero__overlay {
+  .es-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 26, 15, 0.68) 0%,
+      rgba(13, 26, 15, 0.82) 55%,
+      rgba(13, 26, 15, 0.95) 100%
+    );
   }
-  .swt-hero__content {
+  .es-hero__content {
     position: relative;
-    z-index: 1;
-    padding: 110px 8% 90px;
-    max-width: 720px;
+    z-index: 10;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .swt-badge {
+  .es-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .es-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+  .es-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .es-hero__br { display: none; }
+  .es-hero__animated-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(243, 246, 241, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .es-hero__flip.flipwords-wrap { display: inline; }
+  .es-hero__flip .fw-word-col {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .es-hero__flip .fw-word {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    white-space: nowrap;
+    font-style: normal;
+    min-width: unset;
+  }
+  .es-hero__flip .fw-word.is-active { position: relative; }
+  .es-hero__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+  .es-hero__cta {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+  .es-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #7CB342;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: 2px solid #7CB342;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .es-hero__btn-primary:hover {
+    background: #6aa032;
+    border-color: #6aa032;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 179, 66, 0.3);
+  }
+  .es-hero__btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 7px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    background: rgba(78,107,42,0.25);
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(78,107,42,0.4);
+    background: transparent;
+    color: #F3F6F1;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: 2px solid rgba(243, 246, 241, 0.35);
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
   }
-  .swt-hero__title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(38px, 5.5vw, 66px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.1;
-    margin: 0 0 20px;
+  .es-hero__btn-secondary:hover {
+    border-color: #7CB342;
+    color: #7CB342;
+    transform: translateY(-2px);
+    background: rgba(124, 179, 66, 0.06);
   }
-  .swt-hero__title em {
-    font-style: italic;
-    color: var(--swt-green-accent);
+  .es-hero__stats-panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(20, 32, 26, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 4px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
   }
-  .swt-hero__sub {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin: 0 0 36px;
-    max-width: 500px;
-  }
-  .swt-hero__ctas {
+  .es-hero__stats-inner {
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .es-hero__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 12px;
+    gap: 6px;
+    text-align: center;
+  }
+  .es-hero__stat-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    align-self: stretch;
+    margin: 16px 0;
+    flex-shrink: 0;
+  }
+  .es-hero__stat-number {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    color: #7CB342;
+    line-height: 1;
+  }
+  .es-hero__stat-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: rgba(243, 246, 241, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.3;
+    max-width: 90px;
   }
 
   /* ══════════════════════════════════════
@@ -545,9 +1043,788 @@ const testimonials = [
     text-align: center;
   }
 
+  /* ══════════════════════════════════════
+     WHY IT MATTERS SECTION (UV-style)
+     ══════════════════════════════════════ */
+  .es-why {
+    background: #F3F6F1;
+    padding: 100px 24px;
+  }
+  .es-why__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .es-why__image-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: visible;
+  }
+  .es-why__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+  .es-why__stat-card {
+    position: absolute;
+    bottom: 32px;
+    left: -24px;
+    background: rgba(14, 26, 20, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 220px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+  .es-why__stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(243, 246, 241, 0.9);
+    line-height: 1.3;
+  }
+  .es-why__stat-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 2px 0;
+  }
+  .es-why__content {
+    padding-right: 20px;
+  }
+  .es-why__content .eyebrow-modern {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 16px;
+  }
+  .es-why__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #14201A;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .es-why__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .es-why__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .es-why__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #4A5C48;
+    line-height: 1.6;
+  }
+  .es-why__bullets svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .es-why__closing {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(74, 92, 72, 0.75);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    padding-left: 16px;
+    border-left: 2px solid rgba(124, 179, 66, 0.35);
+  }
+  .es-why__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7CB342;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+  .es-why__cta:hover { gap: 14px; }
+
+  /* ══════════════════════════════════════
+     COMPACT BENTO BAND
+     ══════════════════════════════════════ */
+  .es-bento {
+    background: #F3F6F1;
+    padding: 80px 24px 100px;
+  }
+  .es-bento__header {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .es-bento__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #14201A;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .es-bento__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .es-bento__compact {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .es-bento-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid rgba(20, 32, 26, 0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .es-bento-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    border-color: rgba(124, 179, 66, 0.25);
+  }
+  .es-bento-item svg { flex-shrink: 0; margin-top: 2px; }
+  .es-bento-item__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #14201A;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+  .es-bento-item__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #4A5C48;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     KEY BENEFITS BENTO GRID
+     ══════════════════════════════════════ */
+  .kb-section {
+    background: #0d1a0f;
+    padding: 100px 24px;
+  }
+  .kb-section__container { max-width: 1200px; margin: 0 auto; }
+  .kb-section__header { text-align: center; margin-bottom: 60px; }
+  .kb-section__header .eyebrow-modern { color: #7CB342; }
+  .kb-section__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .kb-section__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(243, 246, 241, 0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .kb-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+  .kb-card {
+    border-radius: 24px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .kb-card--hero {
+    grid-column: span 6;
+    background: linear-gradient(145deg, #1a3024 0%, #0d1a0f 60%);
+    border: 1px solid rgba(124, 179, 66, 0.15);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    min-height: 420px;
+  }
+  .kb-card--hero:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(124,179,66,0.25); }
+  .kb-card__hero-icon { margin-bottom: 24px; }
+  .kb-card__hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .kb-card__hero-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .kb-card__pill {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.25);
+    padding: 6px 14px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+  .kb-card--photo {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .kb-card--photo:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .kb-card--photo:hover .kb-card__img { transform: scale(1.04); }
+  .kb-card__img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .kb-card__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.35) 50%, rgba(10,20,14,0.05) 100%);
+  }
+  .kb-card__photo-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px;
+    z-index: 5;
+  }
+  .kb-card__photo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .kb-card__photo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.75);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .kb-card--dark-accent {
+    grid-column: span 4;
+    background: linear-gradient(145deg, #14201a 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.18);
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+  }
+  .kb-card--dark-accent:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.28); border-color: rgba(124,179,66,0.32); }
+  .kb-card__accent-line {
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, #7CB342, transparent);
+  }
+  .kb-card--dark-pattern {
+    grid-column: span 4;
+    background: linear-gradient(145deg, #1a2e20 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.12);
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+  }
+  .kb-card--dark-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(124,179,66,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,179,66,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .kb-card--dark-pattern:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.28); border-color: rgba(124,179,66,0.22); }
+  .kb-card__icon-row { margin-bottom: 18px; }
+  .kb-card__dark-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .kb-card__dark-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.65;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+  .kb-card__micro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(124,179,66,0.85);
+    background: rgba(124,179,66,0.08);
+    border: 1px solid rgba(124,179,66,0.18);
+    padding: 5px 10px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+  .kb-card--retail {
+    grid-column: span 4;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 220px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+  .kb-card--retail:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .kb-card--retail:hover .kb-card__img { transform: scale(1.04); }
+  .kb-card__retail-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,20,14,0.92) 0%, rgba(13,26,15,0.80) 50%, rgba(10,20,14,0.60) 100%);
+    z-index: 2;
+  }
+  .kb-card__retail-content {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .kb-card__retail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.22);
+    padding: 5px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
+  .kb-card__retail-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .kb-card__retail-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .kb-card--photo:nth-child(2) { grid-column: span 3; }
+  .kb-card--photo:nth-child(3) { grid-column: span 3; }
+
+  /* ══════════════════════════════════════
+     FILM TYPES - CINEMATIC PANEL STRIP
+     ══════════════════════════════════════ */
+  .ef-section {
+    background: #fff;
+  }
+  .ef__heading {
+    padding: 80px 7vw 48px;
+    text-align: center;
+  }
+  .ef__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #7CB342;
+    margin-bottom: 0.75rem;
+  }
+  .ef__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    color: #14201A;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+  }
+  .ef__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    margin: 0;
+  }
+  .ef__panels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+  }
+  .ef__panel {
+    position: relative;
+    min-height: 600px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: ef-fade-in 0.8s ease forwards;
+  }
+  @keyframes ef-fade-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .ef__panel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+  }
+  .ef__panel:hover .ef__panel-img {
+    transform: scale(1.05);
+  }
+  .ef__panel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    pointer-events: none;
+    transition: background 0.4s ease;
+  }
+  .ef__panel:hover .ef__panel-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.1) 100%);
+  }
+  .ef__panel-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px;
+    z-index: 2;
+  }
+  .ef__panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+    line-height: 1.2;
+  }
+  .ef__panel-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+  .ef__panel-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #fff;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 90%;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .ef__panel:hover .ef__panel-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .ef__panel-arrow {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    font-size: 24px;
+    color: #7CB342;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .ef__panel:hover .ef__panel-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .ef__panel-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: #7CB342;
+    transition: width 0.4s ease;
+    z-index: 3;
+  }
+  .ef__panel:hover .ef__panel-line {
+    width: 100%;
+  }
+  @media (max-width: 1024px) {
+    .ef__panels { grid-template-columns: repeat(2, 1fr); }
+    .ef__panel { min-height: 480px; }
+  }
+  @media (max-width: 600px) {
+    .ef__panels { grid-template-columns: 1fr; }
+    .ef__panel { min-height: 380px; }
+    .ef__panel-desc { opacity: 1; transform: none; }
+    .ef__panel-arrow { opacity: 1; transform: none; }
+  }
+
+  /* ══════════════════════════════════════
+     ENERGY SAVINGS SLIDER
+     ══════════════════════════════════════ */
+  .es-slider { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+  .es-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+  .es-slider__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+  .es-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .es-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.22) 60%, transparent 100%); z-index: 1; }
+  .es-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+  .es-slider__slide[data-slide="0"] .es-slider__content { opacity: 1; transform: translateY(0); }
+  .es-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; opacity: 0; animation: esFadeUp 0.4s ease 0.2s forwards; }
+  .es-slider__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; opacity: 0; animation: esFadeUp 0.4s ease 0.3s forwards; }
+  .es-slider__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; opacity: 0; animation: esFadeUp 0.4s ease 0.4s forwards; }
+  .es-slider__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; opacity: 0; animation: esFadeUp 0.4s ease 0.5s forwards; }
+  .es-slider__faq-item { border-radius: 8px; overflow: hidden; }
+  .es-slider__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+  .es-slider__faq-q:hover { background: rgba(255,255,255,0.18); }
+  .es-slider__faq-icon { font-size: 1.2rem; color: #7CB342; flex-shrink: 0; font-style: normal; transition: transform 0.3s ease; }
+  .es-slider__faq-q[aria-expanded="true"] .es-slider__faq-icon { transform: rotate(45deg); }
+  .es-slider__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+  .es-slider__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; opacity: 0; animation: esFadeUp 0.4s ease 0.6s forwards; }
+  .es-slider__cta:hover { background: #2E6B30; transform: translateY(-2px); }
+  .es-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+  .es-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+  .es-slider__nav-item:hover { opacity: 0.65; }
+  .es-slider__nav-item--active { opacity: 1; }
+  .es-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+  .es-slider__nav-item--active .es-slider__nav-line { background: #7CB342; height: 48px; }
+  .es-slider__nav-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+  .es-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+  .es-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+  .es-slider__arrow--prev { left: 32px; }
+  .es-slider__arrow--next { right: 32px; }
+  .es-slider__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+  .es-slider__progress-bar { height: 100%; background: #7CB342; width: 0; transition: width 0.05s linear; }
+  @keyframes esFadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .es-slider__slide.es-active .es-slider__content { opacity: 1; transform: translateY(0); }
+  .es-slider__slide.es-active .es-slider__step { animation: esFadeUp 0.4s ease 0.2s forwards; }
+  .es-slider__slide.es-active .es-slider__title { animation: esFadeUp 0.4s ease 0.3s forwards; }
+  .es-slider__slide.es-active .es-slider__desc { animation: esFadeUp 0.4s ease 0.4s forwards; }
+  .es-slider__slide.es-active .es-slider__faq { animation: esFadeUp 0.4s ease 0.5s forwards; }
+  .es-slider__slide.es-active .es-slider__cta { animation: esFadeUp 0.4s ease 0.6s forwards; }
+  @media (max-width: 1024px) { .es-slider__nav { right: 32px; } .es-slider__content { padding-left: 60px; } }
+  @media (max-width: 768px) { .es-slider__nav { display: none; } .es-slider__content { padding-left: 40px; padding-right: 40px; max-width: calc(100% - 80px); } .es-slider__arrow--prev { left: 20px; } .es-slider__arrow--next { right: 20px; } }
+
+  /* ══════════════════════════════════════
+     BENEFIT FEATURE ROWS
+     ══════════════════════════════════════ */
+  .res-features {
+    background: #F3F6F1;
+    padding: 100px 24px;
+  }
+  .res-features__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .res-features__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 72px;
+  }
+  .res-features__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 12px 0 20px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .res-features__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0625rem;
+    color: #4A5C48;
+    line-height: 1.75;
+  }
+  .res-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .res-row:last-child { margin-bottom: 0; }
+  .res-row--reversed { direction: rtl; }
+  .res-row--reversed > * { direction: ltr; }
+  .res-row__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13, 26, 15, 0.12);
+    position: relative;
+  }
+  .res-row__image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(124, 179, 66, 0.15);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .res-row__image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .res-row__image:hover img { transform: scale(1.03); }
+  .res-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .res-row__eyebrow { margin-bottom: 12px; }
+  .res-row__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .res-row__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    line-height: 1.8;
+    margin: 0 0 28px;
+  }
+  .res-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .res-row__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: #14201A;
+    line-height: 1.5;
+  }
+  .res-row__bullets svg { flex-shrink: 0; margin-top: 2px; }
+  .res-features__header .eyebrow-modern,
+  .res-row__eyebrow.eyebrow-modern {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 900px) {
+    .res-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 64px; }
+    .res-row--reversed { direction: ltr; }
+    .res-row__image img { height: 340px; }
+    .res-features__header { margin-bottom: 56px; }
+  }
+
   /* ── Trust Bar ── */
   .swt-trust {
-    background: var(--swt-cream);
+    background: #ffffff;
     padding: 32px 0;
     border-bottom: 1px solid var(--swt-border);
   }
@@ -1056,9 +2333,11 @@ const testimonials = [
     .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
     .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
     .swt-process__num { font-size: 36px; }
-    .swt-hero__content { padding: 80px 5%; }
+    .es-hero__content { padding: 100px 20px 64px; }
+    .es-hero__title { font-size: clamp(1.9rem, 8vw, 2.5rem); }
+    .es-hero__br { display: block; }
+    .es-hero__cta { flex-direction: column; align-items: center; gap: 12px; width: 100%; max-width: 320px; }
     .swt-cta__btns { flex-direction: column; width: 100%; }
-    .swt-hero__ctas { flex-direction: column; }
     .swt-energy-metrics { flex-direction: column; gap: 16px; }
   }
   @media (max-width: 480px) {
@@ -1088,4 +2367,59 @@ const testimonials = [
       if (!isOpen) item.classList.add('swt-faq__item--open');
     });
   });
+
+  // ── Energy Savings Slider ──
+  (function() {
+    const track = document.getElementById('esTrack');
+    const slides = document.querySelectorAll('.es-slider__slide');
+    const navItems = document.querySelectorAll('[data-esnav]');
+    const prevBtn = document.getElementById('esPrev');
+    const nextBtn = document.getElementById('esNext');
+    const progressBar = document.getElementById('esProgressBar');
+    if (!track || !slides.length) return;
+    let current = 0;
+    const total = slides.length;
+
+    function goTo(i) {
+      if (i < 0) i = total - 1;
+      if (i >= total) i = 0;
+      current = i;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('es-slider__nav-item--active', idx === current));
+      slides.forEach((s, idx) => s.classList.toggle('es-active', idx === current));
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0';
+        setTimeout(() => { progressBar.style.transition = 'width 6s linear'; progressBar.style.width = '100%'; }, 50);
+      }
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
+
+    // FAQ accordion
+    document.querySelectorAll('.es-slider__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.es-slider__slide');
+        slide.querySelectorAll('.es-slider__faq-q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const a = b.nextElementSibling; if (a) a.hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          const a = btn.nextElementSibling; if (a) a.hidden = false;
+        }
+      });
+    });
+
+    // Auto-play
+    let timer = setInterval(() => goTo(current + 1), 6000);
+    document.getElementById('esSlider')?.addEventListener('mouseenter', () => clearInterval(timer));
+    document.getElementById('esSlider')?.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 6000); });
+
+    // Kick off progress bar
+    goTo(0);
+  })();
 </script>
