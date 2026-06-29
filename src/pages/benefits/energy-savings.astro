@@ -591,20 +591,18 @@ const testimonials = [
     </section>
 
     <!-- GALLERY - 5 images -->
-    <section class="swt-gallery" id="gallery">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">Our Work</span>
-          <h2 class="swt-h2 swt-h2--center">Energy-Saving Film - In Action</h2>
-          <p class="swt-subhead">From Center City high-rises to suburban homes - here's what we install.</p>
-        </div>
-        <div class="swt-gallery__grid">
-          {galleryImages.map((img, i) => (
-            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
-              <img src={img.src} alt={img.label} loading="lazy" />
-              <div class="swt-gallery__overlay">
-                <span>{img.label}</span>
-              </div>
+    <section class="es-work">
+      <div class="es-work__header">
+        <span class="es-work__eyebrow">Our Work</span>
+        <h2 class="es-work__title">Energy-Saving Film in Action</h2>
+        <p class="es-work__sub">From Center City high-rises to suburban homes — here’s what we install.</p>
+      </div>
+      <div class="es-work__carousel-outer">
+        <div class="es-work__carousel" id="esWorkTrack">
+          {galleryImages.map((img) => (
+            <div class="es-work__card">
+              <img src={img.src} alt={img.label} class="es-work__card-img" loading="lazy" />
+              <p class="es-work__card-label">{img.label}</p>
             </div>
           ))}
         </div>
@@ -2106,51 +2104,22 @@ const testimonials = [
   }
 
   /* ── Gallery ── */
-  .swt-gallery {
-    background: var(--swt-white);
-    padding: 96px 0;
-  }
-  .swt-gallery__header { margin-bottom: 48px; }
-  .swt-gallery__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-  }
-  .swt-gallery__item {
-    position: relative;
-    border-radius: var(--swt-radius);
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1;
-  }
-  .swt-gallery__item img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.35s ease;
-    display: block;
-  }
-  .swt-gallery__item:hover img { transform: scale(1.06); }
-  .swt-gallery__overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 40px 12px 12px;
-    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: all 0.3s ease;
-  }
-  .swt-gallery__item:hover .swt-gallery__overlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .swt-gallery__overlay span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--swt-white);
-    display: block;
-    text-align: center;
-  }
+  /* ── Work Carousel ── */
+  .es-work { background: #F5F3EE; padding: 100px 0 80px; }
+  .es-work__header { max-width: 1400px; margin: 0 auto 48px; padding: 0 80px; text-align: left; }
+  .es-work__eyebrow { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--swt-green); display: block; margin-bottom: 12px; }
+  .es-work__title { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #14201A; line-height: 1.15; margin: 0 0 12px; }
+  .es-work__sub { font-family: 'Inter', sans-serif; font-size: 16px; color: #4A5C48; margin: 0; }
+  .es-work__carousel-outer { padding: 0 80px; overflow: hidden; }
+  .es-work__carousel { display: flex; gap: 24px; overflow-x: scroll; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; padding: 4px 0 24px; -webkit-overflow-scrolling: touch; }
+  .es-work__carousel::-webkit-scrollbar { display: none; }
+  .es-work__carousel:active { cursor: grabbing; }
+  .es-work__card { min-width: 480px; max-width: 480px; flex-shrink: 0; scroll-snap-align: start; }
+  .es-work__card-img { width: 100%; height: 320px; object-fit: cover; border-radius: 16px; display: block; transition: transform 0.35s ease; }
+  .es-work__card:hover .es-work__card-img { transform: scale(1.02); }
+  .es-work__card-label { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: #4A5C48; margin: 14px 0 0; padding: 0; }
+  @media (max-width: 900px) { .es-work__carousel-outer { padding: 0 24px; } .es-work__card { min-width: 360px; max-width: 360px; } .es-work__card-img { height: 240px; } }
+  @media (max-width: 768px) { .es-work__header { padding: 0 24px 32px; } .es-work__card { min-width: 280px; max-width: 280px; } .es-work__card-img { height: 200px; } }
 
   /* ── Stats Bar ── */
   .swt-stats {
@@ -2453,6 +2422,19 @@ const testimonials = [
 
     // Kick off progress bar
     goTo(0);
+  })();
+
+  // ── Work carousel drag-to-scroll ──
+  (function initEsWork() {
+    const track = document.getElementById('esWorkTrack');
+    if (!track) return;
+    let isDragging = false, startX = 0, scrollLeft0 = 0;
+    track.addEventListener('mousedown', (e) => { isDragging = true; startX = e.pageX - track.offsetLeft; scrollLeft0 = track.scrollLeft; }, { passive: true });
+    window.addEventListener('mouseup', () => { isDragging = false; }, { passive: true });
+    track.addEventListener('mousemove', (e) => { if (!isDragging) return; track.scrollLeft = scrollLeft0 - (e.pageX - track.offsetLeft - startX); }, { passive: true });
+    let tStartX = 0;
+    track.addEventListener('touchstart', (e) => { tStartX = e.touches[0].pageX; }, { passive: true });
+    track.addEventListener('touchmove', (e) => { track.scrollLeft += tStartX - e.touches[0].pageX; tStartX = e.touches[0].pageX; }, { passive: true });
   })();
 
   // ── Reviews carousel ──
