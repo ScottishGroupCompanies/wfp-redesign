@@ -182,7 +182,7 @@ const testimonials = [
     <section class="swt-trust">
       <div class="container">
         <p class="swt-trust__label">Trusted by 500+ Philadelphia homes and businesses</p>
-        <BrandLogos />
+        <div class="es-brandlogos-wrap"><BrandLogos /></div>
       </div>
     </section>
 
@@ -1331,6 +1331,20 @@ const testimonials = [
     margin-bottom: 24px;
     letter-spacing: -0.01em;
   }
+  /* ── Brand Logos Override (dark bg for this page) ── */
+  .es-brandlogos-wrap :global(.brand-logos) {
+    background: #14201A;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .es-brandlogos-wrap :global(.brand-logos__item img) {
+    filter: grayscale(100%) brightness(10);
+    opacity: 0.35;
+  }
+  .es-brandlogos-wrap :global(.brand-logos__item img:hover) {
+    filter: grayscale(0%) brightness(10);
+    opacity: 0.7;
+  }
+
   /* ── What Is Window Film ── */
   .es-whatis { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
   .es-whatis__dark { background: #14201A; padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
