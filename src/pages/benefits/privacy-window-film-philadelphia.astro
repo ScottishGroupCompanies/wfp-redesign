@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import FlipWords from '../../components/FlipWords.astro';
 
 const title = 'Privacy Window Film Philadelphia | Frosted & One-Way Mirror Film';
 const description = 'Privacy window film in Philadelphia - frosted, decorative, and one-way mirror films that block unwanted views while keeping natural light. Free estimate.';
@@ -33,23 +34,66 @@ const faqItems = [
   faqItems={faqItems}
 >
   <!-- HERO -->
-  <section class="swt-hero">
-    <div class="swt-hero__img">
-      <img src={heroImage} alt="Privacy window film installed in Philadelphia office" width="1440" height="700" />
-      <div class="swt-hero__overlay"></div>
-    </div>
-    <div class="swt-hero__content">
-      <span class="swt-badge">
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
-        Privacy & Light Control
-      </span>
-      <h1 class="swt-hero__title">Privacy Window Film for Philadelphia</h1>
-      <p class="swt-hero__tagline"><em>The Privacy You Need.</em> The Light You Want.</p>
-      <p class="swt-hero__sub">Privacy window film for Philadelphia offices and homes - frosted, decorative, and one-way mirror options that maintain natural light while blocking unwanted views.</p>
-      <div class="swt-hero__ctas">
-        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Options</a>
+  <section class="priv-hero">
+    <div class="priv-hero__bg" style={`background-image: url('${heroImage}')`} role="img" aria-label="Privacy window film installed in a Philadelphia office with frosted glass"></div>
+    <div class="priv-hero__overlay"></div>
+    <div class="priv-hero__content">
+
+      <div class="priv-hero__eyebrow">
+        <span>Philadelphia Privacy Film</span>
+        <span class="priv-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Frosted & One-Way Mirror</span>
+        <span class="priv-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Since 2008</span>
       </div>
+
+      <h1 class="priv-hero__title">Privacy Window Film<br class="priv-hero__br"/> for Philadelphia</h1>
+
+      <p class="priv-hero__animated-line">
+        Block
+        <FlipWords
+          words={["street-level views", "conference room sightlines", "ground-floor exposure", "unwanted views", "pedestrian sightlines"]}
+          staticText=""
+          class="priv-hero__flip"
+        />.
+      </p>
+
+      <p class="priv-hero__subtitle">
+        Frosted, decorative, and one-way mirror privacy window film for Philadelphia offices and homes — professional installation at a fraction of the cost of frosted glass.
+      </p>
+
+      <div class="priv-hero__cta">
+        <a href="/contact/" class="priv-hero__btn-primary">Get Your Free Estimate</a>
+        <a href="tel:2673947980" class="priv-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
+        </a>
+      </div>
+
+      <div class="priv-hero__stats-panel" aria-label="Key statistics">
+        <div class="priv-hero__stats-inner">
+          <div class="priv-hero__stat">
+            <span class="priv-hero__stat-number">24/7</span>
+            <span class="priv-hero__stat-label">Frosted Film Privacy</span>
+          </div>
+          <div class="priv-hero__stat-divider" aria-hidden="true"></div>
+          <div class="priv-hero__stat">
+            <span class="priv-hero__stat-number">2008</span>
+            <span class="priv-hero__stat-label">Serving Philadelphia Since</span>
+          </div>
+          <div class="priv-hero__stat-divider" aria-hidden="true"></div>
+          <div class="priv-hero__stat">
+            <span class="priv-hero__stat-number">500+</span>
+            <span class="priv-hero__stat-label">Commercial Projects</span>
+          </div>
+          <div class="priv-hero__stat-divider" aria-hidden="true"></div>
+          <div class="priv-hero__stat">
+            <span class="priv-hero__stat-number">90%</span>
+            <span class="priv-hero__stat-label">Less Than Frosted Glass</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -389,6 +433,34 @@ const faqItems = [
 </BaseLayout>
 
 <style>
+  /* ══ Privacy Hero ══ */
+  .priv-hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .priv-hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center top; background-repeat: no-repeat; }
+  .priv-hero__overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(13,26,15,0.68) 0%, rgba(13,26,15,0.82) 55%, rgba(13,26,15,0.95) 100%); }
+  .priv-hero__content { position: relative; z-index: 10; max-width: 860px; padding: 120px 24px 80px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .priv-hero__eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(124,179,66,0.85); margin-bottom: 28px; background: rgba(124,179,66,0.08); border: 1px solid rgba(124,179,66,0.2); padding: 8px 18px; border-radius: 100px; }
+  .priv-hero__eyebrow-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(124,179,66,0.4); flex-shrink: 0; }
+  .priv-hero__title { font-family: 'Playfair Display', serif; font-size: clamp(2.25rem, 5.5vw, 3.75rem); font-weight: 700; color: #F3F6F1; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
+  .priv-hero__br { display: none; }
+  .priv-hero__animated-line { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 400; font-style: italic; color: rgba(243,246,241,0.9); margin-bottom: 20px; line-height: 1.4; }
+  .priv-hero__flip.flipwords-wrap { display: inline; }
+  .priv-hero__flip .fw-word-col { display: inline-flex; flex-direction: column; position: relative; vertical-align: baseline; }
+  .priv-hero__flip .fw-word { display: block; position: absolute; top: 0; left: 0; white-space: nowrap; font-style: normal; min-width: unset; }
+  .priv-hero__flip .fw-word.is-active { position: relative; }
+  .priv-hero__subtitle { font-family: 'Inter', sans-serif; font-size: clamp(0.9rem, 1.5vw, 1.05rem); color: rgba(243,246,241,0.72); max-width: 680px; margin-bottom: 36px; line-height: 1.75; }
+  .priv-hero__cta { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+  .priv-hero__btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; padding: 14px 32px; border-radius: 100px; border: 2px solid #7CB342; transition: background 0.25s, transform 0.2s, box-shadow 0.25s; }
+  .priv-hero__btn-primary:hover { background: #6aa032; border-color: #6aa032; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,179,66,0.3); }
+  .priv-hero__btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #F3F6F1; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; padding: 12px 28px; border-radius: 100px; border: 2px solid rgba(243,246,241,0.35); transition: border-color 0.25s, background 0.25s, transform 0.2s; }
+  .priv-hero__btn-secondary:hover { border-color: #7CB342; color: #7CB342; transform: translateY(-2px); background: rgba(124,179,66,0.06); }
+  .priv-hero__stats-panel { width: 100%; max-width: 720px; background: rgba(20,32,26,0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 4px; box-shadow: 0 8px 40px rgba(0,0,0,0.25); }
+  .priv-hero__stats-inner { display: flex; align-items: stretch; justify-content: space-around; border-radius: 16px; overflow: hidden; }
+  .priv-hero__stat { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 12px; gap: 6px; text-align: center; }
+  .priv-hero__stat-divider { width: 1px; background: rgba(255,255,255,0.1); align-self: stretch; margin: 16px 0; flex-shrink: 0; }
+  .priv-hero__stat-number { display: block; font-family: 'Space Mono', monospace; font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 700; color: #7CB342; line-height: 1; }
+  .priv-hero__stat-label { display: block; font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: rgba(243,246,241,0.6); text-transform: uppercase; letter-spacing: 0.8px; line-height: 1.3; max-width: 90px; }
+  @media (max-width: 768px) { .priv-hero__br { display: block; } .priv-hero__stats-inner { flex-wrap: wrap; } .priv-hero__stat { min-width: 50%; } .priv-hero__stat-divider { display: none; } }
+
   /* ══════════════════════════════════════
      BRAND TOKENS (local override)
      ══════════════════════════════════════ */
