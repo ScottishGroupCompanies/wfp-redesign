@@ -2,11 +2,10 @@
 
 Static Astro rebuild of [windowfilmphiladelphia.net](https://www.windowfilmphiladelphia.net) — residential & commercial window film in Philadelphia, Camden, Reading, Upper Darby Township.
 
-- **Stack:** Astro v4 + Tailwind CSS + TypeScript + framer-motion
+- **Stack:** Astro v4 + Tailwind CSS + TypeScript
 - **Repo:** [`ScottishGroupCompanies/wfp-redesign`](https://github.com/ScottishGroupCompanies/wfp-redesign)
 - **Branch:** `main` (Vercel auto-deploys)
 - **Production:** https://www.windowfilmphiladelphia.net
-- **Design system:** Scottish Group (charcoal + green, Playfair Display + DM Sans) — see `scottish-style-guide.md` and `CLAUDE.md` for full spec
 
 ## Quickstart
 
@@ -14,84 +13,109 @@ Static Astro rebuild of [windowfilmphiladelphia.net](https://www.windowfilmphila
 npm install
 npm run dev      # → http://localhost:4321
 npm run build    # production build (must be 0 errors)
-npm run preview  # preview production build locally
 ```
+
+---
+
+## 📚 Documentación del Proyecto
+
+**LEER ANTES DE TRABAJAR EN CUALQUIER PÁGINA:**
+
+```
+DOCUMENTATION/
+├── README.md          ← Empezar aquí
+├── SITE-MAP.md        ← Estado de las 68 páginas
+├── DESIGN-SYSTEM.md   ← Colores, tipografía, spacing, componentes CSS
+├── PAGE-TYPES.md      ← 8 tipos de página + estructura de cada una
+├── COMPONENTS.md      ← Componentes reutilizables
+├── ANIMATIONS.md      ← FlipWords, Parallax, Glassmorphism, etc.
+├── WORKFLOW.md        ← Paso a paso: cómo rediseñar una página
+├── CONTENT-GUIDE.md   ← Reglas de copy, claims, SEO
+└── IMAGES.md          ← Estrategia de imágenes, generación, CloudFront
+```
+
+**Stack de diseño:** Scottish Group (green `#7CB342`, dark green `#14201A`, Playfair Display + Inter + Space Mono)
+
+---
 
 ## Project layout
 
 ```
-window-film-philadelphia/
-├── astro.config.mjs              site URL, integrations (tailwind/sitemap/icon)
-├── tailwind.config.mjs
-├── CLAUDE.md                     ← design system + dev conventions (READ FIRST)
-├── scottish-style-guide.md       ← brand & component rules
-├── WFP-IMAGE-AUDIT-REPORT.md     ← image audit (current state)
+wfp-redesign/
+├── DOCUMENTATION/          ← Sistema de documentación completo
+├── CLAUDE.md               ← Design system + dev conventions (LEER PRIMERO)
+├── scottish-style-guide.md ← Brand & component rules
+├── WFP-IMAGE-AUDIT-REPORT.md
 ├── src/
-│   ├── components/               Header, Footer, InnerPageHero, BackAndForthSection…
-│   ├── pages/                    See status below
-│   ├── content/blog/             blog posts (publish target for finalize cron)
-│   ├── layouts/                  BaseLayout.astro
+│   ├── components/         Header, Footer, InnerPageHero, BackAndForthSection…
+│   ├── pages/              68 páginas — ver SITE-MAP.md para estado
+│   ├── layouts/            BaseLayout.astro
 │   └── styles/global.css
 ├── public/
-│   ├── images/                   site imagery
-│   ├── llms.txt                  LLM-facing site description
-│   └── robots.txt
-├── scripts/                      one-off content/page generators + image tools
-│   ├── generate_pages.py
-│   ├── generate_benefit_pages.py
-│   ├── generate_application_pages.py
-│   ├── generate_product_pages.py
-│   ├── compress-images.mjs
-│   └── update-image-refs.mjs
-└── seo-audits/                   5-part SEO audit (technical, geo, onpage, keywords, competitive)
+│   └── images/             site imagery
+└── scripts/                generators + image tools
 ```
+
+---
 
 ## Page status
 
 | Page / section | Status |
 |---|---|
-| Homepage | ✅ redesigned |
-| Benefits (top + 16 sub-pages) | ✅ redesigned |
-| Cities (Camden, Philadelphia, Reading, Upper Darby) | ✅ redesigned |
-| Government buildings | 🚧 in progress |
-| Applications, Products, Resources, Process, Contact, Blog | ⏳ not yet redesigned |
+| Homepage | ✅ Redesigned |
+| Services (2 páginas) | ✅ Redesigned |
+| Benefits (17 páginas) | ✅ Redesigned |
+| Cities (Camden template + 3 copias pendientes) | 🟡 Template listo |
+| Applications (10 páginas) | 🔴 Por hacer |
+| Products (12 páginas) | 🔴 Por hacer |
+| Resources (10 páginas) | 🔴 Por hacer |
+| Process, Contact, Blog, Government | 🔴 Por hacer |
 
-See `CLAUDE.md` for the InnerPageHero pattern + `ip-page-body` wrapper used on every inner page.
+**Total: 68 páginas · 3 completas · 1 template listo · 26 por hacer**
 
-## Brand & design
+Build correcto: **88 páginas** = todas las rutas generan correctamente.
 
-Design system source of truth is `CLAUDE.md` + `scottish-style-guide.md`. Headline tokens:
+---
 
-- `--brand: #272E32` (charcoal — primary dark bg)
-- `--green: #81AB4C` (primary accent — note: `TOOLS.md` lists `#7fac4a`; treat `CLAUDE.md` as authoritative for this site)
-- `--font-serif: 'Playfair Display'`
-- `--font-body: 'DM Sans'`
+## Design system
 
-When editing, follow the global heading scale and radius tokens documented in `CLAUDE.md`. Don't invent new colors or fonts without updating the style guide.
+Tokens de colores (usar siempre estos, NO los del old site):
+
+```css
+--brand-green: #7CB342
+--brand-green-dark: #2E6B30
+--dark-bg: #14201A
+--dark-bg-extra: #0d1a0f
+--off-white: #F3F6F1
+```
+
+**Full spec:** `DOCUMENTATION/DESIGN-SYSTEM.md`
+
+---
+
+## Brand constants
+
+| Dato | Valor |
+|---|---|
+| Año | **2008** |
+| Experiencia | **20+ years** |
+| Proyectos | **2,400+** |
+| UV | **99%** |
+| Rating | **4.9★** |
+| Teléfono | **(267) 394-7980** |
+| Email | **info@windowfilmphl.com** |
+| Tagline | **"Done right, every time."** |
+
+---
 
 ## Deploy pipeline
 
-Vercel watches `main`. Pushes go live automatically once connected in the Vercel dashboard.
+Vercel watches `main`. Pushes van live automáticamente.
 
-### Auth
+## Workflow rules
 
-GitHub PAT lives in `~/.openclaw/.env` as `WFP_GITHUB_TOKEN`. Required for the finalize cron (see below) and for any manual `git push`.
-
-## Related automation in this workspace
-
-This project is the publish target for the daily blog cron:
-
-- `scripts/finalize-wfphilly-github.js` — publishes finalized blog drafts to `src/content/blog/<slug>.md` via the GitHub REST API (no local checkout required, but having this clone around makes debugging much faster).
-
-## Workflow notes
-
-- **Image priority:** use Leonardo (`scripts/leonardo-generate.js` in workspace root) — not DALL·E. Reference images in `public/images/` and `WFP-IMAGE-AUDIT-REPORT.md` track current state.
-- **Content rules:** residential + commercial only. No automotive.
-- **Always `npm run build` and confirm 0 errors before committing.**
-
-## Next steps (when you're ready)
-
-- [ ] Re-run `npm install` to populate `node_modules/`
-- [ ] Add NAP (address, phone, email) to site config — currently not stored in repo
-- [ ] Confirm Vercel project is connected to the GitHub repo + env vars set
-- [ ] Decide whether to retire the legacy WordPress site (`windowfilmphiladelphia.net` WP admin: `wfpadmin`) or run both in parallel during transition
+1. `npm run build` → **siempre 0 errores** antes de commit
+2. Build correcto = **88 páginas**
+3. Leer `DOCUMENTATION/WORKFLOW.md` antes de rediseñar cualquier página
+4. Claims de copy: ver `DOCUMENTATION/CONTENT-GUIDE.md`
+5. Imágenes: `DOCUMENTATION/IMAGES.md`
