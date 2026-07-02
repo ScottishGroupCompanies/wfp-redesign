@@ -18,17 +18,46 @@ const faqItems = [
 
 <BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/camden/" faqItems={faqItems}>
 
-<InnerPageHero
-  title="Window Film Solutions<br />Camden, NJ"
-  bgImage="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png"
-  desc="Serving Camden and South Jersey homeowners and businesses since 2008."
-/>
+<!-- ══ HERO ══ -->
+<section class="cam-hero">
+  <div class="cam-hero__overlay"></div>
+  <div class="cam-hero__container">
+    <div class="cam-hero__label">WINDOW FILM INSTALLATION &middot; CAMDEN, NJ</div>
+    <div class="cam-hero__content">
+      <h1 class="cam-hero__title">Window Film Camden.<br/>South Jersey's Best.</h1>
+      <p class="cam-hero__subtitle">Professional residential and commercial window film installation in Camden, NJ and throughout South Jersey. Free estimates. Certified installers. Lifetime warranty.</p>
+      <div class="cam-hero__buttons">
+        <a href="/contact/" class="btn-hero btn-hero--primary">Get Your Free Estimate &rarr;</a>
+        <a href="tel:+12673947980" class="btn-hero btn-hero--secondary">Call (267) 394-7980</a>
+      </div>
+    </div>
+    <div class="cam-hero__stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-item__number" data-count="18">0</div>
+        <div class="hero-stat-item__label">Years Serving South Jersey</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-item__number" data-count="500">0</div>
+        <div class="hero-stat-item__label">Camden Area Installs</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-item__number" data-count="99">0</div>
+        <div class="hero-stat-item__label">UV Block Rate</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-item__number" data-count="4.9">0</div>
+        <div class="hero-stat-item__label">Google Rating</div>
+      </div>
+    </div>
+    <div class="cam-hero__tagline">Trusted by Camden homeowners and businesses since 2008.</div>
+  </div>
+</section>
 
 <div class="ip-page-body">
 <!-- ══════════════════════════════════════
-     PAGE HERO — 2-col: copy left, body right
+     EXISTING PAGE CONTENT
      ══════════════════════════════════════ -->
-<div class="ip-hero">
+<div class="ip-hero">  {/* existing 2-col hero kept below new cinematic hero */}
   <div class="ip-hero__content fade-in">
     <div class="ip-hero__eyebrow">
       <span class="eyebrow-marquee"><span>Camden, New Jersey</span></span>
@@ -246,6 +275,97 @@ const faqItems = [
 </BaseLayout>
 
 <style>
+/* ── CAMDEN CINEMATIC HERO ── */
+.cam-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  background-image: url('/images/window-film-camden-nj-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.cam-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(13,26,15,0.5) 0%, rgba(13,26,15,0.45) 50%, rgba(13,26,15,0.75) 100%);
+  z-index: 1;
+}
+.cam-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cam-hero__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7CB342;
+  padding-top: 140px;
+}
+.cam-hero__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 720px;
+}
+.cam-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.cam-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.cam-hero__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cam-hero__stats {
+  display: flex;
+  justify-content: flex-end;
+  gap: 60px;
+  padding-bottom: 60px;
+  flex-wrap: wrap;
+}
+.cam-hero__tagline {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  max-width: 400px;
+}
+@media (max-width: 768px) {
+  .cam-hero__container { padding: 0 24px; }
+  .cam-hero__label { padding-top: 100px; }
+  .cam-hero__stats { justify-content: flex-start; gap: 32px; }
+  .cam-hero__tagline { left: 24px; }
+}
+
 /* ── PAGE BODY WRAPPER ── */
 .ip-page-body {
   position: relative;
