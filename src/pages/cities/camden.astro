@@ -31,25 +31,27 @@ const faqItems = [
         <a href="tel:+12673947980" class="btn-hero btn-hero--secondary">Call (267) 394-7980</a>
       </div>
     </div>
-    <div class="cam-hero__stats">
-      <div class="hero-stat-item">
-        <div class="hero-stat-item__number" data-count="18">0</div>
-        <div class="hero-stat-item__label">Years Serving South Jersey</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-item__number" data-count="500">0</div>
-        <div class="hero-stat-item__label">Camden Area Installs</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-item__number" data-count="99">0</div>
-        <div class="hero-stat-item__label">UV Block Rate</div>
-      </div>
-      <div class="hero-stat-item">
-        <div class="hero-stat-item__number" data-count="4.9">0</div>
-        <div class="hero-stat-item__label">Google Rating</div>
+    <div class="cam-hero__bottom">
+      <div class="cam-hero__tagline">Trusted by Camden homeowners and businesses since 2008.</div>
+      <div class="cam-hero__stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="18">0</div>
+          <div class="hero-stat-item__label">Years Serving South Jersey</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="500">0</div>
+          <div class="hero-stat-item__label">Camden Area Installs</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="99">0</div>
+          <div class="hero-stat-item__label">UV Block Rate</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="4.9">0</div>
+          <div class="hero-stat-item__label">Google Rating</div>
+        </div>
       </div>
     </div>
-    <div class="cam-hero__tagline">Trusted by Camden homeowners and businesses since 2008.</div>
   </div>
 </section>
 
@@ -275,6 +277,34 @@ const faqItems = [
 </BaseLayout>
 
 <style>
+/* ── HERO BUTTONS (mirrored from services page) ── */
+.btn-hero {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.btn-hero--primary { background: #7CB342; color: #fff; border: 2px solid #7CB342; }
+.btn-hero--primary:hover { background: #6fa037; border-color: #6fa037; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,179,66,0.3); color: #fff; }
+.btn-hero--secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+.btn-hero--secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); transform: translateY(-2px); color: #fff; }
+
+/* ── HERO STAT ITEMS (mirrored from services page) ── */
+.hero-stat-item { text-align: center; }
+.hero-stat-item__number {
+  font-family: 'Space Mono', monospace;
+  font-size: 40px; font-weight: 700; color: #fff;
+  line-height: 1; margin-bottom: 8px;
+}
+.hero-stat-item__number::after { content: '+'; font-size: 28px; margin-left: 4px; opacity: 0.7; }
+.hero-stat-item:nth-child(3) .hero-stat-item__number::after { content: '%'; }
+.hero-stat-item:nth-child(4) .hero-stat-item__number::after { content: '★'; color: #7CB342; }
+.hero-stat-item__label { font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; }
+
 /* ── CAMDEN CINEMATIC HERO ── */
 .cam-hero {
   position: relative;
@@ -342,28 +372,32 @@ const faqItems = [
   gap: 16px;
   flex-wrap: wrap;
 }
-.cam-hero__stats {
+.cam-hero__bottom {
   display: flex;
-  justify-content: flex-end;
-  gap: 60px;
+  justify-content: space-between;
+  align-items: flex-end;
   padding-bottom: 60px;
+  gap: 40px;
   flex-wrap: wrap;
 }
 .cam-hero__tagline {
-  position: absolute;
-  bottom: 60px;
-  left: 80px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: rgba(255,255,255,0.7);
-  max-width: 400px;
+  max-width: 360px;
+}
+.cam-hero__stats {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 @media (max-width: 768px) {
   .cam-hero__container { padding: 0 24px; }
   .cam-hero__label { padding-top: 100px; }
+  .cam-hero__bottom { flex-direction: column; gap: 24px; }
   .cam-hero__stats { justify-content: flex-start; gap: 32px; }
-  .cam-hero__tagline { left: 24px; }
 }
 
 /* ── PAGE BODY WRAPPER ── */
@@ -865,3 +899,33 @@ const faqItems = [
   }
 }
 </style>
+
+<script>
+  // Count-up animation for hero stats
+  const countUp = (el) => {
+    const target = parseFloat(el.getAttribute('data-count') || '0');
+    const isDecimal = target % 1 !== 0;
+    const duration = 1800;
+    const start = performance.now();
+    const animate = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const value = target * ease;
+      el.textContent = isDecimal ? value.toFixed(1) : Math.round(value).toLocaleString();
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.hero-stat-item__number[data-count]').forEach(el => observer.observe(el));
+</script>
