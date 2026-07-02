@@ -1,14 +1,20 @@
 ---
 // Benefits — Completely rebuilt with left tabs + right content (3-image grid + content below)
+interface Props {
+  city?: string;
+  eyebrow?: string;
+  subtitle?: string;
+}
+const { city = 'Philadelphia', eyebrow = 'BENEFITS', subtitle = 'Click any benefit to explore' } = Astro.props;
 ---
 
 <section class="benefits-new" id="benefits">
   
   <!-- Section Header -->
   <div class="benefits-new__header">
-    <p class="benefits-new__label">BENEFITS</p>
-    <h2 class="benefits-new__title">Why Philadelphia chooses window film</h2>
-    <p class="benefits-new__subtitle">Click any benefit to explore</p>
+    <p class="benefits-new__label">{eyebrow}</p>
+    <h2 class="benefits-new__title">Why {city} chooses window film</h2>
+    <p class="benefits-new__subtitle">{subtitle}</p>
   </div>
 
   <!-- Main Layout: Left Tabs + Right Content -->
