@@ -2035,4 +2035,15 @@ in Camden, NJ</h2>
   }, { threshold: 0.3 });
 
   document.querySelectorAll('.hero-stat-item__number[data-count]').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.ip-faq__item').forEach(item => {
+    item.addEventListener('click', () => {
+      const isOpen = item.classList.contains('ip-faq__item--open');
+      document.querySelectorAll('.ip-faq__item--open').forEach(open => {
+        open.classList.remove('ip-faq__item--open');
+      });
+      if (!isOpen) item.classList.add('ip-faq__item--open');
+    });
+  });
 </script>
