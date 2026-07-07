@@ -16,7 +16,7 @@ Philadelphia light can be beautiful until it turns a Center City conference room
 
 Philadelphia buildings deal with a mix of old construction and modern glass that makes glare especially noticeable. Brick rowhomes in Fairmount, Bella Vista, and South Philly often have tall front windows with limited overhangs, while office buildings in University City and along Market Street can have broad west-facing elevations that pull in hours of late-day sun.
 
-When that sunlight hits untreated glass, the problem is not just visual discomfort. Screen washout, squinting, and closed blinds usually come with added solar heat, which is why glare complaints and comfort complaints tend to show up together. The U.S. Department of Energy notes that window films can help reduce solar heat gain and improve comfort through existing windows in the right application. Its guidance on [energy efficient window coverings and film-related window upgrades](https://www.energy.gov/energysaver/energy-efficient-window-coverings) is a useful baseline for understanding why these products matter.
+When that sunlight hits untreated glass, the problem is not just visual discomfort. Screen washout, squinting, and closed blinds usually come with added solar heat, which is why glare complaints and comfort complaints tend to show up together. OSHA's guidance on [workplace lighting and glare control](https://www.osha.gov/otm/section-3-health-hazards/chapter-2) identifies excessive glare as a direct contributor to eye strain, headaches, and reduced productivity — making it an occupational concern, not just a comfort preference.
 
 ## What good glare control should actually accomplish
 
