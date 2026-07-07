@@ -55,6 +55,25 @@ When the film is damaged, a technician removes it and installs a fresh layer. Th
 
 The film can also be applied to other smooth surfaces where graffiti is common — polished stone, stainless steel elevator panels, and metal cladding.
 
+<div class="ag-ba-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:40px 0;">
+  <div style="position:relative;border-radius:16px;overflow:hidden;">
+    <img src="/images/anti-graffiti-before.jpg" alt="Heavily scratched and damaged commercial storefront glass — before anti-graffiti film" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
+    <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));padding:14px 18px;">
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#fff;">✗ Before &mdash; Unprotected Glass</span>
+    </div>
+  </div>
+  <div style="position:relative;border-radius:16px;overflow:hidden;">
+    <img src="/images/anti-graffiti-after.jpg" alt="Clean pristine commercial storefront after anti-graffiti window film installation" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
+    <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.55));padding:14px 18px;">
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#fff;">✓ After &mdash; Anti-Graffiti Film Applied</span>
+    </div>
+  </div>
+</div>
+
+<style>
+@media (max-width: 600px) { .ag-ba-grid { grid-template-columns: 1fr !important; } }
+</style>
+
 ## Why Anti-Graffiti Window Film Makes Sense for Philadelphia
 
 Philadelphia has one of the most active graffiti scenes on the East Coast, with activity concentrated in commercial corridors and transit areas. For business owners, the financial impact is direct and recurring.
@@ -123,10 +142,6 @@ Anti-graffiti window film is in use across a wide range of Philadelphia property
 
 Spray paint is visible and obvious, but acid etching is often worse. Vandals use commercially available glass etching compounds — intended for craft projects — to permanently scratch names, symbols, and tags into glass surfaces. The damage is subtle but irreversible without grinding or replacement.
 
-<div style="width:100%;border-radius:16px;overflow:hidden;margin:24px 0;">
-  <img src="/images/anti-graffiti-etching-closeup.jpg" alt="Cracked and damaged commercial storefront glass — the high cost of unprotected windows" style="width:100%;display:block;" loading="lazy" />
-</div>
-
 Anti-graffiti film is one of the only cost-effective defenses against etching. The compound attacks the film rather than the glass, and the damaged film can simply be replaced. Without film protection, an etched window almost always requires full glass replacement.
 
 > For Philadelphia businesses with expensive plate glass storefronts, **this protection alone justifies the investment.** A single etching incident that requires glass replacement typically costs more than a full film installation with several years of replacement service.
@@ -167,6 +182,10 @@ Installation is non-invasive and doesn't require the business to close. A profes
     <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.2;max-width:360px;">Film options, pricing, and Philadelphia project examples</div>
   </div>
   <a href="/benefits/anti-graffiti/" style="display:inline-block;background:#7CB342;color:#fff;font-family:Inter,system-ui,sans-serif;font-size:0.88rem;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;white-space:nowrap;flex-shrink:0;">See Anti-Graffiti Film Details →</a>
+</div>
+
+<div style="width:100%;border-radius:16px;overflow:hidden;margin:40px 0 28px;">
+  <img src="/images/anti-graffiti-etching-closeup.jpg" alt="Cracked and damaged commercial storefront glass — the true cost of leaving glass unprotected" style="width:100%;display:block;" loading="lazy" />
 </div>
 
 ## The Ongoing Cost of Not Protecting Your Glass
