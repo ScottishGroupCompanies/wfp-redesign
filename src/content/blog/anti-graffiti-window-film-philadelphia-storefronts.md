@@ -138,6 +138,35 @@ Anti-graffiti window film is in use across a wide range of Philadelphia property
   </div>
 </div>
 
+## Philadelphia's Graffiti Problem: Context, Data, and Cost
+
+Philadelphia has a long and complicated relationship with graffiti. The city is widely recognized as one of the birthplaces of American graffiti culture — its tagging traditions helped shape the visual language of hip-hop from the 1970s onward. That history is real. But so is the ongoing financial toll on businesses that didn't ask to be part of it.
+
+PennDOT alone spent $129,000 in 2023 removing graffiti from Philadelphia-area state infrastructure — highways, overpasses, and transit-adjacent public surfaces. That figure covers only state-maintained property. The bill for private commercial glass runs substantially higher and falls entirely on property owners and their insurers.
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0;padding:28px 24px;background:#F3F6F1;border-radius:16px;">
+  <div style="text-align:center;padding:8px;">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:700;color:#14201A;">$129K</div>
+    <div style="font-family:Inter,system-ui,sans-serif;font-size:0.7rem;color:#4A5C48;margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">PennDOT spent on Philly-area graffiti removal in 2023 — state property only</div>
+  </div>
+  <div style="text-align:center;padding:8px;border-left:1px solid #D8E8C8;border-right:1px solid #D8E8C8;">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:700;color:#14201A;">15–25%</div>
+    <div style="font-family:Inter,system-ui,sans-serif;font-size:0.7rem;color:#4A5C48;margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Drop in commercial property values in areas with persistent visible graffiti</div>
+  </div>
+  <div style="text-align:center;padding:8px;">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:700;color:#14201A;">$600M+</div>
+    <div style="font-family:Inter,system-ui,sans-serif;font-size:0.7rem;color:#4A5C48;margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">U.S. schools spend annually on vandalism cleanup and repair</div>
+  </div>
+</div>
+
+Beyond individual repair bills, the impact compounds. Commercial property values in areas with persistent graffiti drop an average of 15% — as much as 25% when the markings are hateful or profane. That affects lease rates, refinancing, and property sale prices in ways that never appear on a single repair invoice. In a 2019 insurance industry analysis, the average vandalism claim exceeded $5,000 before factoring in lost business during downtime.
+
+Damage in Philadelphia concentrates along predictable patterns. Ground-floor commercial glass on high-foot-traffic corridors — South Street, East Passyunk, Kensington Avenue, the Fishtown stretch along Girard and Frankford — sees the highest frequency of tagging and scratching. Properties near SEPTA El stops in Kensington and Port Richmond experience some of the highest per-block rates of acid etching. Late-night entertainment districts accumulate marker and key damage on door glass and sidelights overnight, when no one is watching.
+
+Criminologists call it the **broken windows effect**: visible signs of disorder signal that a space is unmonitored, which attracts more vandalism. A tagged storefront that isn't cleaned within 24–48 hours is statistically more likely to be hit again within the week. Film-based protection changes this dynamic — rapid, affordable restoration eliminates the signal. A clean storefront is itself a deterrent.
+
+Philadelphia's [Graffiti Abatement Program](https://www.phila.gov/services/streets-sidewalks-alleys/report-a-problem-on-a-city-street-sidewalk-or-alley/report-graffiti/) handles removal from public property. For private commercial glass, anti-graffiti film with a rapid-replacement program is the practical, long-term answer.
+
 ## Etching Protection: A Special Concern
 
 Spray paint is visible and obvious, but acid etching is often worse. Vandals use commercially available glass etching compounds — intended for craft projects — to permanently scratch names, symbols, and tags into glass surfaces. The damage is subtle but irreversible without grinding or replacement.
@@ -176,7 +205,47 @@ Anti-graffiti film comes in several configurations:
 
 Installation is non-invasive and doesn't require the business to close. A professional installer applies the film in a single visit, and the surface is ready within hours.
 
-<div style="background:#14201A;border-radius:20px;padding:40px 36px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+## Brands We Install: 3M and Graffiti Shield
+
+Product selection matters. The right film for a school entrance differs from the right film for a restaurant sidelight, an elevator panel, or a historically significant sash window. We install films from two leading manufacturers, each with a purpose-built product line suited to different risk levels and surface types.
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0;">
+  <div style="border-radius:16px;overflow:hidden;border:2px solid #E8EDE4;">
+    <div style="background:#14201A;padding:22px 24px;">
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;color:#fff;">3M™ Anti-Graffiti Film</div>
+      <div style="font-family:Inter,system-ui,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.65);margin-top:5px;">AG4 (4-mil) &amp; AG6 (6-mil)</div>
+    </div>
+    <div style="padding:22px 24px;background:#fff;">
+      <div style="font-family:Inter,system-ui,sans-serif;font-size:0.88rem;color:#4A5C48;line-height:1.65;margin-bottom:14px;">3M's anti-graffiti line comes in two thicknesses. Both are optically clear — no tint, no haze — and apply to interior or exterior glass. They're designed to be removed without tools after vandalism, leaving the underlying glass untouched. Both products also block up to 99% of UV rays, adding incidental sun protection alongside the graffiti defense.</div>
+      <div style="font-family:Inter,system-ui,sans-serif;font-size:0.82rem;color:#14201A;line-height:1.6;">
+        <div style="margin-bottom:6px;"><strong>AG4 (4-mil):</strong> Standard coverage for lower-risk interior and exterior glass</div>
+        <div style="margin-bottom:6px;"><strong>AG6 (6-mil):</strong> Preferred for high-exposure surfaces — transit glass, exterior storefronts, bus corridors</div>
+        <div><strong>Warranty:</strong> 1-year manufacturer warranty on both products</div>
+      </div>
+    </div>
+  </div>
+  <div style="border-radius:16px;overflow:hidden;border:2px solid #E8EDE4;">
+    <div style="background:#2E6B30;padding:22px 24px;">
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;color:#fff;">Graffiti Shield</div>
+      <div style="font-family:Inter,system-ui,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.65);margin-top:5px;">Glass Shield · Metal Shield · Mirror Shield · Multi-Layer</div>
+    </div>
+    <div style="padding:22px 24px;background:#fff;">
+      <div style="font-family:Inter,system-ui,sans-serif;font-size:0.88rem;color:#4A5C48;line-height:1.65;margin-bottom:14px;">Graffiti Shield specializes exclusively in surface protection. Their hard-coat <strong>Glass Shield</strong> is engineered to resist scratching, carving, and acid etching. For high-incident properties, <strong>Glass Shield Multi-Layer</strong> offers a four-peel system — individual layers are removed one at a time after each incident, eliminating full film swaps and cutting per-incident cost significantly.</div>
+      <div style="font-family:Inter,system-ui,sans-serif;font-size:0.82rem;color:#14201A;line-height:1.6;">
+        <div style="margin-bottom:6px;"><strong>Metal Shield:</strong> Stainless steel, brushed aluminum, and brushed gold finishes — for elevator banks and lobby hardware</div>
+        <div><strong>Mirror Shield:</strong> Protects restroom and lobby mirrors from etching and scratching in high-traffic public environments</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@media (max-width: 600px) { .ag-brand-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+The right product depends on surface type, exposure level, and how often you expect to make replacements. Our assessment process covers all of this before a single film is ordered.
+
+<div style="background:#14201A;border-radius:20px;"padding:40px 36px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
   <div>
     <div style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#7CB342;margin-bottom:8px;">Want the full breakdown?</div>
     <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.2;max-width:360px;">Film options, pricing, and Philadelphia project examples</div>
@@ -198,8 +267,16 @@ For Philadelphia commercial properties on high-traffic corridors, the question i
 
 ## Getting Anti-Graffiti Film Installed
 
-Window Film Philadelphia installs anti-graffiti window film for commercial storefronts, historic buildings, restaurants, schools, and institutional properties throughout the Philadelphia metro area. We work with property managers, business owners, and building operators to develop a protection plan that matches the specific risk profile and glass type of each property.
+Installing anti-graffiti film is a straightforward professional process — but for a commercial property, getting the right result means more than just applying a product to glass. Here's what the process looks like from start to finish.
 
-Visit our [anti-graffiti window film page](https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/) for full details on film options and pricing, or contact our team to schedule a site assessment. We'll evaluate your glazing, identify the highest-risk surfaces, and recommend the right film configuration for your building.
+**Site assessment.** The process starts with an on-site evaluation of your glass — type, thickness, coating, framing system, and sun and vandalism exposure. For historic buildings, we confirm glass compatibility before recommending any product. Older single-pane glass, original sash windows, and certain tempered or coated glass types each have specific requirements that affect product selection.
 
-Don't wait for the next vandalism event to act. The cost of protection is always less than the cost of repair.
+**Film selection.** Based on the assessment, we recommend the right product for each surface: thickness (4-mil or 6-mil), brand (3M or Graffiti Shield), and whether a standard film, a safety-plus-anti-graffiti combination, or a multi-layer peel system makes the most economic sense. High-incident surfaces get a different spec than low-risk interior glass.
+
+**Installation.** Most commercial installations complete in a single visit, require no business closure, and leave the surface ready for normal use within hours. Crews work around your operating schedule — morning, evening, or weekend installation is available for businesses that can't afford downtime.
+
+**Ongoing replacement program.** The real value of film isn't the initial installation — it's the protection that follows. When vandalism occurs, a service visit restores the surface quickly and at a pre-agreed cost. Many Philadelphia property managers set up a standing service agreement so that any future damage is handled with a call, not an emergency scramble and a new quote.
+
+Window Film Philadelphia serves commercial storefronts, historic buildings, restaurants, schools, and institutional properties throughout the Philadelphia metro area — including South Jersey and Delaware County. Visit our [anti-graffiti window film page](https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/) for full product and pricing details, or contact our team to schedule a no-cost site assessment.
+
+Don't wait for the next incident. The cost of protection is always less than the cost of repair.
