@@ -90,10 +90,6 @@ Anti-graffiti window film is installed across a wide range of Philadelphia prope
 - <span>**Schools and institutional buildings**, where vandalism on exterior windows and entry vestibules undermines safety and environment.</span>
 - <span>**Interior surfaces** including elevator panels, lobby display cases, polished stone cladding, and restroom mirrors — anywhere smooth surfaces accumulate wear.</span>
 
-## Applications in Philadelphia: A Photo Gallery
-
-Anti-graffiti and surface protection film isn't just for storefronts. The same sacrificial-layer principle applies across a wide range of surfaces that get hit in commercial buildings every day — glass, metal, and mirror alike.
-
 <div class="ag-gallery" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0;">
   <figure style="margin:0;">
     <img src="/images/ag-gallery-metal-elevator.jpg" alt="Brushed stainless steel elevator panels protected with Metal Shield anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
