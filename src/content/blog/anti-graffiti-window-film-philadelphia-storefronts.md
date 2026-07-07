@@ -14,7 +14,11 @@ Graffiti vandalism costs Philadelphia property owners thousands of dollars every
 
 Anti-graffiti window film changes the equation. This thin, sacrificial film bonds to glass surfaces and absorbs the damage from spray paint, acid etching, and permanent markers. When vandalism strikes, the film peels off and gets replaced — not the glass. The result is a repair that takes minutes and costs a fraction of what glass replacement would.
 
-<div class="ag-stats" style="background:#14201A;border-radius:20px;padding:40px 32px;margin:40px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;">
+<div style="background:#14201A;border-radius:20px;overflow:hidden;margin:40px 0;">
+  <div style="width:100%;height:240px;overflow:hidden;">
+    <img src="/images/anti-graffiti-installation-banner.jpg" alt="Professional window film installer applying protective film to commercial glass storefront" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 35%;" loading="lazy" />
+  </div>
+<div class="ag-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;padding:36px 32px;">
   <div style="padding:8px 4px;border-right:1px solid rgba(255,255,255,0.1);">
     <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.75rem;font-weight:700;color:#7CB342;line-height:1.1;">$500–$1,500</div>
     <div style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.6);margin-top:8px;text-transform:uppercase;letter-spacing:0.1em;">Per Vandalism Incident</div>
@@ -31,6 +35,7 @@ Anti-graffiti window film changes the equation. This thin, sacrificial film bond
     <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.75rem;font-weight:700;color:#7CB342;line-height:1.1;">80%</div>
     <div style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.6);margin-top:8px;text-transform:uppercase;letter-spacing:0.1em;">Less Than Glass Replacement</div>
   </div>
+</div>
 </div>
 
 <style>
@@ -117,6 +122,10 @@ Anti-graffiti window film is in use across a wide range of Philadelphia property
 ## Etching Protection: A Special Concern
 
 Spray paint is visible and obvious, but acid etching is often worse. Vandals use commercially available glass etching compounds — intended for craft projects — to permanently scratch names, symbols, and tags into glass surfaces. The damage is subtle but irreversible without grinding or replacement.
+
+<div style="width:100%;border-radius:16px;overflow:hidden;margin:24px 0;">
+  <img src="/images/anti-graffiti-etching-closeup.jpg" alt="Cracked and damaged commercial storefront glass — the high cost of unprotected windows" style="width:100%;display:block;" loading="lazy" />
+</div>
 
 Anti-graffiti film is one of the only cost-effective defenses against etching. The compound attacks the film rather than the glass, and the damaged film can simply be replaced. Without film protection, an etched window almost always requires full glass replacement.
 
