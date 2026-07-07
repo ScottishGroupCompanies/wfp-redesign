@@ -37,6 +37,8 @@ For example, 3M Sun Control Window Film Prestige Series is known for a lighter, 
 
 For many projects, the best glare reduction window film Philadelphia offices and rowhomes install is a spectrally selective product rather than the darkest film on the card. That matters in places like Old City lofts or Washington Square offices where daylight is part of the appeal and the finish needs to stay refined.
 
+![glare reduction window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-glare-reduction-window-film-philadelphia-offices-rowhomes.png)
+
 ## Where film makes the biggest difference
 
 Not every pane needs the same treatment. The most noticeable improvements usually come from the windows that collect direct sun at the worst times of day.
