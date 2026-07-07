@@ -7,6 +7,7 @@ image: "/images/wfp-church-hero.jpg"
 imageAlt: "Stained glass style window film on a Philadelphia entryway with decorative sidelights"
 tags: ["window film", "philadelphia", "decorative window film", "privacy window film", "stained glass film"]
 draft: false
+category: "decorative-promotional"
 ---
 
 ## Why This Look Works So Well on Philadelphia Entryways

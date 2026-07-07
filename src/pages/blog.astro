@@ -1,8 +1,9 @@
-﻿---
+---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandLogos from '../components/BrandLogos.astro';
 import InnerPageHero from '../components/InnerPageHero.astro';
 import { getCollection } from 'astro:content';
+import { benefitCategories, cityCategories, getCategoryLabel } from '../data/categories';
 
 const title = 'Window Film Blog | Tips & Guides | Window Film Philadelphia';
 const description = 'Read the latest window film tips, guides, and industry news from Window Film Philadelphia. Expert advice for residential and commercial properties in the Philadelphia area.';
@@ -41,15 +42,73 @@ function formatDate(date: Date): string {
   </div>
 
   <!-- ══════════════════════════════════════
+       CATEGORY FILTERS
+       ══════════════════════════════════════ -->
+  <div class="blog-filters" id="blogFilters">
+
+    <!-- All posts button -->
+    <div class="blog-filters__row">
+      <button class="filter-btn filter-btn--all is-active" data-filter="all">
+        All Articles
+        <span class="filter-btn__count">{posts.length}</span>
+      </button>
+    </div>
+
+    <!-- Benefits group -->
+    <div class="blog-filters__group">
+      <span class="blog-filters__group-label">By Topic</span>
+      <div class="blog-filters__pills">
+        {benefitCategories.map((cat) => {
+          const count = posts.filter((p) => p.data.category === cat.slug).length;
+          return count > 0 ? (
+            <button
+              class="filter-btn"
+              data-filter={cat.slug}
+              data-archive={`/blog/category/${cat.slug}/`}
+            >
+              {cat.label}
+              <span class="filter-btn__count">{count}</span>
+            </button>
+          ) : null;
+        })}
+      </div>
+    </div>
+
+    <!-- Cities group -->
+    <div class="blog-filters__group">
+      <span class="blog-filters__group-label">By City</span>
+      <div class="blog-filters__pills">
+        {cityCategories.map((cat) => {
+          const count = posts.filter((p) => p.data.category === cat.slug).length;
+          return count > 0 ? (
+            <button
+              class="filter-btn"
+              data-filter={cat.slug}
+              data-archive={`/blog/category/${cat.slug}/`}
+            >
+              {cat.label}
+              <span class="filter-btn__count">{count}</span>
+            </button>
+          ) : null;
+        })}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
        BLOG GRID
        ══════════════════════════════════════ -->
   <div class="blog-grid-wrap">
     {posts.length === 0 ? (
       <p class="blog-empty">No posts published yet. Check back soon.</p>
     ) : (
-      <div class="blog-grid">
+      <div class="blog-grid" id="blogGrid">
         {posts.map((post) => (
-          <article class="blog-card">
+          <article
+            class="blog-card"
+            data-category={post.data.category ?? ''}
+          >
             {post.data.image && (
               <a href={`/blog/${post.slug}/`} class="blog-card__img-link" tabindex="-1" aria-hidden="true">
                 <div class="blog-card__img">
@@ -59,9 +118,16 @@ function formatDate(date: Date): string {
             )}
             <div class="blog-card__body">
               <div class="blog-card__meta">
-                {post.data.tags && post.data.tags[0] && (
+                {post.data.category ? (
+                  <a
+                    href={`/blog/category/${post.data.category}/`}
+                    class="blog-card__cat"
+                  >
+                    {getCategoryLabel(post.data.category)}
+                  </a>
+                ) : post.data.tags && post.data.tags[0] ? (
                   <span class="blog-card__cat">{post.data.tags[0]}</span>
-                )}
+                ) : null}
                 <span class="blog-card__date">{formatDate(post.data.pubDate)}</span>
               </div>
               <h2 class="blog-card__title">
@@ -76,6 +142,11 @@ function formatDate(date: Date): string {
         ))}
       </div>
     )}
+
+    <!-- No results message (shown by JS) -->
+    <p class="blog-no-results" id="blogNoResults" aria-live="polite" hidden>
+      No articles in this category yet. <a href="/blog/">View all articles →</a>
+    </p>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -124,6 +195,115 @@ function formatDate(date: Date): string {
   max-width: 580px;
   margin: 0;
 }
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 8px;
+}
+.section-title em { font-style: italic; color: var(--green, #81AB4C); }
+
+/* ════════════════════════════════════
+   CATEGORY FILTERS
+   ════════════════════════════════════ */
+.blog-filters {
+  padding: 0 10% 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blog-filters__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.blog-filters__group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.blog-filters__group-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-light, #888);
+  white-space: nowrap;
+  padding-top: 10px;
+  min-width: 60px;
+}
+
+.blog-filters__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Filter button */
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid, #4a4a4a);
+  background: var(--off-white, #F7F6F3);
+  border: 1.5px solid var(--light-gray, #EFEFED);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.filter-btn:hover {
+  border-color: var(--green, #81AB4C);
+  color: var(--green, #81AB4C);
+}
+.filter-btn.is-active {
+  background: var(--green, #81AB4C);
+  border-color: var(--green, #81AB4C);
+  color: #fff;
+  font-weight: 600;
+}
+.filter-btn__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.12);
+  border-radius: 100px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+.filter-btn.is-active .filter-btn__count {
+  background: rgba(255,255,255,0.25);
+}
+.filter-btn--all {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
 
 /* ── BLOG GRID ── */
 .blog-grid-wrap { padding: 0 5% 80px; }
@@ -134,6 +314,15 @@ function formatDate(date: Date): string {
   text-align: center;
   padding: 60px 0;
 }
+.blog-no-results {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  text-align: center;
+  padding: 60px 0;
+}
+.blog-no-results a { color: var(--green, #81AB4C); text-decoration: none; }
+.blog-no-results a:hover { text-decoration: underline; }
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -148,11 +337,14 @@ function formatDate(date: Date): string {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--light-gray, #EFEFED);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
 }
 .blog-card:hover {
   box-shadow: 0 16px 48px rgba(0,0,0,0.10);
   transform: translateY(-4px);
+}
+.blog-card.is-hidden {
+  display: none;
 }
 .blog-card__img-link { display: block; overflow: hidden; }
 .blog-card__img { height: 220px; overflow: hidden; }
@@ -175,7 +367,11 @@ function formatDate(date: Date): string {
   font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
   color: #fff; background: var(--green, #81AB4C);
   padding: 3px 10px; border-radius: var(--radius-pill, 100px);
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
 }
+a.blog-card__cat:hover { background: #6e9640; }
 .blog-card__date {
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 12px; color: var(--text-light, #888); font-weight: 500;
@@ -247,6 +443,9 @@ function formatDate(date: Date): string {
 }
 @media (max-width: 768px) {
   .blog-intro { padding: 56px 5% 32px; }
+  .blog-filters { padding: 0 5% 40px; }
+  .blog-filters__group { flex-direction: column; gap: 8px; }
+  .blog-filters__group-label { padding-top: 0; }
   .blog-grid-wrap { padding: 0 5% 56px; }
   .blog-grid { grid-template-columns: 1fr; }
   .ip-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
@@ -254,3 +453,49 @@ function formatDate(date: Date): string {
   .ip-cta__btns { flex-direction: column; width: 100%; }
 }
 </style>
+
+<script>
+// ════════════════════════════════════
+//  Blog Category Filter
+// ════════════════════════════════════
+const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+const cards = document.querySelectorAll<HTMLElement>('.blog-card');
+const noResults = document.getElementById('blogNoResults') as HTMLElement;
+
+let activeFilter = 'all';
+
+function applyFilter(slug: string) {
+  activeFilter = slug;
+
+  // Update button states
+  filterBtns.forEach((btn) => {
+    const isActive = btn.dataset.filter === slug;
+    btn.classList.toggle('is-active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+
+  // Show/hide cards
+  let visibleCount = 0;
+  cards.forEach((card) => {
+    const cardCat = card.dataset.category ?? '';
+    const show = slug === 'all' || cardCat === slug;
+    card.classList.toggle('is-hidden', !show);
+    if (show) visibleCount++;
+  });
+
+  // No results message
+  if (noResults) {
+    noResults.hidden = visibleCount > 0;
+  }
+}
+
+filterBtns.forEach((btn) => {
+  btn.setAttribute('aria-pressed', btn.dataset.filter === 'all' ? 'true' : 'false');
+  btn.setAttribute('role', 'button');
+
+  btn.addEventListener('click', () => {
+    const slug = btn.dataset.filter ?? 'all';
+    applyFilter(slug);
+  });
+});
+</script>

@@ -7,6 +7,7 @@ image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["energy efficient window film", "philadelphia", "window film", "heat control", "energy savings"]
 draft: false
+category: "energy-savings"
 ---
 
 Philadelphia summers are brutal. By July, indoor temperatures can climb well past comfortable even with the AC running full blast — especially in rowhomes with south- or west-facing windows that get hammered by afternoon sun. If your utility bills are climbing and your rooms still feel like a greenhouse, **energy efficient window film** may be the most cost-effective upgrade you haven't tried yet.

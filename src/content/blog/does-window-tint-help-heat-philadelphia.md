@@ -7,6 +7,7 @@ image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["window tint", "heat reduction", "philadelphia", "energy savings", "solar film"]
 draft: false
+category: "energy-savings"
 ---
 
 Philadelphia summers are no joke. Between July heat waves, brutal humidity, and sun pouring through south- and west-facing windows, indoor temperatures can climb fast — even with the AC running. If you've ever sat near a sun-drenched window and wondered whether window tint would actually help, the short answer is yes. Significantly.

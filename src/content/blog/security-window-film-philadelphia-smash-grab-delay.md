@@ -7,6 +7,7 @@ image: "/images/wfp-retail-hero.jpg"
 imageAlt: "Philadelphia retail storefront protected with security window film"
 tags: ["window film", "philadelphia", "security film", "commercial window film", "storefront security"]
 draft: false
+category: "safety-security"
 ---
 
 Philadelphia storefront glass has to do two jobs at once: bring in daylight and customers, while standing up to real street-level risk. In Center City, Old City, Fishtown, and along busy SEPTA corridors, a fast smash-and-grab attempt usually targets the easiest point of entry first. Security window film Philadelphia businesses install is designed to help shattered glass stay in place longer, make forced entry louder and slower, and buy valuable time for staff, alarms, and police response.

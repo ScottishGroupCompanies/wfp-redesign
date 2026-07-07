@@ -7,6 +7,7 @@ image: "/images/wfp-landing-hero.jpg"
 imageAlt: "Nighttime privacy window film for a Philadelphia home"
 tags: ["window film", "philadelphia", "privacy window film", "nighttime privacy", "decorative film"]
 draft: false
+category: "privacy-film"
 ---
 
 ## What Actually Works After Dark

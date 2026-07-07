@@ -7,6 +7,7 @@ image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Close-up of energy-saving window film on a glass window in Philadelphia"
 tags: ["window film", "philadelphia", "energy savings"]
 draft: false
+category: "energy-savings"
 ---
 
 ## Why Low-E Film Matters in Philadelphia’s Climate

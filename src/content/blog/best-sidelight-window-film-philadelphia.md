@@ -7,6 +7,7 @@ image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["sidelight", "privacy", "window film", "decorative", "philadelphia"]
 draft: false
+category: "decorative-promotional"
 ---
 
 ## Why Sidelights Are a Privacy Problem Most Philadelphia Homeowners Overlook

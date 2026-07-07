@@ -7,6 +7,7 @@ image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Reflective one-way privacy window film on a sunlit Philadelphia residential window"
 tags: ["window film", "philadelphia", "privacy window film", "glare reduction", "decorative film"]
 draft: false
+category: "privacy-film"
 ---
 
 ## Why Sun Direction Matters More Than the Mirror Look

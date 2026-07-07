@@ -7,6 +7,7 @@ image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Premium heat control window film installation in Philadelphia"
 tags: ["heat control window film", "philadelphia", "rowhomes", "window film"]
 draft: false
+category: "energy-savings"
 ---
 
 ## Heat, Rowhomes, and Realistic Results
