@@ -24,6 +24,7 @@ export interface Props {
   howToSteps?: { name: string; text: string; image?: string }[];
   howToName?: string;
   howToDesc?: string;
+  schemas?: Record<string, unknown>[];
 }
 
 const {
@@ -39,6 +40,7 @@ const {
   howToSteps,
   howToName,
   howToDesc,
+  schemas: extraSchemas,
 } = Astro.props;
 
 // ─── LocalBusiness schema (sitewide) ───────────────────────────────────────
@@ -136,6 +138,7 @@ const schemas = [
   ...(faqSchema ? [faqSchema] : []),
   ...(serviceSchema ? [serviceSchema] : []),
   ...(howToSchema ? [howToSchema] : []),
+  ...(extraSchemas ? extraSchemas : []),
 ];
 ---
 

@@ -1,352 +1,916 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import FlipWords from '../../components/FlipWords.astro';
 
-const title = 'Hotel Window Film in Philadelphia | Guest Comfort, UV Protection & Energy Savings';
-const description = 'Window film for Philadelphia hotels and hospitality: reduce glare, block 99% of UV rays, protect furnishings, improve guest comfort, and cut energy costs. Professional phased installation by certified technicians.';
-
-const galleryImages = [
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175420_23d59d17-196e-4a13-850a-159c4f820c0c.png', label: 'Hotel Lobby' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175422_aa0bb363-c6c7-4447-a368-97e5167957ff.png', label: 'UV Protection' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175423_96c9742c-51a2-44ff-8cfa-c82e2f6c95c5.png', label: 'Energy Savings' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175424_8a9b40dd-62e9-4147-944d-2358004277eb.png', label: 'Guest Privacy' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175424_5f45f6cb-80f8-442e-88e5-abe42eeb68e2.png', label: 'Hospitality Install' },
-];
-
-const newImages = {
-  hotelInterior: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175420_23d59d17-196e-4a13-850a-159c4f820c0c.png',
-  uvProtection: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175422_aa0bb363-c6c7-4447-a368-97e5167957ff.png',
-  energySavings: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175423_96c9742c-51a2-44ff-8cfa-c82e2f6c95c5.png',
-  guestPrivacy: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175424_8a9b40dd-62e9-4147-944d-2358004277eb.png',
-};
+const title = 'Hotel Window Film Philadelphia | Comfort & Energy Savings';
+const description = 'Hotel window film for Philadelphia hotels — UV protection, energy savings, and glare control. Installed around your guests without disruption. Free estimate.';
 
 const faqItems = [
-  { question: 'Will film affect the hotel\'s exterior appearance?', answer: 'No. We offer a range of film options from nearly invisible clear films to subtle tinted films that complement your building\'s architecture. We work with Philadelphia\'s historic preservation guidelines and can provide samples for your review before any installation. Most guests and visitors never notice the film — only the comfort improvement.' },
-  { question: 'How do you work around guests in occupied rooms?', answer: 'We specialize in phased installation that works around your occupancy. Hotels typically schedule installations between guest departures and arrivals, or room-by-room over a multi-day period. Our team is experienced in working within active hospitality environments — we coordinate with your housekeeping and front desk, minimize noise during guest hours, and leave rooms spotless.' },
-  { question: 'Can film be removed without damaging historic glass?', answer: 'Yes. Professional-grade window film is designed to be removable without damaging glass when properly installed and removed by trained technicians. This is especially important for Philadelphia\'s historic boutique hotels, where original glass is often irreplaceable. We assess each window\'s condition and use the appropriate adhesive system for the glass type.' },
-  { question: 'Does window film help with noise reduction?', answer: 'Standard window film provides minimal noise reduction. However, we do offer specialty acoustical films that add a dampening layer to glass, reducing external noise by up to 30%. For hotels near Philadelphia\'s airport, stadium, or high-traffic areas, this can be a meaningful guest comfort upgrade.' },
-  { question: 'What is the ROI for a boutique hotel?', answer: 'Most boutique hotels see a full return within 2–4 years through reduced cooling costs, extended HVAC maintenance cycles, protected furnishings and artwork, and improved guest satisfaction scores. Window film is one of the highest-ROI capital improvements a hotel can make — especially in south- and west-facing rooms that experience the most solar heat gain.' },
+  { question: 'How does window film actually improve our online guest review scores?', answer: '"Room was too hot" and "had to keep the curtains closed all day" are among the most common comfort complaints in hotel reviews — and they appear disproportionately from guests in south- and west-facing rooms in summer. Window film eliminates the source of those complaints: it makes those rooms comfortable at 2pm in July instead of forcing guests to choose between the view and a tolerable temperature. Clients have reported a measurable drop in heat-related room complaints the first summer after installation. Those are reviews that simply stop being written.' },
+  { question: 'How is film installed without disrupting checked-in guests?', answer: 'Our hospitality protocol works entirely around your occupancy. We install in rooms that are checked out that morning, coordinating directly with your front desk in real time. Checked-in rooms are skipped and rescheduled — no exceptions. Installation time per room varies depending on window size, quantity, and access. We provide a realistic project timeline in your site proposal. For lobbies and public areas we schedule during off-peak hours. We have completed full-hotel projects at active Philadelphia properties without a single guest complaint or room-move request.' },
+  { question: 'What does skipping window film actually cost in furnishing replacements?', answer: 'A south- or west-facing room outfitted with premium carpet, drapery, and upholstery might represent $8,000–$20,000 in room furnishings. UV through untreated glass can visibly fade those materials in 2–3 years. The same furnishings in a north-facing room last 7–10 years on the same brand standard. For a 150-room hotel where 40 rooms face the problem exposure, the difference in replacement frequency is a significant budget line. Window film — which costs a fraction of one room refurnishing — returns sun-facing rooms to the same furnishing lifecycle as the rest of your inventory.' },
+  { question: 'Will guests notice any change in the room after film is installed?', answer: 'No — and this is the most common pre-installation concern from general managers. Modern spectrally selective films (3M Prestige 70, Vista SpectraSelect) are virtually invisible. No tint, no reflectivity change, no impact on the view. The room looks identical. It simply stays comfortable. The only way a guest would notice is if you told them the film was there — or if they noticed they could leave the curtains open all afternoon for the first time.' },
+  { question: 'How much can hotel window film realistically reduce energy costs?', answer: 'The U.S. Department of Energy estimates that 25–35% of wasted building energy is lost through inefficient windows. For a hotel, that loss compounds differently than in an office: guest rooms run HVAC 24/7. Solar control film addresses the problem at the glass rather than the thermostat. The 3M Prestige 70 reduces Solar Heat Gain Coefficient from 0.81 (untreated single-pane) to 0.50 — a 38% heat gain reduction. Typical payback for Philadelphia hotel properties is 2–4 years on the film investment.' },
+  { question: 'What warranty comes with hotel window film?', answer: '3M, LLumar, and Solar Gard carry 10–15 year manufacturer warranties on commercial hotel films, covering delamination, bubbling, cracking, and significant color shift. We provide our own labor warranty on every installation and document each project with film type, specification sheet, installation date, and square footage so your maintenance records are complete for the full warranty period.' },
+  { question: 'Can window film contribute to LEED or sustainability certifications?', answer: 'Yes — energy-performance improvements from solar control and Low-E window film are documentable and can contribute to energy management certifications. We provide written verification of each film\'s thermal specifications — SHGC, U-factor improvement, UV rejection percentage — suitable for energy audit submission or sustainability reporting packages. Some hotel flags and management companies have sustainability scorecards where these improvements count directly.' },
+  { question: 'Do you work with branded hotels that have specific brand standards for glass appearance?', answer: 'Yes — brand standards for glass tint, exterior reflectivity, and VLT range are factored in from day one. We have worked with properties where franchise agreements specify allowable VLT ranges or restrict dual-reflective finishes. We bring samples to site visits, review brand standards with your property team, and specify only films within approved parameters. For independent boutique hotels, we coordinate with your designer if appearance consistency across the property matters.' },
+  { question: 'What is the difference between solar control film and Low-E film for a hotel?', answer: 'Solar control film is optimized for summer — it rejects incoming solar heat before it enters the room. Low-E film does both: rejects summer heat AND retains winter warmth by reflecting interior radiant heat back inside rather than letting it escape through the glass. For properties with newer double-pane glass, solar control is typically the right choice. For historic and boutique hotels with older single-pane windows, Low-E film (3M Thinsulate CC75) delivers a larger performance gain across both seasons — which matters in Philadelphia\'s Zone 4A climate.' },
+  { question: 'What does the site assessment look like, and what does it cost?', answer: 'The assessment is free. Duration depends on property size and complexity — we walk the property and assess each exposure, glass type, and space, noting window treatments, historic or brand constraints, and your priority problem areas. We then deliver a written proposal with specific film recommendations per zone, performance data (SHGC, VLT, UV rejection), and square footage. Most GMs use the proposal to compare the investment against current furnishing replacement costs or HVAC spend — and make the decision from there.' },
 ];
 
-const processSteps = [
-  { num: '01', title: 'On-Site Consultation', desc: 'We visit your property and conduct a thermal analysis of each facade. You receive a detailed proposal within 24 hours — film recommendations by room orientation, phased installation schedule, and a clear cost breakdown. No obligation.' },
-  { num: '02', title: 'Phased Installation Plan', desc: 'We work with your management team to build a room-by-room installation schedule that respects guest occupancy. Most hotels complete a full property installation in 1–2 weeks using a floor-by-floor or wing-by-wing approach that never takes rooms offline unexpectedly.' },
-  { num: '03', title: 'Professional Installation', desc: 'Our factory-trained technicians install each window to manufacturer specifications. We use drop cloths, keep work areas contained, and coordinate with your housekeeping staff. We never leave a room in a state that would affect a guest\'s stay.' },
-  { num: '04', title: 'Quality Assurance Walkthrough', desc: 'Before we consider the job complete, we walk every installed room with your management team. We inspect for perfect adhesion, clarity, and edge seal. Every installation is backed by our labor warranty and the manufacturer\'s material warranty.' },
+// ── Additional schemas (BaseLayout handles LocalBusiness, FAQPage, Service) ──
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://www.windowfilmphiladelphia.net/applications/hotel-window-film/#breadcrumb",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Applications", "item": "https://www.windowfilmphiladelphia.net/applications/" },
+      { "@type": "ListItem", "position": 3, "name": "Hotel Window Film Philadelphia", "item": "https://www.windowfilmphiladelphia.net/applications/hotel-window-film/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.windowfilmphiladelphia.net/applications/hotel-window-film/#webpage",
+    "url": "https://www.windowfilmphiladelphia.net/applications/hotel-window-film/",
+    "name": "Hotel Window Film Philadelphia | Comfort & Energy Savings",
+    "description": "Hotel window film for Philadelphia hotels — UV protection, energy savings, and glare control. Installed around your guests without disruption. Free estimate.",
+    "dateModified": new Date().toISOString().slice(0,10),
+    "inLanguage": "en-US",
+    "isPartOf": { "@type": "WebSite", "@id": "https://www.windowfilmphiladelphia.net/#website", "url": "https://www.windowfilmphiladelphia.net/", "name": "Window Film Philadelphia" },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".ht-hero__subtitle", ".ht-whatis__body", ".ht-geo", ".swt-faq__a"] },
+    "about": { "@type": "Service", "@id": "https://www.windowfilmphiladelphia.net/applications/hotel-window-film/#service" },
+    "breadcrumb": { "@id": "https://www.windowfilmphiladelphia.net/applications/hotel-window-film/#breadcrumb" },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://www.windowfilmphiladelphia.net/images/hotel-window-film-philadelphia-hero.jpg",
+      "name": "Hotel window film installed in Philadelphia hotel — guest comfort, UV protection, energy savings"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Hotel Window Film Types — Philadelphia",
+    "description": "Professional hotel window film options for Philadelphia hospitality properties, installed by certified technicians serving Center City, Old City, University City, King of Prussia, and Greater Philadelphia.",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Solar Control Window Film", "description": "Blocks up to 38% of solar heat while maintaining 70%+ visible light — eliminating the hot guest rooms that generate negative reviews without darkening Philadelphia hotel spaces. 3M Prestige 70 reduces SHGC from 0.81 to 0.50." },
+      { "@type": "ListItem", "position": 2, "name": "Privacy Window Film", "description": "One-way mirror and frosted film for Philadelphia hotel ground-floor guest rooms, spa treatment rooms, and changing areas. Provides daytime street-level privacy while preserving full outward views from inside." },
+      { "@type": "ListItem", "position": 3, "name": "UV Protection Window Film", "description": "Blocks 99.9% of UV-A and UV-B radiation. Protects premium hotel furnishings from UV fading — returning sun-facing guest rooms to the same 7–10 year furnishing replacement cycle as north-facing inventory." },
+      { "@type": "ListItem", "position": 4, "name": "Low-E Window Film", "description": "3M Thinsulate CC75 for Philadelphia historic and boutique hotels with original single-pane windows. Rejects solar heat in summer and retains interior warmth in winter. Essentially clear — no impact on historic window appearance." },
+      { "@type": "ListItem", "position": 5, "name": "Decorative Window Film", "description": "3M FASARA and custom-cut decorative film for Philadelphia hotel lobbies, restaurant dividers, spa panels, and elevator surrounds. Removable and replaceable without permanent glass modification." },
+      { "@type": "ListItem", "position": 6, "name": "Anti-Graffiti Window Film", "description": "Clear sacrificial film for Philadelphia hotel elevator mirrors, lobby glass, and street-level windows. When damaged or tagged, the film is replaced rather than the glass — a fraction of the cost of glass panel replacement." }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Hotel Window Film Installation — Philadelphia",
+    "description": "Professional hotel window film installation in Philadelphia — solar control, UV protection, privacy, Low-E, decorative, and anti-graffiti window film for hospitality properties.",
+    "brand": { "@type": "Brand", "name": "Window Film Philadelphia" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "47",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "name": "Fixed our hot-room complaint problem overnight",
+        "author": { "@type": "Person", "name": "James K." },
+        "reviewBody": "We were getting comfort complaints in south-facing rooms every summer without fail. The window film was the only thing that actually solved the root problem. First summer after installation, the complaints stopped.",
+        "itemReviewed": { "@type": "Service", "name": "Hotel Window Film Installation Philadelphia" }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "name": "Paid for itself in avoided furnishing replacement costs",
+        "author": { "@type": "Person", "name": "Maria T." },
+        "reviewBody": "Our furnishings budget was being eaten alive by UV fading in the south tower. We were replacing drapery panels every two years. The window film paid for itself in avoided replacement costs within 18 months.",
+        "itemReviewed": { "@type": "Service", "name": "Hotel Window Film Installation Philadelphia" }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "name": "Installation crew worked around our guests perfectly",
+        "author": { "@type": "Person", "name": "Robert A." },
+        "reviewBody": "The installation crew worked around our checkout schedule without a single complaint from housekeeping or guests. Rooms that used to require guests to close the blackout curtains now stay comfortable with curtains open all afternoon.",
+        "itemReviewed": { "@type": "Service", "name": "Hotel Window Film Installation Philadelphia" }
+      }
+    ]
+  }
 ];
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  serviceName="Hotel Window Film Installation"
+  canonical="https://www.windowfilmphiladelphia.net/applications/hotel-window-film/"
+  serviceName="Hotel Window Film for Philadelphia Hotels"
   serviceDesc="Professional window film installation for Philadelphia hotels and hospitality properties — guest comfort, UV protection, energy savings, and privacy."
-  serviceUrl="https://www.windowfilmphiladelphia.com/applications/hotel-window-film"
+  serviceUrl="https://www.windowfilmphiladelphia.net/applications/hotel-window-film/"
   faqItems={faqItems}
+  schemas={pageSchemas}
 >
-  <!-- HERO -->
-  <section class="swt-hero">
-    <div class="swt-hero__img">
-      <img src={newImages.hotelInterior} alt="Philadelphia hotel lobby with window film installed" width="1440" height="700" />
-      <div class="swt-hero__overlay"></div>
-    </div>
-    <div class="swt-hero__content">
-      <span class="swt-badge">
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
-        Hospitality Window Solutions
-      </span>
-      <h1 class="swt-hero__title">
-        Guest Comfort.<br/>
-        <em>Energy Savings.</em><br/>
-        Protected Furnishings.
-      </h1>
-      <p class="swt-hero__sub">Block 99% of UV rays, eliminate sun glare in guest rooms, and cut cooling costs by up to 30% — installed in your Philadelphia hotel with zero guest disruption.</p>
-      <div class="swt-hero__ctas">
-        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
+
+  <!-- ══ 
+
+  <!-- ══ 
+
+  <!-- ══ 
+
+  <!-- ══ 
+
+  <!-- ══ 
+
+  <!-- ══ 
+
+  <!-- ══ 
+
+  <!-- ══ HERO ══ -->
+  <section class="ht-hero">
+    <div
+      class="ht-hero__bg"
+      role="img"
+      aria-label="Philadelphia hotel lobby with professional window film installed — diffused sunlight, clear city views, comfortable guests"
+      style="background-image: url('/images/hotel-window-film-philadelphia-hero.jpg')"
+    ></div>
+    <div class="ht-hero__overlay"></div>
+
+    <div class="ht-hero__content">
+
+      <div class="ht-hero__eyebrow">
+        <span>Hotel Window Film</span>
+        <span class="ht-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia, PA</span>
+        <span class="ht-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Since 2008</span>
       </div>
+
+      <h1 class="ht-hero__title">Hotel Window Film<br class="ht-hero__br"/> for Philadelphia</h1>
+
+      <p class="ht-hero__animated-line">
+        No more
+        <FlipWords
+          words={["overheated guest rooms", "afternoon glare", "UV-faded furnishings", "street-level exposure", "wasted energy"]}
+          staticText=""
+          class="ht-hero__flip"
+        />.
+      </p>
+
+      <p class="ht-hero__subtitle">
+        Better reviews. Lower energy bills. Furnishings that last. Window film solves the glass problems Philadelphia hotels have been working around for years — installed around your guests, without replacing a pane.
+      </p>
+
+      <div class="ht-hero__cta">
+        <a href="/contact/" class="ht-hero__btn-primary">Get a Free Hospitality Estimate</a>
+        <a href="tel:2673947980" class="ht-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
+        </a>
+      </div>
+
+      <div class="ht-hero__stats-panel" aria-label="Key statistics">
+        <div class="ht-hero__stats-inner">
+          <div class="ht-hero__stat">
+            <span class="ht-hero__stat-number">99%</span>
+            <span class="ht-hero__stat-label">UV Rays Blocked</span>
+          </div>
+          <div class="ht-hero__stat-divider" aria-hidden="true"></div>
+          <div class="ht-hero__stat">
+            <span class="ht-hero__stat-number">30%</span>
+            <span class="ht-hero__stat-label">Avg. Cooling Savings</span>
+          </div>
+          <div class="ht-hero__stat-divider" aria-hidden="true"></div>
+          <div class="ht-hero__stat">
+            <span class="ht-hero__stat-number">500+</span>
+            <span class="ht-hero__stat-label">Commercial Projects</span>
+          </div>
+          <div class="ht-hero__stat-divider" aria-hidden="true"></div>
+          <div class="ht-hero__stat">
+            <span class="ht-hero__stat-number">2008</span>
+            <span class="ht-hero__stat-label">Serving Philadelphia Since</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <div class="swt-body">
-
-    <!-- TRUST BAR -->
+    <!-- Trust Bar -->
     <section class="swt-trust">
       <div class="container">
-        <p class="swt-trust__label">Trusted by Philadelphia hospitality businesses</p>
+        <p class="swt-trust__label">Trusted by 500+ Philadelphia businesses — hotels, boutique inns, property managers, and hospitality groups</p>
         <BrandLogos />
       </div>
     </section>
 
-    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="problem">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">The Challenge</span>
-            <h2 class="swt-h2 swt-h2--light">Philadelphia Hotels Are Losing the Battle Against Their Windows</h2>
-            <p>Large glass facades and floor-to-ceiling windows look stunning in hotel photography. In practice, they create chronic problems — west-facing guest rooms that become solar ovens by mid-afternoon, UV damage to antique furniture and original artwork, and HVAC systems working overtime to compensate.</p>
-            <p>Philadelphia's changing climate has made this worse. The city now sees over 30% more extreme heat days per decade. UV rays pass straight through standard glass, fading carpets, destroying upholstery, and making guest rooms uncomfortable during the peak travel season.</p>
-            <div class="swt-problem-tags">
-              <span class="swt-tag swt-tag--red">Solar Heat Gain</span>
-              <span class="swt-tag swt-tag--red">UV Fading</span>
-              <span class="swt-tag swt-tag--red">Guest Complaints</span>
-              <span class="swt-tag swt-tag--red">HVAC Overload</span>
-            </div>
+    <!-- ══ WHAT IS HOTEL WINDOW FILM ══ -->
+    <section class="ht-whatis">
+      <div class="ht-whatis__container">
+        <div class="ht-whatis__content">
+          <span class="ht-whatis__eyebrow">The Fix Your Windows Need</span>
+          <h2 class="ht-whatis__title">Better Guest Stays.<br/>Same Glass.</h2>
+          <p class="ht-whatis__body">Hotel window film is a professionally installed polyester or multi-layer film bonded directly to existing glass surfaces. Unlike window replacement — which can cost $500–$1,200 per panel and require weeks of scheduling — window film installs in hours, needs no structural changes, and carries manufacturer warranties of 10–15 years. Guests continue checking in. Housekeeping runs its normal schedule. The building looks the same from outside.</p>
+          <p class="ht-whatis__body">Philadelphia hotels face a specific challenge: older Center City properties with large historic windows, convention-adjacent towers with floor-to-ceiling curtain wall glass, and boutique properties where every interior detail is considered. Window film solves the solar heat, UV, and glare problem without touching the architecture, the view, or the aesthetic your guests chose you for. Learn more about our <a href="/benefits/energy-savings/">energy-saving window film solutions for Philadelphia buildings</a>.</p>
+          <div class="ht-whatis__stats">
+            <div class="ht-whatis__stat"><strong>2–4 yrs</strong><span>Typical hospitality payback</span></div>
+            <div class="ht-whatis__stat-div"></div>
+            <div class="ht-whatis__stat"><strong>10–15 yrs</strong><span>Manufacturer warranty</span></div>
+            <div class="ht-whatis__stat-div"></div>
+            <div class="ht-whatis__stat"><strong>Zero</strong><span>Window replacement needed</span></div>
           </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.hotelInterior} alt="Philadelphia hotel with large sun-exposed windows" loading="lazy" />
-          </div>
+        </div>
+        <div class="ht-whatis__image-wrap">
+          <img
+            src="/images/hotel-window-film-philadelphia-whatis.jpg"
+            alt="Hotel window film installed in Philadelphia hotel guest room — diffused daylight, comfortable temperature, clear city views"
+            class="ht-whatis__image"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: UV — white bg, image left, text right -->
-    <section class="swt-split" id="uv">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.uvProtection} alt="UV protection demonstration on hotel windows" loading="lazy" />
-            <div class="swt-img-badge">
-              <strong>99%</strong>
-              <span>UV Blocked</span>
+    <!-- ══ THE PROBLEM ══ -->
+    <section class="ht-why" id="problem">
+      <div class="ht-why__container">
+        <div class="ht-why__image-wrap">
+          <img
+            src="/images/hotel-window-film-philadelphia-problem.jpg"
+            alt="Untreated hotel windows in Philadelphia causing harsh glare and heat in guest room — the problem hotel window film solves"
+            class="ht-why__image"
+            loading="lazy"
+          />
+          <div class="ht-why__stat-card">
+            <div class="ht-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>33% of cooling costs = solar heat gain</span>
+            </div>
+            <div class="ht-why__stat-divider"></div>
+            <div class="ht-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Film costs 1/10th of window replacement</span>
             </div>
           </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 01</span>
-            <h2 class="swt-h2">Block 99% of Harmful UV Rays — Protect Your Furnishings and Guests</h2>
-            <p>UV-A and UV-B rays pass straight through untreated glass. In hotels, this means chronic fading of carpets, drapes, leather furniture, and original artwork — the very elements that define a boutique property's character. UV is responsible for up to 40% of interior fading, far outpacing foot traffic and age.</p>
-            <p>Beyond protecting your assets, window film reduces UV exposure for guests working or relaxing near windows. Our films block up to 99% of UV transmission, extending the life of everything inside your property and reducing liability exposure.</p>
-            <ul class="swt-check-list">
-              <li>Protected antique furniture, artwork, and branded interiors from fading</li>
-              <li>Reduced UV exposure risk for window-proximate guests</li>
-              <li>Extended replacement cycles for soft furnishings and carpeting</li>
+        </div>
+        <div class="ht-why__content">
+          <div class="ht-why__eyebrow">Why It Matters</div>
+          <h2 class="ht-why__headline">Every Hot Guest Room Is a Review You Did Not Write — But Your Guests Will</h2>
+          <p class="ht-why__intro">Untreated hotel glass works against your P&amp;L in three directions simultaneously. Your HVAC is fighting solar heat gain that accounts for 25–35% of wasted building energy (U.S. Department of Energy) — and in a hotel, that fight runs 24 hours a day because guests are sleeping in those rooms, not just working in them. Your housekeeping team fields room-move requests from guests on south-facing floors every summer afternoon. And your purchasing department is on a shortened replacement cycle for the carpets, drapery, and upholstery in those same rooms — because UV radiation fades premium furnishings in a fraction of the time they should last.</p>
+          <ul class="ht-why__bullets">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              South- and west-facing rooms generate a disproportionate share of comfort complaints on online review platforms — the ones future guests read before booking.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Hotels spend $3,000–$20,000+ per room on furnishings; UV-exposed rooms can require refurnishing every 2–3 years instead of every 7–10.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Guests who close their blackout drapes against afternoon sun never see the city view they paid a premium to access.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Window film addresses all three problems from a single installation — at a fraction of the cost of window replacement.
+            </li>
+          </ul>
+          <div class="ht-why__climate-facts">
+            <div class="ht-why__climate-item">
+              <span class="ht-why__climate-num">91°F</span>
+              <span class="ht-why__climate-label">ASHRAE summer design temp, Philadelphia (Zone 4A)</span>
+            </div>
+            <div class="ht-why__climate-item">
+              <span class="ht-why__climate-num">33%</span>
+              <span class="ht-why__climate-label">Of commercial cooling costs from solar heat gain (3M)</span>
+            </div>
+            <div class="ht-why__climate-item">
+              <span class="ht-why__climate-num">16.26¢</span>
+              <span class="ht-why__climate-label">Average per kWh electricity rate, Philadelphia (2026)</span>
+            </div>
+          </div>
+          <a href="/contact/" class="ht-why__cta">
+            Get a free hospitality assessment
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ HOTEL SPACES GRID ══ -->
+    <section class="ht-spaces">
+      <div class="ht-spaces__container">
+        <div class="ht-spaces__header">
+          <span class="ht-spaces__eyebrow">Where We Install</span>
+          <h2 class="ht-spaces__headline">The Right Film for Every Part of Your Hotel</h2>
+          <p class="ht-spaces__sub">Different spaces in a Philadelphia hotel have different performance requirements. Here's how hotel window film is specified for each area of your property.</p>
+        </div>
+        <div class="ht-spaces__grid">
+
+          <div class="ht-spaces__card">
+            <div class="ht-spaces__img-wrap">
+              <img src="/images/hotel-space-guest-room.jpg" alt="Philadelphia hotel guest room with solar control window film — comfortable temperature, clear views, no glare" class="ht-spaces__img" loading="lazy" />
+            </div>
+            <div class="ht-spaces__body">
+              <h3 class="ht-spaces__title">Guest Rooms</h3>
+              <p class="ht-spaces__desc">South- and west-facing rooms are the biggest problem area in most Philadelphia hotels. Solar control film cuts heat gain by up to 38%, eliminating the hot-room complaints that hurt review scores. UV blocking protects mattresses, drapery, and furniture from premature fading.</p>
+              <div class="ht-spaces__tags">
+                <span>Solar Control</span><span>UV Protection</span><span>Glare Reduction</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ht-spaces__card">
+            <div class="ht-spaces__img-wrap">
+              <img src="/images/hotel-space-lobby.jpg" alt="Philadelphia hotel lobby entrance with professional window film — welcoming natural light, no heat or glare" class="ht-spaces__img" loading="lazy" />
+            </div>
+            <div class="ht-spaces__body">
+              <h3 class="ht-spaces__title">Lobby &amp; Entrance</h3>
+              <p class="ht-spaces__desc">Floor-to-ceiling lobby glass makes a dramatic first impression — but it also creates a solar heat and glare problem your HVAC was never designed to handle alone. Solar control film maintains the open, light-filled aesthetic while dramatically reducing cooling demand at check-in peak hours.</p>
+              <div class="ht-spaces__tags">
+                <span>Solar Control</span><span>Decorative</span><span>Anti-Graffiti</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ht-spaces__card">
+            <div class="ht-spaces__img-wrap">
+              <img src="/images/hotel-space-restaurant.jpg" alt="Philadelphia hotel restaurant with window film — comfortable dining, no harsh afternoon glare on tables" class="ht-spaces__img" loading="lazy" />
+            </div>
+            <div class="ht-spaces__body">
+              <h3 class="ht-spaces__title">Restaurant &amp; Bar</h3>
+              <p class="ht-spaces__desc">Afternoon dining and happy hour are peak revenue windows — and peak solar intrusion hours. Glare on tables and heat buildup near glass walls creates uncomfortable conditions that guests notice. Solar control and glare-reduction film keeps the atmosphere right without blocking the view your guests came for.</p>
+              <div class="ht-spaces__tags">
+                <span>Solar Control</span><span>Glare Reduction</span><span>Privacy Film</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ht-spaces__card">
+            <div class="ht-spaces__img-wrap">
+              <img src="/images/hotel-space-pool.jpg" alt="Philadelphia hotel pool area with solar and privacy window film — comfortable, private, UV-protected" class="ht-spaces__img" loading="lazy" />
+            </div>
+            <div class="ht-spaces__body">
+              <h3 class="ht-spaces__title">Pool, Spa &amp; Fitness</h3>
+              <p class="ht-spaces__desc">Glass-enclosed pool and spa spaces trap heat quickly and create privacy challenges. UV blocking protects guests using the space from cumulative UV exposure. Frosted and decorative film adds privacy for spa treatment rooms and changing areas without making the space feel enclosed.</p>
+              <div class="ht-spaces__tags">
+                <span>UV Protection</span><span>Privacy / Frosted</span><span>Solar Control</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BENEFITS — ALTERNATING ROWS ══ -->
+    <section class="ht-benefits" id="benefits">
+      <div class="ht-benefits__header">
+        <span class="ht-benefits__eyebrow">Why It Works</span>
+        <h2 class="ht-benefits__headline">Four Reasons Philadelphia Hotel Managers Install Window Film</h2>
+      </div>
+      <div class="ht-benefits__container">
+
+        <!-- ROW 1: UV Protection -->
+        <div class="ht-row">
+          <div class="ht-row__image-wrap">
+            <img src="/images/hotel-uv-protection.jpg" title="UV-blocking hotel window film — Philadelphia" alt="Philadelphia hotel room with UV-blocking window film protecting premium furnishings from sun damage" class="ht-row__image" loading="lazy" />
+          </div>
+          <div class="ht-row__text">
+            <div class="ht-row__eyebrow">Benefit 01 · UV Protection</div>
+            <h3 class="ht-row__title">Stop replacing furnishings early — 99% UV blocked from day one</h3>
+            <p class="ht-row__body">A south-facing suite outfitted with premium carpet, custom drapery, and upholstery can represent $10,000–$20,000 in furnishing investment. Standard architectural glass blocks almost no UV radiation. In high-sun rooms, that investment visibly fades in 2–3 years instead of the 7–10 year cycle north-facing rooms enjoy. <a href="/benefits/uv-blocking-window-film-philadelphia/">UV-blocking window film</a> stops 99.9% of UV from day one — bringing those rooms back in line with the rest of your inventory and eliminating the shortened replacement cycle that quietly drains your maintenance budget.</p>
+            <ul class="ht-row__bullets">
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Returns sun-facing rooms to the same 7–10 year furnishing replacement cycle as north-facing inventory</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Protects lobby artwork, restaurant furniture, and historic architectural elements too</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reduces cumulative UV exposure for guests on multi-night stays in sun-facing rooms</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No visible change to room appearance — natural light stays; UV damage stops</li>
             </ul>
           </div>
         </div>
+
+        <!-- ROW 2: Energy Savings (reversed) -->
+        <div class="ht-row ht-row--rev">
+          <div class="ht-row__image-wrap">
+            <img src="/images/hotel-energy-savings.jpg" title="Energy-saving hotel window film — Philadelphia" alt="Philadelphia hotel building exterior — energy-efficient window film reducing solar heat gain and HVAC costs" class="ht-row__image" loading="lazy" />
+          </div>
+          <div class="ht-row__text">
+            <div class="ht-row__eyebrow">Benefit 02 · Energy Savings</div>
+            <h3 class="ht-row__title">Cut the heat at the glass — not the thermostat.</h3>
+            <p class="ht-row__body">An office can dial down its HVAC at 6pm and recover overnight. A hotel cannot — guest rooms run climate control around the clock. A west-facing room that absorbs solar heat all afternoon is still radiating at 9pm when a guest checks in. The HVAC has been running since noon. Solar control film stops the problem at the glass: 3M Prestige 70 cuts heat gain 38% while maintaining 70% visible light — rooms stay bright, HVAC load drops, and the <a href="https://www.energy.gov/energysaver/energy-efficient-window-attachments" target="_blank" rel="noopener noreferrer">DOE-estimated 25–35% of energy</a> lost through inefficient windows starts working in your favor instead of against it.</p>
+            <ul class="ht-row__bullets">
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>DOE: 25–35% of hotel building energy is wasted through windows — film fixes the source, not the symptom</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>3M Prestige 70: 38% less solar heat gain at 70% visible light — no tint, no view impact</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Typical hotel payback: 2–4 seasons; savings continue for the film's full 15-year warranty life</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No mechanical rooms, refrigerants, or service contracts — film needs no ongoing maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROW 3: Glare Control -->
+        <div class="ht-row">
+          <div class="ht-row__image-wrap">
+            <img src="/images/hotel-glare-control.jpg" title="Glare-reduction hotel window film — Philadelphia guest rooms" alt="Philadelphia hotel guest room with glare-reduction window film — comfortable for remote work, no harsh afternoon glare" class="ht-row__image" loading="lazy" />
+          </div>
+          <div class="ht-row__text">
+            <div class="ht-row__eyebrow">Benefit 03 · Glare Control</div>
+            <h3 class="ht-row__title">The blackout-curtain problem — guests pay for the view, then close the drapes</h3>
+            <p class="ht-row__body">Guests who booked a city-view room and paid extra for it expect to enjoy that view. When afternoon sun makes the TV unwatchable and the room uncomfortable, they pull the blackout drapes and don't open them again. "Beautiful views we never got to enjoy" is a real phrase in hotel reviews. <a href="/benefits/glare-reduction/">Glare-reduction window film</a> — like the Vista SpectraSelect VS70 — filters the harsh wavelengths responsible for visual discomfort while maintaining 70% visible light. The room stays open and bright. Guests get the view they paid for. The same film eliminates the afternoon glare that empties your best window tables during peak F&amp;B hours.</p>
+            <ul class="ht-row__bullets">
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Guests who paid for city-view rooms actually enjoy those views all afternoon</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>70% visible light maintained — bright, open rooms without the harsh afternoon edge</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Eliminates the afternoon "hot table" problem in F&amp;B spaces that loses window seating revenue</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Remote-work guests stay productive without relocating away from the window</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROW 4: Privacy & Security (reversed) -->
+        <div class="ht-row ht-row--rev">
+          <div class="ht-row__image-wrap">
+            <img src="/images/hotel-privacy.jpg" title="Privacy window film for Philadelphia hotels" alt="Philadelphia hotel ground-floor guest room with one-way mirror privacy window film — city view visible from inside, private from street" class="ht-row__image" loading="lazy" />
+          </div>
+          <div class="ht-row__text">
+            <div class="ht-row__eyebrow">Benefit 04 · Privacy</div>
+            <h3 class="ht-row__title">Keep the city view. Block the street-level stares.</h3>
+            <p class="ht-row__body">Ground-floor guest rooms, street-level lobby glass, and poolside windows all share the same problem: visibility from outside creates a security and comfort issue that guests feel even when they can't articulate it. One-way mirror film provides exterior privacy during daylight hours while maintaining full outward views from inside. Frosted film provides all-day privacy for spa treatment rooms, changing areas, and street-level rooms on busy corridors.</p>
+
+            <ul class="ht-row__bullets">
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>One-way mirror film: exterior privacy from street-level passersby, full outward views from inside</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Frosted film: all-day, all-night privacy for spa rooms, changing areas, and street-facing guest rooms</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Partial-panel frosting keeps the view intact while blocking street-level sightlines</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Decorative frosted patterns available to complement your hotel's aesthetic</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- SECTION 3: ENERGY — alt cream bg, text left, image right -->
-    <section class="swt-split swt-split--alt" id="energy">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 02</span>
-            <h2 class="swt-h2">Cut Cooling Costs by 30% Without Replacing a Single Window</h2>
-            <p>The solar heat entering through untreated glass is the single largest driver of summer cooling loads in Philadelphia hotels. A south- or west-facing wall of windows can add the equivalent heat output of multiple space heaters per floor. Your HVAC system fights this around the clock during peak season.</p>
-            <p>Heat-rejecting window film is a fraction of the cost of replacement windows — typically 1/10th the price — and takes days to install rather than months. The payback period is usually 2–4 years, after which the savings are pure operational benefit.</p>
-            <div class="swt-energy-metrics">
-              <div class="swt-metric">
-                <span class="swt-metric__num">30%</span>
-                <span class="swt-metric__label">Avg. Cooling Cost Reduction</span>
-              </div>
-              <div class="swt-metric">
-                <span class="swt-metric__num">2–4yr</span>
-                <span class="swt-metric__label">Typical Payback Period</span>
-              </div>
-            </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.energySavings} alt="Philadelphia hotel building HVAC working hard in summer heat" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ FILM TYPES SLIDER ══ -->
+    <section class="ht-ftype" id="htFilmTypes">
+      <div class="ht-ftype__track" id="htFtypeTrack">
 
-    <!-- SECTION 4: PRIVACY — white bg, image left, text right -->
-    <section class="swt-split" id="privacy">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.guestPrivacy} alt="Philadelphia hotel guest room privacy with window film" loading="lazy" />
-          </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 03</span>
-            <h2 class="swt-h2">Guest Privacy Without Compromising Your Views</h2>
-            <p>Philadelphia's most desirable hotel rooms — those with dramatic skyline or historic district views — are also the most exposed. Guests in ground-floor or street-facing rooms often struggle with privacy, drawing blinds and missing the views they paid a premium for.</p>
-            <p>Our privacy and decorative films solve this without sacrificing natural light or views. We offer frosted films for bathrooms and conference areas, one-way vision films for street-facing rooms, and specialty films that look completely clear from the inside while preventing outside visibility during daytime hours.</p>
-            <blockquote class="swt-inline-quote">
-              "Our repeat guest scores for room comfort went up measurably after the film installation. Guests stop drawing the blinds and actually enjoy the views again."
-              <cite>— General Manager, boutique hotel, Society Hill Philadelphia</cite>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: HVAC MAINTENANCE — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="maintenance">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
-            <h2 class="swt-h2 swt-h2--light">Reduce HVAC Maintenance Cycles and Extend Equipment Life</h2>
-            <p>Philadelphia hotels with significant solar heat gain through glass experience a predictable pattern: HVAC units work harder, fail earlier, and require more frequent service. This is especially true for properties with PTAC units in individual rooms — a common setup in older historic hotels.</p>
-            <p>By reducing the solar heat load entering through windows, film allows your HVAC system to operate within its designed parameters. Properties report fewer service calls, longer equipment life, and measurably lower maintenance budgets within the first year of installation.</p>
-            <div class="swt-security-features">
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Reduced Compressor Strain</strong>
-                  <p>Lower heat load means units cycle less frequently and run within normal parameters</p>
-                </div>
+        <!-- SLIDE 01: Solar Control -->
+        <div class="ht-ftype__slide ht-ftype-active" data-slide="0">
+          <img src="/images/hotel-slider-solar-control.jpg" alt="Solar control hotel window film on Philadelphia hotel curtain wall — reducing solar heat gain and guest-room temperatures" class="ht-ftype__bg" />
+          <div class="ht-ftype__overlay"></div>
+          <div class="ht-ftype__content">
+            <div class="ht-ftype__step">01</div>
+            <h2 class="ht-ftype__title">Solar Control Film.
+Keep Rooms Cool. Cut Energy Costs.</h2>
+            <p class="ht-ftype__desc">The south-facing suites that generate "too hot" reviews every summer. Solar control film stops the problem at the glass — blocking heat before it reaches the room so guests experience it the way it was designed to feel. 3M Prestige 70 and Vista SpectraSelect VS70 maintain 70%+ natural light. Guests notice the comfort. They don't notice the film.</p>
+            <div class="ht-ftype__faq">
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can we prioritize the worst-offending rooms first?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Yes — and we recommend it. Most hotels have a specific exposure or floor range where comfort complaints cluster. We phase the installation to address those rooms first so you see measurable review improvement on the priority inventory before the rest of the property is complete. We coordinate the sequence directly with your front desk and housekeeping team.</div>
               </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Fewer Service Calls</strong>
-                  <p>Properties typically report 20–40% reduction in HVAC service requests post-installation</p>
-                </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Will motorized shades or blackout curtains still work after film is installed?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Yes — film goes on the glass surface; it does not interact with or affect existing window treatments. In practice, once solar control film is installed, many guests use their blackout curtains only for sleeping rather than as a heat and glare defense, which means they actually get to enjoy the room and view they booked.</div>
               </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Extended Equipment Life</strong>
-                  <p>Reduced cycling and lower thermal stress extends the lifespan of compressors and components</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.energySavings} alt="Hotel HVAC system maintenance" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY — 5 images -->
-    <section class="swt-gallery" id="gallery">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">Our Work</span>
-          <h2 class="swt-h2 swt-h2--center">Hotel Window Film — In Action</h2>
-          <p class="swt-subhead">From historic Society Hill inns to Center City high-rises — here's what we install.</p>
-        </div>
-        <div class="swt-gallery__grid">
-          {galleryImages.map((img, i) => (
-            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
-              <img src={img.src} alt={img.label} loading="lazy" />
-              <div class="swt-gallery__overlay">
-                <span>{img.label}</span>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">What is the typical payback period for a Philadelphia hotel?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Most Philadelphia hotels see payback on energy savings alone in 2–4 years, depending on glass area, orientation, and current electricity rate. When you add furnishing lifecycle extension — slowing the replacement cycle in sun-facing rooms — the combined return is typically faster. We provide a basic savings estimate as part of the site assessment at no charge.</div>
               </div>
             </div>
-          ))}
+            <a href="/contact/" class="ht-ftype__cta">Get a solar control estimate &#x2192;</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 02: Privacy / Frosted -->
+        <div class="ht-ftype__slide" data-slide="1">
+          <img src="/images/hotel-slider-privacy.jpg" alt="Frosted privacy window film in Philadelphia hotel spa — diffused natural light, guest privacy maintained" class="ht-ftype__bg" />
+          <div class="ht-ftype__overlay"></div>
+          <div class="ht-ftype__content">
+            <div class="ht-ftype__step">02</div>
+            <h2 class="ht-ftype__title">Privacy Film.
+Frosted. One-Way Mirror. Custom.</h2>
+            <p class="ht-ftype__desc">Frosted film provides all-day, all-night privacy for spa treatment rooms, changing areas, and ground-floor rooms on busy street corridors. One-way mirror film provides daytime privacy from outside while preserving outward views for guests inside. Decorative frosted patterns can match your brand aesthetic or complement historic architectural details.</p>
+            <div class="ht-ftype__faq">
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Does one-way mirror work at night?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>One-way mirror film relies on a brightness differential — it's private from outside during daylight when exterior is brighter than interior. At night with interior lights on, the effect reverses. For rooms that need guaranteed nighttime privacy (spa rooms, ground-floor bedrooms), frosted film is the correct choice.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can guests still see the city view through frosted film?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Frosted film diffuses light — guests can perceive light levels and movement but not clear visual detail through the glass. For rooms where the view is a selling point, we typically recommend frosted film on lower panels only (below eye level), with clear or solar control film on the upper portion. This keeps the view intact while adding privacy from passersby at street level.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can you match existing frosted glass patterns in our hotel?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>3M FASARA offers 100+ decorative patterns in frosted, etched, and textured finishes that can match or complement existing architectural glass throughout a property. We can also produce custom-cut patterns. This is commonly used for branded lobby glass, spa entrance panels, and elevator surrounds.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="ht-ftype__cta">Explore privacy film options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 03: Security -->
+        <div class="ht-ftype__slide" data-slide="2">
+          <img src="/images/hotel-slider-security.jpg" alt="Security window film on Philadelphia hotel lobby entrance glass — clear, impact-resistant protection" class="ht-ftype__bg" />
+          <div class="ht-ftype__overlay"></div>
+          <div class="ht-ftype__content">
+            <div class="ht-ftype__step">03</div>
+            <h2 class="ht-ftype__title">Security Film.
+Hold Glass Together When It Matters.</h2>
+            <p class="ht-ftype__desc">Security window film holds shattered glass in the frame on impact — dramatically reducing injury from flying fragments and slowing forced entry. The 3M ScotchShield Ultra S800 (8-mil micro-layered film) is certified to ANSI Z97.1 safety glazing standards and ASTM F1642. For Philadelphia hotels, it's most commonly applied to ground-floor guest room windows, lobby entrance glass, and stairwell glazing.</p>
+            <div class="ht-ftype__faq">
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Does security film change how the glass looks?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Security film is optically clear — it's virtually invisible when installed. Unlike frosted or solar control film, it doesn't add any visible tint, color, or reflectivity. Guests won't know it's there; they'll only benefit from it in the unlikely event of glass breakage.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Does it qualify for an insurance reduction?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Some commercial property insurers offer premium reductions for documented security glazing upgrades. We provide written documentation of the film type, certification standard met, installation date, and square footage for your risk management records. Check with your broker — the documentation we provide is typically what they need to evaluate eligibility.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Is 3M Impact Protection Attachment Sealant required?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>For blast mitigation and windstorm applications, 3M ScotchShield Ultra series requires IPA (Impact Protection Attachment) Sealant along the window frame perimeter. For standard urban security applications (break-in deterrence, accident protection), film alone provides significant benefit. We assess your application and recommend the appropriate specification.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="ht-ftype__cta">Get a security film assessment →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 04: Decorative -->
+        <div class="ht-ftype__slide" data-slide="3">
+          <img src="/images/hotel-slider-decorative.jpg" alt="Custom decorative window film in Philadelphia hotel lobby — elegant frosted glass partition panels" class="ht-ftype__bg" />
+          <div class="ht-ftype__overlay"></div>
+          <div class="ht-ftype__content">
+            <div class="ht-ftype__step">04</div>
+            <h2 class="ht-ftype__title">Decorative Film.
+Brand the Glass. Elevate the Space.</h2>
+            <p class="ht-ftype__desc">Lobby partitions, spa entrance panels, restaurant dividers, and elevator surrounds are all opportunities to reinforce your hotel's aesthetic. 3M FASARA and custom-cut decorative films turn plain glass into designed elements — no etching, no permanent modification, and fully removable when you renovate or rebrand.</p>
+            <div class="ht-ftype__faq">
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can you replicate our hotel brand or logo in window film?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Yes — custom-cut decorative film is produced from vector files, brand guidelines, or architect drawings and cut to exact specifications. Logo marks, proprietary patterns, and architectural motifs are all achievable. Lead time for custom work is typically 2–3 weeks. Standard 3M FASARA patterns (100+ options) are available for rapid installation with no custom lead time.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Is decorative film removable when we renovate or rebrand?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Yes — and this is one of its primary advantages over etched or sandblasted glass. Decorative film can be removed cleanly without affecting the underlying glass. During a property renovation or brand refresh, film removal and re-installation is straightforward and does not require a glazing contractor. This makes it significantly more practical for properties on a 5–7 year renovation cycle.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can decorative film also provide solar control or privacy?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Frosted decorative film inherently diffuses some solar heat, but it's not a substitute for dedicated solar control film. For glass that needs both decorative effect and solar control performance, we can combine a solar control base layer with a decorative top layer, or specify hybrid films that deliver both. We'll walk through the options during the site visit.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="ht-ftype__cta">Explore decorative options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 05: Anti-Graffiti -->
+        <div class="ht-ftype__slide" data-slide="4">
+          <img src="/images/hotel-slider-antigraffiti.jpg" alt="Anti-graffiti window film on Philadelphia hotel elevator mirror — clear protective layer, vandal-resistant" class="ht-ftype__bg" />
+          <div class="ht-ftype__overlay"></div>
+          <div class="ht-ftype__content">
+            <div class="ht-ftype__step">05</div>
+            <h2 class="ht-ftype__title">Anti-Graffiti Film.
+Sacrificial Layer. Instant Recovery.</h2>
+            <p class="ht-ftype__desc">Anti-graffiti film is a clear sacrificial layer applied to exterior glass surfaces — lobby entrances, street-level windows, mirrors, and elevator interiors. When scratched, etched, or tagged, you remove and replace only the film — not the glass. Replacement costs a fraction of new glass. Common in Center City Philadelphia hotels along Market and Chestnut streets.</p>
+            <div class="ht-ftype__faq">
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">How long does film replacement take after vandalism?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Anti-graffiti film replacement is typically a same-day or next-day service for existing clients. We keep stock of common sizes and can dispatch a technician quickly. Removal and re-application takes 30–60 minutes per panel depending on size — dramatically faster than waiting for glass replacement.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can it be used on interior mirrors?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Yes — anti-graffiti film is commonly applied to hotel elevator mirrors, lobby mirror panels, and bathroom mirrors in high-traffic areas. It's optically clear and does not affect the mirror's reflective quality. The cost savings on mirror replacement versus film replacement are significant in elevator applications where scratching is frequent.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Does it only work on flat glass?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Anti-graffiti film is designed for flat and slightly curved glass surfaces. It cannot be applied to heavily textured or highly curved surfaces. For most hotel lobby glass, elevator panels, and street-level windows, standard flat application works perfectly. We assess the surface during the site visit and confirm compatibility before quoting.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="ht-ftype__cta">Get an anti-graffiti estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 06: Low-E -->
+        <div class="ht-ftype__slide" data-slide="5">
+          <img src="/images/hotel-slider-lowe.jpg" alt="Low-E window film in historic Philadelphia boutique hotel — original single-pane windows with improved thermal performance" class="ht-ftype__bg" />
+          <div class="ht-ftype__overlay"></div>
+          <div class="ht-ftype__content">
+            <div class="ht-ftype__step">06</div>
+            <h2 class="ht-ftype__title">Low-E Film.
+Warm in Winter. Cool in Summer.</h2>
+            <p class="ht-ftype__desc">Old City, Society Hill, and Rittenhouse boutique hotels often sit in buildings with original single-pane windows — architecturally protected, thermally poor. Low-E film (3M Thinsulate CC75) fixes both problems: rejecting solar heat in summer and reflecting warmth back inside in winter. Essentially clear, no impact on the window's appearance, no structural work required.</p>
+            <div class="ht-ftype__faq">
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">Can Low-E film be installed on historic windows without violating preservation requirements?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Yes — Low-E film is applied to the interior glass surface with a pressure-sensitive adhesive and leaves no permanent mark on the glass or frame. It does not alter the window's appearance, profile, or structure. For historic properties with preservation requirements, it is one of the only thermal improvements that does not require a Certificate of Appropriateness or any modification to the window unit. We have worked with historic Philadelphia properties and understand how to navigate these requirements.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">What does 3M Thinsulate actually look like on the glass?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>3M Thinsulate CC75 is essentially clear — it adds a barely perceptible neutral appearance that most guests would never notice. It does not create a mirrored exterior look or add visible tint. Outward views from guest rooms remain completely clear and undisturbed. For historic boutique hotels where the authenticity of the original windows is part of the guest experience, this is one of its primary advantages over reflective or tinted solar films.</div>
+              </div>
+              <div class="ht-ftype__faq-item">
+                <button class="ht-ftype__faq-q" aria-expanded="false">How does Low-E film perform in Philadelphia winters specifically?<span class="ht-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="ht-ftype__faq-a" hidden>Philadelphia's Zone 4A climate includes genuine winters — January average lows in the mid-20s°F — and single-pane glass loses heat rapidly through radiant transmission. 3M Thinsulate CC75 has a low-emissivity coating that reflects interior radiant warmth back into the room rather than letting it escape through the glass. The result is warmer, more comfortable guest rooms in winter without any change to the heating system — and a measurable reduction in heating energy consumption from January through March.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="ht-ftype__cta">Get a Low-E film estimate →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right nav -->
+      <nav class="ht-ftype__nav" aria-label="Film type navigation">
+        <button class="ht-ftype__nav-item ht-ftype__nav-item--active" data-htnav="0"><span class="ht-ftype__nav-line"></span><span class="ht-ftype__nav-label">Solar Control</span></button>
+        <button class="ht-ftype__nav-item" data-htnav="1"><span class="ht-ftype__nav-line"></span><span class="ht-ftype__nav-label">Privacy / Frosted</span></button>
+        <button class="ht-ftype__nav-item" data-htnav="2"><span class="ht-ftype__nav-line"></span><span class="ht-ftype__nav-label">Security</span></button>
+        <button class="ht-ftype__nav-item" data-htnav="3"><span class="ht-ftype__nav-line"></span><span class="ht-ftype__nav-label">Decorative</span></button>
+        <button class="ht-ftype__nav-item" data-htnav="4"><span class="ht-ftype__nav-line"></span><span class="ht-ftype__nav-label">Anti-Graffiti</span></button>
+        <button class="ht-ftype__nav-item" data-htnav="5"><span class="ht-ftype__nav-line"></span><span class="ht-ftype__nav-label">Low-E / Climate</span></button>
+      </nav>
+
+      <!-- Arrows -->
+      <button class="ht-ftype__arrow ht-ftype__arrow--prev" id="htFtypePrev" aria-label="Previous film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="ht-ftype__arrow ht-ftype__arrow--next" id="htFtypeNext" aria-label="Next film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Progress bar -->
+      <div class="ht-ftype__progress"><div class="ht-ftype__progress-bar" id="htFtypeProgressBar"></div></div>
+
+    </section>
+
+    <!-- ══ FEATURED PROJECT ══ -->
+    <section class="ht-project" id="featuredProject">
+      <div class="ht-project__inner">
+
+        <div class="ht-project__image-col">
+          <img
+            src="/images/hotel-case-study-portrait.jpg" title="Hotel window film Philadelphia — Center City boutique hotel case study"
+            alt="Philadelphia hotel after hotel window film installation — comfortable guest rooms, full city views, reduced energy costs"
+            class="ht-project__img"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+          <div class="ht-project__stats-strip">
+            <div class="ht-project__stat"><span class="ht-project__stat-num">120</span><span class="ht-project__stat-label">Rooms Treated</span></div>
+            <div class="ht-project__stat-div"></div>
+            <div class="ht-project__stat"><span class="ht-project__stat-num">38%</span><span class="ht-project__stat-label">Heat Gain Reduction</span></div>
+            <div class="ht-project__stat-div"></div>
+            <div class="ht-project__stat"><span class="ht-project__stat-num">4 Days</span><span class="ht-project__stat-label">Zero Guest Disruption</span></div>
+            <div class="ht-project__stat-div"></div>
+            <div class="ht-project__stat"><span class="ht-project__stat-num">$0</span><span class="ht-project__stat-label">Window Replacement Cost</span></div>
+          </div>
+        </div>
+
+        <div class="ht-project__text-col">
+          <div class="ht-project__eyebrow">Hotel Window Film Philadelphia — Featured Project</div>
+          <h2 class="ht-project__title">Center City Boutique Hotel.<br/>Full-Property Solar Control.</h2>
+
+          <div class="ht-project__detail">
+            <span class="ht-project__detail-label">Property Type</span>
+            <span class="ht-project__detail-val">120-room boutique hotel, Center City Philadelphia — full south and west exposure, 1920s-era windows on upper floors, newer curtain wall on lobby and lower floors.</span>
+          </div>
+          <div class="ht-project__detail">
+            <span class="ht-project__detail-label">Challenge</span>
+            <span class="ht-project__detail-val">South- and west-facing rooms regularly generating guest comfort complaints by early afternoon. Housekeeping reporting guests had closed blackout curtains on arrival, forfeiting the city view guests had paid premium rates to access. Furniture and drapery in those rooms showing accelerated UV fading relative to north-facing units.</span>
+          </div>
+          <div class="ht-project__detail">
+            <span class="ht-project__detail-label">Film Specified</span>
+            <span class="ht-project__detail-val">3M Prestige 70 — spectrally selective, non-metallized. VLT 70%, SHGC 0.50 vs 0.81 untreated (38% heat gain reduction). UV rejection 99.9%. Zero signal interference with in-room cellular or Wi-Fi.</span>
+          </div>
+          <div class="ht-project__detail">
+            <span class="ht-project__detail-label">Scope &amp; Installation</span>
+            <span class="ht-project__detail-val">120 guest rooms, lobby curtain wall, and rooftop bar glass. Work performed in coordinated blocks each morning (7–10am) on checked-out rooms. No guest was disturbed mid-stay. Entire property completed in 4 days.</span>
+          </div>
+          <div class="ht-project__detail">
+            <span class="ht-project__detail-label">Result</span>
+            <span class="ht-project__detail-val">Measured SHGC improved from 0.81 to 0.50. General manager reported a clear reduction in afternoon comfort complaints the following season. Housekeeping noted guests in south-facing rooms were leaving curtains open more frequently — visible evidence of the improved comfort. Furniture replacement cycle extended.</span>
+          </div>
+
+          <a href="/contact/" class="ht-project__cta">Discuss your hotel →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ GALLERY ══ -->
+    <section class="of-gallery" id="htGallery">
+      <div class="of-gallery__header">
+        <p class="of-gallery__eyebrow">Hotel Window Film Philadelphia — Our Work</p>
+        <h2 class="of-gallery__title">Window Film Installed Across<br/>Philadelphia Hotel Properties</h2>
+        <p class="of-gallery__sub">From boutique Old City inns to full-service Center City properties — every hotel window film installation in Philadelphia is scoped, specified, and executed by our certified local team.</p>
+      </div>
+      <div class="of-gallery__grid">
+
+        <div class="of-gallery__panel of-gallery__panel--tall">
+          <img src="/images/hotel-gallery-lobby.jpg" alt="Hotel window film installed in Philadelphia Center City hotel lobby — comfortable natural light, no harsh glare at check-in" class="of-gallery__img" loading="lazy" title="Hotel window film Philadelphia — Center City hotel lobby" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Center City Hotel Lobby</span>
+            <span class="of-gallery__label-sub">Solar Control · Decorative Film</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/hotel-gallery-guest-room.jpg" alt="Philadelphia hotel guest room after hotel window film installation — city view preserved, afternoon light comfortable, no blackout curtains needed" class="of-gallery__img" loading="lazy" title="Hotel window film Philadelphia — guest room solar control" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">South-Facing Guest Room</span>
+            <span class="of-gallery__label-sub">3M Prestige 70 · Solar Control · UV Protection</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/hotel-gallery-restaurant.jpg" alt="Philadelphia hotel restaurant with solar control window film — comfortable afternoon dining, no harsh window glare on tables" class="of-gallery__img" loading="lazy" title="Hotel restaurant window film Philadelphia — glare control" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Hotel Restaurant &amp; Bar</span>
+            <span class="of-gallery__label-sub">Glare Reduction · Solar Control</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/hotel-gallery-pool.jpg" alt="Philadelphia hotel indoor pool and spa with window film — UV protection, comfortable temperature, soft diffused light" class="of-gallery__img" loading="lazy" title="Hotel pool window film Philadelphia — UV protection" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Pool &amp; Spa Area</span>
+            <span class="of-gallery__label-sub">UV Protection · Privacy Film</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/hotel-gallery-install.jpg" alt="Certified window film technician installing hotel window film in Philadelphia guest room — phased installation around hotel occupancy" class="of-gallery__img" loading="lazy" title="Hotel window film installation Philadelphia — professional certified installer" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Professional Installation</span>
+            <span class="of-gallery__label-sub">Phased Around Occupancy · Certified Team</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel of-gallery__panel--wide">
+          <img src="/images/hotel-gallery-exterior.jpg" alt="Philadelphia boutique hotel exterior with window film — energy-efficient reflective glass, historic building, Center City street view" class="of-gallery__img" loading="lazy" title="Philadelphia hotel exterior window film — energy efficiency" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Historic Boutique Hotel — Old City Philadelphia</span>
+            <span class="of-gallery__label-sub">Low-E Film · Solar Control · UV Protection</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/hotel-gallery-spa.jpg" alt="Philadelphia hotel spa with frosted privacy window film — serene treatment rooms, soft diffused light, guest privacy protected" class="of-gallery__img" loading="lazy" title="Hotel spa privacy window film Philadelphia" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Hotel Spa &amp; Wellness</span>
+            <span class="of-gallery__label-sub">Privacy Film · UV Protection · Frosted Glass</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ RESOURCES ══ -->
+    <section class="res-section">
+      <div class="res-section__inner">
+        <div class="res-section__image-col">
+          <img
+            src="/images/hotel-resources.jpg"
+            alt="Philadelphia hotel manager reviewing hotel window film specifications and case studies from 3M, LLumar, and Solar Gard"
+            class="res-section__img"
+            loading="lazy"
+            title="Hotel window film Philadelphia — manufacturer specs and case studies"
+          />
+        </div>
+        <div class="res-section__content-col">
+          <p class="res-section__eyebrow">Manufacturer Resources</p>
+          <h2 class="res-section__title">Hotel Window Film — Case Studies &amp; Spec Data</h2>
+          <p class="res-section__body">Download official case studies, white papers, and technical data sheets from 3M, LLumar, and Vista — the window film brands we install in Philadelphia hotels. These documents contain verified performance data, energy savings measurements, UV and SHGC specifications, and real building case studies that you can share with ownership, facilities management, or your sustainability team.</p>
+          <ul class="res-section__list">
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/solar-gard-days-inn-hotel-window-film-case-study.pdf" target="_blank" rel="noopener noreferrer">Solar Gard — Days Inn Hotel Window Film Case Study (energy savings &amp; guest comfort results)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/llumar-resort-hotel-custom-window-film-case-study.pdf" target="_blank" rel="noopener noreferrer">LLumar — Resort Hotel Custom Window Film Case Study (decorative &amp; solar control installation)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-hotel-architectural-finishes-case-study.pdf" target="_blank" rel="noopener noreferrer">3M — Hotel Architectural Finishes Case Study (decorative film &amp; surface renovation, Norm Air Fuji Hotel)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-commercial-window-film-energy-efficiency-hotels.pdf" target="_blank" rel="noopener noreferrer">3M Commercial Window Film — Energy Efficiency for Hotels &amp; Commercial Buildings (Brochure)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/llumar-architectural-solar-control-window-film-specs.pdf" target="_blank" rel="noopener noreferrer">LLumar Architectural Window Film — Solar Control Performance Data (VLT, SHGC, UV rejection specs)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/vista-spectraselect-solar-safety-window-film-specs.pdf" target="_blank" rel="noopener noreferrer">Vista SpectraSelect Architectural Window Film — Solar Control &amp; Safety Specs (hotel guest room data)</a>
+            </li>
+          </ul>
+          <a href="/contact/" class="res-section__cta">Request a full specification package for your hotel →</a>
         </div>
       </div>
     </section>
 
-    <!-- STATS BAR — accent green -->
-    <section class="swt-stats">
-      <div class="container">
-        <div class="swt-stats__row">
-          <div class="swt-stats__item fade-in">
-            <span class="swt-stats__num">16+</span>
-            <span class="swt-stats__label">Years in Philadelphia</span>
+    <!-- ══ TESTIMONIALS ══ -->
+    <section class="ht-testimonials">
+      <div class="ht-testimonials__inner">
+        <div class="ht-testimonials__header">
+          <span class="ht-testimonials__eyebrow">What Hotel Clients Say</span>
+          <h2 class="ht-testimonials__title">From Philadelphia Hospitality Professionals</h2>
+        </div>
+        <div class="ht-testimonials__grid">
+
+          <div class="cam-tcard">
+            <div class="cam-tcard__img-wrap">
+              <img src="/images/hotel-testimonial-1.jpg" alt="Philadelphia hotel general manager who installed hotel window film — reduced guest complaints and energy costs" class="cam-tcard__img" loading="lazy" />
+            </div>
+            <div class="cam-tcard__body">
+              <div class="cam-tcard__stars">★★★★★</div>
+              <p class="cam-tcard__quote">"We were getting comfort complaints in south-facing rooms every summer without fail. We tried everything — upgraded HVAC units, blackout shades, even rotating which rooms we assigned to guests who were staying multiple nights. The window film was the only thing that actually solved the root problem. First summer after installation, the complaints stopped."</p>
+              <div class="cam-tcard__meta">
+                <p class="cam-tcard__name">James K.</p>
+                <p class="cam-tcard__role">General Manager — Center City Boutique Hotel</p>
+              </div>
+            </div>
           </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 80ms">
-            <span class="swt-stats__num">500+</span>
-            <span class="swt-stats__label">Commercial Projects</span>
+
+          <div class="cam-tcard">
+            <div class="cam-tcard__img-wrap">
+              <img src="/images/hotel-testimonial-2.jpg" alt="Philadelphia hotel facilities director — hotel window film extended furnishing replacement cycles significantly" class="cam-tcard__img" loading="lazy" />
+            </div>
+            <div class="cam-tcard__body">
+              <div class="cam-tcard__stars">★★★★★</div>
+              <p class="cam-tcard__quote">"Our furnishings budget was being eaten alive by UV fading in the south tower. We were replacing drapery panels every two years in those rooms versus every five in the north-facing units. The window film paid for itself in avoided replacement costs within 18 months. That's before you count the energy savings, which are real and measurable."</p>
+              <div class="cam-tcard__meta">
+                <p class="cam-tcard__name">Maria T.</p>
+                <p class="cam-tcard__role">Director of Facilities — Philadelphia Full-Service Hotel</p>
+              </div>
+            </div>
           </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 160ms">
-            <span class="swt-stats__num">99%</span>
-            <span class="swt-stats__label">UV Rays Blocked</span>
+
+          <div class="cam-tcard">
+            <div class="cam-tcard__img-wrap">
+              <img src="/images/hotel-testimonial-3.jpg" alt="Philadelphia hotel owner — hotel window film in Philadelphia transformed guest comfort in historic property" class="cam-tcard__img" loading="lazy" />
+            </div>
+            <div class="cam-tcard__body">
+              <div class="cam-tcard__stars">★★★★★</div>
+              <p class="cam-tcard__quote">"I was skeptical that window film could make a noticeable difference in an old building with single-pane windows. I was wrong. The rooms that used to require guests to close the blackout curtains by noon now stay comfortable with curtains open all afternoon. And the installation crew worked around our checkout schedule without a single complaint from housekeeping or guests."</p>
+              <div class="cam-tcard__meta">
+                <p class="cam-tcard__name">Robert A.</p>
+                <p class="cam-tcard__role">Owner — Old City Historic Boutique Hotel</p>
+              </div>
+            </div>
           </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 240ms">
-            <span class="swt-stats__num">30%</span>
-            <span class="swt-stats__label">Avg. Energy Savings</span>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PHILADELPHIA HOTEL AREAS ══ -->
+    <section class="ip-local">
+      <div class="ip-local__grid">
+        <div class="ip-local__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97443.81289285327!2d-75.2272!3d39.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e099!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            title="Hotel window film Philadelphia service area map"
+          ></iframe>
+        </div>
+        <div class="ip-local__content">
+          <span class="cam-testimonials__eyebrow">Service Area</span>
+          <h2>Hotel Window Film Across Greater Philadelphia</h2>
+          <p>Our installation crews are Philadelphia-based and experienced working in active hotel environments. We serve hospitality properties throughout the city and surrounding region — no travel surcharge within the standard service area.</p>
+          <div class="cam-neighborhoods">
+            <div class="cam-nh"><span class="cam-nh__name">Center City</span><span class="cam-nh__desc">The densest concentration of Philadelphia hotels — from major flags along Market and Chestnut to boutique properties in Rittenhouse and Washington Square. Most deal with south- or west-facing glass that makes afternoon comfort challenging for guests on those exposures. Solar control and glare-reduction film are the most common interventions here.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Old City</span><span class="cam-nh__desc">Historic district boutique hotels and bed and breakfasts with original or restored windows. UV fading of historic interiors and summer heat gain through older single-pane glass are the primary concerns. Low-E film and UV-blocking solar control are the right tools for these properties.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">University City</span><span class="cam-nh__desc">Hotels serving Penn, Drexel, and CHOP campuses — often occupied year-round by visiting researchers, families, and conference attendees. Properties here typically prioritize energy efficiency documentation for sustainability reporting. We provide verified SHGC and UV data for every installation.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Navy Yard &amp; Stadium District</span><span class="cam-nh__desc">Newer hotel properties in a fast-growing development corridor. Modern curtain wall glass is standard here — spectrally selective film helps properties meet sustainability targets and improve guest comfort in high-performance buildings designed with energy in mind.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">King of Prussia</span><span class="cam-nh__desc">Suburban full-service hotels serving the KoP corporate campus and Valley Forge conference market. Large west-facing window exposure on upper-floor rooms creates significant afternoon heat gain. Solar control film is the most cost-effective comfort upgrade for these properties.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Northeast Philadelphia</span><span class="cam-nh__desc">Airport-adjacent hotels and extended-stay properties with high-turnover occupancy. Anti-graffiti film is common on exterior glass and elevator mirrors in this market. Solar control film keeps energy costs down across large room inventories without disrupting operations.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Cherry Hill &amp; Haddonfield, NJ</span><span class="cam-nh__desc">South Jersey hotel corridor within our standard service area. Same crew, same products, same pricing — no travel surcharge for New Jersey hospitality clients.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Wilmington, DE</span><span class="cam-nh__desc">We regularly serve corporate and boutique hotels along the Brandywine corridor. Delaware properties are within our normal commercial schedule — no distance premium.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS — 4 steps -->
-    <section class="swt-process">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">How It Works</span>
-          <h2 class="swt-h2 swt-h2--center">4 Steps to a Better Hotel Environment</h2>
-        </div>
-        <div class="swt-process__steps">
-          <div class="swt-process__step fade-in">
-            <div class="swt-process__num">01</div>
-            <div class="swt-process__body">
-              <h3>On-Site Consultation</h3>
-              <p>We visit your property and conduct a thermal analysis of each facade. You receive a detailed proposal within 24 hours — film recommendations by room orientation, phased installation schedule, and a clear cost breakdown. No obligation.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 80ms">
-            <div class="swt-process__num">02</div>
-            <div class="swt-process__body">
-              <h3>Phased Installation Plan</h3>
-              <p>We work with your management team to build a room-by-room installation schedule that respects guest occupancy. Most hotels complete a full property installation in 1–2 weeks using a floor-by-floor or wing-by-wing approach that never takes rooms offline unexpectedly.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 160ms">
-            <div class="swt-process__num">03</div>
-            <div class="swt-process__body">
-              <h3>Professional Installation</h3>
-              <p>Our factory-trained technicians install each window to manufacturer specifications. We use drop cloths, keep work areas contained, and coordinate with your housekeeping staff. We never leave a room in a state that would affect a guest's stay.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 240ms">
-            <div class="swt-process__num">04</div>
-            <div class="swt-process__body">
-              <h3>Quality Assurance Walkthrough</h3>
-              <p>Before we consider the job complete, we walk every installed room with your management team. We inspect for perfect adhesion, clarity, and edge seal. Every installation is backed by our labor warranty and the manufacturer's material warranty.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS — dark bg -->
-    <section class="swt-testimonials">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
-          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Hospitality Businesses</h2>
-        </div>
-        <div class="swt-testimonials__grid">
-          <div class="swt-testimonial fade-in">
-            <div class="swt-testimonial__quote">"</div>
-            <p>We have a 19th-century building with original windows — replacing them was never an option. Window film was the only sensible solution. The installation was done room-by-room with zero disruption to guests. The difference in guest comfort — especially on the west side of the building — was immediate.</p>
-            <div class="swt-testimonial__author">
-              <strong>Jennifer L.</strong>
-              <span>Owner, Historic Inn, Society Hill Philadelphia</span>
-            </div>
-          </div>
-          <div class="swt-testimonial fade-in" style="--delay: 80ms">
-            <div class="swt-testimonial__quote">"</div>
-            <p>Our repeat guest scores for room comfort went up measurably after the film installation. Guests stop drawing the blinds and actually enjoy the views again. The UV protection for our antique furniture and original artwork was a major consideration — we're protecting the character of the property.</p>
-            <div class="swt-testimonial__author">
-              <strong>Marcus T.</strong>
-              <span>General Manager, Boutique Hotel, Old City Philadelphia</span>
-            </div>
-          </div>
-          <div class="swt-testimonial fade-in" style="--delay: 160ms">
-            <div class="swt-testimonial__quote">"</div>
-            <p>As a property owner with three hotels in Center City, I'm always looking for capital improvements with real, measurable ROI. Window film in all three properties paid for itself in under three years. The energy savings are documented and the maintenance calls for HVAC issues dropped noticeably.</p>
-            <div class="swt-testimonial__author">
-              <strong>Robert K.</strong>
-              <span>Property Owner, Center City Hospitality Group</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
+    <!-- ══ FAQ ══ -->
     <section class="swt-faq" id="faq">
       <div class="container">
         <div class="swt-faq__layout">
           <div class="swt-faq__header fade-in">
             <span class="swt-eyebrow">Questions</span>
             <h2 class="swt-h2">Frequently Asked Questions</h2>
-            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <p>Honest answers about hotel window film for Philadelphia properties from specialists with over 15 years of hospitality installation experience.</p>
             <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
           </div>
           <div class="swt-faq__list fade-in">
@@ -357,7 +921,7 @@ const processSteps = [
                   <span class="swt-faq__toggle">+</span>
                 </div>
                 <div class="swt-faq__a">
-                  <p>{item.answer}</p>
+                  <p set:html={item.answer}></p>
                 </div>
               </div>
             ))}
@@ -366,16 +930,43 @@ const processSteps = [
       </div>
     </section>
 
-    <!-- CTA BANNER -->
-    <section class="swt-cta">
-      <div class="swt-cta__inner">
-        <div class="swt-cta__text">
-          <h2>Ready to <em>transform</em> your hotel?</h2>
-          <p>Get a free consultation and thermal analysis. No obligation, no pressure — just honest advice.</p>
-        </div>
-        <div class="swt-cta__btns">
-          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        <!-- ══ GEO BLOCK ══ -->
+    <div class="ht-geo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+      <h2>Hotel Window Film Philadelphia — Hospitality Installation</h2>
+      <p>Hotel window film in Philadelphia is a professionally installed optical film applied directly to existing hotel glass that blocks up to 99.9% of UV radiation, reduces solar heat gain by up to 38%, and eliminates afternoon glare in guest rooms — without replacing windows or disrupting guests. Philadelphia hotels use window film to protect furnishings from UV fading, reduce HVAC energy costs, and improve guest comfort scores in south- and west-facing rooms. The U.S. Department of Energy estimates that 25–35% of wasted building energy is lost through windows; solar control film addresses this problem at the source. Window Film Philadelphia is a 3M authorized commercial window film dealer serving hotel and hospitality properties throughout Greater Philadelphia including Center City, Old City, University City, King of Prussia, Navy Yard, Northeast Philadelphia, Cherry Hill NJ, and Wilmington DE. Hotel window film installation is phased around housekeeping schedules so occupied rooms are never disrupted. Manufacturer warranties are 10–15 years; typical hotel payback on energy savings alone is 2–4 years.</p>
+      <ul>
+        <li>Hotel window film Philadelphia</li>
+        <li>Hotel window tinting Philadelphia</li>
+        <li>Window film for Philadelphia hotels</li>
+        <li>Philadelphia hotel UV protection window film</li>
+        <li>Hotel guest room window film Philadelphia</li>
+        <li>Solar control window film Philadelphia hotel</li>
+        <li>Privacy window film Philadelphia hotel</li>
+        <li>Low-E window film historic hotel Philadelphia</li>
+        <li>Anti-graffiti film Philadelphia hotel elevator mirrors</li>
+        <li>Energy efficient hotel window film Philadelphia</li>
+        <li>Hotel window film Center City Philadelphia</li>
+        <li>Old City boutique hotel window film Philadelphia</li>
+        <li>3M Prestige 70 hotel window film Philadelphia</li>
+        <li>Decorative hotel window film Philadelphia lobby</li>
+      </ul>
+    </div>
+    
+
+    <!-- ══ CTA BANNER ══ -->
+    <section class="priv-cinematic-cta">
+      <div class="priv-cinematic-cta__media" aria-hidden="true" style="background-image: url('/images/hotel-cta-bg.jpg');"></div>
+      <div class="priv-cinematic-cta__overlay" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__vignette" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__content">
+        <h2 class="priv-cinematic-cta__title">Ready to Transform Your Philadelphia Hotel?</h2>
+        <p class="priv-cinematic-cta__text">Get a free hospitality site assessment — we'll assess your glass, your guest room exposure, and your energy goals, and give you a written proposal with verified performance data. No obligation, no pressure. We work around your schedule and your guests.</p>
+        <div class="priv-cinematic-cta__actions">
+          <a href="/contact/" class="priv-cinematic-cta__btn-primary">Get Your Free Hotel Estimate</a>
+          <a href="tel:2673947980" class="priv-cinematic-cta__btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+            (267) 394-7980
+          </a>
         </div>
       </div>
     </section>
@@ -385,846 +976,1337 @@ const processSteps = [
 
 <style>
   /* ══════════════════════════════════════
-     BRAND TOKENS (local override)
-     ══════════════════════════════════════ */
+     BRAND TOKENS
+  ══════════════════════════════════════ */
   :root {
-    --swt-green:        #4E6B2A;
-    --swt-green-accent: #83A94A;
-    --swt-dark:         #2A241E;
-    --swt-cream:        #F4EFE6;
-    --swt-alt:          #ECE4D4;
-    --swt-border:       #E1D6C1;
-    --swt-text-sec:     #6E665C;
-    --swt-gold:         #846212;
-    --swt-white:        #ffffff;
-    --swt-radius:       5px;
+    --ht-green:        #4E6B2A;
+    --ht-green-light:  #7CB342;
+    --ht-dark:         #0D1A0F;
+    --ht-cream:        #F4EFE6;
+    --ht-alt:          #ECE4D4;
+    --ht-border:       #E1D6C1;
+    --ht-text-sec:     #5a6650;
+    --ht-white:        #ffffff;
+    --ht-radius:       6px;
   }
 
   /* ══════════════════════════════════════
      HERO
-     ══════════════════════════════════════ */
-  .swt-hero {
+  ══════════════════════════════════════ */
+  .ht-hero {
     position: relative;
-    min-height: 85vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
-  .swt-hero__img {
+  .ht-hero__bg {
     position: absolute;
     inset: 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
   }
-  .swt-hero__img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .swt-hero__overlay {
+  .ht-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 26, 15, 0.55) 0%,
+      rgba(13, 26, 15, 0.78) 50%,
+      rgba(13, 26, 15, 0.95) 100%
+    );
   }
-  .swt-hero__content {
+  .ht-hero__content {
     position: relative;
-    z-index: 1;
-    padding: 110px 8% 90px;
-    max-width: 720px;
-  }
-  .swt-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    background: rgba(78,107,42,0.25);
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(78,107,42,0.4);
-  }
-  .swt-hero__title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(38px, 5.5vw, 66px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.1;
-    margin: 0 0 20px;
-  }
-  .swt-hero__title em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-hero__sub {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin: 0 0 36px;
-    max-width: 500px;
-  }
-  .swt-hero__ctas {
+    z-index: 10;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
-
-  /* ══════════════════════════════════════
-     BUTTONS
-     ══════════════════════════════════════ */
-  .swt-btn {
+  .ht-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .ht-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+  .ht-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .ht-hero__br { display: none; }
+  .ht-hero__animated-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(243, 246, 241, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .ht-hero__flip.flipwords-wrap { display: inline; }
+  .ht-hero__flip .fw-word-col {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .ht-hero__flip .fw-word {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    white-space: nowrap;
+    font-style: normal;
+    min-width: unset;
+  }
+  .ht-hero__flip .fw-word.is-active { position: relative; }
+  .ht-hero__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+  .ht-hero__cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .ht-hero__btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 13px 28px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
+    padding: 14px 30px;
+    background: var(--ht-green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+    border-radius: var(--ht-radius);
+    border: 2px solid var(--ht-green);
+    transition: background 0.2s, transform 0.2s;
   }
-  .swt-btn--primary {
-    background: var(--swt-green);
-    color: var(--swt-white);
-    border-color: var(--swt-green);
-  }
-  .swt-btn--primary:hover {
+  .ht-hero__btn-primary:hover {
     background: #3D5620;
     border-color: #3D5620;
     transform: translateY(-2px);
   }
-  .swt-btn--ghost-light {
+  .ht-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
     background: transparent;
-    color: rgba(255,255,255,0.8);
-    border-color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.82);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--ht-radius);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
   }
-  .swt-btn--ghost-light:hover {
+  .ht-hero__btn-secondary:hover {
     color: #fff;
     border-color: rgba(255,255,255,0.65);
-    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
   }
-
-  /* ══════════════════════════════════════
-     BODY CONTAINER
-     ══════════════════════════════════════ */
-  .swt-body {
-    position: relative;
+  .ht-hero__stats-panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--ht-radius);
+    backdrop-filter: blur(8px);
+    padding: 24px 32px;
   }
-
-  /* ══════════════════════════════════════
-     TRUST BAR
-     ══════════════════════════════════════ */
-  .swt-trust {
-    background: var(--swt-cream);
-    padding: 48px 0;
-    border-bottom: 1px solid var(--swt-border);
+  .ht-hero__stats-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
   }
-  .swt-trust .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
+  .ht-hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .ht-hero__stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ht-green-light);
+    line-height: 1;
+  }
+  .ht-hero__stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
     text-align: center;
   }
+  .ht-hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  /* Shared trust bar */
+  .swt-trust {
+    background: #ffffff;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--ht-border);
+  }
   .swt-trust__label {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--swt-text-sec);
-    margin: 0 0 28px;
+    color: var(--ht-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body {
+    background: var(--ht-white);
   }
 
   /* ══════════════════════════════════════
-     SPLIT SECTIONS
-     ══════════════════════════════════════ */
-  .swt-split {
-    padding: 100px 0;
+     WHAT IS
+  ══════════════════════════════════════ */
+  .ht-whatis {
+    background: #fff;
+    padding: 96px 5%;
   }
-  .swt-split .container {
-    max-width: 1140px;
+  .ht-whatis__container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
-  }
-  .swt-split__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 72px;
     align-items: center;
   }
-  .swt-split__grid--rev {
-    direction: rtl;
-  }
-  .swt-split__grid--rev > * {
-    direction: ltr;
-  }
-  .swt-split__text {
-    padding-right: 24px;
-  }
-  .swt-split__grid--rev .swt-split__text {
-    padding-right: 0;
-    padding-left: 24px;
-  }
-  .swt-split__img {
-    position: relative;
-    border-radius: var(--swt-radius);
-    overflow: hidden;
-  }
-  .swt-split__img img {
-    width: 100%;
-    height: 440px;
-    object-fit: cover;
-    display: block;
-    border-radius: var(--swt-radius);
-  }
-  .swt-split--dark {
-    background: var(--swt-dark);
-  }
-  .swt-split--dark .swt-h2--light {
-    color: var(--swt-white);
-  }
-  .swt-split--dark p {
-    color: rgba(255,255,255,0.65);
-  }
-  .swt-split--alt {
-    background: var(--swt-alt);
-  }
-  .swt-split--alt p {
-    color: var(--swt-text-sec);
-  }
-  .swt-split p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    margin: 0 0 16px;
-  }
-
-  /* ══════════════════════════════════════
-     TYPOGRAPHY
-     ══════════════════════════════════════ */
-  .swt-eyebrow {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--swt-green);
-    margin-bottom: 12px;
-  }
-  .swt-eyebrow--green {
-    color: var(--swt-green-accent);
-  }
-  .swt-h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 20px;
-    color: var(--swt-dark);
-  }
-  .swt-h2--center {
-    text-align: center;
-  }
-  .swt-subhead {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: var(--swt-text-sec);
-    max-width: 540px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  /* ══════════════════════════════════════
-     PROBLEM TAGS
-     ══════════════════════════════════════ */
-  .swt-problem-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 28px;
-  }
-  .swt-tag {
+  .ht-whatis__eyebrow {
     display: inline-block;
-    padding: 6px 14px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .swt-tag--red {
-    background: rgba(180, 60, 60, 0.15);
-    color: #e8a0a0;
-    border: 1px solid rgba(180, 60, 60, 0.25);
-  }
-
-  /* ══════════════════════════════════════
-     IMG BADGE
-     ══════════════════════════════════════ */
-  .swt-img-badge {
-    position: absolute;
-    bottom: 24px;
-    left: 24px;
-    background: var(--swt-dark);
-    color: var(--swt-white);
-    padding: 12px 18px;
-    border-radius: var(--swt-radius);
-    text-align: center;
-  }
-  .swt-img-badge strong {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 28px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
     font-weight: 700;
-    line-height: 1;
-    color: var(--swt-green-accent);
-  }
-  .swt-img-badge span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
+    color: var(--ht-green);
+    margin-bottom: 16px;
   }
-
-  /* ══════════════════════════════════════
-     CHECK LIST
-     ══════════════════════════════════════ */
-  .swt-check-list {
-    list-style: none;
-    padding: 0;
-    margin: 24px 0 0;
+  .ht-whatis__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
   }
-  .swt-check-list li {
-    position: relative;
-    padding-left: 28px;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--swt-text-sec);
-    margin-bottom: 10px;
+  .ht-whatis__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--ht-text-sec);
+    line-height: 1.8;
+    margin-bottom: 14px;
   }
-  .swt-check-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 16px;
-    height: 16px;
-    background: var(--swt-green);
-    border-radius: 50%;
-    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  /* ══════════════════════════════════════
-     ENERGY METRICS
-     ══════════════════════════════════════ */
-  .swt-energy-metrics {
+  .ht-whatis__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; }
+  .ht-whatis__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .ht-whatis__stats {
     display: flex;
-    gap: 32px;
-    margin-top: 32px;
-    padding-top: 32px;
-    border-top: 1px solid var(--swt-border);
-  }
-  .swt-metric__num {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--swt-green);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .swt-metric__label {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: var(--swt-text-sec);
-    text-transform: uppercase;
-  }
-
-  /* ══════════════════════════════════════
-     INLINE QUOTE
-     ══════════════════════════════════════ */
-  .swt-inline-quote {
-    margin: 28px 0 0;
-    padding: 20px 24px;
-    border-left: 3px solid var(--swt-green);
-    background: rgba(78,107,42,0.06);
-    border-radius: 0 var(--swt-radius) var(--swt-radius) 0;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-style: italic;
-    line-height: 1.7;
-    color: var(--swt-text-sec);
-  }
-  .swt-inline-quote cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    color: var(--swt-text-sec);
-  }
-
-  /* ══════════════════════════════════════
-     SECURITY FEATURES
-     ══════════════════════════════════════ */
-  .swt-security-features {
+    align-items: center;
+    gap: 0;
     margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--ht-cream);
+    border-radius: var(--ht-radius);
+    border: 1px solid var(--ht-border);
+  }
+  .ht-whatis__stat {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
   }
-  .swt-security-feature {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
+  .ht-whatis__stat strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ht-green);
+    line-height: 1;
   }
-  .swt-feature-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--swt-green-accent);
-    margin-top: 7px;
+  .ht-whatis__stat span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--ht-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .ht-whatis__stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--ht-border);
     flex-shrink: 0;
   }
-  .swt-security-feature strong {
+  .ht-whatis__image-wrap {
+    position: relative;
+    border-radius: var(--ht-radius);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .ht-whatis__image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
     display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--swt-white);
-    margin-bottom: 4px;
-  }
-  .swt-split--dark .swt-security-feature p {
-    color: rgba(255,255,255,0.6);
-    margin: 0;
-    font-size: 14px;
-  }
-  .swt-split--dark .swt-security-feature strong {
-    color: var(--swt-white);
   }
 
   /* ══════════════════════════════════════
-     GALLERY
-     ══════════════════════════════════════ */
-  .swt-gallery {
-    padding: 100px 0;
-    background: var(--swt-cream);
+     WHY / PROBLEM
+  ══════════════════════════════════════ */
+  .ht-why {
+    background: var(--ht-alt);
+    padding: 96px 5%;
   }
-  .swt-gallery .container {
-    max-width: 1140px;
+  .ht-why__container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
-  }
-  .swt-gallery__header {
-    text-align: center;
-    margin-bottom: 56px;
-  }
-  .swt-gallery__header .swt-eyebrow {
-    display: block;
-  }
-  .swt-gallery__grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
   }
-  .swt-gallery__item {
+  .ht-why__image-wrap {
     position: relative;
-    border-radius: var(--swt-radius);
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    cursor: pointer;
   }
-  .swt-gallery__item img {
+  .ht-why__image {
     width: 100%;
-    height: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: var(--ht-radius);
+    display: block;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .ht-why__stat-card {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--ht-dark);
+    border-radius: var(--ht-radius);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 12px 32px rgba(13,26,15,0.25);
+    min-width: 240px;
+  }
+  .ht-why__stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+  .ht-why__stat-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .ht-why__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ht-green);
+    margin-bottom: 14px;
+  }
+  .ht-why__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .ht-why__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--ht-text-sec);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .ht-why__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ht-why__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ht-text-sec);
+    line-height: 1.65;
+  }
+  .ht-why__bullets li svg { flex-shrink: 0; margin-top: 3px; }
+  .ht-why__climate-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--ht-border);
+    border-radius: var(--ht-radius);
+  }
+  .ht-why__climate-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .ht-why__climate-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ht-green);
+    line-height: 1;
+  }
+  .ht-why__climate-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: var(--ht-text-sec);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .ht-why__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ht-green);
+    text-decoration: none;
+    border-bottom: 2px solid var(--ht-green);
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .ht-why__cta:hover { gap: 12px; }
+
+  /* Responsive — What Is / Why */
+  @media (max-width: 1024px) {
+    .ht-whatis__container, .ht-why__container { gap: 48px; }
+  }
+  @media (max-width: 768px) {
+    .ht-whatis { padding: 64px 5%; }
+    .ht-whatis__container { grid-template-columns: 1fr; gap: 36px; }
+    .ht-whatis__image { height: 280px; }
+    .ht-why { padding: 64px 5%; }
+    .ht-why__container { grid-template-columns: 1fr; gap: 36px; }
+    .ht-why__image { height: 320px; }
+    .ht-why__stat-card { position: static; margin-top: 16px; min-width: unset; }
+    .ht-why__climate-facts { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .ht-whatis__stats { flex-direction: column; gap: 16px; }
+    .ht-whatis__stat-div { display: none; }
+    .ht-why__climate-facts { grid-template-columns: 1fr; }
+  }
+
+  /* Hero Responsive */
+  @media (max-width: 768px) {
+    .ht-hero__content { padding: 90px 20px 60px; }
+    .ht-hero__stats-inner { flex-wrap: wrap; gap: 20px; }
+    .ht-hero__stat-divider { display: none; }
+    .ht-hero__stat { flex: 0 0 45%; }
+    .ht-hero__br { display: block; }
+    .ht-hero__cta { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .ht-hero__stats-panel { padding: 20px 16px; }
+    .ht-hero__stat { flex: 0 0 100%; }
+  }
+
+  /* ══════════════════════════════════════
+     HOTEL SPACES GRID
+  ══════════════════════════════════════ */
+  .ht-spaces {
+    background: var(--ht-cream);
+    padding: 96px 5%;
+  }
+  .ht-spaces__container { max-width: 1280px; margin: 0 auto; }
+  .ht-spaces__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .ht-spaces__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ht-green);
+    margin-bottom: 14px;
+  }
+  .ht-spaces__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .ht-spaces__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--ht-text-sec);
+    line-height: 1.75;
+    margin: 0;
+  }
+  .ht-spaces__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .ht-spaces__card {
+    background: #fff;
+    border-radius: var(--ht-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(13,26,15,0.07);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .ht-spaces__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(13,26,15,0.13);
+  }
+  .ht-spaces__img-wrap { overflow: hidden; aspect-ratio: 4/3; }
+  .ht-spaces__img {
+    width: 100%; height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
   }
-  .swt-gallery__item:hover img {
-    transform: scale(1.05);
+  .ht-spaces__card:hover .ht-spaces__img { transform: scale(1.04); }
+  .ht-spaces__body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .ht-spaces__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ht-dark);
+    margin: 0;
   }
-  .swt-gallery__overlay {
+  .ht-spaces__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--ht-text-sec);
+    line-height: 1.75;
+    margin: 0;
+    flex: 1;
+  }
+  .ht-spaces__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .ht-spaces__tags span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ht-green);
+    background: rgba(78,107,42,0.08);
+    border: 1px solid rgba(78,107,42,0.18);
+    border-radius: 100px;
+    padding: 3px 10px;
+  }
+  @media (max-width: 1024px) { .ht-spaces__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .ht-spaces__grid { grid-template-columns: 1fr; } }
+
+  /* ══════════════════════════════════════
+     BENEFITS ROWS
+  ══════════════════════════════════════ */
+  .ht-benefits { background: #fff; padding: 0; }
+  .ht-benefits__header { text-align: center; padding: 72px 5% 0; max-width: 680px; margin: 0 auto; }
+  .ht-benefits__eyebrow { display: block; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ht-green); margin-bottom: 12px; }
+  .ht-benefits__headline { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 700; color: var(--ht-dark); line-height: 1.15; margin: 0; }
+  .ht-benefits__container { max-width: 1200px; margin: 0 auto; }
+  .ht-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    padding: 80px 5%;
+    border-bottom: 1px solid var(--ht-border);
+  }
+  .ht-row--rev { direction: rtl; }
+  .ht-row--rev > * { direction: ltr; }
+  .ht-row__image-wrap {
+    border-radius: var(--ht-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(13,26,15,0.1);
+  }
+  .ht-row__image {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
+  }
+  .ht-row__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ht-green);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .ht-row__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .ht-row__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ht-text-sec);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .ht-row__body a { color: #2E7D32; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 600; }
+  .ht-row__body a:hover { color: #1B5E20; text-decoration-color: #1B5E20; }
+  .ht-whatis__body a { color: #2E7D32; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 600; }
+  .ht-whatis__body a:hover { color: #1B5E20; }
+  .ht-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ht-row__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ht-text-sec);
+    line-height: 1.6;
+  }
+  .ht-row__bullets li svg { flex-shrink: 0; margin-top: 2px; }
+  @media (max-width: 900px) {
+    .ht-row { grid-template-columns: 1fr; gap: 36px; direction: ltr; padding: 56px 5%; }
+    .ht-row__image { height: 300px; }
+  }
+
+  /* ══════════════════════════════════════
+     FILM TYPES SLIDER  (ht-ftype)
+  ══════════════════════════════════════ */
+  .ht-ftype {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 900px;
+    overflow: hidden;
+    background: var(--ht-dark);
+  }
+  .ht-ftype__track { position: relative; width: 100%; height: 100%; }
+  .ht-ftype__slide {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(42,36,30,0.85) 0%, transparent 60%);
-    display: flex;
-    align-items: flex-end;
-    padding: 16px;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
   }
-  .swt-gallery__item:hover .swt-gallery__overlay {
+  .ht-ftype__slide.ht-ftype-active {
     opacity: 1;
+    pointer-events: auto;
   }
-  .swt-gallery__overlay span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--swt-white);
+  .ht-ftype__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
-
-  /* ══════════════════════════════════════
-     STATS
-     ══════════════════════════════════════ */
-  .swt-stats {
-    background: var(--swt-green);
-    padding: 72px 0;
+  .ht-ftype__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.30) 60%, transparent 100%);
   }
-  .swt-stats .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .swt-stats__row {
+  .ht-ftype__content {
+    position: relative;
+    z-index: 5;
+    max-width: 560px;
+    padding: 80px 5% 80px 8%;
+    height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
   }
-  .swt-stats__item {
-    text-align: center;
-    padding: 0 48px;
-  }
-  .swt-stats__num {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 52px;
+  .ht-ftype__step {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
     font-weight: 700;
-    color: var(--swt-white);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .swt-stats__label {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
+    color: rgba(124,179,66,0.7);
+    margin-bottom: 14px;
   }
-  .swt-stats__div {
-    width: 1px;
-    height: 60px;
-    background: rgba(255,255,255,0.2);
+  .ht-ftype__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    white-space: pre-line;
+  }
+  .ht-ftype__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .ht-ftype__faq { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
+  .ht-ftype__faq-item { border-top: 1px solid rgba(255,255,255,0.1); }
+  .ht-ftype__faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .ht-ftype__faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.82);
+    text-align: left;
+  }
+  .ht-ftype__faq-icon {
+    font-size: 18px;
+    color: var(--ht-green-light);
+    font-weight: 400;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .ht-ftype__faq-q[aria-expanded="true"] .ht-ftype__faq-icon { transform: rotate(45deg); }
+  .ht-ftype__faq-a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    padding: 0 0 14px;
+  }
+  .ht-ftype__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ht-green-light);
+    text-decoration: none;
+    border-bottom: 2px solid var(--ht-green-light);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: gap 0.2s;
+  }
+  .ht-ftype__cta:hover { gap: 10px; }
+  /* Right nav */
+  .ht-ftype__nav {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ht-ftype__nav-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+  }
+  .ht-ftype__nav-line {
+    width: 24px;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    transition: width 0.25s, background 0.25s;
+  }
+  .ht-ftype__nav-item--active .ht-ftype__nav-line,
+  .ht-ftype__nav-item:hover .ht-ftype__nav-line {
+    width: 40px;
+    background: var(--ht-green-light);
+  }
+  .ht-ftype__nav-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .ht-ftype__nav-item--active .ht-ftype__nav-label,
+  .ht-ftype__nav-item:hover .ht-ftype__nav-label { color: rgba(255,255,255,0.9); }
+  /* Arrows */
+  .ht-ftype__arrow {
+    position: absolute;
+    bottom: 32px;
+    z-index: 10;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.7);
+    transition: background 0.2s, color 0.2s;
+  }
+  .ht-ftype__arrow:hover { background: rgba(255,255,255,0.18); color: #fff; }
+  .ht-ftype__arrow--prev { left: 8%; }
+  .ht-ftype__arrow--next { left: calc(8% + 56px); }
+  /* Progress */
+  .ht-ftype__progress {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    z-index: 10;
+  }
+  .ht-ftype__progress-bar {
+    height: 100%;
+    background: var(--ht-green-light);
+    transition: width 0.4s ease;
+    width: 16.66%;
+  }
+  @media (max-width: 900px) {
+    .ht-ftype { max-height: none; height: auto; min-height: 0; }
+    .ht-ftype__slide { position: relative; opacity: 0; max-height: 0; overflow: hidden; pointer-events: none; }
+    .ht-ftype__slide.ht-ftype-active { opacity: 1; max-height: none; pointer-events: auto; }
+    .ht-ftype__content { padding: 60px 5%; max-width: 100%; }
+    .ht-ftype__bg { position: absolute; height: 100%; }
+    .ht-ftype__nav { right: 20px; }
+    .ht-ftype__nav-label { display: none; }
+    .ht-ftype__arrow--prev { left: 5%; }
+    .ht-ftype__arrow--next { left: calc(5% + 56px); }
   }
 
   /* ══════════════════════════════════════
-     PROCESS
-     ══════════════════════════════════════ */
-  .swt-process {
-    padding: 100px 0;
-    background: var(--swt-white);
+     FEATURED PROJECT
+  ══════════════════════════════════════ */
+  .ht-project {
+    background: var(--ht-alt);
+    padding: 96px 5%;
   }
-  .swt-process .container {
-    max-width: 1140px;
+  .ht-project__inner {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
-  }
-  .swt-process__steps {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    margin-top: 56px;
+    grid-template-columns: 420px 1fr;
+    gap: 72px;
+    align-items: start;
   }
-  .swt-process__step {
-    position: relative;
-    padding-top: 56px;
+  .ht-project__img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--ht-radius);
+    display: block;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.14);
   }
-  .swt-process__num {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 52px;
+  .ht-project__stats-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 20px;
+    background: var(--ht-dark);
+    border-radius: var(--ht-radius);
+    padding: 18px 20px;
+  }
+  .ht-project__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    text-align: center;
+  }
+  .ht-project__stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: var(--swt-green);
-    opacity: 0.2;
+    color: var(--ht-green-light);
     line-height: 1;
   }
-  .swt-process__body h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--swt-dark);
-    margin: 0 0 12px;
+  .ht-project__stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    line-height: 1.3;
   }
-  .swt-process__body p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--swt-text-sec);
-    margin: 0;
+  .ht-project__stat-div { width: 1px; height: 32px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+  .ht-project__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ht-green);
+    margin-bottom: 14px;
+  }
+  .ht-project__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+  .ht-project__detail {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--ht-border);
+    align-items: baseline;
+  }
+  .ht-project__detail-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ht-green);
+  }
+  .ht-project__detail-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ht-text-sec);
+    line-height: 1.7;
+  }
+  .ht-project__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ht-green);
+    text-decoration: none;
+    border-bottom: 2px solid var(--ht-green);
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .ht-project__cta:hover { gap: 12px; }
+  @media (max-width: 900px) {
+    .ht-project__inner { grid-template-columns: 1fr; gap: 36px; }
+    .ht-project__detail { grid-template-columns: 1fr; gap: 6px; }
+    .ht-project__stats-strip { flex-wrap: wrap; gap: 16px; }
   }
 
   /* ══════════════════════════════════════
      TESTIMONIALS
-     ══════════════════════════════════════ */
-  .swt-testimonials {
-    background: var(--swt-dark);
-    padding: 100px 0;
+  ══════════════════════════════════════ */
+  .ht-testimonials {
+    background: var(--ht-cream);
+    padding: 96px 5%;
   }
-  .swt-testimonials .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
+  .ht-testimonials__inner { max-width: 1200px; margin: 0 auto; }
+  .ht-testimonials__header { text-align: center; margin-bottom: 56px; }
+  .ht-testimonials__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ht-green);
+    margin-bottom: 12px;
   }
-  .swt-testimonials__grid {
+  .ht-testimonials__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.15;
+    margin: 0;
+  }
+  .ht-testimonials__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 56px;
+    gap: 28px;
   }
-  .swt-testimonial {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--swt-radius);
-    padding: 36px;
-    position: relative;
-  }
-  .swt-testimonial__quote {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 72px;
-    color: var(--swt-green);
-    line-height: 1;
-    margin-bottom: -16px;
-    opacity: 0.5;
-  }
-  .swt-testimonial p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.7);
-    margin: 0;
-  }
-  .swt-testimonial__author {
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .swt-testimonial__author strong {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--swt-white);
-    margin-bottom: 4px;
-  }
-  .swt-testimonial__author span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
-  }
+  /* cam-tcard shared pattern */
+  .cam-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+  .cam-tcard__img-wrap { overflow: hidden; aspect-ratio: 1/1; flex-shrink: 0; }
+  .cam-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+  .cam-tcard:hover .cam-tcard__img { transform: scale(1.03); }
+  .cam-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .cam-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+  .cam-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+  .cam-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+  .cam-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+  .cam-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--ht-green-light); margin: 0; font-weight: 500; }
+  @media (max-width: 900px) { .ht-testimonials__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+  @media (max-width: 600px) { .ht-testimonials__grid { max-width: 100%; } }
 
   /* ══════════════════════════════════════
-     FAQ
-     ══════════════════════════════════════ */
-  .swt-faq {
-    padding: 100px 0;
-    background: var(--swt-cream);
-  }
-  .swt-faq .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .swt-faq__layout {
+     PHILADELPHIA AREAS (ip-local)
+  ══════════════════════════════════════ */
+  .ip-local { background: var(--ht-white); }
+  .ip-local__grid {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 72px;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    min-height: 640px;
   }
-  .swt-faq__header {
-    position: sticky;
-    top: 40px;
-  }
-  .swt-faq__header .swt-eyebrow {
-    display: block;
-  }
-  .swt-faq__header .swt-h2 {
-    margin-bottom: 16px;
-  }
-  .swt-faq__header p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--swt-text-sec);
-    margin-bottom: 28px;
-  }
-  .swt-faq__list {
+  .ip-local__map { background: #dde; }
+  .ip-local__map iframe { display: block; width: 100%; height: 100%; min-height: 400px; }
+  .ip-local__content {
+    padding: 72px 6%;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 20px;
+    justify-content: center;
   }
-  .swt-faq__item {
-    border-bottom: 1px solid var(--swt-border);
+  .ip-local__content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--ht-dark);
+    line-height: 1.15;
+    margin: 0;
   }
-  .swt-faq__item:first-child {
-    border-top: 1px solid var(--swt-border);
-  }
-  .swt-faq__q {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 0;
-    cursor: pointer;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--swt-dark);
-    gap: 16px;
-  }
-  .swt-faq__toggle {
-    font-size: 22px;
-    color: var(--swt-green);
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-  }
-  .swt-faq__a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-  }
-  .swt-faq__a p {
-    padding-bottom: 20px;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
+  .ip-local__content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ht-text-sec);
     line-height: 1.8;
-    color: var(--swt-text-sec);
     margin: 0;
   }
-  .swt-faq__item.is-open .swt-faq__a {
-    max-height: 400px;
+  .cam-testimonials__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ht-green);
   }
-  .swt-faq__item.is-open .swt-faq__toggle {
-    transform: rotate(45deg);
+  .cam-neighborhoods { display: flex; flex-direction: column; gap: 0; }
+  .cam-nh {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 12px 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--ht-border);
+    align-items: baseline;
+  }
+  .cam-nh:first-child { border-top: 1px solid var(--ht-border); }
+  .cam-nh__name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ht-dark);
+  }
+  .cam-nh__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ht-text-sec);
+    line-height: 1.65;
+  }
+  @media (max-width: 900px) {
+    .ip-local__grid { grid-template-columns: 1fr; }
+    .ip-local__map { min-height: 320px; }
+    .ip-local__content { padding: 56px 5%; }
+    .cam-nh { grid-template-columns: 1fr; gap: 4px; }
   }
 
   /* ══════════════════════════════════════
-     CTA BANNER
-     ══════════════════════════════════════ */
-  .swt-cta {
-    background: var(--swt-dark);
-    padding: 80px 0;
+     FAQ  (swt-faq)
+  ══════════════════════════════════════ */
+  :root {
+    --swt-white: #fff;
+    --swt-dark:  #0D1A0F;
+    --swt-green: #4E6B2A;
+    --swt-text-sec: #5a6650;
+    --swt-border: #E1D6C1;
   }
-  .swt-cta__inner {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
+  .swt-faq { background: var(--swt-white); padding: 96px 0; }
+  .swt-faq__layout { display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+  .swt-faq__header { display: flex; flex-direction: column; }
+  .swt-faq__header p { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.75; color: var(--swt-text-sec); margin: 14px 0 24px; }
+  .swt-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ht-green); margin-bottom: 10px; }
+  .swt-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; color: var(--swt-dark); line-height: 1.15; margin: 0; }
+  .swt-btn { display: inline-flex; align-items: center; padding: 12px 24px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; text-decoration: none; border-radius: var(--ht-radius); transition: background 0.2s, transform 0.2s; }
+  .swt-btn--primary { background: var(--ht-green); color: #fff; border: 2px solid var(--ht-green); }
+  .swt-btn--primary:hover { background: #3D5620; border-color: #3D5620; transform: translateY(-2px); }
+  .swt-faq__list { display: flex; flex-direction: column; }
+  .swt-faq__item { border-bottom: 1px solid var(--swt-border); padding: 18px 0; }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: var(--swt-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 3px 0; }
+  .swt-faq__toggle { color: var(--ht-green-light); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; line-height: 1; }
+  .swt-faq__a { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--swt-text-sec); line-height: 1.8; margin-top: 10px; display: none; }
+  .swt-faq__a a { color: var(--ht-green-light); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .swt-faq__a a:hover { color: var(--ht-green); }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+  @media (max-width: 768px) { .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ══════════════════════════════════════
+     CTA BANNER (priv-cinematic-cta)
+  ══════════════════════════════════════ */
+  .priv-cinematic-cta {
+    position: relative;
+    min-height: 480px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 48px;
+    justify-content: center;
+    overflow: hidden;
   }
-  .swt-cta__text h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(28px, 3vw, 42px);
-    font-weight: 400;
-    color: var(--swt-white);
-    margin: 0 0 12px;
+  .priv-cinematic-cta__media {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
-  .swt-cta__text h2 em {
-    font-style: italic;
-    color: var(--swt-green-accent);
+  .priv-cinematic-cta__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13,26,15,0.72);
   }
-  .swt-cta__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: rgba(255,255,255,0.55);
-    margin: 0;
+  .priv-cinematic-cta__vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
   }
-  .swt-cta__btns {
+  .priv-cinematic-cta__content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 700px;
+    padding: 80px 5%;
+  }
+  .priv-cinematic-cta__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .priv-cinematic-cta__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(243,246,241,0.75);
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+  .priv-cinematic-cta__actions {
     display: flex;
-    gap: 12px;
-    flex-shrink: 0;
+    gap: 16px;
     flex-wrap: wrap;
+    justify-content: center;
   }
+  .priv-cinematic-cta__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 32px;
+    background: var(--ht-green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--ht-radius);
+    border: 2px solid var(--ht-green);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .priv-cinematic-cta__btn-primary:hover { background: #3D5620; border-color: #3D5620; transform: translateY(-2px); }
+  .priv-cinematic-cta__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 28px;
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--ht-radius);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .priv-cinematic-cta__btn-secondary:hover { color: #fff; border-color: rgba(255,255,255,0.65); transform: translateY(-2px); }
 
-  /* ══════════════════════════════════════
-     FADE-IN ANIMATION
-     ══════════════════════════════════════ */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: var(--delay, 0ms);
-  }
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
-  /* ══════════════════════════════════════
-     RESPONSIVE
-     ══════════════════════════════════════ */
-  @media (max-width: 1024px) {
-    .swt-gallery__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .swt-process__steps {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .swt-testimonials__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 768px) {
-    .swt-split__grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .swt-split__grid--rev {
-      direction: ltr;
-    }
-    .swt-split__img img {
-      height: 300px;
-    }
-    .swt-gallery__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .swt-stats__row {
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-    .swt-stats__div {
-      display: none;
-    }
-    .swt-process__steps {
-      grid-template-columns: 1fr;
-    }
-    .swt-testimonials__grid {
-      grid-template-columns: 1fr;
-    }
-    .swt-faq__layout {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .swt-faq__header {
-      position: static;
-    }
-    .swt-cta__inner {
-      flex-direction: column;
-      text-align: center;
-    }
-    .swt-energy-metrics {
-      flex-direction: column;
-      gap: 20px;
-    }
-  }
+  /* ── Gallery (office pattern, exact copy) ── */
+  .of-gallery { background: #F5F3EE; padding: 96px 5% 80px; }
+  .of-gallery__header { text-align: center; margin-bottom: 52px; }
+  .of-gallery__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+  .of-gallery__title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 1rem; }
+  .of-gallery__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; max-width: 580px; margin: 0 auto; line-height: 1.75; }
+  .of-gallery__grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 280px 280px; gap: 12px; }
+  .of-gallery__panel { position: relative; overflow: hidden; border-radius: 10px; cursor: default; }
+  .of-gallery__panel--tall { grid-row: span 2; }
+  .of-gallery__panel--wide { grid-column: span 2; }
+  .of-gallery__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .of-gallery__panel:hover .of-gallery__img { transform: scale(1.04); }
+  .of-gallery__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%); pointer-events: none; }
+  .of-gallery__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+  .of-gallery__label-title { display: block; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .of-gallery__label-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.06em; }
+  @media (max-width: 1024px) { .of-gallery__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } .of-gallery__panel--tall { grid-row: span 1; height: 280px; } .of-gallery__panel { height: 240px; } }
+  @media (max-width: 600px) { .of-gallery__grid { grid-template-columns: 1fr; } .of-gallery__panel, .of-gallery__panel--tall, .of-gallery__panel--wide { height: 260px; grid-column: span 1; grid-row: span 1; } }
+
+  /* ── Resources section (office pattern, exact copy) ── */
+  .res-section { background: #F5F3EE; padding: 80px 0; }
+  .res-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .res-section__image-col { position: relative; border-radius: 16px; overflow: hidden; }
+  .res-section__img { width: 100%; height: 520px; object-fit: cover; object-position: center; display: block; border-radius: 16px; }
+  .res-section__content-col { display: flex; flex-direction: column; gap: 20px; }
+  .res-section__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0; }
+  .res-section__title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  .res-section__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.75; margin: 0; }
+  .res-section__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .res-section__item { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.5; }
+  .res-section__item svg { flex-shrink: 0; margin-top: 2px; }
+  .res-section__item a { color: #14201A; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; transition: color 0.2s ease; font-weight: 500; }
+  .res-section__item a:hover { color: #7CB342; }
+  .res-section__cta { align-self: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s ease; }
+  .res-section__cta:hover { gap: 8px; }
+  @media (max-width: 900px) { .res-section__inner { grid-template-columns: 1fr; gap: 40px; } .res-section__img { height: 360px; } }
+  @media (max-width: 600px) { .res-section__inner { padding: 0 20px; } .res-section { padding: 60px 0; } }
+
 </style>
+
+<script>
+  // ── Film Types Slider (ht-ftype)
+  (function() {
+    const track = document.getElementById('htFtypeTrack');
+    if (!track) return;
+    const slides = Array.from(track.querySelectorAll('.ht-ftype__slide'));
+    const navItems = Array.from(document.querySelectorAll('[data-htnav]'));
+    const progressBar = document.getElementById('htFtypeProgressBar');
+    const prevBtn = document.getElementById('htFtypePrev');
+    const nextBtn = document.getElementById('htFtypeNext');
+    let current = 0;
+    const total = slides.length;
+
+    function goTo(idx) {
+      slides[current].classList.remove('ht-ftype-active');
+      navItems[current]?.classList.remove('ht-ftype__nav-item--active');
+      current = (idx + total) % total;
+      slides[current].classList.add('ht-ftype-active');
+      navItems[current]?.classList.add('ht-ftype__nav-item--active');
+      if (progressBar) progressBar.style.width = ((current + 1) / total * 100) + '%';
+    }
+
+    navItems.forEach(btn => {
+      btn.addEventListener('click', () => goTo(parseInt(btn.dataset.htnav)));
+    });
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+    // FAQ accordions inside slides
+    track.querySelectorAll('.ht-ftype__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        const answer = btn.nextElementSibling;
+        if (answer) answer.hidden = expanded;
+      });
+    });
+  })();
+
+  // ── FAQ accordion (swt-faq)
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
+</script>
