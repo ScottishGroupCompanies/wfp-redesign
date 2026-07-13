@@ -1,345 +1,1111 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import FlipWords from '../../components/FlipWords.astro';
 
-const title = 'Retail Window Film in Philadelphia | UV Protection, Energy Savings & Store Security';
-const description = 'Window film for Philadelphia retail stores: protect merchandise from UV fading, reduce cooling costs, improve customer comfort, and enhance store security. Professional installation by certified technicians.';
-
-const galleryImages = [
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175444_b1c0fb4b-7e18-435c-ac74-ba416ff51fe1.png', label: 'Retail Storefront' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175446_f320deaf-2e71-4adf-917d-371be97bdf92.png', label: 'Boutique Interior' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175728_a7ad634b-4336-45a2-a8a4-b760f30566c9.png', label: 'Mall Store' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175448_2451a1a4-f064-491b-90fe-f63b8877331c.png', label: 'Jewelry Store Security' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175513_9a474dbe-6be1-4a2b-8bb9-8ef4cbf58388.png', label: 'Decorative Film' },
-];
-
-const newImages = {
-  hero: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175444_b1c0fb4b-7e18-435c-ac74-ba416ff51fe1.png',
-  uvInterior: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175446_f320deaf-2e71-4adf-917d-371be97bdf92.png',
-  energyMall: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175728_a7ad634b-4336-45a2-a8a4-b760f30566c9.png',
-  securityJewelry: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175448_2451a1a4-f064-491b-90fe-f63b8877331c.png',
-};
+const title = 'Retail Window Film Philadelphia | UV, Energy & Security';
+const description = 'Retail window film Philadelphia — protect merchandise from UV fading, reduce cooling costs & stop smash-and-grab. Free on-site quote. 3M certified dealer.';
 
 const faqItems = [
-  { question: 'How does window film prevent merchandise fading?', answer: 'Window film blocks up to 99% of UV-A and UV-B rays — the primary cause of fading in fabrics, artwork, leather goods, and branded displays. Even indirect UV passing through glass causes cumulative, irreversible damage over time. Our films stop it at the source.' },
-  { question: 'Will customers feel the heat difference immediately?', answer: 'Yes. Heat-rejecting window film reduces solar heat transmission significantly. On hot Philadelphia summer days, customers will notice the difference the moment they walk in — especially near large display windows. This improves comfort, extends browsing time, and reduces your air conditioning load.' },
-  { question: 'Can decorative film match our brand colors?', answer: 'Absolutely. Decorative and frosted films come in a wide range of colors, patterns, and opacity levels. We can create custom designs that incorporate your brand palette — perfect for fitting rooms, partition walls, store entryways, and feature windows.' },
-  { question: 'How effective is security film against smash-and-grab?', answer: 'Security film holds glass together on impact, making it significantly harder and slower to break through. For smash-and-grab threats — a growing concern for Philadelphia retailers — this delay (3–7 minutes) is often enough to deter opportunists or allow security response. It also reduces liability from glass shards.' },
-  { question: 'Does film affect visibility of products from outside?', answer: 'It depends on the film type. Clear safety and UV films are virtually invisible. Privacy films create a one-way effect during daytime. Decorative frosted films obscure the interior while maintaining a premium appearance. We\'ll help you choose the right balance for your store\'s display strategy.' },
+  {
+    question: "How does window film prevent merchandise fading?",
+    answer: "Window film blocks up to 99% of UV-A and UV-B radiation — the primary cause of fading in fabrics, leather, artwork, and branded packaging. Even indirect UV on overcast Philadelphia days causes cumulative, irreversible damage over time. Our films intercept UV at the glass before it reaches your shelving or display cases."
+  },
+  {
+    question: "Will window film affect how my storefront looks from the street?",
+    answer: "It depends on the film type. Solar control films are available in a wide range of visible light transmissions — from nearly invisible to a light tint. Most of our retail clients choose films that maintain or improve the appearance of their storefront while managing heat and glare. We can show you samples on-site before installation."
+  },
+  {
+    question: "Can window film be customized with our brand or logo?",
+    answer: "Yes. Decorative and printed films can incorporate brand colors, patterns, logos, and seasonal designs directly on glass. These are applied as window graphics or frosted overlays and are fully removable when your branding changes. We work with your designer or our in-house team to match your brand standards."
+  },
+  {
+    question: "How effective is security film against smash-and-grab theft?",
+    answer: "Security film bonds to the glass and holds the pane together on impact, significantly slowing forced entry. Standard retail glass shatters instantly; security film-reinforced glass requires sustained effort to penetrate. For most opportunistic smash-and-grab attempts, this delay is enough to deter entry. It won't make glass impenetrable, but it meaningfully changes the risk calculus for would-be thieves."
+  },
+  {
+    question: "Will film affect the lighting in my store or how products look?",
+    answer: "Solar control and UV films in the 70% VLT range have a minimal effect on interior light levels — most customers and staff can't tell the difference. Lower VLT films reduce more glare and heat but also reduce natural light. We'll help you find the right balance for your display strategy and brand aesthetic."
+  },
+  {
+    question: "Is window film permanent?",
+    answer: "No — window film is removable, though the process requires care to avoid glass damage. Most commercial films are designed to last 10–15 years under normal conditions. When it's time to remove or replace film, we handle the process as part of our service offering."
+  },
+  {
+    question: "Do you work with tenants or do you need permission from the building owner?",
+    answer: "Most commercial leases allow tenants to install window film as a non-structural improvement. However, we always recommend reviewing your lease agreement and getting written confirmation from your landlord or property manager before installation. We can provide documentation of the film's specifications to help with that process."
+  },
+  {
+    question: "What happens to existing window film if I move or close the store?",
+    answer: "Film removal is straightforward. We can remove existing film as part of our service, leaving the glass clean and ready for the next tenant. Removal timing and coordination can be arranged to align with your lease-end schedule."
+  },
+  {
+    question: "Does window film help with heat in winter as well as summer?",
+    answer: "Yes — Low-E climate control films provide year-round benefit. In summer they reject solar heat. In winter they reflect interior heat back into the space, reducing heating load. For Philadelphia retailers in historic buildings with single-pane glass, Low-E film is particularly effective at improving year-round comfort and reducing energy costs."
+  },
+  {
+    question: "How do I get started?",
+    answer: "Contact us for a free on-site consultation. We'll assess your storefront, discuss your priorities — UV protection, energy savings, security, or branding — and recommend specific films that fit your budget, lease terms, and business goals. There's no obligation and no pressure."
+  }
 ];
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  serviceName="Retail Window Film Installation"
-  serviceDesc="Professional window film installation for Philadelphia retail stores — UV protection, energy efficiency, customer comfort, security, and decorative branding."
-  serviceUrl="https://www.windowfilmphiladelphia.com/applications/retail"
+  canonical="https://www.windowfilmphiladelphia.net/applications/retail/"
+  serviceName="Retail Window Film Installation Philadelphia"
+  serviceDesc="Professional window film installation for Philadelphia retail stores — UV merchandise protection, energy savings, glare reduction, security film, and decorative branding."
+  serviceUrl="https://www.windowfilmphiladelphia.net/applications/retail/"
   faqItems={faqItems}
 >
-  <!-- HERO -->
-  <section class="swt-hero">
-    <div class="swt-hero__img">
-      <img src={newImages.hero} alt="Retail storefront with window glare issues" width="1440" height="700" />
-      <div class="swt-hero__overlay"></div>
-    </div>
-    <div class="swt-hero__content">
-      <span class="swt-badge">
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
-        Retail Window Solutions
-      </span>
-      <h1 class="swt-hero__title">
-        Protect Your Merchandise.<br/>
-        <em>Delight Your Customers.</em><br/>
-        Cut Your Energy Bills.
-      </h1>
-      <p class="swt-hero__sub">Block 99% of UV rays, eliminate storefront glare, and cut cooling costs by up to 30% — installed in your Philadelphia retail space with minimal disruption to your business.</p>
-      <div class="swt-hero__ctas">
-        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
+
+  <!-- ══ SEO: BREADCRUMB SCHEMA ══ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Applications", "item": "https://www.windowfilmphiladelphia.net/applications/" },
+      { "@type": "ListItem", "position": 3, "name": "Retail Window Film", "item": "https://www.windowfilmphiladelphia.net/applications/retail/" }
+    ]
+  })}></script>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.windowfilmphiladelphia.net/applications/retail/",
+    "name": "Retail Window Film Philadelphia | UV, Energy & Security",
+    "description": "Window film for Philadelphia retail stores: protect merchandise from UV fading, reduce cooling costs, improve shopper comfort, and guard against smash-and-grab.",
+    "url": "https://www.windowfilmphiladelphia.net/applications/retail/",
+    "dateModified": new Date().toISOString().slice(0, 10),
+    "primaryImageOfPage": { "@type": "ImageObject", "url": "https://www.windowfilmphiladelphia.net/images/re-hero.jpg" },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".re-hero h1", ".of-whatis h2", ".swt-faq"] }
+  })}></script>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Retail Window Film Solutions Philadelphia",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Solar Control Film", "description": "Reduces solar heat gain by up to 79% and glare by up to 87% for Philadelphia retail storefronts." },
+      { "@type": "ListItem", "position": 2, "name": "Security & Safety Film", "description": "Reinforces retail glass against smash-and-grab attacks and accidental breakage." },
+      { "@type": "ListItem", "position": 3, "name": "Decorative & Branded Film", "description": "Custom frosted and printed films for retail branding, fitting rooms, and storefronts." },
+      { "@type": "ListItem", "position": 4, "name": "Privacy & Frosted Film", "description": "One-way privacy and frosted effects for fitting rooms and street-level retail windows." },
+      { "@type": "ListItem", "position": 5, "name": "Anti-Graffiti Film", "description": "Sacrificial surface protection for street-level Philadelphia retail storefronts." },
+      { "@type": "ListItem", "position": 6, "name": "Low-E Climate Control Film", "description": "Year-round insulation film for Philadelphia retailers in historic single-pane buildings." }
+    ]
+  })}></script>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Retail Window Film Installation Philadelphia",
+    "description": "Professional window film installation for Philadelphia retail stores — UV merchandise protection, energy savings, security, and decorative branding.",
+    "brand": { "@type": "Brand", "name": "Window Film Philadelphia" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "47",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Sarah M." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "We were losing merchandise to fading and didn't realize it until we had the window film installed. Within a week we could see the difference in how our displays looked."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "David K." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "After a smash-and-grab hit a nearby store, we called immediately. The security film went in fast and we sleep a lot better knowing our display cases and front windows have that extra protection."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Monica R." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "We had the film installed across three locations and the energy savings showed up in the first billing cycle. The crews were professional and didn't disrupt our store hours."
+      }
+    ]
+  })}></script>
+
+  <!-- ══ HERO ══ -->
+  <section class="of-hero re-hero">
+    <div
+      class="of-hero__bg"
+      role="img"
+      aria-label="Philadelphia retail storefront with window film installed"
+      style="background-image: url('/images/re-hero.jpg')"
+    ></div>
+    <div class="of-hero__overlay"></div>
+
+    <div class="of-hero__content">
+
+      <div class="of-hero__eyebrow">
+        <span>Retail Window Film</span>
+        <span class="of-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia</span>
       </div>
+
+      <h1 class="of-hero__title">Retail Window Film Philadelphia: Stop Fading, Cut Heat.</h1>
+
+      <p class="of-hero__animated-line">
+        Window film built for Philadelphia
+        <FlipWords
+          words={["boutiques", "clothing stores", "jewelry stores", "specialty shops", "mall storefronts"]}
+          staticText=""
+          class="of-hero__flip"
+        />
+      </p>
+
+      <p class="of-hero__subtitle">
+        Block 99% of UV rays, reduce solar heat gain, and protect your merchandise and your customers — without sacrificing the views that drive foot traffic.
+      </p>
+
+      <div class="of-hero__cta">
+        <a href="/contact/" class="of-hero__btn-primary">Get a Free Quote</a>
+        <a href="#problem" class="of-hero__btn-secondary">See How It Works</a>
+      </div>
+
+      <div class="of-hero__stats-panel" aria-label="Key statistics">
+        <div class="of-hero__stats-inner">
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">99%</span>
+            <span class="of-hero__stat-label">UV Rays Blocked</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">Up to 30%</span>
+            <span class="of-hero__stat-label">Less Solar Heat Gain</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">3M</span>
+            <span class="of-hero__stat-label">Certified Dealer</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">2008</span>
+            <span class="of-hero__stat-label">Serving Philadelphia Retailers Since</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <div class="swt-body">
 
-    <!-- TRUST BAR -->
+    <!-- ══ TRUST BAR ══ -->
     <section class="swt-trust">
       <div class="container">
-        <p class="swt-trust__label">Trusted by leading Philadelphia retailers</p>
+        <p class="swt-trust__label">Trusted by Philadelphia retailers</p>
         <BrandLogos />
       </div>
     </section>
 
-    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="problem">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">The Challenge</span>
-            <h2 class="swt-h2 swt-h2--light">Philadelphia Retailers Are Losing Revenue to Their Own Windows</h2>
-            <p>Large display windows are a retailer's best marketing tool — and their biggest operational liability. Philadelphia's intense summer sun floods through untreated glass, heating your store, fading your merchandise, and making customers uncomfortable within minutes of walking in.</p>
-            <p>UV rays don't just fade clothing and accessories. They degrade leather goods, artwork, signage, and point-of-purchase displays. Every hour your best-sellers sit in that sunlit window is an hour of irreversible damage and perceived value loss.</p>
-            <div class="swt-problem-tags">
-              <span class="swt-tag swt-tag--red">UV Fading</span>
-              <span class="swt-tag swt-tag--red">Solar Heat Gain</span>
-              <span class="swt-tag swt-tag--red">Customer Discomfort</span>
-              <span class="swt-tag swt-tag--red">Security Risk</span>
-            </div>
+    <!-- ══ WHAT IS RETAIL WINDOW FILM ══ -->
+    <section class="of-whatis">
+      <div class="of-whatis__container">
+        <div class="of-whatis__content">
+          <span class="of-whatis__eyebrow">What Is Retail Window Film?</span>
+          <h2 class="of-whatis__title">The Invisible Layer Between Your Merchandise and the Elements</h2>
+          <p class="of-whatis__body">Retail window film is a thin, optically clear or lightly tinted polyester layer applied directly to the interior of your storefront glass. It works silently — blocking UV radiation, absorbing solar heat, and (for security grades) reinforcing glass against impact — without changing the look of your display windows or requiring any structural modification.</p>
+          <p class="of-whatis__body">Philadelphia retailers face a unique challenge: the city's east-facing and south-facing storefronts absorb intense morning and afternoon sun, while historic building facades can't always accommodate exterior shading. Retail window film for Philadelphia storefronts is the solution that fits inside the existing architecture and gets to work from day one.</p>
+          <div class="of-whatis__stats">
+            <div class="of-whatis__stat"><strong>99%</strong><span>UV-A and UV-B blocked</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>Up to 79%</strong><span>Solar heat gain reduced</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>Clear</strong><span>Tinted, frosted, or mirrored</span></div>
           </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.hero} alt="Retail storefront suffering from sun glare and heat" loading="lazy" />
-          </div>
+        </div>
+        <div class="of-whatis__image-wrap">
+          <img
+            src="/images/re-whatis.jpg"
+            alt="Retail window film being applied to a Philadelphia storefront glass"
+            class="of-whatis__image"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: UV — white bg, image left, text right -->
-    <section class="swt-split" id="uv">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.uvInterior} alt="Upscale boutique interior with UV protection film" loading="lazy" />
-            <div class="swt-img-badge">
-              <strong>99%</strong>
-              <span>UV Blocked</span>
+    <!-- ══ THE PROBLEM ══ -->
+    <section class="of-why" id="problem">
+      <div class="of-why__container">
+
+        <!-- Left: image + floating stat card -->
+        <div class="of-why__image-wrap">
+          <img
+            src="/images/re-why.jpg"
+            alt="Sunlight streaming through unprotected Philadelphia retail storefront windows"
+            class="of-why__image"
+            loading="lazy"
+          />
+          <div class="of-why__stat-card">
+            <div class="of-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>99% UV blocked — protects merchandise daily</span>
+            </div>
+            <div class="of-why__stat-divider"></div>
+            <div class="of-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Security film slows smash-and-grab entry</span>
             </div>
           </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 01</span>
-            <h2 class="swt-h2">Block 99% of UV Rays — Stop Merchandise Fading at the Source</h2>
-            <p>UV radiation is the primary driver of fading in retail merchandise. Fabrics, leather, artwork, and branded displays all degrade irreversibly under chronic UV exposure. Your most expensive items — displayed prominently in sunlit windows — are the most vulnerable.</p>
-            <p>Our window films block up to 99% of UV transmission, extending the life and appearance of everything in your store. This means less spoilage, fewer markdowns on sun-damaged goods, and protected brand presentation.</p>
-            <ul class="swt-check-list">
-              <li>Protected merchandise from irreversible UV fading</li>
-              <li>Extended lifespan of leather goods and premium displays</li>
-              <li>Reduced spoilage and markdown requirements</li>
+        </div>
+
+        <!-- Right: content -->
+        <div class="of-why__content">
+          <div class="of-why__eyebrow">The Problem</div>
+          <h2 class="of-why__headline">Philadelphia Storefronts Are Working Against Your Business</h2>
+          <p class="of-why__intro">Philadelphia's mixed climate — brutal summer sun, glare off the Schuylkill and Delaware, and icy winters — puts enormous stress on glass-heavy retail spaces. Your windows are your biggest marketing asset and your biggest liability.</p>
+          <ul class="of-why__bullets">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Merchandise Fading</strong> — UV radiation from even cloudy-day light causes irreversible color shift in fabrics, leather, artwork, and branded packaging. Damage accumulates daily, invisibly.</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Heat Buildup at Display Windows</strong> — Storefronts facing east or south can create hot zones near displays, making customers uncomfortable and damaging heat-sensitive products like candles, chocolate, and cosmetics.</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Glare on POS Terminals &amp; Screens</strong> — Direct sun creates glare that disrupts checkout and makes digital signage unreadable, slowing service and frustrating customers.</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Smash-and-Grab Vulnerability</strong> — Standard retail glass shatters instantly on impact. For jewelers, boutiques, and electronics retailers, a single break-in can cost tens of thousands in merchandise and repairs.</span>
+            </li>
+          </ul>
+          <a href="/contact/" class="of-why__cta">
+            Get a free retail assessment
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ BENTO BAND ══ -->
+    <section class="of-bento">
+      <div class="of-bento__header">
+        <h2 class="of-bento__title">Philadelphia Retailers Have the Same Problems. Window Film Fixes All of Them.</h2>
+        <p class="of-bento__sub">One installation. Multiple results. No renovation required.</p>
+      </div>
+      <div class="of-bento__compact">
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="9" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M14 7v2M14 19v2M7 14h2M19 14h2" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="3" fill="#7CB342" fill-opacity="0.15" stroke="#7CB342" stroke-width="1"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">99%</h3>
+            <p class="of-bento-item__text">of UV rays blocked — preserving merchandise color and value</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="5" y="5" width="18" height="14" rx="2" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M9 23h10M14 19v4" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 11h12M8 14h8" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">Up to 79%</h3>
+            <p class="of-bento-item__text">reduction in solar heat gain through storefront glass</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3L5 8v7c0 5 4 9 9 10 5-1 9-5 9-10V8L14 3z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 14l3 3 5-5" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">47</h3>
+            <p class="of-bento-item__text">verified 5-star reviews from Philadelphia retail clients</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4c-1.5 4-5 6-9 6 0 7 4 12 9 14 5-2 9-7 9-14-4 0-7.5-2-9-6z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 14l3 3 5-6" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">15+</h3>
+            <p class="of-bento-item__text">years of window film installed in Philadelphia retail spaces</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ RETAIL SPACE TYPE GRID ══ -->
+    <section class="of-spaces">
+      <div class="of-spaces__container">
+
+        <div class="of-spaces__header">
+          <div class="of-spaces__eyebrow">Who We Serve</div>
+          <h2 class="of-spaces__headline">Window Film for Every Type of Philadelphia Retailer</h2>
+          <p class="of-spaces__sub">Different stores have different needs. Here's how we approach each category of retail client.</p>
+        </div>
+
+        <div class="of-spaces__grid">
+
+          <!-- Card 1: Boutiques & Clothing Stores — hero -->
+          <div class="of-space-card of-space-card--hero">
+            <div class="of-space-card__hero-icon">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+                <rect x="4" y="10" width="36" height="24" rx="2" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M4 18h36M14 10v24M30 10v24" stroke="#7CB342" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="22" cy="22" r="3" fill="rgba(124,179,66,0.15)" stroke="#7CB342" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="of-space-card__hero-title">Boutiques &amp; Clothing Stores</h3>
+            <p class="of-space-card__hero-text">Protect garments, accessories, and displays from UV fading. Keep fitting rooms comfortable year-round.</p>
+            <div class="of-space-card__pill">UV Protection + Solar Control</div>
+          </div>
+
+          <!-- Card 2: Jewelry & Luxury Retailers — photo -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/re-type-jewelry.jpg"
+              alt="Upscale jewelry store interior Philadelphia with security window film on display cases"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Jewelry &amp; Luxury Retailers</h3>
+              <p class="of-space-card__photo-text">Security film reinforces display case glass and storefront windows against smash-and-grab attempts, while UV film preserves the appearance of gemstones and precious metals.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Mall & Strip Center Storefronts — photo -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/re-type-mall.jpg"
+              alt="Modern mall storefront with large glass facade and decorative window film Philadelphia area"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Mall &amp; Strip Center Storefronts</h3>
+              <p class="of-space-card__photo-text">Uniform solar control across large glass facades reduces HVAC load, improves customer dwell time, and meets energy compliance standards for commercial leases.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Specialty Retail & Pop-Ups — dark accent -->
+          <div class="of-space-card of-space-card--dark">
+            <div class="of-space-card__accent-line" aria-hidden="true"></div>
+            <div class="of-space-card__icon-row">
+              <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+                <path d="M5 28V12l12-7 12 7v16" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="12" y="18" width="10" height="10" rx="1" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M17 18v10" stroke="#7CB342" stroke-width="1.5" opacity="0.4"/>
+              </svg>
+            </div>
+            <h3 class="of-space-card__dark-title">Specialty Retail, Galleries &amp; Pop-Ups</h3>
+            <p class="of-space-card__dark-text">From art galleries in Old City to specialty food stores in Reading Terminal — decorative and UV films protect unique inventory while creating a polished branded aesthetic.</p>
+            <div class="of-space-card__micro-pill">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 6.5L22 9l-5 5 1.18 7L12 18l-6.18 3L7 14 2 9l7-.5L12 2z" stroke="#7CB342" stroke-width="2" stroke-linejoin="round"/></svg>
+              Decorative + UV Protection
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BENEFIT ROWS ══ -->
+    <section class="of-benefits">
+      <div class="of-benefits__container">
+
+        <div class="of-benefits__header">
+          <div class="of-benefits__eyebrow">The Benefits</div>
+          <h2 class="of-benefits__headline">What Retail Window Film Actually Does</h2>
+          <p class="of-benefits__intro">UV protection, energy savings, glare reduction, and security — tackled in a single professional installation. No window replacement, no renovation, no downtime.</p>
+        </div>
+
+        <!-- Row 1: UV Protection — image LEFT, text RIGHT -->
+        <div class="of-row">
+          <div class="of-row__image">
+            <img
+              src="/images/re-uv.jpg"
+              alt="UV protection window film on Philadelphia retail store display windows"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 01</div>
+            <h3 class="of-row__title">Stop UV Rays Before They Fade Your Merchandise</h3>
+            <p class="of-row__body">UV radiation is the leading cause of merchandise fading — and it comes right through standard glass. Fabrics lose their color. Leather cracks and discolors. Artworks and branded packaging fade unevenly. With <a href="/benefits/uv-blocking-window-film-philadelphia/" style="color: #2E7D32; font-weight: 700; text-decoration: underline; text-decoration-color: #4CAF50; text-underline-offset: 3px;">UV-blocking window film</a> applied to your storefront glass, up to 99% of UV-A and UV-B radiation is blocked before it ever reaches your shelving.</p>
+            <p class="of-row__body">For Philadelphia retailers in historic buildings with large single-pane windows — particularly along Walnut Street, South Street, and East Passyunk — UV protection pays for itself by extending the saleable life of displayed inventory and reducing the frequency of window-display rotations. The <a href="https://www.epa.gov/sunsafety/uv-index-scale-1" target="_blank" rel="noopener noreferrer" style="color: #2E7D32; font-weight: 700; text-decoration: underline; text-decoration-color: #4CAF50; text-underline-offset: 3px;">EPA notes</a> that UV exposure causes cumulative damage even on overcast days — making year-round protection essential, not just a summer consideration.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                99% UV-A and UV-B rejection · No visible color change to storefront
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Protects fabrics, leather, artwork, and packaging
+              </li>
             </ul>
           </div>
         </div>
+
+        <!-- Row 2: Energy Savings — text LEFT, image RIGHT -->
+        <div class="of-row of-row--rev">
+          <div class="of-row__image">
+            <img
+              src="/images/re-energy.jpg"
+              alt="Energy-efficient window film on Philadelphia retail storefront reducing cooling costs"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 02</div>
+            <h3 class="of-row__title">Reduce the Solar Heat That's Running Up Your Energy Bills</h3>
+            <p class="of-row__body">Philadelphia retail storefronts — particularly those with south- or east-facing display windows — absorb intense solar heat that standard glass does nothing to stop. That heat loads your HVAC system hardest on the exact days customers are most likely to cut their visit short. <a href="/benefits/energy-savings/" style="color: #2E7D32; font-weight: 700; text-decoration: underline; text-decoration-color: #4CAF50; text-underline-offset: 3px;">Energy-saving window film</a> intercepts solar radiation at the glass, before it converts to heat inside your store — reducing the thermal load your air conditioning has to fight all summer.</p>
+            <p class="of-row__body">For retailers in older Philly buildings with single-pane glass — Walnut Street rowfronts, East Passyunk storefronts, Old City brick facades — the impact is especially noticeable. Thinner, older glass transfers heat aggressively. Retrofit window film is the lowest-disruption upgrade available: no construction, no permits, no landlord negotiation beyond a quick approval, and the thermal benefit starts the same day it's installed.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Up to 79% solar heat reduction · Lower HVAC demand during peak summer months
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                DOE-recognized energy upgrade for commercial buildings
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 3: Decorative & Branded Film — image LEFT, text RIGHT -->
+        <div class="of-row">
+          <div class="of-row__image">
+            <img
+              src="/images/re-decorative.jpg"
+              alt="Decorative branded window film on Philadelphia retail storefront glass"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 03</div>
+            <h3 class="of-row__title">Turn Your Glass Into a Branding and Privacy Asset</h3>
+            <p class="of-row__body">Your storefront glass is valuable real estate. <a href="/benefits/decorative-promotional/" style="color: #2E7D32; font-weight: 700; text-decoration: underline; text-decoration-color: #4CAF50; text-underline-offset: 3px;">Decorative window film</a> lets you put your brand identity directly on glass — frosted patterns, custom printed graphics, seasonal artwork, and privacy treatments that look like etched or sandblasted glass at a fraction of the cost. For Philadelphia boutiques, galleries, and specialty retailers, it's one of the most visually impactful upgrades available without touching the underlying glass.</p>
+            <p class="of-row__body">Beyond branding, <a href="/benefits/privacy-window-film-philadelphia/" style="color: #2E7D32; font-weight: 700; text-decoration: underline; text-decoration-color: #4CAF50; text-underline-offset: 3px;">privacy film</a> solves practical problems: fitting room glass doors, back-of-house visibility, and street-level windows in health, beauty, or wellness retail categories. All decorative films are fully removable — no permanent alteration to the glass, no landlord conflict, and no cost to restore when your lease ends or your brand evolves.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Custom frosted, printed, and patterned film for storefronts and interiors
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Fitting room privacy · branded storefronts · interior partitions
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Fully removable — no glass damage, no lease conflict
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 4: Security Film — text LEFT, image RIGHT -->
+        <div class="of-row of-row--rev">
+          <div class="of-row__image">
+            <img
+              src="/images/re-security.jpg"
+              alt="Security window film protecting Philadelphia retail jewelry store from smash-and-grab"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 04</div>
+            <h3 class="of-row__title">Smash-and-Grab Protection That Works Before Police Arrive</h3>
+            <p class="of-row__body">Standard retail glass shatters in seconds. <a href="/benefits/safety-and-security/" style="color: #2E7D32; font-weight: 700; text-decoration: underline; text-decoration-color: #4CAF50; text-underline-offset: 3px;">Security window film</a> bonds to the glass and holds the pane together on impact — significantly slowing forced entry and deterring opportunistic thieves who rely on speed. For Philadelphia jewelers, boutiques, electronics retailers, and any storefront with high-value visible inventory, this is a critical layer of protection.</p>
+            <p class="of-row__body">Security film doesn't just slow intruders — it also protects occupants from flying glass shards during accidental breakage and severe weather. It's a single installation that addresses multiple risk categories, and it works invisibly 24/7 without alarms, cameras, or monitoring contracts.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Holds glass together on impact · Deters smash-and-grab entry attempts
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Protects against accidental breakage and severe weather
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- SECTION 3: ENERGY — alt cream bg, text left, image right -->
-    <section class="swt-split swt-split--alt" id="energy">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 02</span>
-            <h2 class="swt-h2">Cut Cooling Costs by 30% — Without Renovating Your Store</h2>
-            <p>Large storefront windows are the primary driver of summer cooling loads in Philadelphia retail spaces. A sun-facing wall of glass can add the equivalent heat of a 6,000 BTU heater per window. Your HVAC system runs constantly to compensate, and your energy bills reflect it.</p>
-            <p>Heat-rejecting window film is a fraction of the cost of window replacement — typically 1/10th — and installs in hours rather than weeks. The payback period is usually 2–4 years, after which the savings are pure operational profit.</p>
-            <div class="swt-energy-metrics">
-              <div class="swt-metric">
-                <span class="swt-metric__num">30%</span>
-                <span class="swt-metric__label">Avg. Cooling Cost Reduction</span>
+    <!-- ══ FILM TYPES SLIDER ══ -->
+    <section class="of-ftype" id="ofFilmTypes">
+      <div class="of-ftype__track" id="ofFtypeTrack">
+
+        <!-- SLIDE 01: Solar Control -->
+        <div class="of-ftype__slide of-ftype-active" data-slide="0">
+          <img src="/images/re-slider-solar.jpg" alt="Solar control window film on Philadelphia retail storefront" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">01</div>
+            <h2 class="of-ftype__title">Solar Control Film</h2>
+            <p class="of-ftype__desc">Reduces solar heat gain and glare while maintaining storefront visibility. Available in a range of visible light transmissions to match your display strategy and brand aesthetic.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Will it change how my display windows look from the street?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Spectrally selective films like 3M Prestige 70 are virtually invisible from the exterior — they add no tint, no reflection, and no color shift. Your merchandise stays fully visible. We bring samples on every site visit so you can see exactly how the film looks on your glass before we install anything.</div>
               </div>
-              <div class="swt-metric">
-                <span class="swt-metric__num">2–4yr</span>
-                <span class="swt-metric__label">Typical Payback Period</span>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Will my merchandise colors still look accurate under film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — high-VLT solar control films (70%+ visible light transmission) have minimal effect on how colors read inside your store. Customers won't perceive a difference in lighting quality. If color accuracy is critical for your product category, we'll recommend films with a color rendering index specifically tested for retail environments.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">What's the difference between tinted and spectrally selective film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Tinted films reduce heat and glare by blocking visible light — which also darkens your store interior slightly. Spectrally selective films use nano-ceramic technology to block infrared heat and UV while passing most visible light. For retail storefronts where lighting and display visibility matter, spectrally selective is almost always the right choice. 3M Prestige 70 rejects 50% of solar heat while maintaining 70% visible light — best of both worlds.</div>
               </div>
             </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.energyMall} alt="Philadelphia mall corridor with large glass storefronts" loading="lazy" />
+            <a href="/contact/" class="of-ftype__cta">Get a solar control estimate →</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- SECTION 4: COMFORT — white bg, image left, text right -->
-    <section class="swt-split" id="comfort">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.uvInterior} alt="Comfortable retail shopping environment with window film" loading="lazy" />
-          </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 03</span>
-            <h2 class="swt-h2">Keep Customers Browsing Longer — Not Fleeing the Heat</h2>
-            <p>Customer comfort directly affects purchase behavior. When shoppers enter a store that's significantly warmer near the windows, they instinctively gravitate toward the cooler back sections — missing your prime window displays entirely. Worse, they cut their visit short.</p>
-            <p>Our films reduce hot spots and eliminate the oppressive feeling of standing near sunlit glass. Customers stay longer, browse more thoroughly, and associate your store with a comfortable, premium shopping experience.</p>
-            <blockquote class="swt-inline-quote">
-              "Customers used to comment on how hot it was near our entrance. After the film, nobody says anything — because there's nothing to notice. The comfort is just... normal now."
-              <cite>— Store Manager, boutique, Reading Terminal Market</cite>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: SECURITY — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="security">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
-            <h2 class="swt-h2 swt-h2--light">Security Film: Deter Smash-and-Grab with Glass That Holds</h2>
-            <p>Philadelphia retailers face growing smash-and-grab risk. Standard glass shatters on impact, giving thieves instant access. Security window film holds shattered panes in the frame — making forced entry dramatically harder and slower. That 3–7 minute delay often changes a thief's calculus entirely.</p>
-            <p>Beyond theft deterrence, security film reduces liability from dangerous glass shards and protects your storefront from storm damage — a real consideration for Philadelphia's occasional severe weather events.</p>
-            <div class="swt-security-features">
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Smash-and-Grab Deterrence</strong>
-                  <p>Glass holds in frame on impact — critical delay for security response</p>
-                </div>
+        <!-- SLIDE 02: Security / Safety -->
+        <div class="of-ftype__slide" data-slide="1">
+          <img src="/images/re-slider-security.jpg" alt="Security window film on Philadelphia retail jewelry store or boutique" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">02</div>
+            <h2 class="of-ftype__title">Security &amp; Safety Film</h2>
+            <p class="of-ftype__desc">Reinforces retail glass against smash-and-grab attacks, accidental impact, and severe weather. Holds panes together on breakage to deter entry and protect occupants from glass shards.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How does security film actually slow a smash-and-grab?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Standard retail glass shatters in one hit. Security film bonds to the glass substrate and holds the pane in the frame even after it breaks — the intruder has to keep striking to get through, which takes time, creates noise, and draws attention. Most smash-and-grab attempts are opportunistic and rely on speed. A film-reinforced window changes the risk calculation significantly.</div>
               </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Storm Protection</strong>
-                  <p>Holds glass together during severe weather and wind events</p>
-                </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can security film qualify for an insurance discount?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Some commercial property insurers recognize documented physical security upgrades when reviewing premiums. Security window film is a measurable hardening measure — we provide written documentation of the film product, certification standards met (including ANSI Z97.1 for applicable grades), and installation date. We recommend you share this with your broker.</div>
               </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Reduced Liability</strong>
-                  <p>No dangerous glass shards — protects staff and customers</p>
-                </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does it protect against internal glass breakage too?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Security film prevents flying glass shards regardless of what causes the break — an accidental impact, a weather event, or a forced entry attempt. For retailers in older Philadelphia buildings with large single-pane storefronts, this secondary benefit (occupant safety from shards) is often as valuable as the security deterrence.</div>
               </div>
             </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.securityJewelry} alt="Jewelry store with security window film protection" loading="lazy" />
+            <a href="/contact/" class="of-ftype__cta">Get a security film estimate →</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- GALLERY — 5 images -->
-    <section class="swt-gallery" id="gallery">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">Our Work</span>
-          <h2 class="swt-h2 swt-h2--center">Window Film — In Action</h2>
-          <p class="swt-subhead">From high-end boutiques to large retail chains — here's what we install.</p>
-        </div>
-        <div class="swt-gallery__grid">
-          {galleryImages.map((img, i) => (
-            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
-              <img src={img.src} alt={img.label} loading="lazy" />
-              <div class="swt-gallery__overlay">
-                <span>{img.label}</span>
+        <!-- SLIDE 03: Decorative & Branded -->
+        <div class="of-ftype__slide" data-slide="2">
+          <img src="/images/re-slider-decorative.jpg" alt="Decorative branded window film on Philadelphia retail storefront" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">03</div>
+            <h2 class="of-ftype__title">Decorative &amp; Branded Film</h2>
+            <p class="of-ftype__desc">Custom frosted, patterned, and printed films for storefront branding, fitting room privacy, and interior partitions. Apply your logo, a seasonal design, or a brand pattern directly to glass. Available in frosted, patterned, or custom-printed finishes.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can we print our store logo or seasonal artwork on the film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — digitally printed window film lets you put any design directly on your storefront or interior glass. We work from your supplied artwork or coordinate with your designer. Custom printed films are fully removable, so you can swap seasonal campaigns or update your branding without replacing glass or hiring a painter.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">What happens to decorative film when we rebrand or move?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Decorative and printed window films are designed to be removable. Removal leaves the glass clean with no permanent adhesive residue when done properly — which is why we recommend professional removal. For retail tenants, this means you can restore the glass to its original condition when your lease ends.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How long does decorative film last in a retail environment?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Interior decorative films typically last 7–10 years under normal conditions. Exterior-facing decorative films see more UV and weather exposure, which shortens longevity — most exterior decorative films are rated 3–5 years. We'll specify the right product and warranty for your specific application during the site consultation.</div>
               </div>
             </div>
-          ))}
+            <a href="/contact/" class="of-ftype__cta">Explore decorative options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 04: Privacy / Frosted -->
+        <div class="of-ftype__slide" data-slide="3">
+          <img src="/images/re-slider-privacy.jpg" alt="Privacy frosted window film in Philadelphia retail fitting room" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">04</div>
+            <h2 class="of-ftype__title">Privacy &amp; Frosted Film</h2>
+            <p class="of-ftype__desc">One-way daytime privacy, frosted glass effects, and controlled light diffusion for fitting rooms, back-of-house partitions, and street-level windows in sensitive retail categories.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does one-way privacy film work during evening hours?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>One-way mirror film relies on a brightness differential — it's reflective from the outside when exterior light is brighter than interior light. After dark, when interior lights are on, the effect reverses and visibility from outside increases. For evening privacy in fitting rooms or street-level windows, frosted film is the right choice — it provides consistent privacy 24/7 regardless of lighting conditions.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can frosted film be applied to fitting room glass doors?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Absolutely — fitting room glass doors and sidelights are one of the most common retail applications for frosted film. We typically apply film from approximately 18 inches above the floor to the top of the glass panel, maintaining a clear strip at the bottom (for safety/visibility) and full privacy where it matters. Custom cut heights are available.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Is frosted film the same as etched or sandblasted glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Frosted film creates a visually identical effect to acid-etched or sandblasted glass at a fraction of the cost — and unlike etched glass, it's completely removable. For retailers who want a premium architectural finish on glass partitions or storefront panels without permanently altering the glass, frosted film is the standard solution.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Explore privacy film options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 05: Anti-Graffiti -->
+        <div class="of-ftype__slide" data-slide="4">
+          <img src="/images/re-slider-antigraffiti.jpg" alt="Anti-graffiti window film protecting Philadelphia retail storefront glass" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">05</div>
+            <h2 class="of-ftype__title">Anti-Graffiti Film</h2>
+            <p class="of-ftype__desc">Sacrificial surface film that protects storefront glass from etching, scratching, and spray paint. When vandalized, replace only the film — not the glass. Ideal for street-level retail in Center City and Kensington.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does it protect against both spray paint and glass etching?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — anti-graffiti film is a sacrificial surface layer that takes the damage instead of your glass. Spray paint, acid etching, scratching, and marker all affect only the film. When vandalized, we remove and replace the film — which costs a small fraction of what glass replacement would. The underlying glass is untouched.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How quickly can vandalized film be replaced?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Film replacement is significantly faster than glass replacement — no specialty glass orders, no lead times, no building permits required. For most standard retail storefront panels, film removal and re-application can be completed in one visit. We prioritize turnaround for anti-graffiti clients to minimize the time vandalism is visible to customers.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Which Philadelphia neighborhoods see the highest graffiti rates?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Anti-graffiti film is most commonly requested by retailers in Center City, Kensington, Fishtown, and South Street — particularly ground-floor storefronts with large glass panels visible from the street. That said, graffiti and etching are genuinely unpredictable, and retailers in lower-risk areas install it too as a low-cost insurance policy against a surprisingly expensive repair.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get an anti-graffiti estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 06: Low-E Climate Control -->
+        <div class="of-ftype__slide" data-slide="5">
+          <img src="/images/re-slider-lowe.jpg" alt="Low-E climate control film on historic Philadelphia retail building" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">06</div>
+            <h2 class="of-ftype__title">Low-E Climate Control Film</h2>
+            <p class="of-ftype__desc">Provides year-round insulation — reflecting solar heat in summer and retaining interior warmth in winter. Particularly effective for Philadelphia retailers in historic buildings with single-pane glass.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How is Low-E film different from standard solar control film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Standard solar control film blocks incoming solar heat in summer. Low-E film does that and also reflects interior heat back into your store in winter — acting like a second thermal barrier on single-pane glass. For Philadelphia retailers in historic buildings that run high heating bills from October through March, Low-E delivers year-round energy savings that solar control film alone doesn't provide.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Will it change the look of my historic storefront windows?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>3M Thinsulate CC75 — the most commonly specified Low-E film for historic commercial buildings — has a visible light transmission of 75% and very low exterior reflectance. It reads as essentially clear glass from the street. Philadelphia's preservation districts (Old City, Society Hill) accept Low-E film as a non-invasive window treatment that doesn't alter the historic character of the facade.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does Low-E film work on single-pane glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — Low-E film was specifically developed to improve the thermal performance of existing single-pane glass without replacing it. Many Philadelphia storefronts in pre-war buildings still have original single-pane glass that transfers heat aggressively. Low-E film is the most effective retrofit available for that situation short of full window replacement, which is often impractical or prohibited in historic districts.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get a Low-E film estimate →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right nav -->
+      <nav class="of-ftype__nav" aria-label="Film type navigation">
+        <button class="of-ftype__nav-item of-ftype__nav-item--active" data-ofnav="0">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Solar Control</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="1">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Security</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="2">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Decorative</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="3">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Privacy / Frosted</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="4">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Anti-Graffiti</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="5">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Low-E / Climate</span>
+        </button>
+      </nav>
+
+      <!-- Arrows -->
+      <button class="of-ftype__arrow of-ftype__arrow--prev" id="ofFtypePrev" aria-label="Previous film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="of-ftype__arrow of-ftype__arrow--next" id="ofFtypeNext" aria-label="Next film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Progress bar -->
+      <div class="of-ftype__progress"><div class="of-ftype__progress-bar" id="ofFtypeProgressBar"></div></div>
+
+    </section>
+
+    <!-- ══ FEATURED PROJECT / CASE STUDY ══ -->
+    <section class="of-project" id="featuredProject">
+      <div class="of-project__inner">
+
+        <div class="of-project__image-col">
+          <img
+            src="/images/re-case-study.jpg"
+            alt="Rittenhouse Square boutique after retail window film installation Philadelphia"
+            class="of-project__img"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+          <div class="of-project__stats-strip">
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">3M P70</span>
+              <span class="of-project__stat-label">Solar Control Film</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">99%</span>
+              <span class="of-project__stat-label">UV Blocked</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">Zero</span>
+              <span class="of-project__stat-label">Business Hours Disrupted</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">$0</span>
+              <span class="of-project__stat-label">Window Replacement Cost</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="of-project__text-col">
+          <div class="of-project__eyebrow">Featured Project</div>
+          <h2 class="of-project__title">Walnut Street Boutique.<br/>UV Fading Stopped. Heat Controlled.</h2>
+
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Property</span>
+            <span class="of-project__detail-val">Women's clothing boutique, Walnut Street between 17th and 18th, Rittenhouse Square — two large south-facing display windows, approximately 280 sq ft of glass total</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Challenge</span>
+            <span class="of-project__detail-val">Silk blouses and linen garments in the front display were showing measurable color shift within 8–10 weeks of rotation. The owner had moved to rotating displays every 6 weeks to compensate, adding labor and limiting floor inventory. Fitting rooms adjacent to the south wall were consistently 8–10°F warmer than the rest of the store, generating frequent customer complaints.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Solution</span>
+            <span class="of-project__detail-val">3M Prestige 70 solar control film installed on both south-facing display windows. The film was chosen for its 70% visible light transmission (preserving natural display lighting) and 99% UV rejection. 3M Scotchshield Ultra S800 was added to the entrance glass panels at the owner's request following a smash-and-grab at a neighboring store two weeks prior.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Result</span>
+            <span class="of-project__detail-val">Display rotation interval extended from 6 weeks to 12 weeks — the owner's original window before the fading problem began. Fitting room temperature complaints dropped to zero in the first summer. The entrance Scotchshield installation was completed without disrupting the store's regular business hours. No window replacement has been needed since installation.</span>
+          </div>
+
+          <p class="of-project__note" style="font-size:0.85rem; color:#666; margin-top:1rem;">Supporting documentation: <a href="/resources/3m-prestige-70-solar-control-window-film-philadelphia.pdf" target="_blank" rel="noopener noreferrer" style="color:#2E7D32;">3M Prestige 70 spec sheet</a> &middot; <a href="/resources/3m-scotchshield-jewelry-retail-security-window-film-case-study.pdf" target="_blank" rel="noopener noreferrer" style="color:#2E7D32;">3M Scotchshield jewelry retail security case study</a></p>
+
+          <a href="/contact/" class="of-project__cta">Discuss your retail space →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ GALLERY ══ -->
+    <section class="of-gallery" id="ofGallery">
+      <div class="of-gallery__header">
+        <p class="of-gallery__eyebrow">Our Work in Philadelphia</p>
+        <h2 class="of-gallery__title">Retail Window Film<br/>Installed Across the City</h2>
+        <p class="of-gallery__sub">From Rittenhouse Square boutiques to Old City galleries — every installation is scoped, specified, and executed by our certified Philadelphia team.</p>
+      </div>
+      <div class="of-gallery__grid">
+
+        <div class="of-gallery__panel of-gallery__panel--tall">
+          <img src="/images/re-gallery-storefront.jpg" alt="Philadelphia retail storefront with solar control window film" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Retail Storefront</span>
+            <span class="of-gallery__label-sub">Solar Control · UV Protection</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/re-gallery-boutique.jpg" alt="Boutique interior with UV-blocking window film Philadelphia" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Clothing Boutique</span>
+            <span class="of-gallery__label-sub">UV Protection · Glare Control</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/re-gallery-jewelry.jpg" alt="Jewelry store with security window film Philadelphia" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Jewelry Store</span>
+            <span class="of-gallery__label-sub">Security Film · UV Protection</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/re-gallery-mall.jpg" alt="Mall storefront with decorative branded window film Philadelphia" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Mall Storefront</span>
+            <span class="of-gallery__label-sub">Solar Control · Decorative</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/re-gallery-fitting.jpg" alt="Fitting room privacy film in Philadelphia clothing store" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Fitting Room Privacy</span>
+            <span class="of-gallery__label-sub">Frosted Privacy Film</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/re-gallery-display.jpg" alt="Philadelphia retail display window with decorative and solar control window film" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Display Window</span>
+            <span class="of-gallery__label-sub">Glare Reduction · UV Block</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel of-gallery__panel--wide">
+          <img src="/images/re-gallery-install.jpg" alt="Window film installation in Philadelphia retail store" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Professional Installation</span>
+            <span class="of-gallery__label-sub">Certified Technicians · Philly-Based</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ STATS BAR ══ -->
+    <section class="of-stats">
+      <div class="of-stats__inner">
+        <div class="of-stats__item">
+          <span class="of-stats__num">99%</span>
+          <span class="of-stats__label">UV Rays Blocked<br/><small>Protects all merchandise categories</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">79%</span>
+          <span class="of-stats__label">Max Solar Heat Reduction<br/><small>Premium solar control films</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">47</span>
+          <span class="of-stats__label">5-Star Retail Reviews<br/><small>Verified Philadelphia clients</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">15+</span>
+          <span class="of-stats__label">Years Serving Philadelphia<br/><small>Retail window film specialists</small></span>
         </div>
       </div>
     </section>
 
-    <!-- STATS BAR — accent green -->
-    <section class="swt-stats">
-      <div class="container">
-        <div class="swt-stats__row">
-          <div class="swt-stats__item fade-in">
-            <span class="swt-stats__num">16+</span>
-            <span class="swt-stats__label">Years in Philadelphia</span>
+    <!-- ══ PROCESS (es-process-split pattern) ══ -->
+    <section class="es-process-split">
+      <div class="es-process-split__container">
+        <div class="es-process-split__content">
+          <div class="es-process-split__eyebrow">How It Works</div>
+          <h2 class="es-process-split__title">From First Call to Finished Installation</h2>
+          <div class="es-accordion">
+
+            <details class="es-accordion__item" open>
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">01</span>
+                <span class="es-accordion__label">Free On-Site Consultation</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>We visit your storefront, assess your windows, and discuss your priorities. Our retail window film specialists in Philadelphia bring samples to every consultation so you can see the result on your actual glass before committing.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">02</span>
+                <span class="es-accordion__label">Custom Film Recommendation</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>We recommend specific film products that match your display strategy, lease terms, and budget — with samples on glass so you can see the result before committing.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">03</span>
+                <span class="es-accordion__label">Professional Installation</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>Our certified technicians install retail window film across Philadelphia during or after business hours — minimal disruption to your retail operations, regardless of store size or layout.</p>
+              </div>
+            </details>
+
           </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 80ms">
-            <span class="swt-stats__num">500+</span>
-            <span class="swt-stats__label">Commercial Projects</span>
+
+        </div>
+        <div class="es-process-split__image-wrapper">
+          <img
+            src="/images/re-whatis.jpg"
+            alt="Window film specialist consulting with Philadelphia retail store owner — site assessment, film samples, professional evaluation"
+            class="es-process-split__image"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS (cam-tcard pattern) ══ -->
+    <section class="cam-testimonials">
+      <div class="cam-testimonials__header">
+        <span class="cam-testimonials__eyebrow">Client Stories</span>
+        <h2 class="cam-testimonials__title">What Philadelphia Retailers Say</h2>
+        <p class="cam-testimonials__sub">Real results from retail stores across Greater Philadelphia.</p>
+      </div>
+      <div class="cam-testimonials__grid">
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/re-testimonial-1.jpg" alt="Sarah M., owner of a boutique clothing store in Rittenhouse Square Philadelphia" class="cam-tcard__img" loading="lazy" />
           </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 160ms">
-            <span class="swt-stats__num">99%</span>
-            <span class="swt-stats__label">UV Rays Blocked</span>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"We were losing merchandise to fading and we didn't even realize it until we had the window film installed. Within a week we could see the difference in how our displays looked. It's one of the best investments we've made in the store."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Sarah M.</p>
+              <p class="cam-tcard__role">Owner, Boutique Clothing Store — Rittenhouse Square</p>
+            </div>
           </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 240ms">
-            <span class="swt-stats__num">30%</span>
-            <span class="swt-stats__label">Avg. Energy Savings</span>
+        </div>
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/re-testimonial-2.jpg" alt="David K., manager of a jewelry store in Old City Philadelphia" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"After a smash-and-grab hit a nearby store, we called immediately. The security film went in fast and we sleep a lot better knowing our display cases and front windows have that extra protection."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">David K.</p>
+              <p class="cam-tcard__role">Manager, Jewelry Store — Old City Philadelphia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/re-testimonial-3.jpg" alt="Monica R., district manager for a specialty retail chain in Center City Philadelphia" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"We had the film installed across three locations and the energy savings showed up in the first billing cycle. The installation crews were professional, fast, and didn't disrupt our store hours at all."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Monica R.</p>
+              <p class="cam-tcard__role">District Manager, Specialty Retail Chain — Center City</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ PHILADELPHIA AREAS (ip-local + cam-neighborhoods pattern) ══ -->
+    <section class="ip-local">
+      <div class="ip-local__grid">
+        <div class="ip-local__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97443.81289285327!2d-75.2272!3d39.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e099!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            title="Window Film Philadelphia retail service area map"
+          ></iframe>
+        </div>
+        <div class="ip-local__content">
+          <span class="cam-testimonials__eyebrow">Service Area</span>
+          <h2>Retail Window Film Installed Across Greater Philadelphia</h2>
+          <p>Our installation crews are Philadelphia-based. We serve retail storefronts throughout the city and surrounding counties — no travel surcharge within the service area.</p>
+          <div class="cam-neighborhoods">
+            <div class="cam-nh"><span class="cam-nh__name">Rittenhouse Square / Walnut Street</span><span class="cam-nh__desc">Philadelphia's premier retail corridor. High-end boutiques and specialty stores with large south-facing display windows are our most common clients in this area.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Old City &amp; Society Hill</span><span class="cam-nh__desc">Art galleries, jewelry stores, and boutiques in historic buildings with single-pane glass. UV and Low-E film are the most popular upgrades here.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Center City &amp; Market Street</span><span class="cam-nh__desc">High foot-traffic retail with large storefront glass. Security film and anti-graffiti film are frequently specified alongside solar control.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">South Street &amp; East Passyunk</span><span class="cam-nh__desc">Independent boutiques and specialty food stores. UV and decorative film are the most requested products in this corridor.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Fishtown &amp; Northern Liberties</span><span class="cam-nh__desc">Creative retail and gallery spaces in converted lofts. Large original windows let in beautiful light — and a lot of UV and heat that window film solves.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">King of Prussia &amp; Suburban Square</span><span class="cam-nh__desc">Major retail destinations with large mall storefronts and strip center glass facades. Solar control film reduces HVAC load and improves customer dwell time.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Cherry Hill &amp; South Jersey</span><span class="cam-nh__desc">South Jersey's main retail corridors are within our standard service area. Same crew, same products, same pricing — no travel surcharge for New Jersey clients.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">University City &amp; West Philadelphia</span><span class="cam-nh__desc">Specialty retail and service businesses serving the Penn and Drexel communities. We serve all commercial storefronts in this corridor.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS — 4 steps -->
-    <section class="swt-process">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">How It Works</span>
-          <h2 class="swt-h2 swt-h2--center">4 Simple Steps to a Better Retail Space</h2>
+    <!-- ══ RESOURCES (res-section pattern) ══ -->
+    <section class="res-section">
+      <div class="res-section__inner">
+        <div class="res-section__image-col">
+          <img
+            src="/images/re-resources.jpg"
+            alt="Window film product resources for Philadelphia retail stores"
+            class="res-section__img"
+            loading="lazy"
+          />
         </div>
-        <div class="swt-process__steps">
-          <div class="swt-process__step fade-in">
-            <div class="swt-process__num">01</div>
-            <div class="swt-process__body">
-              <h3>Store Assessment</h3>
-              <p>We visit your retail location and analyze window orientation, sun exposure patterns, and security needs. You receive a detailed proposal within 24 hours with the optimal film recommendations for your merchandise and budget.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 80ms">
-            <div class="swt-process__num">02</div>
-            <div class="swt-process__body">
-              <h3>Custom Film Recommendations</h3>
-              <p>From clear UV protection to decorative branding films, we match the right product to your specific needs — considering aesthetics, heat rejection, security, and your brand identity.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 160ms">
-            <div class="swt-process__num">03</div>
-            <div class="swt-process__body">
-              <h3>After-Hours Installation</h3>
-              <p>We schedule installation around your business hours — typically evenings or weekends — so your store stays open. Our professional installers work cleanly and efficiently, leaving your space spotless.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 240ms">
-            <div class="swt-process__num">04</div>
-            <div class="swt-process__body">
-              <h3>Display Reconfiguration</h3>
-              <p>After installation, we help you reorganize your window displays to take full advantage of your new comfortable, UV-protected environment. Your best merchandise deserves to be seen in its best light — literally.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS — dark bg -->
-    <section class="swt-testimonials">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow swt-eyebrow--green">Client Stories</span>
-          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Retailers</h2>
-        </div>
-        <div class="swt-testimonials__grid">
-          <div class="swt-testimonial fade-in">
-            <div class="swt-testimonial__quote">"</div>
-            <p>We had a jewelry display near the window that kept getting cloudy and tarnished within weeks. UV film completely solved it — the pieces stay pristine now. The ROI was obvious within the first month.</p>
-            <div class="swt-testimonial__author">
-              <strong>Amanda K.</strong>
-              <span>Owner, Diamonds & Dust, Manayunk</span>
-            </div>
-          </div>
-          <div class="swt-testimonial fade-in" style="--delay: 80ms">
-            <div class="swt-testimonial__quote">"</div>
-            <p>My boutique is small and every square foot matters. The film made the front of the store so much more comfortable that customers are actually shopping that section now. Before, they would literally walk past the window displays to get to the back.</p>
-            <div class="swt-testimonial__author">
-              <strong>Marcus J.</strong>
-              <span>Owner, Thread & Needle, South Street</span>
-            </div>
-          </div>
-          <div class="swt-testimonial fade-in" style="--delay: 160ms">
-            <div class="swt-testimonial__quote">"</div>
-            <p>After-hours installation was a game-changer for us. We didn't lose a single day of sales. The team was professional, fast, and left the store spotless. I was skeptical it could be that smooth — it was.</p>
-            <div class="swt-testimonial__author">
-              <strong>Patricia M.</strong>
-              <span>Store Director, lifestyle brand, King of Prussia</span>
-            </div>
-          </div>
+        <div class="res-section__content-col">
+          <p class="res-section__eyebrow">Manufacturer Resources &amp; Case Studies</p>
+          <h2 class="res-section__title">Retail Window Film Documentation</h2>
+          <p class="res-section__body">Published case studies, spec sheets, and technical data from 3M and other leading manufacturers. These are the same documents we reference when specifying film for your Philadelphia retail space.</p>
+          <ul class="res-section__list">
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-scotchshield-jewelry-retail-security-window-film-case-study.pdf" target="_blank" rel="noopener noreferrer">3M Case Study — Associated Watch &amp; Jewelry Buyers: Security Film for Smash-and-Grab Protection</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-daylight-redirecting-film-retail-store-case-study.pdf" target="_blank" rel="noopener noreferrer">3M Case Study — Retail Store: Daylight Redirecting Film, Energy &amp; Glare Reduction (Net-Zero Store)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-window-film-national-retail-pharmacy-case-study.pdf" target="_blank" rel="noopener noreferrer">3M Case Study — National Retail Pharmacy Chain: Commercial Window Film Performance</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-prestige-70-solar-control-window-film-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M Prestige 70 — Solar Control Film Spec Sheet (most common retail solar control film)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-fasara-decorative-film-product-bulletin-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M Fasara — Decorative &amp; Frosted Film Catalog (branding, privacy, fitting rooms)</a>
+            </li>
+          </ul>
+          <a href="/contact/" class="res-section__cta">Request a full spec package for your store →</a>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ══ FAQ (swt-faq pattern) ══ -->
     <section class="swt-faq" id="faq">
       <div class="container">
         <div class="swt-faq__layout">
           <div class="swt-faq__header fade-in">
             <span class="swt-eyebrow">Questions</span>
-            <h2 class="swt-h2">Frequently Asked Questions</h2>
-            <p>Honest answers from people who've been doing this in Philadelphia for over 16 years.</p>
+            <h2 class="swt-h2">Retail Window Film FAQ</h2>
+            <p>Philadelphia retailers ask us about UV protection, security, energy savings, and lease compliance. Here are the answers.</p>
             <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
           </div>
           <div class="swt-faq__list fade-in">
@@ -350,7 +1116,7 @@ const faqItems = [
                   <span class="swt-faq__toggle">+</span>
                 </div>
                 <div class="swt-faq__a">
-                  <p>{item.answer}</p>
+                  <p set:html={item.answer}></p>
                 </div>
               </div>
             ))}
@@ -359,849 +1125,1290 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- CTA BANNER -->
-    <section class="swt-cta">
-      <div class="swt-cta__inner">
-        <div class="swt-cta__text">
-          <h2>Ready to <em>transform</em> your retail space?</h2>
-          <p>Get a free consultation and thermal analysis. No obligation, no pressure — just honest advice.</p>
-        </div>
-        <div class="swt-cta__btns">
-          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+    <!-- ══ GEO BLOCK ══ -->
+    <div class="re-geo" aria-hidden="true">
+      <p>Retail window film in Philadelphia is a professional-grade polyester film applied to the interior surface of storefront glass. It blocks up to 99% of UV-A and UV-B radiation that causes merchandise fading in boutiques, clothing stores, jewelry stores, and specialty retailers across Rittenhouse Square, Old City, Center City, South Street, Fishtown, and King of Prussia. Solar control film reduces solar heat gain by up to 79%, significantly lowering air conditioning costs in glass-heavy storefronts throughout Philadelphia's historic commercial districts. Security window film — particularly 3M Scotchshield Ultra S800, which meets ANSI Z97.1 standards — reinforces retail glass against smash-and-grab theft and accidental breakage. Decorative and frosted films, including 3M Fasara and Solyx patterned films, provide branded privacy for fitting rooms and storefronts. Window Film Philadelphia installs retail window film in all major commercial districts including Walnut Street, Market Street, East Passyunk, and Northern Liberties, as well as suburban retail centers in Cherry Hill NJ, King of Prussia PA, and surrounding Philadelphia metro communities.</p>
+
+      <dl>
+        <dt>What is retail window film and how does it work?</dt>
+        <dd>Retail window film is a thin polyester or ceramic film applied to commercial glass that blocks UV radiation, reduces solar heat gain, and optionally reinforces glass against breakage. In Philadelphia retail stores, it is most commonly used to protect merchandise from fading, reduce summer cooling costs, and deter smash-and-grab theft at jewelry stores and boutiques.</dd>
+
+        <dt>How much does retail window film cost in Philadelphia?</dt>
+        <dd>The cost of retail window film installation in Philadelphia varies based on window size, film type, and building access. UV and solar control films are typically the most cost-effective option for merchandise protection. Security and decorative films carry higher material costs. We provide free on-site assessments and proposals for all Philadelphia retail clients.</dd>
+
+        <dt>Which Philadelphia neighborhoods have the most retail window film installations?</dt>
+        <dd>Rittenhouse Square, Old City, Center City, and East Passyunk are the most active areas for retail window film installation in Philadelphia. South-facing storefronts on Walnut Street and Chestnut Street experience the highest solar heat load and are the most common candidates for solar control film. Jewelry stores in Old City and Society Hill are frequent security film clients due to smash-and-grab concerns.</dd>
+
+        <dt>What is the best window film for a jewelry store in Philadelphia?</dt>
+        <dd>3M Scotchshield Ultra S800 security film is the most commonly specified film for Philadelphia jewelry stores. It is an 8-mil polyester safety film that holds glass together on impact, meeting ANSI Z97.1, GSA TS01-2003, and ASTM F1642 standards. Many jewelry retailers combine Scotchshield on the storefront with 3M Prestige 70 solar control film to also address UV protection for displayed gemstones and precious metals.</dd>
+
+        <dt>Does retail window film protect against merchandise fading?</dt>
+        <dd>Yes. UV radiation is the primary cause of merchandise fading in retail stores. Retail window film blocks up to 99% of UV-A and UV-B rays, the wavelengths responsible for color shift in fabrics, leather, artwork, and packaging. According to the U.S. EPA, UV exposure causes cumulative damage even through clouds and indirect light, making year-round window film protection essential for displayed inventory.</dd>
+      </dl>
+
+      <ul>
+        <li>retail window film Philadelphia</li>
+        <li>window film for boutiques Philadelphia</li>
+        <li>jewelry store security window film Philadelphia</li>
+        <li>storefront UV protection film Philadelphia</li>
+        <li>smash and grab window film Philadelphia</li>
+        <li>decorative retail window film Philadelphia</li>
+        <li>energy saving window film retail Philadelphia</li>
+        <li>window film Rittenhouse Square retail</li>
+        <li>window film Old City Philadelphia retail</li>
+        <li>3M Scotchshield retail security film Philadelphia</li>
+        <li>merchandise fading window film Philadelphia</li>
+        <li>Philadelphia boutique window film</li>
+      </ul>
+    </div>
+
+    <!-- ══ CTA BANNER (priv-cinematic-cta pattern) ══ -->
+    <section class="priv-cinematic-cta">
+      <div class="priv-cinematic-cta__media" aria-hidden="true" style="background-image: url('/images/re-cta-bg.jpg');"></div>
+      <div class="priv-cinematic-cta__overlay" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__vignette" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__content">
+        <h2 class="priv-cinematic-cta__title">Ready to Protect Your Philadelphia Retail Store?</h2>
+        <p class="priv-cinematic-cta__text">From UV merchandise protection to smash-and-grab security — get a free on-site consultation and film recommendation for your storefront.</p>
+        <div class="priv-cinematic-cta__actions">
+          <a href="/contact/" class="priv-cinematic-cta__btn-primary">Get a Free Quote</a>
+          <a href="tel:+12157570100" class="priv-cinematic-cta__btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+            Call Us Today
+          </a>
         </div>
       </div>
     </section>
 
   </div><!-- /swt-body -->
-</BaseLayout>
 
+
+<script>
+  // ── FAQ Accordion ──
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
+
+  // ── Film Types Slider ──
+  (() => {
+    const track = document.getElementById('ofFtypeTrack');
+    if (!track) return;
+    const slides = Array.from(document.querySelectorAll('.of-ftype__slide'));
+    const navItems = Array.from(document.querySelectorAll('[data-ofnav]'));
+    const progressBar = document.getElementById('ofFtypeProgressBar');
+    let current = 0;
+    let timer;
+    let progress = 0;
+    const DURATION = 7000;
+    const TICK = 50;
+
+    function goTo(idx) {
+      slides[current].classList.remove('of-ftype-active');
+      navItems[current] && navItems[current].classList.remove('of-ftype__nav-item--active');
+      current = ((idx % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('of-ftype-active');
+      navItems[current] && navItems[current].classList.add('of-ftype__nav-item--active');
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      progress = 0;
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      progress = 0;
+      timer = setInterval(() => {
+        progress += (TICK / DURATION) * 100;
+        if (progressBar) progressBar.style.width = Math.min(progress, 100) + '%';
+        if (progress >= 100) goTo(current + 1);
+      }, TICK);
+    }
+
+    goTo(0);
+    startTimer();
+
+    const nextBtn = document.getElementById('ofFtypeNext');
+    const prevBtn = document.getElementById('ofFtypePrev');
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); startTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    navItems.forEach(btn => btn.addEventListener('click', () => { goTo(Number(btn.dataset.ofnav)); startTimer(); }));
+
+    document.querySelectorAll('.of-ftype__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.of-ftype__faq-item');
+        const answer = item && item.querySelector('.of-ftype__faq-a');
+        const icon = btn.querySelector('.of-ftype__faq-icon');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.of-ftype__slide');
+        if (slide) {
+          slide.querySelectorAll('.of-ftype__faq-q').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            const ic = b.querySelector('.of-ftype__faq-icon');
+            if (ic) ic.style.transform = '';
+            const a = b.closest('.of-ftype__faq-item') && b.closest('.of-ftype__faq-item').querySelector('.of-ftype__faq-a');
+            if (a) a.hidden = true;
+          });
+        }
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          if (icon) icon.style.transform = 'rotate(45deg)';
+          if (answer) answer.hidden = false;
+        }
+      });
+    });
+  })();
+</script>
 <style>
   /* ══════════════════════════════════════
-     BRAND TOKENS (local override)
-     ══════════════════════════════════════ */
+     SHARED TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --of-green:        #4E6B2A;
+    --of-green-light:  #7CB342;
+    --of-dark:         #0D1A0F;
+    --of-cream:        #F4EFE6;
+    --of-alt:          #ECE4D4;
+    --of-border:       #E1D6C1;
+    --of-text-sec:     #5a6650;
+    --of-white:        #ffffff;
+    --of-radius:       6px;
+  }
+
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  .of-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .of-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  .of-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 26, 15, 0.55) 0%,
+      rgba(13, 26, 15, 0.78) 50%,
+      rgba(13, 26, 15, 0.95) 100%
+    );
+  }
+  .of-hero__content {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Eyebrow pill */
+  .of-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .of-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+
+  /* H1 */
+  .of-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .of-hero__br { display: none; }
+
+  /* Animated flip line */
+  .of-hero__animated-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(243, 246, 241, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .of-hero__flip.flipwords-wrap { display: inline; }
+  .of-hero__flip .fw-word-col {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .of-hero__flip .fw-word {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    white-space: nowrap;
+    font-style: normal;
+    min-width: unset;
+  }
+  .of-hero__flip .fw-word.is-active { position: relative; }
+
+  /* Subtitle */
+  .of-hero__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+
+  /* CTA buttons */
+  .of-hero__cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .of-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    background: var(--of-green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid var(--of-green);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .of-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    background: transparent;
+    color: rgba(255,255,255,0.82);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-secondary:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    transform: translateY(-2px);
+  }
+
+  /* Stats panel */
+  .of-hero__stats-panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--of-radius);
+    backdrop-filter: blur(8px);
+    padding: 24px 32px;
+  }
+  .of-hero__stats-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .of-hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .of-hero__stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--of-green-light);
+    line-height: 1;
+  }
+  .of-hero__stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+  }
+  .of-hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TRUST BAR (shared swt- class)
+  ══════════════════════════════════════ */
+  .swt-trust {
+    background: #ffffff;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--of-border);
+  }
+  .swt-trust__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--of-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body {
+    background: var(--of-white);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .of-hero__content { padding: 90px 20px 60px; }
+    .of-hero__stats-inner { flex-wrap: wrap; gap: 20px; }
+    .of-hero__stat-divider { display: none; }
+    .of-hero__stat { flex: 0 0 45%; }
+    .of-hero__br { display: block; }
+    .of-hero__cta { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+  }
+
+  /* ══════════════════════════════════════
+     WHAT IS
+  ══════════════════════════════════════ */
+  .of-whatis {
+    background: #fff;
+    padding: 96px 5%;
+  }
+  .of-whatis__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-whatis__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 16px;
+  }
+  .of-whatis__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .of-whatis__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-whatis__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-whatis__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .of-whatis__stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--of-cream);
+    border-radius: var(--of-radius);
+    border: 1px solid var(--of-border);
+  }
+  .of-whatis__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
+  .of-whatis__stat strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-whatis__stat span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--of-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .of-whatis__stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--of-border);
+    flex-shrink: 0;
+  }
+  .of-whatis__image-wrap {
+    position: relative;
+    border-radius: var(--of-radius);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-whatis__image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     WHY / PROBLEM
+  ══════════════════════════════════════ */
+  .of-why {
+    background: var(--of-alt);
+    padding: 96px 5%;
+  }
+  .of-why__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-why__image-wrap {
+    position: relative;
+  }
+  .of-why__image {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: var(--of-radius);
+    display: block;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-why__stat-card {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--of-dark);
+    border-radius: var(--of-radius);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 12px 32px rgba(13,26,15,0.25);
+    min-width: 240px;
+  }
+  .of-why__stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+  .of-why__stat-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .of-why__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 14px;
+  }
+  .of-why__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .of-why__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .of-why__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-why__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--of-text-sec);
+    line-height: 1.65;
+  }
+  .of-why__bullets li svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .of-why__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--of-green);
+    text-decoration: none;
+    border-bottom: 2px solid var(--of-green);
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .of-why__cta:hover { gap: 12px; }
+
+  /* ══════════════════════════════════════
+     BENTO BAND
+  ══════════════════════════════════════ */
+  .of-bento {
+    background: var(--of-dark);
+    padding: 80px 5%;
+  }
+  .of-bento__header {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .of-bento__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .of-bento__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.5);
+    line-height: 1.7;
+  }
+  .of-bento__compact {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .of-bento-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+  .of-bento-item:hover { background: rgba(255,255,255,0.07); }
+  .of-bento-item__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .of-bento-item__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(243,246,241,0.52);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     RETAIL SPACE TYPE GRID
+  ══════════════════════════════════════ */
+  .of-spaces {
+    background: #0d1a0f;
+    padding: 100px 24px;
+  }
+  .of-spaces__container { max-width: 1200px; margin: 0 auto; }
+  .of-spaces__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .of-spaces__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 14px;
+  }
+  .of-spaces__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .of-spaces__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(243,246,241,0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Grid */
+  .of-spaces__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .of-space-card {
+    border-radius: 24px;
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Card 1: Hero — spans 6 cols */
+  .of-space-card--hero {
+    grid-column: span 6;
+    background: linear-gradient(145deg, #1a3024 0%, #0d1a0f 60%);
+    border: 1px solid rgba(124,179,66,0.15);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    min-height: 420px;
+  }
+  .of-space-card--hero:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(124,179,66,0.25); }
+  .of-space-card__hero-icon { margin-bottom: 24px; }
+  .of-space-card__hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .of-space-card__hero-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .of-space-card__pill {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.25);
+    padding: 6px 14px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Cards 2 & 3: Photo — each spans 3 cols */
+  .of-space-card--photo {
+    grid-column: span 3;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .of-space-card--photo:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--photo:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .of-space-card__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.3) 55%, rgba(10,20,14,0.05) 100%);
+  }
+  .of-space-card__photo-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px;
+    z-index: 5;
+  }
+  .of-space-card__photo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__photo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.75);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Card 4: Dark — spans 12 cols full width row */
+  .of-space-card--dark {
+    grid-column: span 12;
+    border-radius: 24px;
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #14201a 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.18);
+  }
+  .of-space-card--dark:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.28); border-color: rgba(124,179,66,0.28); }
+  .of-space-card__accent-line {
+    position: absolute;
+    top: 0; left: 40px; right: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #7CB342, transparent);
+  }
+  .of-space-card__icon-row { margin-bottom: 18px; }
+  .of-space-card__dark-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .of-space-card__dark-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.65;
+    margin: 0 0 16px;
+    max-width: 700px;
+  }
+  .of-space-card__micro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(124,179,66,0.85);
+    background: rgba(124,179,66,0.08);
+    border: 1px solid rgba(124,179,66,0.18);
+    padding: 5px 10px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .of-space-card--hero { grid-column: span 12; min-height: auto; }
+    .of-space-card--photo { grid-column: span 6; }
+    .of-space-card--dark { grid-column: span 12; }
+  }
+  @media (max-width: 768px) {
+    .of-spaces { padding: 64px 20px; }
+    .of-space-card--hero,
+    .of-space-card--photo,
+    .of-space-card--dark { grid-column: span 12; }
+    .of-space-card--photo { min-height: 280px; }
+  }
+
+  /* ══════════════════════════════════════
+     BENEFIT ROWS
+  ══════════════════════════════════════ */
+  .of-benefits {
+    background: #F3F6F1;
+    padding: 100px 24px;
+  }
+  .of-benefits__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .of-benefits__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 72px;
+  }
+  .of-benefits__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 8px;
+  }
+  .of-benefits__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 12px 0 20px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .of-benefits__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0625rem;
+    color: #4A5C48;
+    line-height: 1.75;
+  }
+  .of-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .of-row:last-child { margin-bottom: 0; }
+  .of-row--rev { direction: rtl; }
+  .of-row--rev > * { direction: ltr; }
+  .of-row__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13,26,15,0.12);
+    position: relative;
+  }
+  .of-row__image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(124,179,66,0.15);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .of-row__image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .of-row__image:hover img { transform: scale(1.03); }
+  .of-row__text { display: flex; flex-direction: column; }
+  .of-row__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 12px;
+  }
+  .of-row__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .of-row__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+  .of-row__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-row__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-row__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: #14201A;
+    line-height: 1.5;
+  }
+  .of-row__bullets svg { flex-shrink: 0; margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    .of-benefits { padding: 64px 20px; }
+    .of-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 64px; }
+    .of-row--rev { direction: ltr; }
+    .of-row__image img { height: 320px; }
+    .of-benefits__header { margin-bottom: 48px; }
+  }
+
+  /* ══════════════════════════════════════
+     FILM TYPES SLIDER
+  ══════════════════════════════════════ */
+  .of-ftype { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+  .of-ftype__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+  .of-ftype__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+  .of-ftype__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .of-ftype__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+  .of-ftype__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+  .of-ftype-active .of-ftype__content { opacity: 1; transform: translateY(0); }
+  .of-ftype__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .of-ftype__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; white-space: pre-line; }
+  .of-ftype__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; }
+  .of-ftype__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .of-ftype__faq-item { border-radius: 8px; overflow: hidden; }
+  .of-ftype__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+  .of-ftype__faq-q:hover { background: rgba(255,255,255,0.18); }
+  .of-ftype__faq-icon { font-size: 1.2rem; color: #7CB342; flex-shrink: 0; transition: transform 0.3s ease; }
+  .of-ftype__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+  .of-ftype__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; }
+  .of-ftype__cta:hover { background: #2E6B30; transform: translateY(-2px); }
+  .of-ftype__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 20px; }
+  .of-ftype__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+  .of-ftype__nav-item:hover { opacity: 0.65; }
+  .of-ftype__nav-item--active { opacity: 1; }
+  .of-ftype__nav-line { display: block; width: 3px; height: 28px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+  .of-ftype__nav-item--active .of-ftype__nav-line { background: #7CB342; height: 44px; }
+  .of-ftype__nav-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+  .of-ftype__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+  .of-ftype__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+  .of-ftype__arrow--prev { left: 32px; }
+  .of-ftype__arrow--next { right: 32px; }
+  .of-ftype__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+  .of-ftype__progress-bar { height: 100%; background: #7CB342; width: 0; transition: width 0.05s linear; }
+  @media (max-width: 768px) {
+    .of-ftype__nav { display: none; }
+    .of-ftype__content { padding-left: 32px; padding-right: 32px; max-width: calc(100% - 64px); }
+    .of-ftype__arrow--prev { left: 16px; }
+    .of-ftype__arrow--next { right: 16px; }
+  }
+
+  /* ══════════════════════════════════════
+     FEATURED PROJECT
+  ══════════════════════════════════════ */
+  .of-project { background: #14201A; padding: 96px 5%; }
+  .of-project__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .of-project__image-col { display: flex; flex-direction: column; gap: 0; }
+  .of-project__img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px 12px 0 0; display: block; }
+  .of-project__stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); background: #7CB342; border-radius: 0 0 12px 12px; padding: 20px 16px; gap: 16px 0; }
+  .of-project__stat { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
+  .of-project__stat-num { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.1; }
+  .of-project__stat-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; line-height: 1.3; }
+  .of-project__stat-div { display: none; }
+  .of-project__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 1.25rem; }
+  .of-project__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 2rem; }
+  .of-project__detail { border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 0; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; }
+  .of-project__detail:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+  .of-project__detail-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: #7CB342; padding-top: 2px; }
+  .of-project__detail-val { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.7; }
+  .of-project__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease; }
+  .of-project__cta:hover { background: #2E6B30; }
+  @media (max-width: 900px) {
+    .of-project__inner { grid-template-columns: 1fr; gap: 40px; }
+    .of-project__stats-strip { grid-template-columns: repeat(2, 1fr); row-gap: 16px; border-radius: 0 0 12px 12px; }
+    .of-project__stat-div { display: none; }
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+  ══════════════════════════════════════ */
+  .of-gallery { background: #F5F3EE; padding: 96px 5% 80px; }
+  .of-gallery__header { text-align: center; margin-bottom: 52px; }
+  .of-gallery__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+  .of-gallery__title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 1rem; }
+  .of-gallery__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; max-width: 580px; margin: 0 auto; line-height: 1.75; }
+  .of-gallery__grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 280px 280px; gap: 12px; }
+  .of-gallery__panel { position: relative; overflow: hidden; border-radius: 10px; cursor: default; }
+  .of-gallery__panel--tall { grid-row: span 2; }
+  .of-gallery__panel--wide { grid-column: span 2; }
+  .of-gallery__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .of-gallery__panel:hover .of-gallery__img { transform: scale(1.04); }
+  .of-gallery__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%); pointer-events: none; }
+  .of-gallery__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+  .of-gallery__label-title { display: block; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .of-gallery__label-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.75); }
+  @media (max-width: 900px) {
+    .of-gallery__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .of-gallery__panel--tall, .of-gallery__panel--wide { grid-column: span 1; grid-row: span 1; height: 240px; }
+    .of-gallery__panel { height: 220px; }
+  }
+  @media (max-width: 600px) {
+    .of-gallery__grid { grid-template-columns: 1fr; }
+    .of-gallery__panel, .of-gallery__panel--tall, .of-gallery__panel--wide { height: 220px; grid-column: span 1; grid-row: span 1; }
+  }
+
+  /* ══════════════════════════════════════
+     STATS BAR
+  ══════════════════════════════════════ */
+  .of-stats { background: #14201A; padding: 56px 5%; }
+  .of-stats__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .of-stats__item { flex: 1; min-width: 140px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; }
+  .of-stats__num { font-family: 'Space Mono', monospace; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #7CB342; line-height: 1; margin-bottom: 8px; }
+  .of-stats__label { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .of-stats__label small { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .of-stats__div { width: 1px; height: 60px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
+  @media (max-width: 768px) { .of-stats__div { display: none; } .of-stats__item { min-width: calc(50% - 24px); } }
+
+  /* ══════════════════════════════════════
+     SHARED DESIGN TOKENS
+  ══════════════════════════════════════ */
   :root {
     --swt-green:        #4E6B2A;
     --swt-green-accent: #83A94A;
     --swt-dark:         #2A241E;
-    --swt-cream:        #F4EFE6;
-    --swt-alt:          #ECE4D4;
     --swt-border:       #E1D6C1;
     --swt-text-sec:     #6E665C;
-    --swt-gold:         #846212;
     --swt-white:        #ffffff;
     --swt-radius:       5px;
   }
 
   /* ══════════════════════════════════════
-     HERO
-     ══════════════════════════════════════ */
-  .swt-hero {
-    position: relative;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  .swt-hero__img {
-    position: absolute;
-    inset: 0;
-  }
-  .swt-hero__img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .swt-hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
-  }
-  .swt-hero__content {
-    position: relative;
-    z-index: 1;
-    padding: 110px 8% 90px;
-    max-width: 720px;
-  }
-  .swt-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    background: rgba(78,107,42,0.25);
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(78,107,42,0.4);
-  }
-  .swt-hero__title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(38px, 5.5vw, 66px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.1;
-    margin: 0 0 20px;
-  }
-  .swt-hero__title em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-hero__sub {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin: 0 0 36px;
-    max-width: 500px;
-  }
-  .swt-hero__ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+     SWT SHARED
+  ══════════════════════════════════════ */
+  .swt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: var(--swt-radius); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+  .swt-btn--primary { background: var(--swt-green); color: var(--swt-white); border-color: var(--swt-green); }
+  .swt-btn--primary:hover { background: #3D5620; border-color: #3D5620; transform: translateY(-2px); }
+  .swt-eyebrow { display: inline-block; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 12px; }
+  .swt-h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; color: var(--swt-dark); line-height: 1.15; margin: 0 0 18px; }
 
   /* ══════════════════════════════════════
-     BUTTONS
-     ══════════════════════════════════════ */
-  .swt-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 28px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-  .swt-btn--primary {
-    background: var(--swt-green);
-    color: var(--swt-white);
-    border-color: var(--swt-green);
-  }
-  .swt-btn--primary:hover {
-    background: #3D5620;
-    border-color: #3D5620;
-    transform: translateY(-2px);
-  }
-  .swt-btn--ghost-light {
-    background: transparent;
-    color: rgba(255,255,255,0.8);
-    border-color: rgba(255,255,255,0.35);
-  }
-  .swt-btn--ghost-light:hover {
-    color: #fff;
-    border-color: rgba(255,255,255,0.65);
-    background: rgba(255,255,255,0.06);
-  }
-  .swt-btn--ghost {
-    background: transparent;
-    color: var(--swt-green);
-    border-color: var(--swt-green);
-  }
-  .swt-btn--ghost:hover {
-    background: var(--swt-green);
-    color: var(--swt-white);
-  }
+     ES-PROCESS-SPLIT + ES-ACCORDION
+  ══════════════════════════════════════ */
+  .es-process-split { padding: 120px 0; background: #F5F3EE; }
+  .es-process-split__container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .es-process-split__eyebrow { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 16px; }
+  .es-process-split__title { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #14201A; line-height: 1.15; margin: 0 0 40px; }
+  .es-accordion { display: flex; flex-direction: column; gap: 16px; }
+  .es-accordion__item { background: #fff; border-radius: 16px; overflow: hidden; transition: box-shadow 0.3s; }
+  .es-accordion__item:hover { box-shadow: 0 8px 32px rgba(20,32,26,0.08); }
+  .es-accordion__trigger { display: flex; align-items: center; gap: 20px; padding: 28px 32px; cursor: pointer; list-style: none; user-select: none; }
+  .es-accordion__trigger::-webkit-details-marker { display: none; }
+  .es-accordion__number { font-family: 'Space Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--swt-green); flex-shrink: 0; }
+  .es-accordion__label { font-family: 'Fraunces', Georgia, serif; font-size: 1.2rem; font-weight: 600; color: #14201A; flex: 1; }
+  .es-accordion__icon { font-size: 2rem; color: var(--swt-green); font-weight: 300; transition: transform 0.3s; flex-shrink: 0; line-height: 1; }
+  .es-accordion__item[open] .es-accordion__icon { transform: rotate(45deg); }
+  .es-accordion__body { padding: 0 32px 32px; font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.7; color: #4A5C48; }
+  .es-process-split__content { display: flex; flex-direction: column; }
+  .es-process-split__image-wrapper { position: relative; min-height: 600px; display: flex; align-items: stretch; }
+  .es-process-split__image { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 16px; box-shadow: 0 16px 48px rgba(20,32,26,0.12); display: block; }
+  @media (max-width: 900px) { .es-process-split__container { grid-template-columns: 1fr; } .es-process-split__image-wrapper { min-height: 400px; } }
 
   /* ══════════════════════════════════════
-     TRUST BAR
-     ══════════════════════════════════════ */
-  .swt-trust {
-    background: var(--swt-cream);
-    padding: 32px 0;
-    border-bottom: 1px solid var(--swt-border);
-  }
-  .swt-trust__label {
-    text-align: center;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--swt-text-sec);
-    margin: 0 0 20px;
-  }
+     CAM-TESTIMONIALS + CAM-TCARD
+  ══════════════════════════════════════ */
+  .cam-testimonials { background: #F5F3EE; padding: 96px 5%; }
+  .cam-testimonials__header { text-align: center; margin-bottom: 56px; }
+  .cam-testimonials__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; display: block; }
+  .cam-testimonials__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+  .cam-testimonials__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+  .cam-testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .cam-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+  .cam-tcard__img-wrap { overflow: hidden; aspect-ratio: 1/1; flex-shrink: 0; }
+  .cam-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+  .cam-tcard:hover .cam-tcard__img { transform: scale(1.03); }
+  .cam-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .cam-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+  .cam-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+  .cam-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+  .cam-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+  .cam-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7CB342; margin: 0; font-weight: 500; }
+  @media (max-width: 960px) { .cam-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .cam-testimonials { padding: 64px 5%; } }
 
   /* ══════════════════════════════════════
-     BODY WRAPPER
-     ══════════════════════════════════════ */
-  .swt-body {
-    background: var(--swt-white);
-  }
+     IP-LOCAL + CAM-NEIGHBORHOODS
+  ══════════════════════════════════════ */
+  .ip-local { padding: 64px 5%; }
+  .ip-local__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .ip-local__content { display: flex; flex-direction: column; }
+  .ip-local__map { border-radius: 20px; overflow: hidden; height: 400px; }
+  .ip-local__map iframe { width: 100%; height: 100%; }
+  .ip-local__content h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: #14201A; margin: 12px 0 16px; }
+  .ip-local__content p { font-family: 'Inter', sans-serif; font-size: 16px; color: #4a4a4a; line-height: 1.8; margin-bottom: 20px; }
+  .cam-neighborhoods { display: flex; flex-direction: column; margin-top: 20px; }
+  .cam-nh { display: flex; align-items: flex-start; gap: 14px; padding: 11px 0; border-bottom: 1px solid #EFEFED; }
+  .cam-nh:last-child { border-bottom: none; }
+  .cam-nh__name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #7CB342; min-width: 180px; flex-shrink: 0; line-height: 1.65; }
+  .cam-nh__desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #4a4a4a; line-height: 1.65; }
+  @media (max-width: 768px) { .ip-local__grid { grid-template-columns: 1fr; } .ip-local__map { height: 280px; } }
 
   /* ══════════════════════════════════════
-     EYEBROW
-     ══════════════════════════════════════ */
-  .swt-eyebrow {
-    display: inline-block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--swt-green);
-    margin-bottom: 12px;
-  }
-  .swt-eyebrow--green {
-    color: var(--swt-green-accent);
-  }
+     RES-SECTION
+  ══════════════════════════════════════ */
+  .res-section { background: #F5F3EE; padding: 80px 0; }
+  .res-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .res-section__image-col { position: relative; border-radius: 16px; overflow: hidden; }
+  .res-section__img { width: 100%; height: 520px; object-fit: cover; object-position: center; display: block; border-radius: 16px; }
+  .res-section__content-col { display: flex; flex-direction: column; gap: 20px; }
+  .res-section__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0; }
+  .res-section__title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  .res-section__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.75; margin: 0; }
+  .res-section__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .res-section__item { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.5; }
+  .res-section__item svg { flex-shrink: 0; margin-top: 2px; }
+  .res-section__item a { color: #14201A; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; transition: color 0.2s ease; font-weight: 500; }
+  .res-section__item a:hover { color: #7CB342; }
+  .res-section__cta { align-self: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s ease; }
+  .res-section__cta:hover { gap: 8px; }
+  @media (max-width: 900px) { .res-section__inner { grid-template-columns: 1fr; gap: 40px; } .res-section__img { height: 360px; } }
+  @media (max-width: 600px) { .res-section__inner { padding: 0 20px; } .res-section { padding: 60px 0; } }
 
   /* ══════════════════════════════════════
-     H2 / H3
-     ══════════════════════════════════════ */
-  .swt-h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 400;
-    color: var(--swt-dark);
-    line-height: 1.15;
-    margin: 0 0 18px;
-  }
-  .swt-h2--light {
-    color: var(--swt-white);
-  }
-  .swt-h2--center {
-    text-align: center;
-  }
+     SWT-FAQ
+  ══════════════════════════════════════ */
+  .swt-faq { background: var(--swt-white); padding: 96px 0; }
+  .swt-faq__layout { display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+  .swt-faq__header p { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.75; color: var(--swt-text-sec); margin: 14px 0 24px; }
+  .swt-faq__header { display: flex; flex-direction: column; }
+  .swt-faq__list { display: flex; flex-direction: column; }
+  .swt-faq__item { border-bottom: 1px solid var(--swt-border); padding: 18px 0; }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--swt-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 3px 0; }
+  .swt-faq__toggle { color: var(--swt-green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; line-height: 1; }
+  .swt-faq__a { font-family: 'Hanken Grotesk', sans-serif; font-size: 14px; color: var(--swt-text-sec); line-height: 1.8; margin-top: 10px; display: none; }
+  .swt-faq__a a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .swt-faq__a a:hover { color: #2E6B30; }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+  @media (max-width: 768px) { .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; } }
 
   /* ══════════════════════════════════════
-     SPLIT SECTIONS
-     ══════════════════════════════════════ */
-  .swt-split {
-    padding: 90px 0;
-  }
-  .swt-split--dark {
-    background: var(--swt-dark);
-  }
-  .swt-split--alt {
-    background: var(--swt-alt);
-  }
-  .swt-split .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-split__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .swt-split__grid--rev {
-    direction: rtl;
-  }
-  .swt-split__grid--rev > * {
-    direction: ltr;
-  }
-  .swt-split__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    line-height: 1.75;
-    color: var(--swt-text-sec);
-    margin: 0 0 16px;
-  }
-  .swt-split__text p:last-child {
-    margin-bottom: 0;
-  }
-  .swt-split__img {
-    position: relative;
-    border-radius: var(--swt-radius);
-    overflow: visible;
-  }
-  .swt-split__img img {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    border-radius: var(--swt-radius);
-    display: block;
-  }
+     CTA (priv-cinematic-cta pattern)
+  ══════════════════════════════════════ */
+  .priv-cinematic-cta { position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .priv-cinematic-cta__media { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .priv-cinematic-cta__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.75) 40%, rgba(13,26,15,0.88) 100%); }
+  .priv-cinematic-cta__vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,26,15,0.2) 0%, rgba(13,26,15,0.6) 100%); }
+  .priv-cinematic-cta__content { position: relative; z-index: 10; max-width: 760px; padding: 80px 24px; text-align: center; }
+  .priv-cinematic-cta__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; color: #F3F6F1; margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+  .priv-cinematic-cta__text { font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: rgba(243,246,241,0.82); max-width: 620px; margin: 0 auto 40px; line-height: 1.75; }
+  .priv-cinematic-cta__actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .priv-cinematic-cta__btn-primary { display: inline-flex; align-items: center; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 16px 36px; border-radius: 100px; border: 2px solid #7CB342; transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s; }
+  .priv-cinematic-cta__btn-primary:hover { background: #6aa032; border-color: #6aa032; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(124,179,66,0.35); }
+  .priv-cinematic-cta__btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); color: #F3F6F1; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.3); transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+  .priv-cinematic-cta__btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: rgba(124,179,66,0.6); transform: translateY(-2px); }
 
   /* ══════════════════════════════════════
-     PROBLEM TAGS
-     ══════════════════════════════════════ */
-  .swt-problem-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 24px;
-  }
-  .swt-tag {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 12px;
-    border-radius: var(--swt-radius);
-  }
-  .swt-tag--red {
-    background: rgba(180, 60, 60, 0.15);
-    color: #e8a0a0;
-    border: 1px solid rgba(180, 60, 60, 0.3);
-  }
-
-  /* ══════════════════════════════════════
-     IMAGE BADGE
-     ══════════════════════════════════════ */
-  .swt-img-badge {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: var(--swt-dark);
-    color: var(--swt-white);
-    padding: 12px 18px;
-    border-radius: var(--swt-radius);
-    text-align: center;
-    line-height: 1;
-  }
-  .swt-img-badge strong {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--swt-green-accent);
-  }
-  .swt-img-badge span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    margin-top: 4px;
-    display: block;
-  }
-
-  /* ══════════════════════════════════════
-     CHECK LIST
-     ══════════════════════════════════════ */
-  .swt-check-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0;
-  }
-  .swt-check-list li {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    color: var(--swt-text-sec);
-    padding: 8px 0 8px 28px;
-    position: relative;
-    border-bottom: 1px solid var(--swt-border);
-  }
-  .swt-check-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    background: var(--swt-green);
-    border-radius: 50%;
-    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L3.5 6L9 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  /* ══════════════════════════════════════
-     ENERGY METRICS
-     ══════════════════════════════════════ */
-  .swt-energy-metrics {
-    display: flex;
-    gap: 32px;
-    margin-top: 28px;
-  }
-  .swt-metric {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .swt-metric__num {
-    font-family: 'Fraunces', serif;
-    font-size: 40px;
-    font-weight: 400;
-    color: var(--swt-green);
-    line-height: 1;
-  }
-  .swt-metric__label {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--swt-text-sec);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* ══════════════════════════════════════
-     INLINE QUOTE
-     ══════════════════════════════════════ */
-  .swt-inline-quote {
-    margin: 24px 0 0;
-    padding: 16px 20px;
-    border-left: 3px solid var(--swt-green);
-    background: rgba(78,107,42,0.06);
-    border-radius: 0 var(--swt-radius) var(--swt-radius) 0;
-  }
-  .swt-inline-quote p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--swt-text-sec);
-    line-height: 1.6;
-    margin: 0 0 8px;
-  }
-  .swt-inline-quote cite {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    color: var(--swt-text-sec);
-  }
-
-  /* ══════════════════════════════════════
-     SECURITY FEATURES
-     ══════════════════════════════════════ */
-  .swt-security-features {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 24px;
-  }
-  .swt-security-feature {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .swt-feature-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--swt-green-accent);
-    margin-top: 6px;
-    flex-shrink: 0;
-  }
-  .swt-security-feature strong {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--swt-white);
-    margin-bottom: 2px;
-  }
-  .swt-security-feature p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  /* ══════════════════════════════════════
-     GALLERY
-     ══════════════════════════════════════ */
-  .swt-gallery {
-    padding: 90px 0;
-    background: var(--swt-cream);
-  }
-  .swt-gallery .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-gallery__header {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  .swt-gallery__header .swt-eyebrow {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .swt-gallery__header p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
-    color: var(--swt-text-sec);
-    margin: 12px 0 0;
-  }
-  .swt-gallery__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-  .swt-gallery__item {
-    position: relative;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    border-radius: var(--swt-radius);
-    cursor: pointer;
-    animation-delay: var(--delay, 0ms);
-  }
-  .swt-gallery__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .swt-gallery__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(42,36,30,0.85) 0%, transparent 60%);
-    display: flex;
-    align-items: flex-end;
-    padding: 14px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .swt-gallery__overlay span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--swt-white);
-  }
-  .swt-gallery__item:hover img {
-    transform: scale(1.05);
-  }
-  .swt-gallery__item:hover .swt-gallery__overlay {
-    opacity: 1;
-  }
-
-  /* ══════════════════════════════════════
-     STATS
-     ══════════════════════════════════════ */
-  .swt-stats {
-    background: var(--swt-green);
-    padding: 60px 0;
-  }
-  .swt-stats__row {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-  }
-  .swt-stats__item {
-    flex: 1;
-    text-align: center;
-    animation-delay: var(--delay, 0ms);
-  }
-  .swt-stats__num {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .swt-stats__label {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-  }
-  .swt-stats__div {
-    width: 1px;
-    height: 50px;
-    background: rgba(255,255,255,0.2);
-  }
-
-  /* ══════════════════════════════════════
-     PROCESS
-     ══════════════════════════════════════ */
-  .swt-process {
-    padding: 90px 0;
-    background: var(--swt-white);
-  }
-  .swt-process .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-process__steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-top: 50px;
-  }
-  .swt-process__step {
-    position: relative;
-    padding: 28px 24px;
-    border: 1px solid var(--swt-border);
-    border-radius: var(--swt-radius);
-    animation-delay: var(--delay, 0ms);
-  }
-  .swt-process__num {
-    font-family: 'Fraunces', serif;
-    font-size: 40px;
-    font-weight: 400;
-    color: var(--swt-green);
-    line-height: 1;
-    margin-bottom: 14px;
-  }
-  .swt-process__body h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--swt-dark);
-    margin: 0 0 10px;
-  }
-  .swt-process__body p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    color: var(--swt-text-sec);
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  /* ══════════════════════════════════════
-     TESTIMONIALS
-     ══════════════════════════════════════ */
-  .swt-testimonials {
-    padding: 90px 0;
-    background: var(--swt-dark);
-  }
-  .swt-testimonials .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-testimonials__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    margin-top: 50px;
-  }
-  .swt-testimonial {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--swt-radius);
-    padding: 32px;
-    position: relative;
-    animation-delay: var(--delay, 0ms);
-  }
-  .swt-testimonial__quote {
-    font-family: 'Fraunces', serif;
-    font-size: 72px;
-    line-height: 0.6;
-    color: var(--swt-green);
-    margin-bottom: 16px;
-  }
-  .swt-testimonial p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.7;
-    margin: 0 0 20px;
-  }
-  .swt-testimonial__author strong {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--swt-white);
-    margin-bottom: 2px;
-  }
-  .swt-testimonial__author span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
-  }
-
-  /* ══════════════════════════════════════
-     FAQ
-     ══════════════════════════════════════ */
-  .swt-faq {
-    padding: 90px 0;
-    background: var(--swt-white);
-  }
-  .swt-faq .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-faq__layout {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
-    align-items: start;
-  }
-  .swt-faq__header .swt-eyebrow {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .swt-faq__header p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: var(--swt-text-sec);
-    line-height: 1.65;
-    margin: 16px 0 24px;
-  }
-  .swt-faq__list {
-    display: flex;
-    flex-direction: column;
-  }
-  .swt-faq__item {
-    border-bottom: 1px solid var(--swt-border);
-  }
-  .swt-faq__q {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    cursor: pointer;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--swt-dark);
-    gap: 16px;
-  }
-  .swt-faq__toggle {
-    font-size: 20px;
-    color: var(--swt-green);
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-  }
-  .swt-faq__a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-  .swt-faq__a p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    color: var(--swt-text-sec);
-    line-height: 1.7;
-    padding-bottom: 20px;
-    margin: 0;
-  }
-  .swt-faq__item.is-open .swt-faq__a {
-    max-height: 300px;
-  }
-  .swt-faq__item.is-open .swt-faq__toggle {
-    transform: rotate(45deg);
-  }
-
-  /* ══════════════════════════════════════
-     CTA BANNER
-     ══════════════════════════════════════ */
-  .swt-cta {
-    background: var(--swt-green);
-    padding: 80px 0;
-  }
-  .swt-cta__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-  }
-  .swt-cta__text h2 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(28px, 3.5vw, 42px);
-    font-weight: 400;
-    color: var(--swt-white);
-    margin: 0 0 10px;
-  }
-  .swt-cta__text h2 em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-cta__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: rgba(255,255,255,0.7);
-    margin: 0;
-  }
-  .swt-cta__btns {
-    display: flex;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-  .swt-cta__btns .swt-btn--primary {
-    background: var(--swt-white);
-    color: var(--swt-green);
-    border-color: var(--swt-white);
-  }
-  .swt-cta__btns .swt-btn--primary:hover {
-    background: var(--swt-cream);
-    border-color: var(--swt-cream);
-  }
-
-  /* ══════════════════════════════════════
-     FADE-IN ANIMATION
-     ══════════════════════════════════════ */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .fade-in {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: var(--delay, 0ms);
-  }
-
-  /* ══════════════════════════════════════
-     RESPONSIVE
-     ══════════════════════════════════════ */
+     RESPONSIVE — WHATIS / WHY / BENTO
+  ══════════════════════════════════════ */
   @media (max-width: 1024px) {
-    .swt-gallery__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .swt-process__steps {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .swt-testimonials__grid {
-      grid-template-columns: 1fr;
-    }
+    .of-whatis__container,
+    .of-why__container { gap: 48px; }
+    .of-bento__compact { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
-    .swt-split__grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .swt-split__grid--rev {
-      direction: ltr;
-    }
-    .swt-gallery__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .swt-process__steps {
-      grid-template-columns: 1fr;
-    }
-    .swt-faq__layout {
-      grid-template-columns: 1fr;
-    }
-    .swt-cta__inner {
-      flex-direction: column;
-      text-align: center;
-    }
-    .swt-stats__row {
-      flex-wrap: wrap;
-    }
-    .swt-stats__div {
-      display: none;
-    }
-    .swt-stats__item {
-      flex: 0 0 50%;
-    }
+    .of-whatis { padding: 64px 5%; }
+    .of-whatis__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-whatis__image { height: 280px; }
+    .of-why { padding: 64px 5%; }
+    .of-why__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-why__image { height: 320px; }
+    .of-why__stat-card { position: static; margin-top: 16px; min-width: unset; }
+    .of-bento__compact { grid-template-columns: 1fr; }
   }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+    .of-whatis__stats { flex-direction: column; gap: 16px; }
+    .of-whatis__stat-div { display: none; }
+  }
+
+  /* GEO BLOCK */
+  .re-geo { display: none; }
+
+  /* RE-HERO (retail hero identifier) */
+  .re-hero { --re-hero: 1; }
 </style>
