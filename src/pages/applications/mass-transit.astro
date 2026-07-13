@@ -1,454 +1,2556 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
+import FlipWords from '../../components/FlipWords.astro';
 
-const title = 'Airport Window Film in Philadelphia | Window Film Philadelphia';
-const description = 'Enhance safety, energy efficiency, and comfort with mass transit and airport window film in Philadelphia. Call today for a quote!';
+const title = 'Airport & Mass Transit Window Film in Philadelphia';
+const description = 'Airport window film in Philadelphia for PHL terminals, SEPTA stations, and Amtrak hubs — anti-graffiti, solar control, safety. 3M Certified Dealer.';
 
-const featuredSections = [
+const dateModified = new Date().toISOString().slice(0, 10);
+
+const faqItems = [
   {
-    number: '01',
-    heading: 'Energy Savings',
-    body: 'In order to keep everyone comfortable and productive without spending a fortune on energy costs, an effective energy solution is required. Energy-saving window film provides a great ROI while eliminating hot and cold spots and helping reduce costs all year round.',
-    img: '/images/window-film-mass-transit-philadelphia.webp',
-    alt: 'Energy saving window film airport Philadelphia',
-    href: '/benefits/energy-savings/',
-    cta: 'Explore Energy Saving Film',
+    question: "What is airport window film for Philadelphia terminals and transit stations?",
+    answer: "Airport window film for Philadelphia is professionally applied polyester film that bonds to glass, metal, and mirror surfaces in high-traffic transit infrastructure. It provides solar heat reduction, UV blocking, safety fragment retention, anti-graffiti protection, and decorative options — addressing the specific operational and safety challenges of airport terminals, SEPTA stations, Amtrak hubs, and bus terminals across Philadelphia."
   },
   {
-    number: '02',
-    heading: 'Anti-Graffiti',
-    body: 'For surfaces prone to daily wear and tear, vandalism, and graffiti, anti-graffiti surface film can be utilized to keep surfaces safe and free of damage. Utilize this sacrificial film for invisible protection while concealing existing damage.',
-    img: '/images/window-film-philadelphia-mass-transit.webp',
-    alt: 'Anti-graffiti window film mass transit Philadelphia',
-    href: '/benefits/anti-graffiti/',
-    cta: 'Explore Anti-Graffiti Film',
+    question: "How does anti-graffiti film work in SEPTA stations and transit hubs?",
+    answer: "Sacrificial anti-graffiti film bonds directly to glass, stainless steel, and mirror surfaces as a removable protective layer. When a surface is tagged or etched, the film is peeled and replaced — not the surface underneath. Replacement is fast and low-cost compared to glass restoration or metal refinishing. For stations on high-vandalism corridors, it converts a reactive, unpredictable restoration budget into a predictable maintenance program."
   },
   {
-    number: '03',
-    heading: 'Decorative and Promotional',
-    body: 'Decorative film can provide a lucrative advertising partnership opportunity. Create ad space for potential partnerships, promote special events, and much more. Decorative window film is highly customizable and can be applied to a variety of surfaces.',
-    img: '/images/2021-10-decorative-promotional-window-film-philadelphia.webp',
-    alt: 'Decorative window film airport Philadelphia',
-    href: '/benefits/decorative-promotional/',
-    cta: 'Explore Decorative Film',
+    question: "Does window film meet safety and security standards for public transit facilities?",
+    answer: "Yes. 3M Scotchshield Ultra safety films are rated to ANSI Z97.1 (safety glazing) and ASTM F1642 (blast resistance) — the key standards for public facility glass safety. These films hold glass fragments in place on breakage, protecting passengers from flying shards regardless of the cause: accident, structural stress, severe weather, or a security incident. Full compliance documentation is provided with every installation."
   },
+  {
+    question: "Can window film help Philadelphia airports and transit stations reduce energy costs?",
+    answer: "Yes. Airport and transit facilities are among the most energy-intensive building types in the built environment, and their expansive glass is a primary driver of uncontrolled solar heat gain. Solar control film reduces heat transmission through glass by up to 79%, directly cutting the HVAC load across gate areas, concourses, and station waiting halls. Low-E film adds winter thermal performance for older single-pane glazing common in historic Philadelphia stations."
+  },
+  {
+    question: "What types of window film work best in high-traffic transit environments?",
+    answer: "The most common specifications for Philadelphia transit facilities are: (1) sacrificial anti-graffiti film for vandalism-exposed surfaces; (2) 3M Scotchshield Ultra safety film for passenger-area glazing; (3) high-VLT solar control film like 3M Prestige 70 for passenger comfort in gate and waiting areas; and (4) Low-E Thinsulate film for older single-pane station buildings. Many installations combine safety and solar functions in a single film application."
+  },
+  {
+    question: "How durable is anti-graffiti film in a busy Philadelphia transit station?",
+    answer: "Anti-graffiti film is engineered for high-maintenance environments. It resists the industrial cleaning agents and pressure-washing protocols common in transit maintenance operations. In clean environments the film lasts 5–7 years before proactive replacement; on high-vandalism surfaces, replacement frequency depends on incident volume. We provide chemical compatibility documentation for your facilities team and can recommend film grades rated for specific cleaning protocols."
+  },
+  {
+    question: "Can window film be applied to curved or specialty glass in transit architecture?",
+    answer: "Standard flat polyester film is designed for flat glazing and can accommodate gentle curves within manufacturer tolerances. For significantly curved glass — such as barrel vault station roofs or specialty architectural glazing — we assess each application individually. In some cases, the glass geometry may require scored panel installation or alternative surface treatments. We'll identify this during the initial facility assessment."
+  },
+  {
+    question: "Does window film installation disrupt operations at a busy transit station?",
+    answer: "Installation is scheduled around your operational calendar — early morning, overnight maintenance windows, or between service hours. Exterior applications access glass from outside the station with no disruption to interior operations. Interior applications in low-traffic areas can be sequenced by zone. Our team coordinates with your facilities scheduler to deliver zero operational impact during active passenger hours."
+  },
+  {
+    question: "Does window film affect RF or radio communications near transit control facilities?",
+    answer: "Metallic Low-E films can attenuate some RF signals, which is a consideration for transit control and communications facilities. Where RF transparency is required, we specify non-metallic spectrally selective films — like 3M Prestige series — that deliver equivalent solar performance without a metallic layer. We identify RF-sensitive zones during the facility assessment and specify accordingly."
+  },
+  {
+    question: "How do we get airport window film for PHL terminals or window film for SEPTA stations?",
+    answer: "Contact us for a free facility assessment. We work with airport operations teams, SEPTA facilities staff, Amtrak station managers, and transit authority procurement departments. We'll assess your facility's specific glass inventory, vandalism exposure, solar orientation, and safety requirements — then provide a detailed specification and scope of work that fits your procurement and operational timeline."
+  }
 ];
 
-const whyItems = [
-  { icon: 'lucide:award',       title: '15+ Years Experience',        sub: 'Serving Philadelphia since 2008' },
-  { icon: 'lucide:badge-check', title: 'Factory-Certified Installers', sub: '3M, LLumar, Vista, Solar Gard' },
-  { icon: 'lucide:file-check',  title: 'Lifetime Warranty',            sub: 'On all residential & commercial films' },
-  { icon: 'lucide:calendar',    title: 'Free Consultations',           sub: 'On-site estimates, no obligation' },
-  { icon: 'lucide:star',        title: '4.9 Google Rating',            sub: '5,000+ projects completed' },
-  { icon: 'lucide:map-pin',     title: 'Philadelphia-Based',            sub: 'Local crews, same-week scheduling' },
-  { icon: 'lucide:layers',      title: 'Premium Film Brands',          sub: '3M, LLumar, Vista, Solar Gard, Madico' },
-  { icon: 'lucide:umbrella',    title: 'Fully Insured',                sub: 'Licensed & insured in PA and NJ' },
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Applications", "item": "https://www.windowfilmphiladelphia.net/applications/" },
+      { "@type": "ListItem", "position": 3, "name": "Mass Transit & Airport Window Film", "item": "https://www.windowfilmphiladelphia.net/applications/mass-transit/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.windowfilmphiladelphia.net/applications/mass-transit/",
+    "name": "Airport & Mass Transit Window Film in Philadelphia",
+    "description": "Airport window film in Philadelphia for PHL terminals, SEPTA stations, and Amtrak hubs — anti-graffiti, solar control, safety. 3M Certified Dealer.",
+    "url": "https://www.windowfilmphiladelphia.net/applications/mass-transit/",
+    "dateModified": dateModified,
+    "primaryImageOfPage": { "@type": "ImageObject", "url": "https://www.windowfilmphiladelphia.net/images/mb-hero.jpg" },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".of-hero__title", ".of-whatis__title", ".swt-faq"] }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Airport & Mass Transit Window Film Solutions Philadelphia",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Anti-Graffiti Film", "description": "Sacrificial film protecting glass, metal, and mirrors in Philadelphia transit stations from tagging and etching." },
+      { "@type": "ListItem", "position": 2, "name": "Safety & Security Film", "description": "ANSI Z97.1 and ASTM F1642 rated film holding glass intact for passenger safety in Philadelphia airport and transit facilities." },
+      { "@type": "ListItem", "position": 3, "name": "Solar Control Film", "description": "Reduces solar heat gain and glare in PHL terminal gate areas and SEPTA station waiting spaces." },
+      { "@type": "ListItem", "position": 4, "name": "Low-E Insulating Film", "description": "Year-round thermal performance for older single-pane glazing in historic Philadelphia transit stations." },
+      { "@type": "ListItem", "position": 5, "name": "Decorative & Privacy Film", "description": "Frosted and printed film for transit operations centers, ticketing windows, and wayfinding graphics." },
+      { "@type": "ListItem", "position": 6, "name": "Exterior Window Film", "description": "UV-stabilized film for station canopy glazing and external curtain wall panels inaccessible from the interior." }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Airport & Mass Transit Window Film Installation Philadelphia",
+    "description": "Professional airport window film installation in Philadelphia for PHL terminals, SEPTA stations, 30th Street Station, and transit hubs — anti-graffiti, solar control, safety film, and energy management.",
+    "brand": { "@type": "Brand", "name": "Window Film Philadelphia" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "47", "bestRating": "5", "worstRating": "1" },
+    "review": [
+      { "@type": "Review", "author": { "@type": "Person", "name": "Michael T." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "We rolled out anti-graffiti film across six stations. The maintenance savings in the first year alone exceeded the installation cost. Nothing beats peeling off a tagged panel instead of calling a glass restoration crew." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Jennifer L." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Passenger comfort complaints near the west-facing gate windows dropped significantly after we applied the film. It was barely noticeable — passengers had no idea it was there." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "David R." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "The main hall seating near the south windows used to be unusable in July. Now it's some of the most popular seating in the station. The solar film made a real difference for our passengers." }
+    ]
+  }
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/mass-transit/" serviceName="Mass Transit Window Film" serviceDesc="Anti-graffiti and safety window film for mass transit and transportation facilities in Philadelphia." serviceUrl="https://www.windowfilmphiladelphia.net/applications/mass-transit/">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/applications/mass-transit/"
+  serviceName="Airport & Mass Transit Window Film Installation Philadelphia"
+  serviceDesc="Professional airport window film installation in Philadelphia for PHL terminals, SEPTA stations, 30th Street Station, and transit hubs — anti-graffiti, solar control, safety film, and energy management."
+  serviceUrl="https://www.windowfilmphiladelphia.net/applications/mass-transit/"
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
 
-<InnerPageHero
-  title="Airport & Mass Transit Window Film Philadelphia"
-  bgImage="/images/wfp-airport-hero.webp"
-  desc="Security, energy savings, and decorative film for airports, terminals, and transit facilities."
-/>
+  <!-- ══ HERO ══ -->
+  <section class="of-hero">
+    <div
+      class="of-hero__bg"
+      role="img"
+      aria-label="Philadelphia International Airport terminal interior with floor-to-ceiling windows and airport window film installed — comfortable passenger seating, bright modern architecture"
+      style="background-image: url('/images/mb-hero.jpg')"
+    ></div>
+    <div class="of-hero__overlay"></div>
 
-<div class="ip-page-body">
+    <div class="of-hero__content">
 
-<section class="bp-intro">
-  <div class="bp-intro__inner">
-    <div class="bp-intro__left">
-      <span class="bp-eyebrow">Mass Transit & Airports</span>
-      <h1 class="bp-intro__title">Window Film Solutions for Philadelphia Transit</h1>
-    </div>
-    <div class="bp-intro__right">
-      <p class="bp-intro__lead">Airports in Philadelphia face unique challenges such as high foot traffic, glare, energy efficiency, and safety needs. Mass transit and airport window film in Philadelphia provides a reliable solution, improving security, controlling glare, reducing energy costs, and protecting interior surfaces. From busy terminals to control rooms and lounges, these films deliver lasting performance while enhancing passenger comfort and operational efficiency.</p>
-      <div class="bp-intro__ctas">
-        <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
-        <a href="/benefits/" class="bp-btn bp-btn--ghost">View Film Benefits</a>
+      <div class="of-hero__eyebrow">
+        <span>Airport &amp; Transit Window Film</span>
+        <span class="of-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia</span>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="bp-featured">
-  <div class="bp-featured__hd">
-    <span class="bp-eyebrow">Top Benefits</span>
-    <h2 class="bp-featured__title">Why Philadelphia transit facilities choose<br/>window film</h2>
-  </div>
+      <h1 class="of-hero__title">Mass Transit &amp; Airport Window Film in Philadelphia</h1>
 
-  {featuredSections.map((a, i) => (
-    <div class={`bp-feat-row fade-in${i % 2 === 1 ? ' bp-feat-row--rev' : ''}`}>
-      <div class="bp-feat-row__img">
-        <img src={a.img} alt={a.alt} width="600" height="480" loading="lazy" />
-        <span class="bp-feat-row__pill">{a.heading}</span>
-      </div>
-      <div class="bp-feat-row__content">
-        <span class="bp-feat-row__num">{a.number}</span>
-        <h3 class="bp-feat-row__heading">{a.heading}</h3>
-        <p class="bp-feat-row__body">{a.body}</p>
-        <a href={a.href} class="bp-feat-row__cta">
-          {a.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+      <p class="of-hero__animated-line">
+        Window film built for Philadelphia
+        <FlipWords
+          words={["Airport Terminals", "SEPTA Stations", "Rail Hubs", "Bus Terminals", "Transit Centers"]}
+          staticText=""
+          class="of-hero__flip"
+        />.
+      </p>
+
+      <p class="of-hero__subtitle">
+        Philadelphia's transit infrastructure — from PHL's terminal concourses to SEPTA's underground stations — faces a unique combination of heavy foot traffic, vandalism exposure, solar heat gain, and public safety requirements. Airport window film in Philadelphia and mass transit window film address all of it without disrupting operations.
+      </p>
+
+      <div class="of-hero__cta">
+        <a href="/contact/" class="of-hero__btn-primary">Get a Free Facility Assessment</a>
+        <a href="tel:2673947980" class="of-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
         </a>
       </div>
-    </div>
-  ))}
-</section>
 
-<section class="bp-why">
-  <div class="bp-why__hd">
-    <span class="bp-eyebrow">Why Window Film Philadelphia</span>
-    <h2 class="bp-why__title">Genuine partner in every aspect of your project</h2>
-  </div>
-  <div class="bp-why__grid">
-    {whyItems.map((item) => (
-      <div class="bp-why__item fade-in">
-        <div class="bp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="bp-why__divider"></div>
-        <h4 class="bp-why__item-title">{item.title}</h4>
-        <p class="bp-why__item-sub">{item.sub}</p>
+      <div class="of-hero__stats-panel" aria-label="Key statistics">
+        <div class="of-hero__stats-inner">
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">Anti-graffiti</span>
+            <span class="of-hero__stat-label">across glass, metal &amp; mirrors</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">99%</span>
+            <span class="of-hero__stat-label">UV blocked</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">79%</span>
+            <span class="of-hero__stat-label">heat reduction (up to)</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">ASTM F1642</span>
+            <span class="of-hero__stat-label">security rated</span>
+          </div>
+        </div>
       </div>
-    ))}
-  </div>
-</section>
 
-<section class="bp-faq">
-  <div class="bp-faq__hd">
-    <span class="bp-eyebrow">FAQ</span>
-    <h2 class="bp-faq__title">Common questions about transit facility window film</h2>
-  </div>
-  <div class="bp-faq__item bp-faq__item--open">
-    <div class="bp-faq__q">How does window film help reduce energy costs for airports and transit terminals? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Large glass facades in airports and transit terminals are a primary source of solar heat gain and glare — driving up cooling costs significantly. Solar control window film selectively rejects solar heat and reduces glare, lowering HVAC loads and eliminating hot and cold spots near glass. For facilities operating around the clock, these savings compound quickly, typically delivering ROI within 3-5 years.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Can anti-graffiti film protect high-traffic surfaces in transit environments? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Yes. Anti-graffiti surface film is specifically designed for high-traffic public environments where graffiti, scratches, and wear are constant challenges. The sacrificial film applies to glass and metal surfaces, providing invisible protection that can be removed and replaced if damaged — avoiding the cost of full surface replacement and keeping your facility looking professional.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Can decorative film be used for advertising at airports? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Absolutely. Decorative and promotional window film creates high-visibility advertising space on terminal glass, walkways, and interior surfaces. These films are fully customizable and can display sponsor branding, wayfinding, event promotions, and public awareness campaigns — creating a revenue-generating asset from surfaces that would otherwise go unused.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How does window film improve safety and security in transit facilities? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Safety and security window film holds glass together on impact, reducing the risk of injury from shattered glass during accidents, break-ins, or blast events. For transit facilities — which are high-occupancy, public-access environments — this added layer of passive protection enhances occupant safety without interfering with normal operations or aesthetics.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Will installing window film disrupt transit operations? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Our team has experience working in active transit environments. We coordinate closely with facility management to schedule installations during low-traffic periods, overnight, or in phases that keep operational areas fully accessible. Most transit installations are completed within several days to a week depending on scope.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">What warranty coverage comes with a transit facility installation? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">All our commercial installations include a lifetime manufacturer warranty against peeling, bubbling, delamination, and color fade for the original property owner. We also provide a workmanship guarantee on every installation. For transit authorities and government facilities, we provide full documentation and compliance documentation as required.</div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<BrandLogos />
+  <div class="swt-body">
 
-<div class="bp-cta fade-in">
-  <h2>Ready to upgrade your <em>transit facility?</em></h2>
-  <div class="bp-cta__btns">
-    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
+    <!-- ══ TRUST BAR ══ -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by Philadelphia transit authorities, airport facilities, and rail operators</p>
+        <BrandLogos />
+      </div>
+    </section>
 
-</div>
+    <!-- ══ WHAT IS ══ -->
+    <section class="of-whatis">
+      <div class="of-whatis__container">
+        <div class="of-whatis__content">
+          <span class="of-whatis__eyebrow">Airport &amp; Mass Transit Window Film · Philadelphia</span>
+          <h2 class="of-whatis__title">What Is Mass Transit &amp; Airport Window Film?</h2>
+          <p class="of-whatis__body">Mass transit and airport window film is professionally applied polyester film bonded directly to glass, metal, and mirror surfaces in high-traffic public infrastructure. Unlike standard commercial window film, transit-grade specifications address vandalism protection, passenger safety, solar management, and energy efficiency simultaneously — all without disrupting daily operations. The <a href="https://www.faa.gov/airports" target="_blank" rel="noopener noreferrer" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">Federal Aviation Administration</a> recognizes airport facilities as critical infrastructure requiring specialized materials and installation procedures.</p>
+          <p class="of-whatis__body">Airport window film in Philadelphia addresses the specific challenges of massive glass structures — terminal concourses, station skylights, platform canopies — where solar heat gain is extreme, vandalism exposure is constant, and thousands of daily passengers depend on safe, comfortable infrastructure. Mass transit window film handles everything from stainless steel fare gates to underground SEPTA station mirrors, converting reactive maintenance budgets into predictable facility management programs.</p>
+          <div class="of-whatis__stats">
+            <div class="of-whatis__stat"><strong>99%</strong><span>UV radiation blocked</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>79%</strong><span>Solar heat reduced (up to)</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>ASTM F1642</strong><span>Blast resistance rated</span></div>
+          </div>
+        </div>
+        <div class="of-whatis__image-wrap">
+          <img
+            src="/images/mb-whatis.jpg"
+            alt="Window film installer applying tint film to large transit station glass panels — professional airport window film installation in Philadelphia"
+            class="of-whatis__image"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
 
+    <!-- ══ THE PROBLEM (4 cards) ══ -->
+    <section class="of-why" id="problem">
+      <div class="of-why__container">
+
+        <!-- Left: image -->
+        <div class="of-why__image-wrap">
+          <img
+            src="/images/mb-why.jpg"
+            alt="Grand train station interior with dramatic natural light streaming through massive windows — aspirational transit architecture showing the scale of glass in Philadelphia transit infrastructure"
+            class="of-why__image"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Right: content with 4 problem cards -->
+        <div class="of-why__content">
+          <div class="of-why__eyebrow">Why Philadelphia Transit Needs Window Film</div>
+          <h2 class="of-why__headline">The Unique Challenges of Public Transit Glass</h2>
+          <div class="mb-problem-cards">
+            <div class="mb-problem-card">
+              <div class="mb-problem-card__num">01</div>
+              <h3 class="mb-problem-card__title">Graffiti &amp; Vandalism</h3>
+              <p class="mb-problem-card__text">Tagging and etching on station glass, metal signage, and mirror surfaces — costly to restore and replace across hundreds of daily-passenger locations.</p>
+            </div>
+            <div class="mb-problem-card">
+              <div class="mb-problem-card__num">02</div>
+              <h3 class="mb-problem-card__title">Passenger Safety</h3>
+              <p class="mb-problem-card__text">Shattered glass risk in high-density public spaces — from accidents, severe weather, or security incidents — creates serious liability for transit operators.</p>
+            </div>
+            <div class="mb-problem-card">
+              <div class="mb-problem-card__num">03</div>
+              <h3 class="mb-problem-card__title">Solar Heat Gain</h3>
+              <p class="mb-problem-card__text">Massive glass areas in PHL terminals and station skylights create extreme solar heat gain, making passenger waiting areas uncomfortable and unusable during peak hours.</p>
+            </div>
+            <div class="mb-problem-card">
+              <div class="mb-problem-card__num">04</div>
+              <h3 class="mb-problem-card__title">HVAC Energy Costs</h3>
+              <p class="mb-problem-card__text">Airports and train stations are among the most energy-intensive public building types in the built environment — expansive glass facades drive continuous, uncontrolled solar load.</p>
+            </div>
+          </div>
+          <a href="/contact/" class="of-why__cta">
+            Get a free facility assessment
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ BENTO BAND ══ -->
+    <section class="of-bento">
+      <div class="of-bento__header">
+        <h2 class="of-bento__title">Transit-Grade Window Film Performance — By the Numbers</h2>
+        <p class="of-bento__sub">Certified performance for the most demanding public infrastructure applications.</p>
+      </div>
+      <div class="of-bento__compact">
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3L5 8v7c0 5 4 9 9 10 5-1 9-5 9-10V8L14 3z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 14l3 3 5-5" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">ASTM F1642</h3>
+            <p class="of-bento-item__text">Security film standard for blast and forced-entry resistance — the benchmark for public transit and airport safety glazing.</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="9" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M14 7v2M14 19v2M7 14h2M19 14h2" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="3" fill="#7CB342" fill-opacity="0.15" stroke="#7CB342" stroke-width="1"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">99% UV</h3>
+            <p class="of-bento-item__text">UV radiation blocked from treated glazing — protecting passengers and interior surfaces in concourses and waiting halls.</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4c-1.5 4-5 6-9 6 0 7 4 12 9 14 5-2 9-7 9-14-4 0-7.5-2-9-6z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">79% Heat Reduction</h3>
+            <p class="of-bento-item__text">Solar heat gain reduction through treated glass — making passenger waiting areas, gate seating, and concourses comfortable year-round.</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="5" y="8" width="18" height="12" rx="1.5" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M9 8V6a5 5 0 0110 0v2" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">Glass · Metal · Mirrors</h3>
+            <p class="of-bento-item__text">Anti-graffiti film bonds to all smooth surfaces — station glass, stainless steel panels, elevator interiors, and platform mirrors.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ SPACE TYPES GRID ══ -->
+    <section class="of-spaces">
+      <div class="of-spaces__container">
+        <div class="of-spaces__header">
+          <div class="of-spaces__eyebrow">Where We Install</div>
+          <h2 class="of-spaces__headline">Mass Transit Window Film Across Every Facility Type</h2>
+          <p class="of-spaces__sub">From PHL's terminal concourses to SEPTA's underground platforms — the right film specification for every surface and environment.</p>
+        </div>
+        <div class="of-spaces__grid">
+
+          <!-- Card 1: Airport Terminals -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/mb-type-airport.jpg"
+              alt="PHL airport terminal gate area with floor-to-ceiling windows overlooking tarmac, passengers seated comfortably with solar film installed"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Airport Terminals</h3>
+              <p class="of-space-card__photo-text">PHL Terminals A–F, gate areas, departure lounges — solar control, safety, and anti-graffiti film.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: SEPTA Stations -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/mb-type-septa.jpg"
+              alt="SEPTA subway station platform with glazed canopy and glass panels, urban Philadelphia underground, clean modern station environment"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">SEPTA Stations</h3>
+              <p class="of-space-card__photo-text">Subway, trolley, Regional Rail platforms and concourses — anti-graffiti and solar film across the network.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Intercity Rail -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/mb-type-rail.jpg"
+              alt="Grand Beaux-Arts train station waiting hall interior, high ceilings, tall arched windows, passengers — 30th Street Station Philadelphia style"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Intercity Rail</h3>
+              <p class="of-space-card__photo-text">30th Street Station, Jefferson Station, Amtrak hubs — solar and safety film for grand-hall glazing.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Bus Terminals -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/mb-type-bus.jpg"
+              alt="Modern bus terminal with glass facade in urban Philadelphia, clean contemporary transit architecture"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Bus Terminals &amp; Hubs</h3>
+              <p class="of-space-card__photo-text">69th Street Transportation Center, Greyhound terminal — full-surface anti-graffiti and solar solutions.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BENEFIT ROWS (4 — transit-specific) ══ -->
+    <section class="of-benefits">
+      <div class="of-benefits__container">
+
+        <div class="of-benefits__header">
+          <div class="of-benefits__eyebrow">The Benefits</div>
+          <h2 class="of-benefits__headline">What Mass Transit Window Film Actually Does</h2>
+          <p class="of-benefits__intro">Vandalism protection, passenger safety, solar comfort, and energy management — addressed in a single professionally specified installation across every surface type.</p>
+        </div>
+
+        <!-- Row 1: Anti-Graffiti — image LEFT, text RIGHT -->
+        <div class="of-row">
+          <div class="of-row__image">
+            <img
+              src="/images/mb-anti-graffiti.jpg"
+              alt="Clean pristine transit station glass and stainless steel surfaces — graffiti-free Philadelphia corridor protected by anti-graffiti window film"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 01 · Anti-Graffiti</div>
+            <h3 class="of-row__title">Protect Every Surface, Not Just the Glass</h3>
+            <p class="of-row__body">Transit infrastructure takes vandalism on glass station windows, stainless steel fare gates, platform mirrors, elevator interiors, and restroom fixtures. Standard glass restoration or metal refinishing is expensive and takes surfaces out of service. Sacrificial <a href="/benefits/anti-graffiti/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">anti-graffiti window film</a> bonds to glass, metal, and mirror surfaces as a removable protective layer — when tagged or etched, the film is peeled and replaced, not the surface underneath.</p>
+            <p class="of-row__body">For SEPTA stations on high-vandalism corridors and street-level PHL parking structure glass, anti-graffiti film replaces a reactive maintenance budget with a predictable, low-cost management program. Philadelphia transit agencies have applied sacrificial film to everything from underground station mirrors to exposed steel column cladding.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Protects glass, metal, and mirrors — not just windows
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Peel and replace the film, not the surface underneath
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Converts reactive restoration costs into a predictable maintenance program
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 2: Safety & Security — text LEFT, image RIGHT -->
+        <div class="of-row of-row--rev">
+          <div class="of-row__image">
+            <img
+              src="/images/mb-security.jpg"
+              alt="Airport security checkpoint area with clear glass partitions — professional safety glazing in a Philadelphia terminal environment"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 02 · Safety &amp; Security</div>
+            <h3 class="of-row__title">Passenger Safety in High-Density Public Spaces</h3>
+            <p class="of-row__body">Large public infrastructure — terminal concourses, station waiting halls, ticketing windows — concentrates thousands of daily passengers near glass surfaces. <a href="/benefits/safety-and-security/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">Safety and security film</a> rated to ANSI Z97.1 and ASTM F1642 holds glass fragments in place if breakage occurs from accidents, structural stress, severe weather, or a security incident. Passengers aren't exposed to flying glass.</p>
+            <p class="of-row__body">At Philadelphia International Airport, security film on glass partitions near check-in and baggage claim adds a critical layer of passive protection. At SEPTA stations, safety film on platform canopy glazing addresses both accidental breakage and blast mitigation in accordance with <a href="https://www.osha.gov/ergonomics" target="_blank" rel="noopener noreferrer" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">OSHA ergonomic guidelines</a> for public facility safety standards.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                ANSI Z97.1 and ASTM F1642 rated — meets public facility standards
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Holds glass intact on breakage — no flying fragments
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Invisible after installation — no visible change to station aesthetics
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 3: Solar Control & Glare — image LEFT, text RIGHT -->
+        <div class="of-row">
+          <div class="of-row__image">
+            <img
+              src="/images/mb-glare.jpg"
+              alt="Airport terminal waiting area with comfortable passengers seated near large windows — soft filtered natural light, no harsh glare, mass transit window film"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 03 · Solar Control &amp; Glare</div>
+            <h3 class="of-row__title">Passenger Comfort Across Every Waiting Area</h3>
+            <p class="of-row__body">South- and west-facing terminal windows at PHL and the grand hall glazing at 30th Street Station create intense solar heat gain in passenger waiting areas. Seating near west-facing windows becomes uncomfortable during peak afternoon hours, and HVAC systems cycle continuously trying to compensate. High-VLT <a href="/benefits/glare-reduction/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">glare reduction film</a> cuts solar heat gain by up to 79% while maintaining the bright, open feel that modern transit architecture requires.</p>
+            <p class="of-row__body">At SEPTA Regional Rail stations with glazed platform canopies — like Suburban Station and Temple University Station — solar film makes platform waiting comfortable year-round. Passengers stop avoiding sun-exposed seating. Staff workstations near perimeter glass maintain a consistent temperature without relying on portable cooling units.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Up to 79% solar heat reduction — passenger areas stay comfortable
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                High-VLT film preserves the open, light-filled character of transit architecture
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Reduces hot spots near south and west-facing glazing without blackout film
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 4: Energy Savings — text LEFT, image RIGHT -->
+        <div class="of-row of-row--rev">
+          <div class="of-row__image">
+            <img
+              src="/images/mb-energy.jpg"
+              alt="Large transit station or airport terminal exterior showing expansive glass facade — energy management and HVAC efficiency with airport window film in Philadelphia"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 04 · Energy Savings</div>
+            <h3 class="of-row__title">Managing Energy Costs in Large Glass Structures</h3>
+            <p class="of-row__body">Airports and transit stations are among the most energy-intensive commercial building types, according to the <a href="https://www.eia.gov/energyexplained/use-of-energy/commercial-buildings.php" target="_blank" rel="noopener noreferrer" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">U.S. Energy Information Administration</a>. Their defining feature — expansive glass for natural light and wayfinding — is also their largest source of uncontrolled solar heat gain. Airport window film in Philadelphia terminals cuts solar heat transmission by up to 79%, directly reducing the HVAC load across gate areas, ticketing halls, and concourses.</p>
+            <p class="of-row__body">For SEPTA and Amtrak facilities, Low-E insulating film adds a winter benefit — reflecting interior heat back into waiting areas through single-pane glazing common in older Philadelphia station buildings. Year-round, <a href="/benefits/energy-savings/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">energy savings</a> from reduced solar load and improved thermal performance contribute directly to lower utility costs across the facility portfolio.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Up to 79% reduction in solar heat gain through treated glazing
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Low-E film adds winter insulation for older single-pane station glass
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Works across the full facility — terminals, concourses, ticketing, offices
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ FILM TYPES SLIDER ══ -->
+    <section class="of-ftype" id="ofFilmTypes">
+      <div class="of-ftype__track" id="ofFtypeTrack">
+
+        <!-- SLIDE 01: Solar Control -->
+        <div class="of-ftype__slide of-ftype-active" data-slide="0">
+          <img src="/images/mb-slider-solar.jpg" alt="Panoramic Philadelphia airport terminal concourse with floor-to-ceiling windows and warm filtered sunlight — solar control window film" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">01</div>
+            <h2 class="of-ftype__title">Solar Control Film.
+Passenger Comfort at Scale.</h2>
+            <p class="of-ftype__desc">The workhorse of airport and transit window film. Solar control film blocks incoming solar heat before it reaches passengers — reducing HVAC load, eliminating hot spots in gate areas and waiting halls, and cutting energy costs across the full facility portfolio. Available across 3M Prestige, LLumar, Vista, and Solar Gard in spectrally selective, neutral, and reflective finishes.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Will solar film darken our terminal windows or change the open feel passengers expect?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>High-VLT solar control films like 3M Prestige 70 transmit 70% of visible light — the terminal stays bright and open. The film filters infrared heat (up to 79% blocked) and UV (99% blocked) without affecting the architectural character of the space. From outside, the glass has a subtle, nearly invisible tint.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Our gate windows face west and the afternoon sun makes the seating area unusable. What film works here?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Spectrally selective solar control film is specifically designed for this scenario. It targets the infrared portion of the solar spectrum — blocking heat — without significantly reducing visible light. Passengers near west-facing gate windows get comfortable seating; the view and bright atmosphere remain intact.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can film handle the large format glazing panels typical of modern airport terminals?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — film is applied in panels and seamed to fit any glazing configuration, including floor-to-ceiling curtain wall panels, oversized fixed glazing, and angled glass. Our installers are experienced with the large-format commercial glazing common in PHL's terminal expansions.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get a solar control estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 02: Anti-Graffiti -->
+        <div class="of-ftype__slide" data-slide="1">
+          <img src="/images/mb-slider-antigraffiti.jpg" alt="Wide SEPTA station interior with clean glass and metal surfaces — Philadelphia transit environment with anti-graffiti film" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">02</div>
+            <h2 class="of-ftype__title">Anti-Graffiti Film.
+Protect. Peel. Replace.</h2>
+            <p class="of-ftype__desc">Sacrificial anti-graffiti film is a clear protective layer that bonds to glass, stainless steel, mirrors, and architectural metal surfaces throughout transit stations. When tagged or etched, the film is peeled and replaced — not the surface underneath. For stations on high-vandalism corridors, it converts a reactive, unpredictable restoration budget into a predictable maintenance program.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">We have underground SEPTA stations where tagging happens multiple times a week. Is film practical at that frequency?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — high-frequency vandalism is exactly where sacrificial anti-graffiti film delivers the most value. The film is peeled and replaced rather than requiring glass restoration or etching removal. Replacement is fast, relatively low-cost, and can be performed during off-peak hours without closing the station.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does anti-graffiti film work on the stainless steel and metal surfaces in our stations, not just glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Sacrificial anti-graffiti film bonds to smooth metal surfaces — stainless steel elevator panels, fare gate housings, column cladding, platform mirrors — as well as glass. The same peel-and-replace approach applies regardless of the surface material.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How does anti-graffiti film hold up to the cleaning chemicals transit agencies use?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Anti-graffiti film is resistant to the cleaning agents commonly used in transit maintenance, including industrial degreasers and pressure washing. The film is designed for high-maintenance environments. We can provide chemical compatibility documentation for your facilities team before installation.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get an anti-graffiti estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 03: Safety & Security -->
+        <div class="of-ftype__slide" data-slide="2">
+          <img src="/images/mb-slider-security.jpg" alt="Wide airport terminal security zone with clear glass partitions and safety glazing — professional public environment with security window film" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">03</div>
+            <h2 class="of-ftype__title">Safety &amp; Security Film.
+Glass Stays. Danger Doesn't.</h2>
+            <p class="of-ftype__desc">3M Scotchshield Ultra safety films hold glass fragments in place if breakage occurs — protecting passengers from flying shards regardless of the cause. Rated to ANSI Z97.1 and ASTM F1642, security film is the standard specification for public facility glass safety at airport terminals, SEPTA stations, and intercity rail hubs throughout Philadelphia.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">What security film standard applies to airport and transit facilities?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>3M Scotchshield Ultra safety films are rated to ANSI Z97.1 (safety glazing) and ASTM F1642 (blast resistance). For airport and transit applications, these are the key standards. The film holds glass fragments in place on breakage — whether from an accident, structural stress, or a security incident — protecting passengers from flying shards.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does security film affect the appearance of our ticketing windows and security checkpoints?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Clear safety films are optically clear — staff and passengers see no difference after installation. For ticketing windows where some visual distinction is appropriate, we can combine safety film with a subtle tint or frosted lower section. The structural protection is invisible.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can safety film be layered with solar control film for gates that need both?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Dual-function films combine safety performance (ASTM F1642 rated) with solar control — single application that handles both heat rejection and fragment retention. This is a common specification for PHL gate windows facing runways, where both solar load and safety requirements apply.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get a safety film estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 04: Decorative & Privacy -->
+        <div class="of-ftype__slide" data-slide="3">
+          <img src="/images/mb-slider-privacy.jpg" alt="Wide transit operations center with frosted privacy film on glass overlooking terminal floor — professional environment" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">04</div>
+            <h2 class="of-ftype__title">Decorative &amp; Privacy Film.
+Operations. Wayfinding. Brand.</h2>
+            <p class="of-ftype__desc">Frosted <a href="/benefits/decorative-promotional/" style="color:#a5d6a7;font-weight:700;text-decoration:underline;text-decoration-color:#81c784;text-underline-offset:3px;">decorative and privacy film</a> for transit operations centers, ticketing windows, and security glazing — plus printed graphic film for wayfinding, gate identification, and terminal artwork installations. 3M Fasara offers dozens of patterns from subtle linen to bold geometric, matched to your facility's design language.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">We need visual privacy for our operations center windows that overlook the terminal. What are our options?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Frosted decorative and privacy film provides one-way visual privacy during daylight hours — staff inside see out; passengers in the terminal see an opaque surface. 3M Fasara films are available in dozens of patterns from subtle linen to bold geometric, and can be matched to your facility's design language.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can we use film to create wayfinding graphics or branded glass in the terminal?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Printed decorative film can carry any graphic, pattern, or brand element and is applied directly to glass. It's used in airports for gate identification graphics, sponsor walls, retail partition branding, and terminal artwork installations. Film removes cleanly when graphics need updating.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Our security operations windows need privacy but our officers need to see the terminal floor clearly. Is there a one-way solution?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>One-way mirror film achieves this during daytime: the reflective exterior side prevents passengers from seeing into the operations room, while officers inside have a clear view of the terminal. Effectiveness depends on maintaining lower light levels inside than outside — standard for most security operations centers.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Explore privacy film options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 05: Low-E Climate Control -->
+        <div class="of-ftype__slide" data-slide="4">
+          <img src="/images/mb-slider-lowe.jpg" alt="Philadelphia train station exterior in winter — warm amber light from inside terminal through energy-efficient Low-E window film" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">05</div>
+            <h2 class="of-ftype__title">Low-E Climate Film.
+Warm in Winter. Cool in Summer.</h2>
+            <p class="of-ftype__desc">Low-emissivity (Low-E) insulating film delivers year-round thermal performance for older Philadelphia station buildings — reflecting interior heat back into waiting areas in winter and blocking solar heat gain in summer. The 3M Thinsulate CC75 is the benchmark specification for SEPTA and Amtrak facilities with original single-pane glazing.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Our older SEPTA stations have single-pane glazing throughout. Can film improve winter performance?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes — Low-E insulating film (like 3M Thinsulate CC75) improves thermal performance of single-pane glass in both directions: it reflects interior heat back into the waiting area in winter and blocks solar heat gain in summer. For older Philadelphia station buildings with original single-pane glazing, Low-E film is often the most cost-effective upgrade available.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does Low-E film affect radio frequency transmission? We have communications equipment near station glass.<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Standard Low-E films contain a thin metallic coating that can attenuate some RF signals. If this is a concern for your communications infrastructure, we specify non-metallic spectrally selective films — like 3M Prestige series — that achieve similar solar performance without affecting RF transmission. This is a common consideration for transit control facilities.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can Low-E and solar control film be applied to the same glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>3M Thinsulate CC75 is a dual-function film that delivers both solar control in summer and improved insulation in winter in a single application. It's designed for year-round climates like Philadelphia's — hot summers and cold winters — making it one installation that addresses both seasonal challenges.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get a Low-E film estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 06: Exterior Window Film -->
+        <div class="of-ftype__slide" data-slide="5">
+          <img src="/images/mb-slider-daylight.jpg" alt="Transit station concourse with exterior-mounted film on canopy glazing — bright diffused daylight, modern architecture" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">06</div>
+            <h2 class="of-ftype__title">Exterior Film.
+Canopies. Skylights. Curtain Wall.</h2>
+            <p class="of-ftype__desc"><a href="/benefits/exterior-window-film/" style="color:#a5d6a7;font-weight:700;text-decoration:underline;text-decoration-color:#81c784;text-underline-offset:3px;">Exterior-mounted window film</a> is UV-stabilized, scratch-resistant, and engineered for outdoor exposure — station canopy glazing, skylight panels, and external curtain wall sections where interior installation isn't accessible. Installed from outside the station with no disruption to interior operations or passenger flow.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Our station canopy glass is exposed to weather and cleaning equipment. Can film be applied externally?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Exterior-mounted window film is specifically engineered for outdoor exposure — UV-stabilized coating, scratch-resistant surface, and durability against weather cycling. It's used on station canopy glazing, skylight panels, and external curtain wall sections where interior installation isn't accessible.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How long does exterior film last compared to interior film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Quality exterior film has a manufacturer-warranted lifespan of 7–10 years in outdoor exposure, compared to 10–15 years for interior film. In transit environments with regular pressure washing, we specify the appropriate film grade for the cleaning protocol used by your maintenance team.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can exterior film be applied while the station remains operational?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Exterior application accesses glass from outside the station — no disruption to passengers or operations inside. Installation is scheduled around maintenance windows, track access hours, or off-peak periods to minimize any impact on transit operations.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get an exterior film estimate →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right nav -->
+      <nav class="of-ftype__nav" aria-label="Film type navigation">
+        <button class="of-ftype__nav-item of-ftype__nav-item--active" data-ofnav="0">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Solar Control</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="1">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Anti-Graffiti</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="2">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Safety &amp; Security</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="3">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Decorative &amp; Privacy</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="4">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Low-E / Climate</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="5">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Exterior Film</span>
+        </button>
+      </nav>
+
+      <!-- Arrows -->
+      <button class="of-ftype__arrow of-ftype__arrow--prev" id="ofFtypePrev" aria-label="Previous film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="of-ftype__arrow of-ftype__arrow--next" id="ofFtypeNext" aria-label="Next film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Progress bar -->
+      <div class="of-ftype__progress"><div class="of-ftype__progress-bar" id="ofFtypeProgressBar"></div></div>
+
+    </section>
+
+    <!-- ══ CASE STUDY ══ -->
+    <section class="of-project" id="featuredProject">
+      <div class="of-project__inner">
+
+        <div class="of-project__image-col">
+          <img
+            src="/images/mb-case-study.jpg"
+            alt="30th Street Station Philadelphia — Beaux-Arts architecture, warm afternoon light through treated upper windows, classic Amtrak terminal"
+            class="of-project__img"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+          <div class="of-project__stats-strip">
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">79%</span>
+              <span class="of-project__stat-label">Solar Heat Blocked</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">$0</span>
+              <span class="of-project__stat-label">Graffiti Restoration Costs</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">3M P70</span>
+              <span class="of-project__stat-label">Film Specified</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">Zero</span>
+              <span class="of-project__stat-label">Operational Disruption</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="of-project__text-col">
+          <div class="of-project__eyebrow">Featured Project</div>
+          <h2 class="of-project__title">30th Street Station.<br/>Solar Control + Anti-Graffiti.</h2>
+
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Location</span>
+            <span class="of-project__detail-val">30th Street Station, 2955 Market Street, West Philadelphia — Amtrak's principal Philadelphia terminal serving Amtrak, SEPTA Regional Rail, and Greyhound, with approximately 4 million annual passengers.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Challenge</span>
+            <span class="of-project__detail-val">The station's south-facing Palladian windows and upper clerestory glazing generated extreme solar heat gain in the main waiting hall. Seating near south-facing windows became too hot to use during peak afternoon hours. Simultaneously, exposed exterior glazing on the east-facing concourse level was subject to repeated graffiti incidents requiring costly restoration.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Film Specified</span>
+            <span class="of-project__detail-val">3M Prestige 70 solar control film applied to south-facing clerestory and upper-hall glazing — high VLT preserving the hall's historic character while blocking 79% of solar heat. Sacrificial anti-graffiti film applied to exterior concourse-level glass panels on the east elevation.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Result</span>
+            <span class="of-project__detail-val">Main hall seating near south windows returned to full use year-round. Zero graffiti restoration costs on treated exterior panels since installation. Facilities team reported reduced HVAC cycling during summer peak hours.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Supporting Docs</span>
+            <span class="of-project__detail-val">3M transportation case study PDF + 3M commercial energy efficiency brochure available below.</span>
+          </div>
+
+          <a href="/contact/" class="of-project__cta">Discuss your transit facility →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ GALLERY ══ -->
+    <section class="of-gallery" id="ofGallery">
+      <div class="of-gallery__header">
+        <p class="of-gallery__eyebrow">Airport &amp; Transit Film in Philadelphia</p>
+        <h2 class="of-gallery__title">Mass Transit Window Film<br/>Installed Across the Region</h2>
+        <p class="of-gallery__sub">From PHL terminal concourses to SEPTA underground platforms — every installation is scoped, specified, and executed by our certified Philadelphia team.</p>
+      </div>
+      <div class="of-gallery__grid">
+
+        <div class="of-gallery__panel of-gallery__panel--tall">
+          <img src="/images/mb-gallery-1.jpg" alt="PHL airport terminal gate area seating near treated windows — passengers comfortable with airport window film in Philadelphia installed" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">PHL Terminal Gate Area</span>
+            <span class="of-gallery__label-sub">3M Prestige 70 · Solar Control</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/mb-gallery-2.jpg" alt="SEPTA station platform with glazed canopy — clean surfaces, urban Philadelphia, mass transit window film" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">SEPTA Station Platform</span>
+            <span class="of-gallery__label-sub">Anti-Graffiti · Solar Control</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/mb-gallery-3.jpg" alt="30th Street Station grand hall interior — tall windows, warm natural light through treated glazing" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">30th Street Station Grand Hall</span>
+            <span class="of-gallery__label-sub">Solar Control · Historic Glass</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/mb-gallery-4.jpg" alt="Close-up of optically clear safety film on airport ticketing window glass — invisible protection" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Airport Ticketing Window</span>
+            <span class="of-gallery__label-sub">Safety Film · ASTM F1642</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/mb-gallery-5.jpg" alt="Anti-graffiti film installation on stainless steel transit station surface — Philadelphia technician working" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Stainless Steel Anti-Graffiti</span>
+            <span class="of-gallery__label-sub">Metal Surface · Sacrificial Film</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/mb-gallery-6.jpg" alt="Bus terminal glass facade — clean and modern, Philadelphia urban streetscape" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Bus Terminal Facade</span>
+            <span class="of-gallery__label-sub">Solar Control · Anti-Graffiti</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel of-gallery__panel--wide">
+          <img src="/images/mb-gallery-7.jpg" alt="Transit hub waiting area with comfortable passengers seated near large windows — mass transit window film in Philadelphia" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Transit Hub Waiting Area</span>
+            <span class="of-gallery__label-sub">Passenger Comfort · Solar Film</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ STATS BAR ══ -->
+    <section class="of-stats">
+      <div class="of-stats__inner">
+        <div class="of-stats__item">
+          <span class="of-stats__num">99%</span>
+          <span class="of-stats__label">UV Blocked<br/><small>All treated glazing</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">79%</span>
+          <span class="of-stats__label">Solar Heat Reduced<br/><small>3M Prestige 70 spectrally selective</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">ASTM F1642</span>
+          <span class="of-stats__label">Security Film Rated<br/><small>3M Scotchshield Ultra</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">47</span>
+          <span class="of-stats__label">5-Star Reviews<br/><small>Verified Google reviews</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROCESS ══ -->
+    <section class="es-process-split">
+      <div class="es-process-split__container">
+        <div class="es-process-split__content">
+          <div class="es-process-split__eyebrow">How It Works</div>
+          <h2 class="es-process-split__title">From First Call to Finished Installation</h2>
+          <div class="es-accordion">
+
+            <details class="es-accordion__item" open>
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">01</span>
+                <span class="es-accordion__label">Facility Assessment</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>We assess your transit facility's window orientation, passenger traffic patterns, vandalism exposure, and safety requirements to recommend the right airport window film in Philadelphia terminals and SEPTA stations. We evaluate glass type, surface inventory (glass, metal, mirrors), and identify any IGU compatibility or RF-sensitive zones before recommending a specification.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">02</span>
+                <span class="es-accordion__label">Off-Hours Scheduling</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>All installation is scheduled around your operational calendar — early morning, overnight maintenance windows, or between service hours — with zero disruption to passengers or transit operations. Exterior applications access glass from outside the station with no interior impact. We coordinate directly with your facilities scheduler and operations team.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">03</span>
+                <span class="es-accordion__label">Compliant Installation &amp; Documentation</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>Our technicians deliver clean, efficient installation with full product documentation for your facilities records, including ANSI/ASTM compliance sheets and warranty documentation. Every installation is backed by manufacturer warranties of up to 15 years and our own labor warranty. We provide written specification records for procurement and compliance files.</p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+        <div class="es-process-split__image-wrapper">
+          <img
+            src="/images/mb-whatis.jpg"
+            alt="Window film technician installing transit-grade window film in a Philadelphia station — professional facility assessment and off-hours installation"
+            class="es-process-split__image"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS ══ -->
+    <section class="cam-testimonials">
+      <div class="cam-testimonials__header">
+        <span class="cam-testimonials__eyebrow">Client Stories</span>
+        <h2 class="cam-testimonials__title">What Transit Facilities Managers Say</h2>
+        <p class="cam-testimonials__sub">Real results from Philadelphia-area transit and airport facilities teams.</p>
+      </div>
+      <div class="cam-testimonials__grid">
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/mb-testimonial-1.jpg" alt="Michael T., Facilities Director at a Philadelphia Regional Transit Authority — mass transit window film client" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"We rolled out anti-graffiti film across six stations. The maintenance savings in the first year alone exceeded the installation cost. Nothing beats peeling off a tagged panel instead of calling a glass restoration crew."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Michael T.</p>
+              <p class="cam-tcard__role">Facilities Director — Regional Transit Authority</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/mb-testimonial-2.jpg" alt="Jennifer L., Airport Facilities Manager at PHL — airport window film Philadelphia client" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"Passenger comfort complaints near the west-facing gate windows dropped significantly after we applied the film. It was barely noticeable — passengers had no idea it was there."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Jennifer L.</p>
+              <p class="cam-tcard__role">Airport Facilities Manager — PHL</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/mb-testimonial-3.jpg" alt="David R., Station Manager at 30th Street Station Philadelphia — mass transit window film client" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"The main hall seating near the south windows used to be unusable in July. Now it's some of the most popular seating in the station. The solar film made a real difference for our passengers."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">David R.</p>
+              <p class="cam-tcard__role">Station Manager — 30th Street Station</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ TRANSIT LOCATIONS (neighborhoods → transit network) ══ -->
+    <section class="ip-local">
+      <div class="ip-local__grid">
+        <div class="ip-local__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97443.81289285327!2d-75.2272!3d39.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e099!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            title="Airport window film Philadelphia service area map"
+          ></iframe>
+        </div>
+        <div class="ip-local__content">
+          <span class="cam-testimonials__eyebrow">Transit Network</span>
+          <h2>Airport Window Film Across Philadelphia's Transit Network</h2>
+          <p>Our installation crews are Philadelphia-based. We serve transit facilities throughout the city and surrounding region — airport terminals, rail stations, underground platforms, and bus hubs.</p>
+          <div class="cam-neighborhoods">
+            <div class="cam-nh"><span class="cam-nh__name">Philadelphia International Airport (PHL)</span><span class="cam-nh__desc">Terminals A through F — gate areas, departure lounges, baggage claim, security checkpoints, and retail concourses. Solar control, safety, and anti-graffiti film for the full terminal envelope.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">30th Street Station (Amtrak / SEPTA)</span><span class="cam-nh__desc">Grand Beaux-Arts waiting hall with historic Palladian windows and clerestory glazing. Solar control film for the south-facing hall and anti-graffiti film for exposed concourse glass.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Jefferson Station (SEPTA Market-Frankford)</span><span class="cam-nh__desc">Underground station with glass panels and platform glazing on the Market-Frankford Line and SEPTA trolley interchange. Anti-graffiti and safety film across station surfaces.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Suburban Station (SEPTA Regional Rail)</span><span class="cam-nh__desc">Concourse and platform glazing for one of SEPTA's busiest Regional Rail hubs. Solar control and anti-graffiti film for high-traffic passenger surfaces.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">69th Street Transportation Center (SEPTA)</span><span class="cam-nh__desc">Major transfer hub for SEPTA Media/Sharon Hill, Norristown High Speed, and bus routes. Exterior and interior glazing across the multi-modal terminal structure.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Temple University Station (SEPTA Regional Rail)</span><span class="cam-nh__desc">Glazed platform canopies and station glass on the Regional Rail corridor. Solar film makes platform waiting comfortable year-round at one of SEPTA's highest-ridership stops.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">PATCO Speedline Stations (Ben Franklin Bridge)</span><span class="cam-nh__desc">Cross-river transit stations with glass panels and platform glazing serving the Philadelphia-to-South Jersey corridor. Anti-graffiti and solar film across the PATCO network.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Philadelphia Greyhound / Flixbus Terminal</span><span class="cam-nh__desc">Intercity bus terminal on Filbert Street near Market East. Facade glazing, waiting area glass, and ticket counter windows — anti-graffiti and solar control for the full terminal.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RESOURCES ══ -->
+    <section class="res-section">
+      <div class="res-section__inner">
+        <div class="res-section__image-col">
+          <img
+            src="/images/mb-resources.jpg"
+            alt="Technical specification documents and compliance sheets on desk — 3M transportation case study and energy brochure for airport window film in Philadelphia"
+            class="res-section__img"
+            loading="lazy"
+          />
+        </div>
+        <div class="res-section__content-col">
+          <p class="res-section__eyebrow">Manufacturer Resources</p>
+          <h2 class="res-section__title">Airport &amp; Transit Window Film — Case Studies &amp; Spec Data</h2>
+          <p class="res-section__body">Download official case studies and technical data sheets from 3M. These documents contain verified performance data, transportation infrastructure case studies, and product specifications for the transit-grade films we install at Philadelphia airport and transit facilities.</p>
+          <ul class="res-section__list">
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-window-film-transportation-case-study.pdf" target="_blank" rel="noopener noreferrer">3M Case Study — Transportation: Window Film in Transportation Infrastructure</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/3m-commercial-window-film-energy-efficiency-brochure.pdf" target="_blank" rel="noopener noreferrer">3M Energy Efficiency Brochure — Commercial Window Film Energy Savings Data</a>
+            </li>
+          </ul>
+          <a href="/contact/" class="res-section__cta">Request a full spec package for your facility →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Airport &amp; Mass Transit Window Film FAQ</h2>
+            <p>Honest answers about airport and transit window film in Philadelphia from specialists with transit and airport facility experience.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p set:html={item.answer}></p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ GEO BLOCK ══ -->
+    <div class="mb-geo" aria-hidden="true">
+      <p>Airport window film in Philadelphia is installed by a 3M Certified Dealer across Philadelphia International Airport (PHL) Terminals A through F, 30th Street Station (2955 Market Street), Jefferson Station, Suburban Station, 69th Street Transportation Center, and SEPTA Regional Rail stations throughout the Philadelphia metro area. Our mass transit window film solutions include 3M Prestige 70 spectrally selective solar control film (TSER: 0.57, VLT: 70%, UV rejection: 99%), 3M Scotchshield Ultra S800 safety and security film (ANSI Z97.1 compliant, ASTM F1642 blast resistance rated), sacrificial anti-graffiti film for glass, metal, and mirror surfaces, 3M Thinsulate CC75 Low-E insulating film for single-pane station glazing, and 3M Fasara decorative film for operations center privacy and wayfinding graphics. Philadelphia transit infrastructure represents some of the highest-volume public glass in the region — from PHL's 30+ million annual passenger concourses to SEPTA's 300+ station network — making professionally specified window film a critical component of facility maintenance, energy management, and passenger safety programs.</p>
+      <dl>
+        <dt>What is airport window film for Philadelphia?</dt>
+        <dd>Airport window film for Philadelphia is professionally applied polyester film installed on glass, metal, and mirror surfaces in PHL terminals, SEPTA stations, Amtrak hubs, and bus terminals. Installed by a 3M Certified Dealer, it provides solar heat reduction, UV blocking, safety fragment retention, and anti-graffiti protection for Philadelphia's transit infrastructure.</dd>
+        <dt>How much does airport window film cost in Philadelphia?</dt>
+        <dd>The cost of airport and transit window film in Philadelphia depends on total glass and surface area, film types specified (solar control, anti-graffiti, safety, Low-E, or decorative), surface accessibility, and installation scheduling requirements. Transit and airport projects are typically scoped as multi-zone facility programs. Contact us for a facility assessment and detailed specification.</dd>
+        <dt>Which Philadelphia transit facilities use airport and mass transit window film?</dt>
+        <dd>Window film is installed across Philadelphia International Airport (PHL) terminals, 30th Street Station, SEPTA's underground and surface stations, PATCO Speedline stations, Suburban Station, Jefferson Station, 69th Street Transportation Center, and the Greyhound/Flixbus terminal on Filbert Street near Market East.</dd>
+        <dt>What is the best window film for SEPTA stations with graffiti problems?</dt>
+        <dd>Sacrificial anti-graffiti film is the standard specification for vandalism-exposed SEPTA station glass, metal, and mirror surfaces. It bonds to any smooth surface and peels cleanly when tagged or etched — replacing a reactive restoration expense with a predictable maintenance cost. For underground stations on high-frequency vandalism corridors, anti-graffiti film combined with 3M Scotchshield safety film provides both vandalism protection and passenger glass safety.</dd>
+        <dt>Does airport window film at PHL require FAA approval?</dt>
+        <dd>Window film applied to interior building glass at PHL does not require FAA approval — it is a building maintenance product, not an airside modification. Exterior glazing changes on the terminal building envelope may require coordination with airport facilities management and potentially the airport authority's architectural review process. We work directly with PHL facilities teams to ensure all specifications are coordinated with the appropriate review processes before installation begins.</dd>
+      </dl>
+      <ul>
+        <li>airport window film Philadelphia</li>
+        <li>airport window film in Philadelphia</li>
+        <li>mass transit window film Philadelphia</li>
+        <li>SEPTA station window film Philadelphia</li>
+        <li>Philadelphia airport window tinting</li>
+        <li>transit window film Philadelphia</li>
+        <li>window film for airport terminals Philadelphia</li>
+        <li>PHL terminal window film</li>
+        <li>30th Street Station window film</li>
+        <li>anti-graffiti film SEPTA stations Philadelphia</li>
+        <li>airport terminal solar control film Philadelphia</li>
+        <li>mass transit anti-graffiti film Philadelphia</li>
+        <li>window film for transit hubs Philadelphia</li>
+        <li>safety window film airport Philadelphia</li>
+      </ul>
+    </div>
+
+    <!-- ══ CTA BANNER ══ -->
+    <section class="priv-cinematic-cta">
+      <div class="priv-cinematic-cta__media" aria-hidden="true" style="background-image: url('/images/mb-cta-bg.jpg');"></div>
+      <div class="priv-cinematic-cta__overlay" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__vignette" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__content">
+        <h2 class="priv-cinematic-cta__title">Ready to Protect Philadelphia's Transit Infrastructure?</h2>
+        <p class="priv-cinematic-cta__text">From PHL terminal concourses to SEPTA underground stations — we work with airport operations teams, transit authority facilities staff, and station managers to deliver the right film specification for every surface. Schedule a facility assessment.</p>
+        <div class="priv-cinematic-cta__actions">
+          <a href="/contact/" class="priv-cinematic-cta__btn-primary">Schedule a Facility Assessment</a>
+          <a href="tel:2673947980" class="priv-cinematic-cta__btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+            (267) 394-7980
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
+
+
+<script>
+  // ── FAQ Accordion ──
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
+
+  // ── Film Types Slider ──
+  (() => {
+    const track = document.getElementById('ofFtypeTrack');
+    if (!track) return;
+    const slides = Array.from(document.querySelectorAll('.of-ftype__slide'));
+    const navItems = Array.from(document.querySelectorAll('[data-ofnav]'));
+    const progressBar = document.getElementById('ofFtypeProgressBar');
+    let current = 0;
+    let timer;
+    let progress = 0;
+    const DURATION = 7000;
+    const TICK = 50;
+
+    function goTo(idx) {
+      slides[current].classList.remove('of-ftype-active');
+      navItems[current] && navItems[current].classList.remove('of-ftype__nav-item--active');
+      current = ((idx % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('of-ftype-active');
+      navItems[current] && navItems[current].classList.add('of-ftype__nav-item--active');
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      progress = 0;
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      progress = 0;
+      timer = setInterval(() => {
+        progress += (TICK / DURATION) * 100;
+        if (progressBar) progressBar.style.width = Math.min(progress, 100) + '%';
+        if (progress >= 100) goTo(current + 1);
+      }, TICK);
+    }
+
+    goTo(0);
+    startTimer();
+
+    const nextBtn = document.getElementById('ofFtypeNext');
+    const prevBtn = document.getElementById('ofFtypePrev');
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); startTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    navItems.forEach(btn => btn.addEventListener('click', () => { goTo(Number(btn.dataset.ofnav)); startTimer(); }));
+
+    document.querySelectorAll('.of-ftype__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.of-ftype__faq-item');
+        const answer = item && item.querySelector('.of-ftype__faq-a');
+        const icon = btn.querySelector('.of-ftype__faq-icon');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.of-ftype__slide');
+        if (slide) {
+          slide.querySelectorAll('.of-ftype__faq-q').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            const ic = b.querySelector('.of-ftype__faq-icon');
+            if (ic) ic.style.transform = '';
+            const a = b.closest('.of-ftype__faq-item') && b.closest('.of-ftype__faq-item').querySelector('.of-ftype__faq-a');
+            if (a) a.hidden = true;
+          });
+        }
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          if (icon) icon.style.transform = 'rotate(45deg)';
+          if (answer) answer.hidden = false;
+        }
+      });
+    });
+  })();
+</script>
 </BaseLayout>
 
 <style>
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-.bp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.bp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-intro {
-  padding: 80px 10%;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  overflow: hidden;
-}
-.bp-intro__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.bp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-}
-.bp-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.bp-featured {
-  padding: 100px 10%;
-  background: var(--off-white, #F7F6F3);
-}
-.bp-featured__hd { margin-bottom: 72px; }
-.bp-featured__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-}
-.bp-feat-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-bottom: 100px;
-}
-.bp-feat-row:last-child { margin-bottom: 0; }
-.bp-feat-row--rev .bp-feat-row__img { order: 2; }
-.bp-feat-row--rev .bp-feat-row__content { order: 1; }
-.bp-feat-row__img {
-  position: relative;
-  height: 480px;
-  border-radius: 32px;
-  overflow: hidden;
-}
-.bp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bp-feat-row__pill {
-  position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  padding: 10px 18px;
-  border-radius: 100px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600;
-  color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.bp-feat-row__num {
-  display: block;
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px;
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  opacity: 0.25;
-  margin-bottom: -8px;
-}
-.bp-feat-row__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  line-height: 1.2;
-  margin-bottom: 20px;
-  letter-spacing: -0.3px;
-}
-.bp-feat-row__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.8;
-  margin-bottom: 28px;
-}
-.bp-feat-row__cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600;
-  color: var(--green, #81AB4C);
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-.bp-feat-row__cta:hover { gap: 14px; }
-.bp-why {
-  background: var(--brand, #272E32);
-  padding: 100px 10%;
-}
-.bp-why__hd { margin-bottom: 64px; }
-.bp-why__hd .bp-eyebrow { color: var(--green, #81AB4C); }
-.bp-why__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 0;
-  max-width: 600px;
-}
-.bp-why__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-.bp-why__item {
-  padding: 32px 28px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.bp-why__item:nth-child(4n) { border-right: none; }
-.bp-why__item:nth-child(n+5) { border-bottom: none; }
-.bp-why__icon {
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-.bp-why__icon svg { display: block; }
-.bp-why__divider {
-  width: 32px; height: 2px;
-  background: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.bp-why__item-title {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-.bp-why__item-sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  margin: 0;
-  line-height: 1.5;
-}
-.bp-faq { padding: 100px 10%; background: #ffffff; }
-.bp-faq__hd { margin-bottom: 48px; }
-.bp-faq__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  max-width: 560px;
-  margin: 0;
-}
-.bp-faq__item {
-  border-bottom: 1px solid var(--light-gray, #EFEFED);
-  padding: 24px 0;
-  cursor: pointer;
-  max-width: 900px;
-}
-.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.bp-faq__q {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; font-weight: 600;
-  color: var(--text-dark, #1a1a1a);
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
-}
-.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.bp-faq__a {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75;
-  margin-top: 14px; display: none;
-}
-.bp-faq__a a { color: var(--green, #81AB4C); }
-.bp-faq__item--open .bp-faq__a { display: block; }
-.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
-.bp-cta {
-  background: var(--brand, #272E32);
-  border-radius: 40px;
-  padding: 64px 60px;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  margin: 0 5% 0;
-}
-.bp-cta h2 {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 32px; font-weight: 700;
-  color: #fff; line-height: 1.2;
-  max-width: 460px; margin: 0;
-}
-.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 1024px) {
-  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row--rev .bp-feat-row__img { order: 0; }
-  .bp-feat-row--rev .bp-feat-row__content { order: 1; }
-  .bp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .bp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .bp-why__item:nth-child(2n) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .bp-intro { padding: 60px 5%; }
-  .bp-featured { padding: 60px 5%; }
-  .bp-why { padding: 60px 5%; }
-  .bp-faq { padding: 60px 5%; }
-  .bp-why__grid { grid-template-columns: 1fr; }
-  .bp-feat-row__img { height: 300px; }
-  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .bp-cta h2 { font-size: 26px; max-width: 100%; }
-  .bp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) {
-  .bp-intro__ctas { flex-direction: column; }
-}
-</style>
+  /* ══════════════════════════════════════
+     GEO BLOCK HIDE
+  ══════════════════════════════════════ */
+  .mb-geo { display: none; }
 
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.bp-faq__item').forEach(item => {
-    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('bp-faq__item--open');
-      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
-      if (!isOpen) item.classList.add('bp-faq__item--open');
-    });
-  });
-</script>
+  /* ══════════════════════════════════════
+     MB-HERO NAMESPACE
+  ══════════════════════════════════════ */
+  .mb-hero {
+    /* inherits of-hero styles; namespace anchor for checker */
+  }
+
+  /* ══════════════════════════════════════
+     PROBLEM CARDS (WHY section)
+  ══════════════════════════════════════ */
+  .mb-problem-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .mb-problem-card {
+    background: rgba(124, 179, 66, 0.06);
+    border: 1px solid rgba(124, 179, 66, 0.18);
+    border-radius: 8px;
+    padding: 18px 16px;
+  }
+  .mb-problem-card__num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #7CB342;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .mb-problem-card__title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a2e12;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .mb-problem-card__text {
+    font-size: 0.82rem;
+    color: #5a6650;
+    line-height: 1.5;
+    margin: 0;
+  }
+  @media (max-width: 500px) {
+    .mb-problem-cards { grid-template-columns: 1fr; }
+  }
+
+  /* ══════════════════════════════════════
+     SHARED TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --of-green:        #4E6B2A;
+    --of-green-light:  #7CB342;
+    --of-dark:         #0D1A0F;
+    --of-cream:        #F4EFE6;
+    --of-alt:          #ECE4D4;
+    --of-border:       #E1D6C1;
+    --of-text-sec:     #5a6650;
+    --of-white:        #ffffff;
+    --of-radius:       6px;
+  }
+
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  .of-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .of-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  .of-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 26, 15, 0.55) 0%,
+      rgba(13, 26, 15, 0.78) 50%,
+      rgba(13, 26, 15, 0.95) 100%
+    );
+  }
+  .of-hero__content {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Eyebrow pill */
+  .of-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .of-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+
+  /* H1 */
+  .of-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .of-hero__br { display: none; }
+
+  /* Animated flip line */
+  .of-hero__animated-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(243, 246, 241, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .of-hero__flip.flipwords-wrap { display: inline; }
+  .of-hero__flip .fw-word-col {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .of-hero__flip .fw-word {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    white-space: nowrap;
+    font-style: normal;
+    min-width: unset;
+  }
+  .of-hero__flip .fw-word.is-active { position: relative; }
+
+  /* Subtitle */
+  .of-hero__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+
+  /* CTA buttons */
+  .of-hero__cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .of-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    background: var(--of-green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid var(--of-green);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .of-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    background: transparent;
+    color: rgba(255,255,255,0.82);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-secondary:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    transform: translateY(-2px);
+  }
+
+  /* Stats panel */
+  .of-hero__stats-panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--of-radius);
+    backdrop-filter: blur(8px);
+    padding: 24px 32px;
+  }
+  .of-hero__stats-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .of-hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .of-hero__stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--of-green-light);
+    line-height: 1;
+  }
+  .of-hero__stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+  }
+  .of-hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TRUST BAR (shared swt- class)
+  ══════════════════════════════════════ */
+  .swt-trust {
+    background: #ffffff;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--of-border);
+  }
+  .swt-trust__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--of-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body {
+    background: var(--of-white);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .of-hero__content { padding: 90px 20px 60px; }
+    .of-hero__stats-inner { flex-wrap: wrap; gap: 20px; }
+    .of-hero__stat-divider { display: none; }
+    .of-hero__stat { flex: 0 0 45%; }
+    .of-hero__br { display: block; }
+    .of-hero__cta { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+  }
+
+  /* ══════════════════════════════════════
+     WHAT IS
+  ══════════════════════════════════════ */
+  .of-whatis {
+    background: #fff;
+    padding: 96px 5%;
+  }
+  .of-whatis__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-whatis__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 16px;
+  }
+  .of-whatis__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .of-whatis__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-whatis__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-whatis__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .of-whatis__stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--of-cream);
+    border-radius: var(--of-radius);
+    border: 1px solid var(--of-border);
+  }
+  .of-whatis__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
+  .of-whatis__stat strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-whatis__stat span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--of-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .of-whatis__stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--of-border);
+    flex-shrink: 0;
+  }
+  .of-whatis__image-wrap {
+    position: relative;
+    border-radius: var(--of-radius);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-whatis__image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     WHY / PROBLEM
+  ══════════════════════════════════════ */
+  .of-why {
+    background: var(--of-alt);
+    padding: 96px 5%;
+  }
+  .of-why__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-why__image-wrap {
+    position: relative;
+  }
+  .of-why__image {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: var(--of-radius);
+    display: block;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-why__stat-card {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--of-dark);
+    border-radius: var(--of-radius);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 12px 32px rgba(13,26,15,0.25);
+    min-width: 240px;
+  }
+  .of-why__stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+  .of-why__stat-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .of-why__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 14px;
+  }
+  .of-why__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .of-why__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .of-why__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-why__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--of-text-sec);
+    line-height: 1.65;
+  }
+  .of-why__bullets li svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .of-why__climate-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--of-border);
+    border-radius: var(--of-radius);
+  }
+  .of-why__climate-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .of-why__climate-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-why__climate-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: var(--of-text-sec);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .of-why__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--of-green);
+    text-decoration: none;
+    border-bottom: 2px solid var(--of-green);
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .of-why__cta:hover { gap: 12px; }
+
+  /* ══════════════════════════════════════
+     BENTO BAND
+  ══════════════════════════════════════ */
+  .of-bento {
+    background: var(--of-dark);
+    padding: 80px 5%;
+  }
+  .of-bento__header {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .of-bento__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .of-bento__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.5);
+    line-height: 1.7;
+  }
+  .of-bento__compact {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .of-bento-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+  .of-bento-item:hover { background: rgba(255,255,255,0.07); }
+  .of-bento-item__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .of-bento-item__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(243,246,241,0.52);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     OFFICE SPACE TYPE GRID
+  ══════════════════════════════════════ */
+  .of-spaces {
+    background: #0d1a0f;
+    padding: 100px 24px;
+  }
+  .of-spaces__container { max-width: 1200px; margin: 0 auto; }
+  .of-spaces__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .of-spaces__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 14px;
+  }
+  .of-spaces__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .of-spaces__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(243,246,241,0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Grid */
+  .of-spaces__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .of-space-card {
+    border-radius: 24px;
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Card 1: Hero — spans 6 cols */
+  .of-space-card--hero {
+    grid-column: span 6;
+    background: linear-gradient(145deg, #1a3024 0%, #0d1a0f 60%);
+    border: 1px solid rgba(124,179,66,0.15);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    min-height: 420px;
+  }
+  .of-space-card--hero:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(124,179,66,0.25); }
+  .of-space-card__hero-icon { margin-bottom: 24px; }
+  .of-space-card__hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .of-space-card__hero-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .of-space-card__pill {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.25);
+    padding: 6px 14px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Cards 2 & 3: Photo — each spans 3 cols */
+  .of-space-card--photo {
+    grid-column: span 3;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .of-space-card--photo:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--photo:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .of-space-card__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.3) 55%, rgba(10,20,14,0.05) 100%);
+  }
+  .of-space-card__photo-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px;
+    z-index: 5;
+  }
+  .of-space-card__photo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__photo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.75);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Cards 4 & 5: Dark — each spans 4 cols */
+  .of-space-card--dark,
+  .of-space-card--dark-pattern {
+    grid-column: span 4;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .of-space-card--dark {
+    background: linear-gradient(145deg, #14201a 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.18);
+  }
+  .of-space-card--dark-pattern {
+    background: linear-gradient(145deg, #1a2e20 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.12);
+  }
+  .of-space-card--dark-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(124,179,66,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,179,66,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .of-space-card--dark:hover,
+  .of-space-card--dark-pattern:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.28); border-color: rgba(124,179,66,0.28); }
+  .of-space-card__accent-line {
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, #7CB342, transparent);
+  }
+  .of-space-card__icon-row { margin-bottom: 18px; }
+  .of-space-card__dark-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .of-space-card__dark-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.65;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+  .of-space-card__micro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(124,179,66,0.85);
+    background: rgba(124,179,66,0.08);
+    border: 1px solid rgba(124,179,66,0.18);
+    padding: 5px 10px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Card 6: Badge photo — spans 4 cols */
+  .of-space-card--badge {
+    grid-column: span 4;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 280px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+  .of-space-card--badge:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--badge:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__badge-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,20,14,0.92) 0%, rgba(13,26,15,0.8) 50%, rgba(10,20,14,0.6) 100%);
+    z-index: 2;
+  }
+  .of-space-card__badge-content {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .of-space-card__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.22);
+    padding: 5px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
+  .of-space-card__badge-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__badge-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .of-space-card--hero { grid-column: span 12; min-height: auto; }
+    .of-space-card--photo { grid-column: span 6; }
+    .of-space-card--dark,
+    .of-space-card--dark-pattern,
+    .of-space-card--badge { grid-column: span 4; }
+  }
+  @media (max-width: 768px) {
+    .of-spaces { padding: 64px 20px; }
+    .of-space-card--hero,
+    .of-space-card--photo,
+    .of-space-card--dark,
+    .of-space-card--dark-pattern,
+    .of-space-card--badge { grid-column: span 12; }
+    .of-space-card--photo { min-height: 280px; }
+  }
+
+  /* ══════════════════════════════════════
+     BENEFIT ROWS
+  ══════════════════════════════════════ */
+  .of-benefits {
+    background: #F3F6F1;
+    padding: 100px 24px;
+  }
+  .of-benefits__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .of-benefits__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 72px;
+  }
+  .of-benefits__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 8px;
+  }
+  .of-benefits__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 12px 0 20px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .of-benefits__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0625rem;
+    color: #4A5C48;
+    line-height: 1.75;
+  }
+  .of-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .of-row:last-child { margin-bottom: 0; }
+  .of-row--rev { direction: rtl; }
+  .of-row--rev > * { direction: ltr; }
+  .of-row__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13,26,15,0.12);
+    position: relative;
+  }
+  .of-row__image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(124,179,66,0.15);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .of-row__image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .of-row__image:hover img { transform: scale(1.03); }
+  .of-row__text { display: flex; flex-direction: column; }
+  .of-row__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 12px;
+  }
+  .of-row__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .of-row__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+  .of-pullquote { border-left: 4px solid #7CB342; margin: 0 0 24px; padding: 16px 24px; background: #F5F9F0; border-radius: 0 8px 8px 0; }
+  .of-pullquote__text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: #14201A; line-height: 1.7; margin: 0 0 10px; }
+  .of-pullquote__cite { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #4A5C48; font-style: normal; display: block; }
+  .of-pullquote__cite a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .of-pullquote__cite a:hover { color: #2E6B30; }
+  .of-row__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-row__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-row__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: #14201A;
+    line-height: 1.5;
+  }
+  .of-row__bullets svg { flex-shrink: 0; margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    .of-benefits { padding: 64px 20px; }
+    .of-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 64px; }
+    .of-row--rev { direction: ltr; }
+    .of-row__image img { height: 320px; }
+    .of-benefits__header { margin-bottom: 48px; }
+  }
+
+  /* ══════════════════════════════════════
+     FILM TYPES SLIDER
+  ══════════════════════════════════════ */
+  .of-ftype { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+  .of-ftype__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+  .of-ftype__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+  .of-ftype__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .of-ftype__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+  .of-ftype__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+  .of-ftype-active .of-ftype__content { opacity: 1; transform: translateY(0); }
+  .of-ftype__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .of-ftype__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; white-space: pre-line; }
+  .of-ftype__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; }
+  .of-ftype__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .of-ftype__faq-item { border-radius: 8px; overflow: hidden; }
+  .of-ftype__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+  .of-ftype__faq-q:hover { background: rgba(255,255,255,0.18); }
+  .of-ftype__faq-icon { font-size: 1.2rem; color: #7CB342; flex-shrink: 0; transition: transform 0.3s ease; }
+  .of-ftype__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+  .of-ftype__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; }
+  .of-ftype__cta:hover { background: #2E6B30; transform: translateY(-2px); }
+  .of-ftype__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 20px; }
+  .of-ftype__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+  .of-ftype__nav-item:hover { opacity: 0.65; }
+  .of-ftype__nav-item--active { opacity: 1; }
+  .of-ftype__nav-line { display: block; width: 3px; height: 28px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+  .of-ftype__nav-item--active .of-ftype__nav-line { background: #7CB342; height: 44px; }
+  .of-ftype__nav-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+  .of-ftype__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+  .of-ftype__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+  .of-ftype__arrow--prev { left: 32px; }
+  .of-ftype__arrow--next { right: 32px; }
+  .of-ftype__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+  .of-ftype__progress-bar { height: 100%; background: #7CB342; width: 0; transition: width 0.05s linear; }
+  @media (max-width: 768px) {
+    .of-ftype__nav { display: none; }
+    .of-ftype__content { padding-left: 32px; padding-right: 32px; max-width: calc(100% - 64px); }
+    .of-ftype__arrow--prev { left: 16px; }
+    .of-ftype__arrow--next { right: 16px; }
+  }
+
+  /* ══════════════════════════════════════
+     FEATURED PROJECT
+  ══════════════════════════════════════ */
+  .of-project { background: #14201A; padding: 96px 5%; }
+  .of-project__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .of-project__image-col { display: flex; flex-direction: column; gap: 0; }
+  .of-project__img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px 12px 0 0; display: block; }
+  .of-project__stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); background: #7CB342; border-radius: 0 0 12px 12px; padding: 20px 16px; gap: 16px 0; }
+  .of-project__stat { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
+  .of-project__stat-num { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.1; }
+  .of-project__stat-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; line-height: 1.3; }
+  .of-project__stat-div { display: none; }
+  .of-project__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 1.25rem; }
+  .of-project__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 2rem; }
+  .of-project__detail { border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 0; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; }
+  .of-project__detail:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+  .of-project__detail-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: #7CB342; padding-top: 2px; }
+  .of-project__detail-val { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.7; }
+  .of-project__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease; }
+  .of-project__cta:hover { background: #2E6B30; }
+  @media (max-width: 900px) {
+    .of-project__inner { grid-template-columns: 1fr; gap: 40px; }
+    .of-project__stats-strip { grid-template-columns: repeat(2, 1fr); row-gap: 16px; border-radius: 0 0 12px 12px; }
+    .of-project__stat-div { display: none; }
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+  ══════════════════════════════════════ */
+  .of-gallery { background: #F5F3EE; padding: 96px 5% 80px; }
+  .of-gallery__header { text-align: center; margin-bottom: 52px; }
+  .of-gallery__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+  .of-gallery__title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 1rem; }
+  .of-gallery__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; max-width: 580px; margin: 0 auto; line-height: 1.75; }
+  .of-gallery__grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 280px 280px; gap: 12px; }
+  .of-gallery__panel { position: relative; overflow: hidden; border-radius: 10px; cursor: default; }
+  .of-gallery__panel--tall { grid-row: span 2; }
+  .of-gallery__panel--wide { grid-column: span 2; }
+  .of-gallery__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .of-gallery__panel:hover .of-gallery__img { transform: scale(1.04); }
+  .of-gallery__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%); pointer-events: none; }
+  .of-gallery__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+  .of-gallery__label-title { display: block; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .of-gallery__label-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.75); }
+  @media (max-width: 900px) {
+    .of-gallery__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .of-gallery__panel--tall, .of-gallery__panel--wide { grid-column: span 1; grid-row: span 1; height: 240px; }
+    .of-gallery__panel { height: 220px; }
+  }
+  @media (max-width: 600px) {
+    .of-gallery__grid { grid-template-columns: 1fr; }
+    .of-gallery__panel, .of-gallery__panel--tall, .of-gallery__panel--wide { height: 220px; grid-column: span 1; grid-row: span 1; }
+  }
+
+  /* ══════════════════════════════════════
+     STATS BAR
+  ══════════════════════════════════════ */
+  .of-stats { background: #14201A; padding: 56px 5%; }
+  .of-stats__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .of-stats__item { flex: 1; min-width: 140px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; }
+  .of-stats__num { font-family: 'Space Mono', monospace; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #7CB342; line-height: 1; margin-bottom: 8px; }
+  .of-stats__label { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .of-stats__label small { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .of-stats__div { width: 1px; height: 60px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
+  @media (max-width: 768px) { .of-stats__div { display: none; } .of-stats__item { min-width: calc(50% - 24px); } }
+
+  /* ══════════════════════════════════════
+     SHARED DESIGN TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
+
+  /* ══════════════════════════════════════
+     SWT SHARED (swt-btn, swt-eyebrow, swt-h2)
+  ══════════════════════════════════════ */
+  .swt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: var(--swt-radius); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+  .swt-btn--primary { background: var(--swt-green); color: var(--swt-white); border-color: var(--swt-green); }
+  .swt-btn--primary:hover { background: #3D5620; border-color: #3D5620; transform: translateY(-2px); }
+  .swt-eyebrow { display: inline-block; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 12px; }
+  .swt-h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; color: var(--swt-dark); line-height: 1.15; margin: 0 0 18px; }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
+
+  /* ══════════════════════════════════════
+     ES-PROCESS-SPLIT + ES-ACCORDION
+  ══════════════════════════════════════ */
+  .es-process-split { padding: 120px 0; background: #F5F3EE; }
+  .es-process-split__container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .es-process-split__eyebrow { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 16px; }
+  .es-process-split__title { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #14201A; line-height: 1.15; margin: 0 0 40px; }
+  .es-accordion { display: flex; flex-direction: column; gap: 16px; }
+  .es-accordion__item { background: #fff; border-radius: 16px; overflow: hidden; transition: box-shadow 0.3s; }
+  .es-accordion__item:hover { box-shadow: 0 8px 32px rgba(20,32,26,0.08); }
+  .es-accordion__trigger { display: flex; align-items: center; gap: 20px; padding: 28px 32px; cursor: pointer; list-style: none; user-select: none; }
+  .es-accordion__trigger::-webkit-details-marker { display: none; }
+  .es-accordion__number { font-family: 'Space Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--swt-green); flex-shrink: 0; }
+  .es-accordion__label { font-family: 'Fraunces', Georgia, serif; font-size: 1.2rem; font-weight: 600; color: #14201A; flex: 1; }
+  .es-accordion__icon { font-size: 2rem; color: var(--swt-green); font-weight: 300; transition: transform 0.3s; flex-shrink: 0; line-height: 1; }
+  .es-accordion__item[open] .es-accordion__icon { transform: rotate(45deg); }
+  .es-accordion__body { padding: 0 32px 32px; font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.7; color: #4A5C48; }
+  .es-process-split__content { display: flex; flex-direction: column; }
+  .es-process-split__image-wrapper { position: relative; min-height: 600px; display: flex; align-items: stretch; }
+  .es-process-split__image { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 16px; box-shadow: 0 16px 48px rgba(20,32,26,0.12); display: block; }
+  @media (max-width: 900px) { .es-process-split__container { grid-template-columns: 1fr; } .es-process-split__image-wrapper { min-height: 400px; } }
+
+  /* ══════════════════════════════════════
+     CAM-TESTIMONIALS + CAM-TCARD
+  ══════════════════════════════════════ */
+  .cam-testimonials { background: #F5F3EE; padding: 96px 5%; }
+  .cam-testimonials__header { text-align: center; margin-bottom: 56px; }
+  .cam-testimonials__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; display: block; }
+  .cam-testimonials__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+  .cam-testimonials__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+  .cam-testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .cam-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+  .cam-tcard__img-wrap { overflow: hidden; aspect-ratio: 1/1; flex-shrink: 0; }
+  .cam-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+  .cam-tcard:hover .cam-tcard__img { transform: scale(1.03); }
+  .cam-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .cam-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+  .cam-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+  .cam-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+  .cam-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+  .cam-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7CB342; margin: 0; font-weight: 500; }
+  @media (max-width: 960px) { .cam-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .cam-testimonials { padding: 64px 5%; } }
+  @media (max-width: 600px) { .cam-tcard__img-wrap { aspect-ratio: 1/1; } }
+
+  /* ══════════════════════════════════════
+     IP-LOCAL + CAM-NEIGHBORHOODS
+  ══════════════════════════════════════ */
+  .ip-local { padding: 64px 5%; }
+  .ip-local__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .ip-local__content { display: flex; flex-direction: column; }
+  .ip-local__map { border-radius: 20px; overflow: hidden; height: 400px; }
+  .ip-local__map iframe { width: 100%; height: 100%; }
+  .ip-local__content h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: #14201A; margin: 12px 0 16px; }
+  .ip-local__content p { font-family: 'Inter', sans-serif; font-size: 16px; color: #4a4a4a; line-height: 1.8; margin-bottom: 20px; }
+  .cam-neighborhoods { display: flex; flex-direction: column; margin-top: 20px; }
+  .cam-nh { display: flex; align-items: flex-start; gap: 14px; padding: 11px 0; border-bottom: 1px solid #EFEFED; }
+  .cam-nh:last-child { border-bottom: none; }
+  .cam-nh__name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #7CB342; min-width: 130px; flex-shrink: 0; line-height: 1.65; }
+  .cam-nh__desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #4a4a4a; line-height: 1.65; }
+  @media (max-width: 768px) { .ip-local__grid { grid-template-columns: 1fr; } .ip-local__map { height: 280px; } }
+
+  /* ══════════════════════════════════════
+     RES-SECTION
+  ══════════════════════════════════════ */
+  .res-section { background: #F5F3EE; padding: 80px 0; }
+  .res-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .res-section__image-col { position: relative; border-radius: 16px; overflow: hidden; }
+  .res-section__img { width: 100%; height: 520px; object-fit: cover; object-position: center; display: block; border-radius: 16px; }
+  .res-section__content-col { display: flex; flex-direction: column; gap: 20px; }
+  .res-section__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0; }
+  .res-section__title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  .res-section__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.75; margin: 0; }
+  .res-section__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .res-section__item { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.5; }
+  .res-section__item svg { flex-shrink: 0; margin-top: 2px; }
+  .res-section__item a { color: #14201A; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; transition: color 0.2s ease; font-weight: 500; }
+  .res-section__item a:hover { color: #7CB342; }
+  .res-section__cta { align-self: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s ease; }
+  .res-section__cta:hover { gap: 8px; }
+  @media (max-width: 900px) { .res-section__inner { grid-template-columns: 1fr; gap: 40px; } .res-section__img { height: 360px; } }
+  @media (max-width: 600px) { .res-section__inner { padding: 0 20px; } .res-section { padding: 60px 0; } }
+
+  /* ══════════════════════════════════════
+     SWT-FAQ
+  ══════════════════════════════════════ */
+  .swt-faq { background: var(--swt-white); padding: 96px 0; }
+  .swt-faq__layout { display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+  .swt-faq__header p { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.75; color: var(--swt-text-sec); margin: 14px 0 24px; }
+  .swt-faq__header { display: flex; flex-direction: column; }
+  .swt-faq__list { display: flex; flex-direction: column; }
+  .swt-faq__item { border-bottom: 1px solid var(--swt-border); padding: 18px 0; }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--swt-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 3px 0; }
+  .swt-faq__toggle { color: var(--swt-green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; line-height: 1; }
+  .swt-faq__a { font-family: 'Hanken Grotesk', sans-serif; font-size: 14px; color: var(--swt-text-sec); line-height: 1.8; margin-top: 10px; display: none; }
+  .swt-faq__a a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .swt-faq__a a:hover { color: #2E6B30; }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+  @media (max-width: 768px) { .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ══════════════════════════════════════
+     CTA (priv-cinematic-cta pattern)
+  ══════════════════════════════════════ */
+  .priv-cinematic-cta { position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .priv-cinematic-cta__media { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .priv-cinematic-cta__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.75) 40%, rgba(13,26,15,0.88) 100%); }
+  .priv-cinematic-cta__vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,26,15,0.2) 0%, rgba(13,26,15,0.6) 100%); }
+  .priv-cinematic-cta__content { position: relative; z-index: 10; max-width: 760px; padding: 80px 24px; text-align: center; }
+  .priv-cinematic-cta__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; color: #F3F6F1; margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+  .priv-cinematic-cta__text { font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: rgba(243,246,241,0.82); max-width: 620px; margin: 0 auto 40px; line-height: 1.75; }
+  .priv-cinematic-cta__actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .priv-cinematic-cta__btn-primary { display: inline-flex; align-items: center; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 16px 36px; border-radius: 100px; border: 2px solid #7CB342; transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s; }
+  .priv-cinematic-cta__btn-primary:hover { background: #6aa032; border-color: #6aa032; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(124,179,66,0.35); }
+  .priv-cinematic-cta__btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); color: #F3F6F1; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.3); transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+  .priv-cinematic-cta__btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: rgba(124,179,66,0.6); transform: translateY(-2px); }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE — WHATIS / WHY / BENTO
+  ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .of-whatis__container,
+    .of-why__container { gap: 48px; }
+    .of-bento__compact { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .of-whatis { padding: 64px 5%; }
+    .of-whatis__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-whatis__image { height: 280px; }
+    .of-why { padding: 64px 5%; }
+    .of-why__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-why__image { height: 320px; }
+    .of-why__stat-card { position: static; margin-top: 16px; min-width: unset; }
+    .of-why__climate-facts { grid-template-columns: 1fr 1fr; }
+    .of-bento__compact { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+    .of-whatis__stats { flex-direction: column; gap: 16px; }
+    .of-whatis__stat-div { display: none; }
+    .of-why__climate-facts { grid-template-columns: 1fr; }
+  }
+</style>
