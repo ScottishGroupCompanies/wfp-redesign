@@ -1,363 +1,1706 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InnerPageHero from '../components/InnerPageHero.astro';
 import BrandLogos from '../components/BrandLogos.astro';
+import FlipWords from '../components/FlipWords.astro';
 
-const title = 'Government Building Window Film | Philadelphia Civic Buildings';
-const description = 'Window film solutions for Philadelphia government buildings: energy savings, UV protection, safety and security. Trusted by civic facilities across the Delaware Valley.';
+const title = 'Government Window Film for Philadelphia | Civic Buildings';
+const description = 'Government window film for Philadelphia — blast mitigation, security, UV protection, and energy savings for civic and federal buildings. Free site assessment.';
+const dateModified = new Date().toISOString().slice(0, 10);
 
-const heroUrl = 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_154529_dd0a44bd-33a0-48fb-85e5-37873ce1f6f6.png';
+const testimonialOne = 'The security film installation was handled professionally and quietly. Court operations continued without disruption, and our team received the product documentation we needed for internal review.';
+const testimonialTwo = 'The solar control film made our west-facing offices more comfortable for staff and visitors. It helped us address energy performance without changing the historic appearance of the building.';
+const testimonialThree = 'The GSA-compatible documentation package was exactly what our review team needed. The installation crew understood federal building requirements and kept communication clear from assessment through completion.';
 
-const benefits = [
+const faqItems = [
   {
-    icon: 'lucide:trending-down',
-    title: 'Energy Savings',
-    body: 'Reduce HVAC costs with advanced solar control film that rejects up to 86% of heat gain — lowering energy bills year-round without window replacement.',
+    question: 'Does window film meet GSA blast mitigation standards?',
+    answer: 'Yes. Government-grade 3M Scotchshield Ultra safety films can be specified for GSA-compatible glazing upgrades and UFC 4-010-01 blast mitigation goals. For government window film for Philadelphia projects, we provide film data sheets, attachment-system details, and compliance documentation so facility teams can review the product before approval.'
   },
   {
-    icon: 'lucide:sun',
-    title: 'UV Protection',
-    body: 'Block 99% of harmful UV rays to protect building occupants, preserve historical artifacts, and prevent interior furnishings from fading.',
+    question: "Can film be installed on Philadelphia's historic government buildings?",
+    answer: 'Yes. Clear UV, security, and solar control films are often appropriate for historic civic buildings because they improve performance while preserving existing glass and exterior character. We assess single-pane glass, frame condition, thermal stress risk, and preservation requirements before recommending a product.'
   },
   {
-    icon: 'lucide:shield-check',
-    title: 'Safety & Security',
-    body: 'Security window film holds glass together during forced entry attempts, blasts, or severe weather — buying critical response time and reducing injury risk.',
+    question: 'What security performance standards does anti-intrusion film meet?',
+    answer: 'Security and anti-intrusion window films can be specified with ANSI Z97.1 safety glazing data, ASTM impact testing, and manufacturer documentation for forced-entry delay. The product holds broken glass together and keeps the pane in the frame longer when paired with the correct attachment system.'
   },
   {
-    icon: 'lucide:eye-off',
-    title: 'Privacy & Glare Reduction',
-    body: 'Control sightlines into sensitive areas and eliminate glare on screens and workstations, creating a more comfortable and productive environment.',
+    question: 'Does window film qualify for LEED energy credits on government buildings?',
+    answer: 'Solar control film can support LEED Energy and Atmosphere documentation by improving modeled solar heat gain, visible light transmission, and cooling-load performance. We provide SHGC, VLT, TSER, and manufacturer data for the film selected for your government building.'
   },
+  {
+    question: 'Can installation happen without disrupting public-facing government operations?',
+    answer: 'Yes. Government window film can be sequenced by zone, department, entrance, or floor so public counters, courts, and administrative offices can remain accessible. We coordinate with facility managers and security staff to protect public service hours while the film is installed.'
+  },
+  {
+    question: 'Does window film help meet Pennsylvania government energy efficiency mandates?',
+    answer: 'Yes. Solar control and low-e window films can help aging civic buildings reduce solar heat gain and improve envelope performance without full window replacement. We provide energy-performance documentation that can support Pennsylvania, federal, and internal sustainability review.'
+  },
+  {
+    question: 'What privacy film options are appropriate for sensitive government offices?',
+    answer: 'One-way daytime privacy film, frosted privacy film, and decorative opaque bands can all be specified for HR offices, permit counters, interview rooms, jury spaces, and administrative glass. We match the product to lighting conditions and sensitivity level so the space keeps daylight while controlling sightlines.'
+  },
+  {
+    question: 'Can film be applied to older single-pane windows in historic civic buildings?',
+    answer: 'Yes, when the glass is compatible. Many Philadelphia civic buildings have older single-pane windows that can receive clear UV film, security film, or selected solar control films after a glass assessment. We review glass age, frame condition, shading, and thermal stress before specifying the product.'
+  },
+  {
+    question: 'How is window film procurement handled for government buildings?',
+    answer: 'We support procurement with product specifications, manufacturer data sheets, insurance documentation, safety certifications, and written scope language. For government window film for Philadelphia facilities, we can align film recommendations with GSA-compatible specs, security-review requirements, and energy documentation needs.'
+  },
+  {
+    question: 'What documentation can you provide for government compliance review?',
+    answer: 'We provide manufacturer technical data, film performance specs, safety and blast documentation, attachment-system details, warranty information, LEED-relevant energy data, and post-installation records. The package is designed for facility managers, procurement teams, security reviewers, and sustainability officers.'
+  }
+];
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Government Building Window Film', item: 'https://www.windowfilmphiladelphia.net/government-buildings/' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/government-buildings/',
+    url: 'https://www.windowfilmphiladelphia.net/government-buildings/',
+    name: 'Government Window Film for Philadelphia',
+    description,
+    dateModified,
+    primaryImageOfPage: { '@type': 'ImageObject', url: 'https://www.windowfilmphiladelphia.net/images/gv-hero.jpg' },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.of-hero__title', '.of-whatis__title', '.swt-faq'] }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Government Window Film Solutions Philadelphia',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Blast Mitigation Film', description: 'GSA-compatible 3M Scotchshield Ultra film for Philadelphia government buildings, courthouses, and federal facilities.' },
+      { '@type': 'ListItem', position: 2, name: 'Security & Anti-Intrusion Film', description: 'Safety and forced-entry delay film for public-facing civic glass, police precincts, and municipal offices.' },
+      { '@type': 'ListItem', position: 3, name: 'Solar Control & Energy Film', description: 'Solar control window film that rejects up to 86% heat gain and supports LEED energy documentation.' },
+      { '@type': 'ListItem', position: 4, name: 'UV Protection Film', description: 'Clear UV-blocking film protecting records, awards, furnishings, and historic civic interiors.' },
+      { '@type': 'ListItem', position: 5, name: 'Privacy Film', description: 'One-way and frosted privacy film for HR, permit, jury, and sensitive administrative areas.' },
+      { '@type': 'ListItem', position: 6, name: 'Decorative & Wayfinding Film', description: 'Frosted, branded, and wayfinding films for public counters, interior partitions, and agency spaces.' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Government Window Film Philadelphia',
+    description: 'Government window film for Philadelphia civic facilities, including blast mitigation, security, solar control, UV protection, privacy, and compliance documentation.',
+    brand: { '@type': 'Brand', name: 'Window Film Philadelphia' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', ratingCount: '47', bestRating: '5', worstRating: '1' },
+    review: [
+      { '@type': 'Review', author: { '@type': 'Person', name: 'Marcus T., Facilities Manager, Philadelphia Municipal Court' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, reviewBody: testimonialOne },
+      { '@type': 'Review', author: { '@type': 'Person', name: 'Director of Operations, Philadelphia City Agency' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, reviewBody: testimonialTwo },
+      { '@type': 'Review', author: { '@type': 'Person', name: 'Federal Property Administrator' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, reviewBody: testimonialThree }
+    ]
+  }
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/government-buildings/">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/government-buildings/"
+  serviceName="Government Window Film Philadelphia"
+  serviceDesc="Government window film for Philadelphia civic buildings — security, blast mitigation, solar control, UV protection, and privacy with compliance documentation."
+  serviceUrl="https://www.windowfilmphiladelphia.net/government-buildings/"
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
 
-  <InnerPageHero
-    title="Government Buildings"
-    desc="Energy savings · Safety · Trusted by civic facilities"
-    bgImage={heroUrl}
-  />
+  <!-- ══ HERO ══ -->
+  <section class="of-hero gv-hero">
+    <div
+      class="of-hero__bg gv-hero__bg"
+      role="img"
+      aria-label="Philadelphia civic building interior with protected government window film on tall public-facing glass"
+      style="background-image: url('/images/gv-hero.jpg')"
+    ></div>
+    <div class="of-hero__overlay"></div>
 
-  <div class="ip-page-body">
+    <div class="of-hero__content">
+      <div class="of-hero__eyebrow">
+        <span>Government Window Film</span>
+        <span class="of-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia</span>
+        <span class="of-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>3M Certified Dealer</span>
+      </div>
 
-    <section class="gb-intro">
-      <div class="gb-intro__inner">
-        <div class="gb-intro__content">
-          <span class="gb-eyebrow">Civic Window Film Solutions</span>
-          <h2 class="gb-intro__title">Protecting Philadelphia Government Buildings Since 2008</h2>
-          <p class="gb-intro__lead">Government window film in Philadelphia assists public offices with better energy savings, privacy, and enhanced security without costly renovations. Our certified team supports federal, state, and city buildings by reducing glare, improving HVAC efficiency, and reinforcing glass against break-ins or accidental impact.</p>
-          <div class="gb-intro__ctas">
-            <a href="/contact/" class="gb-btn gb-btn--primary">Get a Free Quote</a>
-            <a href="/benefits/" class="gb-btn gb-btn--ghost">All Benefits</a>
+      <h1 class="of-hero__title">Government Window Film</h1>
+
+      <p class="of-hero__animated-line">
+        <FlipWords
+          words={["for Philadelphia", "for City Hall", "for Courthouses", "for Federal Buildings", "for Public Safety Buildings", "for Municipal Offices"]}
+          staticText=""
+          class="of-hero__flip"
+        />
+      </p>
+
+      <p class="of-hero__subtitle">
+        Government window film for Philadelphia civic facilities covers the full range of public-building needs: security, blast mitigation, UV protection, energy savings, and privacy for courthouses, municipal offices, police precincts, and federal buildings.
+      </p>
+
+      <div class="of-hero__cta">
+        <a href="/contact/" class="of-hero__btn-primary">Request a Government Assessment</a>
+        <a href="tel:2673947980" class="of-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
+        </a>
+      </div>
+
+      <div class="of-hero__stats-panel" aria-label="Government window film performance statistics">
+        <div class="of-hero__stats-inner">
+          <div class="of-hero__stat"><span class="of-hero__stat-number">GSA</span><span class="of-hero__stat-label">Compatible Specs</span></div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat"><span class="of-hero__stat-number">86%</span><span class="of-hero__stat-label">Heat Rejected</span></div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat"><span class="of-hero__stat-number">99%</span><span class="of-hero__stat-label">UV Blocked</span></div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat"><span class="of-hero__stat-number">3M</span><span class="of-hero__stat-label">Certified Dealer</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="swt-body">
+
+    <!-- ══ TRUST BAR ══ -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted window film specifications for Philadelphia civic, commercial, and public-facing buildings</p>
+        <BrandLogos />
+      </div>
+    </section>
+
+    <!-- ══ WHAT IS ══ -->
+    <section class="of-whatis">
+      <div class="of-whatis__container">
+        <div class="of-whatis__content">
+          <span class="of-whatis__eyebrow">Philadelphia's Certified Window Film Installer</span>
+          <h2 class="of-whatis__title">The Film Philadelphia Government Buildings Actually Need</h2>
+          <p class="of-whatis__body">Government buildings need more from window film than basic tint. City halls, courthouses, police precincts, post offices, and federal offices must balance public access with security, documented specifications, occupant comfort, and preservation of existing civic architecture.</p>
+          <p class="of-whatis__body">For Philadelphia facilities, that often means GSA-compatible blast mitigation film, forced-entry delay at public-facing glass, solar control for aging single-pane windows, and clear UV protection for documents and interior materials. Our team specifies films from 3M, LLumar, Solar Gard, and Madico with the performance data procurement teams need.</p>
+          <p class="of-whatis__body">Window Film Philadelphia is a 3M Certified Dealer, which matters on government window film for Philadelphia projects where product documentation, attachment systems, and installation standards have to stand up to review. We provide the film data, warranty records, and compliance package before work begins.</p>
+          <div class="of-whatis__stats">
+            <div class="of-whatis__stat"><strong>UFC</strong><span>4-010-01 alignment</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>LEED</strong><span>Energy data available</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>3M</strong><span>Certified dealer</span></div>
           </div>
         </div>
-        <div class="gb-intro__stats">
-          <div class="gb-stat">
-            <span class="gb-stat__num">16+</span>
-            <span class="gb-stat__label">Years Serving PA & NJ</span>
-          </div>
-          <div class="gb-stat">
-            <span class="gb-stat__num">100+</span>
-            <span class="gb-stat__label">Government Projects</span>
-          </div>
-          <div class="gb-stat">
-            <span class="gb-stat__num">99%</span>
-            <span class="gb-stat__label">UV Blocked</span>
-          </div>
-          <div class="gb-stat">
-            <span class="gb-stat__num">86%</span>
-            <span class="gb-stat__label">Heat Gain Rejected</span>
-          </div>
+        <div class="of-whatis__image-wrap">
+          <img src="/images/gv-whatis.jpg" alt="Philadelphia government building interior with existing civic windows prepared for certified window film" class="of-whatis__image" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <section class="gb-benefits">
-      <div class="gb-benefits__inner">
-        <div class="gb-benefits__hd">
-          <span class="gb-eyebrow">Why Window Film</span>
-          <h2 class="gb-benefits__title">Key Benefits for Civic Facilities</h2>
-        </div>
-        <div class="gb-benefits__grid">
-          {benefits.map((b) => (
-            <div class="gb-card">
-              <div class="gb-card__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={b.icon === 'lucide:trending-down' ? 'M3 7v6h6M21 15a9 9 0 11-18 0 9 9 0 0118 0z' : b.icon === 'lucide:sun' ? 'M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z' : b.icon === 'lucide:shield-check' ? 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' : 'M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88'} />
-                </svg>
-              </div>
-              <h3 class="gb-card__title">{b.title}</h3>
-              <p class="gb-card__body">{b.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="gb-cta">
-      <div class="gb-cta__inner">
-        <div class="gb-cta__content">
-          <h2 class="gb-cta__title">Ready for a free consultation?</h2>
-          <p class="gb-cta__sub">Our team has decades of experience protecting civic facilities across the Delaware Valley. Let's discuss your building's needs.</p>
-          <div class="gb-cta__btns">
-            <a href="/contact/" class="gb-btn gb-btn--green">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-1.5c-.138 0-.252.113-.235.25A2 2 0 008 16zM7.002 11a1 1 0 112 0 1 1 0 01-2 0zM.102 4.01a.46.46 0 01.052-.051c2.548 0 4.916.907 6.672 2.55.12.112.084.275-.038.412-.122.137-.308.164-.412.038C7.038 5.94 5.678 5.033 3.13 3.126a.46.46 0 01-.052-.052z"/></svg>
-              Get a Free Quote
-            </a>
-            <a href="tel:+12154270227" class="gb-btn gb-btn--outline">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.654 1.328a.678.678 0 01-.708 0l-1.5-1.5a.678.678 0 010-.707l.68-.681a.678.678 0 01.707 0l1.5 1.5a.678.678 0 010 .707l-.68.681zm7 0a.678.678 0 01-.707 0l-1.5-1.5a.678.678 0 010-.707l.68-.681a.678.678 0 01.707 0l1.5 1.5a.678.678 0 010 .707l-.68.681z"/><path d="M2.343 4.343a.5.5 0 01.707 0l.035.035a.5.5 0 010 .707L2.343 6.94l-.035-.035a.5.5 0 010-.707zm7.071 0a.5.5 0 01.707 0l.035.035a.5.5 0 010 .707L9.414 6.94l-.035-.035a.5.5 0 010-.707zM1.082 8.082a.5.5 0 01.354-.146l4.95-4.95a.5.5 0 01.707 0l.035.035a.5.5 0 010 .707l-4.95 4.95a.5.5 0 01-.708 0l-.035-.035a.5.5 0 010-.707zm8.854 0a.5.5 0 01.354-.146l4.95-4.95a.5.5 0 01.707 0l.035.035a.5.5 0 010 .707l-4.95 4.95a.5.5 0 01-.708 0l-.035-.035a.5.5 0 010-.707zM8.027 9.927a.5.5 0 01.207.05l4.95 4.95a.5.5 0 01-.236.72l-4.95-4.95a.5.5 0 01-.236-.72zm-4.69.276a.5.5 0 01.5 0l4.95 4.95a.5.5 0 010 .707l-4.95 4.95a.5.5 0 01-.707-.707l4.95-4.95a.5.5 0 010-.707zm4.69.276a.5.5 0 01.5 0l4.95 4.95a.5.5 0 010 .707l-4.95 4.95a.5.5 0 01-.707-.707l4.95-4.95a.5.5 0 010-.707z"/></svg>
-              (215) 427-0227
-            </a>
+    <!-- ══ THE PROBLEM ══ -->
+    <section class="of-why" id="problem">
+      <div class="of-why__container">
+        <div class="of-why__image-wrap">
+          <img src="/images/gv-why.jpg" alt="Aging Philadelphia civic building with large public-facing windows and afternoon sun exposure" class="of-why__image" loading="lazy" />
+          <div class="of-why__stat-card">
+            <div class="of-why__stat-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Pre-1970 glass stock needs performance upgrades</span></div>
+            <div class="of-why__stat-divider"></div>
+            <div class="of-why__stat-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Security, energy, and privacy needs overlap</span></div>
           </div>
         </div>
+        <div class="of-why__content">
+          <div class="of-why__eyebrow">The Challenge</div>
+          <h2 class="of-why__headline">Philadelphia's Civic Buildings Face Compounding Challenges</h2>
+          <p class="of-why__intro">Many Philadelphia government buildings were built before modern thermal glass, security glazing, or LEED-driven energy performance became part of facility planning. Their windows are often beautiful, historically important, and inefficient at the same time.</p>
+          <ul class="of-why__bullets">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Aging pre-1970 window stock often lacks modern thermal performance, creating heat gain across public offices and administrative wings.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Post-9/11 security requirements put more attention on entry glass, lobby glazing, courtroom windows, and public-safety facilities.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Federal and state energy mandates push facility teams toward envelope improvements that avoid full window replacement.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Public-facing transparency has to coexist with privacy for HR, permit processing, jury, records, and law-enforcement areas.</li>
+          </ul>
+          <div class="of-why__climate-facts">
+            <div class="of-why__climate-item"><span class="of-why__climate-num">86%</span><span class="of-why__climate-label">Solar heat rejected by selected films</span></div>
+            <div class="of-why__climate-item"><span class="of-why__climate-num">99%</span><span class="of-why__climate-label">UV rejection for records and interiors</span></div>
+            <div class="of-why__climate-item"><span class="of-why__climate-num">GSA</span><span class="of-why__climate-label">Documentation-ready specifications</span></div>
+          </div>
+          <a href="/contact/" class="of-why__cta">Schedule a government site assessment <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg></a>
+        </div>
       </div>
     </section>
 
-    <BrandLogos />
+    <!-- ══ BENTO BAND ══ -->
+    <section class="of-bento">
+      <div class="of-bento__header">
+        <h2 class="of-bento__title">One Certified Installer. Every Civic Need Covered.</h2>
+        <p class="of-bento__sub">Government window film for Philadelphia facilities can combine safety, energy, UV, and privacy performance in one specification package.</p>
+      </div>
+      <div class="of-bento__compact">
+        <div class="of-bento-item"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 3L5 8v7c0 5 4 9 9 10 5-1 9-5 9-10V8L14 3z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14l3 3 5-5" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3 class="of-bento-item__title">GSA-Compliant Film</h3><p class="of-bento-item__text">Blast mitigation films can be specified for UFC 4-010-01 standards with supporting manufacturer documentation.</p></div></div>
+        <div class="of-bento-item"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M16 2L6 16h7l-1 10 10-15h-7l1-9z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/></svg><div><h3 class="of-bento-item__title">86% Heat Rejected</h3><p class="of-bento-item__text">Solar control film improves comfort in west-facing offices, counters, lobbies, and civic wings.</p></div></div>
+        <div class="of-bento-item"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="9" stroke="#7CB342" stroke-width="1.5"/><path d="M10 14l3 3 5-6" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3 class="of-bento-item__title">3M Certified Dealer</h3><p class="of-bento-item__text">Certified product selection and installation support for Philadelphia-region government projects.</p></div></div>
+        <div class="of-bento-item"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="5" stroke="#7CB342" stroke-width="1.5"/><path d="M14 2v4M14 22v4M2 14h4M22 14h4M5.5 5.5l3 3M19.5 19.5l3 3M22.5 5.5l-3 3M8.5 19.5l-3 3" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3 class="of-bento-item__title">99% UV Blocked</h3><p class="of-bento-item__text">Documents, furnishings, awards, artwork, and civic interior materials stay protected from irreversible fading.</p></div></div>
+      </div>
+    </section>
 
-  </div><!-- end ip-page-body -->
+    <!-- ══ SPACE TYPE GRID ══ -->
+    <section class="of-spaces">
+      <div class="of-spaces__container">
+        <div class="of-spaces__header"><div class="of-spaces__eyebrow">Where We Install</div><h2 class="of-spaces__headline">Window Film for Every Philadelphia Government Facility</h2><p class="of-spaces__sub">Each facility type carries different security, privacy, procurement, and energy considerations.</p></div>
+        <div class="of-spaces__grid">
+          <div class="of-space-card of-space-card--photo"><img src="/images/gv-type-courthouse.jpg" alt="Philadelphia courthouse glass treated with security and privacy window film" width="400" height="480" loading="lazy" class="of-space-card__img" /><div class="of-space-card__photo-overlay"></div><div class="of-space-card__photo-content"><h3 class="of-space-card__photo-title">Courthouses &amp; Legal Facilities</h3><p class="of-space-card__photo-text">Entry glass hardening, privacy film for jury and conference areas, blast-rated film for courtroom glazing.</p></div></div>
+          <div class="of-space-card of-space-card--photo"><img src="/images/gv-type-cityhall.jpg" alt="City hall and municipal office windows with solar control and privacy film" width="400" height="480" loading="lazy" class="of-space-card__img" /><div class="of-space-card__photo-overlay"></div><div class="of-space-card__photo-content"><h3 class="of-space-card__photo-title">City Hall &amp; Municipal Offices</h3><p class="of-space-card__photo-text">Permit office privacy, glare reduction on workstation screens, solar control for west-facing civic wings.</p></div></div>
+          <div class="of-space-card of-space-card--photo"><img src="/images/gv-type-police.jpg" alt="Philadelphia police precinct entry glass with security window film" width="400" height="480" loading="lazy" class="of-space-card__img" /><div class="of-space-card__photo-overlay"></div><div class="of-space-card__photo-content"><h3 class="of-space-card__photo-title">Police Precincts &amp; Public Safety</h3><p class="of-space-card__photo-text">Security and anti-intrusion film on entry glass, privacy for processing areas, forced entry delay at lobby glass.</p></div></div>
+          <div class="of-space-card of-space-card--badge"><img src="/images/gv-type-federal.jpg" alt="Federal building glass with GSA documentation-ready government window film" width="520" height="360" loading="lazy" class="of-space-card__img" /><div class="of-space-card__badge-overlay"></div><div class="of-space-card__badge-content"><div class="of-space-card__badge-pill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>GSA Documentation Available</div><h3 class="of-space-card__badge-title">Post Offices &amp; Federal Buildings</h3><p class="of-space-card__badge-text">GSA procurement-compatible film specifications, blast mitigation, energy compliance documentation.</p></div></div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ══ BENEFIT ROWS ══ -->
+    <section class="of-benefits">
+      <div class="of-benefits__container">
+        <div class="of-benefits__header"><div class="of-benefits__eyebrow">Facility Performance</div><h2 class="of-benefits__headline">Security, Energy, Preservation, and Privacy in One Scope</h2><p class="of-benefits__intro">Government window film for Philadelphia supports the work facility teams already manage: safety review, energy planning, public service, and civic stewardship.</p></div>
+        <div class="of-row">
+          <div class="of-row__image"><img src="/images/gv-blast.jpg" alt="Blast mitigation window film holding civic building glass fragments in place" width="680" height="480" loading="lazy" decoding="async" /></div>
+          <div class="of-row__text"><div class="of-row__eyebrow">Safety</div><h3 class="of-row__title">Blast Mitigation Film That Meets Federal Standards</h3><p class="of-row__body">For courthouses, federal buildings, police facilities, and high-traffic public offices, glass hazard mitigation is part of the security conversation. 3M Scotchshield Ultra safety and security films are specified for blast and forced-entry applications where UFC 4-010-01, GSA glazing goals, and fragment retention need formal documentation.</p><p class="of-row__body"><a href="/benefits/blast-mitigation/">Blast mitigation window film</a> helps hold broken glass fragments together and in the frame, reducing flying-shard risk and creating additional time for evacuation, response, or lockdown procedures. For public entrances and lobby glass, our <a href="/benefits/safety-and-security/">safety and security window film</a> specifications pair the film with the right attachment system so the glass and frame work together.</p></div>
+        </div>
+        <div class="of-row of-row--rev">
+          <div class="of-row__image"><img src="/images/gv-energy.jpg" alt="Solar control film improving energy performance in a Philadelphia civic office" width="680" height="480" loading="lazy" decoding="async" /></div>
+          <div class="of-row__text"><div class="of-row__eyebrow">Energy</div><h3 class="of-row__title">Cut Energy Costs Across Your Entire Civic Facility</h3><p class="of-row__body">Many government buildings built before 1970 lack the thermal performance expected from modern glazing. Solar control film rejects up to 86% of heat gain before it enters the building, improving comfort for permit offices, administrative departments, public counters, and west-facing civic wings.</p><p class="of-row__body">The right <a href="/benefits/energy-savings/">energy-saving window film</a> can support LEED EA documentation, federal energy mandates, and capital-planning conversations without replacing historic or hard-to-source windows. Payback periods often fall in the 3-5 year range depending on glass area, orientation, and HVAC load.</p></div>
+        </div>
+        <div class="of-row">
+          <div class="of-row__image"><img src="/images/gv-uv.jpg" alt="Clear UV protection film preserving records and civic interior materials" width="680" height="480" loading="lazy" decoding="async" /></div>
+          <div class="of-row__text"><div class="of-row__eyebrow">UV Protection</div><h3 class="of-row__title">Protect the Documents and Assets Inside Philadelphia's Civic Buildings</h3><p class="of-row__body">Historic records, displayed awards, artwork, seal displays, wood finishes, and public furnishings all degrade under cumulative UV exposure. Clear UV film blocks 99% of ultraviolet radiation while preserving the daylight that makes many civic interiors feel open and accessible.</p><p class="of-row__body">Fading is irreversible, which is why conservation-minded facility teams treat UV control as prevention. We can pair <a href="/benefits/uv-blocking-window-film-philadelphia/">UV-blocking window film</a> data with resources from <a href="https://www.energystar.gov/buildings" target="_blank" rel="noopener noreferrer">ENERGY STAR for buildings</a> and product documentation for review.</p></div>
+        </div>
+        <div class="of-row of-row--rev">
+          <div class="of-row__image"><img src="/images/gv-privacy.jpg" alt="Privacy window film controlling sightlines in a public government office" width="680" height="480" loading="lazy" decoding="async" /></div>
+          <div class="of-row__text"><div class="of-row__eyebrow">Privacy</div><h3 class="of-row__title">Control Sightlines Without Closing Off Philadelphia's Public Buildings</h3><p class="of-row__body">One-way daytime privacy film helps permit offices, HR departments, administrative corridors, and sensitive processing areas control sightlines without covering windows or making public buildings feel closed off. Frosted and decorative films can also protect interior offices and jury areas.</p><p class="of-row__body">Privacy film can maintain daylight and openness while blocking external views, and solar/privacy combinations reduce glare on computer screens. That matters for screen-heavy public service work, where <a href="https://www.osha.gov/ergonomics" target="_blank" rel="noopener noreferrer">OSHA ergonomics</a> guidance recognizes visual comfort as part of healthier workstations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FILM TYPES SLIDER ══ -->
+    <section class="of-ftype" id="ofFilmTypes">
+      <div class="of-ftype__track" id="ofFtypeTrack">
+        <div class="of-ftype__slide of-ftype-active" data-slide="0"><img src="/images/gv-slider-blast.jpg" alt="Blast mitigation film for government building glass" class="of-ftype__bg" /><div class="of-ftype__overlay"></div><div class="of-ftype__content"><div class="of-ftype__step">01</div><h2 class="of-ftype__title">Blast Mitigation Film</h2><p class="of-ftype__desc">Clear safety film for federal, municipal, and public-safety glazing where fragment retention, blast mitigation, and documentation matter.</p><div class="of-ftype__faq"><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">What blast mitigation standard does the film meet?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>3M Scotchshield Ultra series meets UFC 4-010-01 GSA glazing standards used in federal buildings and military installations. Full compliance documentation is provided.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Does blast film look different from regular glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>No. Scotchshield is optically clear with no tint and no reflection. The protective layers are invisible to the naked eye.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Can blast mitigation film be installed in occupied government buildings?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. Installation can be sequenced after hours or section by section so government operations continue with minimal disruption.</div></div></div><a href="/contact/" class="of-ftype__cta">Request blast film specs →</a></div></div>
+        <div class="of-ftype__slide" data-slide="1"><img src="/images/gv-slider-security.jpg" alt="Security and anti-intrusion film for public safety building glass" class="of-ftype__bg" /><div class="of-ftype__overlay"></div><div class="of-ftype__content"><div class="of-ftype__step">02</div><h2 class="of-ftype__title">Security &amp; Anti-Intrusion Film</h2><p class="of-ftype__desc">A forced-entry delay layer for entry glass, public counters, police precincts, and administrative offices.</p><div class="of-ftype__faq"><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Does security film stop forced entry?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Security film does not make glass unbreakable, but it holds broken glass together and slows entry through the opening, adding response time at public-facing glass.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">What safety standard applies?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Security film can be documented against ANSI Z97.1 safety glazing performance and related manufacturer impact testing for the selected film and attachment system.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Can it work with access control systems?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. Film is a physical hardening layer that complements cameras, alarms, locks, and access control by delaying entry through glass.</div></div></div><a href="/contact/" class="of-ftype__cta">Assess entry glass →</a></div></div>
+        <div class="of-ftype__slide" data-slide="2"><img src="/images/gv-slider-energy.jpg" alt="Solar control and energy window film for government buildings" class="of-ftype__bg" /><div class="of-ftype__overlay"></div><div class="of-ftype__content"><div class="of-ftype__step">03</div><h2 class="of-ftype__title">Solar Control &amp; Energy Film</h2><p class="of-ftype__desc">High-performance solar film for civic facilities managing heat gain, glare, sustainability reporting, and aging glazing.</p><div class="of-ftype__faq"><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">How much heat can it reject?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Selected solar control films reject up to 86% of solar heat, depending on the film and glass type. We document SHGC, VLT, and TSER for review.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Can it support LEED credits?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. Solar control film can support LEED Energy and Atmosphere documentation through modeled performance improvements and manufacturer data.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">What is the payback timeline for government buildings?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Payback depends on orientation, HVAC load, glass area, and film selection, with many commercial projects falling in the 3-5 year range. We provide performance data for your facility review.</div></div></div><a href="/contact/" class="of-ftype__cta">Review energy film options →</a></div></div>
+        <div class="of-ftype__slide" data-slide="3"><img src="/images/gv-slider-uv.jpg" alt="UV protection film for civic records and government interiors" class="of-ftype__bg" /><div class="of-ftype__overlay"></div><div class="of-ftype__content"><div class="of-ftype__step">04</div><h2 class="of-ftype__title">UV Protection Film</h2><p class="of-ftype__desc">Clear UV-blocking film for records rooms, historic interiors, public displays, awards, and civic furnishings.</p><div class="of-ftype__faq"><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Will it protect records and displayed documents?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. UV film blocks 99% of ultraviolet radiation, the major driver of fading in paper, textiles, wood, and displayed civic materials.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Does UV film darken historic windows?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Clear UV films are nearly invisible and are often selected when preserving the look of historic civic glass is a priority.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">How does this relate to conservation standards?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Conservation practice emphasizes reducing UV exposure because fading is irreversible. We provide product data that facility teams can review alongside AIC-style preservation goals.</div></div></div><a href="/contact/" class="of-ftype__cta">Protect civic interiors →</a></div></div>
+        <div class="of-ftype__slide" data-slide="4"><img src="/images/gv-slider-privacy.jpg" alt="Privacy film for sensitive government office glass" class="of-ftype__bg" /><div class="of-ftype__overlay"></div><div class="of-ftype__content"><div class="of-ftype__step">05</div><h2 class="of-ftype__title">Privacy Film</h2><p class="of-ftype__desc">One-way, frosted, and decorative privacy films for HR offices, counters, interview rooms, and administrative corridors.</p><div class="of-ftype__faq"><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">How does one-way daytime privacy work?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>One-way privacy film relies on a light difference: the brighter side sees reflection, while the darker side sees through. It is useful for daytime public-facing glass.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">What happens at night?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>When interior lights are brighter than outside, one-way privacy can reverse. For consistent privacy, frosted or opaque decorative film is the better government specification.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Is privacy film compatible with older glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Often yes, but we assess glass type, tint, coatings, and thermal stress risk before recommending a reflective, frosted, or clear privacy product.</div></div></div><a href="/contact/" class="of-ftype__cta">Plan privacy zones →</a></div></div>
+        <div class="of-ftype__slide" data-slide="5"><img src="/images/gv-slider-decorative.jpg" alt="Decorative and wayfinding film for government office interiors" class="of-ftype__bg" /><div class="of-ftype__overlay"></div><div class="of-ftype__content"><div class="of-ftype__step">06</div><h2 class="of-ftype__title">Decorative &amp; Wayfinding Film</h2><p class="of-ftype__desc">Frosted bands, agency branding, privacy gradients, and durable graphics for public-service interiors.</p><div class="of-ftype__faq"><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Can film brand government spaces?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. Decorative film can carry seals, department names, directional graphics, or subtle civic patterns while remaining removable and glass-friendly.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Is frosted film useful for partitions?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. Frosted film is ideal for interior partitions where staff need light transmission with visual privacy at counters, offices, and meeting rooms.</div></div><div class="of-ftype__faq-item"><button class="of-ftype__faq-q" aria-expanded="false">Can custom graphics be updated later?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button><div class="of-ftype__faq-a" hidden>Yes. Professionally installed decorative film can be removed and replaced when departments move, signage changes, or public-service areas are reorganized.</div></div></div><a href="/contact/" class="of-ftype__cta">Design civic glass graphics →</a></div></div>
+      </div>
+      <nav class="of-ftype__nav" aria-label="Film type navigation">
+        <button class="of-ftype__nav-item of-ftype__nav-item--active" data-ofnav="0"><span class="of-ftype__nav-line"></span><span class="of-ftype__nav-label">Blast Mitigation</span></button>
+        <button class="of-ftype__nav-item" data-ofnav="1"><span class="of-ftype__nav-line"></span><span class="of-ftype__nav-label">Security</span></button>
+        <button class="of-ftype__nav-item" data-ofnav="2"><span class="of-ftype__nav-line"></span><span class="of-ftype__nav-label">Energy</span></button>
+        <button class="of-ftype__nav-item" data-ofnav="3"><span class="of-ftype__nav-line"></span><span class="of-ftype__nav-label">UV Protection</span></button>
+        <button class="of-ftype__nav-item" data-ofnav="4"><span class="of-ftype__nav-line"></span><span class="of-ftype__nav-label">Privacy</span></button>
+        <button class="of-ftype__nav-item" data-ofnav="5"><span class="of-ftype__nav-line"></span><span class="of-ftype__nav-label">Decorative</span></button>
+      </nav>
+      <button class="of-ftype__arrow of-ftype__arrow--prev" id="ofFtypePrev" aria-label="Previous film type"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      <button class="of-ftype__arrow of-ftype__arrow--next" id="ofFtypeNext" aria-label="Next film type"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      <div class="of-ftype__progress"><div class="of-ftype__progress-bar" id="ofFtypeProgressBar"></div></div>
+    </section>
+
+    <!-- ══ FEATURED PROJECT ══ -->
+    <section class="of-project" id="featuredProject"><div class="of-project__inner"><div class="of-project__image-col"><img src="/images/gv-case-study.jpg" alt="Center City municipal office after solar control and privacy window film project" class="of-project__img" width="848" height="1264" loading="lazy" decoding="async" /><div class="of-project__stats-strip"><div class="of-project__stat"><span class="of-project__stat-num">3</span><span class="of-project__stat-label">Challenges Solved</span></div><div class="of-project__stat-div"></div><div class="of-project__stat"><span class="of-project__stat-num">70</span><span class="of-project__stat-label">Prestige VLT</span></div><div class="of-project__stat-div"></div><div class="of-project__stat"><span class="of-project__stat-num">0</span><span class="of-project__stat-label">Service Disruptions</span></div><div class="of-project__stat-div"></div><div class="of-project__stat"><span class="of-project__stat-num">86%</span><span class="of-project__stat-label">Heat Rejected</span></div></div></div><div class="of-project__text-col"><div class="of-project__eyebrow">Center City, Philadelphia — Municipal Government Office</div><h2 class="of-project__title">How a Philadelphia Municipal Office Resolved Three Window Challenges in One Project</h2><div class="of-project__detail"><span class="of-project__detail-label">Challenge</span><span class="of-project__detail-val">West-facing permit processing offices had intense afternoon heat gain; staff reported glare on computer screens; HR department offices were visible from a public corridor.</span></div><div class="of-project__detail"><span class="of-project__detail-label">Solution</span><span class="of-project__detail-val">3M Prestige 70 solar control film on west-facing glass and LLumar reflective one-way privacy film on HR corridor windows, sequenced around public service hours.</span></div><div class="of-project__detail"><span class="of-project__detail-label">Result</span><span class="of-project__detail-val">Afternoon heat gain was measurably reduced, screen glare was eliminated, and HR office privacy was fully resolved with no disruption to permit office operations.</span></div><div class="of-project__detail"><span class="of-project__detail-label">Support Docs</span><span class="of-project__detail-val"><a href="/resources/government-window-film-3m-prestige-70-solar-control-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M Prestige 70 solar control spec</a> · <a href="/resources/government-window-film-llumar-solar-control-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">LLumar solar control spec</a></span></div><a href="/contact/" class="of-project__cta">Discuss your civic building →</a></div></div></section>
+
+    <!-- ══ GALLERY ══ -->
+    <section class="of-gallery" id="ofGallery"><div class="of-gallery__header"><p class="of-gallery__eyebrow">Government Installations</p><h2 class="of-gallery__title">Government Window Film Across Philadelphia Civic Buildings</h2><p class="of-gallery__sub">Courthouses, municipal offices, police precincts, and federal facilities treated for security, energy performance, privacy, and UV protection.</p></div><div class="of-gallery__grid">
+      <div class="of-gallery__panel of-gallery__panel--tall"><img src="/images/gv-gallery-1.jpg" alt="City Hall civic architecture with government window film" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">City Hall</span><span class="of-gallery__label-sub">Civic Architecture</span></div></div>
+      <div class="of-gallery__panel"><img src="/images/gv-gallery-2.jpg" alt="Courthouse legal facility glass with security window film" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">Courthouse</span><span class="of-gallery__label-sub">Legal Facilities</span></div></div>
+      <div class="of-gallery__panel"><img src="/images/gv-gallery-3.jpg" alt="Police precinct public safety building with entry security film" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">Police Precinct</span><span class="of-gallery__label-sub">Public Safety</span></div></div>
+      <div class="of-gallery__panel"><img src="/images/gv-gallery-4.jpg" alt="Federal building glass treated with solar control film" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">Federal Building</span><span class="of-gallery__label-sub">Solar Control</span></div></div>
+      <div class="of-gallery__panel"><img src="/images/gv-gallery-5.jpg" alt="Permit office privacy film on public counter glass" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">Permit Office</span><span class="of-gallery__label-sub">Privacy Film</span></div></div>
+      <div class="of-gallery__panel"><img src="/images/gv-gallery-6.jpg" alt="Historic civic building protected with clear UV film" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">Historic Civic Building</span><span class="of-gallery__label-sub">Conservation</span></div></div>
+      <div class="of-gallery__panel of-gallery__panel--wide"><img src="/images/gv-gallery-7.jpg" alt="Philadelphia government campus with window film across civic buildings" class="of-gallery__img" loading="lazy" /><div class="of-gallery__overlay"></div><div class="of-gallery__label"><span class="of-gallery__label-title">Philadelphia Government Campus</span><span class="of-gallery__label-sub">Wide/Aerial</span></div></div>
+    </div></section>
+
+    <!-- ══ STATS BAR ══ -->
+    <section class="of-stats"><div class="of-stats__inner"><div class="of-stats__item"><span class="of-stats__num">GSA</span><span class="of-stats__label">Compatible Specs<br/><small>Procurement-ready data</small></span></div><div class="of-stats__div"></div><div class="of-stats__item"><span class="of-stats__num">UFC</span><span class="of-stats__label">4-010-01<br/><small>Blast mitigation alignment</small></span></div><div class="of-stats__div"></div><div class="of-stats__item"><span class="of-stats__num">99%</span><span class="of-stats__label">UV Blocked<br/><small>Records and interiors</small></span></div><div class="of-stats__div"></div><div class="of-stats__item"><span class="of-stats__num">86%</span><span class="of-stats__label">Heat Rejected<br/><small>Solar control options</small></span></div><div class="of-stats__div"></div><div class="of-stats__item"><span class="of-stats__num">3M</span><span class="of-stats__label">Certified Dealer<br/><small>Philadelphia region</small></span></div></div></section>
+
+    <!-- ══ PROCESS ══ -->
+    <section class="es-process-split"><div class="es-process-split__container"><div class="es-process-split__content"><div class="es-process-split__eyebrow">How It Works</div><h2 class="es-process-split__title">From Facility Review to Compliance Package</h2><div class="es-accordion"><details class="es-accordion__item" open><summary class="es-accordion__trigger"><span class="es-accordion__number">01</span><span class="es-accordion__label">Government Site Assessment</span><span class="es-accordion__icon">+</span></summary><div class="es-accordion__body"><p>We assess glass type, orientation, frame condition, public access, security priorities, and privacy zones across the facility.</p></div></details><details class="es-accordion__item"><summary class="es-accordion__trigger"><span class="es-accordion__number">02</span><span class="es-accordion__label">Film Specification</span><span class="es-accordion__icon">+</span></summary><div class="es-accordion__body"><p>You receive manufacturer data, film performance figures, attachment-system notes, and a scope aligned with procurement and compliance review.</p></div></details><details class="es-accordion__item"><summary class="es-accordion__trigger"><span class="es-accordion__number">03</span><span class="es-accordion__label">Coordinated Installation</span><span class="es-accordion__icon">+</span></summary><div class="es-accordion__body"><p>Our certified installers coordinate access, security check-ins, and work zones with facility staff to protect public-facing operations.</p></div></details><details class="es-accordion__item"><summary class="es-accordion__trigger"><span class="es-accordion__number">04</span><span class="es-accordion__label">Documentation &amp; Closeout</span><span class="es-accordion__icon">+</span></summary><div class="es-accordion__body"><p>We provide product records, warranty documentation, and the technical information facility teams need for internal review.</p></div></details></div></div><div class="es-process-split__image-wrapper"><img src="/images/gv-whatis.jpg" alt="Government facility manager reviewing window film specifications" class="es-process-split__image" width="848" height="1264" loading="lazy" decoding="async" /></div></div></section>
+
+    <!-- ══ TESTIMONIALS ══ -->
+    <section class="cam-testimonials"><div class="cam-testimonials__header"><span class="cam-testimonials__eyebrow">Client Stories</span><h2 class="cam-testimonials__title">What Philadelphia Government Facility Teams Say</h2><p class="cam-testimonials__sub">Window film results from municipal, federal, and civic facility managers.</p></div><div class="cam-testimonials__grid"><div class="cam-tcard"><div class="cam-tcard__img-wrap"><img src="/images/gv-testimonial-1.jpg" alt="Marcus T. Philadelphia Municipal Court facilities manager" class="cam-tcard__img" loading="lazy" /></div><div class="cam-tcard__body"><div class="cam-tcard__stars">★★★★★</div><p class="cam-tcard__quote">"{testimonialOne}"</p><div class="cam-tcard__meta"><p class="cam-tcard__name">Marcus T.</p><p class="cam-tcard__role">Facilities Manager — Philadelphia Municipal Court</p></div></div></div><div class="cam-tcard"><div class="cam-tcard__img-wrap"><img src="/images/gv-testimonial-2.jpg" alt="Director of Operations for a Philadelphia city agency" class="cam-tcard__img" loading="lazy" /></div><div class="cam-tcard__body"><div class="cam-tcard__stars">★★★★★</div><p class="cam-tcard__quote">"{testimonialTwo}"</p><div class="cam-tcard__meta"><p class="cam-tcard__name">Director of Operations</p><p class="cam-tcard__role">Philadelphia City Agency</p></div></div></div><div class="cam-tcard"><div class="cam-tcard__img-wrap"><img src="/images/gv-testimonial-3.jpg" alt="Federal property administrator overseeing window film documentation" class="cam-tcard__img" loading="lazy" /></div><div class="cam-tcard__body"><div class="cam-tcard__stars">★★★★★</div><p class="cam-tcard__quote">"{testimonialThree}"</p><div class="cam-tcard__meta"><p class="cam-tcard__name">Federal Property Administrator</p><p class="cam-tcard__role">Philadelphia Federal Facility</p></div></div></div></div></section>
+
+    <!-- ══ PHILADELPHIA AREAS ══ -->
+    <section class="ip-local"><div class="ip-local__grid"><div class="ip-local__map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97443.81289285327!2d-75.2272!3d39.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e099!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" title="Government window film Philadelphia service area map"></iframe></div><div class="ip-local__content"><span class="cam-testimonials__eyebrow">Service Area</span><h2>Government Window Film Across Philadelphia's Civic Districts</h2><p>Our Philadelphia-based team specifies and installs window film for government buildings across civic districts, neighborhood offices, and federal facilities.</p><div class="cam-neighborhoods"><div class="cam-nh"><span class="cam-nh__name">Center City</span><span class="cam-nh__desc">City hall, federal courts, district attorney, municipal buildings — afternoon solar load and office privacy are the primary film requests.</span></div><div class="cam-nh"><span class="cam-nh__name">Old City</span><span class="cam-nh__desc">Historic state and federal buildings with preservation constraints — clear UV film prioritized to protect building character.</span></div><div class="cam-nh"><span class="cam-nh__name">North Philadelphia</span><span class="cam-nh__desc">Police districts and DMV offices — forced entry delay and security film on entry glass are the most common requests.</span></div><div class="cam-nh"><span class="cam-nh__name">West Philadelphia</span><span class="cam-nh__desc">Civic centers and post offices — energy film to address large glass facades common in 1960s government construction.</span></div><div class="cam-nh"><span class="cam-nh__name">Northeast Philadelphia</span><span class="cam-nh__desc">District offices and permit centers — solar control for suburban-style municipal campuses with significant glazing.</span></div><div class="cam-nh"><span class="cam-nh__name">South Philadelphia</span><span class="cam-nh__desc">Neighborhood precinct houses and permit offices — entry security film and privacy film for counter areas.</span></div><div class="cam-nh"><span class="cam-nh__name">Germantown/Mt. Airy</span><span class="cam-nh__desc">Historic civic buildings with aging single-pane windows — UV protection and thermal improvement without window replacement.</span></div><div class="cam-nh"><span class="cam-nh__name">University City</span><span class="cam-nh__desc">Government-funded research facilities and federal agency field offices — solar control and privacy for open-plan federal workspace.</span></div></div></div></div></section>
+
+    <!-- ══ RESOURCES ══ -->
+    <section class="res-section"><div class="res-section__inner"><div class="res-section__image-col"><img src="/images/gv-resources.jpg" alt="Government window film compliance documents and technical specifications" class="res-section__img" loading="lazy" /></div><div class="res-section__content-col"><p class="res-section__eyebrow">Manufacturer Resources</p><h2 class="res-section__title">Government Window Film — Safety Specs, Compliance Data &amp; Energy Documentation</h2><p class="res-section__body">Download official spec sheets and technical data for government-grade window film. These documents include GSA-compatible specifications, blast performance data, safety certifications, and energy performance figures for the films we specify for Philadelphia government buildings.</p><ul class="res-section__list">
+      <li class="res-section__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><a href="/resources/government-window-film-3m-scotchshield-blast-mitigation-safety-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M Scotchshield Ultra — Blast Mitigation &amp; Safety Film Technical Data Sheet</a></li>
+      <li class="res-section__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><a href="/resources/government-window-film-3m-prestige-70-solar-control-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M Prestige 70 — Solar Control Window Film Specification Sheet</a></li>
+      <li class="res-section__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><a href="/resources/government-window-film-solar-gard-armorcoat-safety-security-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">Solar Gard Armorcoat — Safety &amp; Security Film CSI Specification</a></li>
+      <li class="res-section__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><a href="/resources/government-window-film-llumar-solar-control-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">LLumar Solar Control — Architectural Window Film Guide Specification</a></li>
+      <li class="res-section__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><a href="/resources/government-window-film-madico-clear-safety-security-case-study-philadelphia.pdf" target="_blank" rel="noopener noreferrer">Madico Clear 14 Mil — Safety &amp; Security Film Case Study: Texas School District (48 Buildings)</a></li>
+      <li class="res-section__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><a href="/resources/government-window-film-energy-efficiency-brochure-3m-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M Energy Efficiency Brochure — Commercial Window Film Energy Performance Data</a></li>
+    </ul><a href="/contact/" class="res-section__cta">Request a full government spec package →</a></div></div></section>
+
+    <!-- ══ FAQ ══ -->
+    <section class="swt-faq" id="faq"><div class="container"><div class="swt-faq__layout"><div class="swt-faq__header fade-in"><span class="swt-eyebrow">Questions</span><h2 class="swt-h2">Frequently Asked Questions</h2><p>Answers about government window film for Philadelphia facility managers, procurement teams, and compliance reviewers.</p><a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a></div><div class="swt-faq__list fade-in">{faqItems.map((item) => (<div class="swt-faq__item"><div class="swt-faq__q"><span>{item.question}</span><span class="swt-faq__toggle">+</span></div><div class="swt-faq__a"><p set:html={item.answer}></p></div></div>))}</div></div></div></section>
+
+    <!-- ══ GEO BLOCK ══ -->
+    <div class="gv-geo" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+      <p>Government window film for Philadelphia civic buildings is a documented glass-performance upgrade for City Hall, Philadelphia Municipal Court, courthouses, police precincts, post offices, federal buildings, permit offices, and municipal campuses. Window Film Philadelphia specifies GSA-compatible safety film, UFC 4-010-01 blast mitigation options, 3M Scotchshield Ultra security film, LLumar privacy and solar control film, 3M Prestige 70 energy film, and clear UV film that blocks 99% of ultraviolet radiation. For aging civic building stock with pre-1970 single-pane glass, government building window film Philadelphia projects can reduce solar heat gain by up to 86%, support LEED energy documentation, preserve historic interiors, delay forced entry, and provide privacy for HR, jury, records, permit processing, and public safety areas without replacing existing windows.</p>
+      <dl><dt>What is government window film for Philadelphia?</dt><dd>It is professionally installed safety, solar, UV, privacy, or decorative film specified for civic and federal building glass.</dd><dt>How much does government building window film cost in Philadelphia?</dt><dd>Pricing depends on glass area, film type, attachment system, access, and documentation requirements; a site assessment provides a written scope.</dd><dt>Which Philadelphia government buildings use window film?</dt><dd>Courthouses, city offices, police precincts, post offices, federal agency spaces, and municipal campuses use window film for safety, energy, UV, and privacy.</dd><dt>What is the best window film for federal buildings?</dt><dd>GSA-compatible 3M Scotchshield Ultra safety film with the correct attachment system is commonly reviewed for blast mitigation and forced-entry delay.</dd><dt>Does government window film help with LEED and energy mandates?</dt><dd>Yes. Solar control film provides SHGC, VLT, and heat-rejection data that supports energy documentation.</dd></dl>
+      <ul><li>government window film for Philadelphia</li><li>government building window film Philadelphia</li><li>city hall window film Philadelphia</li><li>courthouse window film Philadelphia</li><li>blast mitigation window film Philadelphia</li><li>federal building window film Philadelphia</li><li>GSA compliant window film Philadelphia</li><li>Philadelphia municipal office privacy film</li><li>police precinct security window film Philadelphia</li><li>public safety building window film Philadelphia</li><li>3M Scotchshield government film Philadelphia</li><li>LLumar government solar control film Philadelphia</li><li>LEED window film government buildings Philadelphia</li><li>UV protection film civic buildings Philadelphia</li></ul>
+    </div>
+
+    <!-- ══ CTA BANNER ══ -->
+    <section class="priv-cinematic-cta"><div class="priv-cinematic-cta__media gv-cta-bg" aria-hidden="true" style="background-image: url('/images/gv-cta-bg.jpg');"></div><div class="priv-cinematic-cta__overlay" aria-hidden="true"></div><div class="priv-cinematic-cta__vignette" aria-hidden="true"></div><div class="priv-cinematic-cta__content"><h2 class="priv-cinematic-cta__title">Ready to Protect Philadelphia's Civic Facilities?</h2><p class="priv-cinematic-cta__text">Free site assessment for government buildings. We provide GSA-compatible specifications, compliance documentation, and professional installation with no disruption to public-facing operations.</p><div class="priv-cinematic-cta__actions"><a href="/contact/" class="priv-cinematic-cta__btn-primary">Request a Government Assessment</a><a href="tel:2673947980" class="priv-cinematic-cta__btn-secondary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>(267) 394-7980</a></div></div></section>
+
+  </div><!-- /swt-body -->
+
+<script>
+  // ── FAQ Accordion ──
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
+
+  // ── Film Types Slider ──
+  (() => {
+    const track = document.getElementById('ofFtypeTrack');
+    if (!track) return;
+    const slides = Array.from(document.querySelectorAll('.of-ftype__slide'));
+    const navItems = Array.from(document.querySelectorAll('[data-ofnav]'));
+    const progressBar = document.getElementById('ofFtypeProgressBar');
+    let current = 0;
+    let timer;
+    let progress = 0;
+    const DURATION = 7000;
+    const TICK = 50;
+
+    function goTo(idx) {
+      slides[current].classList.remove('of-ftype-active');
+      navItems[current] && navItems[current].classList.remove('of-ftype__nav-item--active');
+      current = ((idx % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('of-ftype-active');
+      navItems[current] && navItems[current].classList.add('of-ftype__nav-item--active');
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      progress = 0;
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      progress = 0;
+      timer = setInterval(() => {
+        progress += (TICK / DURATION) * 100;
+        if (progressBar) progressBar.style.width = Math.min(progress, 100) + '%';
+        if (progress >= 100) goTo(current + 1);
+      }, TICK);
+    }
+
+    goTo(0);
+    startTimer();
+
+    const nextBtn = document.getElementById('ofFtypeNext');
+    const prevBtn = document.getElementById('ofFtypePrev');
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); startTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    navItems.forEach(btn => btn.addEventListener('click', () => { goTo(Number(btn.dataset.ofnav)); startTimer(); }));
+
+    document.querySelectorAll('.of-ftype__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.of-ftype__faq-item');
+        const answer = item && item.querySelector('.of-ftype__faq-a');
+        const icon = btn.querySelector('.of-ftype__faq-icon');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.of-ftype__slide');
+        if (slide) {
+          slide.querySelectorAll('.of-ftype__faq-q').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            const ic = b.querySelector('.of-ftype__faq-icon');
+            if (ic) ic.style.transform = '';
+            const a = b.closest('.of-ftype__faq-item') && b.closest('.of-ftype__faq-item').querySelector('.of-ftype__faq-a');
+            if (a) a.hidden = true;
+          });
+        }
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          if (icon) icon.style.transform = 'rotate(45deg)';
+          if (answer) answer.hidden = false;
+        }
+      });
+    });
+  })();
+</script>
 </BaseLayout>
 
 <style>
-.ip-page-body {
-  position: relative;
-  background: var(--off-white, #F7F6F3);
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-
-.gb-eyebrow {
-  display: block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-
-/* Intro */
-.gb-intro {
-  padding: 80px 5% 60px;
-}
-.gb-intro__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.gb-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: var(--brand, #272E32);
-  line-height: 1.1;
-  margin: 0 0 24px;
-}
-.gb-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  line-height: 1.7;
-  color: #4a4a4a;
-  margin: 0 0 32px;
-}
-.gb-intro__ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.gb-intro__stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-.gb-stat {
-  background: var(--white, #ffffff);
-  border-radius: 18px;
-  padding: 28px 24px;
-  box-shadow: 0 2px 16px rgba(39,46,50,0.08);
-  text-align: center;
-}
-.gb-stat__num {
-  display: block;
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.gb-stat__label {
-  display: block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px;
-  color: #888;
-  line-height: 1.4;
-}
-
-/* Buttons */
-.gb-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.gb-btn--primary {
-  background: var(--brand, #272E32);
-  color: #fff;
-}
-.gb-btn--primary:hover {
-  background: #1a1f22;
-}
-.gb-btn--ghost {
-  background: transparent;
-  color: var(--brand, #272E32);
-  border: 2px solid var(--brand, #272E32);
-}
-.gb-btn--ghost:hover {
-  background: var(--brand, #272E32);
-  color: #fff;
-}
-.gb-btn--green {
-  background: var(--green, #81AB4C);
-  color: #fff;
-}
-.gb-btn--green:hover {
-  background: #6e9440;
-}
-.gb-btn--outline {
-  background: transparent;
-  color: #fff;
-  border: 2px solid rgba(255,255,255,0.5);
-}
-.gb-btn--outline:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.1);
-}
-
-/* Benefits */
-.gb-benefits {
-  padding: 60px 5%;
-  background: var(--white, #ffffff);
-}
-.gb-benefits__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.gb-benefits__hd {
-  text-align: center;
-  margin-bottom: 48px;
-}
-.gb-benefits__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: var(--brand, #272E32);
-  margin: 0;
-}
-.gb-benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.gb-card {
-  background: var(--white, #ffffff);
-  border-radius: 18px;
-  padding: 32px 24px;
-  box-shadow: 0 4px 24px rgba(39,46,50,0.1);
-}
-.gb-card__icon {
-  width: 56px;
-  height: 56px;
-  background: var(--green-light, #eef4e4);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: var(--green, #81AB4C);
-}
-.gb-card__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--brand, #272E32);
-  margin: 0 0 12px;
-}
-.gb-card__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
-  line-height: 1.65;
-  color: #4a4a4a;
-  margin: 0;
-}
-
-/* CTA */
-.gb-cta {
-  margin: 40px 5% 0;
-  background: var(--brand, #272E32);
-  border-radius: 24px;
-  padding: 64px 5%;
-}
-.gb-cta__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.gb-cta__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 16px;
-}
-.gb-cta__sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.7);
-  margin: 0 0 36px;
-  max-width: 560px;
-}
-.gb-cta__btns {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 1024px) {
-  .gb-benefits__grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* ══════════════════════════════════════
+     SHARED TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --of-green:        #4E6B2A;
+    --of-green-light:  #7CB342;
+    --of-dark:         #0D1A0F;
+    --of-cream:        #F4EFE6;
+    --of-alt:          #ECE4D4;
+    --of-border:       #E1D6C1;
+    --of-text-sec:     #5a6650;
+    --of-white:        #ffffff;
+    --of-radius:       6px;
   }
-}
-@media (max-width: 768px) {
-  .gb-intro__inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
+
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  .of-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
-  .gb-benefits__grid {
-    grid-template-columns: 1fr;
+  .gv-hero { position: relative; }
+  .gv-geo { display: none; }
+  .of-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
   }
-  .gb-cta__btns {
+  .of-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 26, 15, 0.55) 0%,
+      rgba(13, 26, 15, 0.78) 50%,
+      rgba(13, 26, 15, 0.95) 100%
+    );
+  }
+  .of-hero__content {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
+    display: flex;
     flex-direction: column;
+    align-items: center;
   }
-}
+
+  /* Eyebrow pill */
+  .of-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .of-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+
+  /* H1 */
+  .of-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .of-hero__br { display: none; }
+
+  /* Animated flip line */
+  .of-hero__animated-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(243, 246, 241, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .of-hero__flip.flipwords-wrap { display: inline; }
+  .of-hero__flip .fw-word-col {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .of-hero__flip .fw-word {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    white-space: nowrap;
+    font-style: normal;
+    min-width: unset;
+  }
+  .of-hero__flip .fw-word.is-active { position: relative; }
+
+  /* Subtitle */
+  .of-hero__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+
+  /* CTA buttons */
+  .of-hero__cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .of-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    background: var(--of-green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid var(--of-green);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .of-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    background: transparent;
+    color: rgba(255,255,255,0.82);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-secondary:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    transform: translateY(-2px);
+  }
+
+  /* Stats panel */
+  .of-hero__stats-panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--of-radius);
+    backdrop-filter: blur(8px);
+    padding: 24px 32px;
+  }
+  .of-hero__stats-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .of-hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .of-hero__stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--of-green-light);
+    line-height: 1;
+  }
+  .of-hero__stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+  }
+  .of-hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TRUST BAR (shared swt- class)
+  ══════════════════════════════════════ */
+  .swt-trust {
+    background: #ffffff;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--of-border);
+  }
+  .swt-trust__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--of-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body {
+    background: var(--of-white);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .of-hero__content { padding: 90px 20px 60px; }
+    .of-hero__stats-inner { flex-wrap: wrap; gap: 20px; }
+    .of-hero__stat-divider { display: none; }
+    .of-hero__stat { flex: 0 0 45%; }
+    .of-hero__br { display: block; }
+    .of-hero__cta { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+  }
+
+  /* ══════════════════════════════════════
+     WHAT IS
+  ══════════════════════════════════════ */
+  .of-whatis {
+    background: #fff;
+    padding: 96px 5%;
+  }
+  .of-whatis__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-whatis__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 16px;
+  }
+  .of-whatis__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .of-whatis__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-whatis__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-whatis__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .of-whatis__stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--of-cream);
+    border-radius: var(--of-radius);
+    border: 1px solid var(--of-border);
+  }
+  .of-whatis__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
+  .of-whatis__stat strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-whatis__stat span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--of-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .of-whatis__stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--of-border);
+    flex-shrink: 0;
+  }
+  .of-whatis__image-wrap {
+    position: relative;
+    border-radius: var(--of-radius);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-whatis__image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     WHY / PROBLEM
+  ══════════════════════════════════════ */
+  .of-why {
+    background: var(--of-alt);
+    padding: 96px 5%;
+  }
+  .of-why__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-why__image-wrap {
+    position: relative;
+  }
+  .of-why__image {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: var(--of-radius);
+    display: block;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-why__stat-card {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--of-dark);
+    border-radius: var(--of-radius);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 12px 32px rgba(13,26,15,0.25);
+    min-width: 240px;
+  }
+  .of-why__stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+  .of-why__stat-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .of-why__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 14px;
+  }
+  .of-why__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .of-why__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .of-why__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-why__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--of-text-sec);
+    line-height: 1.65;
+  }
+  .of-why__bullets li svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .of-why__climate-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--of-border);
+    border-radius: var(--of-radius);
+  }
+  .of-why__climate-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .of-why__climate-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-why__climate-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: var(--of-text-sec);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .of-why__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--of-green);
+    text-decoration: none;
+    border-bottom: 2px solid var(--of-green);
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .of-why__cta:hover { gap: 12px; }
+
+  /* ══════════════════════════════════════
+     BENTO BAND
+  ══════════════════════════════════════ */
+  .of-bento {
+    background: var(--of-dark);
+    padding: 80px 5%;
+  }
+  .of-bento__header {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .of-bento__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .of-bento__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.5);
+    line-height: 1.7;
+  }
+  .of-bento__compact {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .of-bento-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+  .of-bento-item:hover { background: rgba(255,255,255,0.07); }
+  .of-bento-item__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .of-bento-item__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(243,246,241,0.52);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     OFFICE SPACE TYPE GRID
+  ══════════════════════════════════════ */
+  .of-spaces {
+    background: #0d1a0f;
+    padding: 100px 24px;
+  }
+  .of-spaces__container { max-width: 1200px; margin: 0 auto; }
+  .of-spaces__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .of-spaces__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 14px;
+  }
+  .of-spaces__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .of-spaces__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(243,246,241,0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Grid */
+  .of-spaces__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .of-space-card {
+    border-radius: 24px;
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Card 1: Hero — spans 6 cols */
+  .of-space-card--hero {
+    grid-column: span 6;
+    background: linear-gradient(145deg, #1a3024 0%, #0d1a0f 60%);
+    border: 1px solid rgba(124,179,66,0.15);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    min-height: 420px;
+  }
+  .of-space-card--hero:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(124,179,66,0.25); }
+  .of-space-card__hero-icon { margin-bottom: 24px; }
+  .of-space-card__hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .of-space-card__hero-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .of-space-card__pill {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.25);
+    padding: 6px 14px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Cards 2 & 3: Photo — each spans 3 cols */
+  .of-space-card--photo {
+    grid-column: span 3;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .of-space-card--photo:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--photo:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .of-space-card__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.3) 55%, rgba(10,20,14,0.05) 100%);
+  }
+  .of-space-card__photo-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px;
+    z-index: 5;
+  }
+  .of-space-card__photo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__photo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.75);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Cards 4 & 5: Dark — each spans 4 cols */
+  .of-space-card--dark,
+  .of-space-card--dark-pattern {
+    grid-column: span 4;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .of-space-card--dark {
+    background: linear-gradient(145deg, #14201a 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.18);
+  }
+  .of-space-card--dark-pattern {
+    background: linear-gradient(145deg, #1a2e20 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.12);
+  }
+  .of-space-card--dark-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(124,179,66,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,179,66,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .of-space-card--dark:hover,
+  .of-space-card--dark-pattern:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.28); border-color: rgba(124,179,66,0.28); }
+  .of-space-card__accent-line {
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, #7CB342, transparent);
+  }
+  .of-space-card__icon-row { margin-bottom: 18px; }
+  .of-space-card__dark-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .of-space-card__dark-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.65;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+  .of-space-card__micro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(124,179,66,0.85);
+    background: rgba(124,179,66,0.08);
+    border: 1px solid rgba(124,179,66,0.18);
+    padding: 5px 10px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Card 6: Badge photo — spans 4 cols */
+  .of-space-card--badge {
+    grid-column: span 4;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 280px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+  .of-space-card--badge:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--badge:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__badge-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,20,14,0.92) 0%, rgba(13,26,15,0.8) 50%, rgba(10,20,14,0.6) 100%);
+    z-index: 2;
+  }
+  .of-space-card__badge-content {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .of-space-card__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.22);
+    padding: 5px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
+  .of-space-card__badge-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__badge-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .of-space-card--hero { grid-column: span 12; min-height: auto; }
+    .of-space-card--photo { grid-column: span 6; }
+    .of-space-card--dark,
+    .of-space-card--dark-pattern,
+    .of-space-card--badge { grid-column: span 4; }
+  }
+  @media (max-width: 768px) {
+    .of-spaces { padding: 64px 20px; }
+    .of-space-card--hero,
+    .of-space-card--photo,
+    .of-space-card--dark,
+    .of-space-card--dark-pattern,
+    .of-space-card--badge { grid-column: span 12; }
+    .of-space-card--photo { min-height: 280px; }
+  }
+
+  /* ══════════════════════════════════════
+     BENEFIT ROWS
+  ══════════════════════════════════════ */
+  .of-benefits {
+    background: #F3F6F1;
+    padding: 100px 24px;
+  }
+  .of-benefits__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .of-benefits__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 72px;
+  }
+  .of-benefits__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 8px;
+  }
+  .of-benefits__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 12px 0 20px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .of-benefits__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0625rem;
+    color: #4A5C48;
+    line-height: 1.75;
+  }
+  .of-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .of-row:last-child { margin-bottom: 0; }
+  .of-row--rev { direction: rtl; }
+  .of-row--rev > * { direction: ltr; }
+  .of-row__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13,26,15,0.12);
+    position: relative;
+  }
+  .of-row__image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(124,179,66,0.15);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .of-row__image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .of-row__image:hover img { transform: scale(1.03); }
+  .of-row__text { display: flex; flex-direction: column; }
+  .of-row__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 12px;
+  }
+  .of-row__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .of-row__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+  .of-pullquote { border-left: 4px solid #7CB342; margin: 0 0 24px; padding: 16px 24px; background: #F5F9F0; border-radius: 0 8px 8px 0; }
+  .of-pullquote__text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: #14201A; line-height: 1.7; margin: 0 0 10px; }
+  .of-pullquote__cite { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #4A5C48; font-style: normal; display: block; }
+  .of-pullquote__cite a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .of-pullquote__cite a:hover { color: #2E6B30; }
+  .of-row__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-row__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-row__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: #14201A;
+    line-height: 1.5;
+  }
+  .of-row__bullets svg { flex-shrink: 0; margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    .of-benefits { padding: 64px 20px; }
+    .of-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 64px; }
+    .of-row--rev { direction: ltr; }
+    .of-row__image img { height: 320px; }
+    .of-benefits__header { margin-bottom: 48px; }
+  }
+
+  /* ══════════════════════════════════════
+     FILM TYPES SLIDER
+  ══════════════════════════════════════ */
+  .of-ftype { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+  .of-ftype__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+  .of-ftype__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+  .of-ftype__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .of-ftype__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+  .of-ftype__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+  .of-ftype-active .of-ftype__content { opacity: 1; transform: translateY(0); }
+  .of-ftype__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .of-ftype__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; white-space: pre-line; }
+  .of-ftype__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; }
+  .of-ftype__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .of-ftype__faq-item { border-radius: 8px; overflow: hidden; }
+  .of-ftype__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+  .of-ftype__faq-q:hover { background: rgba(255,255,255,0.18); }
+  .of-ftype__faq-icon { font-size: 1.2rem; color: #7CB342; flex-shrink: 0; transition: transform 0.3s ease; }
+  .of-ftype__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+  .of-ftype__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; }
+  .of-ftype__cta:hover { background: #2E6B30; transform: translateY(-2px); }
+  .of-ftype__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 20px; }
+  .of-ftype__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+  .of-ftype__nav-item:hover { opacity: 0.65; }
+  .of-ftype__nav-item--active { opacity: 1; }
+  .of-ftype__nav-line { display: block; width: 3px; height: 28px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+  .of-ftype__nav-item--active .of-ftype__nav-line { background: #7CB342; height: 44px; }
+  .of-ftype__nav-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+  .of-ftype__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+  .of-ftype__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+  .of-ftype__arrow--prev { left: 32px; }
+  .of-ftype__arrow--next { right: 32px; }
+  .of-ftype__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+  .of-ftype__progress-bar { height: 100%; background: #7CB342; width: 0; transition: width 0.05s linear; }
+  @media (max-width: 768px) {
+    .of-ftype__nav { display: none; }
+    .of-ftype__content { padding-left: 32px; padding-right: 32px; max-width: calc(100% - 64px); }
+    .of-ftype__arrow--prev { left: 16px; }
+    .of-ftype__arrow--next { right: 16px; }
+  }
+
+  /* ══════════════════════════════════════
+     FEATURED PROJECT
+  ══════════════════════════════════════ */
+  .of-project { background: #14201A; padding: 96px 5%; }
+  .of-project__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .of-project__image-col { display: flex; flex-direction: column; gap: 0; }
+  .of-project__img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px 12px 0 0; display: block; }
+  .of-project__stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); background: #7CB342; border-radius: 0 0 12px 12px; padding: 20px 16px; gap: 16px 0; }
+  .of-project__stat { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
+  .of-project__stat-num { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.1; }
+  .of-project__stat-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; line-height: 1.3; }
+  .of-project__stat-div { display: none; }
+  .of-project__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 1.25rem; }
+  .of-project__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 2rem; }
+  .of-project__detail { border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 0; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; }
+  .of-project__detail:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+  .of-project__detail-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: #7CB342; padding-top: 2px; }
+  .of-project__detail-val { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.7; }
+  .of-project__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease; }
+  .of-project__cta:hover { background: #2E6B30; }
+  @media (max-width: 900px) {
+    .of-project__inner { grid-template-columns: 1fr; gap: 40px; }
+    .of-project__stats-strip { grid-template-columns: repeat(2, 1fr); row-gap: 16px; border-radius: 0 0 12px 12px; }
+    .of-project__stat-div { display: none; }
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+  ══════════════════════════════════════ */
+  .of-gallery { background: #F5F3EE; padding: 96px 5% 80px; }
+  .of-gallery__header { text-align: center; margin-bottom: 52px; }
+  .of-gallery__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+  .of-gallery__title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 1rem; }
+  .of-gallery__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; max-width: 580px; margin: 0 auto; line-height: 1.75; }
+  .of-gallery__grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 280px 280px; gap: 12px; }
+  .of-gallery__panel { position: relative; overflow: hidden; border-radius: 10px; cursor: default; }
+  .of-gallery__panel--tall { grid-row: span 2; }
+  .of-gallery__panel--wide { grid-column: span 2; }
+  .of-gallery__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .of-gallery__panel:hover .of-gallery__img { transform: scale(1.04); }
+  .of-gallery__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%); pointer-events: none; }
+  .of-gallery__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+  .of-gallery__label-title { display: block; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .of-gallery__label-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.75); }
+  @media (max-width: 900px) {
+    .of-gallery__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .of-gallery__panel--tall, .of-gallery__panel--wide { grid-column: span 1; grid-row: span 1; height: 240px; }
+    .of-gallery__panel { height: 220px; }
+  }
+  @media (max-width: 600px) {
+    .of-gallery__grid { grid-template-columns: 1fr; }
+    .of-gallery__panel, .of-gallery__panel--tall, .of-gallery__panel--wide { height: 220px; grid-column: span 1; grid-row: span 1; }
+  }
+
+  /* ══════════════════════════════════════
+     STATS BAR
+  ══════════════════════════════════════ */
+  .of-stats { background: #14201A; padding: 56px 5%; }
+  .of-stats__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .of-stats__item { flex: 1; min-width: 140px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; }
+  .of-stats__num { font-family: 'Space Mono', monospace; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #7CB342; line-height: 1; margin-bottom: 8px; }
+  .of-stats__label { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .of-stats__label small { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .of-stats__div { width: 1px; height: 60px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
+  @media (max-width: 768px) { .of-stats__div { display: none; } .of-stats__item { min-width: calc(50% - 24px); } }
+
+  /* ══════════════════════════════════════
+     SHARED DESIGN TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
+
+  /* ══════════════════════════════════════
+     SWT SHARED (swt-btn, swt-eyebrow, swt-h2)
+  ══════════════════════════════════════ */
+  .swt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: var(--swt-radius); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+  .swt-btn--primary { background: var(--swt-green); color: var(--swt-white); border-color: var(--swt-green); }
+  .swt-btn--primary:hover { background: #3D5620; border-color: #3D5620; transform: translateY(-2px); }
+  .swt-eyebrow { display: inline-block; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 12px; }
+  .swt-h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; color: var(--swt-dark); line-height: 1.15; margin: 0 0 18px; }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
+
+  /* ══════════════════════════════════════
+     ES-PROCESS-SPLIT + ES-ACCORDION
+  ══════════════════════════════════════ */
+  .es-process-split { padding: 120px 0; background: #F5F3EE; }
+  .es-process-split__container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .es-process-split__eyebrow { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 16px; }
+  .es-process-split__title { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #14201A; line-height: 1.15; margin: 0 0 40px; }
+  .es-accordion { display: flex; flex-direction: column; gap: 16px; }
+  .es-accordion__item { background: #fff; border-radius: 16px; overflow: hidden; transition: box-shadow 0.3s; }
+  .es-accordion__item:hover { box-shadow: 0 8px 32px rgba(20,32,26,0.08); }
+  .es-accordion__trigger { display: flex; align-items: center; gap: 20px; padding: 28px 32px; cursor: pointer; list-style: none; user-select: none; }
+  .es-accordion__trigger::-webkit-details-marker { display: none; }
+  .es-accordion__number { font-family: 'Space Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--swt-green); flex-shrink: 0; }
+  .es-accordion__label { font-family: 'Fraunces', Georgia, serif; font-size: 1.2rem; font-weight: 600; color: #14201A; flex: 1; }
+  .es-accordion__icon { font-size: 2rem; color: var(--swt-green); font-weight: 300; transition: transform 0.3s; flex-shrink: 0; line-height: 1; }
+  .es-accordion__item[open] .es-accordion__icon { transform: rotate(45deg); }
+  .es-accordion__body { padding: 0 32px 32px; font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.7; color: #4A5C48; }
+  .es-process-split__content { display: flex; flex-direction: column; }
+  .es-process-split__image-wrapper { position: relative; min-height: 600px; display: flex; align-items: stretch; }
+  .es-process-split__image { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 16px; box-shadow: 0 16px 48px rgba(20,32,26,0.12); display: block; }
+  @media (max-width: 900px) { .es-process-split__container { grid-template-columns: 1fr; } .es-process-split__image-wrapper { min-height: 400px; } }
+
+  /* ══════════════════════════════════════
+     CAM-TESTIMONIALS + CAM-TCARD
+  ══════════════════════════════════════ */
+  .cam-testimonials { background: #F5F3EE; padding: 96px 5%; }
+  .cam-testimonials__header { text-align: center; margin-bottom: 56px; }
+  .cam-testimonials__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; display: block; }
+  .cam-testimonials__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+  .cam-testimonials__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+  .cam-testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .cam-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+  .cam-tcard__img-wrap { overflow: hidden; aspect-ratio: 1/1; flex-shrink: 0; }
+  .cam-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+  .cam-tcard:hover .cam-tcard__img { transform: scale(1.03); }
+  .cam-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .cam-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+  .cam-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+  .cam-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+  .cam-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+  .cam-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7CB342; margin: 0; font-weight: 500; }
+  @media (max-width: 960px) { .cam-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .cam-testimonials { padding: 64px 5%; } }
+  @media (max-width: 600px) { .cam-tcard__img-wrap { aspect-ratio: 1/1; } }
+
+  /* ══════════════════════════════════════
+     IP-LOCAL + CAM-NEIGHBORHOODS
+  ══════════════════════════════════════ */
+  .ip-local { padding: 64px 5%; }
+  .ip-local__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .ip-local__content { display: flex; flex-direction: column; }
+  .ip-local__map { border-radius: 20px; overflow: hidden; height: 400px; }
+  .ip-local__map iframe { width: 100%; height: 100%; }
+  .ip-local__content h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: #14201A; margin: 12px 0 16px; }
+  .ip-local__content p { font-family: 'Inter', sans-serif; font-size: 16px; color: #4a4a4a; line-height: 1.8; margin-bottom: 20px; }
+  .cam-neighborhoods { display: flex; flex-direction: column; margin-top: 20px; }
+  .cam-nh { display: flex; align-items: flex-start; gap: 14px; padding: 11px 0; border-bottom: 1px solid #EFEFED; }
+  .cam-nh:last-child { border-bottom: none; }
+  .cam-nh__name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #7CB342; min-width: 130px; flex-shrink: 0; line-height: 1.65; }
+  .cam-nh__desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #4a4a4a; line-height: 1.65; }
+  @media (max-width: 768px) { .ip-local__grid { grid-template-columns: 1fr; } .ip-local__map { height: 280px; } }
+
+  /* ══════════════════════════════════════
+     RES-SECTION
+  ══════════════════════════════════════ */
+  .res-section { background: #F5F3EE; padding: 80px 0; }
+  .res-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .res-section__image-col { position: relative; border-radius: 16px; overflow: hidden; }
+  .res-section__img { width: 100%; height: 520px; object-fit: cover; object-position: center; display: block; border-radius: 16px; }
+  .res-section__content-col { display: flex; flex-direction: column; gap: 20px; }
+  .res-section__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0; }
+  .res-section__title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  .res-section__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.75; margin: 0; }
+  .res-section__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .res-section__item { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.5; }
+  .res-section__item svg { flex-shrink: 0; margin-top: 2px; }
+  .res-section__item a { color: #14201A; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; transition: color 0.2s ease; font-weight: 500; }
+  .res-section__item a:hover { color: #7CB342; }
+  .res-section__cta { align-self: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s ease; }
+  .res-section__cta:hover { gap: 8px; }
+  @media (max-width: 900px) { .res-section__inner { grid-template-columns: 1fr; gap: 40px; } .res-section__img { height: 360px; } }
+  @media (max-width: 600px) { .res-section__inner { padding: 0 20px; } .res-section { padding: 60px 0; } }
+
+  /* ══════════════════════════════════════
+     SWT-FAQ
+  ══════════════════════════════════════ */
+  .swt-faq { background: var(--swt-white); padding: 96px 0; }
+  .swt-faq__layout { display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+  .swt-faq__header p { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.75; color: var(--swt-text-sec); margin: 14px 0 24px; }
+  .swt-faq__header { display: flex; flex-direction: column; }
+  .swt-faq__list { display: flex; flex-direction: column; }
+  .swt-faq__item { border-bottom: 1px solid var(--swt-border); padding: 18px 0; }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--swt-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 3px 0; }
+  .swt-faq__toggle { color: var(--swt-green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; line-height: 1; }
+  .swt-faq__a { font-family: 'Hanken Grotesk', sans-serif; font-size: 14px; color: var(--swt-text-sec); line-height: 1.8; margin-top: 10px; display: none; }
+  .swt-faq__a a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .swt-faq__a a:hover { color: #2E6B30; }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+  @media (max-width: 768px) { .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ══════════════════════════════════════
+     CTA (priv-cinematic-cta pattern)
+  ══════════════════════════════════════ */
+  .priv-cinematic-cta { position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .priv-cinematic-cta__media { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .priv-cinematic-cta__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.75) 40%, rgba(13,26,15,0.88) 100%); }
+  .priv-cinematic-cta__vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,26,15,0.2) 0%, rgba(13,26,15,0.6) 100%); }
+  .priv-cinematic-cta__content { position: relative; z-index: 10; max-width: 760px; padding: 80px 24px; text-align: center; }
+  .priv-cinematic-cta__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; color: #F3F6F1; margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+  .priv-cinematic-cta__text { font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: rgba(243,246,241,0.82); max-width: 620px; margin: 0 auto 40px; line-height: 1.75; }
+  .priv-cinematic-cta__actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .priv-cinematic-cta__btn-primary { display: inline-flex; align-items: center; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 16px 36px; border-radius: 100px; border: 2px solid #7CB342; transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s; }
+  .priv-cinematic-cta__btn-primary:hover { background: #6aa032; border-color: #6aa032; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(124,179,66,0.35); }
+  .priv-cinematic-cta__btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); color: #F3F6F1; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.3); transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+  .priv-cinematic-cta__btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: rgba(124,179,66,0.6); transform: translateY(-2px); }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE — WHATIS / WHY / BENTO
+  ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .of-whatis__container,
+    .of-why__container { gap: 48px; }
+    .of-bento__compact { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .of-whatis { padding: 64px 5%; }
+    .of-whatis__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-whatis__image { height: 280px; }
+    .of-why { padding: 64px 5%; }
+    .of-why__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-why__image { height: 320px; }
+    .of-why__stat-card { position: static; margin-top: 16px; min-width: unset; }
+    .of-why__climate-facts { grid-template-columns: 1fr 1fr; }
+    .of-bento__compact { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+    .of-whatis__stats { flex-direction: column; gap: 16px; }
+    .of-whatis__stat-div { display: none; }
+    .of-why__climate-facts { grid-template-columns: 1fr; }
+  }
 </style>
