@@ -20,9 +20,14 @@ const slug = args[slugIdx + 1];
 const prefix = args[prefixIdx + 1];
 const ROOT = path.join(__dirname, '..');
 
-const src = fs.readFileSync(path.join(ROOT, `src/pages/applications/${slug}.astro`), 'utf8');
+const appSrcPath = path.join(ROOT, `src/pages/applications/${slug}.astro`);
+const rootSrcPath = path.join(ROOT, `src/pages/${slug}.astro`);
+const isRootPage = !fs.existsSync(appSrcPath) && fs.existsSync(rootSrcPath);
+const pagePath = isRootPage ? rootSrcPath : appSrcPath;
+const pageUrlPath = isRootPage ? `/${slug}/` : `/applications/${slug}/`;
+const src = fs.readFileSync(pagePath, 'utf8');
 const builtHtml = (() => {
-  const p = path.join(ROOT, `dist/applications/${slug}/index.html`);
+  const p = path.join(ROOT, `dist${pageUrlPath}index.html`);
   return fs.existsSync(p) ? fs.readFileSync(p, 'utf8') : null;
 })();
 
@@ -135,7 +140,7 @@ const imgsNoAlt = (src.match(/<img(?![^>]*alt=)[^>]*>/gi) || []);
 check('All images have alt text', imgsNoAlt.length === 0, `${imgsNoAlt.length} missing`);
 
 // Canonical
-check('Canonical URL present', src.includes(`canonical="${ 'https://www.windowfilmphiladelphia.net/applications/' + slug + '/' }"`));
+check('Canonical URL present', src.includes(`canonical="https://www.windowfilmphiladelphia.net${pageUrlPath}"`));
 
 // ─── 5. GEO ────────────────────────────────────────────────────────────────
 console.log('\n[5] GEO BLOCK');

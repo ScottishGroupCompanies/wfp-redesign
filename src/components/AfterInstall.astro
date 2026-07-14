@@ -1,0 +1,221 @@
+---
+/**
+ * AfterInstall — "What to expect after your install" section.
+ * Light background, 3-column timeline cards.
+ * Provides post-install reassurance and adds substantive page copy.
+ */
+
+const cards = [
+  {
+    period: 'The first 24–72 hours',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    body: [
+      `If your project used C-Bond primer — which all of our installations do — the adhesive typically reaches full bond strength within 24 to 72 hours. During this window you may notice a slight haziness to the glass or small water pockets beneath the film. Both are completely normal and not a sign of a problem.`,
+      `The haze and any minor bubbling are part of the curing process. As moisture works its way out of the adhesive layer and through the film, the glass gradually clears. Most clients see noticeable improvement within the first day and full clarity within a few days.`,
+      `During this period, leave the film alone. Don't touch it, press it, or try to smooth out any bubbles — they'll resolve on their own, and disturbing the film during cure can affect the final result.`,
+    ],
+  },
+  {
+    period: 'The first 30 days',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    body: [
+      `The first 30 days are the care window. Even after the initial 24–72 hour cure, the adhesive continues building full bond strength throughout the first month. The film is stable and doing its job — it just needs to be treated with a little extra care while it finishes bonding.`,
+      `Avoid cleaning the film-treated glass during this period. No window sprays, no cloth wiping, no squeegees. If something gets on the glass, a very gentle dry wipe is fine, but hold off on any wet cleaning until the cure window has passed.`,
+      `We'll leave you a printed care card after every installation that covers this period in detail — including specific products to avoid (anything ammonia-based), what to do if you notice something that doesn't look right, and how to reach us.`,
+    ],
+  },
+  {
+    period: 'Month 1 and beyond',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><polyline points="9 12 11 14 15 10"/></svg>`,
+    body: [
+      `Once the 30-day cure window has passed, your film-treated glass can be cleaned exactly like any other window — with one note. Use a soft, non-abrasive cloth and avoid ammonia-based cleaners. Most standard window cleaning solutions are fine; we'll confirm the right products for your specific film during the final walkthrough.`,
+      `Beyond cleaning, professional-grade window film is designed to be maintenance-free. There's no retreating, no re-sealing, no annual service. The film works quietly every day — blocking UV, managing heat, maintaining privacy or security — without any action on your part.`,
+      `Every installation includes manufacturer and workmanship warranty coverage — the specific terms vary by film product and project scope. We walk every client through their coverage at the end of the project and leave written documentation so you know exactly what's included.`,
+    ],
+  },
+];
+---
+
+<section class="ai-section">
+  <div class="ai-section__inner">
+
+    <!-- Header -->
+    <div class="ai-section__head">
+      <p class="ai-section__eyebrow">
+        <span class="ai-section__dot" aria-hidden="true"></span>
+        AFTER YOUR INSTALLATION
+      </p>
+      <h2 class="ai-section__title">What to expect once we leave</h2>
+      <p class="ai-section__sub">
+        Window film doesn't finish working the moment our team packs up. Here's exactly what happens over the days and weeks after installation — and what you need to do (and not do) to get the best result.
+      </p>
+    </div>
+
+    <!-- 3 cards -->
+    <div class="ai-section__grid">
+      {cards.map((card, i) => (
+        <article class="ai-card">
+          <div class="ai-card__top">
+            <span class="ai-card__icon" set:html={card.icon} />
+            <span class="ai-card__num">0{i + 1}</span>
+          </div>
+          <h3 class="ai-card__period">{card.period}</h3>
+          <div class="ai-card__body">
+            {card.body.map(para => (
+              <p>{para}</p>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ── Section ───────────────────────────────────────────────────── */
+.ai-section {
+  background: var(--off-white, #f8f7f4);
+  padding: 5.5rem 5%;
+}
+
+.ai-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+.ai-section__head {
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.ai-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--green, #7fac4a);
+  margin: 0 0 1rem;
+}
+
+.ai-section__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+.ai-section__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--brand, #272E32);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.ai-section__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Grid ──────────────────────────────────────────────────────── */
+.ai-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .ai-section__grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Card ──────────────────────────────────────────────────────── */
+.ai-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem 1.75rem 2.25rem;
+  border: 1px solid var(--light-gray, #efefed);
+  border-top: 3px solid var(--green, #7fac4a);
+  transition: box-shadow 280ms ease, transform 280ms ease;
+}
+
+.ai-card:hover {
+  box-shadow: 0 8px 32px rgba(39, 46, 50, 0.09);
+  transform: translateY(-3px);
+}
+
+/* ── Card top row: icon + number ───────────────────────────────── */
+.ai-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.ai-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(127, 172, 74, 0.12);
+  color: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+.ai-card__icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.ai-card__num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--green, #7fac4a);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+/* ── Period heading ────────────────────────────────────────────── */
+.ai-card__period {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand, #272E32);
+  margin: 0 0 1.1rem;
+  line-height: 1.25;
+}
+
+/* ── Body paragraphs ───────────────────────────────────────────── */
+.ai-card__body p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.9rem;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin: 0 0 0.85rem;
+}
+
+.ai-card__body p:last-child {
+  margin-bottom: 0;
+}
+</style>

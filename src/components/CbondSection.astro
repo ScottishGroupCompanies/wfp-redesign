@@ -1,0 +1,349 @@
+---
+/**
+ * CbondSection — "What sets our installation apart" C-Bond explainer.
+ * Uses the AccordionBenefits layout from windowfilm-ui2.vercel.app.
+ *
+ * Dark-navy section. Left: expandable benefit rows with SVG icons.
+ * Right: image that swaps to match the open row.
+ */
+
+const benefits = [
+  {
+    title: 'Dramatically stronger glass',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>`,
+    detail: `C-Bond works at the molecular level — it doesn't just sit on the glass surface, it bonds with it. The result is a substrate that's at least 100% stronger than untreated glass, giving the film a foundation that holds under real-world stress.`,
+    img: '/images/window-film-installation-cbond-primer-glass-strength-philadelphia.jpg',
+    alt: 'Crystal-clear architectural glass with light refracting through it',
+  },
+  {
+    title: 'Resists temperature-driven cracking',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>`,
+    detail: `Philadelphia's freeze-thaw cycles put real stress on glass — temperature swings between winter lows and summer heat cause glass to expand and contract repeatedly. C-Bond reinforces the glass against that stress, preventing the micro-fractures that lead to early failure.`,
+    img: '/images/window-film-installation-temperature-crack-resistance-philadelphia.jpg',
+    alt: 'Philadelphia rowhouse window with frost on glass, warm light inside',
+  },
+  {
+    title: 'Impact and debris defense',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
+    detail: `From hailstorms to windblown debris, C-Bond-treated glass holds up where untreated glass gives way. The primer creates a stronger bond between film and glass, so when impact happens the film stays in place — keeping broken fragments together and protecting the people inside.`,
+    img: '/images/window-film-installation-impact-security-protection-philadelphia.jpg',
+    alt: 'Safety glass after impact showing film holding shattered glass intact',
+  },
+  {
+    title: 'Sets in 24–72 hours, not four weeks',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    detail: `Traditional installations using soap and water can take up to four weeks to fully cure — and in shaded or sunless rooms, adhesion problems can develop before curing is complete. With C-Bond, the adhesive sets in 24 to 72 hours. Your windows are clear, stable, and fully bonded in days, not weeks.`,
+    img: '/images/window-film-installation-cbond-cure-process-philadelphia.jpg',
+    alt: 'Installer inspecting freshly applied window film in a Philadelphia office',
+  },
+  {
+    title: 'Flawless optical clarity',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>`,
+    detail: `Soap and water can trap micro-bubbles beneath the film that cloud the glass during and after installation. C-Bond eliminates that. It improves clarity at the molecular level during application, so the finished result is genuinely clear — the kind of result you notice every time you look through the glass.`,
+    img: '/images/window-film-installation-optical-clarity-philadelphia.jpg',
+    alt: 'Crystal-clear floor-to-ceiling window with Philadelphia skyline view',
+  },
+];
+---
+
+<section class="cbond">
+  <!-- Intro header -->
+  <div class="cbond__head">
+    <p class="cbond__eyebrow">
+      <span class="cbond__dot" aria-hidden="true"></span>
+      WHY WE USE C-BOND
+    </p>
+    <h2 class="cbond__title">The difference between a good install and a great one</h2>
+    <p class="cbond__sub">
+      Most window film installers still prep glass with soap and water — a method that eliminates visible imperfections but does nothing for the glass itself. We use C-Bond primer on every project. It works at the molecular level to permanently strengthen the glass and create a superior bond between film and surface.
+    </p>
+  </div>
+
+  <!-- Accordion + media split -->
+  <div class="cbond__wrap">
+
+    <!-- Left: accordion rows -->
+    <div class="cbond__list">
+      {benefits.map((b, i) => (
+        <div class={`cbond__row${i === 0 ? ' is-open' : ''}`} data-cbrow data-index={i}>
+          <button
+            class="cbond__trigger"
+            data-cbtrigger
+            aria-expanded={i === 0 ? 'true' : 'false'}
+          >
+            <span class="cbond__icon" set:html={b.icon} />
+            <span class="cbond__row-title">{b.title}</span>
+            <span class="cbond__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="cbond__detail">
+            <div class="cbond__detail-inner">
+              <p>{b.detail}</p>
+              <!-- Mobile-only image -->
+              <img
+                class="cbond__mobile-img"
+                src={b.img}
+                alt={b.alt}
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Right: swapping image panel -->
+    <div class="cbond__media">
+      {benefits.map((b, i) => (
+        <img
+          class={`cbond__img${i === 0 ? ' is-active' : ''}`}
+          data-cbimg
+          data-index={i}
+          src={b.img}
+          alt={b.alt}
+          title={b.alt}
+          loading="lazy"
+        />
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const rows    = Array.from(document.querySelectorAll<HTMLElement>('[data-cbrow]'));
+  const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-cbtrigger]'));
+  const imgs    = Array.from(document.querySelectorAll<HTMLElement>('[data-cbimg]'));
+
+  triggers.forEach((trigger, idx) => {
+    trigger.addEventListener('click', () => {
+      // Close all
+      rows.forEach(r => r.classList.remove('is-open'));
+      triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
+      imgs.forEach(img => img.classList.remove('is-active'));
+
+      // Open clicked
+      rows[idx].classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      imgs[idx].classList.add('is-active');
+    });
+  });
+</script>
+
+<style>
+/* ── Section ───────────────────────────────────────────────────── */
+.cbond {
+  background: var(--brand, #272E32);
+  padding: 5rem 1.5rem;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+.cbond__head {
+  max-width: 52rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.cbond__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--green, #7fac4a);
+  margin: 0 0 1rem;
+}
+
+.cbond__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+.cbond__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  color: #ffffff;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1.1rem;
+}
+
+.cbond__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Layout: accordion left, image right ───────────────────────── */
+.cbond__wrap {
+  max-width: 64rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .cbond__wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Accordion rows ────────────────────────────────────────────── */
+.cbond__row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.cbond__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 1.1rem 0.25rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.cbond__row.is-open .cbond__trigger {
+  color: #ffffff;
+}
+
+/* Icon pill */
+.cbond__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.6rem;
+  background: rgba(127, 172, 74, 0.15);
+  color: var(--green, #7fac4a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cbond__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.cbond__row.is-open .cbond__icon {
+  background: var(--green, #7fac4a);
+  color: var(--brand, #272E32);
+}
+
+/* Row title */
+.cbond__row-title {
+  flex: 1;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Chevron */
+.cbond__chev {
+  color: var(--green, #7fac4a);
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.cbond__row.is-open .cbond__chev {
+  transform: rotate(90deg);
+}
+
+/* Expanding detail */
+.cbond__detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.cbond__row.is-open .cbond__detail {
+  grid-template-rows: 1fr;
+}
+
+.cbond__detail-inner {
+  overflow: hidden;
+}
+
+.cbond__detail-inner p {
+  margin: 0 0 1rem;
+  padding: 0 0 0.5rem 3.4rem;
+  color: rgba(255, 255, 255, 0.60);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* ── Right-side swapping image ─────────────────────────────────── */
+.cbond__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.cbond__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.5s ease, transform 0.6s ease;
+}
+
+.cbond__img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Mobile: hide desktop panel, show inline images ────────────── */
+.cbond__mobile-img {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .cbond__media {
+    display: none;
+  }
+
+  .cbond__mobile-img {
+    display: block;
+    width: 100%;
+    border-radius: 0.6rem;
+    margin: 0 0 1rem 3.4rem;
+    max-width: calc(100% - 3.4rem);
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cbond__detail,
+  .cbond__img,
+  .cbond__chev,
+  .cbond__icon {
+    transition: none;
+  }
+}
+</style>

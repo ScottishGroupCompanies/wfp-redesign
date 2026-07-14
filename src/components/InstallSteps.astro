@@ -1,0 +1,272 @@
+---
+/**
+ * InstallSteps — detailed alternating text + image breakdown of the
+ * 3-step installation process. Light background, text-heavy.
+ * Sits between ProcessRoadmap and CbondSection on the process page.
+ */
+
+const steps = [
+  {
+    num: '01',
+    label: 'Step One',
+    heading: 'The consultation: we learn before we recommend',
+    img: '/images/window-film-installation-free-consultation-philadelphia.jpg',
+    alt: 'Window film consultant assessing windows in a Philadelphia office',
+    reverse: false,
+    body: [
+      `We arrive at your property with nothing to sell and everything to learn. Before a single measurement is taken, we walk the space with you and ask questions. What's bothering you about the glass? Afternoon heat on the west side? Glare on a specific floor? Street-level privacy concerns? A security situation? The conversation matters because the wrong film — even a high-quality film — applied to the wrong glass for the wrong reason is a waste of your money and ours.`,
+      `We assess every pane individually. Glass type, age, condition, any existing coatings, frame material, and orientation all factor into which film performs best on that specific window. Older glass can have compatibility requirements. Certain frame types won't accept certain installation methods. A window facing southwest behaves completely differently from one facing north. We account for all of it.`,
+      `From that assessment we draft a specification: exactly what film goes on what glass, why we selected it, and what you can realistically expect it to do. We explain the tradeoffs — visibility vs. privacy, heat rejection vs. light transmission — so you understand what you're getting before anything is ordered. Then we <a href="/contact/" class="is-link">schedule your free window film installation consultation</a> at a time that works for you, including early mornings, evenings, and weekends if your property requires it.`,
+    ],
+  },
+  {
+    num: '02',
+    label: 'Step Two',
+    heading: 'Preparation and application: precision from the start',
+    img: '/images/window-film-installation-professional-application-philadelphia.jpg',
+    alt: 'Professional installer applying window film with a squeegee',
+    reverse: true,
+    body: [
+      `Before we arrive at your property, the film is already cut. We take your measurements back to our shop and run them through a precision plotter — a computer-controlled cutter that sizes every piece to your exact pane dimensions. Nothing is eyeballed or trimmed by hand on-site. The result is a cleaner edge, faster installation, and no material waste.`,
+      `On installation day, we start with the glass itself. Every pane is cleaned thoroughly — frame, sill, and glass surface — before anything is applied. Surface contamination beneath the film creates permanent imperfections, so this step isn't rushed. Once the glass is clean, we apply C-Bond primer. This is where our process differs from a standard installation: we're not just cleaning the glass, we're preparing it at a molecular level to accept a superior bond.`,
+      `The film goes on prepared glass, not raw glass. Each piece is positioned carefully, then worked from center outward using professional squeegees to move water and air to the edges in a clean, controlled sequence. Edges are trimmed to a precise clearance, cleaned, and inspected. We don't move to the next pane until the current one meets spec. Our <a href="/services/" class="is-link">window film services for Philadelphia homes and businesses</a> cover every film type — solar control, security, decorative, and anti-graffiti.`,
+    ],
+  },
+  {
+    num: '03',
+    label: 'Step Three',
+    heading: 'Inspection and walkthrough: nothing left to chance',
+    img: '/images/window-film-installation-final-inspection-philadelphia.jpg',
+    alt: 'Installer inspecting completed window film installation on large office windows',
+    reverse: false,
+    body: [
+      `Once the film is applied to every pane, we inspect all of it before we pack up. We're checking for anything that won't resolve on its own during the cure window: edge gaps, contamination beneath the film, installation marks, or air pockets that are too large to cure out. If we find anything that doesn't meet our standard, we address it before leaving the property. You shouldn't have to call us back for something we could have caught ourselves.`,
+      `We then do a full walkthrough with you. You see every window. We point out what was applied where, what it's designed to do, and what you'll notice in the days ahead — including what's normal. The slight haziness during the cure window, the small water pockets that appear and disappear, the way the light quality changes as the adhesive sets — none of this should be a surprise, and it won't be.`,
+      `Before we leave, we hand you a written care card covering the 30-day cure period: what to avoid, how to clean after cure is complete, which products are safe for your specific film, and how to reach us directly if anything doesn't look right. Every installation we complete meets the <a href="https://www.iwfa.com/" class="is-link" target="_blank" rel="noopener noreferrer">International Window Film Association's installation standards</a> — the industry benchmark for professional window film work. The job isn't done when the film is on. It's done when you're confident it's working exactly as described.`,
+    ],
+  },
+];
+---
+
+<section class="is-section">
+  <div class="is-section__head">
+    <p class="is-section__eyebrow">
+      <span class="is-section__dot" aria-hidden="true"></span>
+      THE INSTALLATION IN DETAIL
+    </p>
+    <h2 class="is-section__title">Your installation, step by step</h2>
+    <p class="is-section__sub">
+      Three stages, each with its own discipline. Here's what our crew does at each point in your project — what you'll see while they're on your property, what they're checking for, and why each step is done the way it is.
+    </p>
+  </div>
+
+  <div class="is-section__steps">
+    {steps.map((step) => (
+      <article class={`is-step${step.reverse ? ' is-step--rev' : ''}`}>
+
+        <!-- Text column -->
+        <div class="is-step__text">
+          <div class="is-step__meta">
+            <span class="is-step__num">{step.num}</span>
+            <span class="is-step__label">{step.label}</span>
+          </div>
+          <h3 class="is-step__heading">{step.heading}</h3>
+          <div class="is-step__body">
+            {step.body.map(para => <p set:html={para} />)}
+          </div>
+        </div>
+
+        <!-- Image column -->
+        <div class="is-step__media">
+          <img
+            src={step.img}
+            alt={step.alt}
+            title={step.alt}
+            class="is-step__img"
+            loading="lazy"
+            width="1024"
+            height="768"
+          />
+        </div>
+
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+/* ── Section ───────────────────────────────────────────────────── */
+.is-section {
+  background: #ffffff;
+  padding: 5.5rem 5%;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+.is-section__head {
+  max-width: 680px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.is-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--green, #7fac4a);
+  margin: 0 0 1rem;
+}
+
+.is-section__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+.is-section__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--brand, #272E32);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.is-section__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Steps container ───────────────────────────────────────────── */
+.is-section__steps {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* ── Single step ───────────────────────────────────────────────── */
+.is-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Reversed: image left, text right */
+.is-step--rev {
+  direction: rtl;
+}
+.is-step--rev > * {
+  direction: ltr;
+}
+
+/* ── Step number + label ───────────────────────────────────────── */
+.is-step__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.is-step__num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--green, #7fac4a);
+  line-height: 1;
+  opacity: 0.25;
+}
+
+.is-step__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--green, #7fac4a);
+}
+
+/* ── Step heading ──────────────────────────────────────────────── */
+.is-step__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--brand, #272E32);
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
+/* ── Body paragraphs ───────────────────────────────────────────── */
+.is-step__body p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.9375rem;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 1rem;
+}
+
+.is-step__body p:last-child {
+  margin-bottom: 0;
+}
+
+.is-link {
+  color: var(--green, #7fac4a);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.is-link:hover {
+  opacity: 0.8;
+}
+
+/* ── Image ─────────────────────────────────────────────────────── */
+.is-step__media {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(39, 46, 50, 0.12);
+  aspect-ratio: 4 / 3;
+}
+
+.is-step__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 500ms ease;
+}
+
+.is-step__media:hover .is-step__img {
+  transform: scale(1.03);
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .is-step {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    direction: ltr;
+  }
+
+  .is-step--rev {
+    direction: ltr;
+  }
+
+  /* Image always goes first on mobile */
+  .is-step__media {
+    order: -1;
+  }
+}
+</style>

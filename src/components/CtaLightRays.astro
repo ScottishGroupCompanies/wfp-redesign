@@ -1,0 +1,175 @@
+---
+/**
+ * CtaLightRays — cinematic CTA with animated god-ray light beams.
+ * Adapted from windowfilm-ui2.vercel.app.
+ * Pure CSS animation — no images needed.
+ */
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  sub?: string;
+  btnLabel?: string;
+  btnHref?: string;
+}
+
+const {
+  eyebrow   = 'Philadelphia Window Film Professionals',
+  title     = 'Ready to transform your glass?',
+  sub       = 'Schedule a free on-site consultation. We assess your windows, explain your options, and give you a detailed quote — no pressure, no obligation.',
+  btnLabel  = 'Book your free consultation',
+  btnHref   = '/contact/',
+} = Astro.props;
+---
+
+<section class="ctar">
+  <!-- Animated god rays -->
+  <div class="ctar__rays" aria-hidden="true">
+    <span class="ctar__ray ctar__ray--1"></span>
+    <span class="ctar__ray ctar__ray--2"></span>
+    <span class="ctar__ray ctar__ray--3"></span>
+    <span class="ctar__ray ctar__ray--4"></span>
+  </div>
+
+  <!-- Frosted glass panel -->
+  <div class="ctar__glass">
+    <span class="ctar__shine" aria-hidden="true"></span>
+    <p class="ctar__eyebrow">{eyebrow}</p>
+    <h2 class="ctar__title">{title}</h2>
+    <p class="ctar__sub">{sub}</p>
+    <a href={btnHref} class="ctar__btn">{btnLabel}</a>
+  </div>
+</section>
+
+<style>
+/* ── Section ───────────────────────────────────────────────────── */
+.ctar {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0a1420, var(--brand, #272E32) 55%, #12293f);
+  padding: 6rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── God rays ──────────────────────────────────────────────────── */
+.ctar__rays {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+}
+
+.ctar__ray {
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  width: 140px;
+  background: linear-gradient(
+    rgba(127, 172, 74, 0.16),
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent
+  );
+  transform: rotate(18deg);
+  filter: blur(18px);
+  animation: ctar-drift 11s ease-in-out infinite alternate;
+}
+
+.ctar__ray--1 { left: 8%;  animation-delay: 0s; }
+.ctar__ray--2 { left: 30%; width: 90px;  opacity: 0.7; animation-delay: -3s; }
+.ctar__ray--3 { left: 55%; width: 180px; opacity: 0.55; animation-delay: -6s; }
+.ctar__ray--4 { left: 80%; width: 70px;  opacity: 0.8; animation-delay: -9s; }
+
+@keyframes ctar-drift {
+  0%   { transform: rotate(18deg) translate(-30px); opacity: 0.5; }
+  100% { transform: rotate(18deg) translate(30px);  opacity: 1; }
+}
+
+/* ── Frosted glass card ────────────────────────────────────────── */
+.ctar__glass {
+  position: relative;
+  overflow: hidden;
+  max-width: 40rem;
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.5rem;
+  padding: 3.5rem 2.5rem;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px rgba(255, 255, 255, 0.25);
+}
+
+/* ── Shine sweep ───────────────────────────────────────────────── */
+.ctar__shine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  transform: skew(-18deg);
+  left: -60%;
+  animation: ctar-shine 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ctar-shine {
+  0%, 55% { left: -60%; }
+  85%, 100% { left: 130%; }
+}
+
+/* ── Text ──────────────────────────────────────────────────────── */
+.ctar__eyebrow {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: var(--green, #7fac4a);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  margin: 0 0 1rem;
+}
+
+.ctar__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  color: #ffffff;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+
+.ctar__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ── Button ────────────────────────────────────────────────────── */
+.ctar__btn {
+  display: inline-block;
+  background: var(--green, #7fac4a);
+  color: var(--brand, #272E32);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(127, 172, 74, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.ctar__btn:hover {
+  transform: translateY(-2px);
+  background: #8bbe55;
+  box-shadow: 0 18px 42px rgba(127, 172, 74, 0.5);
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .ctar__ray, .ctar__shine { animation: none; }
+}
+</style>

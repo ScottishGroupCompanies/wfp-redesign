@@ -1,0 +1,306 @@
+---
+/**
+ * BeforeAfterSlider — drag to compare before/after window film installation.
+ * Adapted from windowfilm-ui2.vercel.app.
+ *
+ * Props:
+ *   before     — "before" image path/URL
+ *   after      — "after" image path/URL
+ *   beforeAlt  — alt text for before image
+ *   afterAlt   — alt text for after image
+ *   beforeTag  — pill label on the before side (default: "Without film")
+ *   afterTag   — pill label on the after side  (default: "With film")
+ *   heading    — section heading
+ *   sub        — section subtitle
+ */
+
+interface Props {
+  before?: string;
+  after?: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+  beforeTag?: string;
+  afterTag?: string;
+  heading?: string;
+  sub?: string;
+}
+
+const {
+  before    = '/images/philadelphia-window-film-installation-before-glare.jpg',
+  after     = '/images/philadelphia-window-film-installation-after-solar-control.jpg',
+  beforeAlt = 'Philadelphia rowhouse living room without window film — harsh glare and overexposed windows',
+  afterAlt  = 'Same Philadelphia living room after window film installation — soft even light, no glare, comfortable atmosphere',
+  beforeTag = 'Without film',
+  afterTag  = 'With film',
+  heading   = 'See the difference for yourself',
+  sub       = 'Drag the handle to compare a Philadelphia home before and after window film installation. Same room. Same windows. Completely different experience.',
+} = Astro.props;
+
+const id = `bas-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<section class="bas-section">
+  <div class="bas-section__inner">
+
+    <!-- Header -->
+    <div class="bas-section__head">
+      <p class="bas-section__eyebrow">
+        <span class="bas-section__dot" aria-hidden="true"></span>
+        THE TRANSFORMATION
+      </p>
+      <h2 class="bas-section__title">{heading}</h2>
+      <p class="bas-section__sub">{sub}</p>
+    </div>
+
+    <!-- Slider -->
+    <div class="before-after" id={id} style="--pos:50%">
+      <div class="before-after__frame">
+
+        <!-- Before image (full width, sits behind) -->
+        <img
+          src={before}
+          alt={beforeAlt}
+          title={beforeAlt}
+          class="before-after__img before-after__img--before"
+          draggable="false"
+          loading="lazy"
+        />
+
+        <!-- After image (clipped by --pos) -->
+        <div class="before-after__after-wrap">
+          <img
+            src={after}
+            alt={afterAlt}
+            title={afterAlt}
+            class="before-after__img before-after__img--after"
+            draggable="false"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Pill labels -->
+        <span class="before-after__tag before-after__tag--before">{beforeTag}</span>
+        <span class="before-after__tag before-after__tag--after">{afterTag}</span>
+
+        <!-- Drag handle -->
+        <div
+          class="before-after__handle"
+          role="slider"
+          tabindex="0"
+          aria-label="Drag to compare before and after"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="50"
+        >
+          <span class="before-after__handle-grip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M8 7L3 12L8 17M16 7L21 12L16 17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.before-after').forEach(container => {
+    const frame    = container.querySelector<HTMLElement>('.before-after__frame')!;
+    const handle   = container.querySelector<HTMLElement>('.before-after__handle')!;
+    const afterImg = container.querySelector<HTMLImageElement>('.before-after__img--after')!;
+
+    let dragging = false;
+
+    function syncFrameWidth() {
+      afterImg.style.setProperty('--frame-width', `${frame.getBoundingClientRect().width}px`);
+    }
+
+    function setPos(clientX: number) {
+      const rect = frame.getBoundingClientRect();
+      const pct  = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
+      container.style.setProperty('--pos', `${pct * 100}%`);
+      handle.setAttribute('aria-valuenow', String(Math.round(pct * 100)));
+      syncFrameWidth();
+    }
+
+    // Mouse
+    frame.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+    window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+    window.addEventListener('mouseup',   () => { dragging = false; });
+
+    // Touch
+    frame.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchend',  () => { dragging = false; });
+
+    // Keyboard
+    handle.addEventListener('keydown', e => {
+      const rect = frame.getBoundingClientRect();
+      const curr = parseFloat(container.style.getPropertyValue('--pos') || '50') / 100;
+      const step = 0.05;
+      if (e.key === 'ArrowLeft')  setPos(rect.left + Math.max(curr - step, 0) * rect.width);
+      if (e.key === 'ArrowRight') setPos(rect.left + Math.min(curr + step, 1) * rect.width);
+    });
+
+    // Init + resize
+    syncFrameWidth();
+    window.addEventListener('resize', syncFrameWidth);
+  });
+</script>
+
+<style>
+/* ── Section wrapper ───────────────────────────────────────────── */
+.bas-section {
+  background: var(--brand, #272E32);
+  padding: 5rem 5%;
+}
+
+.bas-section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+.bas-section__head {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.bas-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--green, #7fac4a);
+  margin: 0 0 1rem;
+}
+
+.bas-section__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+.bas-section__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  color: #ffffff;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+
+.bas-section__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Slider container ──────────────────────────────────────────── */
+.before-after__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 1rem;
+  cursor: ew-resize;
+  user-select: none;
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Images ────────────────────────────────────────────────────── */
+.before-after__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* After image — clipped to --pos width, but img itself stays full width */
+.before-after__after-wrap {
+  position: absolute;
+  inset: 0;
+  width: var(--pos, 50%);
+  overflow: hidden;
+}
+
+.before-after__after-wrap .before-after__img {
+  width: var(--frame-width, 100%);
+}
+
+/* ── Drag handle ───────────────────────────────────────────────── */
+.before-after__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 3px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  cursor: ew-resize;
+  z-index: 3;
+}
+
+.before-after__handle-grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: var(--brand, #272E32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.before-after:active .before-after__handle-grip {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* ── Labels ────────────────────────────────────────────────────── */
+.before-after__tag {
+  position: absolute;
+  bottom: 14px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(39, 46, 50, 0.78);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.before-after__tag--before { left: 14px; }
+.before-after__tag--after  { right: 14px; }
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .before-after__handle-grip { transition: none; }
+}
+</style>

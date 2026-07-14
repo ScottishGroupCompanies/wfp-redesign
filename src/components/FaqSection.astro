@@ -1,0 +1,261 @@
+---
+/**
+ * FaqSection — AccordionFAQ component for the process page.
+ * Adapted from windowfilm-ui2.vercel.app AccordionFAQ.
+ * Dark navy, single-open, animated expand/collapse.
+ * Content is specific to the installation process.
+ */
+
+const faqs = [
+  {
+    q: 'Why do you use C-Bond primer instead of soap and water?',
+    a: `Soap and water has been the traditional prep method for window film installation for decades. It eliminates visible surface imperfections, but it does nothing for the glass itself. C-Bond works at the molecular level — it bonds with the glass surface and increases its strength by at least 100%. The result is a stronger substrate, better film adhesion, faster cure times, and improved optical clarity. We use C-Bond on every project because it produces a genuinely better installation, not just a cleaner-looking one.`,
+  },
+  {
+    q: 'How long does the film take to fully cure after installation?',
+    a: `On C-Bond projects — which covers all of our installations — the adhesive typically reaches full bond strength within 24 to 72 hours. During that window you may notice slight haziness or small water pockets beneath the film; both are a normal part of the curing process and resolve on their own. Projects not using C-Bond can take up to four weeks to fully cure, and in shaded or sunless rooms adhesion problems can develop before the film bonds completely — which is one of the reasons we use C-Bond as standard.`,
+  },
+  {
+    q: 'What should I avoid during the cure period?',
+    a: `For the first 30 days, avoid cleaning the film-treated glass. No window sprays, no wiping, no squeegeeing. If something gets on the glass, a very gentle dry wipe is fine, but wet cleaning should wait until the cure window has closed. Don't press on the film, try to smooth out bubbles, or apply anything adhesive to the glass surface. The film is doing its job — it just needs time to finish bonding. We'll leave a care card after every installation with the specific do's and don'ts for your film type.`,
+  },
+  {
+    q: 'How do I clean my windows once the film has cured?',
+    a: `After the 30-day cure window, film-treated glass can be cleaned like any other window — with two considerations. Use a soft, non-abrasive cloth rather than anything scratchy, and avoid ammonia-based cleaners. Most standard window-cleaning solutions are fine. We'll confirm the right products for your specific film during the final walkthrough, and the care card we leave behind covers this in detail.`,
+  },
+  {
+    q: 'Can you schedule installation outside of regular business hours?',
+    a: `Yes. We understand that having a crew in a home or operating business during the day isn't always practical. We can schedule installations during evenings, early mornings, or weekends depending on project scope and crew availability. Just let us know your constraints during the consultation and we'll work around them.`,
+  },
+  {
+    q: 'How does pre-cutting the film with a plotter benefit my project?',
+    a: `Before we arrive at your property, we cut all the film using a precision plotter — a computer-controlled cutting system. This does two things: it speeds up the on-site installation significantly because the film is already sized to each pane before we touch the glass, and it minimizes waste because cuts are made to exact measurements rather than trimmed by hand. The result is a cleaner install, less time on your property, and no offcuts left behind.`,
+  },
+  {
+    q: 'What is an attachment system and when do I need one?',
+    a: `An attachment system is an edge-bonding method used with security film to bond the film to the window frame rather than just the glass surface. Without it, security film holds broken glass together — but the whole sheet can separate from the frame under sustained impact. With an attachment system (typically Dow 995 silicone or a mechanical option applied around the perimeter), the film stays connected to the frame even when glass is broken, creating a significantly stronger barrier. We recommend attachment systems on security film applications where forced-entry resistance is the primary goal.`,
+  },
+  {
+    q: 'Will window film make my rooms look dark or change the color of the light?',
+    a: `It depends on the film. Some films — like darker reflective or tinted films — do reduce visible light noticeably. Others, particularly spectrally selective films, are nearly clear and reject heat and UV without making the room feel darker at all. The right film for your space depends on your glass orientation, what you're trying to solve, and how much you care about maintaining the current look. We go through all of this during the consultation so you know exactly what to expect before anything goes on your glass.`,
+  },
+  {
+    q: 'Can window film be removed if I change my mind?',
+    a: `Yes. Window film is not permanent. Our team can safely remove film from any glass surface — the process involves carefully peeling the film and then cleaning the adhesive residue from the glass. The glass itself is not damaged by removal when it's done correctly. Some clients remove old or outdated film and replace it with a new solution; others remove it entirely. Either way, we handle the full process.`,
+  },
+  {
+    q: 'What is the difference between C-Bond I and C-Bond II?',
+    a: `C-Bond I is the primer we use on all standard window film applications. It strengthens the glass, improves film adhesion, speeds curing, and enhances optical clarity — it's the foundation of every installation we do. C-Bond II is a specialized system applied when multiple layers of film are installed in a single application to build a high-defense barrier — including applications designed to provide ballistic resistance. C-Bond II is reserved for specific security applications; we'll advise during consultation whether it's appropriate for your project.`,
+  },
+];
+---
+
+<section class="faq">
+  <div class="faq__head">
+    <p class="faq__eyebrow">
+      <span class="faq__dot" aria-hidden="true"></span>
+      HAVE QUESTIONS?
+    </p>
+    <h2 class="faq__title">Frequently asked questions</h2>
+    <p class="faq__sub">Everything you need to know about our installation process, C-Bond technology, and what to expect after your project is complete.</p>
+  </div>
+
+  <div class="faq__list" data-faqlist>
+    {faqs.map((item, i) => (
+      <div class={`faq__item${i === 0 ? ' is-open' : ''}`} data-faqitem>
+        <button
+          class="faq__q"
+          data-faqtrigger
+          aria-expanded={i === 0 ? 'true' : 'false'}
+        >
+          <span>{item.q}</span>
+          <span class="faq__icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <p>{item.a}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const items    = Array.from(document.querySelectorAll<HTMLElement>('[data-faqitem]'));
+  const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-faqtrigger]'));
+
+  triggers.forEach((trigger, idx) => {
+    trigger.addEventListener('click', () => {
+      const isOpen = items[idx].classList.contains('is-open');
+
+      // Close all
+      items.forEach(item => item.classList.remove('is-open'));
+      triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+      // Toggle clicked
+      if (!isOpen) {
+        items[idx].classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<style>
+/* ── Section ───────────────────────────────────────────────────── */
+.faq {
+  background: var(--brand, #272E32);
+  padding: 5rem 1.5rem;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+.faq__head {
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.faq__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--green, #7fac4a);
+  margin: 0 0 1rem;
+}
+
+.faq__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+.faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  color: #ffffff;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+  line-height: 1.2;
+}
+
+.faq__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── List ──────────────────────────────────────────────────────── */
+.faq__list {
+  max-width: 44rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ── Item ──────────────────────────────────────────────────────── */
+.faq__item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faq__item.is-open {
+  border-color: rgba(127, 172, 74, 0.50);
+}
+
+/* ── Question button ───────────────────────────────────────────── */
+.faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 1.15rem 1.35rem;
+  color: #ffffff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+/* ── +/– icon ──────────────────────────────────────────────────── */
+.faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.faq__icon span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green, #7fac4a);
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+
+/* vertical bar of the + */
+.faq__icon span:last-child {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* open: rotate vertical bar to 0 → becomes − */
+.faq__item.is-open .faq__icon span:last-child {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* ── Answer panel ──────────────────────────────────────────────── */
+.faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.faq__item.is-open .faq__a {
+  grid-template-rows: 1fr;
+}
+
+.faq__a-inner {
+  overflow: hidden;
+}
+
+.faq__a-inner p {
+  margin: 0;
+  padding: 0 1.35rem 1.35rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: rgba(255, 255, 255, 0.60);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .faq__a, .faq__icon span { transition: none; }
+}
+</style>

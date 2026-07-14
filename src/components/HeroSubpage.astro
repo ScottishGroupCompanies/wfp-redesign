@@ -1,0 +1,228 @@
+---
+/**
+ * HeroSubpage — compact hero for inner pages.
+ * Adapted from windowfilm-ui2.vercel.app component library.
+ *
+ * Props:
+ *   eyebrow  — uppercase label (e.g. "OUR PROCESS")
+ *   title    — H1 text (use \n for intentional line breaks)
+ *   subtitle — supporting paragraph
+ *   bg       — background image URL or path
+ *   cta1     — { label, href } primary button  (default: Get a free quote → /contact/)
+ *   cta2     — { label, href } ghost button    (default: See our services → /services/)
+ */
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  bg: string;
+  cta1?: { label: string; href: string };
+  cta2?: { label: string; href: string };
+}
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  bg,
+  cta1 = { label: 'Get a free quote', href: '/contact/' },
+  cta2 = { label: 'See our services', href: '/services/' },
+} = Astro.props;
+---
+
+<section class="hs-hero">
+  <!-- Background image -->
+  <img
+    src={bg}
+    alt=""
+    class="hs-hero__bg"
+    loading="eager"
+    fetchpriority="high"
+  />
+  <!-- Gradient overlay: deep left → transparent right -->
+  <div class="hs-hero__overlay"></div>
+
+  <!-- Content -->
+  <div class="hs-hero__inner">
+    <!-- Eyebrow -->
+    <p class="hs-hero__eyebrow">
+      <span class="hs-hero__dot" aria-hidden="true"></span>
+      {eyebrow}
+    </p>
+
+    <!-- H1 -->
+    <h1 class="hs-hero__title">{title}</h1>
+
+    <!-- Subtitle -->
+    <p class="hs-hero__subtitle">{subtitle}</p>
+
+    <!-- CTAs -->
+    <div class="hs-hero__ctas">
+      <a href={cta1.href} class="hs-hero__cta hs-hero__cta--primary">{cta1.label}</a>
+      <a href={cta2.href} class="hs-hero__cta hs-hero__cta--ghost">{cta2.label}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Base ──────────────────────────────────────────────────────── */
+.hs-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 540px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── Background image ──────────────────────────────────────────── */
+.hs-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Gradient overlay ──────────────────────────────────────────── */
+.hs-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Left side very dark, fades toward right — matches library design */
+  background: linear-gradient(
+    to right,
+    rgba(39, 46, 50, 0.92) 0%,
+    rgba(39, 46, 50, 0.72) 45%,
+    rgba(39, 46, 50, 0.28) 100%
+  );
+}
+
+/* ── Inner wrapper ─────────────────────────────────────────────── */
+.hs-hero__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 5% 5rem;
+}
+
+/* ── Eyebrow ───────────────────────────────────────────────────── */
+.hs-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--green, #7fac4a);
+  margin: 0 0 1.1rem;
+}
+
+.hs-hero__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green, #7fac4a);
+  flex-shrink: 0;
+}
+
+/* ── H1 ────────────────────────────────────────────────────────── */
+.hs-hero__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  max-width: 700px;
+  margin: 0 0 1.25rem;
+  white-space: pre-line; /* honour \n line breaks */
+}
+
+/* ── Subtitle ──────────────────────────────────────────────────── */
+.hs-hero__subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 540px;
+  line-height: 1.65;
+  margin: 0 0 2rem;
+}
+
+/* ── CTA buttons ───────────────────────────────────────────────── */
+.hs-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hs-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.875rem;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 220ms ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.hs-hero__cta--primary {
+  background: var(--green, #7fac4a);
+  color: #ffffff;
+  border: 2px solid var(--green, #7fac4a);
+}
+
+.hs-hero__cta--primary:hover {
+  background: #6e9640;
+  border-color: #6e9640;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(127, 172, 74, 0.45);
+}
+
+.hs-hero__cta--ghost {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.32);
+}
+
+.hs-hero__cta--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.10);
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hs-hero {
+    min-height: 480px;
+  }
+
+  .hs-hero__inner {
+    padding: 5rem 5% 4rem;
+  }
+
+  .hs-hero__ctas {
+    flex-direction: column;
+  }
+
+  .hs-hero__cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* On mobile: overlay covers full width evenly */
+  .hs-hero__overlay {
+    background: rgba(39, 46, 50, 0.78);
+  }
+}
+</style>

@@ -1,0 +1,131 @@
+---
+/**
+ * TrustStrip — dark-navy infinite logo carousel.
+ * Adapted from windowfilm-ui2.vercel.app.
+ *
+ * Props:
+ *   label — eyebrow text above the logos (default: "TRUSTED BY LEADING PHILADELPHIA BUSINESSES")
+ */
+interface Props {
+  label?: string;
+}
+const { label = 'TRUSTED BY LEADING PHILADELPHIA BUSINESSES' } = Astro.props;
+
+const logos = [
+  { file: '2021-09-3m-window-film-philadelphia.webp',              alt: '3M Window Film' },
+  { file: '2021-09-llumar-window-film-philadelphia.webp',          alt: 'LLumar Window Film' },
+  { file: '2021-09-vista-window-film-philadelphia.webp',           alt: 'Vista Window Film' },
+  { file: '2021-09-solar-gard-window-film-philadelphia.webp',      alt: 'Solar Gard Window Film' },
+  { file: '2021-09-huper-optik-window-film-philadelphia.webp',     alt: 'Huper Optik Window Film' },
+  { file: '2021-09-casper-window-film-philadelphia.webp',          alt: 'Casper Cloaking Film' },
+  { file: '2021-09-cbond-window-film-philadelphia.webp',           alt: 'C-Bond Window Film' },
+  { file: '2021-09-madico-window-film-philadelphia.webp',          alt: 'Madico Window Film' },
+  { file: '2021-09-hdclear-window-film-philadelphia.webp',         alt: 'HD Clear Window Film' },
+  { file: '2021-09-hanita-coatings-window-film-philadelphia.webp', alt: 'Hanita Coatings Window Film' },
+  { file: '2021-09-solyx-window-film-philadelphia.webp',           alt: 'Solyx Window Film' },
+  { file: '2021-09-graffiti-shield-window-film-philadelphia.webp', alt: 'Graffiti Shield Window Film' },
+];
+---
+
+<section class="ts-strip">
+  <p class="ts-strip__label">{label}</p>
+
+  <div class="ts-strip__mask">
+    <div class="ts-strip__track">
+      <!-- First pass -->
+      {logos.map((logo) => (
+        <span class="ts-strip__card">
+          <img
+            src={`/images/${logo.file}`}
+            alt={logo.alt}
+            class="ts-strip__logo"
+            loading="lazy"
+          />
+        </span>
+      ))}
+      <!-- Duplicate for seamless loop -->
+      {logos.map((logo) => (
+        <span class="ts-strip__card" aria-hidden="true">
+          <img
+            src={`/images/${logo.file}`}
+            alt=""
+            class="ts-strip__logo"
+            loading="lazy"
+          />
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Section ───────────────────────────────────────────────────── */
+.ts-strip {
+  background: var(--brand, #272E32);
+  padding: 2.5rem 0;
+  overflow: hidden;
+}
+
+/* ── Label ─────────────────────────────────────────────────────── */
+.ts-strip__label {
+  text-align: center;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0 0 2rem;
+}
+
+/* ── Edge-fade mask ────────────────────────────────────────────── */
+.ts-strip__mask {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* ── Scrolling track ───────────────────────────────────────────── */
+.ts-strip__track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: ts-scroll 32s linear infinite;
+}
+
+.ts-strip__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ts-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Logo card ─────────────────────────────────────────────────── */
+.ts-strip__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 140px;
+  height: 64px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 200ms ease;
+}
+
+.ts-strip__card:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Logo image ────────────────────────────────────────────────── */
+.ts-strip__logo {
+  max-height: 32px;
+  max-width: 100%;
+  object-fit: contain;
+}
+</style>
