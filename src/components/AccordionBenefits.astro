@@ -1,0 +1,406 @@
+---
+/**
+ * AccordionBenefits — Split layout benefits accordion.
+ * Adapted from windowfilm-ui2.vercel.app component library.
+ *
+ * Left: expandable benefit rows (icon + number + title + rich detail slot).
+ * Right: image that swaps to match the open benefit.
+ * On mobile: image renders beneath each open row.
+ *
+ * Props:
+ *   eyebrow  — small label above the heading
+ *   title    — H2 section heading
+ *   subtitle — optional supporting paragraph
+ *   benefits — array of benefit objects:
+ *     {
+ *       number: string          e.g. "01"
+ *       title: string           e.g. "Stop Fading Before It Starts"
+ *       detail: string          plain paragraph body (HTML allowed)
+ *       image: string           image src
+ *       imageAlt: string        image alt text
+ *     }
+ *
+ * Rich detail (links, bullets) can be passed via named slots:
+ *   <Fragment slot="detail-0"> … </Fragment>
+ * But for maximum flexibility the component also accepts detail as HTML string.
+ */
+
+interface Benefit {
+  number: string;
+  title: string;
+  detail: string;   // HTML string
+  image: string;
+  imageAlt: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  benefits: Benefit[];
+  id?: string;
+}
+
+const {
+  eyebrow = 'THE BENEFITS',
+  title = 'Four Improvements, One Professional Installation',
+  subtitle,
+  benefits,
+  id = 'accordionBenefits',
+} = Astro.props;
+---
+
+<section class="ab-section" id={id}>
+  <div class="ab-inner">
+
+    <!-- Header -->
+    <div class="ab-header">
+      {eyebrow && <span class="ab-eyebrow">{eyebrow}</span>}
+      <h2 class="ab-title">{title}</h2>
+      {subtitle && <p class="ab-subtitle">{subtitle}</p>}
+    </div>
+
+    <!-- Body: accordion left + image right -->
+    <div class="ab-body">
+
+      <!-- Accordion column -->
+      <div class="ab-accordion" role="list">
+        {benefits.map((b, i) => (
+          <div class="ab-item" role="listitem" data-ab-index={i}>
+            <button
+              class={`ab-trigger ${i === 0 ? 'ab-trigger--open' : ''}`}
+              aria-expanded={i === 0 ? 'true' : 'false'}
+              aria-controls={`ab-detail-${i}-${id}`}
+              id={`ab-btn-${i}-${id}`}
+              data-ab-btn={i}
+            >
+              <span class="ab-trigger__num">{b.number}</span>
+              <span class="ab-trigger__title">{b.title}</span>
+              <span class="ab-trigger__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <div
+              class={`ab-detail ${i === 0 ? 'ab-detail--open' : ''}`}
+              id={`ab-detail-${i}-${id}`}
+              role="region"
+              aria-labelledby={`ab-btn-${i}-${id}`}
+            >
+              <!-- Mobile image (shows under open row on small screens) -->
+              <div class="ab-detail__mobile-img">
+                <img src={b.image} alt={b.imageAlt} loading="lazy" />
+              </div>
+              <!-- Rich HTML detail -->
+              <div class="ab-detail__body" set:html={b.detail} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Image column (desktop only) -->
+      <div class="ab-image-col" aria-hidden="true">
+        {benefits.map((b, i) => (
+          <img
+            src={b.image}
+            alt={b.imageAlt}
+            class={`ab-img ${i === 0 ? 'ab-img--active' : ''}`}
+            data-ab-img={i}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        ))}
+      </div>
+
+    </div><!-- /.ab-body -->
+  </div><!-- /.ab-inner -->
+</section>
+
+<style>
+/* ── Section wrapper ─────────────────────────────────────── */
+.ab-section {
+  background: #fff;
+  padding: 96px 5%;
+}
+
+.ab-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.ab-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+}
+
+.ab-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7CB342;
+}
+
+.ab-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ab-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #4A5C48;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── Body grid ───────────────────────────────────────────── */
+.ab-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Accordion column ────────────────────────────────────── */
+.ab-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.ab-item {
+  border-bottom: 1px solid #E8EDE6;
+}
+
+.ab-item:first-child {
+  border-top: 1px solid #E8EDE6;
+}
+
+/* ── Trigger button ──────────────────────────────────────── */
+.ab-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.ab-trigger:hover .ab-trigger__title {
+  color: #7CB342;
+}
+
+.ab-trigger__num {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7CB342;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.ab-trigger__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #14201A;
+  line-height: 1.2;
+  flex: 1;
+  transition: color 0.2s;
+}
+
+.ab-trigger--open .ab-trigger__title {
+  color: #2E7D32;
+}
+
+.ab-trigger__icon {
+  color: #7CB342;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.ab-trigger--open .ab-trigger__icon {
+  transform: rotate(180deg);
+}
+
+/* ── Detail panel ────────────────────────────────────────── */
+.ab-detail {
+  display: none;
+  padding: 0 0 24px;
+}
+
+.ab-detail--open {
+  display: block;
+}
+
+.ab-detail__mobile-img {
+  display: none; /* shown on mobile via media query */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.ab-detail__mobile-img img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Rich detail typography — use :global() so scoped styles reach set:html content */
+.ab-detail__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #4A5C48;
+  line-height: 1.8;
+}
+
+.ab-detail__body :global(p) {
+  margin: 0 0 14px;
+}
+
+.ab-detail__body :global(p:last-child) {
+  margin-bottom: 0;
+}
+
+.ab-detail__body :global(a) {
+  color: #7CB342;
+  text-decoration: underline;
+  text-decoration-color: #7CB342;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.ab-detail__body :global(a:hover) {
+  color: #2E6B30;
+}
+
+.ab-detail__body :global(ul) {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ab-detail__body :global(li) {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #14201A;
+  line-height: 1.5;
+}
+
+.ab-detail__body :global(li)::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 13l4 4L19 7' stroke='%237CB342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Image column ────────────────────────────────────────── */
+.ab-image-col {
+  position: sticky;
+  top: 100px;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: #E8EDE6;
+}
+
+.ab-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  display: block;
+}
+
+.ab-img--active {
+  opacity: 1;
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .ab-section {
+    padding: 64px 5%;
+  }
+
+  .ab-body {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ab-image-col {
+    display: none; /* hide the sticky desktop image */
+  }
+
+  .ab-detail__mobile-img {
+    display: block; /* show inline image on mobile */
+  }
+}
+</style>
+
+<script>
+  // One accordion open at a time; swap desktop image on open
+  document.querySelectorAll<HTMLElement>('.ab-section').forEach(section => {
+    const buttons = section.querySelectorAll<HTMLButtonElement>('[data-ab-btn]');
+    const details = section.querySelectorAll<HTMLElement>('[id^="ab-detail-"]');
+    const imgs    = section.querySelectorAll<HTMLImageElement>('[data-ab-img]');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.dataset.abBtn!;
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all
+        buttons.forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          b.classList.remove('ab-trigger--open');
+        });
+        details.forEach(d => d.classList.remove('ab-detail--open'));
+        imgs.forEach(img => img.classList.remove('ab-img--active'));
+
+        // Open clicked (unless it was already open — keep open on first click)
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.classList.add('ab-trigger--open');
+          section.querySelector(`[id="ab-detail-${idx}-${section.id}"]`)
+            ?.classList.add('ab-detail--open');
+          section.querySelector<HTMLImageElement>(`[data-ab-img="${idx}"]`)
+            ?.classList.add('ab-img--active');
+        }
+      });
+    });
+  });
+</script>

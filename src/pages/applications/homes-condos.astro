@@ -1,7 +1,71 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import FlipWords from '../../components/FlipWords.astro';
+import HeroSubpage from '../../components/HeroSubpage.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+
+const homeBenefits = [
+  {
+    number: '01',
+    title: 'Stop Fading Before It Starts',
+    image: '/images/hc-uv.jpg',
+    imageAlt: 'Philadelphia living room with hardwood floor and rug showing UV protection from window film',
+    detail: `
+      <p>UV radiation causes up to 40% of visible fading in carpets, hardwood floors, upholstered furniture, drapery, and artwork. In Philadelphia rowhouses and condos, west-facing rooms take the hardest afternoon hit — and the damage is cumulative and irreversible. A $15,000 Oriental rug fades the same way a $300 one does once UV exposure is left unchecked.</p>
+      <p>Our <a href="/benefits/uv-blocking-window-film-philadelphia/">UV protection window film</a> blocks 99.9% of UV-A and UV-B radiation. Floors, furniture, and artwork in treated rooms age at the same rate as rooms that face north — regardless of exposure.</p>
+      <ul>
+        <li>99.9% UV-A and UV-B rejection</li>
+        <li>Protects hardwood floors, rugs, upholstery, artwork</li>
+        <li>Virtually invisible — no change to window appearance</li>
+      </ul>
+    `,
+  },
+  {
+    number: '02',
+    title: 'Cut What Your Windows Cost You',
+    image: '/images/hc-energy.jpg',
+    imageAlt: 'Philadelphia home kitchen with comfortable morning sunlight, energy-efficient feel',
+    detail: `
+      <p>Per <a href="https://www.energystar.gov/products/windows_doors_skylights" target="_blank" rel="noopener noreferrer">ENERGY STAR</a>, 25–35% of residential heating and cooling energy is lost through windows. Solar control and Low-E film addresses the problem at the glass: blocking solar heat gain in summer and retaining interior warmth in winter.</p>
+      <p>Our <a href="/benefits/energy-savings/">energy-efficient window film</a> reduces Solar Heat Gain Coefficient — delivering real reductions in cooling load without sacrificing natural light or views. For older rowhouses with single-pane glass, Low-E film (3M Thinsulate CC75) delivers the largest year-round performance gain.</p>
+      <ul>
+        <li>Reduces solar heat gain in summer</li>
+        <li>Retains interior warmth in winter (Low-E)</li>
+        <li>No glass replacement — fraction of window upgrade cost</li>
+      </ul>
+    `,
+  },
+  {
+    number: '03',
+    title: 'Live in Every Room, Every Hour',
+    image: '/images/hc-glare.jpg',
+    imageAlt: 'Philadelphia home office, person comfortable at desk, afternoon sun diffused through treated window',
+    detail: `
+      <p>Afternoon glare in Philadelphia rowhouses and condos forces a familiar choice: close the blinds and lose the view, or keep them open and overheat the room. Solar control film eliminates that trade-off. Spectrally selective films block heat and glare frequencies while passing most visible light — so rooms stay bright without becoming uncomfortable.</p>
+      <p>Rooms that were unusable from 2pm to 6pm in summer become comfortable with curtains open. See our full guide to <a href="/benefits/glare-reduction/">glare reduction window film</a> for Philadelphia homes.</p>
+      <ul>
+        <li>Cuts glare without darkening the room</li>
+        <li>Works for home offices, media rooms, living areas</li>
+        <li>No visual change to window appearance from outside</li>
+      </ul>
+    `,
+  },
+  {
+    number: '04',
+    title: 'Privacy Without Curtains. Safety Without Bars.',
+    image: '/images/hc-privacy.jpg',
+    imageAlt: 'Ground-floor Philadelphia rowhouse window with daytime privacy film visible from street',
+    detail: `
+      <p>Ground-floor rowhouses and street-level condo units trade natural light for privacy — or vice versa. One-way mirror film provides daytime street-level privacy while maintaining full outward views from inside. No curtains, no blinds, no compromising on light.</p>
+      <p>Our <a href="/benefits/privacy-window-film-philadelphia/">privacy window film</a> options range from subtle one-way reflective films to frosted and patterned films for bathrooms and entry glass. Safety film holds glass together on impact — reducing glass-shard injury risk and slowing forced-entry attempts.</p>
+      <ul>
+        <li>One-way mirror film: privacy by day, clear view out</li>
+        <li>Frosted / decorative: bathrooms, entry doors, sidelights</li>
+        <li>Safety film: holds glass together on impact</li>
+      </ul>
+    `,
+  },
+];
 
 const title = 'Home Window Film Philadelphia | UV, Privacy & Energy';
 const description = 'Window film for Philadelphia homes, rowhouses, and condos. UV protection, heat reduction, privacy, and safety film. Free residential estimate.';
@@ -70,7 +134,7 @@ const pageSchemas = [
     "dateModified": new Date().toISOString().slice(0,10),
     "inLanguage": "en-US",
     "isPartOf": { "@type": "WebSite", "@id": "https://www.windowfilmphiladelphia.net/#website", "url": "https://www.windowfilmphiladelphia.net/", "name": "Window Film Philadelphia" },
-    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".hc-hero__subtitle", ".hc-whatis__body", ".hc-geo", ".swt-faq__a"] },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".hs-hero__subtitle", ".hc-whatis__body", ".hc-geo", ".swt-faq__a"] },
     "breadcrumb": { "@id": "https://www.windowfilmphiladelphia.net/applications/homes-condos/#breadcrumb" },
     "primaryImageOfPage": { "@type": "ImageObject", "url": "https://www.windowfilmphiladelphia.net/images/hc-hero.jpg", "name": "Home window film installation in Philadelphia rowhouse" }
   },
@@ -137,74 +201,14 @@ const pageSchemas = [
 >
 
   <!-- ══ HERO ══ -->
-  <section class="hc-hero">
-    <div
-      class="hc-hero__bg"
-      role="img"
-      aria-label="Philadelphia rowhouse street with afternoon golden light streaming through windows"
-      style="background-image: url('/images/hc-hero.jpg')"
-    ></div>
-    <div class="hc-hero__overlay"></div>
-
-    <div class="hc-hero__content">
-
-      <div class="hc-hero__eyebrow">
-        <span>Residential Window Film</span>
-        <span class="hc-hero__eyebrow-dot" aria-hidden="true"></span>
-        <span>Philadelphia, PA</span>
-        <span class="hc-hero__eyebrow-dot" aria-hidden="true"></span>
-        <span>Since 2008</span>
-      </div>
-
-      <h1 class="hc-hero__title">Home Window Film<br class="hc-hero__br"/> for Philadelphia</h1>
-
-      <p class="hc-hero__animated-line">
-        Stop accepting
-        <FlipWords
-          words={["sweltering south-facing rooms", "UV-faded hardwood floors", "no street-level privacy", "sky-high cooling bills", "wasted heat through old windows"]}
-          staticText=""
-          class="hc-hero__flip"
-        />.
-      </p>
-
-      <p class="hc-hero__subtitle">
-        Better comfort. Lower energy bills. Furniture that lasts. Installed around your schedule — no mess, no disruption.
-      </p>
-
-      <div class="hc-hero__cta">
-        <a href="/contact/" class="hc-hero__btn-primary">Get a Free Residential Estimate</a>
-        <a href="tel:2673947980" class="hc-hero__btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
-          Call (267) 394-7980
-        </a>
-      </div>
-
-      <div class="hc-hero__stats-panel" aria-label="Key statistics">
-        <div class="hc-hero__stats-inner">
-          <div class="hc-hero__stat">
-            <span class="hc-hero__stat-number">99.9%</span>
-            <span class="hc-hero__stat-label">UV Blocked</span>
-          </div>
-          <div class="hc-hero__stat-divider" aria-hidden="true"></div>
-          <div class="hc-hero__stat">
-            <span class="hc-hero__stat-number">38%</span>
-            <span class="hc-hero__stat-label">Heat Reduction</span>
-          </div>
-          <div class="hc-hero__stat-divider" aria-hidden="true"></div>
-          <div class="hc-hero__stat">
-            <span class="hc-hero__stat-number">15yr</span>
-            <span class="hc-hero__stat-label">Manufacturer Warranty</span>
-          </div>
-          <div class="hc-hero__stat-divider" aria-hidden="true"></div>
-          <div class="hc-hero__stat">
-            <span class="hc-hero__stat-number">Free</span>
-            <span class="hc-hero__stat-label">Site Estimate</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  <HeroSubpage
+    eyebrow="RESIDENTIAL WINDOW FILM · PHILADELPHIA, PA"
+    title={"Home Window Film\nfor Philadelphia"}
+    subtitle="Better comfort. Lower energy bills. Furniture that lasts. UV protection, heat reduction, and privacy — installed around your schedule."
+    bg="/images/hc-hero.jpg"
+    cta1={{ label: 'Get a Free Residential Estimate', href: '/contact/' }}
+    cta2={{ label: 'Call (267) 394-7980', href: 'tel:2673947980' }}
+  />
 
   <div class="swt-body">
 
@@ -334,142 +338,14 @@ const pageSchemas = [
       </div>
     </section>
 
-    <!-- ══ BENEFIT ROWS ══ -->
-    <section class="hc-benefits">
-      <div class="hc-benefits__container">
+    <!-- ══ BENEFITS ACCORDION ══ -->
+    <AccordionBenefits
+      eyebrow="THE BENEFITS"
+      title="Every Improvement. One Professional Installation."
+      subtitle="UV protection, energy savings, comfort, and privacy — addressed in a single professional installation. No window replacement, no renovation, no mess."
+      benefits={homeBenefits}
+    />
 
-        <div class="hc-benefits__header">
-          <div class="hc-benefits__eyebrow">The Benefits</div>
-          <h2 class="hc-benefits__headline">Four Improvements, One Professional Installation</h2>
-          <p class="hc-benefits__intro">UV protection, energy savings, comfort, and privacy — addressed in a single professional installation. No window replacement, no renovation, no mess.</p>
-        </div>
-
-        <!-- Row 1: UV Protection — image LEFT, text RIGHT -->
-        <div class="of-row">
-          <div class="of-row__image">
-            <img
-              src="/images/hc-uv.jpg"
-              alt="Philadelphia living room with hardwood floor and rug showing UV protection from window film"
-              width="680" height="480" loading="lazy" decoding="async"
-            />
-          </div>
-          <div class="of-row__text">
-            <div class="of-row__eyebrow">BENEFIT 01</div>
-            <h3 class="of-row__title">Stop Fading Before It Starts</h3>
-            <p class="of-row__body">UV radiation causes up to 40% of visible fading in carpets, hardwood floors, upholstered furniture, drapery, and artwork. In Philadelphia rowhouses and condos, west-facing rooms take the hardest afternoon hit — and the damage is cumulative and irreversible. A $15,000 Oriental rug fades the same way a $300 one does once UV exposure is left unchecked.</p>
-            <p class="of-row__body">Our <a href="/benefits/uv-blocking-window-film-philadelphia/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">UV protection window film</a> blocks 99.9% of UV-A and UV-B radiation. Floors, furniture, and artwork in treated rooms age at the same rate as rooms that face north — regardless of exposure.</p>
-            <ul class="of-row__bullets">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                99.9% UV-A and UV-B rejection
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Protects hardwood floors, rugs, upholstery, artwork
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Virtually invisible — no change to window appearance
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Row 2: Energy Savings — text LEFT, image RIGHT -->
-        <div class="of-row of-row--rev">
-          <div class="of-row__image">
-            <img
-              src="/images/hc-energy.jpg"
-              alt="Philadelphia home kitchen with comfortable morning sunlight, plant on windowsill, energy-efficient feel"
-              width="680" height="480" loading="lazy" decoding="async"
-            />
-          </div>
-          <div class="of-row__text">
-            <div class="of-row__eyebrow">BENEFIT 02</div>
-            <h3 class="of-row__title">Cut What Your Windows Cost You</h3>
-            <p class="of-row__body">Per <a href="https://www.energystar.gov/products/windows_doors_skylights" target="_blank" rel="noopener noreferrer" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">ENERGY STAR</a> estimates that 25–35% of residential heating and cooling energy is lost through windows. In a Philadelphia rowhouse or condo, that's a significant share of your utility bill — especially during summer peak-cooling months and January heating spikes. Solar control and Low-E film addresses the problem at the glass: blocking solar heat gain in summer and retaining interior warmth in winter.</p>
-            <p class="of-row__body">Our <a href="/benefits/energy-savings/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">energy-efficient window film</a> reduces Solar Heat Gain Coefficient — delivering real reductions in cooling load without sacrificing natural light or views. For older rowhouses with single-pane glass, Low-E film (3M Thinsulate CC75) delivers the largest year-round performance gain.</p>
-            <ul class="of-row__bullets">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Reduces solar heat gain in summer
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Retains interior warmth in winter (Low-E)
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                No glass replacement — fraction of window upgrade cost
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Row 3: Glare & Comfort — image LEFT, text RIGHT -->
-        <div class="of-row">
-          <div class="of-row__image">
-            <img
-              src="/images/hc-glare.jpg"
-              alt="Philadelphia home office, person comfortable at desk, afternoon sun diffused through treated window, no screen glare"
-              width="680" height="480" loading="lazy" decoding="async"
-            />
-          </div>
-          <div class="of-row__text">
-            <div class="of-row__eyebrow">BENEFIT 03</div>
-            <h3 class="of-row__title">Live in Every Room, Every Hour</h3>
-            <p class="of-row__body">Afternoon glare in Philadelphia rowhouses and condos forces a familiar choice: close the blinds and lose the view, or keep them open and overheat the room and wash out every screen in it. Solar control film eliminates that trade-off. Spectrally selective films block the heat and glare frequencies while passing most visible light — so rooms stay bright without becoming uncomfortable.</p>
-            <p class="of-row__body">The difference is immediate. Rooms that were unusable from 2pm to 6pm in summer become comfortable with curtains open. Home offices stop requiring repositioned monitors. Living rooms stop requiring blackout shades. See our full guide to <a href="/benefits/glare-reduction/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">glare reduction window film</a> for Philadelphia homes.</p>
-            <ul class="of-row__bullets">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Cuts glare without darkening the room
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Works for home offices, media rooms, living areas
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                No visual change to window appearance from outside
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Row 4: Privacy & Safety — text LEFT, image RIGHT -->
-        <div class="of-row of-row--rev">
-          <div class="of-row__image">
-            <img
-              src="/images/hc-privacy.jpg"
-              alt="Ground-floor Philadelphia rowhouse window with daytime privacy film visible from street"
-              width="680" height="480" loading="lazy" decoding="async"
-            />
-          </div>
-          <div class="of-row__text">
-            <div class="of-row__eyebrow">BENEFIT 04</div>
-            <h3 class="of-row__title">Privacy Without Curtains. Safety Without Bars.</h3>
-            <p class="of-row__body">Ground-floor rowhouses and street-level condo units trade natural light for privacy — or vice versa. One-way mirror film provides daytime street-level privacy while maintaining full outward views from inside. No curtains, no blinds, no compromising on light.</p>
-            <p class="of-row__body">Our <a href="/benefits/privacy-window-film-philadelphia/" style="color:#2E7D32;font-weight:700;text-decoration:underline;text-decoration-color:#4CAF50;text-underline-offset:3px;">privacy window film</a> options range from subtle one-way reflective films for living rooms and bedrooms to frosted and patterned films for bathrooms, sidelights, and entry glass. Safety and security film holds glass together on impact — reducing glass-shard injury risk and slowing forced-entry attempts.</p>
-            <ul class="of-row__bullets">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                One-way mirror film: privacy by day, clear view out
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Frosted / decorative: bathrooms, entry doors, sidelights
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Safety film: holds glass together on impact
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section>
 
     <!-- ══ FILM TYPES SLIDER ══ -->
     <section class="of-ftype" id="hcFilmTypes">
@@ -958,149 +834,6 @@ const pageSchemas = [
 </BaseLayout>
 
 <style>
-  /* ══ HERO ══ */
-  .hc-hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  .hc-hero__bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .hc-hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.3) 100%);
-  }
-  .hc-hero__content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 8rem 2rem 6rem;
-    text-align: center;
-    color: #fff;
-  }
-  .hc-hero__eyebrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    margin-bottom: 1.5rem;
-  }
-  .hc-hero__eyebrow-dot {
-    width: 4px;
-    height: 4px;
-    background: #7CB342;
-    border-radius: 50%;
-  }
-  .hc-hero__title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.02em;
-  }
-  .hc-hero__animated-line {
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: 500;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 1rem;
-    min-height: 2.2em;
-  }
-  .hc-hero__subtitle {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: rgba(255,255,255,0.8);
-    max-width: 640px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-  }
-  .hc-hero__cta {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-  .hc-hero__btn-primary {
-    background: #7CB342;
-    color: #fff;
-    padding: 0.9rem 2rem;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .hc-hero__btn-primary:hover { background: #558B2F; }
-  .hc-hero__btn-secondary {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.12);
-    color: #fff;
-    padding: 0.9rem 2rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: background 0.2s;
-  }
-  .hc-hero__btn-secondary:hover { background: rgba(255,255,255,0.2); }
-  .hc-hero__stats-panel {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 10px;
-    padding: 1.25rem 2rem;
-    backdrop-filter: blur(8px);
-    display: inline-block;
-    width: 100%;
-    max-width: 700px;
-  }
-  .hc-hero__stats-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .hc-hero__stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
-  .hc-hero__stat-number {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #AED581;
-    line-height: 1;
-  }
-  .hc-hero__stat-label {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.7);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    text-align: center;
-  }
-  .hc-hero__stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,0.15);
-  }
-
   /* ══ WHAT IS ══ */
   .hc-whatis {
     padding: 6rem 2rem;
@@ -1281,38 +1014,6 @@ const pageSchemas = [
     line-height: 1.6;
   }
 
-  /* ══ BENEFITS SECTION WRAPPER ══ */
-  .hc-benefits {
-    padding: 6rem 2rem;
-    background: #f8f9f4;
-  }
-  .hc-benefits__container { max-width: 1200px; margin: 0 auto; }
-  .hc-benefits__header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  .hc-benefits__eyebrow {
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #7CB342;
-    margin-bottom: 0.75rem;
-  }
-  .hc-benefits__headline {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 0.75rem;
-  }
-  .hc-benefits__intro {
-    color: #555;
-    max-width: 640px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
   /* ══ TESTIMONIALS ══ */
   .hc-testimonials {
     padding: 6rem 2rem;
@@ -1353,8 +1054,6 @@ const pageSchemas = [
     .hc-why__container > .hc-why__image-wrap { order: -1; }
     .hc-types__grid { grid-template-columns: 1fr 1fr; }
     .hc-testimonials__grid { grid-template-columns: 1fr; }
-    .hc-hero__stats-inner { gap: 0.75rem; }
-    .hc-hero__stat-divider { display: none; }
     .hc-why__climate-facts { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
@@ -1396,105 +1095,6 @@ const pageSchemas = [
     margin: 12px 0 20px;
     line-height: 1.15;
     letter-spacing: -0.02em;
-  }
-  .of-benefits__intro {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.0625rem;
-    color: #4A5C48;
-    line-height: 1.75;
-  }
-  .of-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
-    align-items: center;
-    margin-bottom: 80px;
-  }
-  .of-row:last-child { margin-bottom: 0; }
-  .of-row--rev { direction: rtl; }
-  .of-row--rev > * { direction: ltr; }
-  .of-row__image {
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 40px rgba(13,26,15,0.12);
-    position: relative;
-  }
-  .of-row__image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(124,179,66,0.15);
-    border-radius: 16px;
-    pointer-events: none;
-    z-index: 2;
-  }
-  .of-row__image img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  .of-row__image:hover img { transform: scale(1.03); }
-  .of-row__text { display: flex; flex-direction: column; }
-  .of-row__eyebrow {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #7CB342;
-    margin-bottom: 12px;
-  }
-  .of-row__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
-    font-weight: 700;
-    color: #14201A;
-    margin: 0 0 20px;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-  .of-row__body {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: #4A5C48;
-    line-height: 1.8;
-    margin: 0 0 20px;
-  }
-  .of-pullquote { border-left: 4px solid #7CB342; margin: 0 0 24px; padding: 16px 24px; background: #F5F9F0; border-radius: 0 8px 8px 0; }
-  .of-pullquote__text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: #14201A; line-height: 1.7; margin: 0 0 10px; }
-  .of-pullquote__cite { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #4A5C48; font-style: normal; display: block; }
-  .of-pullquote__cite a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
-  .of-pullquote__cite a:hover { color: #2E6B30; }
-  .of-row__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
-  .of-row__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
-  .of-row__bullets {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .of-row__bullets li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9375rem;
-    color: #14201A;
-    line-height: 1.5;
-  }
-  .of-row__bullets svg { flex-shrink: 0; margin-top: 2px; }
-
-  @media (max-width: 900px) {
-    .of-benefits { padding: 64px 20px; }
-    .of-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 64px; }
-    .of-row--rev { direction: ltr; }
-    .of-row__image img { height: 320px; }
-    .of-benefits__header { margin-bottom: 48px; }
   }
 
   /* ══════════════════════════════════════
