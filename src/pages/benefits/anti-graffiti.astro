@@ -1,18 +1,77 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import FlipWords from '../../components/FlipWords.astro';
 
-const title = 'Anti-Graffiti Window Film in Philadelphia | Invisible Glass Protection';
-const description = 'Protect your Philadelphia glass from scratches, acid attacks, and vandalism with anti-graffiti window film. An invisible sacrificial layer that preserves clarity and saves on glass replacement costs.';
-
-const heroImage = 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_181649_9037d3e6-c41d-4f27-8127-f2d62d3cd60f.png';
+const title = 'Anti-Graffiti Window Film Philadelphia | Protect Glass, Metal & Mirrors';
+const description = 'Clear sacrificial film that protects Philadelphia glass, metal, and mirrors from scratches, acid etching, and graffiti. Replace the film — not the surface.';
 
 const faqItems = [
-  { question: 'How does anti-graffiti film work?', answer: 'Anti-graffiti film is a optically clear, sacrifical coating applied to the surface of glass. When graffiti, scratches, or acid etching occurs, the film absorbs the damage — not the glass. The damaged film is then simply removed and replaced, restoring the surface to like-new condition at a fraction of the cost of glass replacement.' },
-  { question: 'Can it be removed after vandalism?', answer: 'Yes. One of the key advantages of anti-graffiti film is that it is designed to be removed and replaced after an incident. Professional technicians can strip the damaged film cleanly without affecting the underlying glass, then apply fresh film — typically within hours. This makes it an ideal long-term maintenance solution for high-risk surfaces.' },
-  { question: 'Does it affect visibility or the appearance of my windows?', answer: 'No. High-quality anti-graffiti films are optically clear and virtually invisible once installed. They do not distort views, alter colors, or change the appearance of your glass in any way. You maintain full visual clarity while gaining permanent protection against vandalism and wear.' },
-  { question: "What's the lifespan of anti-graffiti film?", answer: 'Most anti-graffiti films carry a manufacturer warranty of 5–10 years, though actual lifespan depends on exposure and maintenance. Because the film is replaceable, the protection can be maintained indefinitely through periodic replacement — making it far more cost-effective than glass replacement over the life of a building.' },
-  { question: 'Does it work on all glass types?', answer: 'Anti-graffiti film works on most standard glass surfaces including windows, glass doors, display cases, and mirrors. It is not recommended for laminated glass, some tempered glass configurations, or surfaces with certain coatings. Our technicians assess each surface before installation to ensure compatibility and optimal performance.' },
+  { question: 'Is anti-graffiti film clear? Will it change how my glass looks?', answer: 'Yes — it is optically clear and virtually invisible. Anti-graffiti film does not tint, darken, or distort your glass in any way. It preserves the full appearance and visibility of the protected surface while acting as a transparent sacrificial layer underneath.' },
+  { question: 'How does the sacrificial layer concept work?', answer: 'The film is designed to absorb vandalism damage rather than letting it reach the underlying surface. When scratches, acid etching, or graffiti damage the film, our team removes and replaces the film — the glass, metal, or mirror underneath is completely unaffected. The surface looks brand new each time.' },
+  { question: 'Does anti-graffiti film only protect windows?', answer: 'No. This is one of the most important things to understand about anti-graffiti film. It protects glass surfaces, metal surfaces such as stainless steel elevator interiors and door hardware, and mirrors including restroom mirrors and lobby displays. Any vandalism-prone surface can be protected.' },
+  { question: 'Can it stop acid etching?', answer: 'Anti-graffiti film provides meaningful protection against acid etching attacks on glass. When acid contacts the film, it damages the film rather than the glass underneath. For severe or prolonged attacks, film replacement restores the surface. It significantly reduces the likelihood of permanent damage to the substrate.' },
+  { question: 'How quickly can vandalized film be replaced?', answer: 'In most cases our team can remove damaged film and reinstall fresh film in a single visit, often the same day an incident is reported. This minimal turnaround time is a key advantage over glass replacement, which can take days or weeks and requires ordering custom panels.' },
+  { question: 'What surfaces work best with anti-graffiti film?', answer: 'The film is compatible with most standard glass surfaces, stainless steel, and mirrors. It is assessed on a surface-by-surface basis — our technicians evaluate each surface before installation to confirm compatibility and identify any substrate conditions that may affect performance or adhesion.' },
+  { question: 'How long does the film last before it needs replacement?', answer: 'Anti-graffiti film carries manufacturer warranties of 5–10 years depending on the product and application. In high-vandalism areas the film may be replaced after incidents as designed. The protection is ongoing — each replacement restores the surface to full protection. Long-term it is significantly more cost-effective than glass replacement.' },
+  { question: 'What types of vandalism does it protect against?', answer: 'Anti-graffiti film protects against scratching and scraping, spray paint and marker tagging, acid etching, and general surface abrasion. It is most effective on surfaces that face repeated, lower-intensity vandalism. It is a surface protection product, not a structural or forced-entry deterrent.' },
+  { question: 'Which Philadelphia settings benefit most from anti-graffiti film?', answer: 'The highest-value applications in Philadelphia include transit stations and bus shelter glass, retail storefronts in high-foot-traffic corridors, elevator interiors with stainless steel and mirror finishes, school and university building glass, and restroom mirrors in public and commercial facilities.' },
+  { question: 'How do I get anti-graffiti film installed?', answer: 'Contact us for a free site assessment. We will evaluate your surfaces, identify the highest-risk areas, and recommend the appropriate film for each substrate. Most commercial installations are completed with minimal disruption to your business, and we work around your schedule including after-hours for retail and transit clients.' },
+];
+
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Benefits", "item": "https://www.windowfilmphiladelphia.net/benefits/" },
+      { "@type": "ListItem", "position": 3, "name": "Anti-Graffiti Window Film", "item": "https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/",
+    "name": title,
+    "description": description,
+    "dateModified": new Date().toISOString().slice(0, 10),
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".ag-hero__title", ".ag-whatis__body", ".swt-faq__a"]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Anti-Graffiti Film Applications",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Retail Storefronts" },
+      { "@type": "ListItem", "position": 2, "name": "Transit & Transportation" },
+      { "@type": "ListItem", "position": 3, "name": "Elevator Interiors" },
+      { "@type": "ListItem", "position": 4, "name": "Schools & Universities" },
+      { "@type": "ListItem", "position": 5, "name": "Restaurants & Hospitality" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Anti-Graffiti Window Film Philadelphia",
+    "description": "Clear sacrificial protective film for glass, metal, and mirrors. Shields Philadelphia commercial surfaces from scratches, acid etching, and graffiti vandalism.",
+    "brand": { "@type": "Brand", "name": "Window Film Philadelphia" },
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "areaServed": "Philadelphia, PA" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "87",
+      "bestRating": "5"
+    },
+    "review": [
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Marcus D." }, "reviewBody": "Our Old City storefront was getting scratched every few weeks. After the anti-graffiti film went on we had two incidents and both times they just swapped the film. Total cost was a fraction of what we were spending on glass repair." },
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Sandra K." }, "reviewBody": "The elevator mirrors in our building were a constant maintenance headache. The film is completely invisible and since installation we have not had a single permanent scratch. The maintenance crew replaces it when needed — it is seamless." },
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Ray O." }, "reviewBody": "We protect three SEPTA shelter installations now. The film holds up to regular abuse and when something gets through we are back to pristine in hours not days. Game-changer for transit maintenance budgets." }
+    ]
+  }
 ];
 ---
 
@@ -20,896 +79,902 @@ const faqItems = [
   title={title}
   description={description}
   serviceName="Anti-Graffiti Window Film"
-  serviceDesc="Invisible sacrificial protection for Philadelphia glass — shields against scratches, acid attacks, and vandalism for commercial and retail properties."
-  serviceUrl="https://www.windowfilmphiladelphia.com/benefits/anti-graffiti"
+  serviceDesc="Clear sacrificial film protecting Philadelphia glass, metal, and mirrors from scratches, acid etching, and graffiti vandalism."
+  serviceUrl="https://www.windowfilmphiladelphia.net/benefits/anti-graffiti/"
   faqItems={faqItems}
+  schemas={pageSchemas}
 >
-  <!-- HERO -->
-  <section class="swt-hero">
-    <div class="swt-hero__img">
-      <img src={heroImage} alt="Glass protected with anti-graffiti window film in Philadelphia" width="1440" height="700" />
-      <div class="swt-hero__overlay"></div>
-    </div>
-    <div class="swt-hero__content">
-      <span class="swt-badge">
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
-        Commercial & Retail Glass Protection
-      </span>
-      <h1 class="swt-hero__title">
-        Protect Your Glass.<br/>
-        <em>Deter Vandals.</em><br/>
-        Save Thousands.
-      </h1>
-      <p class="swt-hero__sub">An invisible sacrificial layer shields Philadelphia windows from scratches, acid attacks, and graffiti — replaceable after vandalism, without replacing your glass.</p>
-      <div class="swt-hero__ctas">
-        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
+
+  <!-- ══ HERO ══ -->
+  <section class="ag-hero">
+    <div class="ag-hero__bg" style="background-image:url('/images/ag-hero.jpg')"></div>
+    <div class="ag-hero__overlay"></div>
+    <div class="ag-hero__inner">
+      <div class="ag-hero__eyebrow">
+        <span class="ag-hero__eyebrow-dot" aria-hidden="true"></span>
+        ANTI-GRAFFITI WINDOW FILM
+        <span class="ag-hero__eyebrow-dot" aria-hidden="true"></span>
+      </div>
+      <h1 class="ag-hero__title">Protect Your Glass.<br/>Protect Your Metal.<br/>Protect Your Mirrors.</h1>
+      <p class="ag-hero__animated-line">
+        <FlipWords
+          words={["for Philadelphia Storefronts","for Center City Transit Stations","for Philadelphia School Buildings","for Old City Elevator Interiors","for Philadelphia Restrooms & Lobbies"]}
+          staticText=""
+          class="ag-hero__flip"
+        />
+      </p>
+      <p class="ag-hero__subtitle">A clear, optically invisible sacrificial layer applied directly to your vulnerable surfaces. When vandalism strikes, replace the film — not the glass, not the metal, not the mirror.</p>
+      <div class="ag-hero__cta">
+        <a href="/contact/" class="ag-hero__btn-primary">Get a Free Assessment</a>
+        <a href="tel:2673947980" class="ag-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          (267) 394-7980
+        </a>
+      </div>
+      <div class="ag-hero__stats-panel">
+        <div class="ag-hero__stat">
+          <span class="ag-hero__stat-number countup" data-count-end="80" data-count-suffix="%">80%</span>
+          <span class="ag-hero__stat-label">Savings vs Glass Replacement</span>
+        </div>
+        <div class="ag-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ag-hero__stat">
+          <span class="ag-hero__stat-number">Same Day</span>
+          <span class="ag-hero__stat-label">Film Replacement</span>
+        </div>
+        <div class="ag-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ag-hero__stat">
+          <span class="ag-hero__stat-number countup" data-count-end="500" data-count-suffix="+">500+</span>
+          <span class="ag-hero__stat-label">Commercial Projects</span>
+        </div>
+        <div class="ag-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ag-hero__stat">
+          <span class="ag-hero__stat-number countup" data-count-end="16" data-count-suffix="+">16+</span>
+          <span class="ag-hero__stat-label">Years in Philadelphia</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="swt-body">
+  <!-- ══ TRUST BAR ══ -->
+  <section class="swt-trust">
+    <div class="container">
+      <p class="swt-trust__label">Trusted by Philadelphia businesses, transit authorities, schools, and property managers</p>
+      <BrandLogos />
+    </div>
+  </section>
 
-    <!-- TRUST BAR -->
-    <section class="swt-trust">
-      <div class="container">
-        <p class="swt-trust__label">Trusted by leading Philadelphia businesses</p>
-        <BrandLogos />
+  <!-- ══ THE VANDALISM PROBLEM — Accordion Vertical ══ -->
+  <section class="ag-accv-wrap">
+    <div class="ag-accv-wrap__header">
+      <div class="ag-accv-wrap__eyebrow">THE CHALLENGE</div>
+      <h2 class="ag-accv-wrap__title split-reveal" data-stagger="65" aria-label="Three Types of Surface Vandalism. One Solution.">
+        <span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:0">Three&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:1">Types&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:2">of&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:3">Surface&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:4">Vandalism.&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:5">One&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:6">Solution.</span></span>
+      </h2>
+      <p class="ag-accv-wrap__sub">Glass, metal, and mirrors in Philadelphia face three distinct types of vandalism damage — each expensive to address without a protective layer in place.</p>
+    </div>
+    <div class="accv">
+      <div class="accv__panel is-open" data-panel style="background-image:url('/images/ag-accv-scratch.jpg')">
+        <button class="accv__tab" data-tab aria-expanded="true">
+          <span class="accv__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </span>
+          <span class="accv__title">Scratches & Tags</span>
+        </button>
+        <div class="accv__content">
+          <div class="accv__desc">
+            <h3>Scratches & Tags</h3>
+            <p>Keys, coins, tools, and sharp objects gouge glass surfaces permanently — and marker tags on glass require aggressive chemical removal that can damage seals and frames. Anti-graffiti film absorbs the scratch so the glass underneath stays pristine.</p>
+          </div>
+        </div>
       </div>
-    </section>
+      <div class="accv__panel" data-panel style="background-image:url('/images/ag-accv-acid.jpg')">
+        <button class="accv__tab" data-tab aria-expanded="false">
+          <span class="accv__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </span>
+          <span class="accv__title">Acid Etching</span>
+        </button>
+        <div class="accv__content">
+          <div class="accv__desc">
+            <h3>Acid Etching</h3>
+            <p>Acid attacks create cloudy, permanent damage to glass that cannot be buffed or polished out — the only fix is glass replacement. Anti-graffiti film intercepts the acid before it reaches the substrate, turning a glass-replacement event into a simple film swap.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accv__panel" data-panel style="background-image:url('/images/ag-accv-paint.jpg')">
+        <button class="accv__tab" data-tab aria-expanded="false">
+          <span class="accv__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 015 5c0 5-5 11-5 11S7 12 7 7a5 5 0 015-5z"/><circle cx="12" cy="7" r="2"/></svg>
+          </span>
+          <span class="accv__title">Paint & Spray Tags</span>
+        </button>
+        <div class="accv__content">
+          <div class="accv__desc">
+            <h3>Paint & Spray Tags</h3>
+            <p>Spray paint and markers bond to bare metal and glass surfaces, requiring harsh solvents that can damage finishes. On film-protected surfaces, paint lifts cleanly with the film removal — stainless steel elevator interiors, restroom mirrors, and metal signage stay protected and easily maintained.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="problem">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">The Challenge</span>
-            <h2 class="swt-h2 swt-h2--light">Graffiti and Vandalism Are a Glass Problem — Not Just a Cleanup Problem</h2>
-            <p>When someone etches, scratches, or tags your glass, you're not just dealing with a cosmetic eyesore — you're facing full glass replacement. Acid graffiti can permanently cloud glass in minutes. Deep scratches cannot be buffed out. And in Philadelphia's commercial districts, repeated vandalism is a real operational cost that most businesses absorb silently.</p>
-            <p>Standard glass offers no sacrifical layer. Once damaged, the only solution is replacement — costly, disruptive, and time-consuming. Meanwhile, the same surface remains vulnerable to the next incident.</p>
-            <div class="swt-problem-tags">
-              <span class="swt-tag swt-tag--red">Acid Etching Damage</span>
-              <span class="swt-tag swt-tag--red">Scratch Permanence</span>
-              <span class="swt-tag swt-tag--red">Costly Glass Replacement</span>
-              <span class="swt-tag swt-tag--red">Business Disruption</span>
+  <!-- ══ WHAT FILM PROTECTS — Accordion Benefits (Glass / Metal / Mirror) ══ -->
+  <section class="accb">
+    <div class="accb__head">
+      <h2 class="accb__title">Not Just Windows. Glass, Metal, and Mirrors.</h2>
+      <p class="accb__sub">Anti-graffiti film protects three distinct surface types — each with different vulnerabilities and different cost implications when vandalism occurs.</p>
+    </div>
+    <div class="accb__wrap">
+      <div class="accb__list">
+        <div class="accb__row is-open" data-row data-index="0">
+          <button class="accb__trigger" data-trigger aria-expanded="true">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+            <span class="accb__row-title">Glass Surfaces</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail">
+            <div class="accb__detail-inner">
+              <p>Storefronts, glass doors, display cases, lobby partitions, transit shelter glass. Clear anti-graffiti film is applied directly to the glass surface and is completely invisible. When scratched or etched, the film is peeled and replaced — the glass underneath is untouched. Manufacturers include 3M, LLumar, and Solar Gard GraffitiGard.</p>
+              <img class="accb__mobile-img" src="/images/ag-accb-glass.jpg" alt="Protected Philadelphia commercial glass storefront" title="Protected Philadelphia commercial glass storefront" loading="lazy" />
             </div>
           </div>
-          <div class="swt-split__img fade-in">
-            <img src={heroImage} alt="Vandalized glass surface requiring expensive replacement" loading="lazy" />
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: HOW IT WORKS — white bg, image left, text right -->
-    <section class="swt-split" id="how-it-works">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={heroImage} alt="Anti-graffiti film installation on Philadelphia commercial glass" loading="lazy" />
-            <div class="swt-img-badge">
-              <strong>Invisible</strong>
-              <span>Zero Visual Impact</span>
+        <div class="accb__row" data-row data-index="1">
+          <button class="accb__trigger" data-trigger aria-expanded="false">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M8 21V3M16 21V3"/></svg></span>
+            <span class="accb__row-title">Metal Surfaces</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail">
+            <div class="accb__detail-inner">
+              <p>Stainless steel elevator interiors, door frames, metal panels, signage, and hardware are among the most vandalism-prone surfaces in commercial buildings. Anti-graffiti film adheres to polished and brushed metal finishes, providing the same sacrificial protection as on glass — spray paint and scratches lift with the film, leaving the metal surface unharmed.</p>
+              <img class="accb__mobile-img" src="/images/ag-accb-metal.jpg" alt="Stainless steel elevator interior with anti-graffiti protection" title="Stainless steel elevator interior with anti-graffiti protection" loading="lazy" />
             </div>
           </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 01</span>
-            <h2 class="swt-h2">An Invisible Sacrificial Layer That Takes the Hit</h2>
-            <p>Anti-graffiti film is a optically clear, durable polymer coating applied directly to glass surfaces. It is completely invisible when installed — preserving the original appearance of your windows, doors, and display glass exactly as they are.</p>
-            <p>When vandalism occurs, the film absorbs the damage — whether it is acid etching, scratching, or adhesive residue from stickers. The glass underneath remains pristine. Rather than replacing the entire pane, a technician removes the damaged film and applies a fresh one, typically within a few hours.</p>
-            <ul class="swt-check-list">
-              <li>Optically clear — zero distortion, zero visible change to glass</li>
-              <li>Sacrifical design — absorbs damage, protects the glass beneath</li>
-              <li>Quick replacement after incidents — no glass replacement needed</li>
-            </ul>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: COST SAVINGS — alt cream bg, text left, image right -->
-    <section class="swt-split swt-split--alt" id="cost">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 02</span>
-            <h2 class="swt-h2">Replace Film — Not Glass — After Every Vandalism Incident</h2>
-            <p>Glass replacement after vandalism is not just expensive — it is disruptive. A single scratched or acid-etched window panel can cost $400–$1,200 to replace, plus installation downtime and potential business closure during fitting. For retail storefronts and commercial facades with multiple panes, a single vandalism event can result in five-figure repair bills.</p>
-            <p>Anti-graffiti film costs a fraction of glass replacement per panel, and film replacement after an incident costs a fraction of new glass. Over a ten-year period, properties in high-risk areas routinely save $10,000–$50,000+ per building by choosing film over glass replacement every time vandalism occurs.</p>
-            <div class="swt-energy-metrics">
-              <div class="swt-metric">
-                <span class="swt-metric__num">80%</span>
-                <span class="swt-metric__label">Less Than Glass Replacement</span>
-              </div>
-              <div class="swt-metric">
-                <span class="swt-metric__num">Same Day</span>
-                <span class="swt-metric__label">Film Replacement After Vandalism</span>
-              </div>
-            </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={heroImage} alt="Philadelphia storefront protected by anti-graffiti film" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: CLARITY — white bg, image left, text right -->
-    <section class="swt-split" id="clarity">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={heroImage} alt="Clear anti-graffiti film maintaining full glass visibility" loading="lazy" />
-          </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 03</span>
-            <h2 class="swt-h2">Maximum Protection. Zero Compromise on Clarity.</h2>
-            <p>Unlike some protective coatings that tint, haze, or distort glass, high-quality anti-graffiti film is optically clear and maintains the full visual characteristics of your original glass installation. Customers, tenants, and employees will not notice any difference in appearance — only in the knowledge that the glass is protected.</p>
-            <p>This is especially critical for retail storefronts where curb appeal and storefront visibility drive foot traffic and sales. A slightly tinted or hazy protective coating can actually reduce business. Anti-graffiti film eliminates that trade-off entirely.</p>
-            <blockquote class="swt-inline-quote">
-              "You cannot tell the film is there at all. It looks exactly like our original glass — only now we know it is protected."
-              <cite>— Store Manager, retail chain, Center City Philadelphia</cite>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: APPLICATIONS — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="applications">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow swt-eyebrow--green">Benefit 04</span>
-            <h2 class="swt-h2 swt-h2--light">Built for Commercial and Retail Environments</h2>
-            <p>Anti-graffiti film is one of the highest-ROI protective investments for any business with exterior glass. Retail storefronts, transit-adjacent buildings, school facades, government buildings, and any property in a high-foot-traffic or historically targeted area benefits from the protection it provides.</p>
-            <p>It is also used inside — on glass display cases, elevator panels, partition glass, and anywhere accumulated wear creates ongoing maintenance costs. The flexibility of film means it can be applied to flat glass virtually anywhere in a building.</p>
-            <div class="swt-security-features">
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Retail Storefronts</strong>
-                  <p>Protect prime display glass from etching, scratching, and tagging</p>
-                </div>
-              </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Transit & Municipal Buildings</strong>
-                  <p>High-traffic public glass that is frequently targeted</p>
-                </div>
-              </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Interior Display Cases & Elevators</strong>
-                  <p>Interior glass protection against accumulated wear and tear</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={heroImage} alt="Commercial building glass protected with anti-graffiti film" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS BAR — accent green -->
-    <section class="swt-stats">
-      <div class="container">
-        <div class="swt-stats__row">
-          <div class="swt-stats__item fade-in">
-            <span class="swt-stats__num">16+</span>
-            <span class="swt-stats__label">Years in Philadelphia</span>
-          </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 80ms">
-            <span class="swt-stats__num">500+</span>
-            <span class="swt-stats__label">Commercial Projects</span>
-          </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 160ms">
-            <span class="swt-stats__num">80%</span>
-            <span class="swt-stats__label">Savings vs Glass Replacement</span>
-          </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 240ms">
-            <span class="swt-stats__num">Same Day</span>
-            <span class="swt-stats__label">Film Replacement After Vandalism</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS — 3 steps -->
-    <section class="swt-process">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">How It Works</span>
-          <h2 class="swt-h2 swt-h2--center">3 Simple Steps to Protected Glass</h2>
-        </div>
-        <div class="swt-process__steps">
-          <div class="swt-process__step fade-in">
-            <div class="swt-process__num">01</div>
-            <div class="swt-process__body">
-              <h3>Free Site Assessment</h3>
-              <p>We visit your property and assess every glass surface that needs protection. You receive a detailed proposal with film specifications, coverage areas, and transparent pricing — typically within 24 hours. No obligation.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 80ms">
-            <div class="swt-process__num">02</div>
-            <div class="swt-process__body">
-              <h3>Professional Installation in Hours</h3>
-              <p>Our factory-trained technicians install anti-graffiti film cleanly and precisely, with no disruption to your business operations. Most commercial installations are completed in a single day.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 160ms">
-            <div class="swt-process__num">03</div>
-            <div class="swt-process__body">
-              <h3>Incident Response — Film Replacement</h3>
-              <p>If vandalism occurs, we respond quickly to remove the damaged film and apply fresh protection — often the same day or next day. Your glass is restored to full protection without the cost or delay of glass replacement.</p>
+        <div class="accb__row" data-row data-index="2">
+          <button class="accb__trigger" data-trigger aria-expanded="false">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M12 8v.01M12 16v.01M8 12h.01M16 12h.01"/></svg></span>
+            <span class="accb__row-title">Mirror Surfaces</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail">
+            <div class="accb__detail-inner">
+              <p>Restroom mirrors, lobby display mirrors, and retail fitting room mirrors are frequent targets for scratching and tagging. Mirror replacement is expensive and disruptive — anti-graffiti film extends the life of existing mirrors indefinitely by absorbing damage before it reaches the reflective coating. Philadelphia restaurants, transit facilities, and commercial buildings protect mirrors as part of a comprehensive anti-vandalism strategy.</p>
+              <img class="accb__mobile-img" src="/images/ag-accb-mirror.jpg" alt="Clean protected restroom mirror in Philadelphia commercial building" title="Clean protected restroom mirror in Philadelphia commercial building" loading="lazy" />
             </div>
           </div>
         </div>
       </div>
-    </section>
+      <div class="accb__media">
+        <img class="accb__img is-active" data-img data-index="0" src="/images/ag-accb-glass.jpg" alt="Protected Philadelphia commercial glass storefront" title="Protected Philadelphia commercial glass storefront" loading="lazy" />
+        <img class="accb__img" data-img data-index="1" src="/images/ag-accb-metal.jpg" alt="Stainless steel elevator interior with anti-graffiti protection" title="Stainless steel elevator interior with anti-graffiti protection" loading="lazy" />
+        <img class="accb__img" data-img data-index="2" src="/images/ag-accb-mirror.jpg" alt="Clean protected restroom mirror" title="Clean protected restroom mirror" loading="lazy" />
+      </div>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section class="swt-faq" id="faq">
-      <div class="container">
-        <div class="swt-faq__layout">
-          <div class="swt-faq__header fade-in">
-            <span class="swt-eyebrow">Questions</span>
-            <h2 class="swt-h2">Frequently Asked Questions</h2>
-            <p>Honest answers from people who have been installing window film in Philadelphia for over 16 years.</p>
-            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+  <!-- ══ BEFORE/AFTER SLIDER — The Sacrificial Layer in Action ══ -->
+  <section class="ag-slider-wrap">
+    <div class="ag-slider-wrap__header">
+      <div class="ag-slider-wrap__eyebrow">THE FILM IN ACTION</div>
+      <h2 class="ag-slider-wrap__title">Replace the Film. Not the Glass.</h2>
+      <p class="ag-slider-wrap__sub">Drag the handle to see the difference between vandalized glass and glass protected with anti-graffiti film — completely clear, zero tinting, zero distortion.</p>
+    </div>
+    <div class="ag-slider-wrap__slider">
+      <div class="before-after" style="--pos:50%">
+        <div class="before-after__frame">
+          <img src="/images/ag-ba-before.jpg" alt="Philadelphia storefront glass with graffiti scratches and tags — before anti-graffiti film" title="Philadelphia storefront glass with graffiti scratches and tags — before anti-graffiti film" class="before-after__img before-after__img--before" draggable="false" loading="lazy" />
+          <div class="before-after__after-wrap">
+            <img src="/images/ag-ba-after.jpg" alt="Same Philadelphia storefront glass after clear anti-graffiti film installation — pristine surface" title="Same Philadelphia storefront glass after clear anti-graffiti film installation — pristine surface" class="before-after__img before-after__img--after" draggable="false" loading="lazy" />
           </div>
-          <div class="swt-faq__list fade-in">
-            {faqItems.map((item) => (
-              <div class="swt-faq__item">
-                <div class="swt-faq__q">
-                  <span>{item.question}</span>
-                  <span class="swt-faq__toggle">+</span>
-                </div>
-                <div class="swt-faq__a">
-                  <p>{item.answer}</p>
-                </div>
-              </div>
-            ))}
+          <span class="before-after__tag before-after__tag--before">Vandalized glass</span>
+          <span class="before-after__tag before-after__tag--after">With anti-graffiti film</span>
+          <div class="before-after__handle" role="slider" tabindex="0" aria-label="Drag to compare vandalized and protected glass" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <span class="before-after__handle-grip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 7L3 12L8 17M16 7L21 12L16 17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA BANNER -->
-    <section class="swt-cta">
-      <div class="swt-cta__inner">
-        <div class="swt-cta__text">
-          <h2>Ready to <em>protect</em> your glass?</h2>
-          <p>Get a free assessment and quote. No obligation — just honest advice from Philadelphia's window film experts.</p>
+  <!-- ══ WHERE IT'S NEEDED — What We Do Panels ══ -->
+  <section class="ag-wwd-wrap">
+    <div class="ag-wwd-wrap__header">
+      <div class="ag-wwd-wrap__eyebrow">WHERE IT'S NEEDED</div>
+      <h2 class="ag-wwd-wrap__title">High-Risk Surfaces Across Philadelphia</h2>
+      <p class="ag-wwd-wrap__sub">Anti-graffiti film is most valuable wherever glass, metal, or mirror surfaces face regular exposure to vandalism, public foot traffic, or difficult maintenance access.</p>
+    </div>
+    <div class="ag-wwd-panels">
+      <a href="/applications/retail/" class="wwd__panel">
+        <div class="wwd__panel-img-wrap">
+          <img src="/images/ag-wwd-storefront.jpg" alt="Philadelphia retail storefront with anti-graffiti film protection" title="Philadelphia retail storefront with anti-graffiti film protection" class="wwd__panel-img" loading="lazy" />
         </div>
-        <div class="swt-cta__btns">
-          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Quote</a>
-          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
+        <div class="wwd__panel-overlay"></div>
+        <div class="wwd__panel-content">
+          <h3>Retail Storefronts</h3>
+          <p class="wwd__panel-desc">Street-facing glass in high-traffic Philadelphia corridors — Old City, Rittenhouse, South Street, and Fishtown — faces daily exposure to scratching and tagging.</p>
+          <span class="wwd__panel-arrow">Learn more →</span>
+          <span class="wwd__panel-line"></span>
+        </div>
+      </a>
+      <a href="/applications/office/" class="wwd__panel">
+        <div class="wwd__panel-img-wrap">
+          <img src="/images/ag-wwd-transit.jpg" alt="Philadelphia transit station glass panels with anti-graffiti film" title="Philadelphia transit station glass panels with anti-graffiti film" class="wwd__panel-img" loading="lazy" />
+        </div>
+        <div class="wwd__panel-overlay"></div>
+        <div class="wwd__panel-content">
+          <h3>Transit & Transportation</h3>
+          <p class="wwd__panel-desc">SEPTA stations, bus shelters, and transit hubs face some of the highest vandalism rates in the city. Film replacement is fast, low-cost, and keeps surfaces looking maintained.</p>
+          <span class="wwd__panel-arrow">Learn more →</span>
+          <span class="wwd__panel-line"></span>
+        </div>
+      </a>
+      <a href="/applications/office/" class="wwd__panel">
+        <div class="wwd__panel-img-wrap">
+          <img src="/images/ag-wwd-elevator.jpg" alt="Philadelphia elevator interior with anti-graffiti film on stainless steel and mirrors" title="Philadelphia elevator interior with anti-graffiti film on stainless steel and mirrors" class="wwd__panel-img" loading="lazy" />
+        </div>
+        <div class="wwd__panel-overlay"></div>
+        <div class="wwd__panel-content">
+          <h3>Elevator Interiors</h3>
+          <p class="wwd__panel-desc">Stainless steel and mirrored elevator interiors in Philadelphia office towers, residential buildings, and parking facilities are prime targets. Film covers the metal and mirror surfaces that face the most abuse.</p>
+          <span class="wwd__panel-arrow">Learn more →</span>
+          <span class="wwd__panel-line"></span>
+        </div>
+      </a>
+      <a href="/applications/schools-universities/" class="wwd__panel">
+        <div class="wwd__panel-img-wrap">
+          <img src="/images/ag-wwd-school.jpg" alt="Philadelphia school building with anti-graffiti film on glass doors" title="Philadelphia school building with anti-graffiti film on glass doors" class="wwd__panel-img" loading="lazy" />
+        </div>
+        <div class="wwd__panel-overlay"></div>
+        <div class="wwd__panel-content">
+          <h3>Schools & Universities</h3>
+          <p class="wwd__panel-desc">Philadelphia school districts and university campuses protect entry glass, hallway partitions, and restroom mirrors — reducing costly and disruptive glass replacement calls throughout the academic year.</p>
+          <span class="wwd__panel-arrow">Learn more →</span>
+          <span class="wwd__panel-line"></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY BANNER — OUR WORK ══ -->
+  <section class="gallery-banner gallery-banner--light">
+    <div class="gallery-banner__inner">
+      <div class="gallery-banner__text">
+        <p class="gallery-banner__eyebrow">OUR WORK</p>
+        <h2 class="gallery-banner__title" aria-label="PROTECTED SURFACES.">
+          <span class="gallery-banner__title-line">PROTECTED</span>
+          <span class="gallery-banner__title-line">SURFACES.</span>
+        </h2>
+        <p class="gallery-banner__desc">Real anti-graffiti film installations across Philadelphia storefronts, transit stations, elevator interiors, and schools — every surface protected by our certified team.</p>
+      </div>
+      <div class="gallery-banner__gallery">
+        <div class="gallery-banner__strips">
+          <button class="gallery-banner__strip" style="--i:0; --n:5;" aria-label="View photo 1">
+            <img src="/images/ag-gal-1.jpg" alt="Philadelphia storefront with anti-graffiti film" title="Philadelphia storefront with anti-graffiti film" loading="lazy" draggable="false" />
+          </button>
+          <button class="gallery-banner__strip" style="--i:1; --n:5;" aria-label="View photo 2">
+            <img src="/images/ag-gal-2.jpg" alt="Philadelphia transit station glass with anti-graffiti film" title="Philadelphia transit station glass with anti-graffiti film" loading="lazy" draggable="false" />
+          </button>
+          <button class="gallery-banner__strip" style="--i:2; --n:5;" aria-label="View photo 3">
+            <img src="/images/ag-gal-3.jpg" alt="Elevator interior with anti-graffiti film on metal and mirror" title="Elevator interior with anti-graffiti film on metal and mirror" loading="lazy" draggable="false" />
+          </button>
+          <button class="gallery-banner__strip" style="--i:3; --n:5;" aria-label="View photo 4">
+            <img src="/images/ag-gal-4.jpg" alt="Philadelphia school building glass with anti-graffiti film" title="Philadelphia school building glass with anti-graffiti film" loading="lazy" draggable="false" />
+          </button>
+          <button class="gallery-banner__strip" style="--i:4; --n:5;" aria-label="View photo 5">
+            <img src="/images/ag-gal-5.jpg" alt="Professional anti-graffiti film installation in Philadelphia" title="Professional anti-graffiti film installation in Philadelphia" loading="lazy" draggable="false" />
+          </button>
+        </div>
+        <p class="gallery-banner__hint">Hover the photos · click to bring forward</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS — Testimonial Stack ══ -->
+  <section class="ag-tstack-wrap">
+    <div class="ag-tstack-wrap__header">
+      <span class="ag-tstack-wrap__eyebrow">What Philadelphia Clients Say</span>
+      <h2 class="ag-tstack-wrap__title">From Property Managers, Retailers & Facilities Teams</h2>
+    </div>
+    <div class="tstack">
+      <div class="tstack__deck">
+        <article class="tstack__card" style="--i:0" data-index="0">
+          <div class="tstack__stars">★★★★★</div>
+          <blockquote class="tstack__quote">&ldquo;Our Old City storefront was getting scratched every few weeks. After the anti-graffiti film went on we had two incidents and both times they just swapped the film. Total cost was a fraction of what we were spending on glass repair.&rdquo;</blockquote>
+          <div class="tstack__person">
+            <img src="/images/ag-test-1.jpg" alt="Marcus D." title="Marcus D." class="tstack__avatar" draggable="false" loading="lazy" />
+            <div>
+              <div class="tstack__name">Marcus D.</div>
+              <div class="tstack__detail">Retail owner — Old City Philadelphia</div>
+            </div>
+          </div>
+        </article>
+        <article class="tstack__card" style="--i:1" data-index="1">
+          <div class="tstack__stars">★★★★★</div>
+          <blockquote class="tstack__quote">&ldquo;The elevator mirrors in our building were a constant maintenance headache. The film is completely invisible and since installation we have not had a single permanent scratch. The team replaces it when needed — it is seamless.&rdquo;</blockquote>
+          <div class="tstack__person">
+            <img src="/images/ag-test-2.jpg" alt="Sandra K." title="Sandra K." class="tstack__avatar" draggable="false" loading="lazy" />
+            <div>
+              <div class="tstack__name">Sandra K.</div>
+              <div class="tstack__detail">Property manager — Center City high-rise</div>
+            </div>
+          </div>
+        </article>
+        <article class="tstack__card" style="--i:2" data-index="2">
+          <div class="tstack__stars">★★★★★</div>
+          <blockquote class="tstack__quote">&ldquo;We protect three transit shelter installations now. The film holds up to regular abuse and when something gets through we are back to pristine in hours. Game-changer for our maintenance budget.&rdquo;</blockquote>
+          <div class="tstack__person">
+            <img src="/images/ag-test-3.jpg" alt="Ray O." title="Ray O." class="tstack__avatar" draggable="false" loading="lazy" />
+            <div>
+              <div class="tstack__name">Ray O.</div>
+              <div class="tstack__detail">Facilities director — Philadelphia transit</div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="tstack__hint">Drag the top card &middot; 3 reviews</p>
+    </div>
+  </section>
+
+  <!-- ══ PROCESS — Process Roadmap ══ -->
+  <section class="prm">
+    <div class="prm__head">
+      <h2 class="prm__title">How It Works</h2>
+      <p class="prm__sub">From assessment to ongoing protection — a simple four-step process that keeps your surfaces permanently covered.</p>
+    </div>
+    <div class="prm__map">
+      <img class="prm__bg" src="/images/ag-hero.jpg" alt="" aria-hidden="true" title="" loading="lazy" />
+      <div class="prm__overlay" aria-hidden="true"></div>
+      <svg class="prm__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="prm__track" d="M 14 78 Q 24 40 38 34 T 64 62 T 88 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.4" stroke-dasharray="2 2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+        <path class="prm__progress" d="M 14 78 Q 24 40 38 34 T 64 62 T 88 24" fill="none" stroke="#7CB342" stroke-width="0.6" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+      </svg>
+      <div class="prm__milestone" style="--i:0; left:14%; top:78%;">
+        <span class="prm__dot"><span class="prm__num">1</span></span>
+        <div class="prm__card">
+          <h3>Free Assessment</h3>
+          <p>We evaluate your surfaces, identify vandalism-risk areas, and recommend the right film for each substrate.</p>
         </div>
       </div>
-    </section>
+      <div class="prm__milestone" style="--i:1; left:38%; top:34%;">
+        <span class="prm__dot"><span class="prm__num">2</span></span>
+        <div class="prm__card">
+          <h3>Professional Installation</h3>
+          <p>Clear film applied directly to glass, metal, or mirror surfaces — completely invisible, no disruption to your operation.</p>
+        </div>
+      </div>
+      <div class="prm__milestone" style="--i:2; left:64%; top:62%;">
+        <span class="prm__dot"><span class="prm__num">3</span></span>
+        <div class="prm__card">
+          <h3>Vandalism Occurs</h3>
+          <p>Scratches, acid, or paint damage the film — not your surface. One call and we respond, often same day.</p>
+        </div>
+      </div>
+      <div class="prm__milestone" style="--i:3; left:88%; top:24%;">
+        <span class="prm__dot"><span class="prm__num">4</span></span>
+        <div class="prm__card">
+          <h3>Replace & Protect</h3>
+          <p>Damaged film removed, fresh film applied. Your surface is pristine again. Repeat indefinitely at a fraction of replacement cost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div><!-- /swt-body -->
+  <!-- ══ FAQ — Accordion FAQ ══ -->
+  <section class="faq ag-faq">
+    <div class="faq__head">
+      <h2 class="faq__title">Frequently Asked Questions</h2>
+      <p class="faq__sub">Everything you need to know about anti-graffiti film for Philadelphia commercial surfaces.</p>
+    </div>
+    <div class="faq__list" data-single="true">
+      {faqItems.map((item, i) => (
+        <div class={`faq__item${i === 0 ? ' is-open' : ''}`} data-item>
+          <button class="faq__q" data-q aria-expanded={i === 0 ? 'true' : 'false'}>
+            <span>{item.question}</span>
+            <span class="faq__icon" aria-hidden="true"><span></span><span></span></span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══ CTA — CTA Avatars ══ -->
+  <section class="ctav ag-ctav">
+    <div class="ctav__inner">
+      <div class="ctav__left">
+        <h2 class="ctav__title">Ready to Protect Your Philadelphia Glass?</h2>
+        <p class="ctav__sub">Free site assessment, transparent process, same-day response when vandalism strikes. Join Philadelphia property managers, retailers, and transit authorities who protect their surfaces with anti-graffiti film.</p>
+        <div class="ctav__proof">
+          <div class="ctav__stack">
+            <span class="ctav__avatar" style="--i:0; --r:-2deg">
+              <img src="/images/ag-test-1.jpg" alt="Marcus D." title="Marcus D." loading="lazy" />
+              <span class="ctav__tip"><b>Marcus D.</b><small>Old City Retail</small></span>
+            </span>
+            <span class="ctav__avatar" style="--i:1; --r:3deg">
+              <img src="/images/ag-test-2.jpg" alt="Sandra K." title="Sandra K." loading="lazy" />
+              <span class="ctav__tip"><b>Sandra K.</b><small>Center City High-rise</small></span>
+            </span>
+            <span class="ctav__avatar" style="--i:2; --r:-4deg">
+              <img src="/images/ag-test-3.jpg" alt="Ray O." title="Ray O." loading="lazy" />
+              <span class="ctav__tip"><b>Ray O.</b><small>Philadelphia Transit</small></span>
+            </span>
+            <span class="ctav__avatar" style="--i:3; --r:5deg">
+              <img src="/images/ag-test-1.jpg" alt="Lisa M." title="Lisa M." loading="lazy" />
+              <span class="ctav__tip"><b>Lisa M.</b><small>Fishtown Restaurant</small></span>
+            </span>
+            <span class="ctav__avatar" style="--i:4; --r:-6deg">
+              <img src="/images/ag-test-2.jpg" alt="Tom B." title="Tom B." loading="lazy" />
+              <span class="ctav__tip"><b>Tom B.</b><small>University City</small></span>
+            </span>
+            <span class="ctav__avatar" style="--i:5; --r:7deg">
+              <img src="/images/ag-test-3.jpg" alt="Joan P." title="Joan P." loading="lazy" />
+              <span class="ctav__tip"><b>Joan P.</b><small>South Philly School</small></span>
+            </span>
+          </div>
+          <div class="ctav__meta">
+            <span class="ctav__stars">★★★★★</span>
+            <span class="ctav__trust">Trusted by 500+ Philadelphia businesses & institutions</span>
+          </div>
+        </div>
+      </div>
+      <a href="/contact/" class="ctav__btn">Get Your Free Assessment <span class="ctav__arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ══ GEO BLOCK (hidden — SEO only) ══ -->
+  <div class="ag-geo" aria-hidden="true" style="display:none;">
+    <p>Anti-graffiti window film in Philadelphia protects glass, metal, and mirrors from scratches, acid etching, spray paint, and graffiti tags using a clear sacrificial polyester layer that is removed and replaced after vandalism, preserving the underlying substrate at a fraction of the cost of glass or surface replacement. Manufacturers including 3M, LLumar, and Solar Gard GraffitiGard produce clear anti-graffiti films compatible with commercial glass, stainless steel elevator interiors, and restroom mirrors. Philadelphia retailers, transit authorities, school districts, and property managers apply anti-graffiti film on high-risk surfaces in Old City, Center City, South Philadelphia, Fishtown, Northern Liberties, Rittenhouse, and University City. The sacrificial layer concept means that when vandalism damages the film rather than the glass, same-day film replacement restores the surface without disrupting business operations or requiring glass panel orders.</p>
+    <dl>
+      <dt>What is anti-graffiti film in Philadelphia?</dt><dd>A clear sacrificial film applied to glass, metal, and mirror surfaces that absorbs vandalism damage so the underlying surface is protected and preserved.</dd>
+      <dt>How much does anti-graffiti film cost in Philadelphia?</dt><dd>Cost depends on surface area, surface type, and number of surfaces. A site assessment provides exact pricing. Film replacement after incidents is significantly less expensive than glass or surface replacement.</dd>
+      <dt>Which Philadelphia surfaces benefit most from anti-graffiti film?</dt><dd>Retail storefronts, transit station glass, elevator stainless steel and mirrors, school building glass, and restroom mirrors in commercial and public facilities.</dd>
+      <dt>Does anti-graffiti film work on metal and mirrors?</dt><dd>Yes. Anti-graffiti film is not limited to windows. It protects glass, metal surfaces including stainless steel, and mirrors.</dd>
+      <dt>Is anti-graffiti film clear?</dt><dd>Yes. High-quality anti-graffiti film is optically clear and invisible on the protected surface. It does not tint, darken, or distort the surface in any way.</dd>
+    </dl>
+    <ul>
+      <li>anti-graffiti window film Philadelphia</li>
+      <li>anti-graffiti film Philadelphia storefronts</li>
+      <li>glass protection film Philadelphia</li>
+      <li>elevator mirror protection film Philadelphia</li>
+      <li>scratch protection film Philadelphia</li>
+      <li>acid etching film protection Philadelphia</li>
+      <li>sacrificial film Philadelphia</li>
+      <li>graffiti protection glass Philadelphia</li>
+      <li>commercial anti-graffiti film Philadelphia</li>
+      <li>transit glass protection film Philadelphia</li>
+      <li>anti-graffiti film Old City Philadelphia</li>
+      <li>anti-graffiti film Center City Philadelphia</li>
+    </ul>
+  </div>
+
 </BaseLayout>
 
-<style>
-  /* ══════════════════════════════════════
-     BRAND TOKENS (local override)
-     ══════════════════════════════════════ */
-  :root {
-    --swt-green:        #4E6B2A;
-    --swt-green-accent: #83A94A;
-    --swt-dark:         #2A241E;
-    --swt-cream:        #F4EFE6;
-    --swt-alt:          #ECE4D4;
-    --swt-border:       #E1D6C1;
-    --swt-text-sec:     #6E665C;
-    --swt-gold:         #846212;
-    --swt-white:        #ffffff;
-    --swt-radius:       5px;
-  }
-
-  /* ══════════════════════════════════════
-     HERO
-     ══════════════════════════════════════ */
-  .swt-hero {
-    position: relative;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  .swt-hero__img {
-    position: absolute;
-    inset: 0;
-  }
-  .swt-hero__img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .swt-hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
-  }
-  .swt-hero__content {
-    position: relative;
-    z-index: 1;
-    padding: 110px 8% 90px;
-    max-width: 720px;
-  }
-  .swt-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    background: rgba(78,107,42,0.25);
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(78,107,42,0.4);
-  }
-  .swt-hero__title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(38px, 5.5vw, 66px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.1;
-    margin: 0 0 20px;
-  }
-  .swt-hero__title em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-hero__sub {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin: 0 0 36px;
-    max-width: 500px;
-  }
-  .swt-hero__ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  /* ══════════════════════════════════════
-     BUTTONS
-     ══════════════════════════════════════ */
-  .swt-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 28px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-  .swt-btn--primary {
-    background: var(--swt-green);
-    color: var(--swt-white);
-    border-color: var(--swt-green);
-  }
-  .swt-btn--primary:hover {
-    background: #3D5620;
-    border-color: #3D5620;
-    transform: translateY(-2px);
-  }
-  .swt-btn--ghost-light {
-    background: transparent;
-    color: rgba(255,255,255,0.8);
-    border-color: rgba(255,255,255,0.35);
-  }
-  .swt-btn--ghost-light:hover {
-    color: #fff;
-    border-color: rgba(255,255,255,0.65);
-    background: rgba(255,255,255,0.06);
-  }
-
-  /* ══════════════════════════════════════
-     SHARED
-     ══════════════════════════════════════ */
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-body { background: var(--swt-white); }
-
-  .swt-eyebrow {
-    display: inline-block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--swt-green);
-    margin-bottom: 12px;
-  }
-  .swt-eyebrow--green { color: var(--swt-green-accent); }
-
-  .swt-h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(26px, 3vw, 40px);
-    font-weight: 400;
-    color: var(--swt-dark);
-    line-height: 1.15;
-    margin: 0 0 18px;
-  }
-  .swt-h2--light { color: var(--swt-white); }
-  .swt-h2--center { text-align: center; }
-
-  .swt-subhead {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: var(--swt-text-sec);
-    margin: 8px 0 0;
-    text-align: center;
-  }
-
-  /* ── Trust Bar ── */
-  .swt-trust {
-    background: var(--swt-cream);
-    padding: 32px 0;
-    border-bottom: 1px solid var(--swt-border);
-  }
-  .swt-trust__label {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--swt-text-sec);
-    text-align: center;
-    margin: 0 0 20px;
-    opacity: 0.7;
-  }
-
-  /* ── Split Sections ── */
-  .swt-split {
-    padding: 96px 0;
-    background: var(--swt-white);
-  }
-  .swt-split--dark { background: var(--swt-dark); }
-  .swt-split--alt { background: var(--swt-alt); }
-
-  .swt-split__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
-    align-items: center;
-  }
-  .swt-split__grid--rev .swt-split__img { order: -1; }
-
-  .swt-split__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    line-height: 1.85;
-    color: var(--swt-text-sec);
-    margin: 0 0 14px;
-  }
-  .swt-split--dark .swt-split__text p { color: rgba(255,255,255,0.55); }
-
-  .swt-split__img {
-    position: relative;
-  }
-  .swt-split__img img {
-    width: 100%;
-    height: 480px;
-    object-fit: cover;
-    border-radius: var(--swt-radius);
-    display: block;
-    box-shadow: 0 20px 60px rgba(42,36,30,0.12);
-  }
-
-  .swt-img-badge {
-    position: absolute;
-    bottom: -12px;
-    right: -12px;
-    background: var(--swt-green);
-    color: var(--swt-white);
-    border-radius: var(--swt-radius);
-    padding: 16px 24px;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(42,36,30,0.2);
-  }
-  .swt-img-badge strong {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 1;
-  }
-  .swt-img-badge span {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    opacity: 0.85;
-    margin-top: 3px;
-  }
-
-  /* ── Problem Tags ── */
-  .swt-problem-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 24px;
-  }
-  .swt-tag {
-    padding: 8px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .swt-tag--red {
-    background: rgba(180,60,60,0.1);
-    color: #e8a0a0;
-    border: 1px solid rgba(180,60,60,0.2);
-  }
-
-  /* ── Check List ── */
-  .swt-check-list {
-    list-style: none;
-    padding: 0;
-    margin: 22px 0 0;
-  }
-  .swt-check-list li {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    color: var(--swt-text-sec);
-    padding: 9px 0;
-    border-bottom: 1px solid var(--swt-border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .swt-check-list li::before {
-    content: '';
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    background: rgba(78,107,42,0.1);
-    border-radius: 50%;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234E6B2A' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  /* ── Energy Metrics ── */
-  .swt-energy-metrics {
-    display: flex;
-    gap: 36px;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid var(--swt-border);
-  }
-  .swt-split--dark .swt-energy-metrics {
-    border-top-color: rgba(255,255,255,0.1);
-  }
-  .swt-metric__num {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 44px;
-    font-weight: 400;
-    color: var(--swt-green);
-    line-height: 1;
-  }
-  .swt-metric__label {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--swt-text-sec);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── Security Features ── */
-  .swt-security-features {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .swt-security-feature {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-  }
-  .swt-feature-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--swt-green-accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-  .swt-security-feature strong {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--swt-white);
-    margin-bottom: 4px;
-  }
-  .swt-security-feature p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.45);
-    margin: 0;
-  }
-
-  /* ── Inline Quote ── */
-  .swt-inline-quote {
-    border-left: 3px solid var(--swt-green);
-    padding-left: 18px;
-    margin: 22px 0 0;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--swt-text-sec);
-    line-height: 1.7;
-  }
-  .swt-inline-quote cite {
-    display: block;
-    font-size: 12px;
-    font-style: normal;
-    color: var(--swt-text-sec);
-    opacity: 0.65;
-    margin-top: 8px;
-    font-weight: 600;
-  }
-
-  /* ── Stats Bar ── */
-  .swt-stats {
-    background: var(--swt-green-accent);
-    padding: 72px 0;
-  }
-  .swt-stats__row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .swt-stats__item {
-    flex: 1;
-    text-align: center;
-    padding: 0 40px;
-  }
-  .swt-stats__num {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 64px;
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1;
-  }
-  .swt-stats__label {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.65);
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .swt-stats__div {
-    width: 1px;
-    height: 60px;
-    background: rgba(255,255,255,0.2);
-  }
-
-  /* ── Process ── */
-  .swt-process {
-    background: var(--swt-cream);
-    padding: 96px 0;
-  }
-  .swt-process__steps { margin-top: 48px; }
-  .swt-process__step {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 36px;
-    padding: 36px 0;
-    border-bottom: 1px solid var(--swt-border);
-    align-items: start;
-  }
-  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
-  .swt-process__num {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 52px;
-    font-weight: 400;
-    color: var(--swt-green);
-    line-height: 1;
-    opacity: 0.55;
-  }
-  .swt-process__body h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--swt-dark);
-    margin: 0 0 10px;
-  }
-  .swt-process__body p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--swt-text-sec);
-    margin: 0;
-  }
-
-  /* ── FAQ ── */
-  .swt-faq {
-    background: var(--swt-white);
-    padding: 96px 0;
-  }
-  .swt-faq__layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .swt-faq__header p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--swt-text-sec);
-    margin: 14px 0 24px;
-  }
-  .swt-faq__item {
-    border-bottom: 1px solid var(--swt-border);
-    padding: 18px 0;
-  }
-  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
-  .swt-faq__q {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--swt-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-    padding: 3px 0;
-  }
-  .swt-faq__toggle {
-    color: var(--swt-green);
-    font-size: 22px;
-    flex-shrink: 0;
-    font-weight: 400;
-    transition: transform 0.2s;
-    line-height: 1;
-  }
-  .swt-faq__a {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    color: var(--swt-text-sec);
-    line-height: 1.8;
-    margin-top: 10px;
-    display: none;
-  }
-  .swt-faq__item--open .swt-faq__a { display: block; }
-  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
-
-  /* ── CTA Banner ── */
-  .swt-cta {
-    background: var(--swt-dark);
-    padding: 80px 5%;
-  }
-  .swt-cta__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .swt-cta__text h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(28px, 3vw, 42px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.2;
-    margin: 0 0 8px;
-  }
-  .swt-cta__text h2 em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-cta__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: rgba(255,255,255,0.5);
-    margin: 0;
-  }
-  .swt-cta__btns {
-    display: flex;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-
-  /* ── Fade In ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 1024px) {
-    .swt-split__grid { gap: 48px; }
-    .swt-testimonials__grid { grid-template-columns: 1fr; }
-    .swt-stats__row { flex-wrap: wrap; gap: 24px; }
-    .swt-stats__div { display: none; }
-    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
-    .swt-cta__inner { flex-direction: column; text-align: center; }
-  }
-  @media (max-width: 768px) {
-    .swt-split__grid { grid-template-columns: 1fr; gap: 32px; }
-    .swt-split__grid--rev .swt-split__img { order: 0; }
-    .swt-split__img img { height: 280px; }
-    .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
-    .swt-process__num { font-size: 36px; }
-    .swt-hero__content { padding: 80px 5%; }
-    .swt-cta__btns { flex-direction: column; width: 100%; }
-    .swt-hero__ctas { flex-direction: column; }
-    .swt-energy-metrics { flex-direction: column; gap: 16px; }
-  }
-  @media (max-width: 480px) {
-    .swt-split { padding: 64px 0; }
-    .swt-stats__row { flex-direction: column; }
-  }
-</style>
-
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const el = e.target as HTMLElement;
-        const delay = el.style.getPropertyValue('--delay') || '0ms';
-        setTimeout(() => el.classList.add('visible'), parseInt(delay));
-        obs.unobserve(el);
-      }
+  // Split Text Reveal
+  var splitObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      el.style.setProperty('--split-stagger', (el.dataset.stagger || '65') + 'ms');
+      el.classList.add('is-visible');
+      splitObs.unobserve(el);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.split-reveal').forEach(function(el) { splitObs.observe(el); });
 
-  document.querySelectorAll('.swt-faq__item').forEach(item => {
-    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('swt-faq__item--open');
-      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
-      if (!isOpen) item.classList.add('swt-faq__item--open');
+  // Count Up
+  var cuObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('[data-count-end]').forEach(function(el) {
+        var end = parseInt(el.dataset.countEnd || '0', 10);
+        var suffix = el.dataset.countSuffix || '';
+        var n = 0, step = end / 60;
+        var t = setInterval(function() { n = Math.min(n + step, end); el.textContent = Math.round(n) + suffix; if (n >= end) clearInterval(t); }, 30);
+      });
+      cuObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.countup').forEach(function(el) { cuObs.observe(el); });
+  // Also observe the hero stats panel
+  var heroStats = document.querySelector('.ag-hero__stats-panel');
+  if (heroStats) { cuObs.observe(heroStats); }
+
+  // Accordion Vertical
+  document.querySelectorAll('.accv').forEach(function(el) {
+    var panels = Array.from(el.querySelectorAll('[data-panel]'));
+    panels.forEach(function(panel) {
+      var tab = panel.querySelector('[data-tab]');
+      if (!tab) return;
+      tab.addEventListener('click', function() {
+        panels.forEach(function(p) { p.classList.remove('is-open'); var t = p.querySelector('[data-tab]'); if(t) t.setAttribute('aria-expanded','false'); });
+        panel.classList.add('is-open');
+        tab.setAttribute('aria-expanded','true');
+      });
+    });
+  });
+
+  // Accordion Benefits
+  document.querySelectorAll('.accb').forEach(function(el) {
+    var rows = Array.from(el.querySelectorAll('[data-row]'));
+    var imgs = Array.from(el.querySelectorAll('[data-img]'));
+    rows.forEach(function(row) {
+      var trigger = row.querySelector('[data-trigger]');
+      if (!trigger) return;
+      trigger.addEventListener('click', function() {
+        var idx = row.dataset.index;
+        rows.forEach(function(r) { r.classList.remove('is-open'); var t = r.querySelector('[data-trigger]'); if(t) t.setAttribute('aria-expanded','false'); });
+        imgs.forEach(function(img) { img.classList.remove('is-active'); });
+        row.classList.add('is-open');
+        trigger.setAttribute('aria-expanded','true');
+        var activeImg = imgs.find(function(img) { return img.dataset.index === idx; });
+        if (activeImg) activeImg.classList.add('is-active');
+      });
+    });
+  });
+
+  // Before/After Slider
+  document.querySelectorAll('.before-after').forEach(function(el) {
+    var frame = el.querySelector('.before-after__frame');
+    var afterImg = el.querySelector('.before-after__img--after');
+    var handle = el.querySelector('.before-after__handle');
+    function setW() { afterImg.style.setProperty('--frame-width', frame.offsetWidth + 'px'); }
+    function setPos(x) {
+      var rect = frame.getBoundingClientRect();
+      var pct = Math.max(0, Math.min(100, (x - rect.left) / rect.width * 100));
+      el.style.setProperty('--pos', pct + '%');
+      handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
+    var drag = false;
+    frame.addEventListener('mousedown', function(e) { drag = true; setPos(e.clientX); });
+    window.addEventListener('mouseup', function() { drag = false; });
+    window.addEventListener('mousemove', function(e) { if (drag) setPos(e.clientX); });
+    frame.addEventListener('touchstart', function(e) { drag = true; setPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchend', function() { drag = false; });
+    window.addEventListener('touchmove', function(e) { if (drag) setPos(e.touches[0].clientX); }, {passive:true});
+    handle.addEventListener('keydown', function(e) {
+      var rect = frame.getBoundingClientRect();
+      var cur = parseFloat(getComputedStyle(el).getPropertyValue('--pos')) || 50;
+      if (e.key === 'ArrowLeft') setPos(rect.left + rect.width * (cur - 5) / 100);
+      if (e.key === 'ArrowRight') setPos(rect.left + rect.width * (cur + 5) / 100);
+    });
+    window.addEventListener('resize', setW);
+    setW();
+  });
+
+  // Gallery Banner pin
+  document.querySelectorAll('.gallery-banner').forEach(function(el) {
+    var strips = Array.from(el.querySelectorAll('.gallery-banner__strip'));
+    strips.forEach(function(strip) {
+      strip.addEventListener('click', function() {
+        var was = strip.classList.contains('is-active');
+        strips.forEach(function(s) { s.classList.remove('is-active'); });
+        if (!was) strip.classList.add('is-active');
+      });
+    });
+  });
+
+  // Testimonial Stack
+  document.querySelectorAll('.tstack').forEach(function(el) {
+    var deck = el.querySelector('.tstack__deck');
+    var cards = Array.from(deck.querySelectorAll('.tstack__card'));
+    var order = cards.map(function(_,i){return i;});
+    function restack() { order.forEach(function(ci,i){ cards[ci].style.setProperty('--i',String(i)); cards[ci].classList.remove('is-leaving'); }); }
+    function advance() { var top = order[0]; cards[top].classList.add('is-leaving'); setTimeout(function(){ order.push(order.shift()); restack(); }, 450); }
+    deck.addEventListener('click', advance);
+    var startX = 0, dragging = false;
+    deck.addEventListener('mousedown', function(e){dragging=true;startX=e.clientX;});
+    window.addEventListener('mouseup', function(e){if(dragging){dragging=false;if(Math.abs(startX-e.clientX)>60)advance();}});
+    deck.addEventListener('touchstart',function(e){dragging=true;startX=e.touches[0].clientX;},{passive:true});
+    window.addEventListener('touchend',function(e){if(dragging){dragging=false;if(Math.abs(startX-e.changedTouches[0].clientX)>60)advance();}});
+  });
+
+  // CTA Avatars observer
+  var ctavObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); ctavObs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.ctav').forEach(function(el) { ctavObs.observe(el); });
+
+  // Process Roadmap observer
+  document.querySelectorAll('.prm').forEach(function(el) {
+    var progress = el.querySelector('.prm__progress');
+    if (progress) {
+      var len = progress.getTotalLength ? progress.getTotalLength() : 250;
+      el.style.setProperty('--len', String(len));
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { el.classList.add('is-visible'); obs.unobserve(el); } });
+    }, { threshold: 0.35 });
+    obs.observe(el);
+  });
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq__list').forEach(function(el) {
+    var single = el.dataset.single === 'true';
+    var items = Array.from(el.querySelectorAll('[data-item]'));
+    items.forEach(function(item) {
+      var btn = item.querySelector('[data-q]');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        var wasOpen = item.classList.contains('is-open');
+        if (single) { items.forEach(function(i){ i.classList.remove('is-open'); var q=i.querySelector('[data-q]'); if(q)q.setAttribute('aria-expanded','false'); }); }
+        item.classList.toggle('is-open', !wasOpen);
+        btn.setAttribute('aria-expanded', String(!wasOpen));
+      });
     });
   });
 </script>
+
+<style>
+  /* ── CSS Custom Properties ── */
+  :root {
+    --ag-green: #7CB342;
+    --ag-ink: #0d1b2a;
+    --ag-slate: #12293f;
+    --ag-cream: #F5F3EE;
+  }
+
+  /* ══ HERO ══ */
+  .ag-hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
+  .ag-hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .ag-hero__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,26,15,0.92) 0%, rgba(13,26,15,0.7) 60%, rgba(13,26,15,0.5) 100%); }
+  .ag-hero__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 6rem 5% 4rem; }
+  .ag-hero__eyebrow { display: flex; align-items: center; gap: 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ag-green); margin-bottom: 1.5rem; }
+  .ag-hero__eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ag-green); }
+  .ag-hero__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1rem; letter-spacing: -0.02em; }
+  .ag-hero__animated-line { font-size: clamp(1rem, 2vw, 1.35rem); color: rgba(255,255,255,0.6); margin: 0 0 1.5rem; min-height: 2em; }
+  .ag-hero__flip { color: var(--ag-green); font-weight: 600; }
+  .ag-hero__subtitle { font-size: clamp(0.95rem, 1.6vw, 1.1rem); color: rgba(255,255,255,0.75); max-width: 600px; line-height: 1.75; margin: 0 0 2rem; }
+  .ag-hero__cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .ag-hero__btn-primary { display: inline-flex; align-items: center; background: var(--ag-green); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 32px; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+  .ag-hero__btn-primary:hover { background: #8BC34A; transform: translateY(-2px); }
+  .ag-hero__btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #fff; font-weight: 600; font-size: 1rem; padding: 14px 28px; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.25); text-decoration: none; transition: background 0.2s; }
+  .ag-hero__btn-secondary:hover { background: rgba(255,255,255,0.14); }
+  .ag-hero__stats-panel { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; background: rgba(13,26,15,0.55); backdrop-filter: blur(10px); border: 1px solid rgba(124,179,66,0.2); border-radius: 16px; padding: 1.25rem 2rem; max-width: 700px; }
+  .ag-hero__stat { display: flex; flex-direction: column; gap: 0.2rem; }
+  .ag-hero__stat-number { font-size: 1.6rem; font-weight: 800; color: var(--ag-green); line-height: 1; }
+  .ag-hero__stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+  .ag-hero__stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.15); }
+
+  /* ══ TRUST BAR ══ */
+  .swt-trust { background: #fff; padding: 32px 0; border-bottom: 1px solid #eee; }
+  .swt-trust__label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; text-align: center; margin: 0 0 20px; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+  /* ══ ACCORDION VERTICAL WRAP ══ */
+  .ag-accv-wrap { padding: 5rem 2rem; background: #fff; }
+  .ag-accv-wrap__header { text-align: center; max-width: 700px; margin: 0 auto 2.5rem; }
+  .ag-accv-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ag-green); margin-bottom: 0.75rem; }
+  .ag-accv-wrap__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: #1a1a1a; margin: 0 0 1rem; line-height: 1.15; }
+  .ag-accv-wrap__sub { font-size: 1rem; color: #555; line-height: 1.7; margin: 0; }
+
+  /* Accordion Vertical (shared from library) */
+  .accv { display: flex; flex-direction: column; width: 100%; max-width: 64rem; margin: 0 auto; border-radius: 1rem; overflow: hidden; gap: 4px; background: var(--ag-ink); }
+  @media (min-width: 1024px) { .accv { flex-direction: row; height: 440px; } }
+  .accv__panel { position: relative; overflow: hidden; background-size: cover; background-position: center; flex: 0 0 auto; display: flex; transition: flex 0.5s cubic-bezier(0.22,1,0.36,1); }
+  @media (min-width: 1024px) { .accv__panel { flex-direction: column; flex: 1 1 0; } .accv__panel.is-open { flex: 6 1 0; } }
+  @media (max-width: 1023px) { .accv__panel { flex-direction: column; } .accv__panel.is-open .accv__content { max-height: 240px; } }
+  .accv__tab { position: relative; z-index: 2; display: flex; align-items: center; gap: 0.75rem; background: #12293f; color: #fff; border: none; cursor: pointer; padding: 1rem; transition: background 0.2s; }
+  .accv__tab:hover { background: #162e4d; }
+  @media (min-width: 1024px) {
+    .accv__panel:not(.is-open) .accv__tab { flex-direction: column; justify-content: flex-end; height: 100%; gap: 1rem; }
+    .accv__panel:not(.is-open) .accv__title { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 1.05rem; }
+    .accv__panel.is-open .accv__tab { position: absolute; top: 0; left: 0; background: transparent; }
+    .accv__panel.is-open .accv__title { display: none; }
+  }
+  .accv__icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 0.6rem; background: var(--ag-green); color: var(--ag-ink); display: flex; align-items: center; justify-content: center; }
+  .accv__icon svg { width: 22px; height: 22px; }
+  .accv__title { font-family: Georgia, serif; font-weight: 600; }
+  .accv__content { flex: 1; display: flex; align-items: flex-end; max-height: 0; overflow: hidden; transition: max-height 0.5s; }
+  @media (min-width: 1024px) { .accv__content { max-height: none; width: 100%; } }
+  .accv__panel:not(.is-open) .accv__content { pointer-events: none; }
+  @media (min-width: 1024px) { .accv__panel:not(.is-open) .accv__content > * { opacity: 0; } }
+  .accv__desc { margin: 1rem; padding: 0.9rem 1.1rem; background: rgba(13,27,42,0.6); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.12); border-radius: 0.75rem; color: #fff; }
+  .accv__desc h3 { font-family: Georgia, serif; font-size: 1.2rem; margin: 0 0 0.4rem; }
+  .accv__desc p { font-size: 0.88rem; line-height: 1.55; color: rgba(255,255,255,0.8); margin: 0; }
+  @media (prefers-reduced-motion: reduce) { .accv__panel, .accv__content { transition: none; } }
+
+  /* ══ ACCORDION BENEFITS (shared from library) ══ */
+  .accb { background: var(--ag-ink); padding: 4rem 1.5rem; }
+  .accb__head { max-width: 42rem; margin: 0 auto 2.5rem; text-align: center; }
+  .accb__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .accb__sub { color: rgba(255,255,255,0.5); margin: 0; }
+  .accb__wrap { max-width: 64rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+  @media (min-width: 900px) { .accb__wrap { grid-template-columns: 1fr 1fr; } }
+  .accb__row { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .accb__trigger { width: 100%; display: flex; align-items: center; gap: 0.9rem; background: none; border: none; cursor: pointer; text-align: left; padding: 1.1rem 0.25rem; color: rgba(255,255,255,0.7); font-family: inherit; transition: color 0.2s; }
+  .accb__row.is-open .accb__trigger { color: #fff; }
+  .accb__icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 0.6rem; background: rgba(124,179,66,0.15); color: var(--ag-green); display: flex; align-items: center; justify-content: center; transition: background 0.3s, color 0.3s; }
+  .accb__row.is-open .accb__icon { background: var(--ag-green); color: var(--ag-ink); }
+  .accb__icon svg { width: 22px; height: 22px; }
+  .accb__row-title { flex: 1; font-family: Georgia, serif; font-size: 1.15rem; font-weight: 600; }
+  .accb__chev { color: var(--ag-green); font-size: 1.3rem; transition: transform 0.3s; }
+  .accb__row.is-open .accb__chev { transform: rotate(90deg); }
+  .accb__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s; }
+  .accb__row.is-open .accb__detail { grid-template-rows: 1fr; }
+  .accb__detail-inner { overflow: hidden; }
+  .accb__detail-inner p { margin: 0 0 1rem; padding: 0 0 0.5rem 3.4rem; color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.6; }
+  .accb__mobile-img { display: none; }
+  .accb__media { position: relative; aspect-ratio: 4/3; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+  .accb__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s, transform 0.6s; transform: scale(1.04); }
+  .accb__img.is-active { opacity: 1; transform: scale(1); }
+  @media (max-width: 899px) { .accb__media { display: none; } .accb__mobile-img { display: block; width: 100%; border-radius: 0.6rem; margin: 0 0 1rem 3.4rem; max-width: calc(100% - 3.4rem); } }
+  @media (prefers-reduced-motion: reduce) { .accb__detail, .accb__img, .accb__chev, .accb__icon { transition: none; } }
+
+  /* ══ BEFORE/AFTER SLIDER WRAP ══ */
+  .ag-slider-wrap { background: var(--ag-cream); padding: 5rem 2rem; }
+  .ag-slider-wrap__header { text-align: center; max-width: 680px; margin: 0 auto 2.5rem; }
+  .ag-slider-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ag-green); margin-bottom: 0.75rem; }
+  .ag-slider-wrap__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: #1a1a1a; margin: 0 0 1rem; line-height: 1.15; }
+  .ag-slider-wrap__sub { font-size: 1rem; color: #555; line-height: 1.7; margin: 0; }
+  .ag-slider-wrap__slider { max-width: 700px; margin: 0 auto; }
+  .before-after__frame { position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 16px; cursor: ew-resize; user-select: none; background: #000; box-shadow: 0 24px 60px rgba(0,0,0,0.2); }
+  .before-after__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .before-after__after-wrap { position: absolute; inset: 0; width: var(--pos, 50%); overflow: hidden; }
+  .before-after__after-wrap .before-after__img { width: var(--frame-width, 100%); }
+  .before-after__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: #fff; transform: translate(-50%); cursor: ew-resize; }
+  .before-after__handle-grip { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 9999px; background: #fff; color: var(--ag-ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.35); transition: transform 0.15s; }
+  .before-after:active .before-after__handle-grip { transform: translate(-50%,-50%) scale(1.08); }
+  .before-after__tag { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(13,27,42,0.8); color: #fff; backdrop-filter: blur(4px); pointer-events: none; z-index: 2; }
+  .before-after__tag--before { left: 14px; }
+  .before-after__tag--after { right: 14px; }
+  @media (prefers-reduced-motion: reduce) { .before-after__handle-grip { transition: none; } }
+
+  /* ══ WHAT WE DO PANELS ══ */
+  .ag-wwd-wrap { background: var(--ag-slate); padding: 4rem 1.5rem; }
+  .ag-wwd-wrap__header { text-align: center; max-width: 600px; margin: 0 auto 2.5rem; }
+  .ag-wwd-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ag-green); margin-bottom: 0.75rem; }
+  .ag-wwd-wrap__title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: #fff; margin: 0 0 0.5rem; }
+  .ag-wwd-wrap__sub { color: rgba(255,255,255,0.5); margin: 0; font-size: 0.95rem; line-height: 1.65; }
+  .ag-wwd-panels { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 860px) { .ag-wwd-panels { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .ag-wwd-panels { grid-template-columns: 1fr; } }
+  .wwd__panel { position: relative; overflow: hidden; border-radius: 1rem; text-decoration: none; display: block; aspect-ratio: 3/4; }
+  .wwd__panel-img-wrap { position: absolute; inset: 0; overflow: hidden; }
+  .wwd__panel-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .wwd__panel:hover .wwd__panel-img { transform: scale(1.05); }
+  .wwd__panel-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,42,0.92) 0%, rgba(13,27,42,0.3) 55%, transparent 100%); }
+  .wwd__panel-content { position: absolute; inset-x: 0; bottom: 0; padding: 1.25rem; }
+  .wwd__panel-content h3 { font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 0.3rem; }
+  .wwd__panel-desc { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.5; margin: 0 0 0.5rem; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; }
+  .wwd__panel:hover .wwd__panel-desc { opacity: 1; transform: translateY(0); }
+  .wwd__panel-arrow { display: inline-block; font-size: 0.82rem; font-weight: 600; color: var(--ag-green); opacity: 0; transform: translate(-8px); transition: opacity 0.3s, transform 0.3s; }
+  .wwd__panel:hover .wwd__panel-arrow { opacity: 1; transform: translate(0); }
+  .wwd__panel-line { display: block; width: 0; height: 2px; background: var(--ag-green); transition: width 0.4s; margin-top: 0.5rem; }
+  .wwd__panel:hover .wwd__panel-line { width: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    .wwd__panel-img { transition: none; }
+    .wwd__panel-desc, .wwd__panel-arrow { opacity: 1; transform: none; }
+    .wwd__panel-line { width: 100%; }
+  }
+
+  /* ══ GALLERY BANNER ══ */
+  .gallery-banner { overflow: hidden; padding: 4.5rem 0; }
+  .gallery-banner--light { background: #ECE9E4; color: #111; }
+  .gallery-banner__inner { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; max-width: 72rem; margin: 0 auto; padding-right: 1.5rem; }
+  @media (min-width: 900px) { .gallery-banner__inner { grid-template-columns: 1.1fr 1fr; } }
+  .gallery-banner__eyebrow { margin-left: 1.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.75rem; }
+  .gallery-banner__title { font-family: Georgia, 'Times New Roman', serif; font-weight: 800; line-height: 0.86; letter-spacing: -0.03em; font-size: clamp(4rem, 11vw, 9rem); text-transform: uppercase; margin-left: -0.45em; user-select: none; }
+  .gallery-banner__title-line { display: block; }
+  .gallery-banner__desc { margin-left: 1.5rem; margin-top: 1.25rem; max-width: 24rem; font-size: 0.9rem; line-height: 1.6; opacity: 0.55; }
+  .gallery-banner__gallery { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .gallery-banner__strips { display: flex; align-items: center; height: 300px; filter: drop-shadow(0 24px 40px rgba(0,0,0,0.25)); }
+  .gallery-banner__strip { position: relative; width: 72px; height: 260px; margin-left: -10px; border: none; padding: 0; border-radius: 14px; overflow: hidden; cursor: pointer; background: #111; transform: rotate(calc((var(--i) - (var(--n) - 1) / 2) * 2.5deg)) translateY(calc((var(--i) - (var(--n) - 1) / 2) * (var(--i) - (var(--n) - 1) / 2) * 4px)); transition: width 0.5s cubic-bezier(0.34,1.4,0.64,1), transform 0.5s cubic-bezier(0.34,1.4,0.64,1), margin 0.5s cubic-bezier(0.34,1.4,0.64,1); z-index: calc(10 + var(--i)); }
+  .gallery-banner__strip:first-child { margin-left: 0; }
+  .gallery-banner__strip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .gallery-banner__strips:hover .gallery-banner__strip { margin-left: 6px; transform: rotate(calc((var(--i) - (var(--n) - 1) / 2) * 4deg)) translateY(calc((var(--i) - (var(--n) - 1) / 2) * (var(--i) - (var(--n) - 1) / 2) * 6px)); }
+  .gallery-banner__strips:hover .gallery-banner__strip:first-child { margin-left: 0; }
+  .gallery-banner__strip:hover { width: 190px; z-index: 99; transform: rotate(0deg) translateY(-12px) !important; }
+  .gallery-banner__strip.is-active { width: 190px; z-index: 90; transform: rotate(0deg) translateY(-8px) !important; }
+  .gallery-banner__hint { padding: 0.55rem 1.2rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.45; border: 1px solid; }
+  @media (max-width: 899px) { .gallery-banner__title { margin-left: -0.3em; } .gallery-banner__strips { height: 240px; } .gallery-banner__strip { height: 200px; width: 56px; } .gallery-banner__strip:hover, .gallery-banner__strip.is-active { width: 150px; } }
+  @media (prefers-reduced-motion: reduce) { .gallery-banner__strip { transition: none; } }
+
+  /* ══ TESTIMONIAL STACK WRAP ══ */
+  .ag-tstack-wrap { padding: 6rem 2rem; background: #fff; }
+  .ag-tstack-wrap__header { text-align: center; margin-bottom: 3rem; }
+  .ag-tstack-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ag-green); margin-bottom: 0.75rem; }
+  .ag-tstack-wrap__title { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 800; color: #1a1a1a; margin: 0; }
+  .tstack { display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem; }
+  .tstack__deck { position: relative; width: min(540px, 90vw); height: 360px; }
+  .tstack__card { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 1.25rem; background: linear-gradient(160deg, #12293f, #0d1b2a); border: 1px solid rgba(124,179,66,0.25); box-shadow: 0 30px 60px rgba(0,0,0,0.45); cursor: grab; transform-origin: center bottom; transform: translateY(calc(var(--i) * -12px)) scale(calc(1 - var(--i) * .04)) rotate(calc((var(--i) - 1) * 1.5deg)); z-index: calc(100 - var(--i)); transition: transform 0.55s cubic-bezier(0.34,1.4,0.64,1), opacity 0.5s; user-select: none; }
+  .tstack__card.is-leaving { opacity: 0; cursor: grabbing; transform: translate(-140%) rotate(-16deg) !important; }
+  .tstack__stars { color: var(--ag-green); letter-spacing: 2px; font-size: 0.9rem; }
+  .tstack__quote { font-family: Georgia, serif; font-size: 1.1rem; line-height: 1.5; color: #fff; margin: 0; }
+  .tstack__person { display: flex; align-items: center; gap: 0.85rem; }
+  .tstack__avatar { width: 52px; height: 52px; border-radius: 9999px; object-fit: cover; border: 2px solid var(--ag-green); pointer-events: none; }
+  .tstack__name { color: #fff; font-weight: 700; font-size: 0.95rem; }
+  .tstack__detail { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+  .tstack__hint { margin-top: 1.5rem; color: rgba(0,0,0,0.35); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  @media (prefers-reduced-motion: reduce) { .tstack__card { transition: opacity 0.3s; } }
+
+  /* ══ PROCESS ROADMAP (shared from library) ══ */
+  .prm { background: var(--ag-ink); padding: 4rem 1.5rem; }
+  .prm__head { max-width: 42rem; margin: 0 auto 2rem; text-align: center; }
+  .prm__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .prm__sub { color: rgba(255,255,255,0.5); margin: 0; }
+  .prm__map { position: relative; max-width: 60rem; margin: 0 auto; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); aspect-ratio: 1390/780; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  .prm__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .prm__overlay { position: absolute; inset: 0; background: rgba(13,27,42,0.65); }
+  .prm__svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+  .prm__progress { stroke-dasharray: var(--len, 250); stroke-dashoffset: var(--len, 250); transition: stroke-dashoffset 1.6s; }
+  .prm.is-visible .prm__progress { stroke-dashoffset: 0; }
+  .prm__milestone { position: absolute; transform: translate(-50%,-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 150px; }
+  .prm__dot { width: 36px; height: 36px; border-radius: 9999px; background: var(--ag-green); color: var(--ag-ink); display: flex; align-items: center; justify-content: center; font-weight: 800; border: 3px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.5); opacity: 0; transform: scale(0.4); transition: opacity 0.4s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); transition-delay: calc(var(--i) * .4s + .5s); }
+  .prm__num { font-size: 0.85rem; }
+  .prm.is-visible .prm__dot { opacity: 1; transform: scale(1); }
+  .prm__card { background: rgba(13,27,42,0.9); backdrop-filter: blur(4px); border: 1px solid rgba(124,179,66,0.3); border-radius: 0.6rem; padding: 0.6rem 0.8rem; text-align: center; opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; transition-delay: calc(var(--i) * .4s + .65s); }
+  .prm.is-visible .prm__card { opacity: 1; transform: translateY(0); }
+  .prm__card h3 { color: #fff; font-family: Georgia, serif; font-size: 0.9rem; margin: 0 0 0.2rem; }
+  .prm__card p { color: rgba(255,255,255,0.6); font-size: 0.7rem; line-height: 1.4; margin: 0; }
+  @media (max-width: 720px) { .prm__map { aspect-ratio: auto; height: auto; display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem; } .prm__bg, .prm__svg, .prm__overlay { display: none; } .prm__milestone { position: static; transform: none; width: 100%; flex-direction: row; align-items: center; text-align: left; } .prm__card { text-align: left; flex: 1; } .prm__dot, .prm__card { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .prm__progress { stroke-dashoffset: 0; transition: none; } .prm__dot, .prm__card { opacity: 1; transform: none; } }
+
+  /* ══ FAQ (shared from library) ══ */
+  .ag-faq { background: var(--ag-slate); padding: 4rem 1.5rem; }
+  .faq__head { max-width: 42rem; margin: 0 auto 2.5rem; text-align: center; }
+  .faq__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .faq__sub { color: rgba(255,255,255,0.5); margin: 0; }
+  .faq__list { max-width: 44rem; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq__item { background: #0d1b2a; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.85rem; overflow: hidden; transition: border-color 0.3s; }
+  .faq__item.is-open { border-color: rgba(124,179,66,0.5); }
+  .faq__q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: none; border: none; cursor: pointer; text-align: left; padding: 1.15rem 1.35rem; color: #fff; font-size: 1rem; font-weight: 600; font-family: inherit; }
+  .faq__icon { position: relative; flex-shrink: 0; width: 20px; height: 20px; }
+  .faq__icon span { position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px; background: var(--ag-green); transform: translate(-50%,-50%); transition: transform 0.3s; }
+  .faq__icon span:last-child { transform: translate(-50%,-50%) rotate(90deg); }
+  .faq__item.is-open .faq__icon span:last-child { transform: translate(-50%,-50%) rotate(0deg); }
+  .faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s; }
+  .faq__item.is-open .faq__a { grid-template-rows: 1fr; }
+  .faq__a-inner { overflow: hidden; }
+  .faq__a-inner p { margin: 0; padding: 0 1.35rem 1.25rem; color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.65; }
+  @media (prefers-reduced-motion: reduce) { .faq__a, .faq__icon span { transition: none; } }
+
+  /* ══ CTA AVATARS (shared from library) ══ */
+  .ctav { background: var(--ag-ink); padding: 4.5rem 1.5rem; }
+  .ag-ctav { border-top: 1px solid rgba(124,179,66,0.2); }
+  .ctav__inner { max-width: 68rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap; }
+  .ctav__left { flex: 1; min-width: 280px; }
+  .ctav__title { color: #fff; font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 700; margin: 0 0 0.6rem; }
+  .ctav__sub { color: rgba(255,255,255,0.55); max-width: 34rem; margin: 0 0 1.5rem; line-height: 1.6; }
+  .ctav__proof { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .ctav__stack { display: flex; }
+  .ctav__avatar { position: relative; display: block; width: 52px; height: 52px; margin-left: -14px; border-radius: 9999px; border: 2.5px solid var(--ag-ink); transform: rotate(var(--r, 0deg)) scale(0); transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1) calc(var(--i) * 70ms); cursor: pointer; z-index: calc(10 + var(--i)); }
+  .ctav.is-visible .ctav__avatar { transform: rotate(var(--r, 0deg)) scale(1); }
+  .ctav__avatar:first-child { margin-left: 0; }
+  .ctav__avatar img { width: 100%; height: 100%; border-radius: 9999px; object-fit: cover; }
+  .ctav__avatar:hover { z-index: 99; transition-delay: 0ms; transform: rotate(0deg) scale(1.15) !important; }
+  .ctav__tip { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translate(-50%) translateY(6px); background: var(--ag-green); color: var(--ag-ink); padding: 0.4rem 0.75rem; border-radius: 0.5rem; white-space: nowrap; text-align: center; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1); box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
+  .ctav__avatar:hover .ctav__tip { opacity: 1; transform: translate(-50%) translateY(0); }
+  .ctav__tip b { display: block; font-size: 0.78rem; }
+  .ctav__tip small { display: block; font-size: 0.68rem; opacity: 0.75; }
+  .ctav__meta { display: flex; flex-direction: column; gap: 0.15rem; }
+  .ctav__stars { color: var(--ag-green); letter-spacing: 2px; font-size: 0.9rem; }
+  .ctav__trust { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+  .ctav__btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(120deg, var(--ag-green), #8BC34A); color: var(--ag-ink); font-weight: 700; font-size: 1rem; padding: 0.9rem 1.75rem; border-radius: 9999px; text-decoration: none; box-shadow: 0 12px 30px rgba(124,179,66,0.35); transition: transform 0.25s, box-shadow 0.25s; white-space: nowrap; flex-shrink: 0; }
+  .ctav__btn:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(124,179,66,0.45); }
+  .ctav__arrow { transition: transform 0.25s; }
+  .ctav__btn:hover .ctav__arrow { transform: translate(4px); }
+  @media (prefers-reduced-motion: reduce) { .ctav__avatar { transform: rotate(var(--r, 0deg)) scale(1); transition: none; } .ctav__btn, .ctav__arrow, .ctav__tip { transition: none; } }
+
+  /* ══ SPLIT TEXT REVEAL ══ */
+  .split-reveal { display: inline; }
+  .split-reveal__unit { display: inline-block; overflow: hidden; vertical-align: top; }
+  .split-reveal__inner { display: inline-block; transform: translateY(110%); transition: transform 0.7s cubic-bezier(0.22,1,0.36,1) calc(var(--i) * var(--split-stagger, 65ms)); will-change: transform; }
+  .split-reveal.is-visible .split-reveal__inner { transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .split-reveal__inner { transform: none; transition: none; } }
+
+  /* ══ GEO ══ */
+  .ag-geo { display: none; }
+</style>
+
+</BaseLayout>
