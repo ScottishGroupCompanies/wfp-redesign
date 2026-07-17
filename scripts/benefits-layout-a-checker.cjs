@@ -89,6 +89,20 @@ check('All imgs: title', noTitle.length === 0, noTitle.length + ' missing');
 check('All imgs: alt', noAlt.length === 0, noAlt.length + ' missing');
 check('Before image', src.includes('-before.jpg'));
 check('After image', src.includes('-after.jpg'));
+console.log('\n[10b] RESOURCES SECTION');
+check('res-section present', src.includes('class="res-section"'));
+check('res-section CSS', css.includes('res-section'));
+var pdfLinks = src.match(/href="\/resources\/[^"]+\.pdf"/g) || [];
+check('>=3 PDF resources', pdfLinks.length >= 3, pdfLinks.length + ' found');
+var badPdfs = pdfLinks.filter(function(l){ var f=l.match(/\/resources\/([^"]+\.pdf)/); return f&&(!/%PDF/i.test(f[1]))&&(require('fs').existsSync(require('path').join(ROOT,'public/resources',f[1]))?require('fs').readFileSync(require('path').join(ROOT,'public/resources',f[1])).slice(0,5).toString()!=='%PDF-':false); });
+for (var pi = 0; pi < pdfLinks.length; pi++) {
+  var pfname = (pdfLinks[pi].match(/\/resources\/([^"]+\.pdf)/) || [])[1];
+  if (!pfname) continue;
+  var pfpath = require('path').join(ROOT,'public/resources',pfname);
+  var pfexists = require('fs').existsSync(pfpath);
+  check('PDF exists: '+pfname.substring(0,50), pfexists);
+  if (pfexists) { var pfmagic = require('fs').readFileSync(pfpath).slice(0,5).toString(); check('PDF valid: '+pfname.substring(0,40), pfmagic.startsWith('%PDF'), pfmagic); }
+}
 console.log('\n[11] SCHEMA');
 check('faqItems defined', src.includes('const faqItems'));
 var faqCount = (src.match(/question:/g) || []).length;
