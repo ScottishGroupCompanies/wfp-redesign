@@ -48,7 +48,7 @@ Consider a typical elementary school in the School District of Philadelphia — 
 
 Or picture a large public high school in Northeast Philly with a sprawling glass-fronted lobby. During dismissal, the lobby fills with students, staff, and parents. If a vehicle were to jump the curb and strike the glass entrance — an event that has occurred at schools across the country — security film would hold the glass in the frame rather than allowing it to shatter inward onto a crowd of people.
 
-Private schools and charter networks in neighborhoods from Kensington to South Philly face similar considerations. Many operate in converted commercial or residential buildings whose windows were never designed to resist forced entry. For these schools, applying security window film to [safety and security film installations](/benefits/safety-security/) is often the first and most affordable step in a broader campus safety plan.
+Private schools and charter networks in neighborhoods from Kensington to South Philly face similar considerations. Many operate in converted commercial or residential buildings whose windows were never designed to resist forced entry. For these schools, applying security window film to [safety and security film installations](/benefits/safety-and-security/) is often the first and most affordable step in a broader campus safety plan.
 
 ## The Installation Process
 
@@ -61,7 +61,7 @@ Installing security window film is a minimally invasive process that can be sche
 5. **Curing and optional attachment:** The film cures over several days. For higher-threat areas, a structural attachment system is installed to mechanically bond the film-and-glass assembly to the frame.
 6. **Final walk-through:** The installer inspects every pane with facilities staff to confirm quality and answer maintenance questions.
 
-The entire process for a mid-sized school building typically takes one to three days, depending on the number of panes and whether a [dedicated school security application](/applications/school-security/) layout is required.
+The entire process for a mid-sized school building typically takes one to three days, depending on the number of panes and whether a [dedicated school security application](/applications/schools-universities/) layout is required.
 
 ## Cost Considerations for Philadelphia Schools
 
@@ -78,7 +78,7 @@ For schools looking to prioritize, we recommend starting with ground-floor windo
 
 Security window film is not a standalone solution — it works best as part of a layered safety strategy. Here are the key references school administrators should review:
 
-- **CISA K-12 School Safety** guidelines identify window hardening as an effective [layer of physical security](/benefits/security-film/) that delays unauthorized entry.
+- **CISA K-12 School Safety** guidelines identify window hardening as an effective [layer of physical security](/benefits/school-security-window-film/) that delays unauthorized entry.
 - **ASTM F1233** outlines test methods for forced-entry resistance of window systems.
 - **NFPA 101 Life Safety Code** addresses egress through filmed glass, which is an important consideration for any school installing security film on exit-path doors.
 
