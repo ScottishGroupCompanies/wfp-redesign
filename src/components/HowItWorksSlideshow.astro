@@ -1,0 +1,359 @@
+---
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Slide {
+  step: string;
+  title: string;
+  desc: string;
+  img: string;
+  imgAlt?: string;
+  cta?: string;
+  ctaHref?: string;
+  navLabel?: string;
+  faq?: FaqItem[];
+}
+
+interface Props {
+  slides: Slide[];
+  id?: string;
+}
+
+const { slides, id = 'hiwSlideshow' } = Astro.props;
+const trackId = `${id}Track`;
+const prevId = `${id}Prev`;
+const nextId = `${id}Next`;
+const progressId = `${id}ProgressBar`;
+---
+
+<section class="hiw-slideshow" id={id}>
+  <div class="hiw-slideshow__track" id={trackId}>
+    {slides.map((slide, i) => (
+      <div class={`hiw-slideshow__slide${i === 0 ? ' active' : ''}`} data-slide={String(i)}>
+        <img
+          src={slide.img}
+          alt={slide.imgAlt || slide.title}
+          class="hiw-slideshow__bg"
+          loading="lazy"
+        />
+        <div class="hiw-slideshow__overlay"></div>
+        <div class="hiw-slideshow__content">
+          <div class="hiw-slideshow__step">{slide.step}</div>
+          <h2 class="hiw-slideshow__title" set:html={slide.title.replace(/\n/g, '<br/>')} />
+          <p class="hiw-slideshow__desc">{slide.desc}</p>
+          {slide.faq && slide.faq.length > 0 && (
+            <div class="hiw-slideshow__faq">
+              {slide.faq.map(item => (
+                <div class="hiw-slideshow__faq-item">
+                  <button class="hiw-slideshow__faq-q" aria-expanded="false">
+                    {item.q}
+                    <span class="hiw-slideshow__faq-icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="hiw-slideshow__faq-a" hidden>{item.a}</div>
+                </div>
+              ))}
+            </div>
+          )}
+          <a href={slide.ctaHref || '/contact/'} class="hiw-slideshow__cta">
+            {slide.cta || 'Get started →'}
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <nav class="hiw-slideshow__nav" aria-label="How it works steps">
+    {slides.map((slide, i) => (
+      <button
+        class={`hiw-slideshow__nav-item${i === 0 ? ' hiw-slideshow__nav-item--active' : ''}`}
+        data-hwnav={String(i)}
+        aria-label={`Step ${slide.step}: ${slide.navLabel || slide.title}`}
+      >
+        <span class="hiw-slideshow__nav-line"></span>
+        <span class="hiw-slideshow__nav-label">{slide.navLabel || slide.step}</span>
+      </button>
+    ))}
+  </nav>
+
+  <button class="hiw-slideshow__arrow hiw-slideshow__arrow--prev" id={prevId} aria-label="Previous step">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="hiw-slideshow__arrow hiw-slideshow__arrow--next" id={nextId} aria-label="Next step">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+  <div class="hiw-slideshow__progress">
+    <div class="hiw-slideshow__progress-bar" id={progressId}></div>
+  </div>
+</section>
+
+<style>
+  .hiw-slideshow {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    overflow: hidden;
+    background: #14201A;
+  }
+  .hiw-slideshow__track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .hiw-slideshow__slide {
+    position: relative;
+    min-width: 100%;
+    min-height: 90vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .hiw-slideshow__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+  .hiw-slideshow__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.25) 60%, transparent 100%);
+    z-index: 1;
+  }
+  .hiw-slideshow__content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding-left: 80px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+  }
+  .hiw-slideshow__slide.active .hiw-slideshow__content,
+  .hiw-slideshow__slide[data-slide="0"] .hiw-slideshow__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hiw-slideshow__step {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: #7CB342;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+  .hiw-slideshow__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+  }
+  .hiw-slideshow__desc {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    max-width: 460px;
+    margin-bottom: 2rem;
+  }
+  .hiw-slideshow__faq {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+  .hiw-slideshow__faq-item { border-radius: 8px; overflow: hidden; }
+  .hiw-slideshow__faq-q {
+    width: 100%;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.88);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 12px 16px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hiw-slideshow__faq-q:hover { background: rgba(255,255,255,0.18); }
+  .hiw-slideshow__faq-icon {
+    font-size: 1.2rem;
+    color: #7CB342;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .hiw-slideshow__faq-q[aria-expanded="true"] .hiw-slideshow__faq-icon { transform: rotate(45deg); }
+  .hiw-slideshow__faq-a {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    color: rgba(255,255,255,0.70);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 12px 16px;
+    margin-top: -4px;
+  }
+  .hiw-slideshow__cta {
+    display: inline-block;
+    background: #7CB342;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .hiw-slideshow__cta:hover { background: #2E6B30; transform: translateY(-2px); }
+  .hiw-slideshow__nav {
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .hiw-slideshow__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.35;
+    transition: opacity 0.3s;
+  }
+  .hiw-slideshow__nav-item:hover { opacity: 0.65; }
+  .hiw-slideshow__nav-item--active { opacity: 1; }
+  .hiw-slideshow__nav-line {
+    display: block;
+    width: 3px;
+    height: 32px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 2px;
+    transition: background 0.3s, height 0.3s;
+  }
+  .hiw-slideshow__nav-item--active .hiw-slideshow__nav-line { background: #7CB342; height: 48px; }
+  .hiw-slideshow__nav-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+  .hiw-slideshow__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+  }
+  .hiw-slideshow__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+  .hiw-slideshow__arrow--prev { left: 32px; }
+  .hiw-slideshow__arrow--next { right: 32px; }
+  .hiw-slideshow__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.15);
+    z-index: 10;
+  }
+  .hiw-slideshow__progress-bar { height: 100%; background: #7CB342; width: 0; }
+
+  @media (max-width: 768px) {
+    .hiw-slideshow__content { padding-left: 24px; padding-right: 100px; }
+    .hiw-slideshow__nav { right: 16px; gap: 16px; }
+  }
+</style>
+
+<script define:vars={{ id, trackId, prevId, nextId, progressId }}>
+(function () {
+  const track = document.getElementById(trackId);
+  const section = document.getElementById(id);
+  if (!track || !section) return;
+
+  const slides = section.querySelectorAll('.hiw-slideshow__slide');
+  const navItems = section.querySelectorAll('.hiw-slideshow__nav-item');
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+  const progressBar = document.getElementById(progressId);
+
+  let current = 0;
+  const total = slides.length;
+  let timer = null;
+
+  function goTo(index) {
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+    current = index;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    navItems.forEach((n, i) => n.classList.toggle('hiw-slideshow__nav-item--active', i === current));
+    resetProgress();
+    resetTimer();
+  }
+
+  function resetProgress() {
+    if (!progressBar) return;
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0';
+    requestAnimationFrame(() => {
+      progressBar.style.transition = 'width 5s linear';
+      progressBar.style.width = '100%';
+    });
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+  navItems.forEach((btn, i) => btn.addEventListener('click', () => goTo(i)));
+
+  section.querySelectorAll('.hiw-slideshow__faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const answer = btn.nextElementSibling;
+      if (answer) answer.hidden = expanded;
+    });
+  });
+
+  resetProgress();
+  resetTimer();
+})();
+</script>
