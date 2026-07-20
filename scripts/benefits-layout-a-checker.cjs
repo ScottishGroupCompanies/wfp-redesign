@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// benefits-layout-a-checker.cjs — v3 (2026-07-17)
+// benefits-layout-a-checker.cjs — v4 (2026-07-20)
 // Usage: node scripts/benefits-layout-a-checker.cjs --slug safety-and-security --prefix sf
 const fs = require('fs'), path = require('path');
 const args = process.argv.slice(2);
@@ -79,6 +79,13 @@ check('External link',extLinks.length>=1,extLinks.length+' found');
 check('No links in hero sub',!/<p class="hs__sub"[^>]*>(?:(?!<\/p>)[\s\S])*?<a /.test(src));
 check('No links in headings',!/<h([1-6])[^>]*>(?:(?!<\/h\1>)[\s\S])*?<a /.test(src));
 check('Inline link CSS present',src.includes('accb__detail-inner a'));
+// Links must be spread across >=2 distinct accb__detail-inner blocks
+var accbInners=(src.match(/<div class="accb__detail-inner">[\s\S]*?<\/div>/g)||[]);
+var accbBlocksWithLinks=accbInners.filter(function(b){return /<a href=/.test(b);}).length;
+check('Links in >=2 accb rows',accbBlocksWithLinks>=2,accbBlocksWithLinks+' rows have links');
+// Both link zones must have visible CSS (same green+underline treatment)
+check('Link CSS: accb__detail-inner a',src.includes('accb__detail-inner a'));
+check('Link CSS: accv__desc a',src.includes('accv__desc a'));
 console.log('\n[10] IMAGES');
 var imgs=src.match(/<img[^>]+>/g)||[];
 check('All imgs: title',imgs.filter(function(t){return !t.includes('title=');}).length===0,imgs.filter(function(t){return !t.includes('title=');}).length+' missing');
