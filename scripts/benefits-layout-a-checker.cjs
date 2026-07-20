@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 // benefits-layout-a-checker.cjs — v4 (2026-07-20)
 // Usage: node scripts/benefits-layout-a-checker.cjs --slug safety-and-security --prefix sf
+// Usage: node scripts/benefits-layout-a-checker.cjs --slug solar --prefix sol --dir services
 const fs = require('fs'), path = require('path');
 const args = process.argv.slice(2);
 const slug = args[args.indexOf('--slug')+1];
 const prefix = args[args.indexOf('--prefix')+1];
-if (!slug||!prefix){console.error('Usage: --slug <slug> --prefix <prefix>');process.exit(1);}
+const dirArg = args[args.indexOf('--dir')+1] || 'benefits';
+if (!slug||!prefix){console.error('Usage: --slug <slug> --prefix <prefix> [--dir <subdir>]');process.exit(1);}
 const ROOT=path.join(__dirname,'..');
-const pagePath=path.join(ROOT,'src/pages/benefits/'+slug+'.astro');
-const builtPath=path.join(ROOT,'dist/benefits/'+slug+'/index.html');
+const pagePath=path.join(ROOT,'src/pages/'+dirArg+'/'+slug+'.astro');
+const builtPath=path.join(ROOT,'dist/'+dirArg+'/'+slug+'/index.html');
 if(!fs.existsSync(pagePath)){console.error('Page not found: '+pagePath);process.exit(1);}
 const src=fs.readFileSync(pagePath,'utf8');
 const builtHtml=fs.existsSync(builtPath)?fs.readFileSync(builtPath,'utf8'):null;
