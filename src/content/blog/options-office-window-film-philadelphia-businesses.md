@@ -106,4 +106,4 @@ Most Philadelphia businesses end up with a combination: solar control film on so
 
 Office window film in Philadelphia is one of the most cost-effective building upgrades available — it reduces energy costs, improves employee comfort, enhances security, and updates the look of your space, all without replacing a single pane of glass.
 
-If you're ready to explore options for your office, Window Film Philadelphia offers free on-site consultations. We'll evaluate your building's orientation, assess your biggest pain points, and recommend the right combination of films from 3M, LLumar, Vista, and Solyx. [Contact us](/blog/) to schedule a consultation for your Philadelphia office today.
+If you're ready to explore options for your office, Window Film Philadelphia offers free on-site consultations. We'll evaluate your building's orientation, assess your biggest pain points, and recommend the right combination of films from 3M, LLumar, Vista, and Solyx. [Contact us](/contact/) to schedule a consultation for your Philadelphia office today.
