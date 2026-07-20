@@ -19,15 +19,25 @@ interface Slide {
 interface Props {
   slides: Slide[];
   id?: string;
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
 }
 
-const { slides, id = 'hiwSlideshow' } = Astro.props;
+const { slides, id = 'hiwSlideshow', eyebrow, title, subtitle } = Astro.props;
 const trackId = `${id}Track`;
 const progressId = `${id}Progress`;
 ---
 
 <section class="hiw-section" id={id}>
   <div class="hiw-container">
+    {(eyebrow || title || subtitle) && (
+      <div class="hiw-header">
+        {eyebrow && <span class="hiw-header__eyebrow">{eyebrow}</span>}
+        {title && <h2 class="hiw-header__title">{title}</h2>}
+        {subtitle && <p class="hiw-header__sub">{subtitle}</p>}
+      </div>
+    )}
     <div class="hiw-layout">
 
       <!-- Left side nav -->
@@ -101,6 +111,34 @@ const progressId = `${id}Progress`;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+  }
+  .hiw-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+  .hiw-header__eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 0.75rem;
+  }
+  .hiw-header__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+  }
+  .hiw-header__sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0;
   }
   .hiw-layout {
     display: grid;
