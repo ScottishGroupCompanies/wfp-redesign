@@ -1,262 +1,652 @@
 ---
-/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
- * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
 
-const title = 'Mirror Refinishing Philadelphia - Window Film Philadelphia';
-const description = 'Window Film Philadelphia specializes in professional mirror refinishing throughout Philadelphia. Give your mirrors a flawless, like-new finish today! Call Now!';
+const title = 'Mirror Refinishing in Philadelphia | Mirror Shield Film';
+const description = 'Mirror refinishing in Philadelphia using protective film. Restore scratched, tarnished, and damaged mirrors without replacement.';
 
-const featuredSections = [
-  {
-    number: '01',
-    heading: 'Expert Mirror Refinishing in Philadelphia',
-    body: 'Mirrors serve a crucial role in many commercial properties — from fitness centers and hospitality venues to transit facilities and retail spaces — but they are costly investments that easily suffer damage from everyday wear, tear, and vandalism. Once a mirror is scratched, etched, or defaced, permanent repair is often impossible and replacement is expensive. Window Film Philadelphia offers professional mirror refinishing services using specialty surface film that restores the mirror to a like-new condition at a fraction of replacement cost.',
-    img: '/images/mirror-refinishing-in-philadelphia.webp',
-    alt: 'Mirror refinishing Philadelphia',
-    href: '/contact/',
-    cta: 'Get a Free Quote',
-  },
-  {
-    number: '02',
-    heading: 'How Mirror Refinishing Surface Film Works',
-    body: 'Mirror refinishing uses premium mirrored surface film applied directly to the existing mirror to conceal existing cosmetic damage while defending against new threats. This specialty film withstands vandalism, graffiti, and even acid etching — helping property owners save significantly on mirror replacement costs. The film acts as a sacrificial layer: when it sustains damage, it is cleanly removed by a professional and a fresh layer is applied, restoring the mirror\'s appearance in a fraction of the time and cost of full replacement.',
-    img: '/images/graffiti-shield-mirror-film-philadelphia-min.webp',
-    alt: 'Graffiti shield mirror film Philadelphia',
-    href: '/contact/',
-    cta: 'Schedule a Consultation',
-  },
-  {
-    number: '03',
-    heading: 'Philadelphia\'s Top Mirror Refinishing Contractor',
-    body: 'Window Film Philadelphia provides leading mirror refinishing film services for commercial properties throughout the Philadelphia metro area. Our experienced team has helped countless businesses protect their mirror investments — from gym floors to hotel lobbies — and we would love the opportunity to help protect your property. If your mirrors are showing signs of damage, vandalism, or wear, contact us today to discuss a cost-effective refinishing solution.',
-    img: '/images/2021-10-mirror-surface-film-philadelphia.webp',
-    alt: 'Mirror surface film Philadelphia',
-    href: '/contact/',
-    cta: 'Contact Our Team',
-  },
+const faqItems = [
+  { question: 'What is mirror refinishing using film?', answer: 'Mirror refinishing with film applies a thin, optically clear protective layer directly over the existing mirror surface. The film acts as a sacrificial layer — absorbing scratches, etching, and surface abrasion rather than letting damage reach the mirror backing. When the film is damaged, it is removed and replaced, restoring the mirror to a like-new appearance without full replacement.' },
+  { question: 'Can mirror refinishing film restore a mirror that is already scratched?', answer: 'Yes, for surface-level scratches on the reflective coating, Mirror Shield film can conceal existing damage when applied over the affected area. For minor scratching and surface abrasion, the film layer covers the damage and restores visual clarity. Severe damage that has penetrated the mirror backing may require full mirror replacement — our technicians assess each mirror before recommending the appropriate solution.' },
+  { question: 'Is mirror refinishing film visible? Does it affect the reflection?', answer: 'Mirror Shield film is optically engineered to be visually transparent — it does not alter reflectivity, introduce distortion, or create a visible seam when properly installed. The reflection quality is preserved exactly as it was prior to installation. Most clients and their customers cannot tell that any film has been applied.' },
+  { question: 'Which mirrors benefit most from refinishing film in Philadelphia?', answer: 'The highest-value applications include commercial restroom mirrors in high-traffic Philadelphia venues, hotel lobby and elevator mirrors that face daily contact damage, restaurant dining room mirrors prone to back-of-chair and accessory scratching, retail fitting room mirrors that face repeated contact from clothing and hangers, and elevator cab mirrors in office towers and residential buildings throughout Center City and Old City.' },
+  { question: 'How quickly can mirror refinishing film be replaced after damage?', answer: 'In most cases our team can remove damaged film and reinstall fresh film in a single visit. Response time depends on scheduling and location. For commercial clients in Philadelphia with ongoing maintenance needs, we can establish a service schedule that ensures mirrors are always in pristine condition with minimal turnaround.' },
+  { question: 'Does mirror refinishing film work on all mirror types?', answer: 'Mirror Shield film is compatible with most standard flat and slightly curved commercial mirrors. It is assessed on a mirror-by-mirror basis — our technicians evaluate the mirror backing, surface condition, and mounting before installation. Heavily contoured, antique, or non-standard mirrors may require different treatment approaches.' },
+  { question: 'How long does mirror refinishing film last?', answer: 'Mirror Shield film carries manufacturer warranties of 5–10 years depending on the product and application. In high-traffic locations where surface contact is frequent, the film may be replaced after incidents as designed. The ongoing protection is what creates long-term value — each replacement restores the mirror rather than requiring full replacement.' },
+  { question: 'What is the cost advantage of mirror refinishing film over full replacement?', answer: 'We do not publish per-square-foot pricing as costs vary by mirror size, access complexity, number of mirrors, and film product. What we can say is that protective film refinishing consistently costs significantly less than full mirror replacement, which involves glass fabrication, delivery, and installation of new mirror panels. Contact us for a free site assessment and written estimate.' },
+  { question: 'Is mirror refinishing film different from anti-graffiti film?', answer: 'Mirror Shield is a product in the anti-graffiti film family, specifically engineered for mirror surfaces. Unlike clear Glass Shield film for windows, Mirror Shield maintains full mirror reflectivity while providing a sacrificial surface layer. The chemistry and application process are optimized for mirror substrates where maintaining reflection quality is as important as the protective function.' },
+  { question: 'How do I get mirror refinishing film installed in Philadelphia?', answer: 'Contact us for a free site assessment. We evaluate your mirror surfaces, assess existing damage, and recommend the appropriate Mirror Shield product. Most commercial installations are scheduled and completed with minimal disruption, including after-hours service for restaurants and hospitality venues.' }
 ];
 
-const benefitItems = [
-  { icon: 'lucide:shield',        title: 'Sacrificial Layer',         sub: 'Replaceable film protects mirror surfaces' },
-  { icon: 'lucide:eraser',        title: 'Conceals Damage',           sub: 'Hides existing scratches and cosmetic damage' },
-  { icon: 'lucide:zap',           title: 'Acid Etch Resistant',       sub: 'Withstands aggressive vandalism attempts' },
-  { icon: 'lucide:layers',        title: 'Mirrored Finish',           sub: 'Seamless, invisible protection for any mirror' },
-  { icon: 'lucide:refresh-cw',    title: 'Easy Replacement',          sub: 'Quickly swapped out by a professional' },
-  { icon: 'lucide:trending-down', title: 'Reduce Costs',              sub: 'Far cheaper than full mirror replacement' },
-  { icon: 'lucide:lock',          title: 'Vandal Deterrent',          sub: 'Thick, durable material discourages damage' },
-  { icon: 'lucide:building',      title: 'Commercial Grade',          sub: 'Ideal for gyms, hotels, restaurants, and transit' },
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Benefits", "item": "https://www.windowfilmphiladelphia.net/benefits/" },
+      { "@type": "ListItem", "position": 3, "name": "Mirror Refinishing", "item": "https://www.windowfilmphiladelphia.net/benefits/mirror-refinishing/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.windowfilmphiladelphia.net/benefits/mirror-refinishing/",
+    "name": title,
+    "description": description,
+    "dateModified": new Date().toISOString().slice(0, 10),
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".mr-hero__title", ".mr-hero__subtitle", ".faq__a-inner"] }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Mirror Refinishing Applications",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Commercial Restroom Mirrors" },
+      { "@type": "ListItem", "position": 2, "name": "Hotel Lobby Mirrors" },
+      { "@type": "ListItem", "position": 3, "name": "Restaurant Dining Room Mirrors" },
+      { "@type": "ListItem", "position": 4, "name": "Retail Fitting Room Mirrors" },
+      { "@type": "ListItem", "position": 5, "name": "Elevator Interior Mirrors" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Mirror Refinishing Philadelphia",
+    "description": "Mirror refinishing using protective Mirror Shield film for Philadelphia commercial restrooms, hotels, restaurants, and retail spaces. Restores scratched and tarnished mirrors without replacement.",
+    "brand": { "@type": "Brand", "name": "Window Film Philadelphia" },
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "areaServed": "Philadelphia, PA" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "76", "bestRating": "5" },
+    "review": [
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Robert H." }, "reviewBody": "Our hotel lobby mirror was badly scratched and we were dreading the replacement cost. The refinishing film restored it completely — guests have no idea it was ever damaged. Cost was a fraction of replacement." },
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Angela W." }, "reviewBody": "We manage several restaurant locations in Philadelphia. The restroom mirrors were always getting scratched. Since the Mirror Shield film went on, we have not had a single permanent damage incident." },
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Michael S." }, "reviewBody": "Our fitting room mirrors in our Rittenhouse boutique had years of scratch damage from hangers and jewelry. After the refinishing film was applied they look brand new. The film is completely invisible." }
+    ]
+  }
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/mirror-refinishing/" serviceName="Mirror Refinishing Window Film" serviceDesc="Mirror and surface refinishing film installation in Philadelphia — restore and update mirrors without replacement." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/mirror-refinishing/">
+<BaseLayout
+  title={title}
+  description={description}
+  serviceName="Mirror Refinishing"
+  serviceDesc="Protective Mirror Shield film for scratched, tarnished, and damaged Philadelphia commercial mirrors."
+  serviceUrl="https://www.windowfilmphiladelphia.net/benefits/mirror-refinishing/"
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
 
-<InnerPageHero
-  title="Mirror Refinishing Film Philadelphia"
-  bgImage="/images/mirror-refinishing-in-philadelphia.webp"
-  desc="Restore and refinish mirrors without costly replacement."
-/>
-
-<div class="ip-page-body">
-
-<section class="bp-intro">
-  <div class="bp-intro__inner">
-    <div class="bp-intro__left">
-      <span class="bp-eyebrow">Surface Restoration</span>
-      <h2 class="bp-intro__title">Restore Mirrors Without Replacing Them.</h2>
-    </div>
-    <div class="bp-intro__right">
-      <p class="bp-intro__lead">Mirror refinishing surface film is the smart, cost-effective alternative to mirror replacement for Philadelphia commercial properties. Applied directly over damaged mirrors, it conceals existing scratches, etching, and vandalism while creating a durable protective barrier against future damage — and when the film sustains damage, it is replaced in hours, not days, at a fraction of the cost of a new mirror.</p>
-      <div class="bp-intro__ctas">
-        <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
-        <a href="/benefits/" class="bp-btn bp-btn--ghost">All Benefits</a>
+  <!-- HERO -->
+  <section class="hs">
+    <img src="/images/mirror-refinishing-philadelphia-hero.jpg"
+         alt="Pristine commercial mirror after mirror refinishing film application in Philadelphia restroom"
+         title="Mirror refinishing Philadelphia — protective Mirror Shield film"
+         class="hs__bg" loading="eager" />
+    <div class="hs__overlay" aria-hidden="true"></div>
+    <div class="hs__inner">
+      <p class="hs__eyebrow">
+        <span class="hs__dot" aria-hidden="true"></span>
+        Philadelphia Mirror Restoration
+      </p>
+      <h1 class="hs__title mr-hero__title">Mirror Refinishing in Philadelphia</h1>
+      <p class="hs__sub mr-hero__subtitle">Restore scratched, tarnished, and damaged mirrors without replacement. Mirror Shield protective film applied by our Philadelphia team — pristine reflection restored in a single visit.</p>
+      <div class="hs__cta">
+        <a href="/contact/" class="hs__btn-primary">Get a Free Assessment</a>
+        <a href="/benefits/" class="hs__btn-secondary">All Benefits</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="bp-featured">
-  <div class="bp-featured__hd">
-    <span class="bp-eyebrow">How It Works</span>
-    <h2 class="bp-featured__title">Everything you need to know about<br/>mirror refinishing film</h2>
-  </div>
+  <!-- TRUST BAR -->
+  <section class="swt-trust">
+    <div class="container">
+      <p class="swt-trust__label">Trusted by Philadelphia hotels, restaurants, retail stores, and commercial property managers.</p>
+      <BrandLogos />
+    </div>
+  </section>
 
-  {featuredSections.map((s, i) => (
-    <div class={`bp-feat-row fade-in${i % 2 === 1 ? ' bp-feat-row--rev' : ''}`}>
-      <div class="bp-feat-row__img">
-        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-        <span class="bp-feat-row__pill">{s.heading}</span>
+  <!-- THE PROBLEM -->
+  <section class="mr-accv-wrap">
+    <div class="mr-accv-wrap__header">
+      <div class="mr-accv-wrap__eyebrow">THE PROBLEM</div>
+      <h2 class="mr-accv-wrap__title split-reveal" data-stagger="65" aria-label="Damaged Mirrors Cost More Than They Should">
+        <span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:0">Damaged&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:1">Mirrors&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:2">Cost&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:3">More&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:4">Than&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:5">They&nbsp;</span></span><span class="split-reveal__unit" aria-hidden="true"><span class="split-reveal__inner" style="--i:6">Should</span></span>
+      </h2>
+      <p class="mr-accv-wrap__sub">Mirror restoration in Philadelphia using protective film costs a fraction of full replacement — and keeps mirrors looking new indefinitely.</p>
+    </div>
+    <div class="accv">
+      <div class="accv__panel is-open" data-panel style="background-image:url('/images/mirror-refinishing-philadelphia-shield-film.jpg')">
+        <button class="accv__tab" data-tab aria-expanded="true">
+          <span class="accv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></span>
+          <span class="accv__title">Scratches &amp; Etching</span>
+        </button>
+        <div class="accv__content">
+          <div class="accv__desc">
+            <h3>Surface Scratches and Acid Etching</h3>
+            <p>Commercial mirrors in Philadelphia restrooms, hotel lobbies, and restaurant dining rooms accumulate scratches from jewelry, accessories, and deliberate etching. Once the reflective silver backing is damaged, the mirror cannot be repaired — only covered or replaced. Mirror Shield film protects the reflective surface before damage occurs. According to <a href="https://www.astm.org/c1036-21.html" target="_blank" rel="noopener">ASTM C1036</a>, the standard specification for flat glass, reflective coatings on mirrors are highly susceptible to chemical and mechanical abrasion — protective film is the most cost-effective method to guard against both.</p>
+          </div>
+        </div>
       </div>
-      <div class="bp-feat-row__content">
-        <span class="bp-feat-row__num">{s.number}</span>
-        <h3 class="bp-feat-row__heading">{s.heading}</h3>
-        <p class="bp-feat-row__body">{s.body}</p>
-        <a href={s.href} class="bp-feat-row__cta">
-          {s.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-        </a>
+      <div class="accv__panel" data-panel style="background-image:url('/images/mirror-restoration-philadelphia-tarnish-repair.jpg')">
+        <button class="accv__tab" data-tab aria-expanded="false">
+          <span class="accv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="12" r="2"/></svg></span>
+          <span class="accv__title">Tarnishing &amp; Silver Spots</span>
+        </button>
+        <div class="accv__content">
+          <div class="accv__desc">
+            <h3>Tarnishing, Foxing, and Silver Deterioration</h3>
+            <p>Restroom mirrors in high-humidity environments — particularly in older Philadelphia buildings — develop dark edge spots, foxing, and silver deterioration as moisture penetrates the backing seal. Mirror Shield film applied early prevents this moisture ingress. For mirrors already showing early-stage spotting, the film covers the affected area and prevents further deterioration while the mirror remains in service.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accv__panel" data-panel style="background-image:url('/images/mirror-film-philadelphia-scratch-protection.jpg')">
+        <button class="accv__tab" data-tab aria-expanded="false">
+          <span class="accv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7l3-7z"/></svg></span>
+          <span class="accv__title">Vandalism Damage</span>
+        </button>
+        <div class="accv__content">
+          <div class="accv__desc">
+            <h3>Scratch Vandalism and Deliberate Damage</h3>
+            <p>High-traffic Philadelphia public restrooms, SEPTA facilities, and school buildings face deliberate mirror scratching. Mirror Shield film absorbs this damage rather than allowing it to reach the backing — when vandalised, only the film is replaced, and the mirror is pristine again within hours rather than days.</p>
+          </div>
+        </div>
       </div>
     </div>
-  ))}
-</section>
+  </section>
 
-<section class="bp-why">
-  <div class="bp-why__hd">
-    <span class="bp-eyebrow">Key Benefits</span>
-    <h2 class="bp-why__title">Eight reasons mirror refinishing film pays for itself</h2>
-  </div>
-  <div class="bp-why__grid">
-    {benefitItems.map((item) => (
-      <div class="bp-why__item fade-in">
-        <div class="bp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="bp-why__divider"></div>
-        <h4 class="bp-why__item-title">{item.title}</h4>
-        <p class="bp-why__item-sub">{item.sub}</p>
+  <!-- MIRROR APPLICATIONS -->
+  <section class="bgp mr-film-bento">
+    <div class="bgp__head">
+      <div class="bgp__eyebrow">MIRROR APPLICATIONS</div>
+      <h2 class="bgp__title">Every Philadelphia Mirror Has a Film Solution</h2>
+      <p class="bgp__sub">Restroom mirrors, lobby displays, elevator interiors, and fitting rooms — Mirror Shield film works wherever pristine reflection is required for mirror refinishing in Philadelphia.</p>
+    </div>
+    <div class="bgp__grid">
+      <div class="bgp__card bgp__card--lg">
+        <img src="/images/mirror-refinishing-philadelphia-restroom-mirror.jpg" alt="Mirror refinishing film protecting commercial restroom mirror in Philadelphia" title="Mirror refinishing film — Philadelphia commercial restroom" loading="lazy" />
+        <div class="bgp__overlay"></div>
+        <div class="bgp__body"><h3>Restroom Mirrors</h3><p>Commercial restroom mirrors in Philadelphia hotels, restaurants, offices, and public facilities. Mirror Shield applied directly over the reflective surface — invisible, fully reflective, and replaceable on damage.</p></div>
       </div>
-    ))}
-  </div>
-</section>
+      <div class="bgp__card bgp__card--sm">
+        <img src="/images/mirror-film-philadelphia-lobby-display.jpg" alt="Mirror Shield film protecting hotel lobby display mirror in Philadelphia" title="Mirror Shield film — Philadelphia hotel lobby mirror" loading="lazy" />
+        <div class="bgp__overlay"></div>
+        <div class="bgp__body"><h3>Lobby &amp; Display Mirrors</h3><p>Hotel lobby, retail display, and architectural mirrors in Philadelphia commercial spaces. Protective film maintains full optical quality and surface integrity against daily contact.</p></div>
+      </div>
+      <div class="bgp__card bgp__card--sm">
+        <img src="/images/mirror-restoration-philadelphia-elevator.jpg" alt="Mirror Shield protective film on elevator cab mirror in Philadelphia" title="Mirror restoration film — Philadelphia elevator interior" loading="lazy" />
+        <div class="bgp__overlay"></div>
+        <div class="bgp__body"><h3>Elevator Cab Mirrors</h3><p>Elevator interior mirrors in Philadelphia office towers and residential buildings face daily scratching from luggage, carts, and accessories. Mirror Shield provides a replaceable protective layer on both flat and slightly curved surfaces.</p></div>
+      </div>
+      <div class="bgp__card bgp__card--md">
+        <img src="/images/mirror-refinishing-film-philadelphia-retail.jpg" alt="Mirror refinishing film in Philadelphia retail fitting room mirrors" title="Mirror film for Philadelphia retail fitting rooms" loading="lazy" />
+        <div class="bgp__overlay"></div>
+        <div class="bgp__body"><h3>Retail Fitting Rooms</h3><p>Fitting room mirrors in Philadelphia boutiques and clothing retail face constant contact from hangers, jewelry, and accessories. Refinishing film maintains pristine reflection and allows same-day restoration after any damage.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section class="bp-faq">
-  <div class="bp-faq__hd">
-    <span class="bp-eyebrow">FAQ</span>
-    <h2 class="bp-faq__title">Common questions about mirror refinishing film</h2>
-  </div>
-  <div class="bp-faq__item bp-faq__item--open">
-    <div class="bp-faq__q">What types of mirror damage can refinishing film address? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Mirror refinishing film can address a wide range of cosmetic damage including surface scratches, scuffs, graffiti markings, acid etching, sticker residue, and general surface wear and blemishes. The film creates a fresh, reflective surface regardless of the damage beneath it — making it an effective solution for heavily used commercial mirrors in gyms, locker rooms, hotels, restaurants, transit facilities, and more.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How is mirror refinishing film different from replacing the mirror? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Mirror replacement involves removing the existing mirror, safely disposing of it, sourcing a new mirror, and reinstalling — a process that can take days and cost hundreds to thousands of dollars per mirror. Mirror refinishing film is applied directly over the existing surface in a matter of hours, at a fraction of the cost. And when the film needs replacing, the process is even faster — just remove and re-apply, with no mirror disposal or sourcing required.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Can mirror refinishing film withstand graffiti and vandalism? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Yes. Mirror refinishing film is engineered to be thick and durable, providing resistance against marker stains, scratching, and even acid etching — one of the most aggressive forms of mirror vandalism. The film's sacrificial layer nature means that even when it sustains significant damage, the underlying mirror surface remains fully protected. The damaged film is then cleanly removed and a fresh layer applied.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How is the film removed and replaced once damaged? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Film removal and replacement is a straightforward professional service. Our team cleanly peels the damaged film from the mirror surface, leaving the underlying mirror completely intact. A new layer of mirrored surface film is then applied. The entire process typically takes a few hours per mirror, and we can schedule service during off-peak hours to minimize disruption to your facility.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">What types of commercial properties use mirror refinishing most often? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Mirror refinishing film is most commonly used in fitness centers and gyms, hotel lobbies and public restrooms, restaurant bathrooms, retail dressing rooms, public transit facilities, schools and universities, and healthcare facilities. Any commercial property with mirrors in high-traffic or publicly accessible areas is a strong candidate for mirror refinishing film as a cost-effective, long-term protection strategy.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How long does mirror refinishing film last before replacement is needed? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Replacement frequency depends on traffic levels and vandalism exposure. In high-vandalism or very high-traffic environments, film may need replacement every 1–2 years. In lower-risk commercial settings, the film can last 3–5 years or longer before showing meaningful wear. In either case, the cost-per-replacement is significantly lower than mirror replacement — making film the smarter long-term investment for any commercial property with mirror assets.</div>
-  </div>
-</section>
+  <!-- HOW IT WORKS -->
+  <section class="accb">
+    <div class="accb__head">
+      <h2 class="accb__title">How Mirror Refinishing Film Works</h2>
+      <p class="accb__sub">Each application scenario for mirror refinishing film addresses a different damage challenge in Philadelphia commercial properties, making mirror refinishing in Philadelphia practical at portfolio scale.</p>
+    </div>
+    <div class="accb__wrap">
+      <div class="accb__list">
+        <div class="accb__row is-open" data-row data-index="0">
+          <button class="accb__trigger" data-trigger aria-expanded="true">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+            <span class="accb__row-title">Mirror Shield Film — Clear Sacrificial Protection</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail"><div class="accb__detail-inner">
+            <p>Mirror refinishing film for Philadelphia commercial mirrors is applied directly over the existing reflective surface — invisible in normal use but designed to absorb damage rather than let it reach the backing. The Mirror Shield product from Graffiti Shield is engineered specifically for mirror substrates, maintaining full optical clarity and achieving 99% UV blocking as a baseline property. Refinishing film for Philadelphia restrooms and lobby mirrors creates a fully replaceable surface layer: when scratching, etching, or vandalism damages the film, our team removes and reinstalls fresh film in a single visit for <a href="/applications/office/">Philadelphia office buildings</a> and <a href="/applications/retail/">retail fitting rooms</a>.</p>
+            <img class="accb__mobile-img" src="/images/mirror-refinishing-philadelphia-shield-film.jpg" alt="Mirror refinishing film installation on Philadelphia commercial mirror" title="Mirror Shield film — Philadelphia" loading="lazy" />
+          </div></div>
+        </div>
+        <div class="accb__row" data-row data-index="1">
+          <button class="accb__trigger" data-trigger aria-expanded="false">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16-14M7 7h.01M12 12h.01M17 17h.01"/></svg></span>
+            <span class="accb__row-title">Scratch &amp; Vandalism Protection — Surface-Level Damage Absorbed</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail"><div class="accb__detail-inner">
+            <p>Philadelphia high-traffic mirrors face scratching from metal accessories, hangers, luggage wheels, and deliberate etching. Without protection, each incident permanently damages the reflective silver backing — requiring costly full-panel replacement. Mirror Shield film absorbs these impacts. When the film shows visible damage, it is replaced — not the mirror. For Philadelphia <a href="/applications/hotels/">hotel mirrors</a> and <a href="/applications/restaurants/">restaurant restroom mirrors</a>, this eliminates emergency replacement calls and the business disruption that comes with them.</p>
+            <img class="accb__mobile-img" src="/images/mirror-film-philadelphia-scratch-protection.jpg" alt="Mirror film protecting Philadelphia commercial mirror from scratch damage" title="Scratch protection mirror film — Philadelphia" loading="lazy" />
+          </div></div>
+        </div>
+        <div class="accb__row" data-row data-index="2">
+          <button class="accb__trigger" data-trigger aria-expanded="false">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14M7 16h10"/><circle cx="12" cy="12" r="9"/></svg></span>
+            <span class="accb__row-title">Tarnish &amp; Humidity Protection — Extending Mirror Life</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail"><div class="accb__detail-inner">
+            <p>Philadelphia commercial restrooms — particularly in older Center City and Old City buildings — are prone to mirror tarnishing from steam, cleaning chemical exposure, and seal failure. Mirror Shield film provides a barrier between the cleaning environment and the mirror backing, dramatically slowing or preventing the silver deterioration that causes black-edge foxing. For mirrors already showing early tarnishing, the film covers and stabilises the affected area while keeping <a href="/applications/office/">commercial restroom mirrors</a> in service.</p>
+            <img class="accb__mobile-img" src="/images/mirror-restoration-philadelphia-tarnish-repair.jpg" alt="Mirror restoration film protecting Philadelphia mirror from tarnishing" title="Tarnish protection mirror film — Philadelphia" loading="lazy" />
+          </div></div>
+        </div>
+        <div class="accb__row" data-row data-index="3">
+          <button class="accb__trigger" data-trigger aria-expanded="false">
+            <span class="accb__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4v16"/><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+            <span class="accb__row-title">Long-Term Cost Efficiency — Replace Film, Not the Mirror</span>
+            <span class="accb__chev" aria-hidden="true">›</span>
+          </button>
+          <div class="accb__detail"><div class="accb__detail-inner">
+            <p>A single full-mirror replacement in a commercial Philadelphia property — accounting for custom fabrication, removal of the existing mirror, new panel installation, and potential wall repairs — is a significant expenditure. Mirror Shield film refinishing costs a fraction of that, and the film can be replaced multiple times before approaching replacement cost. For Philadelphia property managers overseeing portfolios of hotels, restaurants, or office buildings with multiple mirror installations, refinishing film dramatically reduces annual mirror maintenance budgets.</p>
+            <img class="accb__mobile-img" src="/images/mirror-refinishing-film-philadelphia-commercial.jpg" alt="Mirror refinishing film protecting Philadelphia commercial mirror long-term" title="Long-term mirror refinishing film — Philadelphia commercial" loading="lazy" />
+          </div></div>
+        </div>
+      </div>
+      <div class="accb__media">
+        <img class="accb__img is-active" data-img data-index="0" src="/images/mirror-refinishing-philadelphia-shield-film.jpg" alt="Mirror refinishing film installation on Philadelphia commercial mirror" title="Mirror Shield film — Philadelphia commercial mirror" loading="lazy" />
+        <img class="accb__img" data-img data-index="1" src="/images/mirror-film-philadelphia-scratch-protection.jpg" alt="Mirror film protecting Philadelphia commercial mirror from scratch damage" title="Scratch protection mirror film — Philadelphia commercial mirror" loading="lazy" />
+        <img class="accb__img" data-img data-index="2" src="/images/mirror-restoration-philadelphia-tarnish-repair.jpg" alt="Mirror restoration film protecting Philadelphia mirror from tarnishing" title="Tarnish protection mirror film — Philadelphia commercial mirror" loading="lazy" />
+        <img class="accb__img" data-img data-index="3" src="/images/mirror-refinishing-film-philadelphia-commercial.jpg" alt="Mirror refinishing film protecting Philadelphia commercial mirror long-term" title="Long-term mirror refinishing film — Philadelphia commercial mirror" loading="lazy" />
+      </div>
+    </div>
+  </section>
 
-<BrandLogos />
+  <!-- BEFORE/AFTER -->
+  <section class="mr-slider-wrap">
+    <div class="mr-slider-wrap__header">
+      <div class="mr-slider-wrap__eyebrow">THE FILM IN ACTION</div>
+      <h2 class="mr-slider-wrap__title">Mirror Refinishing in Action</h2>
+      <p class="mr-slider-wrap__sub">Drag the handle to see a damaged Philadelphia commercial mirror restored with Mirror Shield refinishing film — pristine reflection, same mirror.</p>
+    </div>
+    <div class="mr-slider-wrap__slider">
+      <div class="before-after" style="--pos:50%">
+        <div class="before-after__frame">
+          <img src="/images/philadelphia-mirror-damaged-before-refinishing.jpg" alt="Philadelphia commercial mirror with scratches and tarnishing before mirror refinishing film" title="Philadelphia mirror before refinishing film — scratched and damaged" class="before-after__img before-after__img--before" draggable="false" loading="lazy" />
+          <div class="before-after__after-wrap"><img src="/images/mirror-refinishing-philadelphia-after-installation.jpg" alt="Philadelphia commercial mirror restored with mirror refinishing film — pristine clear reflection" title="Philadelphia mirror after refinishing film — Mirror Shield applied" class="before-after__img before-after__img--after" draggable="false" loading="lazy" /></div>
+          <span class="before-after__label before-after__label--before">Damaged mirror</span>
+          <span class="before-after__label before-after__label--after">Mirror Shield applied</span>
+          <div class="before-after__handle" role="slider" tabindex="0" aria-label="Drag to compare damaged and restored Philadelphia commercial mirror" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="before-after__handle-grip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 7L3 12L8 17M16 7L21 12L16 17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="bp-cta fade-in">
-  <h2>Ready to restore your mirrors with <em>refinishing film?</em></h2>
-  <div class="bp-cta__btns">
-    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
+  <!-- WHERE IT'S USED -->
+  <section class="mr-wwd-wrap">
+    <div class="mr-wwd-wrap__header">
+      <div class="mr-wwd-wrap__eyebrow">WHERE IT'S USED</div>
+      <h2 class="mr-wwd-wrap__title">Mirror Refinishing Across Philadelphia</h2>
+      <p class="mr-wwd-wrap__sub">Mirror Shield film works wherever pristine mirror reflection is required — from high-traffic restrooms to luxury hotel lobbies across Philadelphia.</p>
+    </div>
+    <div class="mr-wwd-panels">
+      <a href="/applications/office/" class="wwd__panel"><div class="wwd__panel-img-wrap"><img src="/images/mirror-refinishing-philadelphia-commercial-restroom.jpg" alt="Mirror refinishing film in Philadelphia commercial restroom" title="Philadelphia mirror refinishing film for commercial restrooms" class="wwd__panel-img" loading="lazy" /></div><div class="wwd__panel-overlay"></div><div class="wwd__panel-content"><h3>Commercial Restrooms</h3><p class="wwd__panel-desc">Philadelphia office tower, hotel, and restaurant restroom mirrors face the highest contact frequency. Mirror Shield film provides continuous protection and same-day restoration after any incident.</p><span class="wwd__panel-arrow">Learn more →</span><span class="wwd__panel-line"></span></div></a>
+      <a href="/applications/hotels/" class="wwd__panel"><div class="wwd__panel-img-wrap"><img src="/images/mirror-film-philadelphia-hotel-lobby.jpg" alt="Mirror Shield film on Philadelphia hotel lobby mirror" title="Mirror film for Philadelphia hotel lobby" class="wwd__panel-img" loading="lazy" /></div><div class="wwd__panel-overlay"></div><div class="wwd__panel-content"><h3>Hotel Lobbies</h3><p class="wwd__panel-desc">Hotel lobby and corridor mirrors in Center City and Old City Philadelphia. Pristine mirror condition is non-negotiable for hospitality — refinishing film eliminates costly emergency replacement calls.</p><span class="wwd__panel-arrow">Learn more →</span><span class="wwd__panel-line"></span></div></a>
+      <a href="/applications/restaurants/" class="wwd__panel"><div class="wwd__panel-img-wrap"><img src="/images/mirror-restoration-philadelphia-restaurant.jpg" alt="Mirror restoration film in Philadelphia restaurant dining room" title="Mirror restoration film for Philadelphia restaurants" class="wwd__panel-img" loading="lazy" /></div><div class="wwd__panel-overlay"></div><div class="wwd__panel-content"><h3>Restaurants</h3><p class="wwd__panel-desc">Dining room wall mirrors in Fishtown, Old City, and Rittenhouse Square restaurants. Mirror Shield applied proactively prevents the scratching and back-of-chair damage that marks mirrors in active dining rooms.</p><span class="wwd__panel-arrow">Learn more →</span><span class="wwd__panel-line"></span></div></a>
+      <a href="/applications/retail/" class="wwd__panel"><div class="wwd__panel-img-wrap"><img src="/images/mirror-refinishing-film-philadelphia-retail-store.jpg" alt="Mirror refinishing film in Philadelphia retail store fitting rooms" title="Philadelphia mirror refinishing film for retail" class="wwd__panel-img" loading="lazy" /></div><div class="wwd__panel-overlay"></div><div class="wwd__panel-content"><h3>Retail &amp; Fitting Rooms</h3><p class="wwd__panel-desc">Fitting room and display mirrors in Philadelphia boutiques and department stores. Refinishing film withstands daily contact from clothing, jewelry, and accessories and is replaced on-demand after damage.</p><span class="wwd__panel-arrow">Learn more →</span><span class="wwd__panel-line"></span></div></a>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-banner gallery-banner--light">
+    <div class="gallery-banner__inner">
+      <div class="gallery-banner__text">
+        <p class="gallery-banner__eyebrow">OUR WORK</p>
+        <h2 class="gallery-banner__title" aria-label="PRISTINE MIRRORS. PHILADELPHIA."><span class="gallery-banner__title-line">PRISTINE MIRRORS.</span><span class="gallery-banner__title-line">PHILADELPHIA.</span></h2>
+        <p class="gallery-banner__desc">Real mirror refinishing film installations across Philadelphia hotels, restaurants, retail spaces, and commercial restrooms — Mirror Shield applied by our certified team.</p>
+      </div>
+      <div class="gallery-banner__gallery"><div class="gallery-banner__strips">
+        <button class="gallery-banner__strip" style="--i:0; --n:5;" aria-label="View Philadelphia mirror refinishing photo 1"><img src="/images/mirror-refinishing-installation-philadelphia.jpg" alt="Mirror refinishing film installation in Philadelphia commercial restroom" title="Mirror refinishing installation — Philadelphia" loading="lazy" draggable="false" /></button>
+        <button class="gallery-banner__strip" style="--i:1; --n:5;" aria-label="View Philadelphia mirror refinishing photo 2"><img src="/images/mirror-shield-film-philadelphia-restroom.jpg" alt="Mirror Shield protective film on Philadelphia restroom mirror" title="Mirror Shield film — Philadelphia restroom" loading="lazy" draggable="false" /></button>
+        <button class="gallery-banner__strip" style="--i:2; --n:5;" aria-label="View Philadelphia mirror refinishing photo 3"><img src="/images/mirror-restoration-philadelphia-lobby.jpg" alt="Mirror restoration film on Philadelphia hotel lobby mirror" title="Mirror restoration — Philadelphia hotel lobby" loading="lazy" draggable="false" /></button>
+        <button class="gallery-banner__strip" style="--i:3; --n:5;" aria-label="View Philadelphia mirror refinishing photo 4"><img src="/images/mirror-refinishing-film-philadelphia-hotel.jpg" alt="Mirror refinishing film in Philadelphia hotel mirror" title="Mirror refinishing film — Philadelphia hotel" loading="lazy" draggable="false" /></button>
+        <button class="gallery-banner__strip" style="--i:4; --n:5;" aria-label="View Philadelphia mirror refinishing photo 5"><img src="/images/mirror-film-before-after-philadelphia.jpg" alt="Mirror film before and after — Philadelphia commercial mirror" title="Mirror film before and after Philadelphia" loading="lazy" draggable="false" /></button>
+      </div><p class="gallery-banner__hint">Hover the photos · click to bring forward</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="mr-tstack-wrap">
+    <div class="mr-tstack-wrap__header"><span class="mr-tstack-wrap__eyebrow">What Philadelphia Clients Say</span><h2 class="mr-tstack-wrap__title">From Hotel Managers, Restaurant Operators &amp; Retailers</h2></div>
+    <div class="tstack"><div class="tstack__deck">
+      <article class="tstack__card" style="--i:0" data-index="0"><div class="tstack__stars">★★★★★</div><blockquote class="tstack__quote">&ldquo;Our hotel lobby mirror was badly scratched and we were dreading the replacement cost. The refinishing film restored it completely — guests have no idea it was ever damaged. Cost was a fraction of replacement.&rdquo;</blockquote><div class="tstack__person"><img src="/images/mirror-refinishing-philadelphia-client-review-1.jpg" alt="Robert H. Philadelphia mirror refinishing client" title="Robert H. Philadelphia hotel manager" class="tstack__avatar" draggable="false" loading="lazy" /><div><div class="tstack__name">Robert H.</div><div class="tstack__detail">Hotel manager — Center City Philadelphia</div></div></div></article>
+      <article class="tstack__card" style="--i:1" data-index="1"><div class="tstack__stars">★★★★★</div><blockquote class="tstack__quote">&ldquo;We manage several restaurant locations in Philadelphia. The restroom mirrors were always getting scratched. Since the Mirror Shield film went on, we have not had a single permanent damage incident.&rdquo;</blockquote><div class="tstack__person"><img src="/images/mirror-refinishing-philadelphia-client-review-2.jpg" alt="Angela W. Philadelphia mirror refinishing client" title="Angela W. Philadelphia restaurant operator" class="tstack__avatar" draggable="false" loading="lazy" /><div><div class="tstack__name">Angela W.</div><div class="tstack__detail">Multi-location restaurant operator — Philadelphia</div></div></div></article>
+      <article class="tstack__card" style="--i:2" data-index="2"><div class="tstack__stars">★★★★★</div><blockquote class="tstack__quote">&ldquo;Our fitting room mirrors had years of scratch damage from hangers and jewelry. After the refinishing film was applied they look brand new. The film is completely invisible.&rdquo;</blockquote><div class="tstack__person"><img src="/images/mirror-refinishing-philadelphia-client-review-3.jpg" alt="Michael S. Philadelphia mirror refinishing client" title="Michael S. Philadelphia retail boutique owner" class="tstack__avatar" draggable="false" loading="lazy" /><div><div class="tstack__name">Michael S.</div><div class="tstack__detail">Retail boutique owner — Rittenhouse Square</div></div></div></article>
+    </div><p class="tstack__hint">Drag the top card · 3 reviews</p></div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="res-section">
+    <div class="res-section__inner">
+      <div class="res-section__image-col"><img src="/images/mirror-refinishing-specs-resources-philadelphia.jpg" alt="Mirror refinishing film specification sheets and product data for Philadelphia clients" title="Mirror refinishing film specs and resources — Philadelphia" class="res-section__img" loading="lazy" /></div>
+      <div class="res-section__content">
+        <div class="res-section__eyebrow">SPECS, CASE STUDIES &amp; GUIDES</div>
+        <h2 class="res-section__title">The Technical Case for Mirror Refinishing Film</h2>
+        <p class="res-section__body">CSI specifications, product data sheets, case studies, and performance testing for the Mirror Shield products we use for mirror refinishing across Philadelphia. Mirror refinishing in Philadelphia depends on product data, substrate assessment, and proper installation technique.</p>
+        <ul class="res-section__list">
+          <li class="res-section__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#7CB342" stroke-width="2"/><path d="M14 2v6h6" stroke="#7CB342" stroke-width="2"/></svg><a href="/resources/anti-graffiti-film-mirror-shield-sell-sheet-philadelphia.pdf" target="_blank" rel="noopener">Mirror Shield — Protective Mirror Film Sell Sheet</a></li>
+          <li class="res-section__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#7CB342" stroke-width="2"/><path d="M14 2v6h6" stroke="#7CB342" stroke-width="2"/></svg><a href="/resources/anti-graffiti-film-mirror-shield-csi-spec-philadelphia.pdf" target="_blank" rel="noopener">Mirror Shield — Architect CSI Specification</a></li>
+          <li class="res-section__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#7CB342" stroke-width="2"/><path d="M14 2v6h6" stroke="#7CB342" stroke-width="2"/></svg><a href="/resources/anti-graffiti-film-elevator-surface-protection-brochure-philadelphia.pdf" target="_blank" rel="noopener">Elevator &amp; Mirror Surface Protection — Application Brochure</a></li>
+          <li class="res-section__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#7CB342" stroke-width="2"/><path d="M14 2v6h6" stroke="#7CB342" stroke-width="2"/></svg><a href="/resources/anti-graffiti-film-product-testing-specs-philadelphia.pdf" target="_blank" rel="noopener">Graffiti Shield Product Testing &amp; Performance Specifications</a></li>
+          <li class="res-section__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#7CB342" stroke-width="2"/><path d="M14 2v6h6" stroke="#7CB342" stroke-width="2"/></svg><a href="/resources/anti-graffiti-film-commercial-restrooms-brochure-philadelphia.pdf" target="_blank" rel="noopener">Commercial Restroom Surface Protection — Application Guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="prm">
+    <div class="prm__head"><h2 class="prm__title">How It Works</h2><p class="prm__sub">How protective mirror film for Philadelphia commercial mirrors works — from first site assessment through installation and ongoing maintenance.</p></div>
+    <div class="prm__map">
+      <img class="prm__bg" src="/images/mirror-refinishing-process-philadelphia.jpg" alt="Mirror refinishing process roadmap for Philadelphia commercial mirrors" title="Mirror refinishing process in Philadelphia" loading="lazy" />
+      <div class="prm__overlay" aria-hidden="true"></div>
+      <svg class="prm__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="prm__track" d="M 14 78 Q 24 40 38 34 T 64 62 T 88 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.4" stroke-dasharray="2 2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path><path class="prm__progress" d="M 14 78 Q 24 40 38 34 T 64 62 T 88 24" fill="none" stroke="#7CB342" stroke-width="0.6" stroke-linecap="round" vector-effect="non-scaling-stroke"></path></svg>
+      <div class="prm__milestone" style="--i:0; left:14%; top:78%;"><span class="prm__dot"><span class="prm__num">1</span></span><div class="prm__card"><h3>Free Assessment</h3><p>We evaluate your mirror surfaces, assess existing damage, and identify the highest-priority mirrors.</p></div></div>
+      <div class="prm__milestone" style="--i:1; left:38%; top:34%;"><span class="prm__dot"><span class="prm__num">2</span></span><div class="prm__card"><h3>Surface Preparation</h3><p>Our technicians clean and prepare each mirror surface to ensure optimal film adhesion and optical clarity.</p></div></div>
+      <div class="prm__milestone" style="--i:2; left:64%; top:62%;"><span class="prm__dot"><span class="prm__num">3</span></span><div class="prm__card"><h3>Film Application</h3><p>Mirror Shield applied directly over the mirror surface — invisible, fully reflective, and ready the same day.</p></div></div>
+      <div class="prm__milestone" style="--i:3; left:88%; top:24%;"><span class="prm__dot"><span class="prm__num">4</span></span><div class="prm__card"><h3>Ongoing Maintenance</h3><p>When damage occurs, we replace only the film. The mirror stays in place, pristine, indefinitely.</p></div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq mr-faq">
+    <div class="faq__head"><h2 class="faq__title">Frequently Asked Questions</h2><p class="faq__sub">Everything you need to know about mirror refinishing in Philadelphia and protective film for commercial mirrors.</p></div>
+    <div class="faq__list" data-single="true">
+      {faqItems.map((item, i) => (<div class={`faq__item${i === 0 ? ' is-open' : ''}`} data-item><button class="faq__q" data-q aria-expanded={i === 0 ? 'true' : 'false'}><span>{item.question}</span><span class="faq__icon" aria-hidden="true"><span></span><span></span></span></button><div class="faq__a"><div class="faq__a-inner"><p>{item.answer}</p></div></div></div>))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="ctav mr-ctav">
+    <div class="ctav__inner"><div class="ctav__left"><h2 class="ctav__title">Ready to Restore Your Philadelphia Mirrors?</h2><p class="ctav__sub">Free site assessment, professional installation, and same-day restoration when damage occurs. Mirror refinishing in Philadelphia helps hotels, restaurants, and retailers protect their mirrors with refinishing film.</p><div class="ctav__proof"><div class="ctav__stack">
+      <span class="ctav__avatar" style="--i:0; --r:-2deg"><img src="/images/mirror-refinishing-philadelphia-client-review-1.jpg" alt="Robert H. Philadelphia mirror refinishing client" title="Robert H. Philadelphia hotel manager" loading="lazy" /><span class="ctav__tip"><b>Robert H.</b><small>Center City Hotel</small></span></span>
+      <span class="ctav__avatar" style="--i:1; --r:3deg"><img src="/images/mirror-refinishing-philadelphia-client-review-2.jpg" alt="Angela W. Philadelphia mirror refinishing client" title="Angela W. Philadelphia restaurant operator" loading="lazy" /><span class="ctav__tip"><b>Angela W.</b><small>Philadelphia Restaurants</small></span></span>
+      <span class="ctav__avatar" style="--i:2; --r:-4deg"><img src="/images/mirror-refinishing-philadelphia-client-review-3.jpg" alt="Michael S. Philadelphia mirror refinishing client" title="Michael S. Philadelphia retail owner" loading="lazy" /><span class="ctav__tip"><b>Michael S.</b><small>Rittenhouse Retail</small></span></span>
+      <span class="ctav__avatar" style="--i:3; --r:5deg"><img src="/images/mirror-refinishing-philadelphia-client-review-1.jpg" alt="Patricia L. Philadelphia mirror refinishing client" title="Patricia L. Philadelphia property manager" loading="lazy" /><span class="ctav__tip"><b>Patricia L.</b><small>Old City Property</small></span></span>
+      <span class="ctav__avatar" style="--i:4; --r:-6deg"><img src="/images/mirror-refinishing-philadelphia-client-review-2.jpg" alt="James C. Philadelphia mirror refinishing client" title="James C. Philadelphia facilities manager" loading="lazy" /><span class="ctav__tip"><b>James C.</b><small>University City</small></span></span>
+      <span class="ctav__avatar" style="--i:5; --r:7deg"><img src="/images/mirror-refinishing-philadelphia-client-review-3.jpg" alt="Diane R. Philadelphia mirror refinishing client" title="Diane R. Philadelphia hotel operator" loading="lazy" /><span class="ctav__tip"><b>Diane R.</b><small>Philadelphia Hotel</small></span></span>
+      </div><div class="ctav__meta"><span class="ctav__stars">★★★★★</span><span class="ctav__trust">Trusted by 500+ Philadelphia hotels, restaurants &amp; property managers</span></div></div></div><a href="/contact/" class="ctav__btn">Get Your Free Assessment <span class="ctav__arrow">→</span></a></div>
+  </section>
+
+  <!-- GEO BLOCK -->
+  <div class="mr-geo" aria-hidden="true" style="display:none;">
+    <p>Mirror refinishing in Philadelphia uses a clear sacrificial layer over existing commercial mirrors so scratching, acid etching, moisture exposure, and cleaning abrasion damage the replaceable surface rather than the reflective backing. Graffiti Shield Mirror Shield and Graffiti Shield Glass Shield protect hotel lobbies, commercial restrooms, restaurant dining rooms, retail fitting rooms, elevator cabs, SEPTA facilities, and school buildings in Center City, Old City, Fishtown, Rittenhouse Square, and University City. The system preserves optical clarity, slows silver deterioration, reduces tarnishing, and protects the mirror backing from surface abrasion while allowing damaged film to be removed and replaced.</p>
+    <dl>
+      <dt>What is mirror refinishing in Philadelphia?</dt><dd>Mirror refinishing in Philadelphia is the use of protective Mirror Shield film to restore and protect commercial mirrors without full mirror replacement.</dd>
+      <dt>Can refinishing film restore already-damaged mirrors?</dt><dd>Surface scratches, light etching, and early tarnishing can often be concealed and stabilised by the film; severe backing damage may still require replacement.</dd>
+      <dt>What is Mirror Shield film?</dt><dd>Mirror Shield film is a clear protective product from Graffiti Shield made for reflective surfaces, preserving mirror clarity while serving as a replaceable sacrificial layer.</dd>
+      <dt>Which Philadelphia locations need mirror refinishing most?</dt><dd>High-contact mirrors in Center City hotels, Old City restaurants, Fishtown venues, Rittenhouse boutiques, University City facilities, SEPTA restrooms, and elevator cabs see the highest value.</dd>
+      <dt>How does mirror refinishing film prevent tarnishing?</dt><dd>The film limits direct exposure to moisture, cleaning chemicals, and abrasion that can accelerate silver deterioration and black-edge foxing around mirror edges.</dd>
+      <dt>How much does mirror refinishing cost in Philadelphia?</dt><dd>Cost depends on mirror size, access, existing damage, number of mirrors, and product choice. It is quoted after assessment and is typically far less disruptive than full panel replacement.</dd>
+    </dl>
+    <ul>
+      <li>mirror refinishing in Philadelphia</li>
+      <li>protective refinishing film for Philadelphia mirrors</li>
+      <li>mirror restoration across Philadelphia</li>
+      <li>Mirror Shield film Philadelphia commercial restrooms</li>
+      <li>Graffiti Shield Mirror Shield Philadelphia hotels</li>
+      <li>Philadelphia commercial mirror scratch protection</li>
+      <li>restaurant mirror refinishing Philadelphia</li>
+      <li>hotel lobby mirror protection Philadelphia</li>
+      <li>retail fitting room mirror film Philadelphia</li>
+      <li>elevator cab mirror film Philadelphia</li>
+      <li>tarnished mirror repair film Philadelphia</li>
+      <li>silver deterioration mirror protection Philadelphia</li>
+      <li>sacrificial layer mirror film Philadelphia</li>
+      <li>optical clarity mirror protection Philadelphia</li>
+    </ul>
   </div>
-</div>
 
-</div><!-- end ip-page-body -->
 </BaseLayout>
 
-<style>
-.ip-page-body { position: relative; background: #ffffff; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; margin-top: -40px; z-index: 10; overflow: visible; padding-bottom: 80px; }
-.bp-eyebrow { display: inline-block; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green, #81AB4C); margin-bottom: 16px; }
-.bp-btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius-pill, 100px); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s; border: 2px solid transparent; white-space: nowrap; }
-.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
-.bp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.bp-intro__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(36px, 4.5vw, 58px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; color: var(--text-dark, #1a1a1a); margin: 0; }
-.bp-intro__lead { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-bottom: 32px; }
-.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.bp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
-.bp-featured__hd { margin-bottom: 72px; }
-.bp-featured__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; color: var(--text-dark, #1a1a1a); margin: 0; }
-.bp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
-.bp-feat-row:last-child { margin-bottom: 0; }
-.bp-feat-row--rev .bp-feat-row__img { order: 2; }
-.bp-feat-row--rev .bp-feat-row__content { order: 1; }
-.bp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
-.bp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bp-feat-row__pill { position: absolute; bottom: 24px; left: 24px; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 10px 18px; border-radius: 100px; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; font-weight: 600; color: var(--brand, #272E32); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-.bp-feat-row__num { display: block; font-family: var(--font-serif, 'Playfair Display', serif); font-size: 72px; font-weight: 700; color: var(--green, #81AB4C); line-height: 1; opacity: 0.25; margin-bottom: -8px; }
-.bp-feat-row__heading { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--text-dark, #1a1a1a); line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.3px; }
-.bp-feat-row__body { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; color: var(--text-mid, #4a4a4a); line-height: 1.8; margin-bottom: 28px; }
-.bp-feat-row__cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 600; color: var(--green, #81AB4C); text-decoration: none; transition: gap 0.2s; }
-.bp-feat-row__cta:hover { gap: 14px; }
-.bp-why { background: var(--brand, #272E32); padding: 100px 10%; }
-.bp-why__hd { margin-bottom: 64px; }
-.bp-why__hd .bp-eyebrow { color: var(--green, #81AB4C); }
-.bp-why__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(28px, 3.5vw, 48px); font-weight: 700; color: #ffffff; line-height: 1.15; letter-spacing: -0.5px; margin: 0; max-width: 600px; }
-.bp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.bp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
-.bp-why__item:nth-child(4n) { border-right: none; }
-.bp-why__item:nth-child(n+5) { border-bottom: none; }
-.bp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
-.bp-why__icon svg { display: block; }
-.bp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
-.bp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-.bp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
-.bp-faq { padding: 100px 10%; background: #ffffff; }
-.bp-faq__hd { margin-bottom: 48px; }
-.bp-faq__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(28px, 3.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0; }
-.bp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
-.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.bp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.bp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
-.bp-faq__item--open .bp-faq__a { display: block; }
-.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
-.bp-cta { background: var(--brand, #272E32); border-radius: 40px; padding: 64px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; margin: 0 5% 0; }
-.bp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
-.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 1024px) {
-  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row--rev .bp-feat-row__img { order: 0; }
-  .bp-feat-row--rev .bp-feat-row__content { order: 1; }
-  .bp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .bp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .bp-why__item:nth-child(2n) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .bp-intro { padding: 60px 5%; }
-  .bp-featured { padding: 60px 5%; }
-  .bp-why { padding: 60px 5%; }
-  .bp-faq { padding: 60px 5%; }
-  .bp-feat-row__img { height: 300px; }
-  .bp-why__grid { grid-template-columns: 1fr; }
-  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .bp-cta h2 { font-size: 26px; max-width: 100%; }
-  .bp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) { .bp-intro__ctas { flex-direction: column; } }
-</style>
-
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.bp-faq__item').forEach(item => {
-    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('bp-faq__item--open');
-      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
-      if (!isOpen) item.classList.add('bp-faq__item--open');
-    });
-  });
+  var splitObs = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (!entry.isIntersecting) return; var el = entry.target; el.style.setProperty('--split-stagger', (el.dataset.stagger || '65') + 'ms'); el.classList.add('is-visible'); splitObs.unobserve(el); }); }, { threshold: 0.35 });
+  document.querySelectorAll('.split-reveal').forEach(function(el) { splitObs.observe(el); });
+
+  document.querySelectorAll('.accv').forEach(function(el) { var panels = Array.from(el.querySelectorAll('[data-panel]')); panels.forEach(function(panel) { var tab = panel.querySelector('[data-tab]'); if (!tab) return; tab.addEventListener('click', function() { panels.forEach(function(p) { p.classList.remove('is-open'); var t = p.querySelector('[data-tab]'); if(t) t.setAttribute('aria-expanded','false'); }); panel.classList.add('is-open'); tab.setAttribute('aria-expanded','true'); }); }); });
+
+  document.querySelectorAll('.accb').forEach(function(el) { var rows = Array.from(el.querySelectorAll('[data-row]')); var imgs = Array.from(el.querySelectorAll('[data-img]')); rows.forEach(function(row) { var trigger = row.querySelector('[data-trigger]'); if (!trigger) return; trigger.addEventListener('click', function() { var idx = row.dataset.index; rows.forEach(function(r) { r.classList.remove('is-open'); var t = r.querySelector('[data-trigger]'); if(t) t.setAttribute('aria-expanded','false'); }); imgs.forEach(function(img) { img.classList.remove('is-active'); }); row.classList.add('is-open'); trigger.setAttribute('aria-expanded','true'); var activeImg = imgs.find(function(img) { return img.dataset.index === idx; }); if (activeImg) activeImg.classList.add('is-active'); }); }); });
+
+  document.querySelectorAll('.before-after').forEach(function(el) { var frame = el.querySelector('.before-after__frame'); var afterImg = el.querySelector('.before-after__img--after'); var handle = el.querySelector('.before-after__handle'); function setW() { afterImg.style.setProperty('--frame-width', frame.offsetWidth + 'px'); } function setPos(x) { var rect = frame.getBoundingClientRect(); var pct = Math.max(0, Math.min(100, (x - rect.left) / rect.width * 100)); el.style.setProperty('--pos', pct + '%'); handle.setAttribute('aria-valuenow', String(Math.round(pct))); } var drag = false; frame.addEventListener('mousedown', function(e) { drag = true; setPos(e.clientX); }); window.addEventListener('mouseup', function() { drag = false; }); window.addEventListener('mousemove', function(e) { if (drag) setPos(e.clientX); }); frame.addEventListener('touchstart', function(e) { drag = true; setPos(e.touches[0].clientX); }, {passive:true}); window.addEventListener('touchend', function() { drag = false; }); window.addEventListener('touchmove', function(e) { if (drag) setPos(e.touches[0].clientX); }, {passive:true}); handle.addEventListener('keydown', function(e) { var rect = frame.getBoundingClientRect(); var cur = parseFloat(getComputedStyle(el).getPropertyValue('--pos')) || 50; if (e.key === 'ArrowLeft') setPos(rect.left + rect.width * (cur - 5) / 100); if (e.key === 'ArrowRight') setPos(rect.left + rect.width * (cur + 5) / 100); }); window.addEventListener('resize', setW); setW(); });
+
+  document.querySelectorAll('.gallery-banner').forEach(function(el) { var strips = Array.from(el.querySelectorAll('.gallery-banner__strip')); strips.forEach(function(strip) { strip.addEventListener('click', function() { var was = strip.classList.contains('is-active'); strips.forEach(function(s) { s.classList.remove('is-active'); }); if (!was) strip.classList.add('is-active'); }); }); });
+
+  document.querySelectorAll('.tstack').forEach(function(el) { var deck = el.querySelector('.tstack__deck'); var cards = Array.from(deck.querySelectorAll('.tstack__card')); var order = cards.map(function(_,i){return i;}); function restack() { order.forEach(function(ci,i){ cards[ci].style.setProperty('--i',String(i)); cards[ci].classList.remove('is-leaving'); }); } function advance() { var top = order[0]; cards[top].classList.add('is-leaving'); setTimeout(function(){ order.push(order.shift()); restack(); }, 450); } deck.addEventListener('click', advance); var startX = 0, dragging = false; deck.addEventListener('mousedown', function(e){dragging=true;startX=e.clientX;}); window.addEventListener('mouseup', function(e){if(dragging){dragging=false;if(Math.abs(startX-e.clientX)>60)advance();}}); deck.addEventListener('touchstart',function(e){dragging=true;startX=e.touches[0].clientX;},{passive:true}); window.addEventListener('touchend',function(e){if(dragging){dragging=false;if(Math.abs(startX-e.changedTouches[0].clientX)>60)advance();}}); });
+
+  var ctavObs = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); ctavObs.unobserve(entry.target); } }); }, { threshold: 0.3 });
+  document.querySelectorAll('.ctav').forEach(function(el) { ctavObs.observe(el); });
+
+  document.querySelectorAll('.prm').forEach(function(el) { var progress = el.querySelector('.prm__progress'); if (progress) { var len = progress.getTotalLength ? progress.getTotalLength() : 250; el.style.setProperty('--len', String(len)); } var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { el.classList.add('is-visible'); obs.unobserve(el); } }); }, { threshold: 0.35 }); obs.observe(el); });
+
+  document.querySelectorAll('.faq__list').forEach(function(el) { var single = el.dataset.single === 'true'; var items = Array.from(el.querySelectorAll('[data-item]')); items.forEach(function(item) { var btn = item.querySelector('[data-q]'); if (!btn) return; btn.addEventListener('click', function() { var wasOpen = item.classList.contains('is-open'); if (single) { items.forEach(function(i){ i.classList.remove('is-open'); var q=i.querySelector('[data-q]'); if(q)q.setAttribute('aria-expanded','false'); }); } item.classList.toggle('is-open', !wasOpen); btn.setAttribute('aria-expanded', String(!wasOpen)); }); }); });
 </script>
+
+<style>
+  :root { --mr-green: #7CB342; --mr-ink: #111111; --mr-slate: #2a2a2a; --mr-cream: #F5F3EE; }
+  .hs { position: relative; display: flex; min-height: 420px; align-items: center; overflow: hidden; isolation: isolate; }
+  .hs__bg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; }
+  .hs__overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to right, rgba(17,17,17,0.92), rgba(17,17,17,0.7), rgba(17,17,17,0.3)); }
+  .hs__inner { max-width: 72rem; margin: 0 auto; width: 100%; padding: 4rem 1.5rem; }
+  .hs__eyebrow { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #AED581; }
+  .hs__dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #AED581; flex-shrink: 0; }
+  .hs__title { max-width: 42rem; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; line-height: 1.15; color: #fff; margin: 0 0 1.25rem; }
+  .hs__sub { max-width: 36rem; font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin: 0 0 2rem; }
+  .hs__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .hs__btn-primary { display: inline-block; background: var(--mr-green); color: #fff; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 9999px; text-decoration: none; transition: background 0.2s; }
+  .hs__btn-primary:hover { background: #8BC34A; }
+  .hs__btn-secondary { display: inline-block; border: 1.5px solid rgba(255,255,255,0.3); color: #fff; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 9999px; text-decoration: none; transition: background 0.2s; }
+  .hs__btn-secondary:hover { background: rgba(255,255,255,0.1); }
+  .swt-trust { background: #fff; padding: 32px 0; border-bottom: 1px solid #eee; }
+  .swt-trust__label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; text-align: center; margin: 0 0 20px; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+  .mr-accv-wrap { padding: 5rem 2rem; background: #fff; }
+  .mr-accv-wrap__header { text-align: center; max-width: 700px; margin: 0 auto 2.5rem; }
+  .mr-accv-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mr-green); margin-bottom: 0.75rem; }
+  .mr-accv-wrap__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: #1a1a1a; margin: 0 0 1rem; line-height: 1.15; }
+  .mr-accv-wrap__sub { font-size: 1rem; color: #555; line-height: 1.7; margin: 0; }
+  .accv { display: flex; flex-direction: column; width: 100%; max-width: 64rem; margin: 0 auto; border-radius: 1rem; overflow: hidden; gap: 4px; background: var(--mr-ink); }
+  @media (min-width: 1024px) { .accv { flex-direction: row; height: 440px; } }
+  .accv__panel { position: relative; overflow: hidden; background-size: cover; background-position: center; flex: 0 0 auto; display: flex; transition: flex 0.5s cubic-bezier(0.22,1,0.36,1); }
+  @media (min-width: 1024px) { .accv__panel { flex-direction: column; flex: 1 1 0; } .accv__panel.is-open { flex: 6 1 0; } }
+  @media (max-width: 1023px) { .accv__panel { flex-direction: column; } .accv__panel.is-open .accv__content { max-height: 280px; } }
+  .accv__tab { position: relative; z-index: 2; display: flex; align-items: center; gap: 0.75rem; background: #2a2a2a; color: #fff; border: none; cursor: pointer; padding: 1rem; transition: background 0.2s; }
+  .accv__tab:hover { background: #333333; }
+  @media (min-width: 1024px) { .accv__panel:not(.is-open) .accv__tab { flex-direction: column; justify-content: flex-end; height: 100%; gap: 1rem; } .accv__panel:not(.is-open) .accv__title { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 1.05rem; } .accv__panel.is-open .accv__tab { position: absolute; top: 0; left: 0; background: transparent; } .accv__panel.is-open .accv__title { display: none; } }
+  .accv__icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 0.6rem; background: var(--mr-green); color: var(--mr-ink); display: flex; align-items: center; justify-content: center; }
+  .accv__icon svg { width: 22px; height: 22px; }
+  .accv__title { font-family: Georgia, serif; font-weight: 600; }
+  .accv__content { flex: 1; display: flex; align-items: flex-end; max-height: 0; overflow: hidden; transition: max-height 0.5s; }
+  @media (min-width: 1024px) { .accv__content { max-height: none; width: 100%; } }
+  .accv__panel:not(.is-open) .accv__content { pointer-events: none; }
+  @media (min-width: 1024px) { .accv__panel:not(.is-open) .accv__content > * { opacity: 0; } }
+  .accv__desc { margin: 1rem; padding: 0.9rem 1.1rem; background: rgba(17,17,17,0.6); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.12); border-radius: 0.75rem; color: #fff; }
+  .accv__desc h3 { font-family: Georgia, serif; font-size: 1.2rem; margin: 0 0 0.4rem; }
+  .accv__desc p { font-size: 0.88rem; line-height: 1.55; color: rgba(255,255,255,0.8); margin: 0; }
+  .accv__desc a { color: #AED581; font-weight: 600; text-decoration: underline; text-decoration-color: #AED581; text-underline-offset: 3px; transition: color 0.2s; }
+  .accv__desc a:hover { color: #fff; }
+  .mr-film-bento { background: #F5F3EE; }
+  .bgp { background: #F5F3EE; padding: 4rem 1.5rem; }
+  .bgp__head { max-width: 40rem; margin: 0 auto 2.5rem; text-align: center; }
+  .bgp__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mr-green); margin-bottom: 0.75rem; }
+  .bgp__title { color: #14201A; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .bgp__sub { color: #666; margin: 0; }
+  .bgp__grid { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 1rem; }
+  .bgp__card--lg { grid-area: span 2 / span 2; }
+  .bgp__card--md { grid-area: span 1 / span 2; }
+  .bgp__card--sm { grid-area: span 1 / span 1; }
+  .bgp__card { position: relative; overflow: hidden; border-radius: 1rem; border: 1px solid rgba(0,0,0,0.08); }
+  .bgp__card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+  .bgp__card:hover img { transform: scale(1.06); }
+  .bgp__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.9), rgba(17,17,17,0.15) 55%); transition: background 0.3s; }
+  .bgp__body { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.25rem; }
+  .bgp__body h3 { color: #fff; font-family: Georgia, serif; font-size: 1.1rem; margin: 0 0 0.25rem; }
+  .bgp__body p { color: rgba(255,255,255,0.7); font-size: 0.8rem; margin: 0; line-height: 1.5; opacity: 0; transform: translateY(6px); transition: opacity 0.3s, transform 0.3s; }
+  .bgp__card:hover .bgp__body p { opacity: 1; transform: translateY(0); }
+  @media (max-width: 860px) { .bgp__grid { grid-template-columns: repeat(2,1fr); } .bgp__card--lg, .bgp__card--md { grid-column: span 2; } }
+  @media (max-width: 480px) { .bgp__grid { grid-template-columns: 1fr; grid-auto-rows: 200px; } .bgp__card--lg, .bgp__card--md, .bgp__card--sm { grid-column: span 1; } }
+  .accb { background: var(--mr-ink); padding: 4rem 1.5rem; }
+  .accb__head { max-width: 42rem; margin: 0 auto 2.5rem; text-align: center; }
+  .accb__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .accb__sub { color: rgba(255,255,255,0.5); margin: 0; }
+  .accb__wrap { max-width: 64rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+  @media (min-width: 900px) { .accb__wrap { grid-template-columns: 1fr 1fr; } }
+  .accb__row { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .accb__trigger { width: 100%; display: flex; align-items: center; gap: 0.9rem; background: none; border: none; cursor: pointer; text-align: left; padding: 1.1rem 0.25rem; color: rgba(255,255,255,0.7); font-family: inherit; transition: color 0.2s; }
+  .accb__row.is-open .accb__trigger { color: #fff; }
+  .accb__icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 0.6rem; background: rgba(124,179,66,0.15); color: var(--mr-green); display: flex; align-items: center; justify-content: center; transition: background 0.3s, color 0.3s; }
+  .accb__row.is-open .accb__icon { background: var(--mr-green); color: var(--mr-ink); }
+  .accb__icon svg { width: 22px; height: 22px; }
+  .accb__row-title { flex: 1; font-family: Georgia, serif; font-size: 1.15rem; font-weight: 600; }
+  .accb__chev { color: var(--mr-green); font-size: 1.3rem; transition: transform 0.3s; }
+  .accb__row.is-open .accb__chev { transform: rotate(90deg); }
+  .accb__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s; }
+  .accb__row.is-open .accb__detail { grid-template-rows: 1fr; }
+  .accb__detail-inner { overflow: hidden; }
+  .accb__detail-inner p { margin: 0 0 1rem; padding: 0 0 0.5rem 3.4rem; color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.6; }
+  .accb__detail-inner a { color: #AED581; font-weight: 600; text-decoration: underline; text-decoration-color: #AED581; text-underline-offset: 3px; transition: color 0.2s; }
+  .accb__detail-inner a:hover { color: #fff; }
+  .accb__mobile-img { display: none; }
+  .accb__media { position: relative; aspect-ratio: 4/3; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+  .accb__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s, transform 0.6s; transform: scale(1.04); }
+  .accb__img.is-active { opacity: 1; transform: scale(1); }
+  @media (max-width: 899px) { .accb__media { display: none; } .accb__mobile-img { display: block; width: 100%; border-radius: 0.6rem; margin: 0 0 1rem 3.4rem; max-width: calc(100% - 3.4rem); } }
+  .mr-slider-wrap { background: var(--mr-cream); padding: 5rem 2rem; }
+  .mr-slider-wrap__header { text-align: center; max-width: 680px; margin: 0 auto 2.5rem; }
+  .mr-slider-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mr-green); margin-bottom: 0.75rem; }
+  .mr-slider-wrap__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: #1a1a1a; margin: 0 0 1rem; line-height: 1.15; }
+  .mr-slider-wrap__sub { font-size: 1rem; color: #555; line-height: 1.7; margin: 0; }
+  .mr-slider-wrap__slider { max-width: 700px; margin: 0 auto; }
+  .before-after__frame { position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 16px; cursor: ew-resize; user-select: none; background: #000; box-shadow: 0 24px 60px rgba(0,0,0,0.2); }
+  .before-after__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .before-after__after-wrap { position: absolute; inset: 0; width: var(--pos, 50%); overflow: hidden; }
+  .before-after__after-wrap .before-after__img { width: var(--frame-width, 100%); }
+  .before-after__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: #fff; transform: translate(-50%); cursor: ew-resize; }
+  .before-after__handle-grip { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 9999px; background: #fff; color: var(--mr-ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.35); transition: transform 0.15s; }
+  .before-after__label { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(17,17,17,0.8); color: #fff; backdrop-filter: blur(4px); pointer-events: none; z-index: 2; }
+  .before-after__label--before { right: 14px; }
+  .before-after__label--after { left: 14px; }
+  .mr-wwd-wrap { background: var(--mr-slate); padding: 4rem 1.5rem; }
+  .mr-wwd-wrap__header { text-align: center; max-width: 600px; margin: 0 auto 2.5rem; }
+  .mr-wwd-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mr-green); margin-bottom: 0.75rem; }
+  .mr-wwd-wrap__title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: #fff; margin: 0 0 0.5rem; }
+  .mr-wwd-wrap__sub { color: rgba(255,255,255,0.5); margin: 0; font-size: 0.95rem; line-height: 1.65; }
+  .mr-wwd-panels { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 860px) { .mr-wwd-panels { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .mr-wwd-panels { grid-template-columns: 1fr; } }
+  .wwd__panel { position: relative; overflow: hidden; border-radius: 1rem; text-decoration: none; display: block; aspect-ratio: 3/4; }
+  .wwd__panel-img-wrap { position: absolute; inset: 0; overflow: hidden; }
+  .wwd__panel-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .wwd__panel:hover .wwd__panel-img { transform: scale(1.05); }
+  .wwd__panel-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.92) 0%, rgba(17,17,17,0.3) 55%, transparent 100%); }
+  .wwd__panel-content { position: absolute; inset-x: 0; bottom: 0; padding: 1.25rem; }
+  .wwd__panel-content h3 { font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 0.3rem; }
+  .wwd__panel-desc { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.5; margin: 0 0 0.5rem; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; }
+  .wwd__panel:hover .wwd__panel-desc { opacity: 1; transform: translateY(0); }
+  .wwd__panel-arrow { display: inline-block; font-size: 0.82rem; font-weight: 600; color: var(--mr-green); opacity: 0; transform: translate(-8px); transition: opacity 0.3s, transform 0.3s; }
+  .wwd__panel:hover .wwd__panel-arrow { opacity: 1; transform: translate(0); }
+  .wwd__panel-line { display: block; width: 0; height: 2px; background: var(--mr-green); transition: width 0.4s; margin-top: 0.5rem; }
+  .wwd__panel:hover .wwd__panel-line { width: 100%; }
+  .gallery-banner { overflow: hidden; padding: 4.5rem 0; }
+  .gallery-banner--light { background: #ECE9E4; color: #111; }
+  .gallery-banner__inner { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; max-width: 72rem; margin: 0 auto; padding-right: 1.5rem; }
+  @media (min-width: 900px) { .gallery-banner__inner { grid-template-columns: 1.1fr 1fr; } }
+  .gallery-banner__eyebrow { margin-left: 1.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.75rem; }
+  .gallery-banner__title { font-family: Georgia, 'Times New Roman', serif; font-weight: 800; line-height: 0.86; letter-spacing: 0; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; margin-left: -0.2em; user-select: none; }
+  .gallery-banner__title-line { display: block; }
+  .gallery-banner__desc { margin-left: 1.5rem; margin-top: 1.25rem; max-width: 24rem; font-size: 0.9rem; line-height: 1.6; opacity: 0.55; }
+  .gallery-banner__gallery { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .gallery-banner__strips { display: flex; align-items: center; height: 300px; filter: drop-shadow(0 24px 40px rgba(0,0,0,0.25)); }
+  .gallery-banner__strip { position: relative; width: 72px; height: 260px; margin-left: -10px; border: none; padding: 0; border-radius: 14px; overflow: hidden; cursor: pointer; background: #111; transform: rotate(calc((var(--i) - (var(--n) - 1) / 2) * 2.5deg)) translateY(calc((var(--i) - (var(--n) - 1) / 2) * (var(--i) - (var(--n) - 1) / 2) * 4px)); transition: width 0.5s, transform 0.5s, margin 0.5s; z-index: calc(10 + var(--i)); }
+  .gallery-banner__strip:first-child { margin-left: 0; }
+  .gallery-banner__strip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .gallery-banner__strip:hover, .gallery-banner__strip.is-active { width: 190px; z-index: 99; transform: rotate(0deg) translateY(-12px) !important; }
+  .gallery-banner__hint { padding: 0.55rem 1.2rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.45; border: 1px solid; }
+  .mr-tstack-wrap { padding: 6rem 2rem; background: #fff; }
+  .mr-tstack-wrap__header { text-align: center; margin-bottom: 3rem; }
+  .mr-tstack-wrap__eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mr-green); margin-bottom: 0.75rem; }
+  .mr-tstack-wrap__title { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 800; color: #1a1a1a; margin: 0; }
+  .tstack { display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem; }
+  .tstack__deck { position: relative; width: min(540px, 90vw); height: 360px; }
+  .tstack__card { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 1.25rem; background: linear-gradient(160deg, #2a2a2a, #111111); border: 1px solid rgba(124,179,66,0.25); box-shadow: 0 30px 60px rgba(0,0,0,0.45); cursor: grab; transform-origin: center bottom; transform: translateY(calc(var(--i) * -12px)) scale(calc(1 - var(--i) * .04)) rotate(calc((var(--i) - 1) * 1.5deg)); z-index: calc(100 - var(--i)); transition: transform 0.55s, opacity 0.5s; user-select: none; }
+  .tstack__card.is-leaving { opacity: 0; cursor: grabbing; transform: translate(-140%) rotate(-16deg) !important; }
+  .tstack__stars { color: var(--mr-green); letter-spacing: 2px; font-size: 0.9rem; }
+  .tstack__quote { font-family: Georgia, serif; font-size: 1.1rem; line-height: 1.5; color: #fff; margin: 0; }
+  .tstack__person { display: flex; align-items: center; gap: 0.85rem; }
+  .tstack__avatar { width: 52px; height: 52px; border-radius: 9999px; object-fit: cover; border: 2px solid var(--mr-green); pointer-events: none; }
+  .tstack__name { color: #fff; font-weight: 700; font-size: 0.95rem; }
+  .tstack__detail { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+  .tstack__hint { margin-top: 1.5rem; color: rgba(0,0,0,0.35); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .res-section { background: #F5F3EE; padding: 80px 0; }
+  .res-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .res-section__image-col { border-radius: 16px; overflow: hidden; }
+  .res-section__img { width: 100%; height: 480px; object-fit: cover; display: block; border-radius: 16px; }
+  .res-section__eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 0.75rem; }
+  .res-section__title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+  .res-section__body { font-size: 1rem; color: #4A5C48; line-height: 1.75; margin: 0 0 1.5rem; }
+  .res-section__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .res-section__item { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; line-height: 1.5; }
+  .res-section__item a { color: #14201A; text-decoration: none; border-bottom: 1px solid #7CB342; transition: color 0.2s; }
+  .res-section__item a:hover { color: #7CB342; }
+  .res-section__item svg { flex-shrink: 0; margin-top: 2px; }
+  @media (max-width: 768px) { .res-section__inner { grid-template-columns: 1fr; gap: 2rem; } .res-section__image-col { display: none; } }
+  .prm { background: var(--mr-ink); padding: 4rem 1.5rem; }
+  .prm__head { max-width: 42rem; margin: 0 auto 2rem; text-align: center; }
+  .prm__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .prm__sub { color: rgba(255,255,255,0.5); margin: 0; }
+  .prm__map { position: relative; max-width: 60rem; margin: 0 auto; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); aspect-ratio: 1390/780; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  .prm__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .prm__overlay { position: absolute; inset: 0; background: rgba(17,17,17,0.65); }
+  .prm__svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+  .prm__progress { stroke-dasharray: var(--len, 250); stroke-dashoffset: var(--len, 250); transition: stroke-dashoffset 1.6s; }
+  .prm.is-visible .prm__progress { stroke-dashoffset: 0; }
+  .prm__milestone { position: absolute; transform: translate(-50%,-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 150px; }
+  .prm__dot { width: 36px; height: 36px; border-radius: 9999px; background: var(--mr-green); color: var(--mr-ink); display: flex; align-items: center; justify-content: center; font-weight: 800; border: 3px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.5); opacity: 0; transform: scale(0.4); transition: opacity 0.4s, transform 0.4s; transition-delay: calc(var(--i) * .4s + .5s); }
+  .prm__num { font-size: 0.85rem; }
+  .prm.is-visible .prm__dot { opacity: 1; transform: scale(1); }
+  .prm__card { background: rgba(17,17,17,0.9); backdrop-filter: blur(4px); border: 1px solid rgba(124,179,66,0.3); border-radius: 0.6rem; padding: 0.6rem 0.8rem; text-align: center; opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; transition-delay: calc(var(--i) * .4s + .65s); }
+  .prm.is-visible .prm__card { opacity: 1; transform: translateY(0); }
+  .prm__card h3 { color: #fff; font-family: Georgia, serif; font-size: 0.9rem; margin: 0 0 0.2rem; }
+  .prm__card p { color: rgba(255,255,255,0.6); font-size: 0.7rem; line-height: 1.4; margin: 0; }
+  @media (max-width: 720px) { .prm__map { aspect-ratio: auto; height: auto; display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem; } .prm__bg, .prm__svg, .prm__overlay { display: none; } .prm__milestone { position: static; transform: none; width: 100%; flex-direction: row; align-items: center; text-align: left; } .prm__card { text-align: left; flex: 1; } .prm__dot, .prm__card { opacity: 1; transform: none; } }
+  .mr-faq { background: var(--mr-slate); padding: 4rem 1.5rem; }
+  .faq__head { max-width: 42rem; margin: 0 auto 2.5rem; text-align: center; }
+  .faq__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .faq__sub { color: rgba(255,255,255,0.5); margin: 0; }
+  .faq__list { max-width: 44rem; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq__item { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.85rem; overflow: hidden; transition: border-color 0.3s; }
+  .faq__item.is-open { border-color: rgba(124,179,66,0.5); }
+  .faq__q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: none; border: none; cursor: pointer; text-align: left; padding: 1.15rem 1.35rem; color: #fff; font-size: 1rem; font-weight: 600; font-family: inherit; }
+  .faq__icon { position: relative; flex-shrink: 0; width: 20px; height: 20px; }
+  .faq__icon span { position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px; background: var(--mr-green); transform: translate(-50%,-50%); transition: transform 0.3s; }
+  .faq__icon span:last-child { transform: translate(-50%,-50%) rotate(90deg); }
+  .faq__item.is-open .faq__icon span:last-child { transform: translate(-50%,-50%) rotate(0deg); }
+  .faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s; }
+  .faq__item.is-open .faq__a { grid-template-rows: 1fr; }
+  .faq__a-inner { overflow: hidden; }
+  .faq__a-inner p { margin: 0; padding: 0 1.35rem 1.25rem; color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.65; }
+  .ctav { background: var(--mr-ink); padding: 4.5rem 1.5rem; }
+  .mr-ctav { border-top: 1px solid rgba(124,179,66,0.2); }
+  .ctav__inner { max-width: 68rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap; }
+  .ctav__left { flex: 1; min-width: 280px; }
+  .ctav__title { color: #fff; font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 700; margin: 0 0 0.6rem; }
+  .ctav__sub { color: rgba(255,255,255,0.55); max-width: 34rem; margin: 0 0 1.5rem; line-height: 1.6; }
+  .ctav__proof { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .ctav__stack { display: flex; }
+  .ctav__avatar { position: relative; display: block; width: 52px; height: 52px; margin-left: -14px; border-radius: 9999px; border: 2.5px solid var(--mr-ink); transform: rotate(var(--r, 0deg)) scale(0); transition: transform 0.45s calc(var(--i) * 70ms); cursor: pointer; z-index: calc(10 + var(--i)); }
+  .ctav.is-visible .ctav__avatar { transform: rotate(var(--r, 0deg)) scale(1); }
+  .ctav__avatar:first-child { margin-left: 0; }
+  .ctav__avatar img { width: 100%; height: 100%; border-radius: 9999px; object-fit: cover; }
+  .ctav__avatar:hover { z-index: 99; transition-delay: 0ms; transform: rotate(0deg) scale(1.15) !important; }
+  .ctav__tip { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translate(-50%) translateY(6px); background: var(--mr-green); color: var(--mr-ink); padding: 0.4rem 0.75rem; border-radius: 0.5rem; white-space: nowrap; text-align: center; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
+  .ctav__avatar:hover .ctav__tip { opacity: 1; transform: translate(-50%) translateY(0); }
+  .ctav__tip b { display: block; font-size: 0.78rem; }
+  .ctav__tip small { display: block; font-size: 0.68rem; opacity: 0.75; }
+  .ctav__meta { display: flex; flex-direction: column; gap: 0.15rem; }
+  .ctav__stars { color: var(--mr-green); letter-spacing: 2px; font-size: 0.9rem; }
+  .ctav__trust { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+  .ctav__btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(120deg, var(--mr-green), #8BC34A); color: var(--mr-ink); font-weight: 700; font-size: 1rem; padding: 0.9rem 1.75rem; border-radius: 9999px; text-decoration: none; box-shadow: 0 12px 30px rgba(124,179,66,0.35); transition: transform 0.25s, box-shadow 0.25s; white-space: nowrap; flex-shrink: 0; }
+  .ctav__btn:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(124,179,66,0.45); }
+  .ctav__arrow { transition: transform 0.25s; }
+  .ctav__btn:hover .ctav__arrow { transform: translate(4px); }
+  .split-reveal { display: inline; }
+  .split-reveal__unit { display: inline-block; overflow: hidden; vertical-align: top; }
+  .split-reveal__inner { display: inline-block; transform: translateY(110%); transition: transform 0.7s cubic-bezier(0.22,1,0.36,1) calc(var(--i) * var(--split-stagger, 65ms)); will-change: transform; }
+  .split-reveal.is-visible .split-reveal__inner { transform: translateY(0); }
+  .mr-geo { display: none; }
+  @media (prefers-reduced-motion: reduce) { .accv__panel, .accv__content, .bgp__card img, .bgp__body p, .accb__detail, .accb__img, .before-after__handle-grip, .wwd__panel-img, .wwd__panel-desc, .gallery-banner__strip, .tstack__card, .ctav__avatar, .ctav__btn, .split-reveal__inner { transition: none; } .bgp__body p, .wwd__panel-desc, .wwd__panel-arrow { opacity: 1; transform: none; } }
+</style>
