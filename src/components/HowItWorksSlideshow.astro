@@ -23,292 +23,272 @@ interface Props {
 
 const { slides, id = 'hiwSlideshow' } = Astro.props;
 const trackId = `${id}Track`;
-const prevId = `${id}Prev`;
-const nextId = `${id}Next`;
-const progressId = `${id}ProgressBar`;
+const progressId = `${id}Progress`;
 ---
 
-<section class="hiw-slideshow" id={id}>
-  <div class="hiw-slideshow__track" id={trackId}>
-    {slides.map((slide, i) => (
-      <div class={`hiw-slideshow__slide${i === 0 ? ' active' : ''}`} data-slide={String(i)}>
-        <img
-          src={slide.img}
-          alt={slide.imgAlt || slide.title}
-          class="hiw-slideshow__bg"
-          loading="lazy"
-        />
-        <div class="hiw-slideshow__overlay"></div>
-        <div class="hiw-slideshow__content">
-          <div class="hiw-slideshow__step">{slide.step}</div>
-          <h2 class="hiw-slideshow__title" set:html={slide.title.replace(/\n/g, '<br/>')} />
-          <p class="hiw-slideshow__desc">{slide.desc}</p>
-          {slide.faq && slide.faq.length > 0 && (
-            <div class="hiw-slideshow__faq">
-              {slide.faq.map(item => (
-                <div class="hiw-slideshow__faq-item">
-                  <button class="hiw-slideshow__faq-q" aria-expanded="false">
-                    {item.q}
-                    <span class="hiw-slideshow__faq-icon" aria-hidden="true">+</span>
-                  </button>
-                  <div class="hiw-slideshow__faq-a" hidden>{item.a}</div>
+<section class="hiw-section" id={id}>
+  <div class="hiw-container">
+    <div class="hiw-layout">
+
+      <!-- Left side nav -->
+      <nav class="hiw-nav" aria-label="How it works steps">
+        {slides.map((slide, i) => (
+          <button
+            class={`hiw-nav__item${i === 0 ? ' hiw-nav__item--active' : ''}`}
+            data-index={String(i)}
+            aria-label={`Step ${slide.step}: ${slide.navLabel || slide.title}`}
+          >
+            <span class="hiw-nav__line"></span>
+            <span class="hiw-nav__label">{slide.step} · {slide.navLabel || slide.title}</span>
+          </button>
+        ))}
+      </nav>
+
+      <!-- Viewport -->
+      <div class="hiw-viewport">
+        <div class="hiw-track" id={trackId}>
+          {slides.map((slide, i) => (
+            <div class={`hiw-slide${i === 0 ? ' hiw-slide--active' : ''}`} data-slide={String(i)}>
+              <div class="hiw-slide__grid">
+                <img
+                  src={slide.img}
+                  alt={slide.imgAlt || slide.title}
+                  class="hiw-slide__img"
+                  loading="lazy"
+                />
+                <div class="hiw-slide__panel">
+                  <span class="hiw-slide__step">{slide.step}</span>
+                  <h3 class="hiw-slide__title">{slide.title}</h3>
+                  <p class="hiw-slide__desc">{slide.desc}</p>
+                  {slide.faq && slide.faq.length > 0 && (
+                    <div class="hiw-slide__faq">
+                      {slide.faq.map(item => (
+                        <div class="hiw-slide__faq-item">
+                          <button class="hiw-slide__faq-q" aria-expanded="false">
+                            <span>{item.q}</span>
+                            <span class="hiw-slide__faq-icon" aria-hidden="true">+</span>
+                          </button>
+                          <div class="hiw-slide__faq-a" hidden>{item.a}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <a href={slide.ctaHref || '/contact/'} class="hiw-slide__cta">
+                    {slide.cta || 'Get a free quote'}
+                  </a>
                 </div>
-              ))}
+              </div>
             </div>
-          )}
-          <a href={slide.ctaHref || '/contact/'} class="hiw-slideshow__cta">
-            {slide.cta || 'Get started →'}
-          </a>
+          ))}
+        </div>
+
+        <!-- Progress bar -->
+        <div class="hiw-progress">
+          <div class="hiw-progress__bar" id={progressId}></div>
         </div>
       </div>
-    ))}
-  </div>
 
-  <nav class="hiw-slideshow__nav" aria-label="How it works steps">
-    {slides.map((slide, i) => (
-      <button
-        class={`hiw-slideshow__nav-item${i === 0 ? ' hiw-slideshow__nav-item--active' : ''}`}
-        data-hwnav={String(i)}
-        aria-label={`Step ${slide.step}: ${slide.navLabel || slide.title}`}
-      >
-        <span class="hiw-slideshow__nav-line"></span>
-        <span class="hiw-slideshow__nav-label">{slide.navLabel || slide.step}</span>
-      </button>
-    ))}
-  </nav>
-
-  <button class="hiw-slideshow__arrow hiw-slideshow__arrow--prev" id={prevId} aria-label="Previous step">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-  </button>
-  <button class="hiw-slideshow__arrow hiw-slideshow__arrow--next" id={nextId} aria-label="Next step">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-  </button>
-
-  <div class="hiw-slideshow__progress">
-    <div class="hiw-slideshow__progress-bar" id={progressId}></div>
+    </div>
   </div>
 </section>
 
 <style>
-  .hiw-slideshow {
-    position: relative;
-    width: 100%;
-    min-height: 90vh;
-    overflow: hidden;
+  .hiw-section {
     background: #14201A;
+    padding: 5rem 0;
   }
-  .hiw-slideshow__track {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+  .hiw-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
-  .hiw-slideshow__slide {
-    position: relative;
-    min-width: 100%;
-    min-height: 90vh;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
+  .hiw-layout {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 200px 1fr;
+    align-items: start;
   }
-  .hiw-slideshow__bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
+  @media (max-width: 900px) {
+    .hiw-layout { grid-template-columns: 1fr; }
+    .hiw-nav { display: flex; flex-direction: row; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; }
   }
-  .hiw-slideshow__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.25) 60%, transparent 100%);
-    z-index: 1;
-  }
-  .hiw-slideshow__content {
-    position: relative;
-    z-index: 2;
-    max-width: 560px;
-    padding-left: 80px;
-    color: #fff;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  }
-  .hiw-slideshow__slide.active .hiw-slideshow__content,
-  .hiw-slideshow__slide[data-slide="0"] .hiw-slideshow__content {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hiw-slideshow__step {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    color: #7CB342;
-    letter-spacing: 0.2em;
-    margin-bottom: 1rem;
-  }
-  .hiw-slideshow__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.1;
-    margin: 0 0 1.5rem;
-  }
-  .hiw-slideshow__desc {
-    font-size: 16px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.85);
-    max-width: 460px;
-    margin-bottom: 2rem;
-  }
-  .hiw-slideshow__faq {
+
+  /* Side nav */
+  .hiw-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 2rem;
+    gap: 0.25rem;
   }
-  .hiw-slideshow__faq-item { border-radius: 8px; overflow: hidden; }
-  .hiw-slideshow__faq-q {
-    width: 100%;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    color: rgba(255,255,255,0.88);
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 12px 16px;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .hiw-slideshow__faq-q:hover { background: rgba(255,255,255,0.18); }
-  .hiw-slideshow__faq-icon {
-    font-size: 1.2rem;
-    color: #7CB342;
-    flex-shrink: 0;
-    transition: transform 0.3s;
-  }
-  .hiw-slideshow__faq-q[aria-expanded="true"] .hiw-slideshow__faq-icon { transform: rotate(45deg); }
-  .hiw-slideshow__faq-a {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    color: rgba(255,255,255,0.70);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    padding: 12px 16px;
-    margin-top: -4px;
-  }
-  .hiw-slideshow__cta {
-    display: inline-block;
-    background: #7CB342;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 14px 32px;
-    border-radius: 9999px;
-    text-decoration: none;
-    transition: background 0.25s, transform 0.2s;
-  }
-  .hiw-slideshow__cta:hover { background: #2E6B30; transform: translateY(-2px); }
-  .hiw-slideshow__nav {
-    position: absolute;
-    top: 50%;
-    right: 48px;
-    transform: translateY(-50%);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .hiw-slideshow__nav-item {
+  .hiw-nav__item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
-    opacity: 0.35;
-    transition: opacity 0.3s;
+    text-align: left;
+    width: 100%;
   }
-  .hiw-slideshow__nav-item:hover { opacity: 0.65; }
-  .hiw-slideshow__nav-item--active { opacity: 1; }
-  .hiw-slideshow__nav-line {
+  .hiw-nav__line {
     display: block;
-    width: 3px;
-    height: 32px;
-    background: rgba(255,255,255,0.4);
+    width: 2px;
+    height: 2rem;
+    background: rgba(255,255,255,0.15);
     border-radius: 2px;
+    flex-shrink: 0;
     transition: background 0.3s, height 0.3s;
   }
-  .hiw-slideshow__nav-item--active .hiw-slideshow__nav-line { background: #7CB342; height: 48px; }
-  .hiw-slideshow__nav-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    white-space: nowrap;
+  .hiw-nav__item--active .hiw-nav__line {
+    background: #7CB342;
+    height: 3rem;
   }
-  .hiw-slideshow__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 48px;
-    height: 48px;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50%;
+  .hiw-nav__label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.3s;
+    line-height: 1.4;
+  }
+  .hiw-nav__item--active .hiw-nav__label {
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+  }
+  .hiw-nav__item:hover .hiw-nav__label { color: rgba(255,255,255,0.75); }
+
+  /* Viewport */
+  .hiw-viewport {
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  .hiw-track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  /* Slides */
+  .hiw-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+  }
+  .hiw-slide__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 640px) {
+    .hiw-slide__grid { grid-template-columns: 1fr; }
+    .hiw-slide__img { height: 220px; }
+  }
+  .hiw-slide__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 280px;
+  }
+  .hiw-slide__panel {
+    background: #0f1a10;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .hiw-slide__step {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: #7CB342;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .hiw-slide__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+  }
+  .hiw-slide__desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    margin: 0 0 1.25rem;
+  }
+  .hiw-slide__faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+  .hiw-slide__faq-item {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .hiw-slide__faq-q {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    padding: 0.75rem 1rem;
     color: #fff;
-    transition: background 0.3s, color 0.3s;
+    font-size: 0.85rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
   }
-  .hiw-slideshow__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
-  .hiw-slideshow__arrow--prev { left: 32px; }
-  .hiw-slideshow__arrow--next { right: 32px; }
-  .hiw-slideshow__progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: rgba(255,255,255,0.15);
-    z-index: 10;
+  .hiw-slide__faq-q:hover { background: rgba(255,255,255,0.1); }
+  .hiw-slide__faq-icon {
+    color: #7CB342;
+    flex-shrink: 0;
+    font-size: 1rem;
+    transition: transform 0.25s;
   }
-  .hiw-slideshow__progress-bar { height: 100%; background: #7CB342; width: 0; }
+  .hiw-slide__faq-q[aria-expanded="true"] .hiw-slide__faq-icon { transform: rotate(45deg); }
+  .hiw-slide__faq-a {
+    padding: 0.75rem 1rem;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+  }
+  .hiw-slide__cta {
+    display: inline-block;
+    background: #7CB342;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+    align-self: flex-start;
+  }
+  .hiw-slide__cta:hover { background: #2E6B30; transform: translateY(-1px); }
 
-  @media (max-width: 768px) {
-    .hiw-slideshow__content { padding-left: 24px; padding-right: 100px; }
-    .hiw-slideshow__nav { right: 16px; gap: 16px; }
+  /* Progress bar */
+  .hiw-progress {
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+  }
+  .hiw-progress__bar {
+    height: 100%;
+    background: #7CB342;
+    width: 0;
   }
 </style>
 
-<script define:vars={{ id, trackId, prevId, nextId, progressId }}>
+<script define:vars={{ id, trackId, progressId }}>
 (function () {
-  const track = document.getElementById(trackId);
   const section = document.getElementById(id);
-  if (!track || !section) return;
+  if (!section) return;
 
-  const slides = section.querySelectorAll('.hiw-slideshow__slide');
-  const navItems = section.querySelectorAll('.hiw-slideshow__nav-item');
-  const prevBtn = document.getElementById(prevId);
-  const nextBtn = document.getElementById(nextId);
+  const track = document.getElementById(trackId);
   const progressBar = document.getElementById(progressId);
+  const slides = section.querySelectorAll('.hiw-slide');
+  const navItems = section.querySelectorAll('.hiw-nav__item');
 
   let current = 0;
   const total = slides.length;
@@ -319,8 +299,8 @@ const progressId = `${id}ProgressBar`;
     if (index >= total) index = 0;
     current = index;
     track.style.transform = `translateX(-${current * 100}%)`;
-    slides.forEach((s, i) => s.classList.toggle('active', i === current));
-    navItems.forEach((n, i) => n.classList.toggle('hiw-slideshow__nav-item--active', i === current));
+    slides.forEach((s, i) => s.classList.toggle('hiw-slide--active', i === current));
+    navItems.forEach((n, i) => n.classList.toggle('hiw-nav__item--active', i === current));
     resetProgress();
     resetTimer();
   }
@@ -340,11 +320,9 @@ const progressId = `${id}ProgressBar`;
     timer = setInterval(() => goTo(current + 1), 5000);
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
   navItems.forEach((btn, i) => btn.addEventListener('click', () => goTo(i)));
 
-  section.querySelectorAll('.hiw-slideshow__faq-q').forEach(btn => {
+  section.querySelectorAll('.hiw-slide__faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
