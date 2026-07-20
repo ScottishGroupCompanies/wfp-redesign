@@ -40,7 +40,7 @@ At Window Film Philadelphia, we install LLumar and Vista security films — both
 
 LLumar's security film lines deliver impressive impact resistance. When properly installed with a structural attachment system, LLumar security film can delay forced entry through a standard pane by up to several minutes — long enough for a school resource officer or local patrol unit to respond. Vista security films offer comparable tensile strength and optical clarity, ensuring that natural light and visibility are not compromised while providing critical protection in classrooms and hallways.
 
-For schools considering compliance with the [CISA K-12 School Safety](https://www.cisa.gov/topics/school-safety) framework, both LLumar and Vista products satisfy requirements related to window hardening and access delay. The films carry certifications under ASTM E1886 and ASTM E1996, which evaluate the performance of window systems under impact and cyclic pressure loading from windstorms and blast events.
+For schools considering compliance with the [CISA K-12 School Safety](https://www.cisa.gov/topics/physical-security/school-safety) framework, both LLumar and Vista products satisfy requirements related to window hardening and access delay. The films carry certifications under ASTM E1886 and ASTM E1996, which evaluate the performance of window systems under impact and cyclic pressure loading from windstorms and blast events.
 
 ## Real Philadelphia School Context
 
