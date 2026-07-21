@@ -1,0 +1,159 @@
+---
+interface Review {
+  quote: string;
+  name: string;
+  role: string;
+  img: string;
+}
+
+const reviews: Review[] = [
+  {
+    quote: "We had a glare problem on the 18th floor that was genuinely embarrassing during client meetings. The 3M Prestige film fixed it completely — you can't tell it's there, our energy bills dropped, and the install crew was done in two days without disrupting a single meeting.",
+    name: "David R.",
+    role: "Facilities Manager · Center City Law Firm",
+    img: "/images/3m-testimonial-david-r.jpg",
+  },
+  {
+    quote: "After a smash-and-grab hit the block I couldn't sleep. Window Film Philadelphia walked me through the Scotchshield options that same week. It's been 18 months and I genuinely have peace of mind now — worth every penny and then some.",
+    name: "Sarah W.",
+    role: "Owner · Old City Boutique",
+    img: "/images/3m-testimonial-sarah-w.jpg",
+  },
+  {
+    quote: "Our Victorian had original windows we refused to replace. Thinsulate was the answer — heating bills dropped noticeably that first winter and the windows look exactly the same. The crew was respectful of the house and cleaned up perfectly.",
+    name: "Michael B.",
+    role: "Homeowner · Rittenhouse Square",
+    img: "/images/3m-testimonial-michael-b.jpg",
+  },
+  {
+    quote: "We were skeptical that film could really make a difference in a South Philly rowhome. The 3M Sun Control film on our back bedroom windows changed everything — it's finally comfortable in summer and our PECO bills showed it immediately.",
+    name: "Alex & Maria",
+    role: "Homeowners · South Philadelphia",
+    img: "/images/3m-testimonial-alex-maria.jpg",
+  },
+  {
+    quote: "Our restaurant faces west on Passyunk and the late-afternoon sun was brutal for the dinner rush. Night Vision film solved the glare completely without making the space feel dark. Customers notice the difference and so does our staff.",
+    name: "Jennifer K.",
+    role: "Restaurant Owner · Passyunk Ave",
+    img: "/images/3m-testimonial-jennifer-k.jpg",
+  },
+  {
+    quote: "We manage a mid-size office building in University City and the Daylight Redirecting Film on the north-facing suites has been remarkable. Interior workstations that used to need lights on all day are now comfortable in natural light.",
+    name: "Robert T.",
+    role: "Property Manager · University City",
+    img: "/images/3m-testimonial-robert-t.jpg",
+  },
+];
+
+// Duplicate for seamless infinite loop
+const track = [...reviews, ...reviews];
+---
+
+<section class="tmq">
+  <div class="tmq__track" aria-label="Client testimonials">
+    {track.map((r, i) => (
+      <article class="tmq__card" aria-hidden={i >= reviews.length ? "true" : "false"}>
+        <p class="tmq__stars" aria-label="5 stars">★★★★★</p>
+        <blockquote class="tmq__quote">"{r.quote}"</blockquote>
+        <div class="tmq__meta">
+          <img src={r.img} alt={r.name} class="tmq__avatar" width="44" height="44" loading="lazy" />
+          <div>
+            <p class="tmq__name">{r.name}</p>
+            <p class="tmq__role">{r.role}</p>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .tmq {
+    overflow: hidden;
+    background: var(--off-white, #F7F6F3);
+    padding: 64px 0;
+    /* fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .tmq__track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: tmq-scroll 48s linear infinite;
+  }
+
+  .tmq__track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes tmq-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .tmq__card {
+    flex: 0 0 360px;
+    background: #fff;
+    border: 1px solid #E8EDE4;
+    border-radius: 18px;
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  }
+
+  .tmq__stars {
+    color: var(--green, #81AB4C);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  .tmq__quote {
+    font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0;
+    flex: 1;
+  }
+
+  .tmq__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid #EEECE8;
+  }
+
+  .tmq__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .tmq__name {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0;
+  }
+
+  .tmq__role {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 12px;
+    color: var(--text-mid, #4a4a4a);
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tmq__track { animation: none; }
+  }
+</style>
