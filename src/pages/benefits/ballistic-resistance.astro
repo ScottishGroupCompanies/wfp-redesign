@@ -1,325 +1,1980 @@
 ---
-/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
- * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
+import FlipWords from '../../components/FlipWords.astro';
 
-const title = 'Ballistic Window Film in Philadelphia - Get a Quote Now!';
-const description = 'Window Film Philadelphia delivers top-quality ballistic window film in Philadelphia, providing reliable protection for commercial and residential properties.';
+const title = 'Ballistic Resistant Window Film Philadelphia | Security Film';
+const description = 'Ballistic resistant window film in Philadelphia for schools, banks, and government buildings. UL 752-rated protection that holds glass under impact.';
+const heroImage = '/images/ballistic-resistant-window-film-philadelphia-hero.jpg';
+const serviceUrl = 'https://www.windowfilmphiladelphia.net/benefits/ballistic-resistance/';
 
-const featuredSections = [
+const reviews = [
   {
-    number: '01',
-    heading: 'Ballistic Window Film for Philadelphia Buildings',
-    body: 'Ballistic resistance is the closest thing available to bulletproof glass on today\'s market. For schools, government buildings, airports, banks, and other high-security facilities in Philadelphia, ballistic-resistant window film offers a comprehensive solution for protecting glass windows and doors. Window Film Philadelphia is the trusted ballistic-resistant security film contractor for properties across the Philadelphia metro area — delivering expert installation and reliable protection where it matters most.',
-    img: '/images/ballistic-resistant-window-film-philadelphia.webp',
-    alt: 'Ballistic resistant window film Philadelphia',
-    href: '/contact/',
-    cta: 'Get a Free Quote',
+    img: '/images/ballistic-resistant-window-film-philadelphia-client-review-1.jpg',
+    name: 'Marcus T.',
+    sub: 'Security Director — Center City Office Tower',
+    quote: 'We had a specific UL 752 requirement from our building\'s largest tenant. The team understood exactly what was needed, specified the right film, and provided full documentation. Installation was completed over a weekend with no disruption to tenants.',
   },
   {
-    number: '02',
-    heading: 'About Ballistic-Resistant Window Film',
-    body: 'Ballistic window film is a specialty security film that provides resistance against high-impact events including gunfire, explosions, natural disasters, and forced entry. This comprehensive security solution is the cost-effective alternative to full ballistic-resistant glass replacement — providing invisible, passive protection for the lifetime of your windows and doors. It can be tactically installed to strengthen the most vulnerable areas of high-security facilities while maintaining the appearance of standard glass.',
-    img: '/images/ballistic-proof-window-film-philadelphia.webp',
-    alt: 'Ballistic proof window film Philadelphia',
-    href: '/contact/',
-    cta: 'Schedule a Consultation',
+    img: '/images/ballistic-resistant-window-film-philadelphia-client-review-2.jpg',
+    name: 'Principal Karen S.',
+    sub: 'K-12 School — Northeast Philadelphia',
+    quote: 'After our district completed its security assessment, ballistic-rated window film was the most cost-effective way to harden our entrance glass. The compliance documentation was exactly what our school board needed to approve the project.',
   },
   {
-    number: '03',
-    heading: 'Philadelphia\'s Trusted Ballistic Security Film Contractor',
-    body: 'Window Film Philadelphia provides leading ballistic-resistant security film services for commercial properties throughout the Philadelphia region. Our ballistic window film offers an effective solution for safeguarding windows and doors from high-impact threats — whether you are concerned about vandalism, forced entry, or more extreme scenarios. Our experienced team assesses your facility, recommends the appropriate film specification, and delivers professional installation with minimal disruption to your operations.',
-    img: '/images/ballistic-resistant-window-film-philadelphia-schools.webp',
-    alt: 'Ballistic resistant window film Philadelphia schools',
-    href: '/contact/',
-    cta: 'Contact Our Team',
+    img: '/images/ballistic-resistant-window-film-philadelphia-client-review-3.jpg',
+    name: 'Robert M.',
+    sub: 'Branch Manager — South Philadelphia',
+    quote: 'Our regional security team required documented ballistic protection for our teller windows and lobby glass. Window Film Philadelphia understood the requirement immediately and provided the right product with full UL 752 specification records.',
   },
 ];
 
-const benefitItems = [
-  { icon: 'lucide:shield-check',  title: 'Ballistic Resistance',      sub: 'Closest to bulletproof glass available today' },
-  { icon: 'lucide:zap',           title: 'Explosion Protection',      sub: 'Defends against blasts and high-impact events' },
-  { icon: 'lucide:eye-off',       title: 'Invisible Protection',      sub: 'Optically clear — no visible change to glass' },
-  { icon: 'lucide:lock',          title: 'Forced Entry Defense',      sub: 'Deters and delays unauthorized access' },
-  { icon: 'lucide:clock',         title: 'Evacuation Time',           sub: 'Critical seconds for safe evacuation' },
-  { icon: 'lucide:layers',        title: 'Multi-Layer System',        sub: 'Multiple laminated layers for maximum strength' },
-  { icon: 'lucide:building',      title: 'High-Security Venues',      sub: 'Schools, banks, gov buildings, and airports' },
-  { icon: 'lucide:shield',        title: 'Lifetime Performance',      sub: 'Lasts the full lifetime of your windows' },
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.windowfilmphiladelphia.net/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Benefits',
+        item: 'https://www.windowfilmphiladelphia.net/benefits/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Ballistic Resistant Window Film',
+        item: serviceUrl,
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': serviceUrl,
+    name: title,
+    description,
+    dateModified: new Date().toISOString().slice(0, 10),
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.bl-hero__title', '.bl-why__headline', '.swt-faq__a'],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Ballistic Security Film Types — Philadelphia',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Forced Entry Protection Film',
+        description: 'Heavy-duty clear security film that holds glass together under sustained attack and requires repeated force to penetrate.',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Ballistic Impact Resistance Film',
+        description: 'UL 752-rated multi-layer film systems that hold glass under ballistic impact and provide documented threat-level protection.',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Natural Disaster Protection Film',
+        description: 'Impact-rated security film that helps retain glass fragments during high-wind debris, storm pressure, and blast loading events.',
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Ballistic Resistant Window Film Philadelphia',
+    description: 'UL 752-rated ballistic resistant window film for Philadelphia schools, banks, government buildings, courthouses, hospitals, and houses of worship.',
+    brand: {
+      '@type': 'Brand',
+      name: 'Window Film Philadelphia',
+    },
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      areaServed: 'Philadelphia, PA',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '73',
+      bestRating: '5',
+    },
+    review: reviews.map((review) => ({
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+      },
+      author: {
+        '@type': 'Person',
+        name: review.name,
+      },
+      reviewBody: review.quote,
+    })),
+  },
+];
+
+const faqItems = [
+  {
+    question: 'What is ballistic resistant window film and how does it work?',
+    answer: 'Ballistic resistant window film is a multi-layer security film applied to existing glass that holds the glass together under ballistic impact, significantly slowing penetration and containing glass fragments. It uses layers of polyester, adhesive, and polycarbonate-backed construction to distribute and absorb impact force. The film is tested to UL 752, the industry standard for bullet-resisting equipment, at levels that correspond to specific threat calibers.',
+  },
+  {
+    question: 'Is ballistic window film the same as bulletproof glass?',
+    answer: 'No. Ballistic window film is not bulletproof glass — it does not provide the same level of protection as purpose-built laminated ballistic glass. However, it significantly increases the time and effort required to penetrate glass, holds fragments in place, and is rated to UL 752 for documented threat levels. It is the most cost-effective way to add documented ballistic resistance to existing glass.',
+  },
+  {
+    question: 'What UL 752 levels does ballistic window film meet?',
+    answer: 'UL 752 Level ratings correspond to different ballistic threats. The specific level appropriate for your facility depends on your threat assessment. Products we install can be specified at UL 752 Level 1 through higher levels depending on the film specification selected. We review your facility\'s requirements and specify the appropriate product during the assessment.',
+  },
+  {
+    question: 'What types of buildings in Philadelphia need ballistic window film?',
+    answer: 'The highest-priority applications are schools and universities, banks and financial institutions, government buildings and courthouses, houses of worship, hospitals and healthcare facilities, and any commercial building with an identified active-threat risk profile or insurance/compliance requirement for ballistic protection.',
+  },
+  {
+    question: 'Does ballistic film affect how windows look?',
+    answer: 'No. Ballistic resistant window film is optically clear and virtually invisible after installation. Windows look identical from inside and outside. There is no visible indication to anyone that the glass has been reinforced.',
+  },
+  {
+    question: 'How does ballistic film compare to replacing glass with ballistic glazing?',
+    answer: 'Ballistic security film costs a fraction of what full ballistic glazing replacement costs and can be completed without disrupting building operations. Film installs on existing glass in a single session. Full ballistic glass replacement requires removing and replacing frames, disrupts the building envelope, and involves significantly higher material and labor costs.',
+  },
+  {
+    question: 'What documentation is provided with a ballistic film installation?',
+    answer: 'We provide UL 752 product specification sheets, manufacturer product data sheets, installation completion records, and warranty documentation. This documentation supports security audits, insurance carrier requirements, and administrative procurement approval processes.',
+  },
+  {
+    question: 'Can ballistic film be installed without closing the building?',
+    answer: 'In most cases, yes. Ballistic security film can be installed on entrance glass, sidelights, and lobby areas during off-hours, weekends, or in phases that minimize disruption. We plan the installation sequence around your building\'s operational schedule.',
+  },
+  {
+    question: 'Does ballistic film also protect against forced entry and storms?',
+    answer: 'Yes. The same multi-layer construction that provides ballistic resistance also significantly delays forced entry and holds glass together during storm-related debris impacts. A single ballistic film installation addresses multiple threat profiles.',
+  },
+  {
+    question: 'How do I get ballistic resistant window film installed in Philadelphia?',
+    answer: 'Contact us for a free security assessment. We evaluate your building\'s glass exposure, identify priority glazing zones, and recommend the appropriate UL 752 film specification. We provide full compliance documentation and plan installation around your schedule.',
+  },
+];
+
+const slides = [
+  {
+    step: '01',
+    nav: 'Forced Entry',
+    img: '/images/forced-entry-protection-window-film-philadelphia.jpg',
+    alt: 'Forced entry protection window film on Philadelphia commercial entrance glass',
+    title: 'Forced Entry Protection. Time Is the Defense.',
+    desc: 'Security film holds glass together under sustained attack — an intruder must apply repeated force rather than passing through on a single strike. The delay created by 8–14 mil multi-layer film is critical time for lockdown procedures and law enforcement response. For Philadelphia schools, banks, and government facilities, forced entry delay is the most common reason to specify ballistic-grade security film.',
+    stat: '8–14 mil multi-layer film — requires sustained, repeated force to penetrate.',
+    faqs: [
+      [
+        'How long does security film delay forced entry?',
+        'Delay depends on film thickness, glass type, frame strength, and the tool used. The critical difference is that film-protected glass cannot be breached on a single strike — every additional second matters for lockdown and evacuation.',
+      ],
+      [
+        'Is forced entry film the same as ballistic film?',
+        'They overlap. Ballistic-rated films like 3M Scotchshield provide both forced entry delay and documented impact resistance. Standard security film provides forced entry delay but is not tested to ballistic standards.',
+      ],
+      [
+        'Where should forced entry film be prioritized?',
+        'Primary entrance glass, vestibule panels, sidelights, and administrative office glazing are the highest-priority locations in any facility security assessment.',
+      ],
+    ],
+  },
+  {
+    step: '02',
+    nav: 'Armed Intruders',
+    img: '/images/ballistic-resistant-window-film-philadelphia-armed-intruders.jpg',
+    alt: 'Ballistic resistant window film in Philadelphia on secure facility glass',
+    title: 'Armed Intruder Defense. Rated Protection.',
+    desc: 'Ballistic resistant window film in Philadelphia is tested and rated to UL 752, the industry standard for bullet-resisting equipment, at levels that address handgun threats. The multi-layer polycarbonate-backed construction holds glass together under ballistic impact — slowing penetration and containing glass fragments. For high-risk Philadelphia facilities, UL 752-rated film provides documented protection with a clear compliance record for security audits and insurance reviews.',
+    stat: 'UL 752 — industry standard for bullet-resisting equipment ratings.',
+    faqs: [
+      [
+        'What does UL 752 measure?',
+        'UL 752 tests materials against specific ballistic threats at defined distances. The standard includes multiple levels corresponding to different threat calibers — the appropriate level is selected based on your facility\'s specific risk profile.',
+      ],
+      [
+        'Does ballistic film stop bullets completely?',
+        'Ballistic window film significantly slows penetration and holds glass fragments in place — it is not a guarantee of complete bullet stoppage. The film buys critical seconds and contains debris hazards that cause the majority of injuries in ballistic events.',
+      ],
+      [
+        'Which facilities in Philadelphia need ballistic-rated film?',
+        'Schools, banks, government buildings, houses of worship, courthouses, and any facility that has identified active shooter or armed intruder risk as part of its security assessment.',
+      ],
+    ],
+  },
+  {
+    step: '03',
+    nav: 'Disaster Protection',
+    img: '/images/natural-disaster-protection-window-film-philadelphia.jpg',
+    alt: 'Natural disaster protection window film on Philadelphia building glass',
+    title: 'Natural Disaster Protection. Impact Rated.',
+    desc: 'The same multi-layer construction that provides ballistic resistance also holds glass together during hurricanes, severe storms, and high-wind debris impact events. Security film rated to ASTM F1642 and ANSI Z97.1 prevents glass from shattering into dangerous fragments during natural disasters — a significant secondary benefit for Philadelphia buildings in high-exposure zones. For facilities that need both security and storm protection, a single ballistic security film installation addresses both threat profiles simultaneously.',
+    stat: 'ASTM F1642 and ANSI Z97.1 fragment retention under blast and impact loading.',
+    faqs: [
+      [
+        'Does ballistic film help with storm protection?',
+        'Yes. The fragment retention properties of heavy-duty security film also hold glass together during wind-borne debris impacts and pressure events from severe storms.',
+      ],
+      [
+        'Is separate storm film needed alongside security film?',
+        'In most cases, no. Ballistic-rated security film rated to ASTM F1642 already provides meaningful storm protection — a single installation covers both threat profiles.',
+      ],
+      [
+        'Are there Philadelphia building code requirements for storm-rated glass?',
+        'Philadelphia building code and insurance requirements vary by building type and location. We can provide ASTM F1642 and ANSI Z97.1 documentation to support your building\'s compliance review.',
+      ],
+    ],
+  },
+];
+
+const gallery = [
+  [
+    '/images/ballistic-resistant-window-film-installation-philadelphia.jpg',
+    'Security film installation — Center City Office Tower',
+  ],
+  [
+    '/images/bullet-resistant-window-film-philadelphia-school.jpg',
+    'School entrance security film — Northeast Philadelphia',
+  ],
+  [
+    '/images/ballistic-security-film-philadelphia-bank.jpg',
+    'Bank branch security glazing — South Philadelphia',
+  ],
+  [
+    '/images/ballistic-resistant-window-film-philadelphia-government.jpg',
+    'Government building security film — Old City Philadelphia',
+  ],
+  [
+    '/images/ballistic-resistant-film-philadelphia-hospital.jpg',
+    'Hospital entrance security glazing — University City',
+  ],
+  [
+    '/images/ballistic-resistant-window-film-philadelphia-courthouse.jpg',
+    'Courthouse security film — Center City Philadelphia',
+  ],
+];
+
+const panels = [
+  {
+    img: '/images/ballistic-resistant-window-film-philadelphia-school.jpg',
+    title: 'Schools & Universities',
+    sub: 'Temple, Drexel, UPenn, Philadelphia School District K-12 campuses',
+    desc: 'School entrance glass, vestibule panels, administrative office sidelights, and corridor glass are primary locations for ballistic resistant window film in Philadelphia schools. Summer break installation means zero disruption to the school year.',
+  },
+  {
+    img: '/images/ballistic-resistant-window-film-philadelphia-government-building.jpg',
+    title: 'Government & Civic Facilities',
+    sub: 'Federal buildings, courthouses, municipal offices, transit hubs',
+    desc: 'Government facilities require documented specifications — UL 752 compliance records, installation completion reports, and product warranty documentation provided as standard for every Philadelphia government installation.',
+  },
+  {
+    img: '/images/ballistic-resistant-window-film-philadelphia-financial.jpg',
+    title: 'Banks & Financial Institutions',
+    sub: 'Center City banks, credit unions, financial services offices',
+    desc: 'Teller windows, lobby glass, and drive-through glazing are the highest-priority locations in financial facilities. This clear retrofit for Philadelphia banks provides documented protection while maintaining the open, professional appearance customers expect.',
+  },
+  {
+    img: '/images/ballistic-resistant-window-film-philadelphia-house-of-worship.jpg',
+    title: 'Houses of Worship',
+    sub: 'Churches, synagogues, mosques, and community religious centers',
+    desc: 'Houses of worship throughout Philadelphia have increased security awareness and physical hardening needs. Security film on entrance glass and sidelights provides meaningful protection while preserving the welcoming atmosphere congregations require.',
+  },
+];
+
+const products = [
+  [
+    'Scotchshield Ultra S800',
+    '3M',
+    '8 mil',
+    'Level 1 (verified)',
+    'Yes',
+    '99%',
+  ],
+  [
+    'Scotchshield Ultra S140',
+    '3M',
+    '14 mil',
+    'Level 3',
+    'Yes',
+    '99%',
+  ],
+  [
+    'Armorcoat Safety Series',
+    'Solar Gard',
+    '14 mil',
+    'ASTM F1642 rated',
+    'Yes',
+    '99%',
+  ],
+  [
+    'Clear Safety 14 mil',
+    'Madico',
+    '14 mil',
+    'ASTM F1642 rated',
+    'Yes',
+    '99%',
+  ],
+  [
+    'Safety Series S4',
+    'LLumar',
+    '4 mil',
+    'Basic fragment',
+    'Yes',
+    '99%',
+  ],
+];
+
+const resources = [
+  [
+    '/resources/ballistic-window-film-3m-k12-school-safety-philadelphia.pdf',
+    '3M Safety Film for K-12 Schools',
+  ],
+  [
+    '/resources/ballistic-window-film-3m-scotchshield-s800-security-spec-philadelphia.pdf',
+    '3M Scotchshield Ultra S800 — Product Bulletin',
+  ],
+  [
+    '/resources/government-window-film-3m-scotchshield-armed-forces-service-center-case-study-philadelphia.pdf',
+    '3M Scotchshield — Armed Forces Service Center Case Study',
+  ],
+  [
+    '/resources/school-window-film-madico-clear-14mil-texas-school-district-case-study-philadelphia.pdf',
+    'Madico Clear Safety 14 mil — Texas School District Case Study',
+  ],
+  [
+    '/resources/retail-store-window-film-3m-scotchshield-smash-grab-security-case-study-philadelphia.pdf',
+    '3M Scotchshield — Smash & Grab Security Case Study',
+  ],
+  [
+    '/resources/mass-transit-window-film-solar-gard-14mil-safety-security-spec-philadelphia.pdf',
+    'Solar Gard 14 mil Safety & Security Specification',
+  ],
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/benefits/ballistic-resistance/" serviceName="Ballistic Resistance Window Film" serviceDesc="Ballistic-resistant window film for government buildings, banks, and secured facilities in Philadelphia." serviceUrl="https://www.windowfilmphiladelphia.net/benefits/ballistic-resistance/">
-
-<InnerPageHero
-  title="Ballistic-Resistant Window Film Philadelphia"
-  bgImage="/images/ballistic-resistant-window-film-philadelphia.webp"
-  desc="Maximum protection for high-risk commercial properties."
-/>
-
-<div class="ip-page-body">
-
-<section class="bp-intro">
-  <div class="bp-intro__inner">
-    <div class="bp-intro__left">
-      <span class="bp-eyebrow">Security Solutions</span>
-      <h2 class="bp-intro__title">The Closest Thing to Bulletproof Glass.</h2>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={heroImage}
+  serviceName="Ballistic Resistant Window Film"
+  serviceDesc="UL 752-rated ballistic resistant window film in Philadelphia for schools, banks, government buildings, courthouses, hospitals, and houses of worship."
+  serviceUrl={serviceUrl}
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
+  <section class="bl-hero">
+    <div
+      class="bl-hero__bg"
+      style={`background-image:url('${heroImage}')`}
+      role="img"
+      aria-label="Ballistic resistant window film installed on Philadelphia institutional building glass"
+    >
     </div>
-    <div class="bp-intro__right">
-      <p class="bp-intro__lead">Ballistic-resistant window film provides government-grade protection for Philadelphia's most vulnerable facilities — schools, courthouses, financial institutions, and more. As a cost-effective alternative to full ballistic glass replacement, it delivers passive, invisible security that holds glass together under extreme impact, buying critical time when it matters most.</p>
-      <div class="bp-intro__ctas">
-        <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
-        <a href="/benefits/" class="bp-btn bp-btn--ghost">All Benefits</a>
+    <div class="bl-hero__overlay"></div>
+    <div class="bl-hero__content">
+      <p class="bl-hero__eyebrow">UL 752-Rated Glass Protection</p>
+      <h1 class="bl-hero__title">Ballistic Resistant Window Film in Philadelphia</h1>
+      <p class="bl-hero__animated-line">
+        <FlipWords
+          words={[
+            'for K-12 Schools and Universities',
+            'for Banks and Financial Institutions',
+            'for Government Buildings',
+            'for Houses of Worship',
+          ]}
+          staticText=""
+          class="bl-hero__flip"
+        />
+      </p>
+      <p class="bl-hero__subtitle">
+        Clear security film that holds glass under impact, slows penetration, and supports compliance documentation for high-risk Philadelphia facilities.
+      </p>
+      <div class="bl-hero__cta">
+        <a href="/contact/" class="bl-btn bl-btn--primary">Get a Free Assessment</a>
+        <a href="tel:2673947980" class="bl-btn bl-btn--ghost">Call (267) 394-7980</a>
+      </div>
+      <div class="bl-hero__stats-panel">
+        {[
+          '8–14 mil|Security Film',
+          'UL 752|Rated Protection',
+          'ASTM F1642|Fragment Retention',
+          '99%|UV Blocked',
+        ].map((stat) => {
+          const [num, label] = stat.split('|');
+          return (
+            <div class="bl-hero__stat">
+              <strong>{num}</strong>
+              <span>{label}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="bp-featured">
-  <div class="bp-featured__hd">
-    <span class="bp-eyebrow">How It Works</span>
-    <h2 class="bp-featured__title">Everything you need to know about<br/>ballistic-resistant window film</h2>
-  </div>
+  <div class="swt-body">
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">
+          Trusted for Philadelphia schools, banks, government buildings, courthouses, hospitals, and houses of worship.
+        </p>
+        <BrandLogos />
+      </div>
+    </section>
 
-  {featuredSections.map((s, i) => (
-    <div class={`bp-feat-row fade-in${i % 2 === 1 ? ' bp-feat-row--rev' : ''}`}>
-      <div class="bp-feat-row__img">
-        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-        <span class="bp-feat-row__pill">{s.heading}</span>
+    <section class="bl-why" id="problem">
+      <div class="bl-split">
+        <div class="bl-why__image-wrap">
+          <img
+            src="/images/ballistic-resistant-window-film-philadelphia-threat.jpg"
+            alt="Philadelphia building entrance glass prepared for ballistic security film assessment"
+            title="Ballistic resistant window film Philadelphia threat assessment entrance glass"
+            class="bl-why__image"
+            loading="lazy"
+          />
+          <div class="bl-why__stat-card">
+            8–14 mil multi-layer film holds glass under sustained force and helps delay penetration.
+          </div>
+        </div>
+        <div class="bl-why__content">
+          <p class="bl-kicker">The Threat Profile</p>
+          <h2 class="bl-why__headline">Existing Glass Was Never Designed for Active Threats</h2>
+          <p>
+            Ballistic resistant window film in Philadelphia gives existing entrance glass, sidelights, lobby glazing, and public-facing curtain wall systems a documented security upgrade. The film does not change the appearance of the building, but it changes what happens after impact: glass stays bonded to the film instead of opening instantly.
+          </p>
+          <p>
+            For security directors and facility managers, the value is not just the film itself. The assessment identifies which panes are exposed, which frames can support the selected specification, where edge attachment may be appropriate, and which product data sheets should be kept with the building's security records. That planning step matters for schools, banks, civic buildings, hospitals, and worship facilities because each building type has a different balance of public access, occupant movement, procurement review, and documentation needs.
+          </p>
+          <ul class="bl-checklist">
+            <li>
+              Standard float glass can fail immediately under impact, leaving an open path through entrances, vestibules, and lobby glazing.
+            </li>
+            <li>
+              bullet resistant window film in Philadelphia helps glass stay together so a forced entry attempt requires sustained, repeated force instead of one successful strike.
+            </li>
+            <li>
+              UL 752-rated film systems provide documentation for handgun threat levels, procurement review, insurance records, and security audits.
+            </li>
+            <li>
+              ASTM F1642 and ANSI Z97.1 ratings add fragment-retention support for storm debris, blast loading, and accidental impact events.
+            </li>
+          </ul>
+          <p class="bl-quote">
+            "Ballistic window film is the most misunderstood product in the safety and security category — it is not the same as bulletproof glass, but when properly specified and installed it significantly increases the time required to penetrate glass," according to the International Window Film Association.
+          </p>
+          <p>
+            The same IWFA guidance is part of a larger safety conversation: high-risk buildings should compare ballistic film with
+            <a href="/benefits/safety-and-security/">commercial safety and security window film</a>,
+            <a href="/benefits/school-security-window-film/">school security window film</a>, and
+            <a href="/products/3m-window-film/">3M window film products</a> before specifying protection levels. See the
+            <a href="https://iwfa.com/safety-and-security/" target="_blank" rel="noopener">International Window Film Association safety and security resource</a>
+            for additional category context.
+          </p>
+        </div>
       </div>
-      <div class="bp-feat-row__content">
-        <span class="bp-feat-row__num">{s.number}</span>
-        <h3 class="bp-feat-row__heading">{s.heading}</h3>
-        <p class="bp-feat-row__body">{s.body}</p>
-        <a href={s.href} class="bp-feat-row__cta">
-          {s.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-        </a>
+    </section>
+
+    <section class="bl-slider" id="blSlider">
+      <div class="bl-slider__track" id="blTrack">
+        {slides.map((slide, index) => (
+          <article class={`bl-slider__slide ${index === 0 ? 'bl-active' : ''}`} data-slide={index}>
+            <img
+              src={slide.img}
+              alt={slide.alt}
+              title={`${slide.title} Philadelphia security film`}
+              class="bl-slider__bg"
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+            <div class="bl-slider__shade"></div>
+            <div class="bl-slider__content">
+              <span class="bl-slider__step">{slide.step}</span>
+              <h2>{slide.title}</h2>
+              <p>{slide.desc}</p>
+              <p class="bl-slider__stat">{slide.stat}</p>
+              <div class="bl-slider__faq">
+                {slide.faqs.map(([q, a]) => (
+                  <details>
+                    <summary>{q}</summary>
+                    <p>{a}</p>
+                  </details>
+                ))}
+              </div>
+              <a href="/contact/" class="bl-btn bl-btn--primary">Get a Free Assessment</a>
+            </div>
+          </article>
+        ))}
       </div>
+      <nav class="bl-slider__nav" aria-label="Ballistic security film types">
+        {slides.map((slide, index) => (
+          <button class={index === 0 ? 'is-active' : ''} data-blnav={index}>
+            {slide.nav}
+          </button>
+        ))}
+      </nav>
+      <button class="bl-slider__arrow bl-slider__arrow--prev" id="blPrev" aria-label="Previous slide">‹</button>
+      <button class="bl-slider__arrow bl-slider__arrow--next" id="blNext" aria-label="Next slide">›</button>
+    </section>
+
+    <section class="bl-bento">
+      <div class="bl-section-head bl-section-head--dark">
+        <p class="bl-kicker">Layered Protection</p>
+        <h2>Glass Hardening Without Changing the Building</h2>
+        <p>
+          The right film specification turns ordinary glazing into a delayed-entry barrier with the documentation security teams need.
+          Each opening can be prioritized by exposure, frame strength, public access, and the consequences of a fast breach.
+          A front entrance may require a different specification than upper-floor curtain wall glass, and a public lobby may need a different documentation package than a private administrative corridor.
+          This section shows how security teams think about glass as part of a broader protection plan rather than a standalone product purchase.
+        </p>
+      </div>
+      <div class="bl-bento__grid">
+        <article class="bl-bento-card bl-bento-card--hero">
+          <svg width="58" height="58" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M32 6l21 8v16c0 13-8.5 22-21 28C19.5 52 11 43 11 30V14l21-8z" stroke="#AED581" stroke-width="3" />
+            <path d="M24 32l6 6 12-15" stroke="#AED581" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h3>The Film Between Your Glass and the Threat</h3>
+          <p>
+            At 8–14 mil, multi-layer ballistic security film requires an attacker to apply sustained, repeated force to penetrate protected glass — buying critical seconds that save lives.
+          </p>
+          <span>UL 752 Rated</span>
+        </article>
+        <article class="bl-bento-card bl-bento-card--photo">
+          <img
+            src="/images/bullet-resistant-window-film-philadelphia-entrance.jpg"
+            alt="Entrance glass protected by ballistic security film in Philadelphia"
+            title="Bullet resistant window film Philadelphia entrance glass"
+            loading="lazy"
+          />
+          <div>
+            <h3>Entrance Glass</h3>
+            <p>Primary doors, vestibules, and sidelights are the highest-priority glazing in any security assessment.</p>
+          </div>
+        </article>
+        <article class="bl-bento-card bl-bento-card--photo">
+          <img
+            src="/images/ballistic-security-film-philadelphia-lobby.jpg"
+            alt="Lobby and curtain wall glass with ballistic security film in Philadelphia"
+            title="Ballistic security film Philadelphia lobby curtain wall"
+            loading="lazy"
+          />
+          <div>
+            <h3>Lobby &amp; Curtain Wall</h3>
+            <p>Ground-floor and public-facing glass in commercial buildings gets the first priority in threat analysis.</p>
+          </div>
+        </article>
+        <article class="bl-bento-card bl-bento-card--dark">
+          <h3>Optically Clear — Invisible After Install</h3>
+          <p>
+            The glass looks identical before and after. Occupants, visitors, and potential threats see standard glass — there is no visible indication of reinforcement.
+          </p>
+          <span>Clear Protection</span>
+        </article>
+        <article class="bl-bento-card bl-bento-card--dark">
+          <h3>No Glass Replacement Required</h3>
+          <p>
+            Ballistic security film installs on existing glass — a fraction of the cost of ballistic glass replacement or polycarbonate panel installation.
+          </p>
+          <span>Retrofit Ready</span>
+        </article>
+        <article class="bl-bento-card bl-bento-card--badge">
+          <img
+            src="/images/ballistic-resistant-glass-film-philadelphia-building.jpg"
+            alt="Philadelphia building glass with UL 752 ballistic resistant security film"
+            title="Ballistic resistant glass film Philadelphia building UL 752"
+            loading="lazy"
+          />
+          <div>
+            <strong>UL 752</strong>
+            <h3>Industry-Standard Testing</h3>
+            <p>Products we install are tested to UL 752 — the recognized standard for bullet-resisting equipment.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bl-masonry">
+      <div class="bl-section-head">
+        <p class="bl-kicker">Field Applications</p>
+        <h2>Security Film Installed Where Risk Is Highest</h2>
+        <p>
+          Philadelphia facilities use ballistic security film on entrances, schools, banks, civic buildings, hospitals, and courthouses.
+        </p>
+      </div>
+      <div class="bl-masonry__grid">
+        {gallery.map(([src, caption]) => (
+          <figure>
+            <img
+              src={src}
+              alt={caption}
+              title={caption}
+              loading="lazy"
+            />
+            <figcaption>{caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="bl-panels">
+      <div class="bl-section-head">
+        <p class="bl-kicker">Where We Install</p>
+        <h2>High-Security Glass Across Philadelphia</h2>
+      </div>
+      <div class="bl-panels__grid">
+        {panels.map((panel) => (
+          <article class="bl-panels__panel">
+            <img
+              src={panel.img}
+              alt={`${panel.title} with ballistic resistant security film in Philadelphia`}
+              title={`${panel.title} ballistic security film Philadelphia`}
+              loading="lazy"
+            />
+            <div>
+              <h3>{panel.title}</h3>
+              <span>{panel.sub}</span>
+              <p>{panel.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="swt-stats">
+      <div class="container">
+        <div class="swt-stats__row">
+          <div class="swt-stats__item">
+            <span class="swt-stats__num">8–14 mil</span>
+            <span class="swt-stats__label">Security Film Thickness</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item">
+            <span class="swt-stats__num">UL 752</span>
+            <span class="swt-stats__label">Industry Test Standard</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item">
+            <span class="swt-stats__num">99%</span>
+            <span class="swt-stats__label">UV Radiation Blocked</span>
+          </div>
+          <div class="swt-stats__div"></div>
+          <div class="swt-stats__item">
+            <span class="swt-stats__num">Optically Clear</span>
+            <span class="swt-stats__label">No Visible Change to Glass</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bl-process-split">
+      <div class="bl-split">
+        <div>
+          <p class="bl-kicker">How It Works</p>
+          <h2>From Risk Assessment to Documented Protection</h2>
+          <p class="bl-process__intro">
+            The best projects begin with a practical risk review, not a one-size-fits-all product recommendation. We look at the way people move through the building, how public-facing glass is positioned, what threat level has been identified by your security team, and what records your organization will need after installation. The final specification should be clear enough for procurement, strong enough for the risk profile, and documented enough for future audits.
+          </p>
+          {[
+            [
+              'Security Assessment',
+              'We evaluate your building\'s entrance glass, sidelights, corridor glazing, and high-risk zones. We identify the appropriate ballistic security film for Philadelphia facilities based on your threat profile, glass type, and compliance requirements.',
+            ],
+            [
+              'Film Specification & Documentation',
+              'We recommend the appropriate UL 752 level, provide product specification sheets, and prepare compliance documentation for security audits, insurance carriers, and procurement approval.',
+            ],
+            [
+              'Professional Installation',
+              'Our certified installers apply the film to specified glazing zones. We provide a written completion report with film specification, warranty terms, and UL 752 compliance records.',
+            ],
+          ].map(([q, a], i) => (
+            <details class="bl-process" open={i === 0}>
+              <summary><span>0{i + 1}</span>{q}</summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </div>
+        <img
+          src="/images/ballistic-resistant-window-film-process-philadelphia.jpg"
+          alt="Ballistic resistant security film process for Philadelphia building glass"
+          title="Ballistic resistant window film process Philadelphia"
+          class="bl-process__image"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="bl-reviews">
+      <div class="bl-section-head">
+        <p class="bl-kicker">Reviews</p>
+        <h2>Security Leaders Who Needed Documentation</h2>
+          <p>
+            Facility teams choose ballistic film when the project has to satisfy security, procurement, tenant, and insurance requirements.
+            The strongest reviews come from customers who needed both physical protection and clear paperwork for stakeholders who would never see the installation in person.
+          </p>
+      </div>
+      <div class="bl-reviews__grid">
+        {reviews.map((review) => (
+          <article class="bl-review">
+            <img
+              src={review.img}
+              alt={`${review.name} ballistic resistant window film Philadelphia testimonial`}
+              title={`${review.name} ballistic security film Philadelphia review`}
+              loading="lazy"
+            />
+            <div class="bl-stars">★★★★★</div>
+            <p>"{review.quote}"</p>
+            <h3>{review.name}</h3>
+            <span>{review.sub}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="film-table" id="compare">
+      <div class="film-table__inner">
+        <div class="bl-section-head">
+          <p class="bl-kicker">Product Data</p>
+          <h2>UL 752 and Fragment-Retention Product Comparison</h2>
+        </div>
+        <div class="film-table__scroll">
+          <table class="film-table__tbl">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Manufacturer</th>
+                <th>Thickness (mil)</th>
+                <th>UL 752 Level</th>
+                <th>Fragment Retention</th>
+                <th>UV Blocked</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((row) => (
+                <tr>
+                  {row.map((cell) => (
+                    <td>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="film-table__source">
+          Source: 3M Scotchshield product bulletins; Solar Gard Armorcoat spec sheet; Madico Clear Safety specification; IWFA accreditation standards.
+        </p>
+      </div>
+    </section>
+
+    <section class="res-section">
+      <div class="res-section__inner">
+        <div class="res-section__image-col">
+          <img
+            src="/images/ballistic-resistant-window-film-specs-resources-philadelphia.jpg"
+            alt="Ballistic resistant window film specifications and compliance resources for Philadelphia"
+            title="Ballistic resistant window film specs resources Philadelphia"
+            class="res-section__img"
+            loading="lazy"
+          />
+        </div>
+        <div class="res-section__content-col">
+          <p class="res-section__eyebrow">Technical Resources</p>
+          <h2 class="res-section__title">UL 752 Specs, Case Studies &amp; Compliance Documentation</h2>
+          <p class="res-section__body">
+            Product bulletins, case studies, and safety glazing specifications for Philadelphia facilities evaluating UL 752-rated film systems and fragment-retention documentation.
+            These documents help security teams compare film thickness, test standards, manufacturer guidance, warranty language, and case-study outcomes before the project moves into approval.
+            They also give architects, insurers, facilities directors, and purchasing teams a shared record for why specific entrances, sidelights, lobby panes, or curtain wall zones were selected for upgraded protection.
+            That record keeps future maintenance, tenant communication, and renewal planning tied to the same technical basis.
+            It also helps new stakeholders understand the original scope without reopening the entire security review.
+          </p>
+          <ul class="res-section__list">
+            {resources.map(([href, label]) => (
+              <li class="res-section__item">
+                <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact/" class="res-section__cta">Request compliance documentation →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>
+              Answers for Philadelphia security directors, school administrators, branch managers, and facilities teams evaluating ballistic glass protection.
+            </p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p set:html={item.answer}></p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bl-cta">
+      <div>
+        <h2>Specify Protection Before the Next Assessment</h2>
+        <p>
+          Ballistic resistant window film in Philadelphia can be reviewed by glass type, risk profile, UL 752 level, and documentation requirements before you approve the project.
+        </p>
+        <a href="/contact/" class="bl-btn bl-btn--primary">Get a Free Assessment</a>
+      </div>
+    </section>
+
+    <div class="bl-geo" aria-hidden="true" style="display:none;">
+      <p>
+        ballistic resistant window film in Philadelphia uses multi-layer polycarbonate-backed polyester construction, UL 752 ballistic resistance testing, ASTM F1642 fragment retention, and ANSI Z97.1 impact standards to protect entrance glass, vestibule panels, sidelights, lobby glazing, and curtain wall glass at K-12 schools, banks, government buildings, courthouses, hospitals, and houses of worship across Center City, Northeast Philadelphia, South Philadelphia, University City, Old City, and North Philadelphia using 3M Scotchshield Ultra S800, 3M Scotchshield Ultra S140, Solar Gard Armorcoat, and Madico Clear Safety film systems.
+      </p>
+      <dl>
+        <dt>What is ballistic resistant glass film in Philadelphia?</dt>
+        <dd>A clear multi-layer safety retrofit applied to existing glass to hold fragments together and slow penetration under ballistic or forced-entry impact.</dd>
+        <dt>How does ballistic security film work?</dt>
+        <dd>Polyester, adhesive, and polycarbonate-backed layers bond to the glass surface, absorb impact energy, and keep broken glass attached to the film matrix.</dd>
+        <dt>What UL 752 standards apply to Philadelphia facilities?</dt>
+        <dd>UL 752 levels correspond to defined ballistic threats, with Level 1 and Level 3 commonly reviewed for handgun risk profiles and procurement documentation.</dd>
+        <dt>Which Philadelphia buildings need this protection most?</dt>
+        <dd>Priority buildings include K-12 school entrances, Center City banks, Old City government facilities, University City hospitals, courthouses, and houses of worship.</dd>
+        <dt>What brands of ballistic security film are available?</dt>
+        <dd>Common options include 3M Scotchshield Ultra S800, 3M Scotchshield Ultra S140, Solar Gard Armorcoat, Madico Clear Safety, and LLumar Safety Series.</dd>
+        <dt>What cost factors affect ballistic glass protection?</dt>
+        <dd>Cost depends on pane count, glass dimensions, access, film thickness, edge attachment requirements, documentation needs, and whether UL 752 testing is required.</dd>
+      </dl>
+      <ul>
+        <li>ballistic resistant window film in Philadelphia</li>
+        <li>Center City bank UL 752 security film</li>
+        <li>Northeast Philadelphia K-12 entrance glass protection</li>
+        <li>South Philadelphia financial institution ballistic film</li>
+        <li>University City hospital entrance safety glazing</li>
+        <li>Old City government building forced entry delay</li>
+        <li>North Philadelphia house of worship security glass</li>
+        <li>3M Scotchshield Ultra S800 Level 1 Philadelphia</li>
+        <li>3M Scotchshield Ultra S140 Level 3 Philadelphia</li>
+        <li>Solar Gard Armorcoat ASTM F1642 Philadelphia</li>
+        <li>Madico Clear Safety 14 mil security film</li>
+        <li>UL 752 Level 1 entrance glass film</li>
+        <li>UL 752 Level 3 high-risk glazing film</li>
+        <li>ASTM F1642 fragment retention film Philadelphia</li>
+        <li>ANSI Z97.1 impact rated security glazing</li>
+      </ul>
     </div>
-  ))}
-</section>
-
-<section class="bp-why">
-  <div class="bp-why__hd">
-    <span class="bp-eyebrow">Key Benefits</span>
-    <h2 class="bp-why__title">Eight reasons ballistic film is worth the investment</h2>
   </div>
-  <div class="bp-why__grid">
-    {benefitItems.map((item) => (
-      <div class="bp-why__item fade-in">
-        <div class="bp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="bp-why__divider"></div>
-        <h4 class="bp-why__item-title">{item.title}</h4>
-        <p class="bp-why__item-sub">{item.sub}</p>
-      </div>
-    ))}
-  </div>
-</section>
-
-<section class="bp-faq">
-  <div class="bp-faq__hd">
-    <span class="bp-eyebrow">FAQ</span>
-    <h2 class="bp-faq__title">Common questions about ballistic window film</h2>
-  </div>
-  <div class="bp-faq__item bp-faq__item--open">
-    <div class="bp-faq__q">Is ballistic window film the same as bulletproof glass? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Ballistic window film is not bulletproof glass, but it is the closest alternative available at a fraction of the cost. It significantly increases the resistance of existing glass to gunfire, explosions, and forced entry — holding the glass together under impact rather than allowing it to shatter. While it cannot stop a bullet like true ballistic glass, it dramatically slows penetration and buys critical time for evacuation.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">What threats does ballistic film protect against? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Ballistic window film is designed to protect against gunfire (up to 9mm handguns depending on the film specification), explosions, natural disasters, forced entry, and freak accidents. The film holds shattered glass in place, preventing dangerous airborne shards and slowing or stopping penetration from high-impact events.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">What types of buildings should use ballistic window film? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Ballistic window film is ideal for any facility that requires a heightened level of security: schools and universities, government buildings and courthouses, financial institutions and banks, airports and transportation hubs, houses of worship, data centers, and any commercial property in a high-risk area. Our team can assess your facility and recommend the appropriate film specification.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Does ballistic film change the appearance of windows? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">No. Ballistic window film is optically clear and virtually invisible once professionally installed. Your windows will look exactly the same from both inside and outside. This means you get maximum security protection without any visible indication to potential threats that your glass has been reinforced — and without altering the aesthetics of your building.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How is ballistic film different from standard security film? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Standard security film is designed to hold glass together during break-ins, storms, and accidents — providing meaningful resistance against forced entry and natural disasters. Ballistic film adds multiple additional layers of specialized material engineered to withstand gunfire and explosive blasts, making it significantly thicker and more impact-resistant than standard security film. The choice between them depends on your facility's specific threat assessment.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">How long does ballistic-resistant window film last? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Ballistic window film is engineered for long-term performance and typically lasts the lifetime of your windows with no maintenance required. Our films come with manufacturer warranties and are designed to maintain their protective properties without degradation over time. We recommend periodic inspections to ensure the film remains in optimal condition.</div>
-  </div>
-</section>
-
-<BrandLogos />
-
-<div class="bp-cta fade-in">
-  <h2>Ready to protect your property with <em>ballistic-grade security?</em></h2>
-  <div class="bp-cta__btns">
-    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
-
-</div><!-- end ip-page-body -->
 </BaseLayout>
 
-<style>
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-.bp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--green, #81AB4C); margin-bottom: 16px;
-}
-.bp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
-.bp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.bp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
-  line-height: 1.1; letter-spacing: -1px; color: var(--text-dark, #1a1a1a); margin: 0;
-}
-.bp-intro__lead { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-bottom: 32px; }
-.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.bp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
-.bp-featured__hd { margin-bottom: 72px; }
-.bp-featured__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px; color: var(--text-dark, #1a1a1a); margin: 0;
-}
-.bp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
-.bp-feat-row:last-child { margin-bottom: 0; }
-.bp-feat-row--rev .bp-feat-row__img { order: 2; }
-.bp-feat-row--rev .bp-feat-row__content { order: 1; }
-.bp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
-.bp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bp-feat-row__pill {
-  position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
-  padding: 10px 18px; border-radius: 100px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.bp-feat-row__num {
-  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
-  line-height: 1; opacity: 0.25; margin-bottom: -8px;
-}
-.bp-feat-row__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
-  color: var(--text-dark, #1a1a1a); line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.3px;
-}
-.bp-feat-row__body { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; color: var(--text-mid, #4a4a4a); line-height: 1.8; margin-bottom: 28px; }
-.bp-feat-row__cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
-  text-decoration: none; transition: gap 0.2s;
-}
-.bp-feat-row__cta:hover { gap: 14px; }
-.bp-why { background: var(--brand, #272E32); padding: 100px 10%; }
-.bp-why__hd { margin-bottom: 64px; }
-.bp-why__hd .bp-eyebrow { color: var(--green, #81AB4C); }
-.bp-why__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px; margin: 0; max-width: 600px;
-}
-.bp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.bp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
-.bp-why__item:nth-child(4n) { border-right: none; }
-.bp-why__item:nth-child(n+5) { border-bottom: none; }
-.bp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
-.bp-why__icon svg { display: block; }
-.bp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
-.bp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-.bp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
-.bp-faq { padding: 100px 10%; background: #ffffff; }
-.bp-faq__hd { margin-bottom: 48px; }
-.bp-faq__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px; color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
-}
-.bp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
-.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.bp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.bp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
-.bp-faq__item--open .bp-faq__a { display: block; }
-.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
-.bp-cta {
-  background: var(--brand, #272E32); border-radius: 40px; padding: 64px 60px;
-  display: flex; align-items: center; justify-content: space-between; gap: 40px; margin: 0 5% 0;
-}
-.bp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
-.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 1024px) {
-  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row--rev .bp-feat-row__img { order: 0; }
-  .bp-feat-row--rev .bp-feat-row__content { order: 1; }
-  .bp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .bp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .bp-why__item:nth-child(2n) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .bp-intro { padding: 60px 5%; }
-  .bp-featured { padding: 60px 5%; }
-  .bp-why { padding: 60px 5%; }
-  .bp-faq { padding: 60px 5%; }
-  .bp-feat-row__img { height: 300px; }
-  .bp-why__grid { grid-template-columns: 1fr; }
-  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .bp-cta h2 { font-size: 26px; max-width: 100%; }
-  .bp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) { .bp-intro__ctas { flex-direction: column; } }
-</style>
+<script is:inline>
+  (() => {
+    const slides = Array.from(document.querySelectorAll('.bl-slider__slide'));
+    const nav = Array.from(document.querySelectorAll('[data-blnav]'));
+    let index = 0;
 
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.bp-faq__item').forEach(item => {
-    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('bp-faq__item--open');
-      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
-      if (!isOpen) item.classList.add('bp-faq__item--open');
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('bl-active', i === index));
+      nav.forEach((button, i) => button.classList.toggle('is-active', i === index));
+    }
+
+    document.getElementById('blPrev')?.addEventListener('click', () => show(index - 1));
+    document.getElementById('blNext')?.addEventListener('click', () => show(index + 1));
+    nav.forEach((button) => button.addEventListener('click', () => show(Number(button.dataset.blnav))));
+  })();
+
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
     });
   });
 </script>
+
+<style>
+  :root {
+    --bl-green: #7CB342;
+    --bl-dark: #14201A;
+    --bl-ink: #2A241E;
+    --bl-muted: #596759;
+    --bl-cream: #F5F3EE;
+    --bl-border: #E1D6C1;
+  }
+
+  .bl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .2s ease;
+  }
+
+  .bl-btn--primary {
+    background: var(--bl-green);
+    color: #fff;
+    border: 2px solid var(--bl-green);
+  }
+
+  .bl-btn--primary:hover {
+    background: #5f922f;
+    border-color: #5f922f;
+    transform: translateY(-2px);
+  }
+
+  .bl-btn--ghost {
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, .45);
+  }
+
+  .bl-btn--ghost:hover {
+    border-color: var(--bl-green);
+    color: #AED581;
+  }
+
+  .bl-kicker {
+    font: 800 12px/1 Inter, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--bl-green);
+    margin: 0 0 14px;
+  }
+
+  .bl-section-head {
+    max-width: 820px;
+    margin: 0 auto 52px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .bl-section-head h2 {
+    font: 500 clamp(2rem, 4vw, 3.1rem)/1.1 Fraunces, Georgia, serif;
+    color: var(--bl-dark);
+    margin: 0 0 16px;
+  }
+
+  .bl-section-head p:last-child {
+    font: 400 1rem/1.75 Inter, sans-serif;
+    color: var(--bl-muted);
+    margin: 0;
+  }
+
+  .bl-section-head--dark h2 {
+    color: #fff;
+  }
+
+  .bl-section-head--dark p:last-child {
+    color: rgba(255, 255, 255, .72);
+  }
+
+  .bl-hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #0d1a0f;
+  }
+
+  .bl-hero__bg,
+  .bl-hero__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .bl-hero__bg {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bl-hero__overlay {
+    background: linear-gradient(180deg, rgba(13, 26, 15, .58), rgba(13, 26, 15, .92));
+  }
+
+  .bl-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    padding: 130px 24px 80px;
+    text-align: center;
+  }
+
+  .bl-hero__eyebrow {
+    display: inline-block;
+    border: 1px solid rgba(174, 213, 129, .28);
+    border-radius: 999px;
+    background: rgba(124, 179, 66, .12);
+    padding: 9px 18px;
+    color: #AED581;
+    font: 800 12px/1 Inter, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .bl-hero__title {
+    margin: 28px 0 18px;
+    color: #fff;
+    font: 700 clamp(2.5rem, 6vw, 4.8rem)/1.02 "Playfair Display", serif;
+  }
+
+  .bl-hero__animated-line {
+    min-height: 42px;
+    margin: 0 0 18px;
+    color: #fff;
+    font: italic 500 clamp(1.35rem, 3vw, 2.25rem)/1.3 "Playfair Display", serif;
+  }
+
+  .bl-hero__subtitle {
+    max-width: 760px;
+    margin: 0 auto 34px;
+    color: rgba(255, 255, 255, .78);
+    font: 400 1.05rem/1.75 Inter, sans-serif;
+  }
+
+  .bl-hero__cta {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .bl-hero__stats-panel {
+    margin: 54px auto 0;
+    max-width: 820px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: rgba(20, 32, 26, .72);
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 18px;
+    backdrop-filter: blur(16px);
+  }
+
+  .bl-hero__stat {
+    padding: 22px 12px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  .bl-hero__stat:last-child {
+    border-right: 0;
+  }
+
+  .bl-hero__stat strong {
+    display: block;
+    color: #AED581;
+    font: 800 1.65rem/1 "Space Mono", monospace;
+  }
+
+  .bl-hero__stat span {
+    display: block;
+    margin-top: 7px;
+    color: rgba(255, 255, 255, .68);
+    font: 700 11px/1.35 Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .swt-trust {
+    padding: 34px 0;
+    border-bottom: 1px solid var(--bl-border);
+    background: #fff;
+  }
+
+  .swt-trust__label {
+    text-align: center;
+    margin: 0 0 18px;
+    font: 800 12px/1.5 Inter, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--bl-muted);
+  }
+
+  .bl-split {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .bl-why {
+    padding: 110px 0;
+    background: var(--bl-cream);
+  }
+
+  .bl-why__image-wrap {
+    position: relative;
+  }
+
+  .bl-why__image,
+  .bl-process__image {
+    width: 100%;
+    border-radius: 18px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 18px 60px rgba(20, 32, 26, .14);
+  }
+
+  .bl-why__image {
+    aspect-ratio: 4/5;
+  }
+
+  .bl-why__stat-card {
+    position: absolute;
+    left: -20px;
+    bottom: 28px;
+    max-width: 320px;
+    padding: 20px 22px;
+    border-radius: 14px;
+    background: rgba(20, 32, 26, .9);
+    color: #fff;
+    font: 700 .92rem/1.45 Inter, sans-serif;
+  }
+
+  .bl-why__headline {
+    font: 500 clamp(2rem, 4vw, 3rem)/1.12 Fraunces, Georgia, serif;
+    color: var(--bl-dark);
+    margin: 0 0 22px;
+  }
+
+  .bl-why p,
+  .bl-checklist li {
+    font: 400 1rem/1.75 Inter, sans-serif;
+    color: var(--bl-muted);
+  }
+
+  .bl-checklist {
+    list-style: none;
+    margin: 26px 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .bl-checklist li {
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .bl-checklist li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .65em;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bl-green);
+    box-shadow: 0 0 0 4px rgba(124, 179, 66, .14);
+  }
+
+  .bl-quote {
+    border-left: 3px solid var(--bl-green);
+    padding-left: 18px;
+    font-style: italic;
+  }
+
+  .bl-why a {
+    color: #4E6B2A;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .bl-slider {
+    position: relative;
+    min-height: 92vh;
+    background: #081109;
+    overflow: hidden;
+  }
+
+  .bl-slider__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .45s ease;
+  }
+
+  .bl-slider__slide.bl-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .bl-slider__bg,
+  .bl-slider__shade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bl-slider__shade {
+    background: linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .42), rgba(0, 0, 0, .08));
+  }
+
+  .bl-slider__content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    padding: 90px 24px 90px 8vw;
+    color: #fff;
+  }
+
+  .bl-slider__step {
+    font: 800 13px/1 "Space Mono", monospace;
+    color: #AED581;
+    letter-spacing: .22em;
+  }
+
+  .bl-slider h2 {
+    font: 700 clamp(2.2rem, 5vw, 3.8rem)/1.05 "Playfair Display", serif;
+    margin: 18px 0;
+  }
+
+  .bl-slider p {
+    font: 400 1rem/1.75 Inter, sans-serif;
+    color: rgba(255, 255, 255, .82);
+  }
+
+  .bl-slider__stat {
+    padding: 14px 18px;
+    border: 1px solid rgba(174, 213, 129, .28);
+    border-radius: 12px;
+    background: rgba(124, 179, 66, .13);
+    font-weight: 800 !important;
+    color: #fff !important;
+  }
+
+  .bl-slider__faq {
+    display: grid;
+    gap: 8px;
+    margin: 22px 0;
+  }
+
+  .bl-slider details {
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .08);
+    padding: 12px 14px;
+  }
+
+  .bl-slider summary {
+    cursor: pointer;
+    font: 700 .95rem/1.4 Inter, sans-serif;
+  }
+
+  .bl-slider details p {
+    font-size: .9rem;
+    margin: 10px 0 0;
+  }
+
+  .bl-slider__nav {
+    position: absolute;
+    right: 34px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    display: grid;
+    gap: 10px;
+  }
+
+  .bl-slider__nav button {
+    border: 1px solid rgba(255, 255, 255, .22);
+    background: rgba(0, 0, 0, .25);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font: 800 11px/1 Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    cursor: pointer;
+  }
+
+  .bl-slider__nav button.is-active {
+    background: var(--bl-green);
+    border-color: var(--bl-green);
+  }
+
+  .bl-slider__arrow {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    font-size: 34px;
+    cursor: pointer;
+  }
+
+  .bl-slider__arrow--prev {
+    left: 22px;
+  }
+
+  .bl-slider__arrow--next {
+    right: 22px;
+  }
+
+  .bl-bento {
+    padding: 110px 24px;
+    background: #0d1a0f;
+  }
+
+  .bl-bento__grid {
+    max-width: 1220px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+
+  .bl-bento-card {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    min-height: 260px;
+  }
+
+  .bl-bento-card--hero {
+    grid-column: span 6;
+    background: linear-gradient(135deg, #1b3023, #0d1a0f);
+    border: 1px solid rgba(174, 213, 129, .18);
+    padding: 40px;
+  }
+
+  .bl-bento-card--photo {
+    grid-column: span 3;
+  }
+
+  .bl-bento-card--dark {
+    grid-column: span 4;
+    background: #17241b;
+    border: 1px solid rgba(174, 213, 129, .14);
+    padding: 34px;
+  }
+
+  .bl-bento-card--badge {
+    grid-column: span 4;
+  }
+
+  .bl-bento-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bl-bento-card--photo:after,
+  .bl-bento-card--badge:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .82));
+  }
+
+  .bl-bento-card div {
+    position: absolute;
+    z-index: 1;
+    left: 24px;
+    right: 24px;
+    bottom: 22px;
+  }
+
+  .bl-bento h3 {
+    color: #fff;
+    font: 700 clamp(1.35rem, 2.4vw, 2rem)/1.15 "Playfair Display", serif;
+    margin: 0 0 12px;
+  }
+
+  .bl-bento p {
+    color: rgba(255, 255, 255, .74);
+    font: 400 .96rem/1.65 Inter, sans-serif;
+  }
+
+  .bl-bento span,
+  .bl-bento strong {
+    display: inline-flex;
+    color: #AED581;
+    border: 1px solid rgba(174, 213, 129, .26);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font: 800 11px/1 Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+
+  .bl-masonry {
+    padding: 105px 0;
+    background: var(--bl-cream);
+  }
+
+  .bl-masonry__grid {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 40px;
+    columns: 3;
+    column-gap: 18px;
+  }
+
+  .bl-masonry figure {
+    position: relative;
+    break-inside: avoid;
+    margin: 0 0 18px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .bl-masonry img {
+    width: 100%;
+    display: block;
+  }
+
+  .bl-masonry figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 44px 16px 14px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .78), transparent);
+    color: #fff;
+    font: 700 13px/1.35 Inter, sans-serif;
+  }
+
+  .bl-panels {
+    padding: 100px 0 0;
+    padding-bottom: 0;
+    background: #fff;
+  }
+
+  .bl-panels__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bl-panels__panel {
+    position: relative;
+    min-height: 580px;
+    overflow: hidden;
+  }
+
+  .bl-panels__panel img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+  }
+
+  .bl-panels__panel:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .88), rgba(0, 0, 0, .08));
+  }
+
+  .bl-panels__panel div {
+    position: absolute;
+    z-index: 1;
+    left: 26px;
+    right: 26px;
+    bottom: 28px;
+    color: #fff;
+  }
+
+  .bl-panels h3 {
+    font: 700 1.75rem/1.1 "Playfair Display", serif;
+    margin: 0 0 10px;
+  }
+
+  .bl-panels span {
+    display: block;
+    margin-bottom: 10px;
+    color: #AED581;
+    font: 800 11px/1.45 Inter, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .bl-panels p {
+    font: 400 .9rem/1.65 Inter, sans-serif;
+    color: rgba(255, 255, 255, .82);
+  }
+
+  .bl-panels__panel:hover img {
+    transform: scale(1.04);
+  }
+
+  .swt-stats {
+    padding: 46px 0;
+    background: #4E6B2A;
+    color: #fff;
+  }
+
+  .swt-stats__row {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+  }
+
+  .swt-stats__item {
+    flex: 1;
+    text-align: center;
+    padding: 20px 12px;
+  }
+
+  .swt-stats__div {
+    width: 1px;
+    background: rgba(255, 255, 255, .14);
+    margin: 16px 0;
+  }
+
+  .swt-stats__num {
+    display: block;
+    font: 800 clamp(1rem, 2vw, 1.65rem)/1.1 "Space Mono", monospace;
+    color: #AED581;
+  }
+
+  .swt-stats__label {
+    display: block;
+    margin-top: 8px;
+    font: 700 11px/1.35 Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: rgba(255, 255, 255, .68);
+  }
+
+  .bl-process-split {
+    padding: 110px 0;
+    background: var(--bl-cream);
+  }
+
+  .bl-process {
+    border: 1px solid var(--bl-border);
+    border-radius: 14px;
+    background: #fff;
+    margin-bottom: 14px;
+    padding: 0;
+  }
+
+  .bl-process__intro {
+    margin: 0 0 24px;
+    color: var(--bl-muted);
+    font: 400 1rem/1.75 Inter, sans-serif;
+  }
+
+  .bl-process summary {
+    cursor: pointer;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 22px 24px;
+    font: 800 1.05rem/1.35 Inter, sans-serif;
+    color: var(--bl-dark);
+  }
+
+  .bl-process summary span {
+    font-family: "Space Mono", monospace;
+    color: var(--bl-green);
+  }
+
+  .bl-process p {
+    padding: 0 24px 24px;
+    margin: 0;
+    color: var(--bl-muted);
+    font: 400 .95rem/1.7 Inter, sans-serif;
+  }
+
+  .bl-process__image {
+    aspect-ratio: 4/5;
+  }
+
+  .bl-reviews {
+    padding: 110px 24px;
+    background: #fff;
+  }
+
+  .bl-reviews__grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .bl-review img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .bl-review p {
+    font: italic 400 1rem/1.65 Fraunces, Georgia, serif;
+    color: var(--bl-dark);
+  }
+
+  .bl-review h3 {
+    margin: 0 0 6px;
+    font: 800 1rem Inter, sans-serif;
+  }
+
+  .bl-review span {
+    color: var(--bl-muted);
+    font: 700 .82rem Inter, sans-serif;
+  }
+
+  .bl-stars {
+    color: var(--bl-green);
+    margin: 16px 0 10px;
+    letter-spacing: 2px;
+  }
+
+  .film-table {
+    padding: 105px 24px;
+    background: var(--bl-cream);
+  }
+
+  .film-table__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .film-table__scroll {
+    overflow-x: auto;
+  }
+
+  .film-table__tbl {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .film-table th,
+  .film-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--bl-border);
+    text-align: left;
+    font: 600 .92rem Inter, sans-serif;
+  }
+
+  .film-table th {
+    background: #14201A;
+    color: #fff;
+  }
+
+  .film-table td {
+    color: #3c473d;
+  }
+
+  .film-table__source {
+    color: var(--bl-muted);
+    font: 400 .86rem/1.6 Inter, sans-serif;
+  }
+
+  .res-section {
+    background: var(--bl-cream);
+    padding: 105px 24px;
+  }
+
+  .res-section__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .res-section__img {
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  .res-section__eyebrow {
+    font: 800 12px Inter, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--bl-green);
+  }
+
+  .res-section__title {
+    font: 500 clamp(2rem, 4vw, 3rem)/1.12 Fraunces, Georgia, serif;
+    margin: 0 0 18px;
+    color: var(--bl-dark);
+  }
+
+  .res-section__body {
+    color: var(--bl-muted);
+    font: 400 1rem/1.75 Inter, sans-serif;
+  }
+
+  .res-section__list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  .res-section__item a,
+  .res-section__cta {
+    color: #4E6B2A;
+    font: 800 .95rem/1.45 Inter, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .swt-faq {
+    padding: 105px 0;
+    background: #fff;
+  }
+
+  .swt-faq__layout {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .swt-faq__header {
+    position: sticky;
+    top: 30px;
+  }
+
+  .swt-h2 {
+    font: 500 clamp(2rem, 4vw, 3rem)/1.12 Fraunces, Georgia, serif;
+    color: var(--bl-dark);
+    margin: 12px 0 16px;
+  }
+
+  .swt-eyebrow {
+    font: 800 11px/1 Inter, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--bl-green);
+  }
+
+  .swt-faq__header p {
+    font: 400 1rem/1.75 Inter, sans-serif;
+    color: var(--bl-muted);
+    margin: 0 0 28px;
+  }
+
+  .swt-faq__list {
+    display: grid;
+    gap: 0;
+  }
+
+  .swt-faq__item {
+    border-bottom: 1px solid var(--bl-border);
+  }
+
+  .swt-faq__q {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    color: var(--bl-dark);
+    font: 800 1rem/1.45 Inter, sans-serif;
+    list-style: none;
+  }
+
+  .swt-faq__toggle {
+    font-size: 1.4rem;
+    color: var(--bl-green);
+    flex-shrink: 0;
+    transition: transform .25s;
+  }
+
+  .swt-faq__item--open .swt-faq__toggle {
+    transform: rotate(45deg);
+  }
+
+  .swt-faq__a {
+    display: none;
+    padding: 0 0 20px;
+  }
+
+  .swt-faq__item--open .swt-faq__a {
+    display: block;
+  }
+
+  .swt-faq__a p {
+    font: 400 .95rem/1.75 Inter, sans-serif;
+    color: var(--bl-muted);
+    margin: 0;
+  }
+
+  .swt-btn {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font: 700 .95rem/1 Inter, sans-serif;
+    text-decoration: none;
+    transition: .2s;
+  }
+
+  .swt-btn--primary {
+    background: var(--bl-green);
+    color: #fff;
+    border: 2px solid var(--bl-green);
+  }
+
+  .swt-btn--primary:hover {
+    background: #5f922f;
+    border-color: #5f922f;
+  }
+
+  .bl-cta {
+    position: relative;
+    padding: 120px 24px;
+    text-align: center;
+    color: #fff;
+    background:
+      linear-gradient(rgba(13, 26, 15, .82), rgba(13, 26, 15, .88)),
+      url('/images/ballistic-resistant-window-film-philadelphia-hero.jpg') center/cover;
+  }
+
+  .bl-cta h2 {
+    font: 700 clamp(2rem, 5vw, 3.6rem)/1.08 "Playfair Display", serif;
+    margin: 0 0 16px;
+  }
+
+  .bl-cta p {
+    max-width: 680px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, .78);
+    font: 400 1.05rem/1.7 Inter, sans-serif;
+  }
+
+  @media (max-width: 980px) {
+    .bl-split,
+    .res-section__inner,
+    .bl-reviews__grid,
+    .swt-faq__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .bl-bento-card--hero,
+    .bl-bento-card--photo,
+    .bl-bento-card--dark,
+    .bl-bento-card--badge {
+      grid-column: span 12;
+    }
+
+    .bl-panels__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bl-hero__stats-panel {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bl-masonry__grid {
+      columns: 2;
+    }
+
+    .bl-slider__nav {
+      display: none;
+    }
+
+    .bl-slider__content {
+      padding: 80px 58px;
+    }
+
+    .bl-slider__arrow--next {
+      right: 10px;
+    }
+
+    .bl-slider__arrow--prev {
+      left: 10px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .bl-split {
+      padding: 0 22px;
+    }
+
+    .bl-hero__stats-panel,
+    .bl-panels__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bl-masonry__grid {
+      columns: 1;
+      padding: 0 22px;
+    }
+
+    .bl-hero__stat {
+      border-right: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .bl-why__stat-card {
+      position: static;
+      margin-top: 14px;
+    }
+
+    .bl-slider__content {
+      padding: 70px 34px;
+    }
+
+    .bl-slider__arrow {
+      display: none;
+    }
+
+    .swt-stats__row {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .swt-stats__div {
+      width: auto;
+      height: 1px;
+      margin: 0 24px;
+    }
+  }
+</style>
