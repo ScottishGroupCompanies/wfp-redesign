@@ -1,1508 +1,2357 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FlipWords from '../../components/FlipWords.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CountUp from '../../components/animations/CountUp.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Solar Gard Window Film Philadelphia | Authorized';
 const description = 'Solar Gard window film Philadelphia — Panorama solar control, Sentinel Plus, ArmorCoat safety. Authorized installer, manufacturer warranty.';
-const canonical = 'https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/';
-
-const faqItems = [
-  {
-    question: 'What Solar Gard products does Window Film Philadelphia install?',
-    answer: 'Window Film Philadelphia installs the full Solar Gard commercial lineup including Panorama solar control series, Sentinel Plus energy-saving film, ArmorCoat safety and security series (4-14 mil), and Hilite glare control film. Residential specifications are also available.',
-  },
-  {
-    question: 'How long does Solar Gard window film last?',
-    answer: 'Solar Gard films carry a residential limited lifetime warranty and a 15-year commercial warranty on Panorama and Sentinel Plus. ArmorCoat and Hilite carry a 12-year commercial warranty. All warranties cover film performance, adhesion, and color stability.',
-  },
-  {
-    question: 'What is the difference between Solar Gard Panorama and Sentinel Plus?',
-    answer: 'Solar Gard Panorama is optimized for maximum solar heat rejection, up to 77%, across commercial glazing. Sentinel Plus is an energy-saving film with both summer solar control and year-round low-emissivity performance, better suited for facilities with both summer and winter energy concerns and LEED documentation requirements.',
-  },
-  {
-    question: 'Can Solar Gard Panorama meet LEED requirements?',
-    answer: 'Yes. Solar Gard Panorama and Sentinel Plus are NFRC-certified and can support LEED Energy and Atmosphere credit documentation. Window Film Philadelphia provides complete product data sheets and installation records for credit submissions.',
-  },
-  {
-    question: 'Does Solar Gard Panorama interfere with Wi-Fi or cellular signals?',
-    answer: 'No. The Panorama Series is non-metallized and does not attenuate Wi-Fi or cellular signals. ArmorCoat safety films may use metallized layers in heavier specifications, worth evaluating for signal-sensitive applications.',
-  },
-  {
-    question: 'Can Solar Gard film be applied to double-pane insulated glass?',
-    answer: 'Yes. Solar Gard makes specific series rated for insulated glass units. Window Film Philadelphia always evaluates glass type, orientation, and age before recommending a film to ensure long-term compatibility with existing seals.',
-  },
-  {
-    question: 'Is Solar Gard ArmorCoat the same as blast mitigation film?',
-    answer: 'ArmorCoat at 8-14 mil provides fragment retention and blast mitigation performance tested to ASTM F1642. For GSA TS01-2003-rated blast performance, a specific attachment system is also required. We specify and install the correct system for each facility risk profile.',
-  },
-  {
-    question: 'How does Solar Gard compare to 3M and LLumar?',
-    answer: "Solar Gard Panorama is competitive with 3M Prestige and LLumar ATC in performance and appearance. Solar Gard's strength is in its healthcare and institutional track record and its ArmorCoat safety series. The right brand often comes down to specific series performance, documentation needs, and application requirements.",
-  },
-  {
-    question: 'Can Solar Gard film work on historic Philadelphia glass?',
-    answer: 'Yes. Solar Gard makes residential-grade series approved for single-pane glass including wavy antique glass common in Philadelphia rowhomes. We assess glass type and condition before recommending any product.',
-  },
-  {
-    question: 'How do I get Solar Gard window film installed in Philadelphia?',
-    answer: 'Contact us for a free site assessment. We evaluate your glass, orientation, energy and documentation goals, then recommend the appropriate Solar Gard series. We provide a written proposal with product specifications before any work begins.',
-  },
-];
-
-const testimonials = [
-  {
-    quote: 'Solar Gard Panorama on our south and west facades has measurably reduced cooling costs. The NFRC documentation was thorough and the installation was professional — minimal disruption across all 12 floors.',
-    name: 'Thomas E.',
-    role: 'Property Manager · Center City Class A Tower',
-    img: '/images/solar-gard-testimonial-thomas-e.jpg',
-  },
-  {
-    quote: 'We needed NFRC data for our sustainability report and a product with a healthcare track record. Solar Gard Sentinel Plus delivered both. The patient comfort improvement was noticeable within weeks.',
-    name: 'Karen P.',
-    role: 'Hospital Administrator · University City',
-    img: '/images/solar-gard-testimonial-karen-p.jpg',
-  },
-  {
-    quote: "We installed Solar Gard ArmorCoat on our main entrance glass. The security delay documentation was exactly what our school board needed for approval. You cannot tell it's there from outside.",
-    name: 'William B.',
-    role: 'School Facilities Director · Northeast Philadelphia',
-    img: '/images/solar-gard-testimonial-william-b.jpg',
-  },
-  {
-    quote: "Solar Gard Panorama was the only film that met our client's dual requirements — significant solar heat rejection AND a near-neutral appearance that wouldn't change the facade aesthetics. Perfect for the project.",
-    name: 'Nicole A.',
-    role: 'Interior Designer · Rittenhouse Square',
-    img: '/images/solar-gard-testimonial-nicole-a.jpg',
-  },
-  {
-    quote: 'The afternoon sun was brutal on my west-facing dining room. Solar Gard Hilite cut the glare completely without making the space feel dark. Customers comment on how comfortable it is now.',
-    name: 'Christopher V.',
-    role: 'Restaurant Owner · Passyunk Avenue',
-    img: '/images/solar-gard-testimonial-christopher-v.jpg',
-  },
-  {
-    quote: "We have a south-facing rowhouse and summer was miserable upstairs. Solar Gard Panorama residential film made the second floor livable. Energy bills dropped and we didn't have to replace any windows.",
-    name: 'The Nguyens',
-    role: 'Homeowners · South Philadelphia',
-    img: '/images/solar-gard-testimonial-the-nguyens.jpg',
-  },
-];
-
-const productLines = [
-  {
-    num: '01',
-    image: '/images/solar-gard-panorama-solar-control-window-film-philadelphia.jpg',
-    alt: 'Solar Gard Panorama solar control window film Philadelphia commercial glass',
-    title: 'Solar Gard Panorama solar control window film Philadelphia',
-    pill: 'Panorama Series',
-    eyebrow: 'Solar Gard Panorama Solar Control Window Film',
-    heading: 'Panorama Series — Non-Metallic Solar Control, Maximum Performance',
-    body: [
-      "Solar Gard Panorama is the flagship commercial solar control film — a non-metallized spectrally selective product that rejects up to 77% of solar energy, blocks 99% of UV radiation, and maintains visible light transmission from 25% to 70%. The non-metallic construction means no Wi-Fi or cellular signal attenuation in Philadelphia's dense commercial buildings. The near-neutral exterior appearance — typically under 10% visible reflectance — reads as clear glass from the street and meets most Center City building management and historic district aesthetic requirements.",
-      "For Philadelphia's south- and west-facing commercial glazing, Panorama consistently delivers the highest solar heat rejection in its class. A lifecycle analysis found the film typically becomes carbon-negative within approximately six months of installation on a commercial building through HVAC energy savings. NFRC-certified ratings for VLT, SHGC, and U-value are available for all Panorama specifications.",
-    ],
-    specs: [
-      ['77%', 'Max Heat Rejection'],
-      ['99%', 'UV Block'],
-      ['25-70%', 'VLT Range'],
-      ['15yr', 'Commercial Warranty'],
-    ],
-    docs: [
-      ['solar-gard-window-film-panorama-energy-saving-spec-philadelphia.pdf', 'Panorama Energy Saving Spec'],
-      ['solar-gard-window-film-panorama-solar-control-spec-philadelphia.pdf', 'Panorama Solar Control Data'],
-      ['solar-gard-window-film-panorama-glare-reduction-spec-philadelphia.pdf', 'Panorama Glare Reduction'],
-    ],
-    note: 'Commercial: 15 years. Residential: lifetime limited. Source: Solar Gard by Eastman.',
-  },
-  {
-    num: '02',
-    reverse: true,
-    image: '/images/solar-gard-sentinel-plus-energy-saving-window-film-philadelphia.jpg',
-    alt: 'Solar Gard Sentinel Plus energy-saving window film Philadelphia institutional building',
-    title: 'Solar Gard Sentinel Plus energy-saving window film Philadelphia',
-    pill: 'Sentinel Plus',
-    eyebrow: 'Solar Gard Sentinel Plus Energy-Saving Film',
-    heading: "Sentinel Plus — Energy Savings for Philadelphia's Institutional Buildings",
-    body: [
-      'Solar Gard Sentinel Plus is an energy-saving film engineered for the specific demands of healthcare, educational, and large commercial facilities — buildings that need both summer solar control and year-round energy performance documentation. Sentinel Plus delivers meaningful SHGC improvement and is compatible with LEED Energy and Atmosphere credit documentation. In a Solar Gard case study at a Philadelphia-area medical office building, Sentinel Plus installation reduced solar heat gain significantly, improving patient and staff comfort while delivering measurable energy cost reductions documented in quarterly utility comparisons.',
-      'For Philadelphia facilities managers navigating procurement, sustainability reporting, and energy audits, Sentinel Plus provides NFRC-certified VLT, SHGC, and U-value data in a format compatible with most sustainability reporting frameworks. Window Film Philadelphia provides complete product data sheets, installation records, and warranty documentation for every Sentinel Plus project.',
-    ],
-    specs: [
-      ['~50%', 'VLT'],
-      ['Up to 70%', 'Heat Rejection'],
-      ['99%', 'UV Block'],
-      ['15yr', 'Commercial Warranty'],
-    ],
-    docs: [
-      ['solar-gard-window-film-sentinel-plus-medical-case-study-philadelphia.pdf', 'Sentinel Plus Medical Case Study'],
-    ],
-    note: 'Commercial: 15 years. NFRC-certified. Compatible with LEED EA documentation. Source: Solar Gard by Eastman.',
-  },
-  {
-    num: '03',
-    image: '/images/solar-gard-armorcoat-safety-security-window-film-philadelphia.jpg',
-    alt: 'Solar Gard ArmorCoat safety security window film Philadelphia school entrance glass',
-    title: 'Solar Gard ArmorCoat safety and security window film Philadelphia',
-    pill: 'ArmorCoat',
-    eyebrow: 'Solar Gard ArmorCoat Safety & Security Film',
-    heading: 'ArmorCoat — Fragment Retention and Blast Mitigation for Philadelphia Buildings',
-    body: [
-      'Solar Gard ArmorCoat is a heavy-duty safety and security film series — 4 to 14 mil options — engineered to hold glass fragments in place after impact, significantly delay forced entry, and provide blast mitigation performance tested to ASTM F1642 and GSA standards. At 8 mil, ArmorCoat provides meaningful forced entry delay for retail storefronts and school entrance glass. At 14 mil, ArmorCoat delivers maximum fragment retention and blast mitigation performance for government facilities, courthouses, and high-security commercial properties.',
-      'In Philadelphia, ArmorCoat is most commonly installed at Old City and Center City retail properties for smash-and-grab deterrence, K-12 school entrance glass, government and civic facilities requiring blast documentation, and healthcare facilities with high public access and security requirements. ArmorCoat holds glass together — it does not make glass unbreakable or guarantee protection from all impact events.',
-    ],
-    specs: [
-      ['4-14 mil', 'Series Range'],
-      ['87%+', 'VLT'],
-      ['99%', 'UV Block'],
-      ['12yr', 'Commercial Warranty'],
-    ],
-    docs: [
-      ['solar-gard-window-film-armorcoat-safety-security-spec-philadelphia.pdf', 'ArmorCoat Safety Spec'],
-    ],
-    note: 'Commercial: 12 years. Film holds glass — does not prevent breakage. ASTM F1642 tested. Source: Solar Gard by Eastman.',
-  },
-  {
-    num: '04',
-    reverse: true,
-    image: '/images/solar-gard-hilite-glare-control-window-film-philadelphia.jpg',
-    alt: 'Solar Gard Hilite glare control window film Philadelphia restaurant glass',
-    title: 'Solar Gard Hilite glare control window film Philadelphia',
-    pill: 'Hilite Series',
-    eyebrow: 'Solar Gard Hilite Glare Control Window Film',
-    heading: 'Hilite Series — Targeted Glare Control for East and West Philadelphia Glass',
-    body: [
-      "Solar Gard Hilite Series is a high-performance glare control film with moderate solar heat rejection — optimized for Philadelphia buildings where glare is the primary occupant complaint but heavy tinting is not acceptable. Common applications include east-facing conference rooms in Center City towers where morning sun creates screen glare during peak meeting hours, west-facing open-plan offices where afternoon sun is disruptive, and restaurant or retail spaces where natural light is desirable but direct sun is not.",
-      "Hilite Series maintains higher visible light transmission than heavy solar control films — preserving the daylit feel of Philadelphia's glass-fronted spaces while significantly reducing the glare that causes occupant discomfort and productivity loss. Available in multiple VLT levels to match the specific glare and light requirements of each space.",
-    ],
-    specs: [
-      ['35-55%', 'VLT Range'],
-      ['Up to 60%', 'Heat Rejection'],
-      ['99%', 'UV Block'],
-      ['12yr', 'Commercial Warranty'],
-    ],
-    docs: [
-      ['solar-gard-window-film-panorama-glare-reduction-spec-philadelphia.pdf', 'Panorama Glare Data for Hilite Planning'],
-    ],
-    note: 'Commercial: 12 years. VLT and performance vary by Hilite specification. Source: Solar Gard by Eastman.',
-  },
-];
-
-const comparisonRows = [
-  ['Panorama Series', 'Solar Gard', '25-70%', 'Up to 77%', '99%', 'Lifetime / 15yr'],
-  ['Sentinel Plus', 'Solar Gard', '~50%', 'Up to 70%', '99%', 'Lifetime / 15yr'],
-  ['ArmorCoat 8 mil', 'Solar Gard', '87%+', 'Minimal', '99%', 'Lifetime / 12yr'],
-  ['Hilite Series', 'Solar Gard', '35-55%', 'Up to 60%', '99%', 'Lifetime / 12yr'],
-  ['ATC 70', 'LLumar', '70%', 'Up to 74%', '99%', 'Lifetime / 15yr'],
-  ['Prestige PR70', '3M', '69%', '~66% TSER', '99.9%', 'Lifetime / 15yr'],
-];
+const heroImage = '/images/solar-gard-window-film-philadelphia-hero.jpg';
+const serviceUrl = 'https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/';
 
 const pageSchemas = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
-      { '@type': 'ListItem', position: 3, name: 'Solar Gard Window Film', item: canonical },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': canonical,
-    url: canonical,
-    name: title,
-    description,
-    dateModified: new Date().toISOString().slice(0, 10),
-    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.sg-hero__title', '.sg-why__intro'] },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Solar Gard Window Film Products — Philadelphia',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Panorama Series', description: 'Non-metallic spectrally selective Solar Gard film with 25-70% VLT, up to 77% solar heat rejection, 99% UV block, and 15-year commercial warranty.' },
-      { '@type': 'ListItem', position: 2, name: 'Sentinel Plus', description: 'Energy-saving Solar Gard film for healthcare, educational, and institutional glass with NFRC-certified VLT, SHGC, and U-value documentation.' },
-      { '@type': 'ListItem', position: 3, name: 'ArmorCoat', description: 'Solar Gard safety and security film in 4-14 mil options for fragment retention, forced entry delay, and ASTM F1642-tested blast mitigation systems.' },
-      { '@type': 'ListItem', position: 4, name: 'Hilite Series', description: 'Solar Gard glare control film with 35-55% VLT range, up to 60% heat rejection, 99% UV block, and 12-year commercial warranty.' },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: 'Solar Gard Window Film Philadelphia',
-    brand: { '@type': 'Brand', name: 'Solar Gard' },
-    offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', areaServed: 'Philadelphia, PA' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '58', bestRating: '5' },
-    review: [
-      { '@type': 'Review', author: { '@type': 'Person', name: 'Thomas E.' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, reviewBody: testimonials[0].quote },
-      { '@type': 'Review', author: { '@type': 'Person', name: 'Karen P.' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, reviewBody: testimonials[1].quote },
-      { '@type': 'Review', author: { '@type': 'Person', name: 'William B.' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, reviewBody: testimonials[2].quote },
-    ],
-  },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.windowfilmphiladelphia.net/products/" },
+    { "@type": "ListItem", "position": 3, "name": "Solar Gard Window Film", "item": "https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/" }
+  ]},
+  { "@context": "https://schema.org", "@type": "WebPage", "@id": "https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/", "name": title, "description": description, "dateModified": new Date().toISOString().slice(0, 10), "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".sg-hero__title", ".sg-why__intro"] } },
+  { "@context": "https://schema.org", "@type": "ItemList", "name": "Solar Gard Window Film Products — Philadelphia", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Solar Gard Panorama Series", "description": "Non-metallized spectrally selective solar control. Up to 77% heat rejection, 99% UV block, VLT 25–70%. NFRC-certified." },
+    { "@type": "ListItem", "position": 2, "name": "Solar Gard Sentinel Plus", "description": "Energy-saving insulating film for healthcare and institutional buildings. NFRC-certified. LEED EA compatible." },
+    { "@type": "ListItem", "position": 3, "name": "Solar Gard ArmorCoat", "description": "Safety and security film, 4–14 mil. Fragment retention and blast mitigation tested to ASTM F1642." },
+    { "@type": "ListItem", "position": 4, "name": "Solar Gard Hilite Series", "description": "Glare control film with moderate solar heat rejection. VLT 35–55%. For east and west-facing Philadelphia offices." }
+  ]},
+  { "@context": "https://schema.org", "@type": "Product", "name": "Solar Gard Window Film Philadelphia", "description": "Solar Gard architectural window film for Philadelphia offices, healthcare, schools, and commercial properties. Panorama, Sentinel Plus, ArmorCoat, and Hilite series.", "brand": { "@type": "Brand", "name": "Solar Gard" }, "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "areaServed": "Philadelphia, PA" }, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "58", "bestRating": "5" }, "review": [
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Thomas E." }, "reviewBody": "Solar Gard Panorama on our south and west facades has measurably reduced cooling costs. The NFRC documentation was thorough and the installation was professional — minimal disruption across all 12 floors." },
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Karen P." }, "reviewBody": "We needed NFRC data for our sustainability report and a product with a healthcare track record. Solar Gard Sentinel Plus delivered both. The patient comfort improvement was noticeable within weeks." },
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "William B." }, "reviewBody": "We installed Solar Gard ArmorCoat on our main entrance glass. The security delay documentation was exactly what our school board needed for approval. You cannot tell it's there from outside." }
+  ]}
+];
+
+const faqItems = [
+  { question: "What Solar Gard products does Window Film Philadelphia install?", answer: "Window Film Philadelphia installs the full Solar Gard commercial lineup including Panorama solar control series, Sentinel Plus energy-saving film, ArmorCoat safety and security series (4–14 mil), and Hilite glare control film. Residential specifications are also available." },
+  { question: "How long does Solar Gard window film last?", answer: "Solar Gard films carry a residential limited lifetime warranty and a 15-year commercial warranty on Panorama and Sentinel Plus. ArmorCoat and Hilite carry a 12-year commercial warranty. All warranties cover film performance, adhesion, and color stability." },
+  { question: "What is the difference between Solar Gard Panorama and Sentinel Plus?", answer: "Solar Gard Panorama is optimized for maximum solar heat rejection (up to 77%). Sentinel Plus is an energy-saving film with both summer solar control and year-round low-emissivity performance — better suited for facilities with LEED documentation requirements." },
+  { question: "Can Solar Gard Panorama meet LEED requirements?", answer: "Yes. Solar Gard Panorama and Sentinel Plus are NFRC-certified and can support LEED Energy and Atmosphere credit documentation. Window Film Philadelphia provides complete product data sheets and installation records for credit submissions." },
+  { question: "Does Solar Gard Panorama interfere with Wi-Fi or cellular signals?", answer: "No. The Panorama Series is non-metallized and does not attenuate Wi-Fi or cellular signals. ArmorCoat safety films may use metallized layers in heavier specifications — worth evaluating for signal-sensitive applications." },
+  { question: "Can Solar Gard film be applied to double-pane insulated glass?", answer: "Yes. Solar Gard makes specific series rated for insulated glass units. Window Film Philadelphia always evaluates glass type, orientation, and age before recommending a film to ensure long-term compatibility with existing seals." },
+  { question: "Is Solar Gard ArmorCoat the same as blast mitigation film?", answer: "ArmorCoat at 8–14 mil provides fragment retention and blast mitigation performance tested to ASTM F1642. For GSA TS01-2003-rated blast performance, a specific attachment system is also required. We specify and install the correct system for each facility's risk profile." },
+  { question: "How does Solar Gard compare to 3M and LLumar?", answer: "Solar Gard Panorama is competitive with 3M Prestige and LLumar ATC in performance and appearance. Solar Gard's strength is in its healthcare and institutional track record and its ArmorCoat safety series. The right brand often comes down to specific series performance, documentation needs, and application requirements." },
+  { question: "Can Solar Gard film work on historic Philadelphia glass?", answer: "Yes. Solar Gard makes residential-grade series approved for single-pane glass including wavy antique glass common in Philadelphia rowhomes. We assess glass type and condition before recommending any product." },
+  { question: "How do I get Solar Gard window film installed in Philadelphia?", answer: "Contact us for a free site assessment. We evaluate your glass, orientation, energy and documentation goals, then recommend the appropriate Solar Gard series. We provide a written proposal with product specifications before any work begins." }
+];
+
+const solarGardReviews = [
+  { quote: "Solar Gard Panorama on our south and west facades has measurably reduced cooling costs. The NFRC documentation was thorough and the installation was professional — minimal disruption across all 12 floors.", name: "Thomas E.", role: "Property Manager · Center City Class A Tower", img: "/images/solar-gard-testimonial-thomas-e.jpg" },
+  { quote: "We needed NFRC data for our sustainability report and a product with a healthcare track record. Solar Gard Sentinel Plus delivered both. The patient comfort improvement was noticeable within weeks.", name: "Karen P.", role: "Hospital Administrator · University City", img: "/images/solar-gard-testimonial-karen-p.jpg" },
+  { quote: "We installed Solar Gard ArmorCoat on our main entrance glass. The security delay documentation was exactly what our school board needed for approval. You cannot tell it's there from outside.", name: "William B.", role: "School Facilities Director · Northeast Philadelphia", img: "/images/solar-gard-testimonial-william-b.jpg" },
+  { quote: "Solar Gard Panorama was the only film that met our client's dual requirements — significant solar heat rejection AND a near-neutral appearance that wouldn't change the facade aesthetics. Perfect for the project.", name: "Nicole A.", role: "Interior Designer · Rittenhouse Square", img: "/images/solar-gard-testimonial-nicole-a.jpg" },
+  { quote: "The afternoon sun was brutal on my west-facing dining room. Solar Gard Hilite cut the glare completely without making the space feel dark. Customers comment on how comfortable it is now.", name: "Christopher V.", role: "Restaurant Owner · Passyunk Avenue", img: "/images/solar-gard-testimonial-christopher-v.jpg" },
+  { quote: "We have a south-facing rowhouse and summer was miserable upstairs. Solar Gard Panorama residential film made the second floor livable. Energy bills dropped and we didn't have to replace any windows.", name: "The Nguyens", role: "Homeowners · South Philadelphia", img: "/images/solar-gard-testimonial-the-nguyens.jpg" }
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical} schemas={pageSchemas} faqItems={faqItems}>
-  <div class="sg-page">
-    <div class="sg-geo" aria-hidden="true" style="display:none;">
-      <p>Solar Gard window film Philadelphia is an Eastman Performance Films brand installed across Center City, University City, Old City, Passyunk Avenue, Northeast Philadelphia, and South Philadelphia commercial and residential properties — including Class A office towers on Market Street and Broad Street, University City medical centers and university campuses, Northeast Philadelphia K-12 schools, Old City retail storefronts, and South Philadelphia rowhomes — using the Panorama spectrally selective solar control series, Sentinel Plus energy-saving film, ArmorCoat safety and blast mitigation series (4-14 mil, ASTM F1642), and Hilite glare control film, all with NFRC-certified ratings for VLT, SHGC, and U-value.</p>
-      <dl>
-        <dt>What is Solar Gard window film in Philadelphia?</dt>
-        <dd>An Eastman Performance Films brand with spectrally selective solar control (Panorama), energy-saving insulating (Sentinel Plus), safety and blast mitigation (ArmorCoat), and glare control (Hilite) series — installed on Philadelphia commercial and residential glass by authorized dealers.</dd>
-        <dt>How does Solar Gard Panorama work?</dt>
-        <dd>Uses a non-metallic spectrally selective coating to reject near-infrared solar heat while transmitting visible light — up to 77% solar energy rejection without a heavily tinted or reflective appearance.</dd>
-        <dt>What Solar Gard products are available in Philadelphia?</dt>
-        <dd>Panorama solar control (VLT 25-70%, up to 77% heat rejection), Sentinel Plus (energy-saving, NFRC), ArmorCoat (4-14 mil, ASTM F1642), Hilite (glare control, VLT 35-55%).</dd>
-        <dt>Which Philadelphia buildings use Solar Gard window film?</dt>
-        <dd>Center City Class A offices, University City healthcare and academic facilities, Northeast Philadelphia schools, Old City retail storefronts, Passyunk Avenue restaurants, and South Philadelphia rowhomes.</dd>
-        <dt>Is Solar Gard worth it for Philadelphia winters?</dt>
-        <dd>Sentinel Plus provides low-emissivity performance that reduces winter heat loss, particularly valuable for Philadelphia commercial buildings with aging glass and healthcare facilities with year-round energy reporting requirements.</dd>
-        <dt>How much does Solar Gard window film cost in Philadelphia?</dt>
-        <dd>Cost depends on film series, glass area, building access, documentation requirements, and installation scope. Contact us for a free assessment and written proposal.</dd>
-      </dl>
-      <ul>
-        <li>Solar Gard window film Philadelphia</li>
-        <li>Solar Gard window tint in Philadelphia</li>
-        <li>Solar Gard film installer for Philadelphia</li>
-        <li>Solar Gard Panorama Philadelphia</li>
-        <li>Solar Gard Sentinel Plus Philadelphia</li>
-        <li>Solar Gard ArmorCoat safety film Philadelphia</li>
-        <li>Solar Gard Hilite glare control Philadelphia</li>
-        <li>Solar Gard authorized dealer Philadelphia</li>
-        <li>Solar Gard commercial window film Center City</li>
-        <li>Solar Gard NFRC certified film Philadelphia</li>
-        <li>Solar Gard Eastman architectural film Philadelphia</li>
-        <li>Solar Gard film installation University City</li>
-        <li>Solar Gard residential window film South Philadelphia</li>
-        <li>Solar Gard blast mitigation film Philadelphia</li>
-      </ul>
+<BaseLayout title={title} description={description} ogImage={heroImage} serviceName="Solar Gard Window Film" serviceDesc="Solar Gard architectural window film for Philadelphia — Panorama solar control, Sentinel Plus, ArmorCoat safety, and Hilite glare control. Authorized Solar Gard installer." serviceUrl={serviceUrl} faqItems={faqItems} schemas={pageSchemas}>
+
+<!-- ═══════════════════════════════════════════
+     GEO — visually hidden, speakable-targeted direct answer
+═══════════════════════════════════════════ -->
+<div class="sg-geo" aria-hidden="true" style="display:none">
+  <p>Solar Gard window film Philadelphia is an Eastman Performance Films brand installed across Center City, University City, Old City, Passyunk Avenue, Northeast Philadelphia, and South Philadelphia — including Class A office towers on Market Street and Broad Street, University City medical centers and campuses, Northeast Philadelphia K-12 schools, Old City retail storefronts, Passyunk Avenue restaurants, and South Philadelphia rowhomes — using the Panorama spectrally selective solar control series, Sentinel Plus energy-saving film, ArmorCoat safety and blast mitigation (4–14 mil, ASTM F1642), and Hilite glare control film, all NFRC-certified.</p>
+  <dl>
+    <dt>Definition</dt><dd>Solar Gard window film is an Eastman architectural film lineup for solar control, safety, glare reduction, and energy documentation.</dd>
+    <dt>Panorama mechanism</dt><dd>Panorama uses non-metallized spectrally selective technology to reject solar energy while maintaining a neutral glass appearance and wireless signal performance.</dd>
+    <dt>Products</dt><dd>Philadelphia projects commonly specify Panorama, Sentinel Plus, ArmorCoat, and Hilite depending on heat, glare, security, and sustainability goals.</dd>
+    <dt>Buildings</dt><dd>Solar Gard is used in office towers, medical centers, schools, storefronts, restaurants, and residential rowhomes throughout Philadelphia.</dd>
+    <dt>Winters</dt><dd>Sentinel Plus supports year-round energy performance for mixed-humid Zone 4A buildings with summer cooling and winter heating loads.</dd>
+    <dt>Cost</dt><dd>Project pricing depends on product series, glass area, attachment systems, access, and documentation requirements.</dd>
+  </dl>
+  <ul>
+    <li>Solar Gard Panorama window film Philadelphia</li>
+    <li>Solar Gard Sentinel Plus Philadelphia</li>
+    <li>Solar Gard ArmorCoat Philadelphia</li>
+    <li>Solar Gard Hilite glare control Philadelphia</li>
+    <li>Solar Gard commercial window film Philadelphia</li>
+    <li>Solar Gard residential window film Philadelphia</li>
+    <li>Solar Gard safety window film Philadelphia</li>
+    <li>Solar Gard blast mitigation film Philadelphia</li>
+    <li>Solar Gard energy saving film Philadelphia</li>
+    <li>Solar Gard office window film Philadelphia</li>
+    <li>Solar Gard healthcare window film Philadelphia</li>
+    <li>Solar Gard school window film Philadelphia</li>
+    <li>Solar Gard rowhome window film Philadelphia</li>
+    <li>Solar Gard NFRC certified window film Philadelphia</li>
+  </ul>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="sg-hero">
+  <div
+    class="sg-hero__bg"
+    style="background-image: url('/images/solar-gard-window-film-philadelphia-hero.jpg')"
+    role="img"
+    aria-label="Solar Gard window film installed on a Philadelphia commercial glass facade"
+  ></div>
+  <div class="sg-hero__overlay"></div>
+
+  <div class="sg-hero__content">
+
+    <div class="sg-hero__eyebrow">
+      <span>Solar Gard Window Film</span>
+      <span class="sg-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Philadelphia, PA</span>
+      <span class="sg-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Authorized Installer</span>
     </div>
 
-    <section class="sg-hero">
-      <div class="sg-hero__bg" style="background-image:url('/images/solar-gard-window-film-philadelphia-hero.jpg')" role="img" aria-label="Solar Gard window film on Philadelphia commercial building glass"></div>
-      <div class="sg-hero__overlay"></div>
-      <div class="sg-hero__content">
-        <div class="sg-hero__eyebrow">
-          <span>Solar Gard Window Film</span>
-          <span class="sg-hero__eyebrow-dot" aria-hidden="true"></span>
-          <span>Philadelphia, PA</span>
-          <span class="sg-hero__eyebrow-dot" aria-hidden="true"></span>
-          <span>Authorized Installer</span>
-        </div>
-        <h1 class="sg-hero__title">Solar Gard Window Film for Philadelphia</h1>
-        <p class="sg-hero__animated-line">
-          <FlipWords words={['for offices and commercial buildings', 'for rowhomes and residences', 'for schools and institutions', 'for healthcare facilities']} staticText="" class="sg-hero__flip" />
-        </p>
-        <p class="sg-hero__subtitle">Solar Gard is an Eastman Performance Films brand with a strong track record in commercial solar control, energy efficiency, and safety film — trusted by facility managers, architects, and sustainability directors across Philadelphia. The Panorama, Sentinel Plus, and ArmorCoat lineups professionally installed with a manufacturer-backed warranty.</p>
-        <div class="sg-hero__cta">
-          <a href="/contact/" class="sg-hero__btn-primary">Get Your Free Estimate</a>
-          <a href="tel:2673947980" class="sg-hero__btn-secondary">Call (267) 394-7980</a>
-        </div>
-        <div class="sg-hero__stats-panel" aria-label="Key Solar Gard performance statistics">
-          <div class="sg-hero__stats-inner">
-            <CountUp end={77} suffix="%" label="Max Heat Rejection" />
-            <div class="sg-hero__stat-divider" aria-hidden="true"></div>
-            <CountUp end={99} suffix="%" label="UV Blocked" />
-            <div class="sg-hero__stat-divider" aria-hidden="true"></div>
-            <CountUp end={15} suffix="yr" label="Commercial Warranty" />
-            <div class="sg-hero__stat-divider" aria-hidden="true"></div>
-            <div class="sg-hero__static-stat">
-              <span>Zone 4A</span>
-              <small>Philadelphia Climate</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <h1 class="sg-hero__title">Solar Gard Window Film for Philadelphia</h1>
 
-    <section class="sg-intro">
-      <div class="sg-intro__inner">
-        <div class="sg-intro__image-col">
-          <div class="sg-intro__image-wrap">
-            <img src="/images/solar-gard-window-film-philadelphia-intro.jpg" alt="Solar Gard window film Philadelphia installer applying film" title="Solar Gard authorized installer Philadelphia" width="600" height="720" loading="lazy" class="sg-intro__img" />
-            <div class="sg-intro__badge"><span>Solar Gard Authorized Installer</span></div>
-          </div>
-        </div>
-        <div class="sg-intro__content">
-          <span class="sg-intro__eyebrow">Why Solar Gard &amp; Window Film Philadelphia</span>
-          <h2 class="sg-intro__title">Solar Gard: Eastman's Commercial Performance Brand, Installed in Philadelphia</h2>
-          <p class="sg-intro__lead">Solar Gard is an Eastman Performance Films brand known for its Panorama spectrally selective solar control series — one of the most widely specified commercial solar films in the U.S. for Class A office buildings, healthcare facilities, and institutional projects. Solar Gard window tint in Philadelphia is available through Window Film Philadelphia across the full Panorama, Sentinel Plus, Hilite, and ArmorCoat safety lineups.</p>
-          <p class="sg-intro__body">Window Film Philadelphia is an authorized Solar Gard installer serving Philadelphia, Main Line, South Jersey, and surrounding suburbs. Every Solar Gard installation includes a manufacturer-backed warranty, NFRC-certified product data, and documentation appropriate for commercial procurement and LEED submissions.</p>
-          <div class="sg-intro__creds">
-            <span class="sg-intro__cred">Solar Gard Authorized Installer</span>
-            <span class="sg-intro__cred">Licensed &amp; Insured</span>
-            <span class="sg-intro__cred">Serving Philadelphia Since 2008</span>
-            <span class="sg-intro__cred">NFRC-Certified Products</span>
-          </div>
-          <div class="sg-intro__ctas">
-            <a href="/contact/" class="sg-btn sg-btn--primary">Get a Free Quote</a>
-            <a href="tel:2673947980" class="sg-btn sg-btn--ghost">Call (267) 394-7980</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <p class="sg-hero__animated-line">
+      <FlipWords
+        words={["for offices and commercial buildings", "for rowhomes and residences", "for schools and institutions", "for healthcare facilities"]}
+        staticText=""
+        class="sg-hero__flip"
+      />
+    </p>
 
-    <section class="sg-trust">
-      <div class="sg-trust__inner">
-        <p class="sg-trust__label">Philadelphia's authorized Solar Gard installer — stocking the full Panorama, Sentinel Plus, and ArmorCoat lineups</p>
-        <div class="sg-trust__badges">
-          <span class="sg-trust__badge">Solar Gard Authorized Installer</span>
-          <span class="sg-trust__sep" aria-hidden="true"></span>
-          <span class="sg-trust__badge">Licensed &amp; Insured</span>
-          <span class="sg-trust__sep" aria-hidden="true"></span>
-          <span class="sg-trust__badge">Manufacturer-Backed Warranty</span>
-          <span class="sg-trust__sep" aria-hidden="true"></span>
-          <span class="sg-trust__badge">NFRC-Certified</span>
-        </div>
-      </div>
-    </section>
-    <BrandLogos />
+    <p class="sg-hero__subtitle">
+      Solar Gard is an Eastman Performance Films brand with a strong track record in commercial solar control, energy efficiency, and safety film — trusted by facility managers, architects, and sustainability directors across Philadelphia.
+    </p>
 
-    <section class="sg-why">
-      <div class="sg-why__container">
-        <div class="sg-why__image-wrap">
-          <img src="/images/solar-gard-window-film-philadelphia-why.jpg" alt="Solar Gard window film Philadelphia commercial glass in mixed-humid climate" title="Solar Gard window film Philadelphia climate performance" width="768" height="960" loading="lazy" class="sg-why__image" />
-          <div class="sg-why__stat-card">
-            <div class="sg-why__stat-item"><span>IECC Climate Zone 4A — 4 full seasons</span></div>
-            <div class="sg-why__stat-divider"></div>
-            <div class="sg-why__stat-item"><span>~2,500 sunshine hours per year</span></div>
-          </div>
-        </div>
-        <div class="sg-why__content">
-          <span class="sg-why__eyebrow">Why Solar Gard for Philadelphia</span>
-          <h2 class="sg-why__headline">Philadelphia's Commercial Glass Deserves a Film That Documents Its Own Performance</h2>
-          <p class="sg-why__intro">Philadelphia sits in IECC Climate Zone 4A — a mixed-humid zone that demands year-round glass performance. Solar Gard film installer for Philadelphia commercial projects is chosen when energy performance, verified specs, and procurement documentation all matter: the Panorama Series delivers up to 77% solar heat rejection with NFRC-certified ratings, and Solar Gard's track record in major healthcare and commercial installations gives facilities teams a verified reference base for Philadelphia's demanding procurement processes.</p>
-          <ul class="sg-why__bullets">
-            <li>Center City offices with south and west glazing face severe summer cooling loads — Solar Gard Panorama rejects up to 77% of solar energy while maintaining a near-neutral appearance</li>
-            <li>Healthcare and institutional facilities require documented energy performance — Solar Gard Panorama and Sentinel Plus both carry NFRC-certified VLT, SHGC, and U-value ratings</li>
-            <li>Schools, government facilities, and high-occupancy buildings need both solar control and safety film — ArmorCoat provides fragment retention and GSA-tested blast performance alongside solar rejection</li>
-            <li>Solar Gard Panorama's spectrally selective, non-metallic coating does not attenuate Wi-Fi or cellular signals — critical for Philadelphia's dense commercial and institutional buildings</li>
-          </ul>
-          <p class="sg-why__closing">"Solar Gard architectural window film is designed to deliver measurable energy performance in demanding commercial environments," according to Solar Gard by Eastman. For broader energy-efficiency strategies, see our <a href="/benefits/energy-savings/">energy savings window film</a> page. Facilities with security concerns will find additional options on our <a href="/benefits/safety-and-security/">safety and security window film</a> page. For commercial-scale specifications, review our <a href="/applications/office/">commercial office window film</a> page. Explore the full <a href="https://www.solargard.com/en/architectural/" target="_blank" rel="noopener">Solar Gard architectural window film</a> lineup.</p>
-          <div class="sg-why__climate-facts">
-            <div class="sg-why__climate-item"><span class="sg-why__climate-num">2,500</span><span class="sg-why__climate-label">Sunshine hours per year</span></div>
-            <div class="sg-why__climate-item"><span class="sg-why__climate-num">87°F</span><span class="sg-why__climate-label">Average July high</span></div>
-            <div class="sg-why__climate-item"><span class="sg-why__climate-num">Zone 4A</span><span class="sg-why__climate-label">Mixed-humid, 4 seasons</span></div>
-          </div>
-          <a href="/contact/" class="sg-why__cta">Get a free film assessment &rarr;</a>
-        </div>
-      </div>
-    </section>
+    <div class="sg-hero__cta">
+      <a href="/contact/" class="sg-hero__btn-primary">Get Your Free Estimate</a>
+      <a href="tel:2673947980" class="sg-hero__btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
 
-    <section class="sg-slider" id="sgSlider">
-      <div class="sg-slider__track" id="sgTrack">
-        <div class="sg-slider__slide" data-slide="0">
-          <img src="/images/solar-gard-window-film-philadelphia-residential.jpg" alt="Solar Gard window film Philadelphia rowhome living room" title="Solar Gard residential window film Philadelphia rowhomes" class="sg-slider__bg" loading="lazy" />
-          <div class="sg-slider__overlay"></div>
-          <div class="sg-slider__content">
-            <div class="sg-slider__step">01</div>
-            <h2 class="sg-slider__title">Rowhomes. Solar Gard Comfort.</h2>
-            <p class="sg-slider__desc">Philadelphia's rowhome stock presents a consistent glass challenge — aging single-pane windows that admit significant solar heat in summer and lose warmth in winter. Solar Gard's residential film options address both seasons without window replacement. Solar Gard window tint in Philadelphia rowhomes uses the same spectrally selective technology found in the commercial Panorama series at residential-appropriate VLT levels.</p>
-            <div class="sg-slider__faq">
-              <div class="sg-slider__faq-item"><button class="sg-slider__faq-q" aria-expanded="false">Which Solar Gard film works best for Philadelphia rowhomes?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button><div class="sg-slider__faq-a" hidden>For summer heat and glare, Solar Gard Panorama is the standard recommendation — up to 77% solar heat rejection while maintaining views and natural light. For year-round performance including winter insulation, Sentinel Plus adds low-emissivity performance. We assess glass and orientation before recommending.</div></div>
-              <div class="sg-slider__faq-item"><button class="sg-slider__faq-q" aria-expanded="false">Will Solar Gard film change how my home looks?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button><div class="sg-slider__faq-a" hidden>Solar Gard Panorama is available in near-neutral options with low exterior reflectance — compatible with Philadelphia historic neighborhood guidelines. We provide samples before installation.</div></div>
-              <div class="sg-slider__faq-item"><button class="sg-slider__faq-q" aria-expanded="false">Can Solar Gard film go on older Philadelphia windows?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button><div class="sg-slider__faq-a" hidden>Yes. Solar Gard makes series approved for single-pane glass including the wavy glass common in pre-1950 Philadelphia rowhomes. We evaluate each window's glass type and condition before installation.</div></div>
-            </div>
-            <a href="/contact/" class="sg-slider__cta">Get a residential estimate &rarr;</a>
-          </div>
-        </div>
-        <div class="sg-slider__slide" data-slide="1">
-          <img src="/images/solar-gard-window-film-philadelphia-commercial.jpg" alt="Solar Gard window film Philadelphia commercial office glass" title="Solar Gard commercial window film Philadelphia offices" class="sg-slider__bg" loading="lazy" />
-          <div class="sg-slider__overlay"></div>
-          <div class="sg-slider__content">
-            <div class="sg-slider__step">02</div>
-            <h2 class="sg-slider__title">Philadelphia Offices. Solar Gard Results.</h2>
-            <p class="sg-slider__desc">Center City high-rises, healthcare campuses, and university buildings all face significant solar load and HVAC costs from Philadelphia's climate. Solar Gard Panorama Series reduces cooling load by rejecting up to 77% of solar energy — with NFRC documentation that satisfies institutional procurement and LEED submissions. Commercial Solar Gard window film Philadelphia installations typically return their investment within 2-4 years through energy savings.</p>
-            <div class="sg-slider__faq">
-              <div class="sg-slider__faq-item"><button class="sg-slider__faq-q" aria-expanded="false">How quickly does Solar Gard pay back on commercial buildings?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button><div class="sg-slider__faq-a" hidden>Most commercial installations with significant south- or west-facing glass see payback within 2-4 years. Healthcare and institutional buildings with large glazed footprints often see faster returns due to high HVAC loads.</div></div>
-              <div class="sg-slider__faq-item"><button class="sg-slider__faq-q" aria-expanded="false">Will installation disrupt building operations?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button><div class="sg-slider__faq-a" hidden>Minimal disruption. Our teams work floor by floor, coordinate with facilities management, and schedule around occupied spaces. Most commercial projects are completed with no impact on daily operations.</div></div>
-              <div class="sg-slider__faq-item"><button class="sg-slider__faq-q" aria-expanded="false">Can Solar Gard Panorama go on curtain wall and floor-to-ceiling glass?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button><div class="sg-slider__faq-a" hidden>Yes — Panorama Series is one of the most commonly specified films for commercial curtain wall applications in Philadelphia. It applies in panels with nearly invisible seams and performs consistently across all glass sizes.</div></div>
-            </div>
-            <a href="/contact/" class="sg-slider__cta">Get a commercial estimate &rarr;</a>
-          </div>
-        </div>
+    <div class="sg-hero__stats-panel" aria-label="Key Solar Gard window film statistics">
+      <div class="sg-hero__stats-inner">
+        <CountUp end={77} suffix="%" label="Max Heat Rejection" />
+        <div class="sg-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={99} suffix="%" label="UV Blocked" />
+        <div class="sg-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={15} suffix="yr" label="Commercial Warranty" />
+        <div class="sg-hero__stat-divider" aria-hidden="true"></div>
+        <div class="countup"><span class="countup__number">Zone 4A</span><span class="countup__label">Philadelphia Climate</span></div>
       </div>
-      <nav class="sg-slider__nav" aria-label="Slide navigation">
-        <button class="sg-slider__nav-item sg-slider__nav-item--active" data-sgnav="0"><span class="sg-slider__nav-line"></span><span class="sg-slider__nav-label">Residential</span></button>
-        <button class="sg-slider__nav-item" data-sgnav="1"><span class="sg-slider__nav-line"></span><span class="sg-slider__nav-label">Commercial</span></button>
-      </nav>
-      <button class="sg-slider__arrow sg-slider__arrow--prev" id="sgPrev" aria-label="Previous slide">‹</button>
-      <button class="sg-slider__arrow sg-slider__arrow--next" id="sgNext" aria-label="Next slide">›</button>
-      <div class="sg-slider__progress"><div class="sg-slider__progress-bar" id="sgProgressBar"></div></div>
-    </section>
+    </div>
 
-    <section class="sg-products">
-      <div class="sg-products__hd">
-        <span class="sg-eyebrow">Product Lines</span>
-        <h2 class="sg-products__title">Solar Gard Series Specified Across Philadelphia Glass</h2>
-        <p class="sg-products__sub">Solar Gard window film Philadelphia projects draw from four Eastman-backed architectural series: Panorama, Sentinel Plus, ArmorCoat, and Hilite.</p>
+  </div>
+</section>
+
+<div class="ip-page-body">
+
+<!-- ══════════════════════════════════════
+     SECTION 2 - INTRO + TRUST BAR
+     ══════════════════════════════════════ -->
+<section class="sg-intro">
+  <div class="sg-intro__inner">
+
+    <div class="sg-intro__image-col">
+      <div class="sg-intro__image-wrap">
+        <img
+          src="/images/solar-gard-window-film-philadelphia-intro.jpg"
+          alt="Solar Gard window film installation on Philadelphia office building"
+          title="Solar Gard window film installation Philadelphia"
+          width="600"
+          height="720"
+          loading="lazy"
+          class="sg-intro__img"
+        />
+        <div class="sg-intro__badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+          <span>Solar Gard Authorized Installer</span>
+        </div>
       </div>
-      {productLines.map((line) => (
-        <div class:list={['sg-pl-row', line.reverse && 'sg-pl-row--rev', 'fade-in']}>
-          <div class="sg-pl-row__img-wrap">
-            <img src={line.image} alt={line.alt} title={line.title} width="768" height="960" loading="lazy" class="sg-pl-row__img" />
-            <span class="sg-pl-row__pill">{line.pill}</span>
+    </div>
+
+    <div class="sg-intro__content">
+      <span class="sg-intro__eyebrow">Why Solar Gard &amp; Window Film Philadelphia</span>
+      <h2 class="sg-intro__title">Solar Gard: Eastman's Commercial Performance Brand. Philadelphia's Authorized Installer.</h2>
+      <p class="sg-intro__lead">Solar Gard is an Eastman Performance Films brand known for its Panorama spectrally selective solar control series. Solar Gard window tint in Philadelphia is available through Window Film Philadelphia across the full Panorama, Sentinel Plus, Hilite, and ArmorCoat safety lineups.</p>
+      <p class="sg-intro__body">Window Film Philadelphia is an authorized Solar Gard installer. Every installation includes a manufacturer-backed warranty, NFRC-certified product data, and documentation appropriate for commercial procurement and LEED submissions.</p>
+      <div class="sg-intro__creds">
+        <div class="sg-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Solar Gard Authorized Installer
+        </div>
+        <div class="sg-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Licensed &amp; Insured
+        </div>
+        <div class="sg-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Serving Philadelphia Since 2008
+        </div>
+        <div class="sg-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          NFRC-Certified Products
+        </div>
+      </div>
+      <div class="sg-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="tel:2673947980" class="pp-btn pp-btn--ghost">Call (267) 394-7980</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<section class="sg-trust">
+  <div class="sg-trust__inner">
+    <p class="sg-trust__label">Philadelphia's authorized Solar Gard installer — Panorama, Sentinel Plus, and ArmorCoat</p>
+    <div class="sg-trust__badges">
+      <div class="sg-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Solar Gard Authorized Installer
+      </div>
+      <div class="sg-trust__sep" aria-hidden="true"></div>
+      <div class="sg-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Licensed &amp; Insured
+      </div>
+      <div class="sg-trust__sep" aria-hidden="true"></div>
+      <div class="sg-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Manufacturer-Backed Warranty
+      </div>
+      <div class="sg-trust__sep" aria-hidden="true"></div>
+      <div class="sg-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        NFRC-Certified
+      </div>
+    </div>
+  </div>
+</section>
+<BrandLogos />
+
+<!-- ══════════════════════════════════════
+     SECTION 3 - WHY SOLAR GARD FOR PHILADELPHIA
+     ══════════════════════════════════════ -->
+<section class="sg-why">
+  <div class="sg-why__container">
+
+    <div class="sg-why__image-wrap">
+      <img
+        src="/images/solar-gard-window-film-philadelphia-why.jpg"
+        alt="Philadelphia Rittenhouse Square neighborhood, aspirational urban architecture showing the need for solar control"
+        title="Solar Gard window film Philadelphia commercial"
+        width="768"
+        height="960"
+        loading="lazy"
+        class="sg-why__image"
+      />
+      <div class="sg-why__stat-card">
+        <div class="sg-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>IECC Climate Zone 4A — 4 full seasons</span>
+        </div>
+        <div class="sg-why__stat-divider"></div>
+        <div class="sg-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>~2,500 sunshine hours per year</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-why__content">
+      <span class="sg-why__eyebrow">Why Solar Gard for Philadelphia</span>
+      <h2 class="sg-why__headline">Philadelphia's Commercial Glass Deserves Film That Documents Its Own Performance</h2>
+      <p class="sg-why__intro">
+        Philadelphia sits in IECC Climate Zone 4A — a mixed-humid zone that demands year-round glass performance. Solar Gard film installer for Philadelphia commercial projects is chosen when energy performance, verified specs, and procurement documentation all matter: the Panorama Series delivers up to 77% solar heat rejection with NFRC-certified ratings.
+      </p>
+      <ul class="sg-why__bullets">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Center City offices with south and west glazing face severe summer cooling loads — Solar Gard Panorama rejects up to 77% of solar energy while maintaining a near-neutral appearance
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Healthcare and institutional facilities require documented energy performance — Solar Gard Panorama and Sentinel Plus both carry NFRC-certified VLT, SHGC, and U-value ratings
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Schools, government facilities, and high-occupancy buildings need both solar control and safety film — ArmorCoat provides fragment retention and GSA-tested blast performance
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Solar Gard Panorama's non-metallic coating does not attenuate Wi-Fi or cellular signals — critical for Philadelphia's dense commercial and institutional buildings
+        </li>
+      </ul>
+      <div class="sg-why__climate-facts">
+        <div class="sg-why__climate-item">
+          <span class="sg-why__climate-num">2,500</span>
+          <span class="sg-why__climate-label">Sunshine hours</span>
+        </div>
+        <div class="sg-why__climate-item">
+          <span class="sg-why__climate-num">87°F</span>
+          <span class="sg-why__climate-label">Avg July high</span>
+        </div>
+        <div class="sg-why__climate-item">
+          <span class="sg-why__climate-num">Zone 4A</span>
+          <span class="sg-why__climate-label">Mixed-humid</span>
+        </div>
+      </div>
+      <p style="font-family:var(--font-body,'DM Sans',sans-serif);font-size:15px;color:var(--text-mid,#4a4a4a);line-height:1.7;margin:0 0 18px;">&ldquo;Solar Gard architectural window film is designed to deliver measurable energy performance in demanding commercial environments,&rdquo; according to Solar Gard by Eastman. For energy-efficiency strategies, see our <a href="/benefits/energy-savings/" class="sg-body-link">energy savings window film</a> page. Facilities with security concerns will find additional options on our <a href="/benefits/safety-and-security/" class="sg-body-link">safety and security window film</a> page. For commercial-scale specifications, review our <a href="/applications/office/" class="sg-body-link">commercial office window film</a> page. Explore the full <a href="https://www.solargard.com/en/architectural/" target="_blank" rel="noopener noreferrer" class="sg-body-link">Solar Gard architectural window film</a> lineup.</p>
+      <a href="/contact/" class="sg-why__cta">
+        Get a free film assessment &rarr;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 4 - RESIDENTIAL / COMMERCIAL SLIDER
+     ══════════════════════════════════════ -->
+<section class="sg-slider" id="sgSlider">
+  <div class="sg-slider__track" id="sgTrack">
+
+    <!-- SLIDE 01: Residential -->
+    <div class="sg-slider__slide" data-slide="0">
+      <img src="/images/solar-gard-window-film-philadelphia-residential.jpg" alt="Philadelphia rowhome living room with Solar Gard residential window film" title="Solar Gard residential window film for Philadelphia rowhomes" class="sg-slider__bg" loading="lazy" />
+      <div class="sg-slider__overlay"></div>
+      <div class="sg-slider__content">
+        <div class="sg-slider__step">01</div>
+        <h2 class="sg-slider__title">Philadelphia Rowhomes. Solar Gard Comfort.</h2>
+        <p class="sg-slider__desc">Philadelphia's rowhome stock presents a consistent challenge — aging single-pane windows that admit solar heat in summer and lose warmth in winter. Solar Gard's residential film options address both seasons without window replacement.</p>
+        <div class="sg-slider__faq">
+          <div class="sg-slider__faq-item">
+            <button class="sg-slider__faq-q" aria-expanded="false">Best film for rowhomes?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="sg-slider__faq-a" hidden>Panorama for summer, Sentinel Plus for year-round.</div>
           </div>
-          <div class="sg-pl-row__content">
-            <span class="sg-pl-row__num">{line.num}</span>
-            <span class="sg-pl-row__eyebrow">{line.eyebrow}</span>
-            <h3 class="sg-pl-row__heading">{line.heading}</h3>
-            {line.body.map((p) => <p class="sg-pl-row__body">{p}</p>)}
-            <div class="sg-pl-row__specs">
-              {line.specs.map(([value, label]) => (
-                <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">{value}</span><span class="sg-pl-row__spec-label">{label}</span></div>
-              ))}
-            </div>
-            <div class="sg-pl-row__pdfs">
-              <span class="sg-pl-row__pdfs-label">Solar Gard Technical Documents</span>
-              <ul class="sg-pl-row__pdf-list">
-                {line.docs.map(([file, label]) => (
-                  <li><a href={`/resources/${file}`} target="_blank" rel="noopener" class="sg-pl-row__pdf-link">{label}</a></li>
-                ))}
-              </ul>
-              <p class="sg-pl-row__warranty-note">{line.note}</p>
-            </div>
+          <div class="sg-slider__faq-item">
+            <button class="sg-slider__faq-q" aria-expanded="false">Appearance?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="sg-slider__faq-a" hidden>Near-neutral, compatible with historic guidelines.</div>
           </div>
+          <div class="sg-slider__faq-item">
+            <button class="sg-slider__faq-q" aria-expanded="false">Older glass?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="sg-slider__faq-a" hidden>Yes, approved for single-pane.</div>
+          </div>
+        </div>
+        <a href="/contact/" class="sg-slider__cta">Get a residential estimate &rarr;</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: Commercial -->
+    <div class="sg-slider__slide" data-slide="1">
+      <img src="/images/solar-gard-window-film-philadelphia-commercial.jpg" alt="Philadelphia office building with Solar Gard commercial window film" title="Solar Gard commercial window film for Philadelphia offices" class="sg-slider__bg" loading="lazy" />
+      <div class="sg-slider__overlay"></div>
+      <div class="sg-slider__content">
+        <div class="sg-slider__step">02</div>
+        <h2 class="sg-slider__title">Philadelphia Offices. Solar Gard Results.</h2>
+        <p class="sg-slider__desc">Center City high-rises, healthcare campuses, and university buildings all face significant solar load and HVAC costs. Solar Gard Panorama Series reduces cooling load by rejecting up to 77% — with NFRC documentation for institutional procurement and LEED submissions.</p>
+        <div class="sg-slider__faq">
+          <div class="sg-slider__faq-item">
+            <button class="sg-slider__faq-q" aria-expanded="false">Payback?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="sg-slider__faq-a" hidden>2–4 years typical.</div>
+          </div>
+          <div class="sg-slider__faq-item">
+            <button class="sg-slider__faq-q" aria-expanded="false">Disruption?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="sg-slider__faq-a" hidden>Minimal, floor by floor.</div>
+          </div>
+          <div class="sg-slider__faq-item">
+            <button class="sg-slider__faq-q" aria-expanded="false">Curtain wall?<span class="sg-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="sg-slider__faq-a" hidden>Yes, nearly invisible seams.</div>
+          </div>
+        </div>
+        <a href="/contact/" class="sg-slider__cta">Get a commercial estimate &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="sg-slider__nav" aria-label="Slide navigation">
+    <button class="sg-slider__nav-item sg-slider__nav-item--active" data-sgnav="0">
+      <span class="sg-slider__nav-line"></span>
+      <span class="sg-slider__nav-label">Residential</span>
+    </button>
+    <button class="sg-slider__nav-item" data-sgnav="1">
+      <span class="sg-slider__nav-line"></span>
+      <span class="sg-slider__nav-label">Commercial</span>
+    </button>
+  </nav>
+
+  <button class="sg-slider__arrow sg-slider__arrow--prev" id="sgPrev" aria-label="Previous slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="sg-slider__arrow sg-slider__arrow--next" id="sgNext" aria-label="Next slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+  <div class="sg-slider__progress"><div class="sg-slider__progress-bar" id="sgProgressBar"></div></div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCT LINES - alternating rows
+     ══════════════════════════════════════ -->
+<section class="sg-products">
+  <div class="sg-products__hd">
+    <span class="pp-eyebrow">Product Lines</span>
+    <h2 class="sg-products__title">The Solar Gard window film lineup for Philadelphia</h2>
+    <p class="sg-products__sub">Four Solar Gard architectural series cover Philadelphia's most common glass performance needs: high-efficiency solar control, institutional energy documentation, safety and security, and targeted glare control.</p>
+  </div>
+
+  <!-- ROW 01 - Panorama (image LEFT) -->
+  <div class="sg-pl-row fade-in">
+    <div class="sg-pl-row__img-wrap">
+      <img
+        src="/images/solar-gard-panorama-solar-control-window-film-philadelphia.jpg"
+        alt="Solar Gard Panorama solar control window film on Philadelphia commercial glass"
+        title="Solar Gard Panorama solar control window film Philadelphia"
+        width="768" height="960"
+        loading="lazy"
+        class="sg-pl-row__img"
+      />
+      <span class="sg-pl-row__pill">Panorama</span>
+    </div>
+    <div class="sg-pl-row__content">
+      <span class="sg-pl-row__num">01</span>
+      <span class="sg-pl-row__eyebrow">Solar Gard Panorama Series</span>
+      <h3 class="sg-pl-row__heading">Panorama Series — Non-Metallic Solar Control, Maximum Performance</h3>
+      <p class="sg-pl-row__body">Solar Gard Panorama is the flagship commercial solar control film — non-metallized spectrally selective, rejects up to 77% solar energy, 99% UV, VLT 25–70%. No Wi-Fi interference. Near-neutral exterior under 10% reflectance.</p>
+      <p class="sg-pl-row__body">For Philadelphia's south- and west-facing commercial glazing, Panorama consistently delivers the highest solar heat rejection in its class. NFRC-certified for VLT, SHGC, and U-value.</p>
+      <div class="sg-pl-row__specs">
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">77%</span><span class="sg-pl-row__spec-label">Solar Rejection</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">99%</span><span class="sg-pl-row__spec-label">UV Block</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">25–70%</span><span class="sg-pl-row__spec-label">VLT</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">15yr</span><span class="sg-pl-row__spec-label">Comm Warranty</span></div>
+      </div>
+      <div class="sg-pl-row__pdfs">
+        <span class="sg-pl-row__pdfs-label">Solar Gard Technical Documents</span>
+        <ul class="sg-pl-row__pdf-list">
+          <li><a href="/resources/solar-gard-window-film-panorama-energy-saving-spec-philadelphia.pdf" target="_blank" rel="noopener" class="sg-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Panorama Energy Spec</a></li>
+          <li><a href="/resources/solar-gard-window-film-panorama-solar-control-spec-philadelphia.pdf" target="_blank" rel="noopener" class="sg-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Panorama Solar Control Data</a></li>
+          <li><a href="/resources/solar-gard-window-film-panorama-glare-reduction-spec-philadelphia.pdf" target="_blank" rel="noopener" class="sg-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Panorama Glare Reduction</a></li>
+        </ul>
+        <p class="sg-pl-row__warranty-note">Commercial 15yr. Residential lifetime. Source: Solar Gard by Eastman.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 02 - Sentinel Plus (image RIGHT) -->
+  <div class="sg-pl-row sg-pl-row--rev fade-in">
+    <div class="sg-pl-row__img-wrap">
+      <img
+        src="/images/solar-gard-sentinel-plus-energy-saving-window-film-philadelphia.jpg"
+        alt="Solar Gard Sentinel Plus energy saving window film on Philadelphia healthcare building"
+        title="Solar Gard Sentinel Plus energy saving window film Philadelphia"
+        width="768" height="960"
+        loading="lazy"
+        class="sg-pl-row__img"
+      />
+      <span class="sg-pl-row__pill">Sentinel Plus</span>
+    </div>
+    <div class="sg-pl-row__content">
+      <span class="sg-pl-row__num">02</span>
+      <span class="sg-pl-row__eyebrow">Solar Gard Sentinel Plus</span>
+      <h3 class="sg-pl-row__heading">Sentinel Plus — Energy Savings for Philadelphia's Institutional Buildings</h3>
+      <p class="sg-pl-row__body">Solar Gard Sentinel Plus is engineered for healthcare, educational, and large commercial facilities — buildings that need both summer solar control and year-round energy performance documentation. Compatible with LEED Energy and Atmosphere credit documentation.</p>
+      <p class="sg-pl-row__body">Provides NFRC-certified VLT, SHGC, and U-value data compatible with most sustainability reporting frameworks. Window Film Philadelphia provides complete data sheets and installation records for every Sentinel Plus project.</p>
+      <div class="sg-pl-row__specs">
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">~50%</span><span class="sg-pl-row__spec-label">VLT</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">70%</span><span class="sg-pl-row__spec-label">Heat Rejection</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">99%</span><span class="sg-pl-row__spec-label">UV</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">15yr</span><span class="sg-pl-row__spec-label">Comm Warranty</span></div>
+      </div>
+      <div class="sg-pl-row__pdfs">
+        <span class="sg-pl-row__pdfs-label">Solar Gard Technical Documents</span>
+        <ul class="sg-pl-row__pdf-list">
+          <li><a href="/resources/solar-gard-window-film-sentinel-plus-medical-case-study-philadelphia.pdf" target="_blank" rel="noopener" class="sg-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Sentinel Plus Medical Case Study</a></li>
+        </ul>
+        <p class="sg-pl-row__warranty-note">Commercial 15yr. NFRC-certified. Source: Solar Gard by Eastman.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 03 - ArmorCoat (image LEFT) -->
+  <div class="sg-pl-row fade-in">
+    <div class="sg-pl-row__img-wrap">
+      <img
+        src="/images/solar-gard-armorcoat-safety-security-window-film-philadelphia.jpg"
+        alt="Solar Gard ArmorCoat safety and security window film on Philadelphia school entrance glass"
+        title="Solar Gard ArmorCoat safety security window film Philadelphia"
+        width="768" height="960"
+        loading="lazy"
+        class="sg-pl-row__img"
+      />
+      <span class="sg-pl-row__pill">ArmorCoat</span>
+    </div>
+    <div class="sg-pl-row__content">
+      <span class="sg-pl-row__num">03</span>
+      <span class="sg-pl-row__eyebrow">Solar Gard ArmorCoat</span>
+      <h3 class="sg-pl-row__heading">ArmorCoat — Fragment Retention and Blast Mitigation for Philadelphia Buildings</h3>
+      <p class="sg-pl-row__body">Solar Gard ArmorCoat is a heavy-duty safety and security film series — 4 to 14 mil — engineered to hold glass fragments in place after impact, delay forced entry, and provide blast mitigation performance tested to ASTM F1642. At 14 mil, delivers maximum fragment retention for government facilities, courthouses, and high-security commercial properties.</p>
+      <p class="sg-pl-row__body">In Philadelphia, ArmorCoat is most commonly installed at Old City and Center City retail, K-12 school entrance glass, and government facilities. ArmorCoat holds glass together — it does not make glass unbreakable.</p>
+      <div class="sg-pl-row__specs">
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">4–14 mil</span><span class="sg-pl-row__spec-label">Series Range</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">87%+</span><span class="sg-pl-row__spec-label">VLT</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">99%</span><span class="sg-pl-row__spec-label">UV</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">12yr</span><span class="sg-pl-row__spec-label">Comm Warranty</span></div>
+      </div>
+      <div class="sg-pl-row__pdfs">
+        <span class="sg-pl-row__pdfs-label">Solar Gard Technical Documents</span>
+        <ul class="sg-pl-row__pdf-list">
+          <li><a href="/resources/solar-gard-window-film-armorcoat-safety-security-spec-philadelphia.pdf" target="_blank" rel="noopener" class="sg-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>ArmorCoat Safety Spec</a></li>
+        </ul>
+        <p class="sg-pl-row__warranty-note">Commercial 12yr. ASTM F1642 tested. Source: Solar Gard by Eastman.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 04 - Hilite (image RIGHT) -->
+  <div class="sg-pl-row sg-pl-row--rev fade-in">
+    <div class="sg-pl-row__img-wrap">
+      <img
+        src="/images/solar-gard-hilite-glare-control-window-film-philadelphia.jpg"
+        alt="Solar Gard Hilite glare control window film on Philadelphia restaurant glass"
+        title="Solar Gard Hilite glare control window film Philadelphia"
+        width="768" height="960"
+        loading="lazy"
+        class="sg-pl-row__img"
+      />
+      <span class="sg-pl-row__pill">Hilite</span>
+    </div>
+    <div class="sg-pl-row__content">
+      <span class="sg-pl-row__num">04</span>
+      <span class="sg-pl-row__eyebrow">Solar Gard Hilite Series</span>
+      <h3 class="sg-pl-row__heading">Hilite Series — Targeted Glare Control for East and West Philadelphia Glass</h3>
+      <p class="sg-pl-row__body">Solar Gard Hilite Series is a high-performance glare control film with moderate solar heat rejection — for Philadelphia buildings where glare is the primary concern but heavy tinting is not acceptable. Common in east-facing Center City conference rooms, west-facing open-plan offices, and restaurant spaces.</p>
+      <p class="sg-pl-row__body">Hilite maintains higher visible light transmission than heavy solar control films — preserving the daylit feel of Philadelphia's glass-fronted spaces while significantly reducing occupant discomfort.</p>
+      <div class="sg-pl-row__specs">
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">35–55%</span><span class="sg-pl-row__spec-label">VLT</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">60%</span><span class="sg-pl-row__spec-label">Heat Rejection</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">99%</span><span class="sg-pl-row__spec-label">UV</span></div>
+        <div class="sg-pl-row__spec"><span class="sg-pl-row__spec-val">12yr</span><span class="sg-pl-row__spec-label">Comm Warranty</span></div>
+      </div>
+      <div class="sg-pl-row__pdfs">
+        <span class="sg-pl-row__pdfs-label">Solar Gard Technical Documents</span>
+        <ul class="sg-pl-row__pdf-list">
+          <li><a href="/resources/solar-gard-window-film-panorama-glare-reduction-spec-philadelphia.pdf" target="_blank" rel="noopener" class="sg-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Panorama Glare Data</a></li>
+        </ul>
+        <p class="sg-pl-row__warranty-note">Commercial 12yr. Source: Solar Gard by Eastman.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCT COMPARISON TABLE
+     ══════════════════════════════════════ -->
+<section class="sg-compare">
+  <div class="sg-compare__inner">
+    <div class="sg-compare__hd">
+      <span class="pp-eyebrow" style="color:#81AB4C">Compare Series</span>
+      <h2 class="sg-compare__title">Which Solar Gard film is right for your property?</h2>
+      <p class="sg-compare__sub">Four Solar Gard series for Philadelphia — specs from Solar Gard by Eastman product data.</p>
+    </div>
+    <div class="sg-compare__wrap">
+      <table class="sg-compare__table" aria-label="Solar Gard window film series comparison">
+        <thead>
+          <tr>
+            <th class="sg-compare__th sg-compare__th--series">Series</th>
+            <th class="sg-compare__th">Brand</th>
+            <th class="sg-compare__th">VLT</th>
+            <th class="sg-compare__th">Heat Rejection</th>
+            <th class="sg-compare__th">UV Block</th>
+            <th class="sg-compare__th">Residential Warranty</th>
+            <th class="sg-compare__th">Commercial Warranty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sg-compare__row"><td class="sg-compare__td sg-compare__td--name"><span class="sg-compare__pill" style="background:#81AB4C">Solar Control</span><span class="sg-compare__series-name">Panorama Series</span></td><td class="sg-compare__td">Solar Gard</td><td class="sg-compare__td sg-compare__td--stat">25–70%</td><td class="sg-compare__td">Up to 77%</td><td class="sg-compare__td sg-compare__td--stat">99%</td><td class="sg-compare__td sg-compare__td--stat">Lifetime</td><td class="sg-compare__td sg-compare__td--stat">15yr</td></tr>
+          <tr class="sg-compare__row"><td class="sg-compare__td sg-compare__td--name"><span class="sg-compare__pill" style="background:#5B8DB8">Energy</span><span class="sg-compare__series-name">Sentinel Plus</span></td><td class="sg-compare__td">Solar Gard</td><td class="sg-compare__td sg-compare__td--stat">~50%</td><td class="sg-compare__td">Up to 70%</td><td class="sg-compare__td sg-compare__td--stat">99%</td><td class="sg-compare__td sg-compare__td--stat">Lifetime</td><td class="sg-compare__td sg-compare__td--stat">15yr</td></tr>
+          <tr class="sg-compare__row"><td class="sg-compare__td sg-compare__td--name"><span class="sg-compare__pill" style="background:#8B6914">Safety</span><span class="sg-compare__series-name">ArmorCoat 8mil</span></td><td class="sg-compare__td">Solar Gard</td><td class="sg-compare__td sg-compare__td--stat">87%+</td><td class="sg-compare__td">Minimal</td><td class="sg-compare__td sg-compare__td--stat">99%</td><td class="sg-compare__td sg-compare__td--stat">Lifetime</td><td class="sg-compare__td sg-compare__td--stat">12yr</td></tr>
+          <tr class="sg-compare__row"><td class="sg-compare__td sg-compare__td--name"><span class="sg-compare__pill" style="background:#E67E22">Glare</span><span class="sg-compare__series-name">Hilite Series</span></td><td class="sg-compare__td">Solar Gard</td><td class="sg-compare__td sg-compare__td--stat">35–55%</td><td class="sg-compare__td">Up to 60%</td><td class="sg-compare__td sg-compare__td--stat">99%</td><td class="sg-compare__td sg-compare__td--stat">Lifetime</td><td class="sg-compare__td sg-compare__td--stat">12yr</td></tr>
+          <tr class="sg-compare__row"><td class="sg-compare__td sg-compare__td--name"><span class="sg-compare__pill" style="background:#4A90A4">LLumar</span><span class="sg-compare__series-name">ATC 70</span></td><td class="sg-compare__td">LLumar</td><td class="sg-compare__td sg-compare__td--stat">70%</td><td class="sg-compare__td">Up to 74%</td><td class="sg-compare__td sg-compare__td--stat">99%</td><td class="sg-compare__td sg-compare__td--stat">Lifetime</td><td class="sg-compare__td sg-compare__td--stat">15yr</td></tr>
+          <tr class="sg-compare__row"><td class="sg-compare__td sg-compare__td--name"><span class="sg-compare__pill" style="background:#9B59B6">3M</span><span class="sg-compare__series-name">Prestige PR70</span></td><td class="sg-compare__td">3M</td><td class="sg-compare__td sg-compare__td--stat">69%</td><td class="sg-compare__td">~66% TSER</td><td class="sg-compare__td sg-compare__td--stat">99.9%</td><td class="sg-compare__td sg-compare__td--stat">Lifetime</td><td class="sg-compare__td sg-compare__td--stat">15yr</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sg-compare__note">Source: Solar Gard Panorama, Sentinel Plus, ArmorCoat product data sheets (Eastman); LLumar ATC spec; 3M Prestige TDS.</p>
+    <div class="sg-compare__cta">
+      <a href="/contact/" class="pp-btn pp-btn--primary" style="background:#81AB4C;border-color:#81AB4C;color:#fff">Talk to our team about which Solar Gard series fits your project</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CASE STUDY
+     ══════════════════════════════════════ -->
+<section class="sg-casestudy">
+  <div class="sg-casestudy__inner">
+
+    <div class="sg-casestudy__img-col">
+      <div class="sg-casestudy__img-wrap">
+        <img
+          src="/images/solar-gard-window-film-philadelphia-casestudy.jpg"
+          alt="Philadelphia medical center with Solar Gard Sentinel Plus window film on west-facing patient room glass"
+          title="Solar Gard window film Philadelphia healthcare case study"
+          width="1264" height="848"
+          loading="lazy"
+          class="sg-casestudy__img"
+        />
+        <div class="sg-casestudy__badge">
+          <span class="sg-casestudy__badge-label">Solar Gard Case Study</span>
+        </div>
+      </div>
+      <div class="sg-casestudy__stat-row">
+        <div class="sg-casestudy__stat"><span class="sg-casestudy__stat-val">NFRC</span><span class="sg-casestudy__stat-label">documented product data</span></div>
+        <div class="sg-casestudy__stat-div"></div>
+        <div class="sg-casestudy__stat"><span class="sg-casestudy__stat-val">77%</span><span class="sg-casestudy__stat-label">max heat rejection</span></div>
+        <div class="sg-casestudy__stat-div"></div>
+        <div class="sg-casestudy__stat"><span class="sg-casestudy__stat-val">15yr</span><span class="sg-casestudy__stat-label">commercial warranty</span></div>
+      </div>
+    </div>
+
+    <div class="sg-casestudy__content">
+      <span class="pp-eyebrow">Case Study</span>
+      <h2 class="sg-casestudy__title">How Solar Gard Panorama Transformed a Philadelphia Medical Center's Energy Profile</h2>
+      <p class="sg-casestudy__lead">A University City medical center with significant west-facing glazed patient rooms contracted Window Film Philadelphia to install Solar Gard Sentinel Plus. The project required NFRC documentation for sustainability reporting and careful scheduling around patient care hours.</p>
+      <p class="sg-casestudy__body">The project team needed a product with verified performance data, a healthcare track record, and installation logistics that respected patient care schedules. Solar Gard Sentinel Plus met the documentation threshold while improving occupant comfort on the most exposed floors.</p>
+      <blockquote class="sg-casestudy__quote">
+        <p>&ldquo;We documented a measurable reduction in HVAC demand on the west-facing floors within the first full quarter after Solar Gard installation. The utility comparison was exactly what our sustainability team needed for the annual report.&rdquo;</p>
+        <footer>Facilities Director, University City Medical Center, Philadelphia</footer>
+      </blockquote>
+      <a href="/contact/" class="sg-casestudy__link" aria-label="Schedule a Solar Gard commercial window film assessment">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Schedule a Solar Gard assessment
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════ -->
+<div class="sg-testimonials__hd">
+  <span class="pp-eyebrow">Client Reviews</span>
+  <h2 class="sg-testimonials__title">What Philadelphia clients say about Solar Gard window film</h2>
+  <p class="sg-testimonials__sub">Commercial, institutional, and residential property owners across Philadelphia.</p>
+</div>
+<TestimonialMarquee reviews={solarGardReviews} />
+
+<!-- ══════════════════════════════════════
+     FAQ - two-column split
+     ══════════════════════════════════════ -->
+<section class="sg-faq" id="faq">
+  <div class="sg-faq__inner">
+    <div class="sg-faq__header fade-in">
+      <span class="sg-eyebrow">Questions</span>
+      <h2 class="sg-faq__title">Frequently Asked Questions</h2>
+      <p>Honest answers about Solar Gard window film in Philadelphia from specialists with over 16 years of installation experience.</p>
+      <a href="/contact/" class="sg-faq__cta-btn">Talk to a Specialist</a>
+    </div>
+    <div class="sg-faq__list fade-in">
+      {faqItems.map((item, index) => (
+        <div class:list={["sg-faq__item", index === 0 && "sg-faq__item--open"]}>
+          <div class="sg-faq__q"><span>{item.question}</span><span class="sg-faq__toggle">+</span></div>
+          <div class="sg-faq__a"><p>{item.answer}</p></div>
         </div>
       ))}
-    </section>
-
-    <section class="sg-compare">
-      <div class="sg-compare__inner">
-        <span class="sg-eyebrow">Comparison</span>
-        <h2 class="sg-compare__title">Which Solar Gard film is right for your property?</h2>
-        <p class="sg-compare__sub">Four Solar Gard series for Philadelphia — specs from Solar Gard by Eastman product data.</p>
-        <div class="sg-compare__table-wrap">
-          <table class="sg-compare__table">
-            <thead><tr><th>Product</th><th>Manufacturer</th><th>VLT</th><th>Heat Rejection</th><th>UV Block</th><th>Warranty (Res/Comm)</th></tr></thead>
-            <tbody>
-              {comparisonRows.map((row) => (
-                <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p class="sg-compare__source">Source: Solar Gard Panorama, Sentinel Plus, ArmorCoat product data sheets (Eastman); LLumar ATC spec; 3M Prestige TDS.</p>
-      </div>
-    </section>
-
-    <section class="sg-casestudy">
-      <div class="sg-casestudy__inner">
-        <div class="sg-casestudy__content">
-          <span class="sg-eyebrow">Case Study</span>
-          <h2 class="sg-casestudy__title">How Solar Gard Panorama Transformed a Philadelphia Medical Center's Energy Profile</h2>
-          <blockquote class="sg-casestudy__quote">"We documented a measurable reduction in HVAC demand on the west-facing floors within the first full quarter after Solar Gard installation. The utility comparison was exactly what our sustainability team needed for the annual report."</blockquote>
-          <p class="sg-casestudy__attr">Facilities Director, University City Medical Center, Philadelphia</p>
-          <p class="sg-casestudy__body">A University City medical center with significant west-facing glazed patient rooms and waiting areas contracted Window Film Philadelphia to install Solar Gard Sentinel Plus across multiple floors. The project required NFRC documentation for sustainability reporting, careful scheduling around patient care hours, and a product that satisfied both the facilities team and the institutional procurement process. Sentinel Plus's combination of NFRC-certified performance data and proven healthcare case study documentation made it the clear specification choice.</p>
-        </div>
-        <img src="/images/solar-gard-window-film-philadelphia-casestudy.jpg" alt="Solar Gard window film Philadelphia medical center case study" title="Solar Gard Sentinel Plus Philadelphia medical center case study" width="960" height="640" loading="lazy" class="sg-casestudy__img" />
-      </div>
-    </section>
-
-    <section class="sg-testimonials">
-      <div class="sg-testimonials__hd">
-        <span class="sg-eyebrow">Client Reviews</span>
-        <h2 class="sg-testimonials__title">Solar Gard Results, Documented by Philadelphia Clients</h2>
-      </div>
-      <TestimonialMarquee reviews={testimonials} />
-    </section>
-
-    <section class="sg-faq">
-      <div class="sg-faq__inner">
-        <span class="sg-eyebrow">FAQ</span>
-        <h2 class="sg-faq__title">Solar Gard Questions From Philadelphia Property Owners</h2>
-        <div class="sg-faq__list">
-          {faqItems.map((item) => (
-            <div class="sg-faq__item">
-              <button class="sg-faq__q" aria-expanded="false">{item.question}<span class="sg-faq__icon" aria-hidden="true">+</span></button>
-              <div class="sg-faq__a" hidden>{item.answer}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="sg-tint-cta">
-      <img src="/images/solar-gard-tint-slider-philadelphia-room.jpg" alt="Solar Gard tint slider Philadelphia room clear glass view" title="Solar Gard tint slider Philadelphia room" class="sg-tint-cta__bg" id="sgTintBg" loading="lazy" />
-      <div class="sg-tint-cta__overlay" id="sgTintOverlay" aria-hidden="true"></div>
-      <div class="sg-tint-cta__content">
-        <span class="sg-eyebrow">Live Tint Preview</span>
-        <h2 class="sg-tint-cta__title">See How Solar Gard Film Changes Light Before You Choose</h2>
-        <p class="sg-tint-cta__copy">Drag from clear glass to darker film and compare how visible light transmission changes the feel of a Philadelphia room.</p>
-        <div class="sg-tint-cta__panel">
-          <div class="sg-tint-cta__labels"><span>Clear</span><span id="sgTintFilm">Solar Gard Light Film</span><span>Limo</span></div>
-          <input id="sgTintRange" class="sg-tint-cta__range" type="range" min="0" max="100" value="0" aria-label="Solar Gard tint darkness preview" />
-          <div class="sg-tint-cta__readout"><span id="sgTintVlt">90% VLT</span></div>
-        </div>
-        <div class="sg-tint-cta__actions">
-          <a href="/contact/" class="sg-tint-cta__btn">Get Your Free Estimate</a>
-          <a href="tel:2673947980" class="sg-tint-cta__phone">Call (267) 394-7980</a>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA - TINT SLIDER
+     ══════════════════════════════════════ -->
+<section class="sg-tint-cta">
+  <div class="sg-tint-cta__bg" id="sgTintBg" style="background-image:url('/images/solar-gard-tint-slider-philadelphia-room.jpg')" role="img" aria-label="Philadelphia room — drag slider to preview Solar Gard window film tint" aria-hidden="true"></div>
+  <div class="sg-tint-cta__darken" id="sgTintOverlay" aria-hidden="true"></div>
+  <div class="sg-tint-cta__content">
+    <h2 class="sg-tint-cta__title">Find Your Solar Gard Tint.</h2>
+    <p class="sg-tint-cta__subtitle">Drag to preview Solar Gard window film tint levels — from clear to limo-dark — then get a product recommendation for your glass.</p>
+    <div class="sg-tint-cta__controls">
+      <span class="sg-tint-cta__label">CLEAR</span>
+      <input type="range" min="0" max="100" value="35" class="sg-tint-cta__range" id="sgTintRange" aria-label="Adjust tint level" />
+      <span class="sg-tint-cta__label">LIMO</span>
+    </div>
+    <p class="sg-tint-cta__vlt">VLT <strong id="sgTintVlt">65%</strong> · <span id="sgTintFilm">Panorama 70</span> · visible light transmission</p>
+    <a href="/contact/" class="sg-tint-cta__btn">Get a Free Quote →</a>
+  </div>
+</section>
+
+</div><!-- end ip-page-body -->
 </BaseLayout>
 
+<style>
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+/* ── GEO ── */
+.sg-geo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── Body link style (visible in both light and dark sections) ── */
+.sg-body-link {
+  color: var(--green, #81AB4C);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(129,171,76,0.55);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+  border-radius: 2px;
+}
+.sg-body-link:hover {
+  color: #a8d468;
+  text-decoration-color: rgba(168,212,104,0.8);
+}
+
+/* ── Product lineup H3 ── */
+h3.sg-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: inherit; margin: 0; }
+
+.sg-hero {
+  position: relative;
+  width: 100%;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+.sg-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  transition: transform 8s ease;
+}
+.sg-hero:hover .sg-hero__bg { transform: scale(1.0); }
+.sg-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 26, 20, 0.25) 0%,
+    rgba(18, 26, 20, 0.55) 50%,
+    rgba(18, 26, 20, 0.82) 100%
+  );
+}
+.sg-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+.sg-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+}
+.sg-hero__eyebrow-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  display: inline-block;
+}
+.sg-hero__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+.sg-hero__animated-line {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 20px;
+  font-style: italic;
+}
+.sg-hero__flip {
+  color: var(--green, #81AB4C);
+  font-style: italic;
+  font-weight: 600;
+}
+.sg-hero__subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 0 36px;
+}
+.sg-hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.sg-hero__btn-primary {
+  display: inline-block;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  padding: 15px 32px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.sg-hero__btn-primary:hover { background: #6e9640; transform: translateY(-2px); }
+.sg-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  padding: 15px 28px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.05);
+}
+.sg-hero__btn-secondary:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+/* Stats panel */
+.sg-hero__stats-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 28px 36px;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 100%;
+}
+.sg-hero__stats-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.sg-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 36px;
+  text-align: center;
+}
+.sg-hero__stat:first-child { padding-left: 0; }
+.sg-hero__stat:last-child { padding-right: 0; }
+.sg-hero__stat-number {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.sg-hero__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+}
+.sg-hero__stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .sg-hero { min-height: 100svh; padding-bottom: 48px; }
+  .sg-hero__stats-panel { padding: 20px 20px; border-radius: 16px; }
+  .sg-hero__stat { padding: 0 16px; }
+  .sg-hero__cta { flex-direction: column; align-items: flex-start; }
+  .sg-hero__stats-inner { gap: 8px; }
+  .sg-hero__stat-divider { display: none; }
+}
+
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+
+/* ── EYEBROW ── */
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+
+/* ══════════════════════════════════════
+   PRODUCT COMPARISON TABLE
+══════════════════════════════════════ */
+.sg-compare {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.sg-compare__inner { max-width: 1400px; margin: 0 auto; }
+.sg-compare__hd { text-align: center; margin-bottom: 56px; }
+.sg-compare__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+}
+.sg-compare__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.sg-compare__wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.sg-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 820px;
+}
+.sg-compare__th {
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.06);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+}
+.sg-compare__th--series { width: 200px; }
+.sg-compare__th-sub {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2px;
+  text-transform: none;
+}
+.sg-compare__row:not(:last-child) td { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.sg-compare__row:hover td { background: rgba(255,255,255,0.03); }
+.sg-compare__td {
+  padding: 18px 18px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  vertical-align: middle;
+}
+.sg-compare__td--stat { font-weight: 600; color: #fff; white-space: nowrap; }
+.sg-compare__td--name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 18px;
+}
+.sg-compare__pill {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.sg-compare__series-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.sg-compare__note {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin: 20px 0 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+.sg-compare__cta { text-align: center; }
+@media (max-width: 768px) {
+  .sg-compare { padding: 60px 5%; }
+  .sg-compare__th--series { width: 140px; }
+}
+
+/* ══════════════════════════════════════
+   CASE STUDY
+══════════════════════════════════════ */
+.sg-casestudy {
+  background: #ffffff;
+  padding: 100px 8%;
+  border-top: 1px solid #EEECE8;
+}
+.sg-casestudy__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.sg-casestudy__img-col { display: flex; flex-direction: column; gap: 24px; }
+.sg-casestudy__img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.sg-casestudy__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.sg-casestudy__img-wrap:hover .sg-casestudy__img { transform: scale(1.02); }
+.sg-casestudy__badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #14201A;
+  color: #81AB4C;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 100px;
+}
+.sg-casestudy__stat-row {
+  display: flex;
+  align-items: center;
+  background: #14201A;
+  border-radius: 16px;
+  padding: 22px 28px;
+  gap: 0;
+}
+.sg-casestudy__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.sg-casestudy__stat-val {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #81AB4C;
+  line-height: 1;
+}
+.sg-casestudy__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+  text-align: center;
+}
+.sg-casestudy__stat-div {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+.sg-casestudy__content { display: flex; flex-direction: column; gap: 0; }
+.sg-casestudy__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 24px;
+}
+.sg-casestudy__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.sg-casestudy__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.sg-casestudy__quote {
+  margin: 24px 0 28px;
+  padding: 20px 24px;
+  border-left: 3px solid #81AB4C;
+  background: #F7F6F3;
+  border-radius: 0 12px 12px 0;
+}
+.sg-casestudy__quote p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.sg-casestudy__quote footer {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid, #4a4a4a);
+}
+.sg-casestudy__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  border: 1.5px solid var(--green, #81AB4C);
+  padding: 12px 20px;
+  border-radius: 100px;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+}
+.sg-casestudy__link:hover { background: var(--green, #81AB4C); color: #fff; }
+@media (max-width: 1024px) {
+  .sg-casestudy__inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 640px) {
+  .sg-casestudy { padding: 60px 5%; }
+  .sg-casestudy__stat-row { flex-direction: column; gap: 16px; }
+  .sg-casestudy__stat-div { width: 40px; height: 1px; }
+}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ */
+.sg-testimonials {
+  background: #F5F3EE;
+  padding: 96px 6%;
+}
+.sg-testimonials__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sg-testimonials__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+}
+.sg-testimonials__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.sg-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.sg-tcard {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sg-tcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.sg-tcard__img-wrap { aspect-ratio: 16/9; overflow: hidden; }
+.sg-tcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.sg-tcard:hover .sg-tcard__img { transform: scale(1.03); }
+.sg-tcard__body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+.sg-tcard__stars {
+  font-size: 18px;
+  color: #F5A623;
+  letter-spacing: 2px;
+}
+.sg-tcard__quote {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+  flex: 1;
+  font-style: italic;
+}
+.sg-tcard__meta { border-top: 1px solid #EEECE8; padding-top: 16px; }
+.sg-tcard__name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 3px;
+}
+.sg-tcard__role {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  .sg-testimonials__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .sg-testimonials { padding: 60px 5%; }
+  .sg-testimonials__grid { grid-template-columns: 1fr; }
+  .sg-tcard__body { padding: 22px 22px 26px; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 2 - INTRO + TRUST BAR
+══════════════════════════════════════ */
+.sg-intro {
+  padding: 100px 8%;
+  background: #ffffff;
+}
+.sg-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* Image column */
+.sg-intro__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+}
+.sg-intro__img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.sg-intro__badge {
+  position: absolute;
+  bottom: -20px;
+  left: 24px;
+  background: var(--brand, #272E32);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+/* Content column */
+.sg-intro__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.sg-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 24px;
+}
+.sg-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.sg-intro__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.sg-intro__creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-bottom: 32px;
+}
+.sg-intro__cred {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark, #1a1a1a);
+}
+.sg-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+/* Trust bar */
+.sg-trust {
+  background: var(--off-white, #F7F6F3);
+  padding: 36px 8%;
+  border-top: 1px solid #E8E7E4;
+  border-bottom: 1px solid #E8E7E4;
+}
+.sg-trust__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.sg-trust__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid, #4a4a4a);
+  text-align: center;
+  margin: 0;
+}
+.sg-trust__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  justify-content: center;
+}
+.sg-trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  padding: 0 20px;
+}
+.sg-trust__sep {
+  width: 1px;
+  height: 16px;
+  background: #D0CEC9;
+  flex-shrink: 0;
+}
+@media (max-width: 1024px) {
+  .sg-intro__inner { grid-template-columns: 1fr; gap: 60px; }
+  .sg-intro__image-col { order: 2; }
+  .sg-intro__content { order: 1; }
+  .sg-intro__img { height: 400px; }
+}
+@media (max-width: 640px) {
+  .sg-intro { padding: 60px 5%; }
+  .sg-trust { padding: 28px 5%; }
+  .sg-trust__badges { gap: 12px; flex-direction: column; align-items: flex-start; }
+  .sg-trust__sep { display: none; }
+}
+
+/* ── INTRO ── */
+.pp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.pp-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════
+   SECTION 3 - WHY 3M FOR PHILADELPHIA
+══════════════════════════════════════ */
+.sg-why {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.sg-why__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+.sg-why__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.sg-why__image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.sg-why__stat-card {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 18px 22px;
+  min-width: 240px;
+}
+.sg-why__stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.sg-why__stat-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 10px 0;
+}
+.sg-why__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.sg-why__headline {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+.sg-why__intro {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.sg-why__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sg-why__bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+.sg-why__bullets li svg { flex-shrink: 0; margin-top: 3px; }
+.sg-why__climate-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.sg-why__climate-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 12px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.sg-why__climate-item:last-child { border-right: none; }
+.sg-why__climate-num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.sg-why__climate-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+.sg-why__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.sg-why__cta:hover { gap: 14px; }
+@media (max-width: 1024px) {
+  .sg-why__container { grid-template-columns: 1fr; gap: 60px; }
+  .sg-why__stat-card { right: 0; bottom: -20px; }
+  .sg-why__image { height: 400px; }
+}
+@media (max-width: 640px) {
+  .sg-why { padding: 60px 5%; }
+  .sg-why__climate-facts { grid-template-columns: 1fr; }
+  .sg-why__climate-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .sg-why__climate-item:last-child { border-bottom: none; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 4 - SLIDER
+══════════════════════════════════════ */
+.sg-slider { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+.sg-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+.sg-slider__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+.sg-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+.sg-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+.sg-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 8%; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+.sg-slider__slide[data-slide="0"] .sg-slider__content { opacity: 1; transform: translateY(0); }
+.sg-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #81AB4C; letter-spacing: 0.2em; margin-bottom: 1rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.sg-slider__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.sg-slider__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.sg-slider__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.sg-slider__faq-item { border-radius: 8px; overflow: hidden; }
+.sg-slider__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+.sg-slider__faq-q:hover { background: rgba(255,255,255,0.18); }
+.sg-slider__faq-icon { font-size: 1.2rem; color: #81AB4C; flex-shrink: 0; font-style: normal; transition: transform 0.3s ease; }
+.sg-slider__faq-q[aria-expanded="true"] .sg-slider__faq-icon { transform: rotate(45deg); }
+.sg-slider__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+.sg-slider__cta { display: inline-block; background: var(--green, #81AB4C); color: #fff; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; opacity: 0; animation: m3FadeUp 0.4s ease 0.6s forwards; }
+.sg-slider__cta:hover { background: #6e9640; transform: translateY(-2px); }
+.sg-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+.sg-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+.sg-slider__nav-item:hover { opacity: 0.65; }
+.sg-slider__nav-item--active { opacity: 1; }
+.sg-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+.sg-slider__nav-item--active .sg-slider__nav-line { background: #81AB4C; height: 48px; }
+.sg-slider__nav-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+.sg-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+.sg-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #81AB4C; }
+.sg-slider__arrow--prev { left: 32px; }
+.sg-slider__arrow--next { right: 32px; }
+.sg-slider__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+.sg-slider__progress-bar { height: 100%; background: #81AB4C; width: 0; transition: width 0.05s linear; }
+@keyframes m3FadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.sg-slider__slide.sg-active .sg-slider__content { opacity: 1; transform: translateY(0); }
+.sg-slider__slide.sg-active .sg-slider__step { animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.sg-slider__slide.sg-active .sg-slider__title { animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.sg-slider__slide.sg-active .sg-slider__desc { animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.sg-slider__slide.sg-active .sg-slider__faq { animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.sg-slider__slide.sg-active .sg-slider__cta { animation: m3FadeUp 0.4s ease 0.6s forwards; }
+@media (max-width: 1024px) { .sg-slider__nav { right: 32px; } .sg-slider__content { padding-left: 60px; } }
+@media (max-width: 768px) { .sg-slider__nav { display: none; } .sg-slider__content { padding-left: 5%; padding-right: 5%; max-width: 100%; } .sg-slider__arrow--prev { left: 20px; } .sg-slider__arrow--next { right: 20px; } }
+
+/* ── FEATURED SECTIONS ── */
+/* ── PRODUCT LINES (sg-products) ── */
+.sg-products {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.sg-products__hd {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+.sg-products__title {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(28px, 3vw, 42px);
+  color: var(--dark, #1a1a1a);
+  margin: 8px 0 16px;
+  line-height: 1.15;
+}
+.sg-products__sub {
+  font-size: 15px;
+  color: var(--text-mid, #555);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Each alternating row */
+.sg-pl-row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: start;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.sg-pl-row:last-child { margin-bottom: 0; }
+.sg-pl-row--rev { direction: rtl; }
+.sg-pl-row--rev > * { direction: ltr; }
+
+/* Image side */
+.sg-pl-row__img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+}
+.sg-pl-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sg-pl-row__pill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+/* Content side */
+.sg-pl-row__content {
+  padding: 52px 52px 52px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sg-pl-row--rev .sg-pl-row__content {
+  padding: 52px 0 52px 52px;
+}
+.sg-pl-row__num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--green, #81AB4C);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+.sg-pl-row__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid, #666);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.sg-pl-row__heading {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--dark, #1a1a1a);
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.sg-pl-row__body {
+  font-size: 15px;
+  color: var(--text-mid, #444);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Specs strip */
+.sg-pl-row__specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light-gray, #E8E8E4);
+  border: 1px solid var(--light-gray, #E8E8E4);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0 28px;
+}
+.sg-pl-row__spec {
+  background: var(--off-white, #F7F6F3);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.sg-pl-row__spec-val {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+}
+.sg-pl-row__spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-mid, #666);
+  text-align: center;
+}
+
+/* PDF links */
+.sg-pl-row__pdfs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sg-pl-row__pdfs-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid, #888);
+}
+.sg-pl-row__pdf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sg-pl-row__pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.sg-pl-row__pdf-link:hover { color: var(--dark, #1a1a1a); }
+.sg-pl-row__pdf-link svg { flex-shrink: 0; opacity: 0.7; }
+.sg-pl-row__warranty-note {
+  font-size: 11px;
+  color: var(--text-mid, #999);
+  margin: 10px 0 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sg-pl-row {
+    grid-template-columns: 1fr;
+  }
+  .sg-pl-row--rev { direction: ltr; }
+  .sg-pl-row__img-wrap { min-height: 280px; }
+  .sg-pl-row__content { padding: 36px 28px; }
+  .sg-pl-row--rev .sg-pl-row__content { padding: 36px 28px; }
+  .sg-pl-row__specs { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Keep old pp-featured CSS for fallback (can remove later) */
+.pp-featured {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.pp-feat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img {
+  position: relative;
+  height: 480px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600;
+  color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25;
+  margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+
+/* ── PRODUCT GRID (dark) ── */
+.pp-why {
+  background: var(--brand, #272E32);
+  padding: 100px 10%;
+}
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0;
+  max-width: 600px;
+}
+.pp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.pp-why__item {
+  padding: 32px 28px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon {
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+  display: flex; align-items: center; line-height: 1;
+}
+.pp-why__icon svg { display: block; }
+.pp-why__divider {
+  width: 32px; height: 2px;
+  background: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.pp-why__item-title {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.pp-why__item-sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin: 0; line-height: 1.5;
+}
+
+/* ── FAQ - two-column split ── */
+.sg-faq {
+  background: #ffffff;
+  padding: 96px 0;
+}
+.sg-faq__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.sg-eyebrow {
+  display: block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.sg-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 16px;
+}
+.sg-faq__header p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0 0 24px;
+}
+.sg-faq__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+}
+.sg-faq__cta-btn:hover { background: #6a9240; transform: translateY(-1px); }
+.sg-faq__item {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding: 20px 0;
+}
+.sg-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.sg-faq__q {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.sg-faq__toggle {
+  color: var(--green, #81AB4C);
+  font-size: 22px;
+  flex-shrink: 0;
+  font-weight: 400;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.sg-faq__a {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-top: 10px;
+  display: none;
+}
+.sg-faq__item--open .sg-faq__a { display: block; }
+.sg-faq__item--open .sg-faq__toggle { transform: rotate(45deg); }
+.sg-faq__a p { margin: 0; }
+
+/* ── CTA - cinematic ── */
+.sg-cinematic-cta {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.sg-cinematic-cta__media {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/3m-window-film-philadelphia-cta.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.sg-cinematic-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.72) 40%, rgba(13,26,15,0.88) 100%);
+}
+.sg-cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(13,26,15,0.15) 0%, rgba(13,26,15,0.6) 100%);
+}
+.sg-cinematic-cta__content {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  padding: 80px 24px;
+  text-align: center;
+}
+.sg-cinematic-cta__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.sg-cinematic-cta__title em { font-style: italic; color: #9ecf5a; }
+.sg-cinematic-cta__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243,246,241,0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.sg-cinematic-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.sg-cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.sg-cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124,179,66,0.35);
+}
+.sg-cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+.sg-cinematic-cta__btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(124,179,66,0.6);
+  transform: translateY(-2px);
+}
+
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .sg-faq__inner { grid-template-columns: 1fr; gap: 40px; }
+  .sg-cinematic-cta__actions { flex-direction: column; align-items: center; }
+  .sg-cinematic-cta__btn-primary, .sg-cinematic-cta__btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+
+
+
+/* ══ TINT SLIDER CTA ══ */
+.sg-tint-cta { position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; justify-content: center; }
+.sg-tint-cta__bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: filter .05s; }
+.sg-tint-cta__darken { position: absolute; inset: 0; background: rgba(10,20,5,0); pointer-events: none; transition: background .05s; }
+.sg-tint-cta__content { position: relative; z-index: 2; text-align: center; padding: 80px 24px; max-width: 680px; width: 100%; }
+.sg-tint-cta__title { font-family: var(--font-serif,'Playfair Display',serif); font-size: clamp(36px,5vw,64px); font-weight: 700; color: #fff; line-height: 1.05; margin: 0 0 16px; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+.sg-tint-cta__subtitle { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 17px; color: rgba(255,255,255,.88); line-height: 1.65; margin: 0 0 40px; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.sg-tint-cta__controls { display: flex; align-items: center; gap: 14px; background: rgba(0,0,0,.38); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 14px 22px; margin: 0 0 16px; }
+.sg-tint-cta__label { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 12px; font-weight: 800; letter-spacing: .12em; color: rgba(255,255,255,.7); white-space: nowrap; }
+.sg-tint-cta__range { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(255,255,255,.3); outline: none; cursor: pointer; }
+.sg-tint-cta__range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,.4); cursor: grab; transition: transform .15s; }
+.sg-tint-cta__range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.sg-tint-cta__range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; cursor: grab; }
+.sg-tint-cta__vlt { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 36px; letter-spacing: .02em; }
+.sg-tint-cta__vlt strong { color: #fff; font-size: 18px; font-weight: 800; }
+.sg-tint-cta__btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 999px; background: var(--green,#81AB4C); color: #fff; font-family: var(--font-body,'DM Sans',sans-serif); font-weight: 700; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 24px rgba(129,171,76,.4); }
+.sg-tint-cta__btn:hover { background: #6e9640; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(129,171,76,.5); }
+@media (max-width: 600px) { .sg-tint-cta { min-height: 520px; } .sg-tint-cta__controls { padding: 12px 16px; } }
+</style>
+
 <script>
-  (() => {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // ── Slider ──
+  (function initM3Slider() {
     const track = document.getElementById('sgTrack');
-    const slides = Array.from(document.querySelectorAll('.sg-slider__slide'));
-    const nav = Array.from(document.querySelectorAll('[data-sgnav]'));
-    const prev = document.getElementById('sgPrev');
-    const next = document.getElementById('sgNext');
-    const progress = document.getElementById('sgProgressBar');
+    const slides = document.querySelectorAll('.sg-slider__slide');
+    const navItems = document.querySelectorAll('[data-sgnav]');
+    const prevBtn = document.getElementById('sgPrev');
+    const nextBtn = document.getElementById('sgNext');
+    const progressBar = document.getElementById('sgProgressBar');
+    if (!track || !slides.length) return;
     let current = 0;
+    const total = slides.length;
 
-    const go = (index) => {
-      current = (index + slides.length) % slides.length;
-      if (track) track.style.transform = `translateX(-${current * 100}%)`;
-      nav.forEach((btn, i) => btn.classList.toggle('sg-slider__nav-item--active', i === current));
-      if (progress) progress.style.width = `${((current + 1) / slides.length) * 100}%`;
-    };
+    function goTo(i) {
+      if (i < 0) i = total - 1;
+      if (i >= total) i = 0;
+      current = i;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('sg-slider__nav-item--active', idx === current));
+      slides.forEach((s, idx) => s.classList.toggle('sg-active', idx === current));
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0';
+        setTimeout(() => { progressBar.style.transition = 'width 6s linear'; progressBar.style.width = '100%'; }, 50);
+      }
+    }
 
-    nav.forEach((btn, i) => btn.addEventListener('click', () => go(i)));
-    prev?.addEventListener('click', () => go(current - 1));
-    next?.addEventListener('click', () => go(current + 1));
-    go(0);
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
 
-    document.querySelectorAll('.sg-slider__faq-q, .sg-faq__q').forEach((button) => {
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        const answer = button.nextElementSibling;
-        button.setAttribute('aria-expanded', String(!expanded));
-        if (answer) answer.hidden = expanded;
+    document.querySelectorAll('.sg-slider__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.sg-slider__slide');
+        slide.querySelectorAll('.sg-slider__faq-q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const a = b.nextElementSibling; if (a) a.hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          const a = btn.nextElementSibling; if (a) a.hidden = false;
+        }
       });
     });
 
+    let timer = setInterval(() => goTo(current + 1), 6000);
+    document.getElementById('sgSlider')?.addEventListener('mouseenter', () => clearInterval(timer));
+    document.getElementById('sgSlider')?.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 6000); });
+    goTo(0);
+  })();
+
+  document.querySelectorAll('.sg-faq__item').forEach(item => {
+    item.querySelector('.sg-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('sg-faq__item--open');
+      document.querySelectorAll('.sg-faq__item').forEach(i => i.classList.remove('sg-faq__item--open'));
+      if (!isOpen) item.classList.add('sg-faq__item--open');
+    });
+  });
+
+  // ══ TINT SLIDER ══
+  (() => {
     const range = document.getElementById('sgTintRange');
     const overlay = document.getElementById('sgTintOverlay');
-    const vlt = document.getElementById('sgTintVlt');
-    const film = document.getElementById('sgTintFilm');
-    const labels = [
-      ['90% VLT', 'Clear Glass'],
-      ['70% VLT', 'Solar Gard Panorama 70'],
-      ['50% VLT', 'Solar Gard Sentinel Plus'],
-      ['35% VLT', 'Solar Gard Hilite'],
-      ['5% VLT', 'Limo Tint'],
+    const vltEl = document.getElementById('sgTintVlt');
+    const filmEl = document.getElementById('sgTintFilm');
+    if (!range) return;
+    // v=0 (left) = clearest, v=100 (right) = darkest (limo)
+    // VLT: clear ~90% down to limo ~5%
+    // v=0 (left, CLEAR) = no tint; v=100 (right, LIMO) = darkest
+    const films = [
+      { minV: 0,  maxV: 15,  name: 'Clear',       vlt: 90 },
+      { minV: 15, maxV: 30,  name: 'Solar Gard Sentinel',   vlt: 75 },
+      { minV: 30, maxV: 50,  name: 'Panorama 70',  vlt: 70 },
+      { minV: 50, maxV: 65,  name: 'Panorama 50',  vlt: 50 },
+      { minV: 65, maxV: 80,  name: 'Panorama 35',  vlt: 35 },
+      { minV: 80, maxV: 90,  name: 'Hilite 25', vlt: 24 },
+      { minV: 90, maxV: 100, name: 'ArmorCoat 15', vlt: 15 },
     ];
-
-    const updateTint = () => {
-      const value = Number(range?.value || 0);
-      const opacity = (value / 100) * 0.78;
-      const labelIndex = Math.min(labels.length - 1, Math.floor(value / 25));
-      if (overlay) overlay.style.opacity = String(opacity);
-      if (vlt) vlt.textContent = labels[labelIndex][0];
-      if (film) film.textContent = labels[labelIndex][1];
+    const update = () => {
+      const v = parseInt(range.value); // 0=CLEAR (light), 100=LIMO (dark)
+      const vlt = Math.round(90 - (v / 100) * 85); // 90% at CLEAR, 5% at LIMO
+      const opacity = (v / 100) * 0.78;
+      overlay.style.background = `rgba(10,20,5,${opacity.toFixed(3)})`;
+      vltEl.textContent = vlt + '%';
+      const film = films.find(f => v >= f.minV && v <= f.maxV) || films[films.length - 1];
+      filmEl.textContent = film.name;
     };
-
-    range?.addEventListener('input', updateTint);
-    updateTint();
+    range.addEventListener('input', update);
+    update();
   })();
 </script>
-
-<style>
-  .sg-page {
-    --sg-green: #81AB4C;
-    --sg-green-dark: #52712E;
-    --sg-ink: #171A14;
-    --sg-muted: #555D4A;
-    --sg-soft: #F7F6F3;
-    --sg-line: #E4E9DC;
-    background: #fff;
-    color: var(--sg-ink);
-  }
-
-  .sg-eyebrow,
-  .sg-intro__eyebrow,
-  .sg-why__eyebrow {
-    display: inline-flex;
-    margin-bottom: 14px;
-    color: var(--sg-green-dark);
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  .sg-hero {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    color: #fff;
-    background: #111;
-  }
-
-  .sg-hero__bg,
-  .sg-hero__overlay {
-    position: absolute;
-    inset: 0;
-  }
-
-  .sg-hero__bg {
-    background-size: cover;
-    background-position: center;
-    transform: scale(1.02);
-  }
-
-  .sg-hero__overlay {
-    background: linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.48) 48%, rgba(0,0,0,.24));
-  }
-
-  .sg-hero__content {
-    position: relative;
-    z-index: 1;
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 132px 0 80px;
-  }
-
-  .sg-hero__eyebrow,
-  .sg-hero__cta,
-  .sg-hero__stats-inner,
-  .sg-trust__badges,
-  .sg-intro__creds,
-  .sg-tint-cta__actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .sg-hero__eyebrow {
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    opacity: .92;
-  }
-
-  .sg-hero__eyebrow-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 999px;
-    background: var(--sg-green);
-  }
-
-  .sg-hero__title {
-    max-width: 880px;
-    margin: 24px 0 10px;
-    font-family: var(--font-serif, Georgia, serif);
-    font-size: clamp(44px, 7vw, 86px);
-    line-height: .96;
-    letter-spacing: 0;
-  }
-
-  .sg-hero__animated-line,
-  .sg-hero__subtitle {
-    max-width: 820px;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-hero__animated-line {
-    margin: 0 0 24px;
-    font-size: clamp(20px, 3vw, 34px);
-    font-weight: 700;
-  }
-
-  .sg-hero__flip {
-    color: #C8E6A0;
-  }
-
-  .sg-hero__subtitle {
-    margin: 0 0 32px;
-    color: rgba(255,255,255,.9);
-    font-size: 18px;
-    line-height: 1.7;
-  }
-
-  .sg-hero__btn-primary,
-  .sg-hero__btn-secondary,
-  .sg-btn,
-  .sg-why__cta,
-  .sg-slider__cta,
-  .sg-tint-cta__btn,
-  .sg-tint-cta__phone {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 46px;
-    padding: 0 22px;
-    border-radius: 8px;
-    font: 800 14px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-decoration: none;
-  }
-
-  .sg-hero__btn-primary,
-  .sg-btn--primary,
-  .sg-tint-cta__btn {
-    background: var(--sg-green);
-    color: #12170E;
-  }
-
-  .sg-hero__btn-secondary,
-  .sg-btn--ghost,
-  .sg-why__cta,
-  .sg-slider__cta,
-  .sg-tint-cta__phone {
-    border: 1px solid rgba(255,255,255,.34);
-    color: inherit;
-    background: rgba(255,255,255,.08);
-  }
-
-  .sg-hero__stats-panel {
-    width: min(860px, 100%);
-    margin-top: 42px;
-    padding: 22px;
-    border: 1px solid rgba(255,255,255,.22);
-    border-radius: 8px;
-    background: rgba(0,0,0,.36);
-    backdrop-filter: blur(14px);
-  }
-
-  .sg-hero__stats-inner {
-    justify-content: space-between;
-  }
-
-  .sg-hero__stat-divider {
-    width: 1px;
-    height: 48px;
-    background: rgba(255,255,255,.22);
-  }
-
-  .sg-hero__static-stat span {
-    display: block;
-    font: 800 30px/1 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-hero__static-stat small {
-    display: block;
-    margin-top: 8px;
-    color: rgba(255,255,255,.74);
-    font: 700 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-transform: uppercase;
-  }
-
-  .sg-intro,
-  .sg-why,
-  .sg-products,
-  .sg-compare,
-  .sg-casestudy,
-  .sg-faq {
-    padding: 96px 0;
-  }
-
-  .sg-intro__inner,
-  .sg-why__container,
-  .sg-casestudy__inner {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: .86fr 1fr;
-    gap: 70px;
-    align-items: center;
-  }
-
-  .sg-intro__image-wrap,
-  .sg-why__image-wrap,
-  .sg-pl-row__img-wrap {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--sg-soft);
-  }
-
-  .sg-intro__img,
-  .sg-why__image,
-  .sg-pl-row__img,
-  .sg-casestudy__img,
-  .sg-slider__bg,
-  .sg-tint-cta__bg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .sg-intro__image-wrap,
-  .sg-why__image-wrap,
-  .sg-pl-row__img-wrap {
-    aspect-ratio: 3 / 4;
-  }
-
-  .sg-intro__badge,
-  .sg-pl-row__pill {
-    position: absolute;
-    left: 18px;
-    bottom: 18px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: #fff;
-    color: var(--sg-green-dark);
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    box-shadow: 0 12px 34px rgba(0,0,0,.16);
-  }
-
-  .sg-intro__title,
-  .sg-why__headline,
-  .sg-products__title,
-  .sg-compare__title,
-  .sg-casestudy__title,
-  .sg-testimonials__title,
-  .sg-faq__title,
-  .sg-tint-cta__title {
-    margin: 0 0 22px;
-    font-family: var(--font-serif, Georgia, serif);
-    font-size: clamp(32px, 4vw, 54px);
-    line-height: 1.05;
-    letter-spacing: 0;
-  }
-
-  .sg-intro__lead,
-  .sg-intro__body,
-  .sg-why__intro,
-  .sg-why__closing,
-  .sg-pl-row__body,
-  .sg-compare__sub,
-  .sg-casestudy__body,
-  .sg-tint-cta__copy {
-    color: var(--sg-muted);
-    font: 500 17px/1.75 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-intro__creds {
-    margin: 24px 0;
-  }
-
-  .sg-intro__cred {
-    padding: 9px 12px;
-    border: 1px solid var(--sg-line);
-    border-radius: 999px;
-    color: var(--sg-green-dark);
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-trust {
-    padding: 24px 0;
-    background: #fff;
-    border-block: 1px solid var(--sg-line);
-  }
-
-  .sg-trust__inner {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-  }
-
-  .sg-trust__label {
-    margin: 0 0 14px;
-    color: var(--sg-ink);
-    font: 800 16px/1.4 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-trust__badge {
-    color: var(--sg-muted);
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-transform: uppercase;
-  }
-
-  .sg-trust__sep {
-    width: 1px;
-    height: 16px;
-    background: var(--sg-line);
-  }
-
-  .sg-why {
-    background: var(--sg-soft);
-  }
-
-  .sg-why__stat-card {
-    position: absolute;
-    right: 18px;
-    bottom: 18px;
-    width: min(340px, calc(100% - 36px));
-    padding: 18px;
-    border-radius: 8px;
-    background: rgba(255,255,255,.94);
-    box-shadow: 0 20px 44px rgba(0,0,0,.16);
-  }
-
-  .sg-why__stat-item {
-    color: var(--sg-ink);
-    font: 800 14px/1.35 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-why__stat-divider {
-    height: 1px;
-    margin: 12px 0;
-    background: var(--sg-line);
-  }
-
-  .sg-why__bullets {
-    display: grid;
-    gap: 14px;
-    margin: 24px 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .sg-why__bullets li {
-    padding-left: 24px;
-    position: relative;
-    color: var(--sg-ink);
-    font: 700 16px/1.55 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-why__bullets li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: .7em;
-    width: 9px;
-    height: 9px;
-    border-radius: 99px;
-    background: var(--sg-green);
-  }
-
-  .sg-why__closing a {
-    color: var(--sg-green-dark);
-    font-weight: 800;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .sg-why__climate-facts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 28px 0;
-  }
-
-  .sg-why__climate-item {
-    padding: 18px;
-    border-radius: 8px;
-    background: #fff;
-    border: 1px solid var(--sg-line);
-  }
-
-  .sg-why__climate-num,
-  .sg-why__climate-label {
-    display: block;
-  }
-
-  .sg-why__climate-num {
-    font: 900 24px/1 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-why__climate-label {
-    margin-top: 8px;
-    color: var(--sg-muted);
-    font: 700 12px/1.3 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-why__cta {
-    color: var(--sg-green-dark);
-    border-color: var(--sg-green);
-    background: #fff;
-  }
-
-  .sg-slider {
-    position: relative;
-    height: 100vh;
-    min-height: 760px;
-    overflow: hidden;
-    background: #111;
-  }
-
-  .sg-slider__track {
-    display: flex;
-    height: 100%;
-    transition: transform .65s ease;
-  }
-
-  .sg-slider__slide {
-    position: relative;
-    flex: 0 0 100%;
-    height: 100%;
-  }
-
-  .sg-slider__bg,
-  .sg-slider__overlay {
-    position: absolute;
-    inset: 0;
-  }
-
-  .sg-slider__overlay {
-    background: linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.52) 48%, rgba(0,0,0,.18));
-  }
-
-  .sg-slider__content {
-    position: relative;
-    z-index: 1;
-    width: min(720px, calc(100% - 40px));
-    min-height: 100%;
-    margin-left: max(20px, calc((100vw - 1180px) / 2));
-    padding: 118px 0 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #fff;
-  }
-
-  .sg-slider__step {
-    color: var(--sg-green);
-    font: 900 15px/1 var(--font-body, 'DM Sans', sans-serif);
-    letter-spacing: .16em;
-  }
-
-  .sg-slider__title {
-    margin: 14px 0;
-    font-family: var(--font-serif, Georgia, serif);
-    font-size: clamp(34px, 5vw, 60px);
-    line-height: 1.02;
-  }
-
-  .sg-slider__desc {
-    max-width: 680px;
-    color: rgba(255,255,255,.86);
-    font: 500 17px/1.65 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-slider__faq {
-    display: grid;
-    gap: 10px;
-    margin: 22px 0;
-  }
-
-  .sg-slider__faq-item,
-  .sg-faq__item {
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 8px;
-    overflow: hidden;
-    background: rgba(255,255,255,.08);
-  }
-
-  .sg-slider__faq-q,
-  .sg-faq__q {
-    width: 100%;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    padding: 16px 18px;
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    text-align: left;
-    font: 800 15px/1.35 var(--font-body, 'DM Sans', sans-serif);
-    cursor: pointer;
-  }
-
-  .sg-slider__faq-a,
-  .sg-faq__a {
-    padding: 0 18px 18px;
-    color: rgba(255,255,255,.78);
-    font: 500 14px/1.6 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-slider__nav {
-    position: absolute;
-    right: 36px;
-    top: 50%;
-    z-index: 3;
-    transform: translateY(-50%);
-    display: grid;
-    gap: 16px;
-  }
-
-  .sg-slider__nav-item {
-    border: 0;
-    background: transparent;
-    color: rgba(255,255,255,.64);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-transform: uppercase;
-  }
-
-  .sg-slider__nav-line {
-    width: 30px;
-    height: 2px;
-    background: currentColor;
-  }
-
-  .sg-slider__nav-item--active {
-    color: #fff;
-  }
-
-  .sg-slider__arrow {
-    position: absolute;
-    z-index: 3;
-    bottom: 32px;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(255,255,255,.3);
-    border-radius: 999px;
-    background: rgba(0,0,0,.24);
-    color: #fff;
-    font-size: 32px;
-    cursor: pointer;
-  }
-
-  .sg-slider__arrow--prev {
-    right: 92px;
-  }
-
-  .sg-slider__arrow--next {
-    right: 36px;
-  }
-
-  .sg-slider__progress {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 4px;
-    background: rgba(255,255,255,.18);
-  }
-
-  .sg-slider__progress-bar {
-    width: 50%;
-    height: 100%;
-    background: var(--sg-green);
-    transition: width .35s ease;
-  }
-
-  .sg-products__hd,
-  .sg-compare__inner,
-  .sg-faq__inner,
-  .sg-testimonials__hd {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-  }
-
-  .sg-products__hd,
-  .sg-testimonials__hd {
-    text-align: center;
-    margin-bottom: 54px;
-  }
-
-  .sg-products__sub {
-    max-width: 760px;
-    margin: 0 auto;
-    color: var(--sg-muted);
-    font: 500 17px/1.7 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-pl-row {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto 82px;
-    display: grid;
-    grid-template-columns: .88fr 1fr;
-    gap: 62px;
-    align-items: center;
-  }
-
-  .sg-pl-row--rev {
-    grid-template-columns: 1fr .88fr;
-  }
-
-  .sg-pl-row--rev .sg-pl-row__img-wrap {
-    order: 2;
-  }
-
-  .sg-pl-row__num {
-    color: var(--sg-green);
-    font: 900 14px/1 var(--font-body, 'DM Sans', sans-serif);
-    letter-spacing: .16em;
-  }
-
-  .sg-pl-row__eyebrow {
-    display: block;
-    margin: 14px 0 10px;
-    color: var(--sg-green-dark);
-    font: 900 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    letter-spacing: .1em;
-    text-transform: uppercase;
-  }
-
-  .sg-pl-row__heading {
-    margin: 0 0 18px;
-    font-family: var(--font-serif, Georgia, serif);
-    font-size: clamp(28px, 3.3vw, 46px);
-    line-height: 1.08;
-  }
-
-  .sg-pl-row__specs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 24px 0;
-  }
-
-  .sg-pl-row__spec {
-    padding: 14px;
-    border-radius: 8px;
-    background: var(--sg-soft);
-    border: 1px solid var(--sg-line);
-  }
-
-  .sg-pl-row__spec-val,
-  .sg-pl-row__spec-label {
-    display: block;
-  }
-
-  .sg-pl-row__spec-val {
-    font: 900 22px/1 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-pl-row__spec-label {
-    margin-top: 7px;
-    color: var(--sg-muted);
-    font: 800 11px/1.25 var(--font-body, 'DM Sans', sans-serif);
-    text-transform: uppercase;
-  }
-
-  .sg-pl-row__pdfs {
-    border-top: 1px solid var(--sg-line);
-    padding-top: 18px;
-  }
-
-  .sg-pl-row__pdfs-label {
-    display: block;
-    margin-bottom: 10px;
-    font: 900 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-transform: uppercase;
-    color: var(--sg-green-dark);
-  }
-
-  .sg-pl-row__pdf-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .sg-pl-row__pdf-link {
-    display: inline-flex;
-    padding: 9px 11px;
-    border-radius: 8px;
-    background: #fff;
-    border: 1px solid var(--sg-line);
-    color: var(--sg-green-dark);
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .sg-pl-row__warranty-note,
-  .sg-compare__source,
-  .sg-casestudy__attr {
-    color: var(--sg-muted);
-    font: 700 13px/1.55 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-compare {
-    background: var(--sg-soft);
-  }
-
-  .sg-compare__table-wrap {
-    overflow-x: auto;
-    border-radius: 8px;
-    border: 1px solid var(--sg-line);
-    background: #fff;
-  }
-
-  .sg-compare__table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 760px;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  .sg-compare__table th,
-  .sg-compare__table td {
-    padding: 16px;
-    border-bottom: 1px solid var(--sg-line);
-    text-align: left;
-  }
-
-  .sg-compare__table th {
-    color: var(--sg-green-dark);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-  }
-
-  .sg-casestudy__inner {
-    grid-template-columns: 1fr .9fr;
-  }
-
-  .sg-casestudy__quote {
-    margin: 0 0 18px;
-    padding-left: 24px;
-    border-left: 4px solid var(--sg-green);
-    font-family: var(--font-serif, Georgia, serif);
-    font-size: clamp(22px, 3vw, 34px);
-    line-height: 1.25;
-  }
-
-  .sg-casestudy__img {
-    aspect-ratio: 3 / 2;
-    border-radius: 8px;
-  }
-
-  .sg-testimonials {
-    padding: 86px 0 0;
-    background: var(--sg-soft);
-  }
-
-  .sg-faq__list {
-    display: grid;
-    gap: 12px;
-  }
-
-  .sg-faq__item {
-    background: #fff;
-    border-color: var(--sg-line);
-  }
-
-  .sg-faq__q {
-    color: var(--sg-ink);
-  }
-
-  .sg-faq__a {
-    color: var(--sg-muted);
-  }
-
-  .sg-tint-cta {
-    position: relative;
-    min-height: 720px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    color: #fff;
-    background: #111;
-  }
-
-  .sg-tint-cta__bg,
-  .sg-tint-cta__overlay {
-    position: absolute;
-    inset: 0;
-  }
-
-  .sg-tint-cta__overlay {
-    background: #020302;
-    opacity: 0;
-    transition: opacity .12s linear;
-  }
-
-  .sg-tint-cta::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.28));
-  }
-
-  .sg-tint-cta__content {
-    position: relative;
-    z-index: 1;
-    width: min(680px, calc(100% - 40px));
-    margin-left: max(20px, calc((100vw - 1180px) / 2));
-  }
-
-  .sg-tint-cta__panel {
-    margin: 28px 0;
-    padding: 22px;
-    border: 1px solid rgba(255,255,255,.24);
-    border-radius: 8px;
-    background: rgba(0,0,0,.38);
-    backdrop-filter: blur(12px);
-  }
-
-  .sg-tint-cta__labels {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 14px;
-    font: 800 12px/1 var(--font-body, 'DM Sans', sans-serif);
-    text-transform: uppercase;
-  }
-
-  .sg-tint-cta__range {
-    width: 100%;
-    accent-color: var(--sg-green);
-  }
-
-  .sg-tint-cta__readout {
-    margin-top: 12px;
-    font: 900 24px/1 var(--font-body, 'DM Sans', sans-serif);
-  }
-
-  @media (max-width: 980px) {
-    .sg-hero__stats-inner,
-    .sg-intro__inner,
-    .sg-why__container,
-    .sg-pl-row,
-    .sg-pl-row--rev,
-    .sg-casestudy__inner {
-      grid-template-columns: 1fr;
-    }
-
-    .sg-pl-row--rev .sg-pl-row__img-wrap {
-      order: 0;
-    }
-
-    .sg-hero__stat-divider {
-      display: none;
-    }
-
-    .sg-hero__stats-inner,
-    .sg-pl-row__specs,
-    .sg-why__climate-facts {
-      grid-template-columns: 1fr;
-      display: grid;
-    }
-
-    .sg-slider {
-      min-height: 860px;
-    }
-
-    .sg-slider__nav {
-      top: auto;
-      right: auto;
-      left: 20px;
-      bottom: 84px;
-      transform: none;
-      display: flex;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .sg-hero__content {
-      padding-top: 110px;
-    }
-
-    .sg-intro,
-    .sg-why,
-    .sg-products,
-    .sg-compare,
-    .sg-casestudy,
-    .sg-faq {
-      padding: 68px 0;
-    }
-
-    .sg-slider__content {
-      padding-top: 92px;
-    }
-
-    .sg-slider__arrow {
-      display: none;
-    }
-  }
-</style>
