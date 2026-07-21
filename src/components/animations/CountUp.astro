@@ -1,0 +1,70 @@
+---
+interface Props {
+  end: number;
+  suffix?: string;
+  label: string;
+  duration?: number;
+}
+const { end, suffix = '', label, duration = 1800 } = Astro.props;
+const id = `countup-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="countup">
+  <span class="countup__number" id={id} data-count={end} data-suffix={suffix} data-duration={duration}>
+    0{suffix}
+  </span>
+  <span class="countup__label">{label}</span>
+</div>
+
+<style>
+  .countup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .countup__number {
+    display: block;
+    font-family: var(--font-mono, 'Space Mono', monospace);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    color: var(--green, #81AB4C);
+    line-height: 1;
+  }
+  .countup__label {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const els = document.querySelectorAll('[data-count]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const end = parseFloat(el.dataset.count!);
+        const suffix = el.dataset.suffix ?? '';
+        const duration = parseInt(el.dataset.duration ?? '1800');
+        const start = performance.now();
+        const run = (now: number) => {
+          const elapsed = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - elapsed, 3);
+          const val = Math.round(eased * end);
+          el.textContent = val + suffix;
+          if (elapsed < 1) requestAnimationFrame(run);
+        };
+        requestAnimationFrame(run);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    els.forEach(el => observer.observe(el));
+  });
+</script>
