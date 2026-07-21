@@ -2822,24 +2822,23 @@ h3.m3-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: i
     if (!range) return;
     // v=0 (left) = clearest, v=100 (right) = darkest (limo)
     // VLT: clear ~90% down to limo ~5%
+    // v=0 (left, CLEAR) = no tint; v=100 (right, LIMO) = darkest
     const films = [
-      { max: 15,  name: '3M Night Vision NV15', vlt: 15 },
-      { max: 30,  name: '3M Night Vision NV25',  vlt: 24 },
-      { max: 48,  name: '3M Sun Control PR35',  vlt: 35 },
-      { max: 62,  name: '3M Sun Control PR50',  vlt: 50 },
-      { max: 78,  name: '3M Sun Control PR70',  vlt: 70 },
-      { max: 90,  name: '3M Thinsulate CC75',   vlt: 75 },
-      { max: 100, name: 'Clear — No Film',       vlt: 90 },
+      { minV: 0,  maxV: 15,  name: 'Clear — No Film',       vlt: 90 },
+      { minV: 15, maxV: 30,  name: '3M Thinsulate CC75',   vlt: 75 },
+      { minV: 30, maxV: 50,  name: '3M Sun Control PR70',  vlt: 70 },
+      { minV: 50, maxV: 65,  name: '3M Sun Control PR50',  vlt: 50 },
+      { minV: 65, maxV: 80,  name: '3M Sun Control PR35',  vlt: 35 },
+      { minV: 80, maxV: 90,  name: '3M Night Vision NV25', vlt: 24 },
+      { minV: 90, maxV: 100, name: '3M Night Vision NV15', vlt: 15 },
     ];
     const update = () => {
-      const v = parseInt(range.value); // 0=limo, 100=clear
-      const clearness = v / 100; // 0=darkest, 1=clearest
-      const vlt = Math.round(5 + clearness * 85);
-      const opacity = (1 - clearness) * 0.78;
+      const v = parseInt(range.value); // 0=CLEAR (light), 100=LIMO (dark)
+      const vlt = Math.round(90 - (v / 100) * 85); // 90% at CLEAR, 5% at LIMO
+      const opacity = (v / 100) * 0.78;
       overlay.style.background = `rgba(10,20,5,${opacity.toFixed(3)})`;
       vltEl.textContent = vlt + '%';
-      // Find the right film label based on VLT
-      const film = films.find(f => vlt <= f.vlt) || films[films.length - 1];
+      const film = films.find(f => v >= f.minV && v <= f.maxV) || films[films.length - 1];
       filmEl.textContent = film.name;
     };
     range.addEventListener('input', update);
