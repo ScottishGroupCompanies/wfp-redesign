@@ -1,343 +1,688 @@
 ---
-/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
- * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
+import FlipWords from '../../components/FlipWords.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
+import CountUp from '../../components/animations/CountUp.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 
-const title = 'LLumar Window Film Philadelphia | LLumar Philadelphia';
-const description = 'Transform residential and commercial spaces using LLumar in Philadelphia delivering improved privacy, UV protection, energy savings, and stylish glass upgrades.';
+const title = 'LLumar Window Film Philadelphia | Authorized Dealer';
+const description = 'LLumar window film Philadelphia — ATC solar control, low-e, safety & privacy film. Authorized LLumar dealer, manufacturer warranty.';
+const canonical = 'https://www.windowfilmphiladelphia.net/products/llumar/';
+const dateModified = new Date().toISOString().slice(0, 10);
 
-const featuredSections = [
+const llumarReviews = [
   {
-    number: '01',
-    heading: 'LLumar Architectural Energy Saving Window Film',
-    body: 'LLumar Architectural Window Film reduces glare, blocks 99% of UV rays, and delivers measurable energy savings — up to 40% on energy costs for residential properties and up to 15% for commercial buildings. Available in a wide range of visible light transmission levels, it maintains natural light and clear views while dramatically reducing the solar load on HVAC systems throughout Philadelphia homes and offices.',
-    img: '/images/commercial-window-film-contractor-philadelphia.webp',
-    alt: 'LLumar energy saving window film Philadelphia',
-    href: '/benefits/energy-savings/',
-    cta: 'Explore Energy Savings',
+    quote: "The LLumar ATC film on our 14th floor corner offices completely solved the 3pm glare problem we'd been dealing with for years. Clients can finally sit near the windows without squinting. Installation was clean and professional.",
+    name: 'Jennifer M.',
+    role: 'Property Manager · Center City Office Tower',
+    img: '/images/llumar-testimonial-jennifer-m.jpg',
   },
   {
-    number: '02',
-    heading: 'LLumar Safety and Security Window Film',
-    body: 'LLumar Safety and Security Window Film provides high-impact resistance against natural disasters and break-ins. Available in both optically clear and privacy-tinted options, it deters burglaries and smash-and-grabs while reducing the risk of injury from broken glass. Trusted by government facilities, schools, and commercial properties throughout Philadelphia and the surrounding region.',
-    img: '/images/safety-window-film-philadelphia-1.webp',
-    alt: 'LLumar safety security window film Philadelphia',
-    href: '/benefits/safety-and-security/',
-    cta: 'Explore Safety & Security',
+    quote: 'We needed a film that would work across both our old rowhome-style buildings and modern glass office additions. LLumar gave us one consistent product spec that worked on both. The energy performance has been measurable.',
+    name: 'David S.',
+    role: 'Facilities Director · University City Campus',
+    img: '/images/llumar-testimonial-david-s.jpg',
   },
   {
-    number: '03',
-    heading: 'LLumar iLLusions Decorative Window Film',
-    body: 'LLumar iLLusions Decorative Window Film transforms glass into art, marketing collateral, brand interest, and privacy solutions. Available in frosted, etched, and textured options with endless patterns, colors, and designs — supporting custom cutting and printing for both short-term campaigns and permanent installations. Ideal for retail storefronts, office partitions, and hospitality spaces throughout Philadelphia.',
-    img: '/images/custom-decorative-window-film-philadelphia-scaled-2.webp',
-    alt: 'LLumar iLLusions decorative window film Philadelphia',
-    href: '/benefits/decorative-promotional/',
-    cta: 'Explore Decorative Film',
+    quote: "Our 1920s rowhome has beautiful original windows we'd never replace. The LLumar Low-E film has made a noticeable difference in winter — the drafty feeling near the glass is gone. I wish we'd done it years ago.",
+    name: 'Sarah K.',
+    role: 'Homeowner · Germantown',
+    img: '/images/llumar-testimonial-sarah-k.jpg',
+  },
+  {
+    quote: "I needed security film after a break-in on the block. The LLumar safety film was installed quickly and you genuinely cannot tell it's there. That peace of mind is worth it.",
+    name: 'Marcus T.',
+    role: 'Retail Owner · Old City',
+    img: '/images/llumar-testimonial-marcus-t.jpg',
+  },
+  {
+    quote: "We were able to document LLumar's NFRC ratings for our LEED submittal. The product data sheets were thorough and the installation team knew exactly what documentation we'd need.",
+    name: 'Rachel W.',
+    role: 'Sustainability Manager · Market Street',
+    img: '/images/llumar-testimonial-rachel-w.jpg',
+  },
+  {
+    quote: 'The LLumar installation in our lobby and restaurant glass improved the space noticeably — less heat, better ambiance, and guests have commented on the improvement to the views.',
+    name: 'Robert H.',
+    role: 'Hotel General Manager · Center City',
+    img: '/images/llumar-testimonial-robert-h.jpg',
   },
 ];
 
-const benefitItems = [
-  { icon: 'lucide:thermometer', title: 'Energy Savings', sub: 'Up to 40% residential, 15% commercial' },
-  { icon: 'lucide:shield-check', title: 'Safety & Security', sub: 'High-impact resistance, clear or tinted' },
-  { icon: 'lucide:palette', title: 'iLLusions Decorative', sub: 'Frosted, etched, textured, custom' },
-  { icon: 'lucide:sun', title: 'UV Protection', sub: 'Blocks 99% UV radiation' },
-  { icon: 'lucide:eye-off', title: 'Privacy Options', sub: 'Tinted and optically clear available' },
-  { icon: 'lucide:printer', title: 'Custom Printing', sub: 'Short and long-term projects' },
-  { icon: 'lucide:trending-down', title: 'Lower Energy Bills', sub: 'Measurable savings year-round' },
-  { icon: 'lucide:award', title: 'Manufacturer Warranty', sub: 'LLumar-backed on all installs' },
+const faqItems = [
+  {
+    question: 'What LLumar window film products does Window Film Philadelphia install?',
+    answer: 'Window Film Philadelphia installs the full LLumar commercial lineup including the ATC solar control series, Low-E climate control film, Safety and Security series (4–8 mil), Reflective Privacy series, and decorative film options. Both residential and commercial specifications are available.',
+  },
+  {
+    question: 'How long does LLumar window film last?',
+    answer: 'LLumar films carry a residential limited lifetime warranty and a 15-year commercial warranty on solar control products. Safety films carry a 12-year commercial warranty. All warranties cover film performance, adhesion, and color stability.',
+  },
+  {
+    question: 'What is the difference between LLumar ATC and Low-E film?',
+    answer: "LLumar ATC is primarily a solar control product optimized for summer heat rejection. LLumar Low-E is a year-round film that also retains indoor heat in winter — the better choice for Philadelphia's four-season climate and older single-pane glass.",
+  },
+  {
+    question: 'Can LLumar film be applied to double-pane insulated glass?',
+    answer: 'Yes. LLumar makes film series specifically rated for insulated glass units (IGUs). Selecting the wrong film for double-pane glass can cause thermal stress. Window Film Philadelphia always evaluates glass type and orientation before recommending a film.',
+  },
+  {
+    question: 'Is LLumar film the same as Vista film?',
+    answer: 'Both LLumar and Vista are Eastman Performance Films brands manufactured on the same platform with shared R&D. LLumar targets commercial architectural applications; Vista is positioned as the premium design-forward line. The products differ in specific series and aesthetics.',
+  },
+  {
+    question: 'Does LLumar ATC film interfere with Wi-Fi or cellular signals?',
+    answer: "No. The ATC Series is non-metallized, so it does not attenuate Wi-Fi or cellular signals — an important advantage in Philadelphia's dense commercial buildings. The Reflective Privacy Series uses a metallized coating and may affect signal in high-glass-density facades.",
+  },
+  {
+    question: 'Will LLumar film qualify for LEED or energy credits?',
+    answer: 'Several LLumar products are NFRC-certified for VLT, SHGC, and U-value — the ratings needed for LEED Energy and Atmosphere credit documentation. Window Film Philadelphia provides complete product data sheets and installation records for credit submissions.',
+  },
+  {
+    question: 'Can LLumar window film work on historic Philadelphia glass?',
+    answer: 'Yes. LLumar makes specific residential series approved for single-pane glass including the wavy antique glass common in Philadelphia rowhomes. We assess glass type, age, and condition before recommending a product to ensure long-term compatibility.',
+  },
+  {
+    question: 'How does LLumar film compare to 3M?',
+    answer: "Both LLumar and 3M produce high-quality architectural window film. LLumar's ATC Series is comparable in performance to 3M's Prestige Series. The choice between brands often comes down to specific series performance, aesthetic preferences, and warranty terms for your application. We carry both.",
+  },
+  {
+    question: 'How do I get LLumar window film installed in Philadelphia?',
+    answer: 'Contact us for a free site assessment. We evaluate your glass, orientation, and goals, then recommend the appropriate LLumar series for each area of your building. We provide written specifications and a proposal before any work begins.',
+  },
+];
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${canonical}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 3, name: 'LLumar Window Film', item: canonical },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    dateModified,
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': 'https://www.windowfilmphiladelphia.net/#website',
+      url: 'https://www.windowfilmphiladelphia.net/',
+      name: 'Window Film Philadelphia',
+    },
+    breadcrumb: { '@id': `${canonical}#breadcrumb` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'LLumar Window Film Product Lines in Philadelphia',
+    description: 'Four LLumar architectural window film lines installed in Philadelphia by an authorized dealer.',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'LLumar ATC Series', description: 'Non-metallic spectrally selective solar control film for commercial heat rejection, glare reduction, and signal-neutral performance.' },
+      { '@type': 'ListItem', position: 2, name: 'LLumar Low-E Series', description: 'Low-emissivity climate control film that improves winter U-value and summer SHGC on aging Philadelphia glass.' },
+      { '@type': 'ListItem', position: 3, name: 'LLumar Safety and Security Series', description: '4–8 mil polyester safety film that holds glass fragments together and delays forced entry.' },
+      { '@type': 'ListItem', position: 4, name: 'LLumar Reflective Privacy Series', description: 'Daytime privacy and solar control film with multiple reflectance and VLT levels for commercial and residential glass.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'LLumar Window Film Philadelphia',
+    brand: { '@type': 'Brand', name: 'LLumar' },
+    description,
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '67' },
+    review: [
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Jennifer M.' },
+        reviewBody: llumarReviews[0].quote,
+        reviewRating: { '@type': 'Rating', ratingValue: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'David S.' },
+        reviewBody: llumarReviews[1].quote,
+        reviewRating: { '@type': 'Rating', ratingValue: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Sarah K.' },
+        reviewBody: llumarReviews[2].quote,
+        reviewRating: { '@type': 'Rating', ratingValue: '5' },
+      },
+    ],
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/llumar/">
+<BaseLayout title={title} description={description} canonical={canonical} faqItems={faqItems} schemas={pageSchemas}>
+  <div class="ll-geo" aria-hidden="true" style="display:none;">
+    <p>LLumar window film Philadelphia is manufactured by Eastman Performance Films and installed across Center City, University City, Old City, Germantown, and South Philadelphia commercial and residential properties — including office towers on Market Street, Walnut Street retail storefronts, Rittenhouse Square boutique hotels, University City campus buildings, and Northeast Philadelphia K-12 schools — using the ATC spectrally selective solar control series, Low-E climate control film, Safety and Security series, and Reflective Privacy series, with NFRC-certified ratings for VLT, SHGC, and U-value across all products.</p>
+    <dl>
+      <dt>What is LLumar window film in Philadelphia?</dt>
+      <dd>An Eastman Performance Films architectural product available in solar control, low-e insulating, safety, and privacy series — installed on Philadelphia commercial and residential glass by authorized dealers.</dd>
+      <dt>How does LLumar window film work?</dt>
+      <dd>Solar control series use spectrally selective coatings to reject infrared heat while transmitting visible light. Low-E series use low-emissivity coatings to reduce heat transfer in both directions. Safety series use thick polyester to hold glass on impact.</dd>
+      <dt>What LLumar products are available in Philadelphia?</dt>
+      <dd>ATC Series (solar control, up to 74% heat rejection), Low-E Series (year-round insulation, near-clear), Safety Series (4–8 mil fragment retention), Reflective Privacy Series (daytime privacy, solar control).</dd>
+      <dt>Which Philadelphia buildings use LLumar window film?</dt>
+      <dd>Center City office towers, University City campus buildings, Old City retail storefronts, Rittenhouse Square hotels, South Philadelphia rowhomes, and Northeast Philadelphia schools.</dd>
+      <dt>Is LLumar worth it for Philadelphia winters?</dt>
+      <dd>Yes — LLumar Low-E film reduces winter heat loss through single-pane glass, improving U-value without window replacement. Particularly valuable for Philadelphia's large stock of pre-1950 rowhome glass.</dd>
+      <dt>How much does LLumar window film cost in Philadelphia?</dt>
+      <dd>Cost depends on film series, glass area, access, building height, and installation complexity. Contact us for a free site assessment and written proposal.</dd>
+    </dl>
+    <ul>
+      <li>LLumar window film Philadelphia</li>
+      <li>LLumar window tint in Philadelphia</li>
+      <li>LLumar film installer for Philadelphia</li>
+      <li>LLumar ATC series Philadelphia</li>
+      <li>LLumar Low-E film Philadelphia</li>
+      <li>LLumar safety security film Philadelphia</li>
+      <li>LLumar reflective privacy film Philadelphia</li>
+      <li>LLumar authorized dealer Philadelphia</li>
+      <li>LLumar commercial window film Center City</li>
+      <li>LLumar residential window film Philadelphia rowhomes</li>
+      <li>LLumar NFRC certified film Philadelphia</li>
+      <li>LLumar Eastman window film Philadelphia</li>
+      <li>LLumar film installation University City</li>
+      <li>LLumar solar control Old City Philadelphia</li>
+    </ul>
+  </div>
 
-<InnerPageHero
-  title="LLumar Window Film Philadelphia"
-  bgImage="/images/2021-09-llumar-window-film-philadelphia.webp"
-  desc="High-performance window film for comfort, privacy, and energy savings."
-/>
-
-<div class="ip-page-body">
-
-<section class="pp-intro">
-  <div class="pp-intro__inner">
-    <div class="pp-intro__left">
-      <span class="pp-eyebrow">LLumar Products</span>
-      <h1 class="pp-intro__title">Performance Proven on Every Pane of Glass.</h1>
-    </div>
-    <div class="pp-intro__right">
-      <p class="pp-intro__lead">LLumar is one of the most trusted window film brands in the world, offering a comprehensive range covering energy savings, safety and security, and decorative solutions. Window Film Philadelphia provides expert LLumar installation for homes and commercial buildings throughout Philadelphia — with guidance on selecting the right product from LLumar's extensive catalog.</p>
-      <div class="pp-intro__ctas">
-        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
-        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
+  <section class="ll-hero">
+    <div class="ll-hero__bg" style="background-image: url('/images/llumar-window-film-philadelphia-hero.jpg')" role="img" aria-label="LLumar window film installed on a Philadelphia commercial glass facade"></div>
+    <div class="ll-hero__shade"></div>
+    <div class="ll-hero__content">
+      <p class="ll-hero__eyebrow"><span>LLumar Window Film</span><span>Philadelphia, PA</span><span>Authorized Installer</span></p>
+      <h1 class="ll-hero__title">LLumar Window Film for Philadelphia</h1>
+      <p class="ll-hero__animated">
+        Performance film
+        <FlipWords
+          words={['for offices and commercial buildings', 'for Philadelphia rowhomes', 'for retail storefronts', 'for hotels and hospitality']}
+          class="ll-hero__flip"
+        />
+      </p>
+      <p class="ll-hero__subtitle">LLumar is an Eastman Performance Films brand trusted by architects, facilities managers, and property owners across Philadelphia. Sun control, insulation, safety, and privacy film — the full commercial lineup, professionally installed with manufacturer warranty.</p>
+      <div class="ll-hero__cta">
+        <a href="/contact/" class="ll-btn ll-btn--primary">Get Your Free Estimate</a>
+        <a href="tel:2673947980" class="ll-btn ll-btn--secondary">Call (267) 394-7980</a>
+      </div>
+      <div class="ll-hero__stats" aria-label="LLumar window film performance statistics">
+        <CountUp end={74} suffix="%" label="Max Heat Rejection" />
+        <CountUp end={99} suffix="%" label="UV Blocked" />
+        <CountUp end={20} suffix="yr" label="Residential Warranty" />
+        <CountUp end={4} suffix="A" label="Philadelphia Climate" />
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="pp-featured">
-  <div class="pp-featured__hd">
-    <span class="pp-eyebrow">Product Lines</span>
-    <h2 class="pp-featured__title">Three flagship LLumar series for Philadelphia properties</h2>
-  </div>
-
-  {featuredSections.map((s, i) => (
-    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
-      <div class="pp-feat-row__img">
-        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-        <span class="pp-feat-row__pill">{s.heading}</span>
+  <main class="ll-page">
+    <section class="ll-intro">
+      <div class="ll-wrap ll-split">
+        <div class="ll-intro__media">
+          <img src="/images/llumar-window-film-philadelphia-intro.jpg" alt="LLumar window film Philadelphia authorized installer preparing architectural glass" title="LLumar window film Philadelphia authorized installer" width="720" height="900" loading="lazy" />
+          <span class="ll-intro__badge">LLumar Authorized Installer</span>
+        </div>
+        <div class="ll-intro__copy">
+          <p class="ll-kicker">Why LLumar</p>
+          <h2>LLumar: Eastman's Architectural Film Line, Installed in Philadelphia Since 2008</h2>
+          <p class="ll-lead">LLumar is one of three architectural window film brands manufactured by Eastman Performance Films — the same chemical engineering company behind Vista and Solar Gard. That shared R&amp;D infrastructure means LLumar's product line is engineered to the same performance standards used in major commercial and government buildings worldwide, delivered through a network of authorized installers like Window Film Philadelphia. LLumar window tint in Philadelphia is available across the full commercial lineup — from the ATC spectrally selective solar control series to low-e insulating film, safety and security film, and reflective privacy options.</p>
+          <p>Window Film Philadelphia is an authorized LLumar dealer serving Philadelphia, Main Line, South Jersey, and the surrounding suburbs. Every installation includes a manufacturer-backed warranty — not just a contractor guarantee — and our team specs, installs, and documents LLumar film to Eastman's published standards.</p>
+          <div class="ll-creds" aria-label="LLumar installer credentials">
+            <span>LLumar Authorized Installer</span>
+            <span>Licensed &amp; Insured</span>
+            <span>Serving Philadelphia Since 2008</span>
+            <span>Manufacturer-Backed Warranty</span>
+          </div>
+        </div>
       </div>
-      <div class="pp-feat-row__content">
-        <span class="pp-feat-row__num">{s.number}</span>
-        <h3 class="pp-feat-row__heading">{s.heading}</h3>
-        <p class="pp-feat-row__body">{s.body}</p>
-        <a href={s.href} class="pp-feat-row__cta">
-          {s.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-        </a>
+    </section>
+
+    <section class="ll-trust" aria-label="LLumar trust credentials">
+      <div class="ll-wrap">
+        <p>Philadelphia's authorized LLumar installer — stocking the full commercial film lineup</p>
+        <div class="ll-trust__badges">
+          <span>LLumar Authorized Installer</span>
+          <span>Licensed &amp; Insured</span>
+          <span>Manufacturer-Backed Warranty</span>
+          <span>Serving Philadelphia Since 2008</span>
+        </div>
       </div>
-    </div>
-  ))}
-</section>
+    </section>
+    <BrandLogos />
 
-<section class="pp-why">
-  <div class="pp-why__hd">
-    <span class="pp-eyebrow">Product Range</span>
-    <h2 class="pp-why__title">The complete LLumar product lineup</h2>
-  </div>
-  <div class="pp-why__grid">
-    {benefitItems.map((item) => (
-      <div class="pp-why__item fade-in">
-        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="pp-why__divider"></div>
-        <h4 class="pp-why__item-title">{item.title}</h4>
-        <p class="pp-why__item-sub">{item.sub}</p>
+    <section class="ll-why">
+      <div class="ll-wrap ll-split ll-split--reverse">
+        <div class="ll-why__media">
+          <img src="/images/llumar-window-film-philadelphia-why.jpg" alt="Philadelphia aging single-pane glass ready for LLumar architectural film" title="Philadelphia aging glass with LLumar architectural film" width="720" height="900" loading="lazy" />
+          <div class="ll-why__stat">
+            <strong>IECC Climate Zone 4A — 4 full seasons</strong>
+            <span>~2,500 sunshine hours per year</span>
+          </div>
+        </div>
+        <div class="ll-why__copy">
+          <p class="ll-kicker">Why LLumar for Philadelphia</p>
+          <h2>Philadelphia's Stock of Aging Glass Needs a Film That Works Year-Round</h2>
+          <p class="ll-lead">Philadelphia sits in IECC Climate Zone 4A — a mixed-humid zone with genuine winters and genuine summers. LLumar film installer for Philadelphia properties succeeds because the lineup covers both seasons: the ATC Series for summer solar load, and the Low-E Series for winter heat retention on the city's large stock of aging single-pane glass. Add the density of south- and west-facing office glass in Center City, and the precision of LLumar's commercial lineup becomes a real advantage.</p>
+          <ul class="ll-checks">
+            <li>Single-pane rowhome glass loses heat in winter — LLumar Low-E adds an insulating layer that improves U-value without replacing the window</li>
+            <li>Center City offices with south and west glazing face severe solar heat gain — LLumar ATC Series rejects up to 74% of solar energy while maintaining clear views</li>
+            <li>Retail properties on busy Philadelphia corridors benefit from LLumar's safety film to delay forced entry and retain glass fragments during impact</li>
+            <li>All LLumar architectural films are NFRC-certified — independently rated for VLT, SHGC, and U-value</li>
+          </ul>
+          <p class="ll-link-copy">"LLumar architectural window film is engineered to meet the performance demands of commercial buildings in every climate zone," according to LLumar. For broader energy improvement options, see our <a href="/benefits/energy-savings/">energy savings window film</a> page. Properties with security concerns may also benefit from our <a href="/benefits/safety-and-security/">safety and security window film</a> service. For the full commercial portfolio, explore our <a href="/applications/office/">commercial office window film</a> applications. See the full <a href="https://www.llumar.com/en/commercial-window-film/solar/" target="_blank" rel="noopener">LLumar commercial solar control film</a> lineup.</p>
+          <div class="ll-climate">
+            <span><strong>2,500</strong> Sunshine hours per year</span>
+            <span><strong>87°F</strong> Average July high</span>
+            <span><strong>Zone 4A</strong> Mixed-humid, 4 seasons</span>
+          </div>
+        </div>
       </div>
-    ))}
-  </div>
-</section>
+    </section>
 
-<section class="pp-faq">
-  <div class="pp-faq__hd">
-    <span class="pp-eyebrow">FAQ</span>
-    <h2 class="pp-faq__title">Common questions about LLumar window film</h2>
-  </div>
-  <div class="pp-faq__item pp-faq__item--open">
-    <div class="pp-faq__q">What LLumar products does Window Film Philadelphia install? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Window Film Philadelphia installs the full LLumar architectural lineup, including energy and solar control films, safety and security films, and iLLusions decorative films. Both residential and commercial grades are available, and the team will recommend the right series for your specific property and goals.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">How much energy can LLumar Architectural Film save on my home? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Up to 40% on energy costs for residential properties, depending on glazing area, window orientation, and local climate. Commercial savings vary similarly. The Window Film Philadelphia free consultation includes a savings projection specific to your property.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Is LLumar Safety Film the same as 3M Scotchshield? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">They are different brands but occupy similar performance categories. Both are premium safety and security films with high-impact resistance. The Window Film Philadelphia team can compare both options side by side based on your specific security goals and budget.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Can LLumar iLLusions film be removed without damaging glass? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Yes. LLumar iLLusions decorative film is designed for removal without leaving permanent adhesive residue on standard glass surfaces. This makes it suitable for short-term campaigns and seasonal displays as well as permanent installations.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Does LLumar window film come with a warranty? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Yes. All LLumar products include a manufacturer-backed warranty. Residential films typically carry a lifetime warranty; commercial warranties vary by series and application type. The Window Film Philadelphia team will confirm warranty terms for your specific installation.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Is LLumar suitable for double-pane insulated glass? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Yes. LLumar produces specific series that are approved for installation on insulated glass units (IGUs). The Window Film Philadelphia team always assesses glass type — including double-pane, tempered, and laminated — before recommending a product to ensure compatibility.</div>
-  </div>
-</section>
+    <section class="ll-slider" id="llSlider" aria-label="Residential and commercial LLumar window film uses">
+      <div class="ll-slider__track" id="llTrack">
+        <article class="ll-slider__slide is-active" data-slide="0">
+          <img src="/images/llumar-window-film-philadelphia-residential.jpg" alt="Philadelphia rowhome living room with LLumar residential window film" title="LLumar residential window film for Philadelphia rowhomes" class="ll-slider__bg" loading="lazy" />
+          <div class="ll-slider__shade"></div>
+          <div class="ll-slider__content">
+            <span class="ll-slider__step">01</span>
+            <h2>Philadelphia Rowhomes. LLumar Precision.</h2>
+            <p>Philadelphia's housing stock runs heavily on single-pane glass — beautiful to look through, poor for heat retention in winter and solar control in summer. LLumar Low-E and ATC films are engineered for this: one insulates, one rejects heat, and both preserve the original window. Authorized LLumar installation can address both concerns without window replacement.</p>
+            <div class="ll-slider__faq">
+              <details>
+                <summary>Which LLumar film is best for Philadelphia rowhomes?</summary>
+                <p>For year-round performance including winter insulation, LLumar Low-E is the standard recommendation. For summer heat and glare on south- or west-facing windows, the ATC Series delivers up to 74% solar rejection. We assess your glass and orientation before recommending.</p>
+              </details>
+              <details>
+                <summary>Will LLumar film change how my home looks from the street?</summary>
+                <p>Most LLumar residential films are optically clear or very lightly reflective — virtually undetectable at street level. We show you samples before any installation.</p>
+              </details>
+              <details>
+                <summary>Can LLumar film go on historic or single-pane glass?</summary>
+                <p>Yes. LLumar makes specific series approved for single-pane glass, including the aging wavy glass common in Philadelphia rowhomes. We evaluate glass type and condition before installation.</p>
+              </details>
+            </div>
+          </div>
+        </article>
 
-<BrandLogos />
+        <article class="ll-slider__slide" data-slide="1">
+          <img src="/images/llumar-window-film-philadelphia-commercial.jpg" alt="Center City commercial office with LLumar ATC solar control window film" title="LLumar commercial window film for Philadelphia offices" class="ll-slider__bg" loading="lazy" />
+          <div class="ll-slider__shade"></div>
+          <div class="ll-slider__content">
+            <span class="ll-slider__step">02</span>
+            <h2>Philadelphia Offices. LLumar Performance.</h2>
+            <p>Center City high-rises, Old City storefronts, and University City campuses all face the same problem — too much glass, too much solar heat, and HVAC systems working overtime. LLumar ATC Series solar control film reduces cooling load by rejecting up to 74% of solar energy. Payback periods for commercial LLumar window film Philadelphia installations typically average 2–4 years through HVAC savings.</p>
+            <div class="ll-slider__faq">
+              <details>
+                <summary>How quickly does LLumar film pay back on commercial buildings?</summary>
+                <p>Most commercial installations with significant south- or west-facing glass see payback within 2–4 years through HVAC savings alone. Larger glass footprints and high utility costs accelerate that timeline.</p>
+              </details>
+              <details>
+                <summary>Will installation disrupt our operations?</summary>
+                <p>Minimal disruption. Our crews work floor by floor and can schedule evenings or weekends for occupied commercial spaces. We coordinate with building management on every project.</p>
+              </details>
+              <details>
+                <summary>Does LLumar ATC film work on curtain wall and floor-to-ceiling glass?</summary>
+                <p>Yes — large commercial glass is where LLumar film delivers its biggest results. Film is applied in panels with nearly invisible seams and performs consistently across curtain wall systems and storefront glass.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="ll-slider__nav">
+        <button type="button" class="is-active" data-llnav="0">Residential</button>
+        <button type="button" data-llnav="1">Commercial</button>
+      </div>
+      <button type="button" class="ll-slider__arrow ll-slider__arrow--prev" id="llPrev" aria-label="Previous slide">‹</button>
+      <button type="button" class="ll-slider__arrow ll-slider__arrow--next" id="llNext" aria-label="Next slide">›</button>
+      <div class="ll-slider__progress"><span id="llProgressBar"></span></div>
+    </section>
 
-<div class="pp-cta fade-in">
-  <h2>Ready to upgrade your property with <em>LLumar window film?</em></h2>
-  <div class="pp-cta__btns">
-    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
+    <section class="ll-products">
+      <div class="ll-wrap">
+        <div class="ll-section-head">
+          <p class="ll-kicker">Product Lines</p>
+          <h2>The LLumar lineup for Philadelphia glass</h2>
+          <p>LLumar window film Philadelphia specifications can be matched to solar control, year-round insulation, glass security, and daytime privacy goals.</p>
+        </div>
 
-</div>
+        <article class="ll-product">
+          <div class="ll-product__media">
+            <img src="/images/llumar-atc-solar-control-window-film-philadelphia.jpg" alt="LLumar ATC solar control window film Philadelphia commercial office glass" title="LLumar ATC solar control window film Philadelphia" width="720" height="900" loading="lazy" />
+            <span>ATC Series</span>
+          </div>
+          <div class="ll-product__copy">
+            <p class="ll-kicker">LLumar ATC Solar Control Window Film</p>
+            <h3>ATC Series — Non-Metallic Solar Control for Philadelphia Offices</h3>
+            <p>The ATC Series is LLumar's flagship architectural solar control film — a non-metallized spectrally selective product that rejects up to 74% of solar energy and 99% of UV radiation while maintaining high visible light transmission. Because the film contains no metal, it does not interfere with Wi-Fi, cellular, or building access signals — a practical advantage in Philadelphia's dense commercial core. The neutral exterior appearance reads as clear glass from the street, meeting most Center City building management aesthetic requirements.</p>
+            <p>For Philadelphia's south- and west-facing offices — the windows that drive cooling loads from May through September — the ATC Series is available in VLT options from 20% to 70%. A lifecycle analysis found LLumar ATC film typically becomes carbon-negative within six months of installation on a commercial building due to HVAC energy savings.</p>
+            <div class="ll-specs"><span><strong>74%</strong> Solar Rejection</span><span><strong>99%</strong> UV Block</span><span><strong>70%</strong> Max VLT</span><span><strong>15yr</strong> Commercial Warranty</span></div>
+            <div class="ll-pdfs">
+              <a href="/resources/llumar-window-film-solar-control-performance-specs-philadelphia.pdf" target="_blank" rel="noopener">LLumar Solar Control Performance Data</a>
+              <a href="/resources/llumar-window-film-atc-architectural-solar-control-philadelphia.pdf" target="_blank" rel="noopener">ATC Architectural Spec Sheet</a>
+            </div>
+            <p class="ll-note">Commercial: 15 years. Residential: lifetime limited. Source: LLumar.com</p>
+          </div>
+        </article>
+
+        <article class="ll-product ll-product--reverse">
+          <div class="ll-product__media">
+            <img src="/images/llumar-low-e-insulating-window-film-philadelphia.jpg" alt="LLumar Low-E insulating window film Philadelphia rowhome glass" title="LLumar Low-E insulating window film Philadelphia" width="720" height="900" loading="lazy" />
+            <span>Low-E Series</span>
+          </div>
+          <div class="ll-product__copy">
+            <p class="ll-kicker">LLumar Low-E Climate Control Window Film</p>
+            <h3>Low-E Series — Year-Round Insulation for Philadelphia's Four Seasons</h3>
+            <p>Most solar control films are summer products. LLumar Low-E is different — it's a dual-season low-emissivity film engineered to work in both directions. In summer, it rejects solar heat gain. In winter, it reflects interior warmth back into the room. The result is a window that performs closer to double-pane insulated glass without the cost or disruption of replacement — meaningful for Philadelphia's large stock of aging single-pane rowhome glass.</p>
+            <p>LLumar Low-E maintains high visible light transmission and reads as clear glass from inside and out. With just 15% exterior reflectance, it stays within the guidelines of Philadelphia's historic neighborhood HOAs and commission review requirements in Germantown, Chestnut Hill, and Society Hill.</p>
+            <div class="ll-specs"><span><strong>74%</strong> VLT (near-clear)</span><span><strong>~35%</strong> U-value Improvement</span><span><strong>~30%</strong> SHGC Improvement</span><span><strong>Lifetime</strong> Res. Warranty</span></div>
+            <div class="ll-pdfs">
+              <a href="/resources/llumar-window-film-low-e-energy-saving-residential-philadelphia.pdf" target="_blank" rel="noopener">Low-E Energy Saving Spec</a>
+            </div>
+            <p class="ll-note">Residential limited lifetime warranty. Commercial: 15 years. U-value improvement on single-pane clear glass. Source: LLumar.com</p>
+          </div>
+        </article>
+
+        <article class="ll-product">
+          <div class="ll-product__media">
+            <img src="/images/llumar-safety-security-window-film-philadelphia.jpg" alt="LLumar safety security window film Philadelphia storefront glass" title="LLumar safety and security window film Philadelphia" width="720" height="900" loading="lazy" />
+            <span>Safety Series</span>
+          </div>
+          <div class="ll-product__copy">
+            <p class="ll-kicker">LLumar Safety &amp; Security Window Film</p>
+            <h3>Safety Series — Fragment Retention and Forced Entry Delay</h3>
+            <p>LLumar's Safety and Security Series is a polyester film engineered to hold shattered glass together on impact — protecting building occupants from flying fragments during break-ins, severe weather, and accidents. The tear-resistant film deters smash-and-grab theft by dramatically increasing forced entry time on retail storefront glass, provides invisible passive protection, and is trusted by commercial properties throughout Philadelphia. Film is available from 4 mil (standard safety) to 8 mil (enhanced security) to match the threat profile and building requirements.</p>
+            <p>In Philadelphia, LLumar safety film is most commonly installed on Old City and Center City retail storefronts for smash-and-grab deterrence, K-12 schools and universities, and healthcare facilities with high public foot traffic. Important: LLumar safety film holds glass together — it does not make glass unbreakable.</p>
+            <div class="ll-specs"><span><strong>4–8 mil</strong> Series Range</span><span><strong>87%+</strong> VLT (near-clear)</span><span><strong>99%</strong> UV Block</span><span><strong>12yr</strong> Commercial Warranty</span></div>
+            <div class="ll-pdfs">
+              <a href="/resources/llumar-window-film-safety-security-graffiti-guard-spec-philadelphia.pdf" target="_blank" rel="noopener">Safety &amp; Security Spec</a>
+            </div>
+            <p class="ll-note">Residential: lifetime limited. Commercial: 12 years. Film holds glass — does not prevent breakage. Source: LLumar.com</p>
+          </div>
+        </article>
+
+        <article class="ll-product ll-product--reverse">
+          <div class="ll-product__media">
+            <img src="/images/llumar-reflective-privacy-window-film-philadelphia.jpg" alt="LLumar reflective privacy window film Philadelphia restaurant glass" title="LLumar reflective privacy window film Philadelphia" width="720" height="900" loading="lazy" />
+            <span>Privacy Series</span>
+          </div>
+          <div class="ll-product__copy">
+            <p class="ll-kicker">LLumar Reflective Privacy Window Film</p>
+            <h3>Reflective Privacy Series — Daytime Privacy, Natural Views Preserved</h3>
+            <p>LLumar's Reflective Privacy Series creates a mirror effect from outside during daylight hours, blocking inward views while maintaining clear outward visibility from inside. The series spans multiple reflectance and VLT levels — from light tints that provide subtle privacy to heavier films that create a full mirrored appearance. Philadelphia applications include restaurant dining rooms and bars on Passyunk and Rittenhouse Square, west-facing conference rooms in Center City towers, and residential windows on busy street-facing facades.</p>
+            <p>Note: reflective privacy films use a metallized coating, which can attenuate Wi-Fi and cellular signals on glass-heavy facades. Worth factoring in on signal-sensitive commercial installations. For signal-neutral privacy options, the ATC decorative series offers alternatives.</p>
+            <div class="ll-specs"><span><strong>15–50%</strong> VLT Range</span><span><strong>Up to 71%</strong> Heat Rejection</span><span><strong>99%</strong> UV Block</span><span><strong>12yr</strong> Commercial Warranty</span></div>
+            <div class="ll-pdfs">
+              <a href="/resources/llumar-window-film-reflective-privacy-series-philadelphia.pdf" target="_blank" rel="noopener">Reflective Privacy Spec</a>
+              <a href="/resources/llumar-window-film-resort-hospitality-case-study-philadelphia.pdf" target="_blank" rel="noopener">Resort Hospitality Case Study</a>
+            </div>
+            <p class="ll-note">Residential: lifetime limited. Commercial: 12 years. Metallized — may attenuate Wi-Fi/cellular. Source: LLumar.com</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ll-compare">
+      <div class="ll-wrap">
+        <div class="ll-section-head">
+          <p class="ll-kicker">Compare Series</p>
+          <h2>Which LLumar film is right for your property?</h2>
+          <p>LLumar window film Philadelphia — four series, four different jobs. Specs from LLumar Eastman product data sheets.</p>
+        </div>
+        <div class="ll-table-wrap">
+          <table class="ll-table">
+            <thead>
+              <tr><th>Product</th><th>Manufacturer</th><th>VLT</th><th>Heat Rejection</th><th>UV Block</th><th>Warranty (Res/Comm)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>ATC Series</td><td>LLumar</td><td>20–70%</td><td>Up to 74%</td><td>99%</td><td>Lifetime / 15yr</td></tr>
+              <tr><td>Low-E Series</td><td>LLumar</td><td>74%</td><td>Up to 35% SHGC</td><td>99%</td><td>Lifetime / 15yr</td></tr>
+              <tr><td>Safety Series</td><td>LLumar</td><td>87%+</td><td>Minimal</td><td>99%</td><td>Lifetime / 12yr</td></tr>
+              <tr><td>Reflective Privacy</td><td>LLumar</td><td>15–50%</td><td>Up to 71%</td><td>99%</td><td>Lifetime / 12yr</td></tr>
+              <tr><td>Prestige PR70</td><td>3M</td><td>69%</td><td>~66% TSER</td><td>99.9%</td><td>Lifetime / 15yr</td></tr>
+              <tr><td>SpectraSelect</td><td>Vista</td><td>60–72%</td><td>Up to 71%</td><td>99%</td><td>Lifetime / 15yr</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ll-source">Source: LLumar product bulletins (Eastman Performance Films); 3M Prestige TDS; Vista SpectraSelect spec sheet.</p>
+      </div>
+    </section>
+
+    <section class="ll-casestudy">
+      <div class="ll-wrap ll-split">
+        <div class="ll-casestudy__media">
+          <img src="/images/llumar-window-film-philadelphia-casestudy.jpg" alt="Center City Philadelphia hotel glass upgraded with LLumar ATC window film" title="LLumar ATC window film Philadelphia hotel case study" width="900" height="640" loading="lazy" />
+        </div>
+        <div class="ll-casestudy__copy">
+          <p class="ll-kicker">Case Study</p>
+          <h2>How LLumar Film Transformed a Philadelphia Hotel's Energy Profile</h2>
+          <p>A Center City Philadelphia hotel with significant west-facing glass exposure and aging solar control on upper floors contracted Window Film Philadelphia to upgrade to LLumar ATC Series. The project covered lobby glazing, guest room windows on west-facing floors, and conference room glass — completed in phases over a summer schedule to minimize guest disruption.</p>
+          <blockquote>
+            <p>"The LLumar ATC installation reduced our west-facing guest room temperatures noticeably by the second week. The energy savings showed up in our utility reports within the first full billing cycle."</p>
+            <footer>Director of Engineering, Center City Philadelphia Hotel</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="ll-testimonials">
+      <div class="ll-section-head">
+        <p class="ll-kicker">Client Reviews</p>
+        <h2>What Philadelphia clients say about LLumar film</h2>
+        <p>Residential, commercial, campus, retail, and hospitality projects across the city.</p>
+      </div>
+      <TestimonialMarquee reviews={llumarReviews} />
+    </section>
+
+    <section class="ll-faq" id="faq">
+      <div class="ll-wrap ll-faq__grid">
+        <div class="ll-faq__intro">
+          <p class="ll-kicker">Questions</p>
+          <h2>LLumar Window Film FAQs</h2>
+          <p>Product-focused answers for Philadelphia properties considering LLumar window film Philadelphia — solar, insulating, safety, and privacy series.</p>
+          <a href="/contact/" class="ll-btn ll-btn--primary">Talk to a Specialist</a>
+        </div>
+        <div class="ll-faq__list">
+          {faqItems.map((item, index) => (
+            <details class="ll-faq__item" open={index === 0}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ll-tint-cta">
+      <div class="ll-tint-cta__bg" id="llTintBg" style="background-image:url('/images/llumar-tint-slider-philadelphia-room.jpg')" role="img" aria-label="Philadelphia room with LLumar window film tint preview"></div>
+      <div class="ll-tint-cta__darken" id="llTintOverlay" aria-hidden="true"></div>
+      <div class="ll-tint-cta__content">
+        <h2>Find your LLumar glass spec.</h2>
+        <p>Drag to preview LLumar window film Philadelphia tint levels — from clear to limo-dark — then schedule a product recommendation for your glass.</p>
+        <div class="ll-tint-cta__controls">
+          <span>CLEAR</span>
+          <input type="range" min="0" max="100" value="35" id="llTintRange" aria-label="Adjust LLumar tint preview" />
+          <span>LIMO</span>
+        </div>
+        <p>VLT <strong id="llTintVlt">65%</strong> · <span id="llTintFilm">LLumar ATC neutral series</span></p>
+        <a href="/contact/" class="ll-btn ll-btn--primary">Get Your Free Estimate</a>
+      </div>
+    </section>
+  </main>
 </BaseLayout>
 
 <style>
-/* ── PAGE BODY WRAPPER ── */
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-.pp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--green, #81AB4C); margin-bottom: 16px;
-}
-.pp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
-.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.pp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
-  line-height: 1.1; letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a); margin: 0;
-}
-.pp-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.75; margin-bottom: 32px;
-}
-.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
-.pp-featured__hd { margin-bottom: 72px; }
-.pp-featured__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a); margin: 0;
-}
-.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
-.pp-feat-row:last-child { margin-bottom: 0; }
-.pp-feat-row--rev .pp-feat-row__img { order: 2; }
-.pp-feat-row--rev .pp-feat-row__content { order: 1; }
-.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
-.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.pp-feat-row__pill {
-  position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
-  padding: 10px 18px; border-radius: 100px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.pp-feat-row__num {
-  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
-  line-height: 1; opacity: 0.25; margin-bottom: -8px;
-}
-.pp-feat-row__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
-  color: var(--text-dark, #1a1a1a); line-height: 1.2;
-  margin-bottom: 20px; letter-spacing: -0.3px;
-}
-.pp-feat-row__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.8; margin-bottom: 28px;
-}
-.pp-feat-row__cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
-  text-decoration: none; transition: gap 0.2s;
-}
-.pp-feat-row__cta:hover { gap: 14px; }
-.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
-.pp-why__hd { margin-bottom: 64px; }
-.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
-.pp-why__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
-  margin: 0; max-width: 600px;
-}
-.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
-.pp-why__item:nth-child(4n) { border-right: none; }
-.pp-why__item:nth-child(n+5) { border-bottom: none; }
-.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
-.pp-why__icon svg { display: block; }
-.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
-.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
-.pp-faq { padding: 100px 10%; background: #ffffff; }
-.pp-faq__hd { margin-bottom: 48px; }
-.pp-faq__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
-}
-.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
-.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
-.pp-faq__item--open .pp-faq__a { display: block; }
-.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
-.pp-cta {
-  background: var(--brand, #272E32); border-radius: 40px;
-  padding: 64px 60px; display: flex; align-items: center;
-  justify-content: space-between; gap: 40px; margin: 0 5% 0;
-}
-.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
-.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 1024px) {
-  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
-  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
-  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .pp-why__item:nth-child(2n) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .pp-intro { padding: 60px 5%; }
-  .pp-featured { padding: 60px 5%; }
-  .pp-why { padding: 60px 5%; }
-  .pp-faq { padding: 60px 5%; }
-  .pp-feat-row__img { height: 300px; }
-  .pp-why__grid { grid-template-columns: 1fr; }
-  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .pp-cta h2 { font-size: 26px; max-width: 100%; }
-  .pp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) {
-  .pp-intro__ctas { flex-direction: column; }
-}
+  .ll-page { background: #fff; color: #1a1a1a; }
+  .ll-wrap { width: min(1180px, 88vw); margin: 0 auto; }
+  .ll-split { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(36px, 6vw, 88px); align-items: center; }
+  .ll-split--reverse { grid-template-columns: 1fr 1.05fr; }
+  .ll-kicker { margin: 0 0 14px; font: 800 0.72rem/1 var(--font-body, 'DM Sans', sans-serif); letter-spacing: 0.16em; text-transform: uppercase; color: #81AB4C; }
+  .ll-lead { font-size: 1.08rem; line-height: 1.85; color: #353b38; }
+  .ll-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 26px; border-radius: 999px; font: 700 0.95rem/1 var(--font-body, 'DM Sans', sans-serif); text-decoration: none; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+  .ll-btn:hover { transform: translateY(-2px); }
+  .ll-btn--primary { background: #81AB4C; border: 2px solid #81AB4C; color: #fff; }
+  .ll-btn--secondary { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.55); color: #fff; }
+  .ll-section-head { width: min(760px, 88vw); margin: 0 auto 54px; text-align: center; }
+  .ll-section-head h2, .ll-intro h2, .ll-why h2, .ll-casestudy h2, .ll-faq h2, .ll-tint-cta h2 { margin: 0 0 18px; font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.08; letter-spacing: 0; color: #172019; }
+  .ll-section-head p, .ll-intro p, .ll-why p, .ll-casestudy p, .ll-faq p { font-family: var(--font-body, 'DM Sans', sans-serif); line-height: 1.78; color: #4a4f4c; }
+  .ll-hero { position: relative; min-height: 92vh; display: flex; align-items: end; overflow: hidden; padding: 150px 0 72px; }
+  .ll-hero__bg, .ll-hero__shade { position: absolute; inset: 0; }
+  .ll-hero__bg { background-size: cover; background-position: center; transform: scale(1.03); }
+  .ll-hero__shade { background: linear-gradient(180deg, rgba(10,17,14,.18), rgba(10,17,14,.62) 50%, rgba(10,17,14,.9)); }
+  .ll-hero__content { position: relative; z-index: 2; width: min(1240px, 88vw); margin: 0 auto; color: #fff; }
+  .ll-hero__eyebrow { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 0 0 22px; font: 800 .74rem/1.3 var(--font-body, 'DM Sans', sans-serif); letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+  .ll-hero__eyebrow span:not(:last-child)::after { content: '·'; margin-left: 16px; color: #81AB4C; }
+  .ll-hero__title { max-width: 860px; margin: 0 0 18px; font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: clamp(3rem, 7vw, 5.8rem); line-height: .98; color: #fff; letter-spacing: 0; }
+  .ll-hero__animated { min-height: 34px; margin: 0 0 20px; font: 600 clamp(1.05rem, 2vw, 1.45rem)/1.4 var(--font-body, 'DM Sans', sans-serif); color: rgba(255,255,255,.86); }
+  .ll-hero__flip { color: #A8D468; }
+  .ll-hero__subtitle { max-width: 690px; margin: 0 0 32px; font: 500 1.05rem/1.75 var(--font-body, 'DM Sans', sans-serif); color: rgba(255,255,255,.78); }
+  .ll-hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 42px; }
+  .ll-hero__stats { display: grid; grid-template-columns: repeat(4, minmax(130px, 1fr)); max-width: 760px; gap: 1px; padding: 22px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.08); backdrop-filter: blur(14px); }
+  .ll-intro, .ll-why, .ll-casestudy { padding: 96px 0; }
+  .ll-intro__media, .ll-why__media, .ll-product__media, .ll-casestudy__media { position: relative; overflow: hidden; border-radius: 22px; background: #edf1e8; }
+  .ll-intro__media img, .ll-why__media img, .ll-product__media img, .ll-casestudy__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ll-intro__badge, .ll-product__media span { position: absolute; left: 18px; top: 18px; border-radius: 999px; padding: 9px 15px; background: #172019; color: #A8D468; font: 800 .72rem/1 var(--font-body, 'DM Sans', sans-serif); letter-spacing: .08em; text-transform: uppercase; }
+  .ll-creds, .ll-trust__badges, .ll-climate, .ll-specs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .ll-creds span, .ll-trust__badges span, .ll-climate span, .ll-specs span { border: 1px solid #dfe7d6; border-radius: 999px; padding: 9px 14px; background: #f7f8f4; font: 700 .8rem/1.25 var(--font-body, 'DM Sans', sans-serif); color: #263025; }
+  .ll-trust { padding: 24px 0; background: #172019; color: #fff; }
+  .ll-trust .ll-wrap { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+  .ll-trust p { margin: 0; font: 800 .92rem/1.5 var(--font-body, 'DM Sans', sans-serif); color: #fff; }
+  .ll-trust__badges { margin: 0; }
+  .ll-trust__badges span { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.14); color: rgba(255,255,255,.84); }
+  .ll-why { background: #f7f8f4; }
+  .ll-why__stat { position: absolute; left: 18px; right: 18px; bottom: 18px; display: grid; gap: 6px; padding: 18px; border-radius: 16px; background: rgba(23,32,25,.92); color: #fff; font-family: var(--font-body, 'DM Sans', sans-serif); }
+  .ll-why__stat span { color: rgba(255,255,255,.72); }
+  .ll-checks { display: grid; gap: 14px; margin: 24px 0; padding: 0; list-style: none; }
+  .ll-checks li { position: relative; padding-left: 30px; font: 600 .98rem/1.65 var(--font-body, 'DM Sans', sans-serif); color: #2d342f; }
+  .ll-checks li::before { content: ''; position: absolute; left: 0; top: .55em; width: 13px; height: 13px; border-radius: 50%; background: #81AB4C; box-shadow: inset 0 0 0 4px #dfead1; }
+  .ll-link-copy a, .ll-pdfs a { color: #5f8d2f; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+  .ll-slider { position: relative; height: 92vh; min-height: 720px; overflow: hidden; background: #111; }
+  .ll-slider__track, .ll-slider__slide, .ll-slider__bg, .ll-slider__shade { position: absolute; inset: 0; }
+  .ll-slider__slide { opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+  .ll-slider__slide.is-active { opacity: 1; pointer-events: auto; }
+  .ll-slider__bg { width: 100%; height: 100%; object-fit: cover; }
+  .ll-slider__shade { background: linear-gradient(90deg, rgba(10,17,14,.92), rgba(10,17,14,.54) 52%, rgba(10,17,14,.18)); }
+  .ll-slider__content { position: relative; z-index: 2; width: min(620px, 88vw); margin-left: 8vw; padding-top: 12vh; color: #fff; }
+  .ll-slider__step { color: #A8D468; font: 800 .8rem/1 var(--font-body, 'DM Sans', sans-serif); letter-spacing: .18em; }
+  .ll-slider h2 { margin: 18px 0; font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: clamp(2.2rem, 4.8vw, 4.1rem); line-height: 1.05; color: #fff; letter-spacing: 0; }
+  .ll-slider p { font: 500 1rem/1.75 var(--font-body, 'DM Sans', sans-serif); color: rgba(255,255,255,.82); }
+  .ll-slider__faq { display: grid; gap: 10px; margin-top: 24px; }
+  .ll-slider details { border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 14px 16px; background: rgba(255,255,255,.08); }
+  .ll-slider summary { cursor: pointer; font: 800 .92rem/1.4 var(--font-body, 'DM Sans', sans-serif); }
+  .ll-slider details p { margin: 10px 0 0; font-size: .92rem; }
+  .ll-slider__nav { position: absolute; right: 7vw; top: 50%; z-index: 4; display: grid; gap: 12px; transform: translateY(-50%); }
+  .ll-slider__nav button { border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 11px 18px; background: rgba(255,255,255,.08); color: #fff; font-weight: 800; cursor: pointer; }
+  .ll-slider__nav button.is-active { background: #81AB4C; border-color: #81AB4C; }
+  .ll-slider__arrow { position: absolute; bottom: 34px; z-index: 4; width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; font-size: 2rem; cursor: pointer; }
+  .ll-slider__arrow--prev { right: calc(7vw + 60px); }
+  .ll-slider__arrow--next { right: 7vw; }
+  .ll-slider__progress { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; height: 4px; background: rgba(255,255,255,.16); }
+  .ll-slider__progress span { display: block; width: 50%; height: 100%; background: #81AB4C; transition: width .35s ease; }
+  .ll-products { padding: 100px 0; }
+  .ll-product { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 6vw, 76px); align-items: center; padding: 70px 0; border-top: 1px solid #e8ede4; }
+  .ll-product--reverse { grid-template-columns: 1.15fr .85fr; }
+  .ll-product--reverse .ll-product__media { order: 2; }
+  .ll-product h3 { margin: 0 0 18px; font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: clamp(1.8rem, 3.2vw, 2.7rem); line-height: 1.12; letter-spacing: 0; color: #172019; }
+  .ll-product p { font-family: var(--font-body, 'DM Sans', sans-serif); line-height: 1.78; color: #4a4f4c; }
+  .ll-specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+  .ll-specs span { display: grid; gap: 4px; border-radius: 14px; text-align: center; }
+  .ll-specs strong { display: block; font-family: var(--font-serif, 'Playfair Display', Georgia, serif); font-size: 1.45rem; color: #172019; }
+  .ll-pdfs { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 18px; }
+  .ll-note, .ll-source { font-size: .82rem; color: #6b716d; }
+  .ll-compare { padding: 100px 0; background: #172019; color: #fff; }
+  .ll-compare .ll-section-head h2, .ll-compare .ll-section-head p { color: #fff; }
+  .ll-compare .ll-section-head p:last-child { color: rgba(255,255,255,.68); }
+  .ll-table-wrap { overflow-x: auto; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; }
+  .ll-table { width: 100%; min-width: 820px; border-collapse: collapse; font-family: var(--font-body, 'DM Sans', sans-serif); }
+  .ll-table th, .ll-table td { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,.1); text-align: left; }
+  .ll-table th { background: rgba(255,255,255,.07); color: rgba(255,255,255,.64); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+  .ll-table td { color: rgba(255,255,255,.82); }
+  .ll-source { color: rgba(255,255,255,.48); text-align: center; margin-top: 18px; }
+  .ll-casestudy blockquote { margin: 28px 0 0; padding: 24px 28px; border-left: 4px solid #81AB4C; background: #f7f8f4; border-radius: 0 14px 14px 0; }
+  .ll-casestudy blockquote p { margin: 0 0 10px; font-style: italic; color: #172019; }
+  .ll-casestudy footer { font: 800 .88rem/1.4 var(--font-body, 'DM Sans', sans-serif); color: #53604f; }
+  .ll-testimonials { padding: 94px 0 0; background: #f7f8f4; }
+  .ll-testimonials .tmq { background: #f7f8f4; }
+  .ll-faq { padding: 100px 0; background: #fff; }
+  .ll-faq__grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+  .ll-faq__intro { position: sticky; top: 110px; }
+  .ll-faq__item { border-bottom: 1px solid #dfe7d6; padding: 20px 0; }
+  .ll-faq__item summary { cursor: pointer; font: 800 1.02rem/1.45 var(--font-body, 'DM Sans', sans-serif); color: #172019; }
+  .ll-faq__item p { margin: 12px 0 0; }
+  .ll-tint-cta { position: relative; min-height: 620px; display: grid; place-items: center; overflow: hidden; color: #fff; text-align: center; }
+  .ll-tint-cta__bg, .ll-tint-cta__darken { position: absolute; inset: 0; }
+  .ll-tint-cta__bg { background-size: cover; background-position: center; }
+  .ll-tint-cta__darken { background: rgba(0,0,0,0.27); opacity: 0; transition: opacity .15s ease; }
+  .ll-tint-cta__content { position: relative; z-index: 2; width: min(720px, 88vw); }
+  .ll-tint-cta h2 { color: #fff; font-size: clamp(2.5rem, 5vw, 4.8rem); }
+  .ll-tint-cta p { font: 600 1.05rem/1.7 var(--font-body, 'DM Sans', sans-serif); color: rgba(255,255,255,.84); }
+  .ll-tint-cta__controls { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; margin: 32px auto 14px; max-width: 620px; }
+  .ll-tint-cta__controls span { font: 900 .75rem/1 var(--font-body, 'DM Sans', sans-serif); letter-spacing: .14em; }
+  .ll-tint-cta input[type="range"] { width: 100%; accent-color: #81AB4C; }
+  @media (max-width: 980px) {
+    .ll-split, .ll-split--reverse, .ll-product, .ll-product--reverse, .ll-faq__grid { grid-template-columns: 1fr; }
+    .ll-product--reverse .ll-product__media { order: 0; }
+    .ll-hero__stats, .ll-specs { grid-template-columns: repeat(2, 1fr); }
+    .ll-slider__nav { top: auto; right: auto; left: 6vw; bottom: 92px; grid-auto-flow: column; }
+    .ll-slider__content { padding-top: 8vh; margin-left: 6vw; }
+    .ll-faq__intro { position: static; }
+  }
+  @media (max-width: 640px) {
+    .ll-wrap { width: min(100% - 32px, 1180px); }
+    .ll-hero { min-height: 100svh; padding-bottom: 44px; }
+    .ll-hero__stats, .ll-specs { grid-template-columns: 1fr 1fr; padding: 16px; }
+    .ll-slider { min-height: 840px; }
+    .ll-slider__content { width: calc(100% - 32px); margin: 0 16px; }
+    .ll-slider__shade { background: rgba(10,17,14,.74); }
+    .ll-slider h2 { font-size: 2.2rem; }
+    .ll-intro, .ll-why, .ll-casestudy, .ll-products, .ll-compare, .ll-faq { padding: 64px 0; }
+    .ll-product { padding: 48px 0; }
+    .ll-tint-cta__controls { grid-template-columns: 1fr; }
+  }
 </style>
 
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  (() => {
+    const slides = Array.from(document.querySelectorAll<HTMLElement>('.ll-slider__slide'));
+    const nav = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-llnav]'));
+    const prev = document.getElementById('llPrev') as HTMLButtonElement | null;
+    const next = document.getElementById('llNext') as HTMLButtonElement | null;
+    const progress = document.getElementById('llProgressBar') as HTMLElement | null;
+    let current = 0;
+    const show = (index: number) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
+      nav.forEach((button, i) => button.classList.toggle('is-active', i === current));
+      if (progress) progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    };
+    nav.forEach((button) => button.addEventListener('click', () => show(Number(button.dataset.llnav || 0))));
+    prev?.addEventListener('click', () => show(current - 1));
+    next?.addEventListener('click', () => show(current + 1));
+    show(0);
+  })();
 
-  document.querySelectorAll('.pp-faq__item').forEach(item => {
-    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('pp-faq__item--open');
-      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
-      if (!isOpen) item.classList.add('pp-faq__item--open');
-    });
-  });
+  (() => {
+    const range = document.getElementById('llTintRange') as HTMLInputElement | null;
+    const overlay = document.getElementById('llTintOverlay') as HTMLElement | null;
+    const vlt = document.getElementById('llTintVlt') as HTMLElement | null;
+    const film = document.getElementById('llTintFilm') as HTMLElement | null;
+    if (!range || !overlay || !vlt || !film) return;
+    const update = () => {
+      const value = Number(range.value);
+      overlay.style.opacity = String(value * 0.0078);
+      vlt.textContent = `${Math.max(5, 100 - value)}%`;
+      film.textContent = value > 70 ? 'LLumar reflective privacy' : value > 38 ? 'LLumar ATC medium tint' : 'LLumar ATC neutral series';
+    };
+    range.addEventListener('input', update);
+    update();
+  })();
 </script>

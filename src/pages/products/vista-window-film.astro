@@ -1,343 +1,1686 @@
 ---
-/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
- * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
+import FlipWords from '../../components/FlipWords.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import CountUp from '../../components/animations/CountUp.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 import { Icon } from 'astro-icon/components';
 
-const title = 'Vista Window Film Philadelphia | Window Film Philadelphia';
-const description = 'Boost comfort, privacy, and safety with Vista window film in Philadelphia, providing energy-efficient, stylish, and durable solutions for homes and businesses.';
+const title = 'Vista Window Film Philadelphia | Premium Installer';
+const description = 'Vista window film Philadelphia — SpectraSelect solar control, low-e, dual-reflective privacy. Authorized Vista dealer, manufacturer warranty.';
+const canonical = 'https://www.windowfilmphiladelphia.net/products/vista-window-film/';
 
-const featuredSections = [
+const productLines = [
   {
-    number: '01',
-    heading: 'Vista Low-E Window Film',
-    body: 'Vista Low-E Window Film delivers optimal energy efficiency for homes and businesses throughout the year. Designed to keep comfortable temperatures year-round, it reduces heat loss in winter and heat gain in summer — providing energy savings in every season without compromising natural light or views. Ideal for Philadelphia properties that experience both summer heat and winter cold.',
-    img: '/images/vista-window-tinting-philadelphia-1.webp',
-    alt: 'Vista Low-E window film Philadelphia',
-    href: '/benefits/energy-savings/',
-    cta: 'Explore Energy Savings',
+    pill: 'SpectraSelect',
+    eyebrow: 'Vista SpectraSelect Solar Control Window Film',
+    heading: 'SpectraSelect — Non-Metallic Solar Control, Near-Neutral Appearance',
+    image: '/images/vista-spectraselect-solar-control-window-film-philadelphia.jpg',
+    alt: 'Vista SpectraSelect solar control window film installed on Philadelphia commercial glass',
+    title: 'Vista SpectraSelect solar control window film Philadelphia',
+    body: [
+      'Vista SpectraSelect is the flagship architectural solar control series — a non-metallized spectrally selective film that rejects up to 71% of solar energy and 99% of UV radiation while maintaining VLT options from 40% to 72%. Because SpectraSelect contains no metal, it does not interfere with Wi-Fi, cellular, or building access signals — a critical advantage in Philadelphia\'s dense commercial core and historic institutional buildings where signal infrastructure is complex.',
+      'The near-neutral exterior appearance of SpectraSelect — typically 5–9% exterior reflectance — reads as clear glass from the street. This is a core requirement in Philadelphia\'s Society Hill, Old City, and Rittenhouse Square historic districts where high-reflectance coatings are restricted. SpectraSelect is available in multiple VLT levels to scale from nearly invisible to moderate tint.',
+    ],
+    specs: [
+      ['71%', 'Max Heat Rejection'],
+      ['99%', 'UV Block'],
+      ['40–72%', 'VLT Range'],
+      ['15yr', 'Commercial Warranty'],
+    ],
+    pdfs: [
+      ['vista-window-film-solar-control-performance-specs-philadelphia.pdf', 'SpectraSelect Performance Data'],
+      ['vista-window-film-spectraselect-solar-safety-spec-philadelphia.pdf', 'SpectraSelect Spec Sheet'],
+    ],
+    warranty: 'Residential: lifetime limited. Commercial: 15 years. Source: Vista by Eastman.',
   },
   {
-    number: '02',
-    heading: 'Vista Dual Reflective & Neutral Series',
-    body: 'Vista Dual Reflective Window Film provides superior daytime privacy and a sleek, modern aesthetic — highly reflective with a professional appearance ideal for offices and commercial properties. Vista Neutral Window Film offers a lower-reflective alternative with strong energy conservation performance — addressing UV and glare reduction without the mirror-like look, blending seamlessly with any property\'s existing aesthetic.',
-    img: '/images/vista-window-film-contractor-philadelphia-1.webp',
-    alt: 'Vista Dual Reflective Neutral window film Philadelphia',
-    href: '/contact/',
-    cta: 'Get a Free Quote',
+    pill: 'Low-E Series',
+    eyebrow: 'Vista Low-E Climate Control Window Film',
+    heading: 'Low-E Series — Four-Season Insulation for Philadelphia Glass',
+    image: '/images/vista-low-e-insulating-window-film-philadelphia.jpg',
+    alt: 'Vista Low-E insulating window film on Philadelphia rowhome glass',
+    title: 'Vista Low-E insulating window film Philadelphia',
+    reverse: true,
+    body: [
+      'Vista Low-E is a dual-season low-emissivity film engineered for year-round performance. In summer, it rejects solar heat gain. In winter, it reflects interior heat back into the room instead of allowing it to escape through the glass. For Philadelphia\'s aging single-pane rowhome stock — where single-pane windows are common in pre-1950s construction — Low-E delivers a meaningful improvement in winter comfort and energy performance without requiring window replacement or historic preservation approval.',
+      'Vista Low-E maintains approximately 74% visible light transmission and 15% exterior reflectance — well within the requirements of Philadelphia\'s historic neighborhood guidelines. Unlike metallized films, Low-E does not create a mirror effect that would be inconsistent with the architectural character of Germantown, Chestnut Hill, or West Philadelphia\'s Victorian rowhome streetscapes.',
+    ],
+    specs: [
+      ['74%', 'VLT (near-clear)'],
+      ['~35%', 'U-value Improvement'],
+      ['~30%', 'SHGC Reduction'],
+      ['Lifetime', 'Res. Warranty'],
+    ],
+    pdfs: [
+      ['vista-window-film-low-e-energy-saving-residential-philadelphia.pdf', 'Low-E Energy Saving Spec'],
+    ],
+    warranty: 'Residential limited lifetime. Commercial: 15 years. Improvement on single-pane clear glass (1/4"). Source: Vista by Eastman.',
   },
   {
-    number: '03',
-    heading: 'Vista Spectrally Selective & Safety Series',
-    body: 'Vista Spectrally Selective Window Film achieves high light transmission while reducing solar heat gain and UV rays — by separating the electromagnetic spectrum to allow natural light in while blocking the heat and UV that cause discomfort and fading. Vista Safety and Security Film adds impact resistance, defending against break-ins, severe weather, and accidents with passive, invisible protection.',
-    img: '/images/window-film-philadelphia-uv-blocking-solar-shield-1.webp',
-    alt: 'Vista Spectrally Selective Safety window film Philadelphia',
-    href: '/benefits/safety-and-security/',
-    cta: 'Explore Safety & Security',
+    pill: 'Dual Reflective',
+    eyebrow: 'Vista Dual Reflective Privacy Window Film',
+    heading: 'Dual Reflective Series — Daytime Privacy Without the Nighttime Fishbowl',
+    image: '/images/vista-dual-reflective-privacy-window-film-philadelphia.jpg',
+    alt: 'Vista Dual Reflective privacy film on Philadelphia street-facing restaurant windows',
+    title: 'Vista Dual Reflective privacy window film Philadelphia',
+    body: [
+      'Most reflective privacy films work against you at night — the same coating that keeps people from seeing in during the day turns into a mirror from the inside after dark. Vista Dual Reflective Series solves this with asymmetric reflectance: high exterior reflectance during daylight creates a mirror effect that blocks inward views, while low interior reflectance preserves clear outward views after dark when interior lighting reverses the visual dynamic.',
+      'Philadelphia applications include restaurant dining rooms and bars on Passyunk and Rittenhouse Square, west-facing conference rooms in Center City towers, and ground-floor residential windows on busy commercial streets. Available in multiple VLT levels from DR15 (15% VLT, maximum privacy) to DR35 (36% VLT, moderate tint). Note: uses a metallized coating — may attenuate Wi-Fi signals on glass-heavy facades.',
+    ],
+    specs: [
+      ['15–36%', 'VLT Range'],
+      ['Up to 71%', 'Heat Rejection'],
+      ['99%', 'UV Block'],
+      ['12yr', 'Commercial Warranty'],
+    ],
+    pdfs: [
+      ['vista-window-film-dual-reflective-privacy-spec-philadelphia.pdf', 'Dual Reflective Spec'],
+    ],
+    warranty: 'Residential: lifetime. Commercial: 12 years. Metallized — may attenuate Wi-Fi on dense glass facades. Source: Vista by Eastman.',
+  },
+  {
+    pill: 'Safety Series',
+    eyebrow: 'Vista SpectraSelect Safety Window Film',
+    heading: 'SpectraSelect Safety — Solar Control and Fragment Retention in One Film',
+    image: '/images/vista-spectraselect-safety-security-window-film-philadelphia.jpg',
+    alt: 'Vista SpectraSelect Safety security window film on Philadelphia healthcare glass',
+    title: 'Vista SpectraSelect Safety security window film Philadelphia',
+    reverse: true,
+    body: [
+      'Vista SpectraSelect Safety combines the solar control performance of the SpectraSelect Series with fragment retention properties — addressing two concerns with a single installation. The film rejects solar heat and UV radiation while holding glass together on impact, preventing dangerous flying fragments during break-ins, accidents, and severe weather events. This dual-purpose performance makes it the specification of choice for Philadelphia schools, healthcare facilities, and at-risk commercial glazing where both energy and security matter.',
+      'For facilities directors who need to document both solar performance and safety compliance, SpectraSelect Safety provides NFRC ratings for energy performance alongside safety glazing documentation. Important: the film holds glass together — it does not prevent glass from breaking or guarantee protection from all injury.',
+    ],
+    specs: [
+      ['~60%', 'VLT'],
+      ['Up to 65%', 'Heat Rejection'],
+      ['99%', 'UV Block'],
+      ['12yr', 'Commercial Warranty'],
+    ],
+    pdfs: [
+      ['vista-window-film-spectraselect-solar-safety-spec-philadelphia.pdf', 'SpectraSelect Safety Spec'],
+      ['vista-window-film-spectraselect-healthcare-case-study-philadelphia.pdf', 'Healthcare Case Study'],
+    ],
+    warranty: 'Commercial: 12 years. Film holds glass on impact — does not prevent breakage. Source: Vista by Eastman.',
   },
 ];
 
-const benefitItems = [
-  { icon: 'lucide:thermometer', title: 'Vista Low-E', sub: 'Year-round energy efficiency' },
-  { icon: 'lucide:eye-off', title: 'Dual Reflective', sub: 'Superior privacy and modern look' },
-  { icon: 'lucide:sun', title: 'Neutral Series', sub: 'UV and glare reduction, low reflectivity' },
-  { icon: 'lucide:layers', title: 'Spectrally Selective', sub: 'Light in, heat and UV out' },
-  { icon: 'lucide:shield-check', title: 'Safety & Security', sub: 'Invisible passive glass protection' },
-  { icon: 'lucide:trending-down', title: 'Energy Savings', sub: 'Reduces heat loss and heat gain' },
-  { icon: 'lucide:leaf', title: 'LEED Eligible', sub: 'Qualifies for green building credits' },
-  { icon: 'lucide:award', title: 'LLumar Backed', sub: 'Produced by LLumar, premier warranty' },
+const comparisonRows = [
+  ['SpectraSelect 70', 'Vista', '72%', 'Up to 71%', '99%', 'Lifetime / 15yr'],
+  ['Low-E', 'Vista', '74%', '~35% SHGC', '99%', 'Lifetime / 15yr'],
+  ['Dual Reflective DR25', 'Vista', '24%', 'Up to 71%', '99%', 'Lifetime / 12yr'],
+  ['SpectraSelect Safety', 'Vista', '~60%', 'Up to 65%', '99%', 'Lifetime / 12yr'],
+  ['ATC 70', 'LLumar', '70%', 'Up to 74%', '99%', 'Lifetime / 15yr'],
+  ['Prestige PR70', '3M', '69%', '~66% TSER', '99.9%', 'Lifetime / 15yr'],
+];
+
+const testimonialReviews = [
+  {
+    quote: 'Vista SpectraSelect was the only film that met our design review requirements in the Society Hill historic district. Near-neutral appearance, documented performance, and the NFRC data was thorough enough for our preservation commission submission.',
+    name: 'Emily R.',
+    role: 'Architect · Rittenhouse Square Project',
+    img: '/images/vista-testimonial-emily-r.jpg',
+  },
+  {
+    quote: 'We specified Vista across three Class A buildings. The SpectraSelect performance data held up exactly as documented — energy savings were measurable in the first full year. Professional installation on all three properties.',
+    name: 'James B.',
+    role: 'Commercial Real Estate Manager · Center City',
+    img: '/images/vista-testimonial-james-b.jpg',
+  },
+  {
+    quote: 'I was worried about altering the look of our 1910 rowhome windows. The Vista Low-E film is genuinely invisible from outside and the winter drafty feeling near the glass has improved noticeably.',
+    name: 'Patricia G.',
+    role: 'Homeowner · Chestnut Hill',
+    img: '/images/vista-testimonial-patricia-g.jpg',
+  },
+  {
+    quote: 'Vista SpectraSelect Safety gave us the combination of solar control and safety documentation we needed for our procurement process. One product, two performance records — that simplified approvals considerably.',
+    name: 'Michael O.',
+    role: 'Hospital Facilities Manager · University City',
+    img: '/images/vista-testimonial-michael-o.jpg',
+  },
+  {
+    quote: 'The glare in our south-facing conference room was making afternoon meetings difficult. Vista SpectraSelect fixed it completely without making the room feel dim. The views of Old City are still beautiful.',
+    name: 'Lisa C.',
+    role: 'Office Manager · Old City',
+    img: '/images/vista-testimonial-lisa-c.jpg',
+  },
+  {
+    quote: 'We used Vista Dual Reflective on our restaurant\'s street-facing windows. Daytime privacy for diners is excellent and the street view from inside at night is still clear. Exactly what we needed.',
+    name: 'Andrew F.',
+    role: 'Boutique Hotel Owner · Center City',
+    img: '/images/vista-testimonial-andrew-f.jpg',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'What Vista window film products does Window Film Philadelphia install?',
+    answer: 'Window Film Philadelphia installs the full Vista architectural lineup including SpectraSelect solar control, Low-E climate control, Dual Reflective privacy film, and SpectraSelect Safety (solar + fragment retention). Both residential and commercial specifications are available.',
+  },
+  {
+    question: 'How long does Vista window film last?',
+    answer: 'Vista films carry a residential limited lifetime warranty and a 15-year commercial warranty on solar control products. Safety and reflective products carry a 12-year commercial warranty covering film performance, adhesion, and color stability.',
+  },
+  {
+    question: 'What is the difference between Vista SpectraSelect and Vista Low-E?',
+    answer: 'Vista SpectraSelect is primarily a solar control film optimized for summer heat and glare reduction. Vista Low-E is a year-round film that also retains interior heat in winter — the better specification for Philadelphia\'s four-season climate and older single-pane glass.',
+  },
+  {
+    question: 'Can Vista film meet Philadelphia historic district requirements?',
+    answer: 'Yes. Vista SpectraSelect and Low-E films are near-neutral in exterior appearance with low reflectance — they typically meet the aesthetic requirements of Philadelphia historic commissions in Society Hill, Chestnut Hill, and Fairmount. We provide product samples and NFRC data sheets for review submissions.',
+  },
+  {
+    question: 'Is Vista the same as LLumar?',
+    answer: 'Both Vista and LLumar are Eastman Performance Films brands manufactured on the same platform. Vista is positioned as the premium design-forward line; LLumar is the established commercial workhorse. Product specifications differ by series. Window Film Philadelphia carries both.',
+  },
+  {
+    question: 'Does Vista SpectraSelect film interfere with Wi-Fi or cellular signals?',
+    answer: 'No. SpectraSelect is non-metallized and does not attenuate Wi-Fi or cellular signals. The Dual Reflective Series uses a metallized coating and may affect signal on glass-heavy facades — worth considering for signal-sensitive installations.',
+  },
+  {
+    question: 'Can Vista film qualify for LEED credits?',
+    answer: 'Several Vista products are NFRC-certified and can support LEED Energy and Atmosphere documentation. Window Film Philadelphia provides complete product data sheets and installation records for credit submissions.',
+  },
+  {
+    question: 'Can Vista film be applied to double-pane insulated glass?',
+    answer: 'Yes. Vista makes specific series rated for insulated glass units (IGUs). Selecting the wrong film for double-pane glass can cause thermal stress. We always evaluate glass type and orientation before recommending a film.',
+  },
+  {
+    question: 'Does Vista SpectraSelect Safety prevent glass from breaking?',
+    answer: 'No. SpectraSelect Safety holds glass fragments together after impact — it does not prevent glass from breaking. It significantly slows forced entry and contains the fragment hazard that causes most injuries in glass-failure events.',
+  },
+  {
+    question: 'How do I get Vista window film installed in Philadelphia?',
+    answer: 'Contact us for a free site assessment. We evaluate your glass, orientation, goals, and any documentation requirements, then recommend the appropriate Vista series and provide a written proposal before work begins.',
+  },
+];
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 3, name: 'Vista Window Film', item: canonical },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': canonical,
+    url: canonical,
+    name: title,
+    description,
+    dateModified: new Date().toISOString().slice(0,10),
+    isPartOf: { '@type': 'WebSite', '@id': 'https://www.windowfilmphiladelphia.net/#website', name: 'Window Film Philadelphia' },
+    breadcrumb: { '@id': `${canonical}#breadcrumb` },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.vt-hero__title', '.vt-why__intro'] },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Vista Window Film Products — Philadelphia',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'SpectraSelect', description: 'Non-metallic solar control film with 40–72% VLT, up to 71% heat rejection, and 99% UV block.' },
+      { '@type': 'ListItem', position: 2, name: 'Low-E', description: 'Four-season insulating film with 74% VLT, improved U-value, and residential limited lifetime warranty.' },
+      { '@type': 'ListItem', position: 3, name: 'Dual Reflective', description: 'Daytime privacy film with DR15–DR35 VLT choices, up to 71% heat rejection, and 12-year commercial warranty.' },
+      { '@type': 'ListItem', position: 4, name: 'SpectraSelect Safety', description: 'Solar control and fragment retention film with about 60% VLT, up to 65% heat rejection, and 99% UV block.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Vista Window Film Philadelphia',
+    brand: { '@type': 'Brand', name: 'Vista' },
+    offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', areaServed: 'Philadelphia, PA', url: canonical },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '54', bestRating: '5' },
+    review: testimonialReviews.slice(0, 3).map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.name },
+      reviewBody: r.quote,
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    })),
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/vista-window-film/">
-
-<InnerPageHero
-  title="Vista Window Film Philadelphia"
-  bgImage="/images/vista-UV-window-film-for-energy-savings-Philadelphia-1.webp"
-  desc="Residential-focused window film engineered by LLumar for year-round performance."
-/>
-
-<div class="ip-page-body">
-
-<section class="pp-intro">
-  <div class="pp-intro__inner">
-    <div class="pp-intro__left">
-      <span class="pp-eyebrow">Vista by LLumar</span>
-      <h1 class="pp-intro__title">Residential Precision. Commercial Performance.</h1>
-    </div>
-    <div class="pp-intro__right">
-      <p class="pp-intro__lead">Vista window film is produced by LLumar and engineered with a focus on residential design — combining technological advancements in energy conservation, privacy, and security with a range of aesthetic options that complement any home or commercial building. Window Film Philadelphia is the trusted source for Vista window film throughout Philadelphia and surrounding communities.</p>
-      <div class="pp-intro__ctas">
-        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
-        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
-      </div>
-    </div>
+<BaseLayout title={title} description={description} canonical={canonical} schemas={pageSchemas} faqItems={faqItems}>
+  <div class="vt-geo" aria-hidden="true" style="display:none;">
+    <p>Vista window film Philadelphia is an Eastman Performance Films brand installed across Center City, Rittenhouse Square, Old City, University City, Chestnut Hill, and Society Hill commercial and residential properties — including Class A office towers on Market Street and Broad Street, University City healthcare and academic buildings, Society Hill historic district rowhomes, Old City boutique hotels, and West Philadelphia residential properties — using the SpectraSelect spectrally selective solar control series, Low-E climate control film, Dual Reflective privacy series, and SpectraSelect Safety dual-purpose film, all NFRC-certified for VLT, SHGC, and U-value.</p>
+    <dl>
+      <dt>What is Vista window film in Philadelphia?</dt>
+      <dd>An Eastman Performance Films premium architectural product available in spectrally selective solar control, low-e insulating, dual-reflective privacy, and combination solar-safety series — installed on Philadelphia commercial and residential glass by authorized dealers.</dd>
+      <dt>How does Vista SpectraSelect work?</dt>
+      <dd>Uses a non-metallic spectrally selective coating that transmits visible light while rejecting near-infrared solar heat — up to 71% solar energy rejection without a heavily tinted or reflective appearance.</dd>
+      <dt>What Vista products are available in Philadelphia?</dt>
+      <dd>SpectraSelect solar control (VLT 40–72%), Low-E (year-round, near-clear), Dual Reflective privacy (DR15–DR35), SpectraSelect Safety (solar + fragment retention).</dd>
+      <dt>Which Philadelphia buildings use Vista window film?</dt>
+      <dd>Center City Class A offices, University City healthcare campuses, Society Hill and Chestnut Hill historic rowhomes, Old City boutique hotels, and West Philadelphia residential buildings.</dd>
+      <dt>Is Vista worth it for Philadelphia winters?</dt>
+      <dd>Yes — Vista Low-E reduces winter heat loss through single-pane glass and improves U-value without window replacement, particularly valuable for pre-1950 Philadelphia rowhome glass.</dd>
+      <dt>How much does Vista window film cost in Philadelphia?</dt>
+      <dd>Cost depends on film series, glass area, building access, documentation requirements, and installation complexity. Contact us for a free assessment and written proposal.</dd>
+    </dl>
+    <ul>
+      <li>Vista window film Philadelphia</li>
+      <li>Vista window tint in Philadelphia</li>
+      <li>Vista film installer for Philadelphia</li>
+      <li>Vista SpectraSelect Philadelphia</li>
+      <li>Vista Low-E film Philadelphia</li>
+      <li>Vista Dual Reflective privacy film Philadelphia</li>
+      <li>Vista SpectraSelect Safety Philadelphia</li>
+      <li>Vista authorized dealer Philadelphia</li>
+      <li>Vista commercial window film Center City</li>
+      <li>Vista residential window film Philadelphia</li>
+      <li>Vista NFRC certified film Philadelphia</li>
+      <li>Vista Eastman architectural film Philadelphia</li>
+      <li>Vista window film Society Hill historic district</li>
+      <li>Vista solar control University City</li>
+    </ul>
   </div>
-</section>
 
-<section class="pp-featured">
-  <div class="pp-featured__hd">
-    <span class="pp-eyebrow">Product Lines</span>
-    <h2 class="pp-featured__title">Five Vista series for Philadelphia properties</h2>
-  </div>
-
-  {featuredSections.map((s, i) => (
-    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
-      <div class="pp-feat-row__img">
-        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-        <span class="pp-feat-row__pill">{s.heading}</span>
+  <section class="vt-hero">
+    <div
+      class="vt-hero__bg"
+      style="background-image: url('/images/vista-window-film-philadelphia-hero.jpg')"
+      role="img"
+      aria-label="Vista architectural window film on a Philadelphia commercial glass facade"
+      title="Vista window film Philadelphia commercial building hero"
+    ></div>
+    <div class="vt-hero__overlay"></div>
+    <div class="vt-hero__content">
+      <div class="vt-hero__eyebrow">
+        <span>Vista Window Film</span>
+        <span class="vt-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia, PA</span>
+        <span class="vt-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Authorized Installer</span>
       </div>
-      <div class="pp-feat-row__content">
-        <span class="pp-feat-row__num">{s.number}</span>
-        <h3 class="pp-feat-row__heading">{s.heading}</h3>
-        <p class="pp-feat-row__body">{s.body}</p>
-        <a href={s.href} class="pp-feat-row__cta">
-          {s.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+      <h1 class="vt-hero__title">Vista Window Film for Philadelphia</h1>
+      <p class="vt-hero__animated-line">
+        Premium architectural film
+        <FlipWords
+          words={['for offices and commercial buildings', 'for Philadelphia rowhomes', 'for healthcare facilities', 'for hotels and hospitality']}
+          staticText=""
+          class="vt-hero__flip"
+        />.
+      </p>
+      <p class="vt-hero__subtitle">
+        Vista is Eastman's premium architectural window film brand — favored by architects, designers, and facilities directors who need verified solar performance without altering the look of their glass. Sun control, insulation, privacy, and safety film installed professionally in Philadelphia with a manufacturer-backed warranty.
+      </p>
+      <div class="vt-hero__cta">
+        <a href="/contact/" class="vt-hero__btn-primary">Get Your Free Estimate</a>
+        <a href="tel:2673947980" class="vt-hero__btn-secondary">
+          <Icon name="lucide:phone" aria-hidden="true" />
+          Call (267) 394-7980
         </a>
       </div>
-    </div>
-  ))}
-</section>
-
-<section class="pp-why">
-  <div class="pp-why__hd">
-    <span class="pp-eyebrow">Product Range</span>
-    <h2 class="pp-why__title">The complete Vista window film series</h2>
-  </div>
-  <div class="pp-why__grid">
-    {benefitItems.map((item) => (
-      <div class="pp-why__item fade-in">
-        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="pp-why__divider"></div>
-        <h4 class="pp-why__item-title">{item.title}</h4>
-        <p class="pp-why__item-sub">{item.sub}</p>
+      <div class="vt-hero__stats-panel" aria-label="Key Vista window film statistics">
+        <div class="vt-hero__stats-inner">
+          <CountUp end={71} suffix="%" label="Max Heat Rejection" />
+          <div class="vt-hero__stat-divider" aria-hidden="true"></div>
+          <CountUp end={99} suffix="%" label="UV Blocked" />
+          <div class="vt-hero__stat-divider" aria-hidden="true"></div>
+          <div class="vt-hero__stat">
+            <strong>Lifetime</strong>
+            <span>Residential Warranty</span>
+          </div>
+          <div class="vt-hero__stat-divider" aria-hidden="true"></div>
+          <div class="vt-hero__stat">
+            <strong>Zone 4A</strong>
+            <span>Philadelphia Climate</span>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="vt-intro">
+    <div class="vt-intro__inner">
+      <div class="vt-intro__image-col">
+        <div class="vt-intro__image-wrap">
+          <img
+            src="/images/vista-window-film-philadelphia-intro.jpg"
+            alt="Vista authorized installer applying premium window film in Philadelphia"
+            title="Vista authorized installer applying premium window film in Philadelphia"
+            width="848"
+            height="1264"
+            loading="lazy"
+            class="vt-intro__img"
+          />
+          <div class="vt-intro__badge">
+            <Icon name="lucide:award" aria-hidden="true" />
+            <span>Vista Authorized Installer</span>
+          </div>
+        </div>
+      </div>
+      <div class="vt-intro__content">
+        <span class="vt-intro__eyebrow">Why Vista &amp; Window Film Philadelphia</span>
+        <h2 class="vt-intro__title">Vista: Eastman's Premium Architectural Film Line, Installed in Philadelphia</h2>
+        <p class="vt-intro__lead">Vista is the premium architectural window film brand in the Eastman Performance Films family — the same group that produces LLumar and Solar Gard. Where LLumar is the commercial workhorse, Vista is positioned for design-forward projects where aesthetics, performance documentation, and architect approval are all requirements. Vista window tint in Philadelphia is available through Window Film Philadelphia across the full SpectraSelect, Low-E, Dual Reflective, and Safety lineups.</p>
+        <p class="vt-intro__body">Window Film Philadelphia is an authorized Vista dealer and installer. That means we carry the full Vista architectural lineup — and every installation includes a manufacturer-issued warranty, NFRC-certified product specs, and installation records for your building files. Every project is specified when the film needs to satisfy both the design team and the facilities team.</p>
+        <div class="vt-intro__creds">
+          {['Vista Authorized Installer', 'Licensed & Insured', 'Serving Philadelphia Since 2008', 'NFRC-Certified Products'].map((cred) => (
+            <div class="vt-intro__cred">
+              <Icon name="lucide:check-circle-2" aria-hidden="true" />
+              {cred}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vt-trust">
+    <div class="vt-trust__inner">
+      <p class="vt-trust__label">Philadelphia's authorized Vista installer — stocking the full architectural film lineup</p>
+      <div class="vt-trust__badges" aria-label="Vista installer credentials">
+        {['Vista Authorized Installer', 'Licensed & Insured', 'Manufacturer-Backed Warranty', 'NFRC-Certified'].map((badge) => (
+          <span>{badge}</span>
+        ))}
+      </div>
+    </div>
+    <BrandLogos />
+  </section>
+
+  <section class="vt-why">
+    <div class="vt-why__inner">
+      <div class="vt-why__media">
+        <img
+          src="/images/vista-window-film-philadelphia-why.jpg"
+          alt="Philadelphia building interior with bright glass suited for Vista architectural film"
+          title="Philadelphia buildings suited for Vista architectural window film"
+          width="848"
+          height="1264"
+          loading="lazy"
+          class="vt-why__img"
+        />
+        <div class="vt-why__stat-card">
+          <strong>IECC Climate Zone 4A</strong>
+          <span>4 full seasons</span>
+          <small>~2,500 sunshine hours per year</small>
+        </div>
+      </div>
+      <div class="vt-why__content">
+        <span class="vt-why__eyebrow">Designed for demanding glass</span>
+        <h2 class="vt-why__title">Philadelphia's Design-Forward Buildings Need a Film That Performs and Disappears</h2>
+        <p class="vt-why__intro">Philadelphia sits in IECC Climate Zone 4A — genuine summers and genuine winters that stress both commercial HVAC systems and aging residential glass. Vista film installer for Philadelphia projects is chosen when performance is non-negotiable and appearance matters equally: the SpectraSelect Series maintains a near-neutral exterior look that meets historic district requirements in Society Hill, Chestnut Hill, and Fairmount while still rejecting meaningful solar heat on south- and west-facing glazing.</p>
+        <ul class="vt-why__bullets">
+          <li><Icon name="lucide:home" aria-hidden="true" />Aging single-pane rowhome glass loses heat in winter — Vista Low-E adds insulating performance without altering the window's appearance</li>
+          <li><Icon name="lucide:building-2" aria-hidden="true" />Center City offices with floor-to-ceiling glass face intense solar gain — Vista SpectraSelect rejects up to 71% of solar heat while preserving views and daylight</li>
+          <li><Icon name="lucide:shield-check" aria-hidden="true" />Healthcare facilities and universities need film with documented safety performance — Vista SpectraSelect Safety addresses solar control and fragment retention in one product</li>
+          <li><Icon name="lucide:file-check-2" aria-hidden="true" />All Vista films are NFRC-certified for VLT, SHGC, and U-value — meeting documentation requirements for LEED and institutional procurement</li>
+        </ul>
+        <p class="vt-why__closing">"Vista architectural window film is engineered for demanding commercial applications where performance, aesthetics, and documentation all matter," according to Vista by Eastman. For energy reduction strategies beyond window film, explore our <a href="/benefits/energy-savings/">energy savings window film</a> page. Homeowners can find residential-specific options on our <a href="/applications/homes-condos/">residential window film</a> page. For commercial specifications, see our <a href="/applications/office/">commercial office window film</a> page. Review the full <a href="https://www.llumar.com/en/coverage/architectural-film/vista-window-film/" target="_blank" rel="noopener">Vista architectural film overview</a> for product documentation.</p>
+      </div>
+    </div>
+    <div class="vt-why__facts" aria-label="Philadelphia climate facts">
+      <div><strong>2,500</strong><span>Sunshine hours per year</span></div>
+      <div><strong>87°F</strong><span>Average July high</span></div>
+      <div><strong>Zone 4A</strong><span>Mixed-humid, 4 seasons</span></div>
+    </div>
+  </section>
+
+  <section class="vt-slider" aria-labelledby="vt-slider-title">
+    <div class="vt-slider__header">
+      <span class="vt-slider__eyebrow">Residential and commercial Vista applications</span>
+      <h2 id="vt-slider-title" class="vt-slider__title">Two Ways Philadelphia Buildings Use Vista</h2>
+      <div class="vt-slider__nav">
+        <button class="vt-slider__button" type="button" data-vtnav="prev" aria-label="Previous slide"><Icon name="lucide:arrow-left" aria-hidden="true" /></button>
+        <button class="vt-slider__button" type="button" data-vtnav="next" aria-label="Next slide"><Icon name="lucide:arrow-right" aria-hidden="true" /></button>
+      </div>
+    </div>
+    <div class="vt-slider__viewport" id="vtSlider">
+      <div class="vt-slider__track" id="vtTrack">
+        <article class="vt-slider__slide">
+          <img src="/images/vista-window-film-philadelphia-residential.jpg" alt="Vista Low-E film in a Philadelphia rowhome living room" title="Vista window film for Philadelphia rowhomes" width="2752" height="1536" loading="lazy" />
+          <div class="vt-slider__panel">
+            <span class="vt-slider__kicker">Residential</span>
+            <h2>Philadelphia Rowhomes. Vista Precision.</h2>
+            <p>Philadelphia's housing stock runs on single-pane glass — beautiful, historic, and thermally inefficient in both summer and winter. Vista Low-E and SpectraSelect films are engineered for this: one insulates year-round, one controls solar heat, and both preserve the window's original appearance. Vista tint for Philadelphia rowhomes can address both concerns without glass replacement.</p>
+            <div class="vt-slider__faq">
+              <details open>
+                <summary>Which Vista film works best for historic Philadelphia rowhomes?</summary>
+                <p>Vista Low-E is the standard recommendation for year-round performance on single-pane glass — it improves winter U-value and summer SHGC while maintaining high visible light transmission. We assess glass type and orientation before recommending.</p>
+              </details>
+              <details>
+                <summary>Will Vista film change my home's appearance from the street?</summary>
+                <p>Vista SpectraSelect and Low-E are near-neutral in appearance — they do not create a heavily tinted or mirrored look. We provide samples before installation.</p>
+              </details>
+              <details>
+                <summary>Can Vista film go on bay windows and historic glass?</summary>
+                <p>Yes. Vista makes specific residential series approved for single-pane glass. We evaluate each window's glass type and condition before installation.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+        <article class="vt-slider__slide">
+          <img src="/images/vista-window-film-philadelphia-commercial.jpg" alt="Vista SpectraSelect film in a Philadelphia office with floor-to-ceiling glass" title="Vista window film Philadelphia commercial office performance" width="2752" height="1536" loading="lazy" />
+          <div class="vt-slider__panel">
+            <span class="vt-slider__kicker">Commercial</span>
+            <h2>Philadelphia Offices. Vista Performance.</h2>
+            <p>Philadelphia's Class A offices, healthcare campuses, and institutional buildings demand window film that performs AND satisfies architect and facilities review. Vista SpectraSelect delivers up to 71% heat rejection with a near-neutral exterior appearance that meets most historic district and design review requirements. Payback on Vista window film Philadelphia commercial installations typically averages 2–4 years through HVAC savings.</p>
+            <div class="vt-slider__faq">
+              <details open>
+                <summary>Does Vista film meet historic district requirements in Philadelphia?</summary>
+                <p>Vista SpectraSelect is near-neutral in exterior appearance with low reflectance — it typically meets the aesthetic requirements of Philadelphia historic commissions in Society Hill, Fairmount, and Chestnut Hill. We can provide product samples and NFRC data sheets for review submissions.</p>
+              </details>
+              <details>
+                <summary>Will installation disrupt operations?</summary>
+                <p>Minimal disruption. Our teams work floor by floor and schedule around occupied spaces. We coordinate with building management on every commercial project.</p>
+              </details>
+              <details>
+                <summary>Does Vista work on curtain wall and floor-to-ceiling glass?</summary>
+                <p>Yes — Vista SpectraSelect is one of the most commonly specified films for curtain wall applications. Film applies in panels with nearly invisible seams across all glass sizes.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="vt-slider__progress" aria-hidden="true"><span id="vtProgressBar"></span></div>
+  </section>
+
+  <section class="vt-products" aria-labelledby="vt-products-title">
+    <div class="vt-products__header">
+      <span class="vt-products__eyebrow">Vista product lines</span>
+      <h2 id="vt-products-title">Four Vista Series Specified Across Philadelphia Glass</h2>
+      <p>Different glass, visibility, privacy, and procurement requirements call for different Vista specifications.</p>
+    </div>
+    {productLines.map((line, index) => (
+      <article class:list={['vt-pl-row', { 'vt-pl-row--reverse': line.reverse }]}>
+        <div class="vt-pl-row__media">
+          <img src={line.image} alt={line.alt} title={line.title} width="848" height="1264" loading="lazy" />
+        </div>
+        <div class="vt-pl-row__content">
+          <span class="vt-pl-row__pill">{line.pill}</span>
+          <p class="vt-pl-row__eyebrow">{line.eyebrow}</p>
+          <h3>{line.heading}</h3>
+          {line.body.map((paragraph) => <p>{paragraph}</p>)}
+          <div class="vt-pl-row__specs">
+            {line.specs.map(([value, label]) => (
+              <div><strong>{value}</strong><span>{label}</span></div>
+            ))}
+          </div>
+          <div class="vt-pl-row__pdfs" aria-label={`${line.pill} product resources`}>
+            {line.pdfs.map(([file, label]) => (
+              <a href={`/resources/${file}`}>
+                <Icon name="lucide:file-text" aria-hidden="true" />
+                {label}
+              </a>
+            ))}
+          </div>
+          <p class="vt-pl-row__note">{line.warranty}</p>
+        </div>
+      </article>
     ))}
-  </div>
-</section>
+  </section>
 
-<section class="pp-faq">
-  <div class="pp-faq__hd">
-    <span class="pp-eyebrow">FAQ</span>
-    <h2 class="pp-faq__title">Common questions about Vista window film</h2>
-  </div>
-  <div class="pp-faq__item pp-faq__item--open">
-    <div class="pp-faq__q">Is Vista window film the same as LLumar? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Vista is produced by LLumar but engineered specifically with residential design in mind. Both carry LLumar's manufacturer warranty and quality standards, but Vista's product lineup is optimized for residential aesthetics and comfort — with a range of series designed to complement home interiors without the high-reflectivity look more common in commercial applications.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Which Vista series is best for year-round energy savings? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Vista Low-E is specifically designed for year-round energy performance — reducing heat loss in winter and heat gain in summer. This makes it the ideal choice for Philadelphia's four-season climate, where both heating and cooling costs are significant factors.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">What is the difference between Vista Dual Reflective and Vista Neutral? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Vista Dual Reflective is highly reflective, providing maximum daytime privacy and a sleek, modern commercial appearance. Vista Neutral is lower-reflectivity with a more natural appearance — still delivering strong UV and glare reduction performance, but blending more naturally with residential and mixed-use property aesthetics.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Does Vista Spectrally Selective film affect my view? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">No. Vista Spectrally Selective maintains high visible light transmission while selectively blocking infrared heat and UV radiation. Your view remains essentially unchanged — natural light comes through clearly while the heat and UV that cause discomfort and fading are filtered out.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Can Vista Safety Film be combined with a solar control series? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Yes. Window Film Philadelphia can combine Vista Safety Film with a solar control series for properties requiring both security performance and energy efficiency. The team will advise on the right combination based on your specific goals during the consultation.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">How long does Vista window film last? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Vista window film typically lasts 10–20+ years with professional installation. All Vista series are backed by LLumar's manufacturer warranty covering performance and adhesion — specific warranty terms vary by series and application type.</div>
-  </div>
-</section>
+  <section class="vt-compare" aria-labelledby="vt-compare-title">
+    <div class="vt-compare__inner">
+      <span class="vt-compare__eyebrow">Specification comparison</span>
+      <h2 id="vt-compare-title">Which Vista film is right for your property?</h2>
+      <p class="vt-compare__sub">Vista window film Philadelphia across four series — specs from Vista by Eastman product data.</p>
+      <div class="vt-compare__table-wrap">
+        <table class="vt-compare__table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Manufacturer</th>
+              <th>VLT</th>
+              <th>Heat Rejection</th>
+              <th>UV Block</th>
+              <th>Warranty (Res/Comm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                {row.map((cell) => <td>{cell}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="vt-compare__source">Source: Vista by Eastman product bulletins and data sheets; LLumar ATC spec; 3M Prestige TDS.</p>
+    </div>
+  </section>
 
-<BrandLogos />
+  <section class="vt-casestudy" aria-labelledby="vt-casestudy-title">
+    <div class="vt-casestudy__inner">
+      <div class="vt-casestudy__content">
+        <span class="vt-casestudy__eyebrow">Philadelphia healthcare case study</span>
+        <h2 id="vt-casestudy-title">How Vista SpectraSelect Solved a Philadelphia Healthcare Facility's Glass Problem</h2>
+        <blockquote>
+          "The patient rooms facing west had been a comfort complaint for years. After Vista SpectraSelect, the rooms are noticeably more comfortable and the staff reports patients sleeping better on afternoon shifts."
+          <cite>Facilities Manager, University City Medical Center</cite>
+        </blockquote>
+        <p>A University City healthcare facility with significant west-facing patient room glazing contracted Window Film Philadelphia to install Vista SpectraSelect across multiple floors. The project required NFRC-certified documentation for institutional procurement, careful phasing to keep patient rooms operational, and a product that would satisfy both the facilities team and the design review process. SpectraSelect's near-neutral appearance, documented performance, and dual-purpose safety ratings made it the only product that met all three requirements.</p>
+      </div>
+      <img src="/images/vista-window-film-philadelphia-casestudy.jpg" alt="University City healthcare facility glass with Vista SpectraSelect window film" title="Vista SpectraSelect Philadelphia healthcare facility case study" width="1264" height="848" loading="lazy" />
+    </div>
+  </section>
 
-<div class="pp-cta fade-in">
-  <h2>Ready to upgrade your property with <em>Vista window film?</em></h2>
-  <div class="pp-cta__btns">
-    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
+  <section class="vt-testimonials" aria-labelledby="vt-testimonials-title">
+    <div class="vt-testimonials__header">
+      <span class="vt-testimonials__eyebrow">Vista client feedback</span>
+      <h2 id="vt-testimonials-title">Architects, Facility Managers, and Homeowners Trust Vista</h2>
+    </div>
+    <TestimonialMarquee reviews={testimonialReviews} />
+  </section>
 
-</div>
+  <section class="vt-faq" aria-labelledby="vt-faq-title">
+    <div class="vt-faq__inner">
+      <div class="vt-faq__header">
+        <span class="vt-faq__eyebrow">Vista answers</span>
+        <h2 id="vt-faq-title">Vista Window Film Questions for Philadelphia Properties</h2>
+      </div>
+      <div class="vt-faq__list">
+        {faqItems.map((item, index) => (
+          <details class="vt-faq__item" open={index === 0}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="vt-tint-cta" aria-labelledby="vt-tint-title">
+    <div class="vt-tint-cta__bg" id="vtTintBg">
+      <img src="/images/vista-tint-slider-philadelphia-room.jpg" alt="Bright Philadelphia room for Vista tint preview slider" title="Vista tint slider Philadelphia room" width="1376" height="768" loading="lazy" />
+      <div class="vt-tint-cta__overlay" id="vtTintOverlay"></div>
+    </div>
+    <div class="vt-tint-cta__content">
+      <span class="vt-tint-cta__eyebrow">Preview the range</span>
+      <h2 id="vt-tint-title">See How Vista Film Changes Light Before You Choose</h2>
+      <p>Drag to preview Vista window film Philadelphia tint levels. Our consultations include samples on your actual glass so VLT, reflectance, and daylight match the building before approval.</p>
+      <div class="vt-tint-cta__control">
+        <span>Clear</span>
+        <input id="vtTintRange" type="range" min="0" max="100" value="45" aria-label="Vista tint darkness preview" />
+        <span>Limo</span>
+      </div>
+      <div class="vt-tint-cta__readout">
+        <strong id="vtTintFilm">Vista mid film</strong>
+        <span id="vtTintVlt">Approx. 52% VLT</span>
+      </div>
+      <div class="vt-tint-cta__buttons">
+        <a href="/contact/" class="vt-tint-cta__primary">Get Your Free Estimate</a>
+        <a href="tel:2673947980" class="vt-tint-cta__secondary">Call (267) 394-7980</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const vtTrack = document.getElementById('vtTrack');
+    const vtProgressBar = document.getElementById('vtProgressBar');
+    const vtPrev = document.querySelector('[data-vtnav="prev"]');
+    const vtNext = document.querySelector('[data-vtnav="next"]');
+    let vtIndex = 0;
+
+    function vtUpdateSlider() {
+      if (!vtTrack || !vtProgressBar) return;
+      vtTrack.style.transform = `translateX(-${vtIndex * 100}%)`;
+      vtProgressBar.style.width = vtIndex === 0 ? '50%' : '100%';
+    }
+
+    vtPrev?.addEventListener('click', () => {
+      vtIndex = vtIndex === 0 ? 1 : 0;
+      vtUpdateSlider();
+    });
+
+    vtNext?.addEventListener('click', () => {
+      vtIndex = vtIndex === 1 ? 0 : 1;
+      vtUpdateSlider();
+    });
+
+    vtUpdateSlider();
+
+    const vtTintRange = document.getElementById('vtTintRange');
+    const vtTintOverlay = document.getElementById('vtTintOverlay');
+    const vtTintVlt = document.getElementById('vtTintVlt');
+    const vtTintFilm = document.getElementById('vtTintFilm');
+    const vtFilms = [
+      { max: 20, label: 'Clear glass', vlt: 'Approx. 90% VLT' },
+      { max: 40, label: 'Vista light film', vlt: 'Approx. 72% VLT' },
+      { max: 60, label: 'Vista mid film', vlt: 'Approx. 52% VLT' },
+      { max: 80, label: 'Vista dark film', vlt: 'Approx. 28% VLT' },
+      { max: 101, label: 'Vista darkest film', vlt: 'Approx. 5% VLT' },
+    ];
+
+    function vtUpdateTint() {
+      if (!vtTintRange || !vtTintOverlay || !vtTintVlt || !vtTintFilm) return;
+      const value = Number(vtTintRange.value);
+      vtTintOverlay.style.opacity = String((value / 100) * 0.78);
+      const film = vtFilms.find((item) => value < item.max) || vtFilms[vtFilms.length - 1];
+      vtTintFilm.textContent = film.label;
+      vtTintVlt.textContent = film.vlt;
+    }
+
+    vtTintRange?.addEventListener('input', vtUpdateTint);
+    vtUpdateTint();
+  </script>
 </BaseLayout>
 
 <style>
-/* ── PAGE BODY WRAPPER ── */
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-.pp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--green, #81AB4C); margin-bottom: 16px;
-}
-.pp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
-.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.pp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
-  line-height: 1.1; letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a); margin: 0;
-}
-.pp-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.75; margin-bottom: 32px;
-}
-.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
-.pp-featured__hd { margin-bottom: 72px; }
-.pp-featured__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a); margin: 0;
-}
-.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
-.pp-feat-row:last-child { margin-bottom: 0; }
-.pp-feat-row--rev .pp-feat-row__img { order: 2; }
-.pp-feat-row--rev .pp-feat-row__content { order: 1; }
-.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
-.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.pp-feat-row__pill {
-  position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
-  padding: 10px 18px; border-radius: 100px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.pp-feat-row__num {
-  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
-  line-height: 1; opacity: 0.25; margin-bottom: -8px;
-}
-.pp-feat-row__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
-  color: var(--text-dark, #1a1a1a); line-height: 1.2;
-  margin-bottom: 20px; letter-spacing: -0.3px;
-}
-.pp-feat-row__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.8; margin-bottom: 28px;
-}
-.pp-feat-row__cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
-  text-decoration: none; transition: gap 0.2s;
-}
-.pp-feat-row__cta:hover { gap: 14px; }
-.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
-.pp-why__hd { margin-bottom: 64px; }
-.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
-.pp-why__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
-  margin: 0; max-width: 600px;
-}
-.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
-.pp-why__item:nth-child(4n) { border-right: none; }
-.pp-why__item:nth-child(n+5) { border-bottom: none; }
-.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
-.pp-why__icon svg { display: block; }
-.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
-.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
-.pp-faq { padding: 100px 10%; background: #ffffff; }
-.pp-faq__hd { margin-bottom: 48px; }
-.pp-faq__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
-}
-.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
-.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
-.pp-faq__item--open .pp-faq__a { display: block; }
-.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
-.pp-cta {
-  background: var(--brand, #272E32); border-radius: 40px;
-  padding: 64px 60px; display: flex; align-items: center;
-  justify-content: space-between; gap: 40px; margin: 0 5% 0;
-}
-.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
-.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 1024px) {
-  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
-  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
-  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .pp-why__item:nth-child(2n) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .pp-intro { padding: 60px 5%; }
-  .pp-featured { padding: 60px 5%; }
-  .pp-why { padding: 60px 5%; }
-  .pp-faq { padding: 60px 5%; }
-  .pp-feat-row__img { height: 300px; }
-  .pp-why__grid { grid-template-columns: 1fr; }
-  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .pp-cta h2 { font-size: 26px; max-width: 100%; }
-  .pp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) {
-  .pp-intro__ctas { flex-direction: column; }
-}
+  :global(:root) {
+    --vt-green: #81AB4C;
+    --vt-green-dark: #4E6E2E;
+    --vt-charcoal: #172018;
+    --vt-ink: #1A1D18;
+    --vt-mid: #566050;
+    --vt-cream: #F7F6F1;
+    --vt-line: #E3E8DC;
+    --vt-white: #FFFFFF;
+  }
+
+  .vt-hero {
+    position: relative;
+    min-height: 92vh;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    color: var(--vt-white);
+    background: var(--vt-charcoal);
+  }
+
+  .vt-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+  }
+
+  .vt-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(18, 28, 18, .9) 0%, rgba(18, 28, 18, .68) 45%, rgba(18, 28, 18, .2) 100%),
+      linear-gradient(0deg, rgba(18, 28, 18, .55), rgba(18, 28, 18, .1));
+  }
+
+  .vt-hero__content {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 104px 0 72px;
+  }
+
+  .vt-hero__eyebrow,
+  .vt-intro__eyebrow,
+  .vt-why__eyebrow,
+  .vt-slider__eyebrow,
+  .vt-products__eyebrow,
+  .vt-compare__eyebrow,
+  .vt-casestudy__eyebrow,
+  .vt-testimonials__eyebrow,
+  .vt-faq__eyebrow,
+  .vt-tint-cta__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--vt-green);
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .vt-hero__eyebrow-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--vt-green);
+  }
+
+  .vt-hero__title {
+    width: min(760px, 100%);
+    margin: 18px 0 14px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(46px, 7vw, 92px);
+    line-height: .95;
+    letter-spacing: 0;
+  }
+
+  .vt-hero__animated-line {
+    min-height: 42px;
+    margin: 0 0 22px;
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 700;
+    color: #EEF5E8;
+  }
+
+  .vt-hero__flip {
+    color: var(--vt-green);
+  }
+
+  .vt-hero__subtitle {
+    width: min(760px, 100%);
+    margin: 0 0 32px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, .88);
+  }
+
+  .vt-hero__cta,
+  .vt-tint-cta__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .vt-hero__btn-primary,
+  .vt-hero__btn-secondary,
+  .vt-tint-cta__primary,
+  .vt-tint-cta__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 6px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .vt-hero__btn-primary,
+  .vt-tint-cta__primary {
+    background: var(--vt-green);
+    color: #10170E;
+  }
+
+  .vt-hero__btn-secondary,
+  .vt-tint-cta__secondary {
+    border: 1px solid rgba(255, 255, 255, .34);
+    color: var(--vt-white);
+  }
+
+  .vt-hero__btn-secondary svg,
+  .vt-tint-cta__secondary svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .vt-hero__stats-panel {
+    width: min(900px, 100%);
+    margin-top: 46px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 8px;
+    background: rgba(11, 18, 12, .68);
+    backdrop-filter: blur(14px);
+  }
+
+  .vt-hero__stats-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+  }
+
+  .vt-hero__stat,
+  .vt-hero__stats-inner :global(.count-up) {
+    min-height: 116px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .vt-hero__stat strong {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1;
+    color: var(--vt-white);
+  }
+
+  .vt-hero__stat span {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .72);
+  }
+
+  .vt-hero__stat-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, .14);
+  }
+
+  .vt-intro,
+  .vt-products,
+  .vt-faq {
+    background: var(--vt-cream);
+  }
+
+  .vt-intro__inner,
+  .vt-why__inner,
+  .vt-casestudy__inner,
+  .vt-faq__inner {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .vt-intro__inner,
+  .vt-why__inner {
+    display: grid;
+    grid-template-columns: minmax(300px, 440px) minmax(0, 1fr);
+    gap: clamp(36px, 6vw, 82px);
+    align-items: center;
+    padding: 96px 0;
+  }
+
+  .vt-intro__image-wrap,
+  .vt-why__media {
+    position: relative;
+  }
+
+  .vt-intro__img,
+  .vt-why__img,
+  .vt-pl-row__media img {
+    width: 100%;
+    aspect-ratio: 848 / 1264;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 28px 70px rgba(23, 32, 24, .18);
+  }
+
+  .vt-intro__badge,
+  .vt-why__stat-card {
+    position: absolute;
+    left: 22px;
+    bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .94);
+    color: var(--vt-ink);
+    font-weight: 800;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .16);
+  }
+
+  .vt-intro__badge svg,
+  .vt-intro__cred svg,
+  .vt-why__bullets svg,
+  .vt-pl-row__pdfs svg {
+    width: 18px;
+    height: 18px;
+    color: var(--vt-green);
+    flex: 0 0 auto;
+  }
+
+  .vt-intro__title,
+  .vt-why__title,
+  .vt-products__header h2,
+  .vt-compare h2,
+  .vt-casestudy h2,
+  .vt-testimonials__header h2,
+  .vt-faq__header h2,
+  .vt-tint-cta h2 {
+    margin: 12px 0 18px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    color: var(--vt-ink);
+  }
+
+  .vt-intro__lead,
+  .vt-why__intro,
+  .vt-products__header p,
+  .vt-compare__sub,
+  .vt-casestudy p,
+  .vt-tint-cta p {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--vt-mid);
+  }
+
+  .vt-intro__body,
+  .vt-pl-row__content p,
+  .vt-faq__item p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--vt-mid);
+  }
+
+  .vt-intro__creds {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .vt-intro__cred {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 50px;
+    padding: 12px;
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    background: var(--vt-white);
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .vt-trust {
+    background: var(--vt-white);
+    border-block: 1px solid var(--vt-line);
+    padding: 26px 0 10px;
+  }
+
+  .vt-trust__inner {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto 12px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .vt-trust__label {
+    margin: 0;
+    font-weight: 800;
+    color: var(--vt-ink);
+  }
+
+  .vt-trust__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vt-trust__badges span,
+  .vt-pl-row__pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: #EEF5E8;
+    color: var(--vt-green-dark);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .vt-why {
+    background: var(--vt-white);
+    padding-bottom: 78px;
+  }
+
+  .vt-why__stat-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .vt-why__stat-card span {
+    color: var(--vt-mid);
+  }
+
+  .vt-why__stat-card small {
+    color: var(--vt-green-dark);
+    font-weight: 800;
+  }
+
+  .vt-why__bullets {
+    list-style: none;
+    margin: 28px 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .vt-why__bullets li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    background: var(--vt-cream);
+    color: var(--vt-ink);
+    line-height: 1.55;
+  }
+
+  .vt-why__closing a,
+  .vt-pl-row__pdfs a {
+    color: var(--vt-green-dark);
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .vt-why__closing {
+    color: var(--vt-mid);
+    line-height: 1.75;
+  }
+
+  .vt-why__facts {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .vt-why__facts div {
+    padding: 24px;
+    text-align: center;
+    background: var(--vt-charcoal);
+    color: var(--vt-white);
+  }
+
+  .vt-why__facts div + div {
+    border-left: 1px solid rgba(255, 255, 255, .13);
+  }
+
+  .vt-why__facts strong {
+    display: block;
+    font-size: 36px;
+    color: var(--vt-green);
+  }
+
+  .vt-why__facts span {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .vt-slider {
+    background: var(--vt-charcoal);
+    color: var(--vt-white);
+    padding: 84px 0;
+    overflow: hidden;
+  }
+
+  .vt-slider__header {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto 26px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: end;
+  }
+
+  .vt-slider__title {
+    grid-column: 1;
+    margin: 10px 0 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(32px, 4vw, 54px);
+    line-height: 1.08;
+  }
+
+  .vt-slider__nav {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    gap: 10px;
+  }
+
+  .vt-slider__button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .08);
+    color: var(--vt-white);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .vt-slider__viewport {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .vt-slider__track {
+    display: flex;
+    transition: transform .45s ease;
+  }
+
+  .vt-slider__slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    background: #F4F3EE;
+    color: var(--vt-ink);
+  }
+
+  .vt-slider__slide img {
+    width: 100%;
+    height: 100%;
+    min-height: 680px;
+    object-fit: cover;
+  }
+
+  .vt-slider__panel {
+    padding: clamp(28px, 5vw, 58px);
+  }
+
+  .vt-slider__kicker {
+    color: var(--vt-green-dark);
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .vt-slider__panel h2 {
+    margin: 10px 0 14px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.08;
+  }
+
+  .vt-slider__panel p,
+  .vt-slider__faq p {
+    color: var(--vt-mid);
+    line-height: 1.65;
+  }
+
+  .vt-slider__faq {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .vt-slider__faq details {
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    background: var(--vt-white);
+    padding: 14px 16px;
+  }
+
+  .vt-slider__faq summary {
+    cursor: pointer;
+    font-weight: 900;
+  }
+
+  .vt-slider__progress {
+    width: min(1180px, calc(100% - 40px));
+    height: 4px;
+    margin: 20px auto 0;
+    background: rgba(255, 255, 255, .16);
+  }
+
+  .vt-slider__progress span {
+    display: block;
+    height: 100%;
+    width: 50%;
+    background: var(--vt-green);
+    transition: width .45s ease;
+  }
+
+  .vt-products {
+    padding: 96px 0;
+  }
+
+  .vt-products__header,
+  .vt-compare__inner,
+  .vt-testimonials__header {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .vt-products__header {
+    margin-bottom: 42px;
+  }
+
+  .vt-products__header p {
+    max-width: 760px;
+  }
+
+  .vt-pl-row {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto 42px;
+    display: grid;
+    grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 68px);
+    align-items: center;
+    padding: 34px;
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    background: var(--vt-white);
+  }
+
+  .vt-pl-row--reverse {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  }
+
+  .vt-pl-row--reverse .vt-pl-row__media {
+    order: 2;
+  }
+
+  .vt-pl-row__eyebrow {
+    margin: 18px 0 6px;
+    color: var(--vt-green-dark);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .vt-pl-row h3 {
+    margin: 0 0 16px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.08;
+    color: var(--vt-ink);
+  }
+
+  .vt-pl-row__specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    margin: 24px 0;
+    background: var(--vt-line);
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .vt-pl-row__specs div {
+    padding: 16px 12px;
+    background: var(--vt-cream);
+    text-align: center;
+  }
+
+  .vt-pl-row__specs strong {
+    display: block;
+    font-size: 24px;
+    color: var(--vt-ink);
+  }
+
+  .vt-pl-row__specs span {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--vt-mid);
+  }
+
+  .vt-pl-row__pdfs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .vt-pl-row__pdfs a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    background: var(--vt-white);
+  }
+
+  .vt-pl-row__note {
+    margin-top: 16px;
+    font-size: 13px !important;
+    color: var(--vt-mid);
+  }
+
+  .vt-compare {
+    padding: 92px 0;
+    background: var(--vt-white);
+  }
+
+  .vt-compare__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    margin-top: 26px;
+  }
+
+  .vt-compare__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+  }
+
+  .vt-compare__table th,
+  .vt-compare__table td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--vt-line);
+  }
+
+  .vt-compare__table th {
+    background: var(--vt-charcoal);
+    color: var(--vt-white);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .vt-compare__table td {
+    color: var(--vt-mid);
+  }
+
+  .vt-compare__table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .vt-compare__source {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--vt-mid);
+  }
+
+  .vt-casestudy {
+    background: var(--vt-charcoal);
+    padding: 96px 0;
+    color: var(--vt-white);
+  }
+
+  .vt-casestudy__inner {
+    display: grid;
+    grid-template-columns: .95fr 1.05fr;
+    gap: clamp(30px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .vt-casestudy h2,
+  .vt-casestudy p {
+    color: var(--vt-white);
+  }
+
+  .vt-casestudy p {
+    color: rgba(255, 255, 255, .76);
+  }
+
+  .vt-casestudy blockquote {
+    margin: 28px 0;
+    padding: 24px;
+    border-left: 4px solid var(--vt-green);
+    background: rgba(255, 255, 255, .08);
+    border-radius: 0 8px 8px 0;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .vt-casestudy cite {
+    display: block;
+    margin-top: 14px;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 900;
+    color: var(--vt-green);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .vt-casestudy img {
+    width: 100%;
+    aspect-ratio: 1264 / 848;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .vt-testimonials {
+    background: var(--vt-cream);
+    padding-top: 82px;
+  }
+
+  .vt-testimonials__header {
+    text-align: center;
+  }
+
+  .vt-faq {
+    padding: 96px 0;
+  }
+
+  .vt-faq__inner {
+    display: grid;
+    grid-template-columns: .75fr 1.25fr;
+    gap: clamp(30px, 5vw, 70px);
+    align-items: start;
+  }
+
+  .vt-faq__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .vt-faq__item {
+    border: 1px solid var(--vt-line);
+    border-radius: 8px;
+    background: var(--vt-white);
+    padding: 18px 20px;
+  }
+
+  .vt-faq__item summary {
+    cursor: pointer;
+    font-weight: 900;
+    color: var(--vt-ink);
+  }
+
+  .vt-faq__item p {
+    margin-bottom: 0;
+  }
+
+  .vt-tint-cta {
+    position: relative;
+    min-height: 680px;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    color: var(--vt-white);
+  }
+
+  .vt-tint-cta__bg,
+  .vt-tint-cta__bg img,
+  .vt-tint-cta__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .vt-tint-cta__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vt-tint-cta__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(12, 18, 13, .88), rgba(12, 18, 13, .5), rgba(12, 18, 13, .16));
+  }
+
+  .vt-tint-cta__overlay {
+    background: #030504;
+    opacity: .35;
+    pointer-events: none;
+    transition: opacity .12s linear;
+  }
+
+  .vt-tint-cta__content {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    max-width: 680px;
+    justify-self: center;
+  }
+
+  .vt-tint-cta h2,
+  .vt-tint-cta p {
+    color: var(--vt-white);
+  }
+
+  .vt-tint-cta p {
+    color: rgba(255, 255, 255, .82);
+  }
+
+  .vt-tint-cta__control {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    margin: 30px 0 18px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .1);
+  }
+
+  .vt-tint-cta__control span {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 12px;
+  }
+
+  .vt-tint-cta__control input {
+    width: 100%;
+    accent-color: var(--vt-green);
+  }
+
+  .vt-tint-cta__readout {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 28px;
+  }
+
+  .vt-tint-cta__readout strong {
+    color: var(--vt-green);
+  }
+
+  .vt-tint-cta__readout span {
+    color: rgba(255, 255, 255, .78);
+  }
+
+  @media (max-width: 980px) {
+    .vt-hero {
+      min-height: auto;
+    }
+
+    .vt-hero__stats-inner,
+    .vt-intro__inner,
+    .vt-why__inner,
+    .vt-slider__slide,
+    .vt-pl-row,
+    .vt-pl-row--reverse,
+    .vt-casestudy__inner,
+    .vt-faq__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .vt-hero__stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vt-hero__stat-divider {
+      display: none;
+    }
+
+    .vt-trust__inner,
+    .vt-slider__header {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .vt-slider__nav {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .vt-pl-row--reverse .vt-pl-row__media {
+      order: 0;
+    }
+
+    .vt-pl-row__specs,
+    .vt-why__facts {
+      grid-template-columns: 1fr;
+    }
+
+    .vt-why__facts div + div {
+      border-left: 0;
+      border-top: 1px solid rgba(255, 255, 255, .13);
+    }
+
+    .vt-slider__slide img {
+      min-height: 420px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .vt-hero__content,
+    .vt-intro__inner,
+    .vt-why__inner,
+    .vt-casestudy__inner,
+    .vt-faq__inner,
+    .vt-products__header,
+    .vt-compare__inner,
+    .vt-testimonials__header,
+    .vt-slider__header,
+    .vt-slider__viewport,
+    .vt-slider__progress,
+    .vt-pl-row,
+    .vt-trust__inner,
+    .vt-why__facts,
+    .vt-tint-cta__content {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .vt-hero__title {
+      font-size: 44px;
+    }
+
+    .vt-hero__animated-line {
+      font-size: 21px;
+    }
+
+    .vt-hero__cta,
+    .vt-tint-cta__buttons {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .vt-hero__btn-primary,
+    .vt-hero__btn-secondary,
+    .vt-tint-cta__primary,
+    .vt-tint-cta__secondary {
+      width: 100%;
+    }
+
+    .vt-intro__creds {
+      grid-template-columns: 1fr;
+    }
+
+    .vt-pl-row {
+      padding: 18px;
+    }
+
+    .vt-tint-cta__readout {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
 </style>
-
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  document.querySelectorAll('.pp-faq__item').forEach(item => {
-    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('pp-faq__item--open');
-      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
-      if (!isOpen) item.classList.add('pp-faq__item--open');
-    });
-  });
-</script>

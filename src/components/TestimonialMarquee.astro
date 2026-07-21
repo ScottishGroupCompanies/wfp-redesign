@@ -6,9 +6,9 @@ interface Review {
   img: string;
 }
 
-const reviews: Review[] = [
+const defaultReviews: Review[] = [
   {
-    quote: "We had a glare problem on the 18th floor that was genuinely embarrassing during client meetings. The 3M Prestige film fixed it completely — you can't tell it's there, our energy bills dropped, and the install crew was done in two days without disrupting a single meeting.",
+    quote: "We had a glare problem on the 18th floor that was genuinely embarrassing during client meetings. The 3M Prestige film fixed it completely — you can't tell it's there, our energy bills dropped, and the install crew worked around our schedule without disrupting a single meeting.",
     name: "David R.",
     role: "Facilities Manager · Center City Law Firm",
     img: "/images/3m-testimonial-david-r.jpg",
@@ -26,7 +26,7 @@ const reviews: Review[] = [
     img: "/images/3m-testimonial-michael-b.jpg",
   },
   {
-    quote: "We were skeptical that film could really make a difference in a South Philly rowhome. The 3M Sun Control film on our back bedroom windows changed everything — it's finally comfortable in summer and our PECO bills showed it immediately.",
+    quote: "We were skeptical that film could really make a difference in a South Philadelphia rowhome. The 3M Sun Control film on our back bedroom windows changed everything — it's finally comfortable in summer and our PECO bills showed it immediately.",
     name: "Alex & Maria",
     role: "Homeowners · South Philadelphia",
     img: "/images/3m-testimonial-alex-maria.jpg",
@@ -46,6 +46,7 @@ const reviews: Review[] = [
 ];
 
 // Duplicate for seamless infinite loop
+const reviews: Review[] = Astro.props.reviews || defaultReviews;
 const track = [...reviews, ...reviews];
 ---
 
@@ -56,7 +57,7 @@ const track = [...reviews, ...reviews];
         <p class="tmq__stars" aria-label="5 stars">★★★★★</p>
         <blockquote class="tmq__quote">"{r.quote}"</blockquote>
         <div class="tmq__meta">
-          <img src={r.img} alt={r.name} class="tmq__avatar" width="44" height="44" loading="lazy" />
+          <img src={r.img} alt={r.name} title={`${r.name} testimonial`} class="tmq__avatar" width="44" height="44" loading="lazy" />
           <div>
             <p class="tmq__name">{r.name}</p>
             <p class="tmq__role">{r.role}</p>
