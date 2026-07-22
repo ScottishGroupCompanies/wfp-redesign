@@ -7,6 +7,7 @@ import BrandLogos from '../../components/BrandLogos.astro';
 import CountUp from '../../components/animations/CountUp.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 import { Icon } from 'astro-icon/components';
+import solarGardProducts from '../../data/solar-gard-products.json';
 
 const title = 'Solar Gard Window Film Philadelphia | Authorized';
 const description = 'Solar Gard window film Philadelphia — Panorama solar control, Sentinel Plus, ArmorCoat safety. Authorized installer, manufacturer warranty.';
@@ -54,6 +55,22 @@ const solarGardReviews = [
   { quote: "The afternoon sun was brutal on my west-facing dining room. Solar Gard Hilite cut the glare completely without making the space feel dark. Customers comment on how comfortable it is now.", name: "Christopher V.", role: "Restaurant Owner · Passyunk Avenue", img: "/images/solar-gard-testimonial-christopher-v.jpg" },
   { quote: "We have a south-facing rowhouse and summer was miserable upstairs. Solar Gard Panorama residential film made the second floor livable. Energy bills dropped and we didn't have to replace any windows.", name: "The Nguyens", role: "Homeowners · South Philadelphia", img: "/images/solar-gard-testimonial-the-nguyens.jpg" }
 ];
+
+const solarGardCatalogSeries = Object.values(
+  solarGardProducts.reduce((groups, product) => {
+    if (!groups[product.series]) {
+      groups[product.series] = {
+        name: product.series,
+        color: product.seriesColor,
+        products: [],
+      };
+    }
+    groups[product.series].products.push(product);
+    return groups;
+  }, {})
+);
+
+const truncateCatalogDescription = (text) => text.length > 80 ? `${text.slice(0, 77)}...` : text;
 ---
 
 <BaseLayout title={title} description={description} ogImage={heroImage} serviceName="Solar Gard Window Film" serviceDesc="Solar Gard architectural window film for Philadelphia — Panorama solar control, Sentinel Plus, ArmorCoat safety, and Hilite glare control. Authorized Solar Gard installer." serviceUrl={serviceUrl} faqItems={faqItems} schemas={pageSchemas}>
@@ -300,7 +317,9 @@ const solarGardReviews = [
           <span class="sg-why__climate-label">Mixed-humid</span>
         </div>
       </div>
-      <p style="font-family:var(--font-body,'DM Sans',sans-serif);font-size:15px;color:var(--text-mid,#4a4a4a);line-height:1.7;margin:0 0 18px;">&ldquo;Solar Gard architectural window film is designed to deliver measurable energy performance in demanding commercial environments,&rdquo; according to Solar Gard by Saint-Gobain. For energy-efficiency strategies, see our <a href="/benefits/energy-savings/" class="sg-body-link">energy savings window film</a> page. Facilities with security concerns will find additional options on our <a href="/benefits/safety-and-security/" class="sg-body-link">safety and security window film</a> page. For commercial-scale specifications, review our <a href="/applications/office/" class="sg-body-link">commercial office window film</a> page. Explore the full <a href="https://www.solargard.com/en/architectural/" target="_blank" rel="noopener noreferrer" class="sg-body-link">Solar Gard architectural window film</a> lineup.</p>
+      <p style="font-family:var(--font-body,'DM Sans',sans-serif);font-size:15px;color:var(--text-mid,#4a4a4a);line-height:1.7;margin:0 0 14px;">Solar Gard's verified EPDs and LEED-compatible performance data make it a strong specification choice for Philadelphia commercial projects that require documented energy outcomes. Our <a href="/applications/office/" class="sg-body-link">commercial office window film</a> page covers how we approach multi-floor and curtain-wall specifications.</p>
+      <p style="font-family:var(--font-body,'DM Sans',sans-serif);font-size:15px;color:var(--text-mid,#4a4a4a);line-height:1.7;margin:0 0 14px;">For Philadelphia properties where security is the primary concern, Solar Gard Armorcoat pairs well with our broader <a href="/benefits/safety-and-security/" class="sg-body-link">safety and security window film</a> service — covering glass retention, blast mitigation, and forced-entry delay across any brand.</p>
+      <p style="font-family:var(--font-body,'DM Sans',sans-serif);font-size:15px;color:var(--text-mid,#4a4a4a);line-height:1.7;margin:0 0 18px;">Reducing summer cooling loads is one of the fastest payback improvements for Philadelphia buildings. See how Solar Gard compares to other approaches on our <a href="/benefits/energy-savings/" class="sg-body-link">energy savings window film</a> page.</p>
       <a href="/contact/" class="sg-why__cta">
         Get a free film assessment &rarr;
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
@@ -583,6 +602,40 @@ const solarGardReviews = [
     <div class="sg-compare__cta">
       <a href="/contact/" class="pp-btn pp-btn--primary" style="background:#81AB4C;border-color:#81AB4C;color:#fff">Talk to our team about which Solar Gard series fits your project</a>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SOLAR GARD PRODUCT CATALOG
+     ══════════════════════════════════════ -->
+<section class="sg-catalog">
+  <div class="sg-catalog__inner">
+    <div class="sg-catalog__hd">
+      <span class="pp-eyebrow">Solar Gard Product Catalog</span>
+      <h2 class="sg-catalog__title">{solarGardProducts.length} Solar Gard Products Available in Philadelphia</h2>
+      <p class="sg-catalog__sub">Click any product to view official spec-sheet data, applications, and Philadelphia installation details.</p>
+    </div>
+
+    {solarGardCatalogSeries.map((series) => (
+      <div class="sg-catalog__series">
+        <h3 class="sg-catalog__series-name">
+          <span class="sg-catalog__series-dot" style={`background:${series.color}`}></span>
+          {series.name} ({series.products.length} products)
+        </h3>
+        <div class="sg-catalog__grid">
+          {series.products.map((product) => (
+            <a href={`/products/solar-gard/${product.slug}/`} class="sg-catalog__card">
+              <img src={product.image} alt={product.name} class="sg-catalog__card-img" width="280" height="180" loading="lazy" />
+              <div class="sg-catalog__card-body">
+                <span class="sg-catalog__card-badge" style={`background:${product.seriesColor}`}>{product.series}</span>
+                <h4 class="sg-catalog__card-name">{product.name}</h4>
+                <p class="sg-catalog__card-desc">{truncateCatalogDescription(product.shortDescription)}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 
@@ -1054,6 +1107,121 @@ h3.sg-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: i
 @media (max-width: 768px) {
   .sg-compare { padding: 60px 5%; }
   .sg-compare__th--series { width: 140px; }
+}
+
+/* ══════════════════════════════════════
+   SOLAR GARD PRODUCT CATALOG
+══════════════════════════════════════ */
+.sg-catalog {
+  padding: 80px 0;
+  background: #0d0d0d;
+}
+.sg-catalog__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.sg-catalog__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sg-catalog__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #fff;
+  margin: 12px 0 16px;
+  letter-spacing: 0;
+}
+.sg-catalog__sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.sg-catalog__series {
+  margin-bottom: 48px;
+}
+.sg-catalog__series-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sg-catalog__series-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sg-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.sg-catalog__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.sg-catalog__card:hover {
+  border-color: #81AB4C;
+  transform: translateY(-2px);
+}
+.sg-catalog__card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.sg-catalog__card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.sg-catalog__card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.sg-catalog__card-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.sg-catalog__card-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .sg-catalog { padding: 48px 0; }
+  .sg-catalog__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .sg-catalog__card-img { height: 120px; }
 }
 
 /* ══════════════════════════════════════
