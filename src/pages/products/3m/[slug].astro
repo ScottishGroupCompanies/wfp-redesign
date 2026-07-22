@@ -1,0 +1,550 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import products from '../../../data/3m-products.json';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product: p } = Astro.props;
+const serviceUrl = `https://www.windowfilmphiladelphia.net/products/3m/${p.slug}/`;
+const title = `3M ${p.name} Window Film Philadelphia | Authorized Installer`;
+const description = `${p.shortDescription} Window Film Philadelphia is an authorized 3M installer serving Philadelphia and surrounding areas.`;
+const descriptionParagraphs = p.description.split('\n\n').slice(0, 4);
+const specRows = [
+  ['VLT', p.specs.vlt],
+  ['Heat Rejection', p.specs.heatRejection],
+  ['UV Block', p.specs.uvBlock],
+  ['Thickness', p.specs.thickness],
+  ['Warranty', p.specs.warranty],
+  ['Series', p.series],
+  ['Brand', '3M'],
+].filter(([, value]) => Boolean(value));
+const statChips = [
+  ['VLT', p.specs.vlt],
+  ['Heat Rejection', p.specs.heatRejection],
+  ['UV Block', p.specs.uvBlock],
+  ['Thickness', p.specs.thickness],
+].filter(([, value]) => Boolean(value));
+const relatedProducts = p.relatedSlugs
+  .map((slug) => products.find((item) => item.slug === slug))
+  .filter(Boolean);
+const categoryText = `${p.categories.join(' ')} ${p.series}`.toLowerCase();
+const applications = categoryText.includes('graffiti')
+  ? [
+      ['Transit-Facing Glass', 'Protect shelters, vestibules, and public-facing panes from etching and markings.'],
+      ['Retail Storefronts', 'Preserve high-visibility glass where scratches or tagging are expensive to correct.'],
+      ['Public Interiors', 'Add a replaceable layer to elevators, schools, lobbies, and corridors.'],
+    ]
+  : categoryText.includes('exterior')
+    ? [
+        ['Facades', 'Exterior-rated film for curtain wall areas and sun-exposed commercial glass.'],
+        ['Storefronts', 'Performance upgrades where tenant operations make interior access difficult.'],
+        ['Atriums and Skylights', 'Solar control for hard-to-reach overhead or high-elevation glass.'],
+      ]
+    : categoryText.includes('decorative')
+      ? [
+          ['Retail and Hospitality', 'Privacy, branding, and visual polish for restaurants, hotels, and shops.'],
+          ['Offices and Conference Rooms', 'Glass partitions that need screening without losing daylight.'],
+          ['Healthcare and Wellness', 'Discreet separation for clinics, treatment rooms, and reception areas.'],
+        ]
+      : categoryText.includes('safety')
+        ? [
+            ['Schools and Campuses', 'Glass retention and forced-entry delay for doors, sidelites, and shared spaces.'],
+            ['Government Buildings', 'Retrofit protection for public-facing glass and administrative offices.'],
+            ['Retail Entries', 'Security upgrades for storefronts, vestibules, and street-level glazing.'],
+          ]
+        : [
+            ['Offices', 'Glare and solar comfort for Center City towers and neighborhood workplaces.'],
+            ['Philadelphia Rowhomes', 'UV and heat control for older glass without replacing windows.'],
+            ['Retail and Restaurants', 'Comfortable customer-facing glass with cleaner daylight management.'],
+          ];
+const faqItems = [
+  {
+    question: `What is 3M ${p.name} used for in Philadelphia?`,
+    answer: `${p.name} is used for ${p.categories.join(', ').toLowerCase()} applications across Philadelphia homes, offices, storefronts, schools, and commercial properties. It belongs to the ${p.series} and is specified according to glass type, exposure, privacy goals, and performance needs.`,
+  },
+  {
+    question: `What specifications are available for ${p.name}?`,
+    answer: `Key specifications include ${specRows.slice(0, 4).map(([label, value]) => `${label}: ${value}`).join('; ')}. Window Film Philadelphia confirms final compatibility during the site assessment before recommending any 3M product.`,
+  },
+  {
+    question: `Who installs 3M ${p.name} in Philadelphia?`,
+    answer: `Window Film Philadelphia is an authorized 3M installer serving Philadelphia and surrounding areas. We evaluate the glass, document the product selection, and install 3M films according to manufacturer guidance.`,
+  },
+];
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 3, name: '3M Window Film', item: 'https://www.windowfilmphiladelphia.net/products/3m-window-film/' },
+      { '@type': 'ListItem', position: 4, name: p.name, item: serviceUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `3M ${p.name}`,
+    brand: { '@type': 'Brand', name: '3M' },
+    image: `https://www.windowfilmphiladelphia.net${p.image}`,
+    description: p.shortDescription,
+    category: p.series,
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      areaServed: 'Philadelphia, PA',
+      url: serviceUrl,
+    },
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={p.image}
+  serviceName={`3M ${p.name}`}
+  serviceDesc={description}
+  serviceUrl={serviceUrl}
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
+  <section class="thm-hero" style={`--thm-hero-image: url('${p.image}'); --thm-series: ${p.seriesColor};`}>
+    <div class="thm-hero__overlay"></div>
+    <div class="thm-hero__inner">
+      <span class="thm-badge" style={`background:${p.seriesColor}`}>{p.series}</span>
+      <h1 class="thm-hero__title">3M {p.name}</h1>
+      {statChips.length > 0 && (
+        <div class="thm-stat-row" aria-label="Product specifications">
+          {statChips.map(([label, value]) => (
+            <span class="thm-stat"><strong>{value}</strong>{label}</span>
+          ))}
+        </div>
+      )}
+      <a href="/contact/" class="thm-btn">Get a Quote</a>
+    </div>
+  </section>
+
+  <section class="thm-overview fade-in">
+    <div class="thm-overview__inner">
+      <div class="thm-overview__image-wrap">
+        <img src={p.image} alt={`3M ${p.name} product sample`} title={`3M ${p.name} Philadelphia`} width="640" height="480" loading="lazy" class="thm-overview__image" />
+      </div>
+      <div class="thm-overview__content">
+        <span class="thm-eyebrow">{p.series}</span>
+        <h2>About {p.name}</h2>
+        {descriptionParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="thm-tags" aria-label="Product categories">
+          {p.categories.map((category) => <span class="thm-tag">{category}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thm-benefits fade-in">
+    <div class="thm-section-head">
+      <span class="thm-eyebrow">Product Benefits</span>
+      <h2>What {p.name} Adds to Philadelphia Glass</h2>
+    </div>
+    <div class="thm-benefits__grid">
+      {p.benefits.map((benefit) => (
+        <article class="thm-benefit">
+          <span class="thm-benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>{benefit.heading}</h3>
+          <p>{benefit.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {specRows.length > 0 && (
+    <section class="thm-specs fade-in">
+      <div class="thm-specs__inner">
+        <div>
+          <span class="thm-eyebrow">Specifications</span>
+          <h2>{p.name} Product Data</h2>
+        </div>
+        <table class="thm-specs__table">
+          <tbody>
+            {specRows.map(([label, value]) => (
+              <tr><th>{label}</th><td>{value}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <section class="thm-apps fade-in">
+    <div class="thm-section-head">
+      <span class="thm-eyebrow">Local Use Cases</span>
+      <h2>Philadelphia Applications</h2>
+    </div>
+    <div class="thm-apps__grid">
+      {applications.map(([heading, body]) => (
+        <article class="thm-app">
+          <span class="thm-app__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M4 21V5l8-3 8 3v16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 21v-6h6v6M8 8h.01M12 8h.01M16 8h.01M8 12h.01M16 12h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <h3>{heading}</h3>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {relatedProducts.length > 0 && (
+    <section class="thm-related fade-in">
+      <div class="thm-section-head">
+        <span class="thm-eyebrow">Related 3M Products</span>
+        <h2>Other Products in the {p.series} Series</h2>
+      </div>
+      <div class="thm-related__grid">
+        {relatedProducts.map((item) => (
+          <a href={`/products/3m/${item.slug}/`} class="thm-related__card">
+            <img src={item.image} alt={`3M ${item.name}`} title={`3M ${item.name} Philadelphia`} width="280" height="180" loading="lazy" />
+            <span>{item.series}</span>
+            <h3>{item.name}</h3>
+          </a>
+        ))}
+      </div>
+      <a href="/products/3m-window-film/" class="thm-related__all">View all 3M products -></a>
+    </section>
+  )}
+
+  <section class="thm-cta fade-in">
+    <div class="thm-cta__inner">
+      <h2>Install {p.name} in Philadelphia</h2>
+      <p>Window Film Philadelphia is an authorized 3M installer. Contact us for a free site assessment.</p>
+      <a href="/contact/" class="thm-cta__btn">Get a Free Quote</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thm-hero {
+    min-height: 560px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 140px 24px 96px;
+    background-image: var(--thm-hero-image);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden;
+  }
+  .thm-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.82), rgba(0,0,0,0.54)), rgba(0,0,0,0.35);
+  }
+  .thm-hero__inner {
+    position: relative;
+    width: min(1120px, 100%);
+    z-index: 1;
+  }
+  .thm-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    border-radius: 999px;
+    padding: 6px 14px;
+    color: #fff;
+    font: 700 0.76rem/1 var(--font-body, 'DM Sans', sans-serif);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .thm-hero__title {
+    max-width: 860px;
+    margin: 18px 0 22px;
+    color: #fff;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(2.5rem, 6vw, 5.4rem);
+    line-height: 0.95;
+    letter-spacing: 0;
+  }
+  .thm-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .thm-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    min-height: 44px;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 8px;
+    padding: 9px 13px;
+    background: rgba(0,0,0,0.34);
+    color: rgba(255,255,255,0.72);
+    font-size: 0.82rem;
+  }
+  .thm-stat strong { color: #fff; font-size: 1rem; }
+  .thm-btn,
+  .thm-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 6px;
+    padding: 0 24px;
+    background: #81AB4C;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+  }
+  .thm-overview,
+  .thm-specs,
+  .thm-related {
+    padding: 84px 24px;
+    background: #fff;
+  }
+  .thm-overview__inner,
+  .thm-specs__inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .thm-overview__image-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    background: #111;
+    aspect-ratio: 4 / 3;
+  }
+  .thm-overview__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .thm-eyebrow {
+    display: inline-block;
+    color: #81AB4C;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .thm-overview h2,
+  .thm-section-head h2,
+  .thm-specs h2,
+  .thm-cta h2 {
+    margin: 0 0 18px;
+    color: #151515;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+  .thm-overview p {
+    color: #444;
+    line-height: 1.74;
+    margin: 0 0 16px;
+  }
+  .thm-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .thm-tag {
+    border: 1px solid #dce5d3;
+    border-radius: 999px;
+    padding: 6px 12px;
+    color: #2f431d;
+    background: #f6faf1;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  .thm-benefits {
+    padding: 84px 24px;
+    background: #1a1a1a;
+  }
+  .thm-section-head {
+    width: min(960px, 100%);
+    margin: 0 auto 34px;
+    text-align: center;
+  }
+  .thm-benefits .thm-section-head h2 { color: #fff; }
+  .thm-benefits__grid,
+  .thm-apps__grid,
+  .thm-related__grid {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .thm-benefit,
+  .thm-app {
+    border-radius: 8px;
+    padding: 26px;
+  }
+  .thm-benefit {
+    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(255,255,255,0.055);
+    color: rgba(255,255,255,0.72);
+  }
+  .thm-benefit__icon,
+  .thm-app__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: rgba(129,171,76,0.14);
+    color: #81AB4C;
+  }
+  .thm-benefit h3,
+  .thm-app h3,
+  .thm-related__card h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1.04rem;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .thm-benefit h3 { color: #fff; }
+  .thm-benefit p,
+  .thm-app p {
+    margin: 0;
+    line-height: 1.62;
+  }
+  .thm-specs__inner {
+    align-items: start;
+  }
+  .thm-specs__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .thm-specs__table th,
+  .thm-specs__table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: left;
+    vertical-align: top;
+  }
+  .thm-specs__table tr:last-child th,
+  .thm-specs__table tr:last-child td { border-bottom: 0; }
+  .thm-specs__table th {
+    width: 38%;
+    color: #222;
+    background: #f7f8f5;
+    font-weight: 800;
+  }
+  .thm-specs__table td { color: #444; }
+  .thm-apps {
+    padding: 84px 24px;
+    background: #f5f7f1;
+  }
+  .thm-app {
+    background: #fff;
+    border: 1px solid #e4eadc;
+    color: #4a4a4a;
+  }
+  .thm-app h3 { color: #171717; }
+  .thm-related__card {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    background: #fff;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .thm-related__card:hover {
+    transform: translateY(-2px);
+    border-color: #81AB4C;
+  }
+  .thm-related__card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .thm-related__card span {
+    margin: 16px 18px 6px;
+    color: #81AB4C;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .thm-related__card h3 {
+    margin: 0 18px 20px;
+    color: #151515;
+  }
+  .thm-related__all {
+    display: table;
+    margin: 30px auto 0;
+    color: #2f431d;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .thm-cta {
+    padding: 72px 24px;
+    background: #81AB4C;
+    color: #fff;
+  }
+  .thm-cta__inner {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .thm-cta h2 { color: #fff; }
+  .thm-cta p {
+    max-width: 620px;
+    margin: 0 auto 24px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  .thm-cta__btn {
+    background: #111;
+  }
+  @media (max-width: 900px) {
+    .thm-hero { min-height: 500px; padding-top: 120px; }
+    .thm-overview__inner,
+    .thm-specs__inner,
+    .thm-benefits__grid,
+    .thm-apps__grid,
+    .thm-related__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    .thm-hero { padding: 112px 18px 70px; }
+    .thm-stat { width: 100%; justify-content: space-between; }
+    .thm-overview,
+    .thm-benefits,
+    .thm-specs,
+    .thm-apps,
+    .thm-related,
+    .thm-cta { padding: 56px 18px; }
+    .thm-benefit,
+    .thm-app { padding: 22px; }
+    .thm-specs__table th,
+    .thm-specs__table td { padding: 13px; }
+  }
+</style>

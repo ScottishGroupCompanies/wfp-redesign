@@ -7,6 +7,7 @@ import BrandLogos from '../../components/BrandLogos.astro';
 import CountUp from '../../components/animations/CountUp.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 import { Icon } from 'astro-icon/components';
+import threeMProducts from '../../data/3m-products.json';
 
 const title = '3M Window Film in Philadelphia | Authorized 3M Installer';
 const description = '3M window film in Philadelphia — Sun Control, Thinsulate, Scotchshield & Fasara. Authorized 3M installer, manufacturer warranty. Free estimate.';
@@ -51,6 +52,22 @@ const benefitItems = [
   { icon: 'lucide:trending-down', title: 'Fast ROI',               sub: 'Most properties recoup in 3 years or less' },
   { icon: 'lucide:award',         title: '3M Certified Install',   sub: 'Manufacturer-backed warranty on all work' },
 ];
+
+const threeMCatalogSeries = Object.values(
+  threeMProducts.reduce((groups, product) => {
+    if (!groups[product.series]) {
+      groups[product.series] = {
+        name: product.series,
+        color: product.seriesColor,
+        products: [],
+      };
+    }
+    groups[product.series].products.push(product);
+    return groups;
+  }, {})
+);
+
+const truncateCatalogDescription = (text) => text.length > 80 ? `${text.slice(0, 77)}...` : text;
 ---
 
 <BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/3m-window-film/">
@@ -862,6 +879,40 @@ const benefitItems = [
     </div>
   </div>
 
+</section>
+
+<!-- ══════════════════════════════════════
+     3M PRODUCT CATALOG
+     ══════════════════════════════════════ -->
+<section class="m3-catalog">
+  <div class="m3-catalog__inner">
+    <div class="m3-catalog__hd">
+      <span class="pp-eyebrow">3M Product Catalog</span>
+      <h2 class="m3-catalog__title">52 3M Products Available in Philadelphia</h2>
+      <p class="m3-catalog__sub">Click any product to view full specifications, applications, and Philadelphia installation details.</p>
+    </div>
+
+    {threeMCatalogSeries.map((series) => (
+      <div class="m3-catalog__series">
+        <h3 class="m3-catalog__series-name">
+          <span class="m3-catalog__series-dot" style={`background:${series.color}`}></span>
+          {series.name} ({series.products.length} products)
+        </h3>
+        <div class="m3-catalog__grid">
+          {series.products.map((product) => (
+            <a href={`/products/3m/${product.slug}/`} class="m3-catalog__card">
+              <img src={product.image} alt={product.name} class="m3-catalog__card-img" width="280" height="180" loading="lazy" />
+              <div class="m3-catalog__card-body">
+                <span class="m3-catalog__card-badge" style={`background:${product.seriesColor}`}>{product.series}</span>
+                <h4 class="m3-catalog__card-name">{product.name}</h4>
+                <p class="m3-catalog__card-desc">{truncateCatalogDescription(product.shortDescription)}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════
@@ -2319,6 +2370,121 @@ h3.m3-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: i
   .m3-pl-row__content { padding: 36px 28px; }
   .m3-pl-row--rev .m3-pl-row__content { padding: 36px 28px; }
   .m3-pl-row__specs { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════════════════════════
+   3M PRODUCT CATALOG
+══════════════════════════════════════ */
+.m3-catalog {
+  padding: 80px 0;
+  background: #0d0d0d;
+}
+.m3-catalog__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.m3-catalog__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.m3-catalog__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #fff;
+  margin: 12px 0 16px;
+  letter-spacing: 0;
+}
+.m3-catalog__sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.m3-catalog__series {
+  margin-bottom: 48px;
+}
+.m3-catalog__series-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.m3-catalog__series-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.m3-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.m3-catalog__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.m3-catalog__card:hover {
+  border-color: #81AB4C;
+  transform: translateY(-2px);
+}
+.m3-catalog__card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.m3-catalog__card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.m3-catalog__card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.m3-catalog__card-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.m3-catalog__card-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .m3-catalog { padding: 48px 0; }
+  .m3-catalog__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .m3-catalog__card-img { height: 120px; }
 }
 
 /* Keep old pp-featured CSS for fallback (can remove later) */
