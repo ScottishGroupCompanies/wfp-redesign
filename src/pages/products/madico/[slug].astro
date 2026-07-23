@@ -1,0 +1,552 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import products from '../../../data/madico-products.json';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product: p } = Astro.props;
+const serviceUrl = `https://www.windowfilmphiladelphia.net/products/madico/${p.slug}/`;
+const title = `Madico ${p.name} Window Film Philadelphia | Authorized Installer`;
+const description = `${p.shortDescription} Window Film Philadelphia is an authorized Madico dealer serving Philadelphia and surrounding areas.`;
+const descriptionParagraphs = p.description.split('\n\n').slice(0, 4);
+const specRows = [
+  ['VLT', p.specs.vlt],
+  ['Heat Rejection', p.specs.heatRejection],
+  ['IR Rejection', p.specs.irRejection],
+  ['UV Block', p.specs.uvBlock],
+  ['Thickness', p.specs.thickness],
+  ['Shading Coefficient', p.specs.shadingCoefficient],
+  ['Warranty', p.specs.warranty],
+  ['Series', p.series],
+  ['Brand', 'Madico'],
+].filter(([, value]) => Boolean(value));
+const statChips = [
+  ['VLT', p.specs.vlt],
+  ['Heat Rejection', p.specs.heatRejection],
+  ['UV Block', p.specs.uvBlock],
+  ['Thickness', p.specs.thickness],
+].filter(([, value]) => Boolean(value));
+const relatedProducts = p.relatedSlugs
+  .map((slug) => products.find((item) => item.slug === slug))
+  .filter(Boolean);
+const categoryText = `${p.categories.join(' ')} ${p.series}`.toLowerCase();
+const applications = categoryText.includes('specialty') || categoryText.includes('view control')
+  ? [
+      ['Museums and Galleries', 'UV and specialty film for Philadelphia cultural institutions, archives, and artwork preservation along the Benjamin Franklin Parkway.'],
+      ['Healthcare Facilities', 'Specialty film specifications for hospital operating rooms, clean rooms, and clinical spaces across Philadelphia\'s medical corridor.'],
+      ['Controlled Environments', 'Technical light and privacy management for Philadelphia pharmaceutical, life sciences, and manufacturing facilities.'],
+    ]
+  : categoryText.includes('exterior')
+    ? [
+        ['Curtain Wall Facades', 'Exterior-applied film for Philadelphia commercial buildings where interior installation is constrained by occupied tenants or structural access barriers.'],
+        ['Commercial Rooftop Glass', 'Solar control on sloped and overhead exterior glass where interior access is difficult or impractical for Philadelphia facility managers.'],
+        ['Occupied Tenant Spaces', 'Non-disruptive exterior application for Philadelphia commercial properties mid-lease where interior work scheduling is a constraint.'],
+      ]
+    : categoryText.includes('safety') || categoryText.includes('security')
+      ? [
+          ['Schools and Campuses', 'Glass retention and forced-entry delay for doors, sidelites, and shared spaces at Philadelphia schools and university campuses.'],
+          ['Government Buildings', 'Retrofit protection for public-facing glass and administrative offices in Center City and throughout Philadelphia\'s civic building stock.'],
+          ['Retail Entries', 'Security film for Philadelphia storefronts, vestibules, and street-level glazing on commercial corridors.'],
+        ]
+      : categoryText.includes('privacy') || categoryText.includes('decorative')
+        ? [
+            ['Retail and Hospitality', 'Privacy, branding, and visual polish for Philadelphia restaurants, hotels, and shops throughout Old City, Rittenhouse, and Fishtown.'],
+            ['Offices and Conference Rooms', 'Glass partitions and sidelites that need screening without losing daylight in Philadelphia commercial interiors.'],
+            ['Healthcare and Wellness', 'Discreet separation for Philadelphia clinics, treatment rooms, and reception areas throughout the medical corridor.'],
+          ]
+        : [
+            ['Center City Offices', 'Glare and solar comfort for Philadelphia towers, boutique suites, and corporate campuses from Market Street to the Navy Yard.'],
+            ['Philadelphia Rowhomes', 'UV and heat control for Fishtown, Fairmount, Society Hill, and Graduate Hospital residences without window replacement.'],
+            ['Retail and Restaurants', 'Comfortable customer-facing glass with cleaner daylight management for Walnut Street, Passyunk, and East Girard storefronts.'],
+          ];
+const faqItems = [
+  {
+    question: `What is Madico ${p.name} used for in Philadelphia?`,
+    answer: `${p.name} is used for ${p.categories.join(', ').toLowerCase()} applications across Philadelphia homes, offices, storefronts, schools, and commercial properties. It belongs to the ${p.series} and is selected based on glass type, exposure, privacy goals, and performance requirements.`,
+  },
+  {
+    question: `What specifications does ${p.name} offer?`,
+    answer: `Key specifications include ${specRows.slice(0, 4).map(([label, value]) => `${label}: ${value}`).join('; ')}. Window Film Philadelphia confirms final compatibility during the site assessment before recommending any Madico product.`,
+  },
+  {
+    question: `Who installs Madico ${p.name} in Philadelphia?`,
+    answer: `Window Film Philadelphia is an authorized Madico dealer serving Philadelphia and the surrounding area. We evaluate the glass, document the product selection, and install Madico films according to manufacturer guidance.`,
+  },
+];
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 3, name: 'Madico', item: 'https://www.windowfilmphiladelphia.net/products/madico-window-film/' },
+      { '@type': 'ListItem', position: 4, name: p.name, item: serviceUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `Madico ${p.name}`,
+    brand: { '@type': 'Brand', name: 'Madico' },
+    image: `https://www.windowfilmphiladelphia.net${p.image}`,
+    description: p.shortDescription,
+    category: p.series,
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      areaServed: 'Philadelphia, PA',
+      url: serviceUrl,
+    },
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={p.image}
+  serviceName={`Madico ${p.name}`}
+  serviceDesc={description}
+  serviceUrl={serviceUrl}
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
+  <section class="madico-hero" style={`--madico-hero-image: url('${p.image}'); --madico-series: ${p.seriesColor};`}>
+    <div class="madico-hero__overlay"></div>
+    <div class="madico-hero__inner">
+      <span class="madico-badge" style={`background:${p.seriesColor}`}>{p.series}</span>
+      <h1 class="madico-hero__title">Madico {p.name}</h1>
+      {statChips.length > 0 && (
+        <div class="madico-stat-row" aria-label="Product specifications">
+          {statChips.map(([label, value]) => (
+            <span class="madico-stat"><strong>{value}</strong>{label}</span>
+          ))}
+        </div>
+      )}
+      <a href="/contact/" class="madico-btn">Get a Quote</a>
+    </div>
+  </section>
+
+  <section class="madico-overview fade-in">
+    <div class="madico-overview__inner">
+      <div class="madico-overview__image-wrap">
+        <img src={p.image} alt={`Madico ${p.name} product sample`} title={`Madico ${p.name} Philadelphia`} width="640" height="480" loading="lazy" class="madico-overview__image" />
+      </div>
+      <div class="madico-overview__content">
+        <span class="madico-eyebrow">{p.series}</span>
+        <h2>About {p.name}</h2>
+        {descriptionParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="madico-tags" aria-label="Product categories">
+          {p.categories.map((category) => <span class="madico-tag">{category}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="madico-benefits fade-in">
+    <div class="madico-section-head">
+      <span class="madico-eyebrow">Product Benefits</span>
+      <h2>What {p.name} Adds to Philadelphia Glass</h2>
+    </div>
+    <div class="madico-benefits__grid">
+      {p.benefits.map((benefit) => (
+        <article class="madico-benefit">
+          <span class="madico-benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>{benefit.heading}</h3>
+          <p>{benefit.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {specRows.length > 0 && (
+    <section class="madico-specs fade-in">
+      <div class="madico-specs__inner">
+        <div>
+          <span class="madico-eyebrow">Specifications</span>
+          <h2>{p.name} Product Data</h2>
+        </div>
+        <table class="madico-specs__table">
+          <tbody>
+            {specRows.map(([label, value]) => (
+              <tr><th>{label}</th><td>{value}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <section class="madico-apps fade-in">
+    <div class="madico-section-head">
+      <span class="madico-eyebrow">Local Use Cases</span>
+      <h2>Philadelphia Applications</h2>
+    </div>
+    <div class="madico-apps__grid">
+      {applications.map(([heading, body]) => (
+        <article class="madico-app">
+          <span class="madico-app__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M4 21V5l8-3 8 3v16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 21v-6h6v6M8 8h.01M12 8h.01M16 8h.01M8 12h.01M16 12h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <h3>{heading}</h3>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {relatedProducts.length > 0 && (
+    <section class="madico-related fade-in">
+      <div class="madico-section-head">
+        <span class="madico-eyebrow">Related Madico Products</span>
+        <h2>Other Products in the {p.series} Series</h2>
+      </div>
+      <div class="madico-related__grid">
+        {relatedProducts.map((item) => (
+          <a href={`/products/madico/${item.slug}/`} class="madico-related__card">
+            <img src={item.image} alt={`Madico ${item.name}`} title={`Madico ${item.name} Philadelphia`} width="280" height="180" loading="lazy" />
+            <span>{item.series}</span>
+            <h3>{item.name}</h3>
+          </a>
+        ))}
+      </div>
+      <a href="/products/madico-window-film/" class="madico-related__all">View all Madico products -></a>
+    </section>
+  )}
+
+  <section class="madico-cta fade-in">
+    <div class="madico-cta__inner">
+      <h2>Install {p.name} in Philadelphia</h2>
+      <p>Window Film Philadelphia is an authorized Madico dealer. Contact us for a free site assessment.</p>
+      <a href="/contact/" class="madico-cta__btn">Get a Free Quote</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .madico-hero {
+    min-height: 560px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 140px 24px 96px;
+    background-image: var(--madico-hero-image);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden;
+  }
+  .madico-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.82), rgba(0,0,0,0.54)), rgba(0,0,0,0.35);
+  }
+  .madico-hero__inner {
+    position: relative;
+    width: min(1120px, 100%);
+    z-index: 1;
+  }
+  .madico-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    border-radius: 999px;
+    padding: 6px 14px;
+    color: #fff;
+    font: 700 0.76rem/1 var(--font-body, 'DM Sans', sans-serif);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .madico-hero__title {
+    max-width: 860px;
+    margin: 18px 0 22px;
+    color: #fff;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(2.5rem, 6vw, 5.4rem);
+    line-height: 0.95;
+    letter-spacing: 0;
+  }
+  .madico-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .madico-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    min-height: 44px;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 8px;
+    padding: 9px 13px;
+    background: rgba(0,0,0,0.34);
+    color: rgba(255,255,255,0.72);
+    font-size: 0.82rem;
+  }
+  .madico-stat strong { color: #fff; font-size: 1rem; }
+  .madico-btn,
+  .madico-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 6px;
+    padding: 0 24px;
+    background: #81AB4C;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+  }
+  .madico-overview,
+  .madico-specs,
+  .madico-related {
+    padding: 84px 24px;
+    background: #fff;
+  }
+  .madico-overview__inner,
+  .madico-specs__inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .madico-overview__image-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    background: #111;
+    aspect-ratio: 4 / 3;
+  }
+  .madico-overview__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .madico-eyebrow {
+    display: inline-block;
+    color: #81AB4C;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .madico-overview h2,
+  .madico-section-head h2,
+  .madico-specs h2,
+  .madico-cta h2 {
+    margin: 0 0 18px;
+    color: #151515;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+  .madico-overview p {
+    color: #444;
+    line-height: 1.74;
+    margin: 0 0 16px;
+  }
+  .madico-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .madico-tag {
+    border: 1px solid #dce5d3;
+    border-radius: 999px;
+    padding: 6px 12px;
+    color: #2f431d;
+    background: #f6faf1;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  .madico-benefits {
+    padding: 84px 24px;
+    background: #1a1a1a;
+  }
+  .madico-section-head {
+    width: min(960px, 100%);
+    margin: 0 auto 34px;
+    text-align: center;
+  }
+  .madico-benefits .madico-section-head h2 { color: #fff; }
+  .madico-benefits__grid,
+  .madico-apps__grid,
+  .madico-related__grid {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .madico-benefit,
+  .madico-app {
+    border-radius: 8px;
+    padding: 26px;
+  }
+  .madico-benefit {
+    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(255,255,255,0.055);
+    color: rgba(255,255,255,0.72);
+  }
+  .madico-benefit__icon,
+  .madico-app__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: rgba(129,171,76,0.14);
+    color: #81AB4C;
+  }
+  .madico-benefit h3,
+  .madico-app h3,
+  .madico-related__card h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1.04rem;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .madico-benefit h3 { color: #fff; }
+  .madico-benefit p,
+  .madico-app p {
+    margin: 0;
+    line-height: 1.62;
+  }
+  .madico-specs__inner {
+    align-items: start;
+  }
+  .madico-specs__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .madico-specs__table th,
+  .madico-specs__table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: left;
+    vertical-align: top;
+  }
+  .madico-specs__table tr:last-child th,
+  .madico-specs__table tr:last-child td { border-bottom: 0; }
+  .madico-specs__table th {
+    width: 38%;
+    color: #222;
+    background: #f7f8f5;
+    font-weight: 800;
+  }
+  .madico-specs__table td { color: #444; }
+  .madico-apps {
+    padding: 84px 24px;
+    background: #f5f7f1;
+  }
+  .madico-app {
+    background: #fff;
+    border: 1px solid #e4eadc;
+    color: #4a4a4a;
+  }
+  .madico-app h3 { color: #171717; }
+  .madico-related__card {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    background: #fff;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .madico-related__card:hover {
+    transform: translateY(-2px);
+    border-color: #81AB4C;
+  }
+  .madico-related__card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .madico-related__card span {
+    margin: 16px 18px 6px;
+    color: #81AB4C;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .madico-related__card h3 {
+    margin: 0 18px 20px;
+    color: #151515;
+  }
+  .madico-related__all {
+    display: table;
+    margin: 30px auto 0;
+    color: #2f431d;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .madico-cta {
+    padding: 72px 24px;
+    background: #81AB4C;
+    color: #fff;
+  }
+  .madico-cta__inner {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .madico-cta h2 { color: #fff; }
+  .madico-cta p {
+    max-width: 620px;
+    margin: 0 auto 24px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  .madico-cta__btn {
+    background: #111;
+  }
+  @media (max-width: 900px) {
+    .madico-hero { min-height: 500px; padding-top: 120px; }
+    .madico-overview__inner,
+    .madico-specs__inner,
+    .madico-benefits__grid,
+    .madico-apps__grid,
+    .madico-related__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    .madico-hero { padding: 112px 18px 70px; }
+    .madico-stat { width: 100%; justify-content: space-between; }
+    .madico-overview,
+    .madico-benefits,
+    .madico-specs,
+    .madico-apps,
+    .madico-related,
+    .madico-cta { padding: 56px 18px; }
+    .madico-benefit,
+    .madico-app { padding: 22px; }
+    .madico-specs__table th,
+    .madico-specs__table td { padding: 13px; }
+  }
+</style>

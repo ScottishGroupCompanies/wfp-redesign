@@ -2,6 +2,7 @@
 /* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
  * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import madicoProducts from '../../data/madico-products.json';
 import FlipWords from '../../components/FlipWords.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CountUp from '../../components/animations/CountUp.astro';
@@ -858,6 +859,62 @@ const madicoReviews = [
     <div class="md-compare__cta">
       <a href="/contact/" class="pp-btn pp-btn--primary" style="background:#81AB4C;border-color:#81AB4C;color:#fff">Talk to our team about which series fits your project</a>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCT CATALOG BENTO GRID
+     ══════════════════════════════════════ -->
+<section class="md-catalog">
+  <div class="md-catalog__inner">
+    <div class="md-catalog__hd">
+      <span class="pp-eyebrow" style="color:#81AB4C">Full Product Line</span>
+      <h2 class="md-catalog__title">{madicoProducts.length} Madico Products Available in Philadelphia</h2>
+      <p class="md-catalog__sub">The complete Madico architectural film lineup — solar control, safety, decorative, specialty, and exterior products available through Window Film Philadelphia.</p>
+    </div>
+
+    {[
+      'Premium Series',
+      'Decorator Series',
+      'Reflective Series',
+      'Exterior Series',
+      'Safety & Security Series',
+      'Specialty Series',
+      'Sunscape Designer Series',
+      'View Control Series',
+    ].map((series) => {
+      const seriesProducts = madicoProducts.filter((p) => p.series === series);
+      if (!seriesProducts.length) return null;
+      const seriesColor = seriesProducts[0].seriesColor;
+      return (
+        <div class="md-catalog__group">
+          <div class="md-catalog__group-hd">
+            <span class="md-catalog__dot" style={`background:${seriesColor}`}></span>
+            <h3 class="md-catalog__group-name">{series}</h3>
+            <span class="md-catalog__count">{seriesProducts.length} products</span>
+          </div>
+          <div class="md-catalog__grid">
+            {seriesProducts.map((product) => (
+              <a href={`/products/madico/${product.slug}/`} class="md-catalog__card">
+                <div class="md-catalog__card-top">
+                  <span class="md-catalog__series-dot" style={`background:${product.seriesColor}`}></span>
+                  <span class="md-catalog__series-label">{product.series}</span>
+                </div>
+                <h4 class="md-catalog__name">{product.name}</h4>
+                {product.specs.vlt && (
+                  <span class="md-catalog__vlt-chip">VLT {product.specs.vlt}</span>
+                )}
+                {product.specs.thickness && !product.specs.vlt && (
+                  <span class="md-catalog__vlt-chip">{product.specs.thickness}</span>
+                )}
+                <p class="md-catalog__desc">{product.shortDescription}</p>
+                <span class="md-catalog__link">View product &rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    })}
   </div>
 </section>
 
@@ -2664,6 +2721,143 @@ h3.md-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: i
 .md-tint-cta__btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 999px; background: var(--green,#81AB4C); color: #fff; font-family: var(--font-body,'DM Sans',sans-serif); font-weight: 700; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 24px rgba(129,171,76,.4); }
 .md-tint-cta__btn:hover { background: #6e9640; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(129,171,76,.5); }
 @media (max-width: 600px) { .md-tint-cta { min-height: 520px; } .md-tint-cta__controls { padding: 12px 16px; } }
+
+/* ── PRODUCT CATALOG BENTO ── */
+.md-catalog {
+  padding: 80px 24px;
+  background: #0d0d0d;
+}
+.md-catalog__inner {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+}
+.md-catalog__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.md-catalog__title {
+  margin: 12px 0 14px;
+  color: #fff;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.1;
+}
+.md-catalog__sub {
+  max-width: 640px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.58);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.md-catalog__group {
+  margin-bottom: 44px;
+}
+.md-catalog__group-hd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.md-catalog__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.md-catalog__group-name {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.md-catalog__count {
+  margin-left: auto;
+  color: rgba(255,255,255,0.38);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.md-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.md-catalog__card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.18s, border-color 0.18s, background 0.18s;
+}
+.md-catalog__card:hover {
+  transform: translateY(-3px);
+  border-color: #81AB4C;
+  background: rgba(129,171,76,0.06);
+}
+.md-catalog__card-top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+.md-catalog__series-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.md-catalog__series-label {
+  color: rgba(255,255,255,0.42);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.md-catalog__name {
+  margin: 0 0 8px;
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.md-catalog__vlt-chip {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 9px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.md-catalog__desc {
+  flex: 1;
+  margin: 0 0 14px;
+  color: rgba(255,255,255,0.52);
+  font-size: 0.83rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.md-catalog__link {
+  color: #81AB4C;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: auto;
+}
+@media (max-width: 640px) {
+  .md-catalog { padding: 56px 16px; }
+  .md-catalog__grid { grid-template-columns: 1fr; }
+}
 </style>
 
 <script>
