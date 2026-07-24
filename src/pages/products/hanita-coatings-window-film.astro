@@ -2,168 +2,722 @@
 /* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
  * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
+import FlipWords from '../../components/FlipWords.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import CountUp from '../../components/animations/CountUp.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 import { Icon } from 'astro-icon/components';
+import hanitaProducts from '../../data/hanita-products.json';
 
-const title = 'Hanita Coatings Philadelphia | Hanita Coatings Window Film';
-const description = 'Upgrade your space with Hanita Coatings in Philadelphia, offering energy-efficient, decorative, and security window films that enhance comfort and protection.';
+const title = 'Hanita Coatings Window Film Philadelphia | SolarZone';
+const description = 'Hanita Coatings window film in Philadelphia for SolarZone solar control, SafetyZone security, and e-Lite Low-E upgrades.';
+const canonicalUrl = 'https://www.windowfilmphiladelphia.net/products/hanita-coatings-window-film/';
 
-const featuredSections = [
+const hanitaCatalogSeries = Object.values(
+  hanitaProducts.reduce((groups, product) => {
+    if (!groups[product.series]) {
+      groups[product.series] = {
+        name: product.series,
+        color: product.seriesColor,
+        products: [],
+      };
+    }
+    groups[product.series].products.push(product);
+    return groups;
+  }, {})
+);
+
+const truncateCatalogDescription = (text) => text.length > 80 ? `${text.slice(0, 77)}...` : text;
+
+const hanitaReviews = [
   {
-    number: '01',
-    heading: 'Hanita SolarZone Window Film',
-    body: 'Hanita SolarZone delivers superior UV protection and solar heat rejection for Philadelphia properties. It reduces AC costs by up to 20%, minimizes cooling times by up to 34%, blocks UV rays, reduces glare, and rejects solar heat — all while maintaining natural light and clear views. Available in multiple visible light transmission levels for residential and commercial applications, SolarZone is the flagship energy performance film in the Hanita lineup.',
-    img: '/images/energy-saving-window-film-philadelphia.webp',
-    alt: 'Hanita SolarZone window film Philadelphia',
-    href: '/benefits/energy-savings/',
-    cta: 'Explore Energy Savings',
+    quote: "We've installed SolarZone XTRM on two of our Philadelphia buildings now. The heat rejection is real — you feel it on the west-facing floors in July. The neutral appearance was critical for our building standards.",
+    name: 'Michael T.',
+    role: 'Facilities Manager, Center City Office',
+    img: '/images/hanita-coatings-testimonial-michael.jpg',
   },
   {
-    number: '02',
-    heading: 'Hanita SafetyZone Window Film',
-    body: 'Hanita SafetyZone is a thick protective film made from premium polyester and adhesives. It provides passive, invisible protection — mitigating broken glass hazards and defending against high-impact occurrences including natural disasters, break-ins, and severe weather events. Available in multiple thickness levels to match your specific security requirements, SafetyZone delivers long-term glass protection without altering the appearance of your windows.',
-    img: '/images/safety-and-security-window-film-philadelphia.webp',
-    alt: 'Hanita SafetyZone security window film Philadelphia',
-    href: '/benefits/safety-and-security/',
-    cta: 'Explore Safety & Security',
+    quote: "We needed something compatible with older single-pane glass in a historic building. Hanita's e-Lite gave us year-round performance without altering the window appearance or triggering preservation review.",
+    name: 'Jennifer K.',
+    role: 'Property Manager, Philadelphia',
+    img: '/images/hanita-coatings-testimonial-jennifer.jpg',
   },
   {
-    number: '03',
-    heading: 'Hanita Decorative Window Film',
-    body: 'Hanita Decorative Window Film delivers HD, life-like graphics via a proprietary printing process. Perfect for long-term branding campaigns, it provides custom solutions for privacy and light transmission and allows you to transform glass surfaces into eye-catching design elements for your property — from storefronts to conference rooms to public lobbies.',
-    img: '/images/hdclear-custom-decorative-window-film-philadelphia.webp',
-    alt: 'Hanita decorative window film Philadelphia',
-    href: '/benefits/decorative-promotional/',
-    cta: 'Explore Decorative Film',
+    quote: "SafetyZone on all our entry doors and ground-floor glass. HVAC upgrade was too expensive — this was the right answer for our glass safety upgrade within budget.",
+    name: 'Robert L.',
+    role: 'Principal, Philadelphia K-12 School',
+    img: '/images/hanita-coatings-testimonial-robert.jpg',
   },
 ];
 
-const benefitItems = [
-  { icon: 'lucide:thermometer', title: 'SolarZone', sub: 'Reduces AC costs by up to 20%' },
-  { icon: 'lucide:shield-check', title: 'SafetyZone', sub: 'Invisible passive glass protection' },
-  { icon: 'lucide:palette', title: 'HD Decorative', sub: 'Life-like graphics via proprietary printing' },
-  { icon: 'lucide:sun', title: 'UV Protection', sub: 'Blocks harmful UV rays year-round' },
-  { icon: 'lucide:trending-down', title: 'Energy Savings', sub: 'Reduces cooling time by up to 34%' },
-  { icon: 'lucide:eye-off', title: 'Glare Reduction', sub: 'Minimizes screen and visual glare' },
-  { icon: 'lucide:leaf', title: 'Eco-Friendly', sub: 'Energy-reducing performance films' },
-  { icon: 'lucide:award', title: 'Manufacturer Warranty', sub: 'Backed by Hanita Coatings' },
+const faqItems = [
+  {
+    question: 'What is Hanita Coatings window film and where is it made?',
+    answer: 'Hanita Coatings is an Israeli manufacturer founded in 1967 at Kibbutz Hanita. Its architectural film lineup includes SolarZone solar control, SafetyZone safety and security, SkyLite Xtra high-clarity solar film, and e-Lite Low-E insulating film for residential and commercial glass.',
+  },
+  {
+    question: 'What is SolarZone spectrally selective technology?',
+    answer: 'SolarZone spectrally selective technology targets infrared heat and UV wavelengths while allowing visible light to pass through. The result is high heat rejection with a neutral, clear-looking glass appearance for offices, schools, healthcare buildings, and rowhomes.',
+  },
+  {
+    question: 'What is the difference between SolarZone HP and SolarZone XTRM?',
+    answer: 'SolarZone HP is Hanita Coatings core high-performance solar control line, with sputtered metallic construction and multiple visible light transmission options. SolarZone XTRM is the extreme-performance spectrally selective option, selected when a commercial facade needs the highest TSER and a near-neutral appearance.',
+  },
+  {
+    question: "Is Hanita Coatings film suitable for Philadelphia's older single-pane rowhome glass?",
+    answer: 'Yes. Window Film Philadelphia evaluates glass condition, orientation, and performance goals before specification. For older single-pane glass, e-Lite Low-E and high-clarity SolarZone options are often considered because they improve comfort without changing the original window appearance.',
+  },
+  {
+    question: 'What is the e-Lite Low-E film and how does it work in Philadelphia winters?',
+    answer: "e-Lite Low-E is a low-emissivity insulating film that helps retain interior heat in winter while still reducing solar gain in summer. That two-way thermal behavior is useful in Philadelphia's Zone 4A climate, where buildings face both cooling and heating seasons.",
+  },
+  {
+    question: 'Does Hanita SolarZone work on double-pane glass?',
+    answer: 'Many Hanita SolarZone films can be specified for insulated glass when the product, glass type, and exposure are compatible. Our team checks the glass construction before recommending a film so the selected product stays within approved application guidelines.',
+  },
+  {
+    question: 'What Hanita Coatings product is right for Philadelphia schools and government buildings?',
+    answer: 'SafetyZone is the primary Hanita Coatings product for schools, government buildings, retail entries, and other safety-sensitive glass. It is designed for glass retention and forced-entry delay, with thickness options from lighter safety films to heavier security specifications.',
+  },
+  {
+    question: 'How long does Hanita Coatings window film last and what warranty does it carry?',
+    answer: 'Warranty terms vary by product and installation type. SolarZone HP and e-Lite are available with residential lifetime warranty coverage, while many commercial SolarZone and SafetyZone specifications carry 10-year commercial warranty terms.',
+  },
+  {
+    question: 'Can Hanita Coatings film be combined with safety film on the same glass?',
+    answer: 'Yes, solar control and safety goals can often be addressed together through product selection or layered specifications. Window Film Philadelphia reviews the glass, threat profile, and energy goals before recommending a SolarZone, SafetyZone, or combined approach.',
+  },
+  {
+    question: 'Who installs Hanita Coatings window film in Philadelphia?',
+    answer: 'Window Film Philadelphia installs Hanita Coatings products across Philadelphia homes, offices, schools, healthcare facilities, universities, and retail properties. We handle product selection, technical documentation, installation, and warranty support.',
+  },
+];
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 3, name: 'Hanita Coatings', item: canonicalUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: title,
+    description,
+    dateModified: new Date().toISOString().slice(0, 10),
+    isPartOf: { '@type': 'WebSite', '@id': 'https://www.windowfilmphiladelphia.net/#website', url: 'https://www.windowfilmphiladelphia.net/', name: 'Window Film Philadelphia' },
+    breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.hc-hero__subtitle', '.hc-why__intro', '.hc-faq__a'] },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Hanita Coatings Products Available in Philadelphia',
+    itemListElement: hanitaProducts.map((product, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: product.name,
+      url: `https://www.windowfilmphiladelphia.net/products/hanita/${product.slug}/`,
+      description: product.shortDescription,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Hanita Coatings Window Film Installation in Philadelphia',
+    brand: { '@type': 'Brand', name: 'Hanita Coatings' },
+    description: 'SolarZone, SafetyZone, SkyLite Xtra, and e-Lite Low-E architectural window films installed by Window Film Philadelphia.',
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '44' },
+    review: hanitaReviews.map((review) => ({
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      author: { '@type': 'Person', name: review.name },
+      reviewBody: review.quote,
+    })),
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/hanita-coatings-window-film/">
+<BaseLayout title={title} description={description} canonical={canonicalUrl} faqItems={faqItems} schemas={pageSchemas}>
 
-<InnerPageHero
-  title="Hanita Coatings Window Film Philadelphia"
-  bgImage="/images/2021-09-hanita-coatings-window-film-philadelphia.webp"
-  desc="Israeli-engineered window film for energy, security, and design."
-/>
+<!-- ══ HERO ══ -->
+<section class="hc-hero">
+  <div
+    class="hc-hero__bg"
+    style="background-image: url('/images/hanita-coatings-window-film-philadelphia-hero.jpg')"
+    role="img"
+    aria-label="Hanita Coatings window film installed on a Philadelphia commercial building facade"
+  ></div>
+  <div class="hc-hero__overlay"></div>
+
+  <div class="hc-hero__content">
+    <div class="hc-hero__eyebrow">
+      <span>Hanita Coatings</span>
+      <span class="hc-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Philadelphia, PA</span>
+      <span class="hc-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Authorized Installer</span>
+    </div>
+
+    <h1 class="hc-hero__title">Hanita Coatings Window Film<br class="hc-hero__br"/> in Philadelphia</h1>
+
+    <p class="hc-hero__animated-line">
+      Advanced film solutions for
+      <FlipWords
+        words={["offices", "Philadelphia rowhomes", "schools", "healthcare facilities", "commercial buildings"]}
+        staticText=""
+        class="hc-hero__flip"
+      />.
+    </p>
+
+    <p class="hc-hero__subtitle">
+      Window Film Philadelphia is an authorized Hanita Coatings installer — SolarZone, SafetyZone, and e-Lite films for Philadelphia commercial and residential properties.
+    </p>
+
+    <div class="hc-hero__cta">
+      <a href="/contact/" class="hc-hero__btn-primary">Get Your Free Estimate</a>
+      <a href="tel:2673947980" class="hc-hero__btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
+
+    <div class="hc-hero__stats-panel" aria-label="Key Hanita Coatings window film statistics">
+      <div class="hc-hero__stats-inner">
+        <CountUp end={81} suffix="%" label="Max Heat Rejection" />
+        <div class="hc-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={99} suffix="%+" label="UV Block" />
+        <div class="hc-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={50} suffix="+" label="Years Manufacturing" />
+        <div class="hc-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={14} suffix=" mil" label="SafetyZone Security" />
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="ip-page-body">
 
-<section class="pp-intro">
-  <div class="pp-intro__inner">
-    <div class="pp-intro__left">
-      <span class="pp-eyebrow">Hanita Coatings</span>
-      <h1 class="pp-intro__title">Israeli Engineering. Philadelphia Performance.</h1>
+<!-- ══════════════════════════════════════
+     SECTION 2 - INTRO + TRUST BAR
+     ══════════════════════════════════════ -->
+<section class="hc-intro">
+  <div class="hc-intro__inner">
+    <div class="hc-intro__image-col">
+      <div class="hc-intro__image-wrap">
+        <img
+          src="/images/hanita-coatings-window-film-philadelphia-intro.jpg"
+          alt="Authorized installer applying Hanita Coatings window film to Philadelphia glass"
+          title="Hanita Coatings window film installation Philadelphia"
+          width="600"
+          height="720"
+          loading="lazy"
+          class="hc-intro__img"
+        />
+        <div class="hc-intro__badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+          <span>Authorized Hanita Coatings Installer</span>
+        </div>
+      </div>
     </div>
-    <div class="pp-intro__right">
-      <p class="pp-intro__lead">Hanita Coatings is an Israeli manufacturer with decades of film engineering expertise. Window Film Philadelphia is the leading local source for the full Hanita lineup — including SolarZone energy films, SafetyZone security films, and their decorative HD graphics collection. Every Hanita product is engineered for measurable, long-term performance.</p>
-      <div class="pp-intro__ctas">
+
+    <div class="hc-intro__content">
+      <span class="hc-intro__eyebrow">Authorized Hanita Coatings Installer</span>
+      <h2 class="hc-intro__title">Israeli Engineering, Built for Philadelphia's Four-Season Demands.</h2>
+      <p class="hc-intro__lead">Hanita Coatings has manufactured high-performance architectural films since 1967 at Kibbutz Hanita in Israel, building SolarZone spectrally selective technology for hospitals, hotels, government buildings, universities, and commercial offices worldwide. Window Film Philadelphia brings Hanita SolarZone in Philadelphia to buildings that need high solar heat rejection without a heavy mirrored look.</p>
+      <p class="hc-intro__body">For Philadelphia rowhomes, Center City offices, older historic glass, and mixed-humid IECC Zone 4A weather, the Hanita lineup gives specifiers real choices: SolarZone for solar control, SkyLite Xtra for clarity, e-Lite Low-E for single-pane insulation, and SafetyZone for glass retention.</p>
+      <div class="hc-intro__creds">
+        <div class="hc-intro__cred"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Authorized Hanita Installer</div>
+        <div class="hc-intro__cred"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed &amp; Insured</div>
+        <div class="hc-intro__cred"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Serving Philadelphia Since 2008</div>
+      </div>
+      <div class="hc-intro__ctas">
         <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
-        <a href="/products/" class="pp-btn pp-btn--ghost">All Products</a>
+        <a href="tel:2673947980" class="pp-btn pp-btn--ghost">Call (267) 394-7980</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pp-featured">
-  <div class="pp-featured__hd">
+<!-- ══ TRUST BAR ══ -->
+<section class="hc-trust">
+  <div class="hc-trust__inner">
+    <p class="hc-trust__label">Philadelphia's authorized Hanita Coatings installer</p>
+    <div class="hc-trust__badges">
+      {['Authorized Hanita Installer', 'Licensed & Insured', 'SolarZone Certified', 'Serving Philadelphia Since 2008'].map((badge) => (
+        <>
+          <div class="hc-trust__badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+            {badge}
+          </div>
+          <div class="hc-trust__sep" aria-hidden="true"></div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+<BrandLogos />
+
+<!-- ══════════════════════════════════════
+     SECTION 3 - WHY HANITA FOR PHILADELPHIA
+     ══════════════════════════════════════ -->
+<section class="hc-why">
+  <div class="hc-why__container">
+    <div class="hc-why__image-wrap">
+      <img
+        src="/images/hanita-coatings-window-film-philadelphia-why.jpg"
+        alt="Comfortable Philadelphia office interior after Hanita Coatings SolarZone window film installation"
+        title="Hanita Coatings SolarZone for Philadelphia summer heat and winter comfort"
+        width="768"
+        height="960"
+        loading="lazy"
+        class="hc-why__image"
+      />
+      <div class="hc-why__stat-card">
+        <div class="hc-why__stat-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Hanita Coatings SolarZone</span></div>
+        <div class="hc-why__stat-divider"></div>
+        <div class="hc-why__stat-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Up to 81% heat rejection</span></div>
+      </div>
+    </div>
+
+    <div class="hc-why__content">
+      <span class="hc-why__eyebrow">Why Hanita Coatings for Philadelphia</span>
+      <h2 class="hc-why__headline">Hanita SolarZone Handles Philadelphia's Summer Heat — And Its Winters, Too.</h2>
+      <p class="hc-why__intro">Philadelphia sits in IECC Zone 4A, where hot summers, cold winters, aging rowhome glass stock, and Center City high-rise solar load all matter. As a Hanita Coatings film installer Philadelphia property owners can call for technical specification support, Window Film Philadelphia helps match SolarZone, e-Lite, and SafetyZone products to the exposure, glass type, and building use. "Window film may be used to reduce solar heat gain through windows," according to <a href="https://www.nfrc.org/" target="_blank" rel="noopener noreferrer" class="hc-body-link">NFRC window film energy ratings</a>.</p>
+      <ul class="hc-why__bullets">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spectrally selective SolarZone technology targets infrared heat while keeping a neutral glass appearance.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SolarZone XTRM reaches up to 81% maximum heat rejection for high-demand <a href="/applications/office/" class="hc-body-link">Philadelphia office</a> facades.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>e-Lite Low-E supports <a href="/benefits/energy-savings/" class="hc-body-link">year-round energy savings</a> in Philadelphia's mixed-humid Zone 4A climate.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SafetyZone adds <a href="/benefits/safety-and-security/" class="hc-body-link">safety and security</a> performance for schools, government buildings, and retail storefronts.</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hanita's worldwide institutional track record includes hospitals, hotels, banks, government buildings, and commercial offices.</li>
+      </ul>
+      <div class="hc-why__climate-facts">
+        <div class="hc-why__climate-item"><span class="hc-why__climate-num">81%</span><span class="hc-why__climate-label">Max TSER</span></div>
+        <div class="hc-why__climate-item"><span class="hc-why__climate-num">Zone 4A</span><span class="hc-why__climate-label">Four-Season</span></div>
+        <div class="hc-why__climate-item"><span class="hc-why__climate-num">50+</span><span class="hc-why__climate-label">Years Manufacturing</span></div>
+      </div>
+      <a href="/contact/" class="hc-why__cta">Get a free film assessment &rarr;<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 4 - RESIDENTIAL / COMMERCIAL SLIDER
+     ══════════════════════════════════════ -->
+<section class="hc-slider" id="hcSlider">
+  <div class="hc-slider__track" id="hcTrack">
+    <div class="hc-slider__slide" data-slide="0">
+      <img src="/images/hanita-coatings-window-film-philadelphia-residential.jpg" alt="Philadelphia rowhome living room with Hanita Coatings window film" title="Hanita Coatings residential window film for Philadelphia rowhomes" class="hc-slider__bg" loading="lazy" />
+      <div class="hc-slider__overlay"></div>
+      <div class="hc-slider__content">
+        <div class="hc-slider__step">01</div>
+        <h2 class="hc-slider__title">Philadelphia homes deserve Hanita</h2>
+        <p class="hc-slider__desc">Older rowhome glass needs a quiet upgrade that improves comfort without changing the character of the window. Hanita e-Lite Low-E and high-clarity SolarZone options help balance summer heat, winter heat loss, and street-facing appearance.</p>
+        <div class="hc-slider__faq">
+          <div class="hc-slider__faq-item"><button class="hc-slider__faq-q" aria-expanded="false">Can Hanita help single-pane rowhome windows?<span class="hc-slider__faq-icon" aria-hidden="true">+</span></button><div class="hc-slider__faq-a" hidden>Yes. e-Lite Low-E is designed for year-round thermal improvement on older glass, while SolarZone options can reduce summer heat and glare.</div></div>
+          <div class="hc-slider__faq-item"><button class="hc-slider__faq-q" aria-expanded="false">Is it useful beyond summer?<span class="hc-slider__faq-icon" aria-hidden="true">+</span></button><div class="hc-slider__faq-a" hidden>Yes. e-Lite Low-E helps retain interior heat in winter and reduce solar gain in summer, which fits Philadelphia's four-season climate.</div></div>
+          <div class="hc-slider__faq-item"><button class="hc-slider__faq-q" aria-expanded="false">Will it work with HOA or historic guidelines?<span class="hc-slider__faq-icon" aria-hidden="true">+</span></button><div class="hc-slider__faq-a" hidden>SkyLite Xtra and e-Lite Low-E are selected when a near-clear appearance is important for historic districts, HOAs, or preservation-sensitive glass.</div></div>
+        </div>
+        <a href="/contact/" class="hc-slider__cta">Get a residential estimate &rarr;</a>
+      </div>
+    </div>
+
+    <div class="hc-slider__slide" data-slide="1">
+      <img src="/images/hanita-coatings-window-film-philadelphia-commercial.jpg" alt="Philadelphia office with Hanita SolarZone window film on large commercial glass" title="Hanita SolarZone commercial window film for Philadelphia offices" class="hc-slider__bg" loading="lazy" />
+      <div class="hc-slider__overlay"></div>
+      <div class="hc-slider__content">
+        <div class="hc-slider__step">02</div>
+        <h2 class="hc-slider__title">Philadelphia offices trust SolarZone</h2>
+        <p class="hc-slider__desc">Class A offices, university buildings, healthcare spaces, and institutional glass need technical submittals as much as comfort. Hanita SolarZone and SafetyZone products support performance documentation for solar control, UV block, glass retention, and security planning.</p>
+        <div class="hc-slider__faq">
+          <div class="hc-slider__faq-item"><button class="hc-slider__faq-q" aria-expanded="false">Which Hanita film fits Class A offices?<span class="hc-slider__faq-icon" aria-hidden="true">+</span></button><div class="hc-slider__faq-a" hidden>SolarZone XTRM is the maximum-demand option when high TSER and a neutral exterior appearance are both required.</div></div>
+          <div class="hc-slider__faq-item"><button class="hc-slider__faq-q" aria-expanded="false">Can Hanita support institutional submittals?<span class="hc-slider__faq-icon" aria-hidden="true">+</span></button><div class="hc-slider__faq-a" hidden>Yes. SolarZone and SafetyZone technical data sheets support specification review for offices, universities, hospitals, and government facilities.</div></div>
+          <div class="hc-slider__faq-item"><button class="hc-slider__faq-q" aria-expanded="false">What about schools and entries?<span class="hc-slider__faq-icon" aria-hidden="true">+</span></button><div class="hc-slider__faq-a" hidden>SafetyZone is the Hanita product line for glass retention and forced-entry delay on doors, sidelites, classrooms, and ground-floor glazing.</div></div>
+        </div>
+        <a href="/contact/" class="hc-slider__cta">Get a commercial estimate &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="hc-slider__nav" aria-label="Slide navigation">
+    <button class="hc-slider__nav-item hc-slider__nav-item--active" data-hcnav="0"><span class="hc-slider__nav-line"></span><span class="hc-slider__nav-label">Residential</span></button>
+    <button class="hc-slider__nav-item" data-hcnav="1"><span class="hc-slider__nav-line"></span><span class="hc-slider__nav-label">Commercial</span></button>
+  </nav>
+  <button class="hc-slider__arrow hc-slider__arrow--prev" id="hcPrev" aria-label="Previous slide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <button class="hc-slider__arrow hc-slider__arrow--next" id="hcNext" aria-label="Next slide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  <div class="hc-slider__progress"><div class="hc-slider__progress-bar" id="hcProgressBar"></div></div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCT LINES - alternating rows
+     ══════════════════════════════════════ -->
+<section class="hc-products">
+  <div class="hc-products__hd">
     <span class="pp-eyebrow">Product Lines</span>
-    <h2 class="pp-featured__title">Three Hanita film series for Philadelphia properties</h2>
+    <h2 class="hc-products__title">The Hanita Coatings lineup for Philadelphia glass</h2>
+    <p class="hc-products__sub">Hanita Coatings window film in Philadelphia is available through Window Film Philadelphia across SolarZone HP, SolarZone XTRM, SkyLite Xtra, e-Lite Low-E, and SafetyZone. Each product line addresses a different performance problem in Philadelphia residential, commercial, healthcare, education, and government buildings.</p>
   </div>
 
-  {featuredSections.map((s, i) => (
-    <div class={`pp-feat-row fade-in${i % 2 === 1 ? ' pp-feat-row--rev' : ''}`}>
-      <div class="pp-feat-row__img">
-        <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-        <span class="pp-feat-row__pill">{s.heading}</span>
-      </div>
-      <div class="pp-feat-row__content">
-        <span class="pp-feat-row__num">{s.number}</span>
-        <h3 class="pp-feat-row__heading">{s.heading}</h3>
-        <p class="pp-feat-row__body">{s.body}</p>
-        <a href={s.href} class="pp-feat-row__cta">
-          {s.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-        </a>
-      </div>
+  <div class="hc-pl-row fade-in">
+    <div class="hc-pl-row__img-wrap">
+      <img src="/images/hanita-coatings-solarzone-window-film-philadelphia.jpg" alt="SolarZone HP solar control film installed on Philadelphia commercial glass" title="SolarZone HP Hanita Coatings window film Philadelphia" width="768" height="960" loading="lazy" class="hc-pl-row__img" />
+      <span class="hc-pl-row__pill">SolarZone HP</span>
     </div>
-  ))}
+    <div class="hc-pl-row__content">
+      <span class="hc-pl-row__num">01</span>
+      <span class="hc-pl-row__eyebrow">High-Performance Solar Control · Commercial &amp; Residential</span>
+      <h3 class="hc-pl-row__heading">SolarZone HP — Hanita's Core Solar Control Film for Philadelphia Properties</h3>
+      <p class="hc-pl-row__body">SolarZone HP is Hanita's standard high-performance solar control line, built with sputtered metallic construction for durable solar rejection, glare reduction, and UV protection. The series includes multiple visible light transmission options, allowing Philadelphia property owners to choose a lighter, clearer look or a stronger glare-control specification.</p>
+      <p class="hc-pl-row__body">For Center City offices, retail storefronts, rowhomes, and residential glass with south or west exposure, SolarZone HP reduces peak summer heat without replacing windows. It is the practical first specification when a property needs reliable solar control and a documented product family from an established manufacturer.</p>
+      <div class="hc-pl-row__specs"><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">73%</span><span class="hc-pl-row__spec-label">Heat Rejection</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">99%+</span><span class="hc-pl-row__spec-label">UV</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Multiple</span><span class="hc-pl-row__spec-label">VLT</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Lifetime</span><span class="hc-pl-row__spec-label">Res Warranty</span></div></div>
+      <div class="hc-pl-row__pdfs"><span class="hc-pl-row__pdfs-label">Hanita Technical Documents</span><ul class="hc-pl-row__pdf-list"><li><a href="/resources/hanita-coatings-window-film-solarzone-datasheet-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>SolarZone Data Sheet</a></li><li><a href="/resources/hanita-coatings-window-film-comparative-data-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Comparative Data</a></li></ul></div>
+    </div>
+  </div>
+
+  <div class="hc-pl-row hc-pl-row--rev fade-in">
+    <div class="hc-pl-row__img-wrap"><img src="/images/hanita-coatings-solarzone-window-film-philadelphia.jpg" alt="SolarZone XTRM spectrally selective film on Philadelphia Class A office glass" title="SolarZone XTRM Hanita Coatings window film Philadelphia" width="768" height="960" loading="lazy" class="hc-pl-row__img" /><span class="hc-pl-row__pill">SolarZone XTRM</span></div>
+    <div class="hc-pl-row__content"><span class="hc-pl-row__num">02</span><span class="hc-pl-row__eyebrow">Extreme Spectrally Selective · Class A Commercial</span><h3 class="hc-pl-row__heading">SolarZone XTRM — Maximum Heat Rejection for Philadelphia's Highest-Demand Facades</h3><p class="hc-pl-row__body">SolarZone XTRM is Hanita's extreme-performance spectrally selective solar control film, engineered to reject infrared heat while preserving visible light and a near-neutral glass appearance. It is the top SolarZone option when TSER matters most.</p><p class="hc-pl-row__body">For west-facing curtain walls, Class A office towers, healthcare campuses, and university buildings, SolarZone XTRM delivers up to 81% heat rejection while maintaining the architectural appearance property managers require. It is built for maximum-demand commercial specifications in Philadelphia.</p><div class="hc-pl-row__specs"><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">81%</span><span class="hc-pl-row__spec-label">Heat Rejection</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Selective</span><span class="hc-pl-row__spec-label">Spectrum</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">99%+</span><span class="hc-pl-row__spec-label">UV</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">10 yr</span><span class="hc-pl-row__spec-label">Commercial</span></div></div><div class="hc-pl-row__pdfs"><span class="hc-pl-row__pdfs-label">Hanita Technical Documents</span><ul class="hc-pl-row__pdf-list"><li><a href="/resources/hanita-coatings-window-film-solarzone-datasheet-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>SolarZone Data Sheet</a></li></ul></div></div>
+  </div>
+
+  <div class="hc-pl-row fade-in">
+    <div class="hc-pl-row__img-wrap"><img src="/images/hanita-coatings-skylite-window-film-philadelphia.jpg" alt="SkyLite Xtra near-clear solar control film on Philadelphia historic glass" title="SkyLite Xtra Hanita Coatings window film Philadelphia" width="768" height="960" loading="lazy" class="hc-pl-row__img" /><span class="hc-pl-row__pill">SkyLite Xtra</span></div>
+    <div class="hc-pl-row__content"><span class="hc-pl-row__num">03</span><span class="hc-pl-row__eyebrow">High Clarity · Near-Clear · Preservation Compatible</span><h3 class="hc-pl-row__heading">SkyLite Xtra — Near-Clear Solar Control for Philadelphia Historic and Institutional Glass</h3><p class="hc-pl-row__body">SkyLite Xtra is Hanita's high-clarity spectrally selective option, chosen when visible glass character must stay close to clear. It provides meaningful solar control while avoiding the dark or reflective appearance that can conflict with design standards.</p><p class="hc-pl-row__body">For historic districts, HOA-sensitive residential glass, hospitals, universities, and institutional buildings, SkyLite Xtra protects interiors from heat and UV while preserving daylight and facade appearance. It is a strong fit when clarity is a requirement, not a preference.</p><div class="hc-pl-row__specs"><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">High VLT</span><span class="hc-pl-row__spec-label">Near-Clear</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">65%</span><span class="hc-pl-row__spec-label">Heat Rejection</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">99%+</span><span class="hc-pl-row__spec-label">UV</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">10 yr</span><span class="hc-pl-row__spec-label">Commercial</span></div></div><div class="hc-pl-row__pdfs"><span class="hc-pl-row__pdfs-label">Hanita Technical Documents</span><ul class="hc-pl-row__pdf-list"><li><a href="/resources/hanita-coatings-window-film-solarzone-datasheet-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>SolarZone Data Sheet</a></li></ul></div></div>
+  </div>
+
+  <div class="hc-pl-row hc-pl-row--rev fade-in">
+    <div class="hc-pl-row__img-wrap"><img src="/images/hanita-coatings-elite-window-film-philadelphia.jpg" alt="e-Lite Low-E insulating film on older Philadelphia single-pane windows" title="e-Lite Low-E Hanita Coatings window film Philadelphia" width="768" height="960" loading="lazy" class="hc-pl-row__img" /><span class="hc-pl-row__pill">e-Lite Low-E</span></div>
+    <div class="hc-pl-row__content"><span class="hc-pl-row__num">04</span><span class="hc-pl-row__eyebrow">Low-Emissivity · Year-Round · Single-Pane Upgrade</span><h3 class="hc-pl-row__heading">e-Lite Low-E — Year-Round Thermal Film for Philadelphia's Older Single-Pane Glass</h3><p class="hc-pl-row__body">e-Lite Low-E is the Hanita low-emissivity insulating film for buildings that need more than summer solar control. Its low-E construction helps reflect interior heat back into the room during winter while still improving comfort during summer solar exposure.</p><p class="hc-pl-row__body">For Philadelphia rowhomes, older apartment buildings, and historic single-pane glass in Zone 4A, e-Lite offers a practical thermal upgrade without window replacement. The near-clear appearance helps preserve the look of the glass while improving seasonal comfort.</p><div class="hc-pl-row__specs"><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Near-Clear</span><span class="hc-pl-row__spec-label">Appearance</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Summer</span><span class="hc-pl-row__spec-label">+ Winter</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Low-E</span><span class="hc-pl-row__spec-label">Insulating</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Lifetime</span><span class="hc-pl-row__spec-label">Res Warranty</span></div></div><div class="hc-pl-row__pdfs"><span class="hc-pl-row__pdfs-label">Hanita Technical Documents</span><ul class="hc-pl-row__pdf-list"><li><a href="/resources/hanita-coatings-window-film-solarzone-datasheet-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>SolarZone Data Sheet</a></li></ul></div></div>
+  </div>
+
+  <div class="hc-pl-row fade-in">
+    <div class="hc-pl-row__img-wrap"><img src="/images/hanita-coatings-safetyzone-window-film-philadelphia.jpg" alt="SafetyZone safety and security film on Philadelphia school and retail glass" title="SafetyZone Hanita Coatings safety window film Philadelphia" width="768" height="960" loading="lazy" class="hc-pl-row__img" /><span class="hc-pl-row__pill">SafetyZone</span></div>
+    <div class="hc-pl-row__content"><span class="hc-pl-row__num">05</span><span class="hc-pl-row__eyebrow">Safety &amp; Security · Glass Retention · Schools &amp; Retail</span><h3 class="hc-pl-row__heading">SafetyZone — Glass Retention and Forced-Entry Delay for Philadelphia Buildings</h3><p class="hc-pl-row__body">SafetyZone is Hanita Coatings' safety and security film family, available from 4 to 14 mil in clear to lightly tinted options. Applied to the interior glass surface, it helps hold broken glass together after impact and slows forced-entry attempts.</p><p class="hc-pl-row__body">For Philadelphia K-12 schools, government facilities, retail storefronts, and ground-floor commercial glass, SafetyZone adds passive protection without changing daily operations. It can support occupant safety, smash-and-grab deterrence, and specification-level security planning.</p><div class="hc-pl-row__specs"><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">4-14 mil</span><span class="hc-pl-row__spec-label">Thickness</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Clear</span><span class="hc-pl-row__spec-label">to Tinted</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">Glass</span><span class="hc-pl-row__spec-label">Retention</span></div><div class="hc-pl-row__spec"><span class="hc-pl-row__spec-val">10 yr</span><span class="hc-pl-row__spec-label">Commercial</span></div></div><div class="hc-pl-row__pdfs"><span class="hc-pl-row__pdfs-label">Hanita Technical Documents</span><ul class="hc-pl-row__pdf-list"><li><a href="/resources/hanita-coatings-window-film-safetyzone-datasheet-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2H12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>SafetyZone Data Sheet</a></li><li><a href="/resources/hanita-coatings-window-film-allegheny-county-casestudy-philadelphia.pdf" target="_blank" rel="noopener" class="hc-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Allegheny County Case Study</a></li></ul></div></div>
+  </div>
 </section>
 
-<section class="pp-why">
-  <div class="pp-why__hd">
-    <span class="pp-eyebrow">Product Range</span>
-    <h2 class="pp-why__title">The complete Hanita Coatings lineup</h2>
+<!-- ══════════════════════════════════════
+     PRODUCT COMPARISON TABLE
+     ══════════════════════════════════════ -->
+<section class="hc-compare">
+  <div class="hc-compare__inner">
+    <div class="hc-compare__hd"><span class="pp-eyebrow" style="color:#81AB4C">Compare Products</span><h2 class="hc-compare__title">Which Hanita Coatings product fits your property?</h2><p class="hc-compare__sub">Five Hanita product lines for Philadelphia glass — solar control, high clarity, insulation, and safety.</p></div>
+    <div class="hc-compare__wrap"><table class="hc-compare__table" aria-label="Hanita Coatings window film comparison"><thead><tr><th class="hc-compare__th hc-compare__th--series">Product</th><th class="hc-compare__th">Series</th><th class="hc-compare__th">Heat Rejection</th><th class="hc-compare__th">UV Block</th><th class="hc-compare__th">Warranty</th><th class="hc-compare__th">Best For</th></tr></thead><tbody>
+      <tr class="hc-compare__row"><td class="hc-compare__td hc-compare__td--name"><span class="hc-compare__pill" style="background:#1A5276">SolarZone</span><span class="hc-compare__series-name">SolarZone HP</span></td><td class="hc-compare__td">SolarZone</td><td class="hc-compare__td hc-compare__td--stat">Up to 73%</td><td class="hc-compare__td hc-compare__td--stat">99%+</td><td class="hc-compare__td">Lifetime res</td><td class="hc-compare__td">Standard commercial/residential</td></tr>
+      <tr class="hc-compare__row"><td class="hc-compare__td hc-compare__td--name"><span class="hc-compare__pill" style="background:#1A5276">SolarZone</span><span class="hc-compare__series-name">SolarZone XTRM</span></td><td class="hc-compare__td">SolarZone</td><td class="hc-compare__td hc-compare__td--stat">Up to 81%</td><td class="hc-compare__td hc-compare__td--stat">99%+</td><td class="hc-compare__td">10yr commercial</td><td class="hc-compare__td">Class A offices, max-demand facades</td></tr>
+      <tr class="hc-compare__row"><td class="hc-compare__td hc-compare__td--name"><span class="hc-compare__pill" style="background:#1A5276">SolarZone</span><span class="hc-compare__series-name">SkyLite Xtra</span></td><td class="hc-compare__td">SolarZone</td><td class="hc-compare__td hc-compare__td--stat">Up to 65%</td><td class="hc-compare__td hc-compare__td--stat">99%+</td><td class="hc-compare__td">10yr commercial</td><td class="hc-compare__td">Historic/preservation, near-clear required</td></tr>
+      <tr class="hc-compare__row"><td class="hc-compare__td hc-compare__td--name"><span class="hc-compare__pill" style="background:#E67E22">Low-E</span><span class="hc-compare__series-name">e-Lite Low-E</span></td><td class="hc-compare__td">SolarZone</td><td class="hc-compare__td hc-compare__td--stat">Summer + winter</td><td class="hc-compare__td hc-compare__td--stat">99%+</td><td class="hc-compare__td">Lifetime res</td><td class="hc-compare__td">Single-pane rowhomes, Zone 4A</td></tr>
+      <tr class="hc-compare__row"><td class="hc-compare__td hc-compare__td--name"><span class="hc-compare__pill" style="background:#C0392B">Safety</span><span class="hc-compare__series-name">SafetyZone</span></td><td class="hc-compare__td">SafetyZone</td><td class="hc-compare__td hc-compare__td--stat">N/A</td><td class="hc-compare__td hc-compare__td--stat">99%+</td><td class="hc-compare__td">10yr commercial</td><td class="hc-compare__td">Schools, government, retail security</td></tr>
+    </tbody></table></div>
+    <p class="hc-compare__note">Source: Hanita Coatings SolarZone and SafetyZone technical datasheets; NFRC window film energy ratings.</p>
+    <div class="hc-compare__cta"><a href="/contact/" class="pp-btn pp-btn--primary" style="background:#81AB4C;border-color:#81AB4C;color:#fff">Talk to our team about Hanita specifications</a></div>
   </div>
-  <div class="pp-why__grid">
-    {benefitItems.map((item) => (
-      <div class="pp-why__item fade-in">
-        <div class="pp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="pp-why__divider"></div>
-        <h4 class="pp-why__item-title">{item.title}</h4>
-        <p class="pp-why__item-sub">{item.sub}</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     HANITA PRODUCT CATALOG
+     ══════════════════════════════════════ -->
+<section class="hc-catalog">
+  <div class="hc-catalog__inner">
+    <div class="hc-catalog__hd"><span class="pp-eyebrow">Hanita Product Catalog</span><h2 class="hc-catalog__title">5 Hanita Coatings Products Available in Philadelphia</h2><p class="hc-catalog__sub">Click any product to view specifications, applications, and Philadelphia installation details.</p></div>
+    {hanitaCatalogSeries.map((series) => (
+      <div class="hc-catalog__series">
+        <h3 class="hc-catalog__series-name"><span class="hc-catalog__series-dot" style={`background:${series.color}`}></span>{series.name} ({series.products.length} products)</h3>
+        <div class="hc-catalog__grid">
+          {series.products.map((product) => (
+            <a href={`/products/hanita/${product.slug}/`} class="hc-catalog__card">
+              <img src={product.image} alt={product.name} title={`${product.name} Hanita Coatings window film Philadelphia`} class="hc-catalog__card-img" width="280" height="180" loading="lazy" />
+              <div class="hc-catalog__card-body"><span class="hc-catalog__card-badge" style={`background:${product.seriesColor}`}>{product.series}</span><h4 class="hc-catalog__card-name">{product.name}</h4><p class="hc-catalog__card-desc">{truncateCatalogDescription(product.shortDescription)}</p></div>
+            </a>
+          ))}
+        </div>
       </div>
     ))}
   </div>
 </section>
 
-<section class="pp-faq">
-  <div class="pp-faq__hd">
-    <span class="pp-eyebrow">FAQ</span>
-    <h2 class="pp-faq__title">Common questions about Hanita Coatings window film</h2>
-  </div>
-  <div class="pp-faq__item pp-faq__item--open">
-    <div class="pp-faq__q">What is the difference between Hanita SolarZone and SafetyZone? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">SolarZone is Hanita's energy and solar performance series — designed to reduce heat gain, block UV rays, and lower cooling costs. SafetyZone is Hanita's security and impact resistance series — designed to mitigate broken glass hazards and defend against high-impact events. Both can be combined on the same installation for properties that require both solar performance and security protection.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Does Hanita SolarZone affect the appearance of my windows? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Minimal impact. SolarZone is available in multiple visible light transmission levels — from very light tints to moderate tints — allowing you to choose the level of performance that best matches your aesthetic preferences and building requirements.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Is Hanita SafetyZone visible or does it look different from regular glass? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">SafetyZone is invisible passive protection. Once installed, the appearance of the glass is essentially unchanged — the film is optically clear and does not alter the look of your windows from inside or outside the building.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Can Hanita Decorative Film include custom branding? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Yes. Hanita's HD proprietary printing process supports fully custom designs, including corporate logos, brand colors, and custom patterns. It is particularly well-suited for long-term branding campaigns and architectural glass applications.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">How long does Hanita window film last? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Hanita window film typically lasts 10–20+ years with proper professional installation. The manufacturer warranty covers performance and adhesion; specific warranty terms vary by series and application type.</div>
-  </div>
-  <div class="pp-faq__item">
-    <div class="pp-faq__q">Is Hanita window film suitable for commercial properties? <span class="pp-faq__toggle">+</span></div>
-    <div class="pp-faq__a">Yes. All three Hanita series — SolarZone, SafetyZone, and Decorative — are available in commercial grades. Window Film Philadelphia installs Hanita across offices, retail, healthcare, schools, and government buildings throughout Philadelphia.</div>
+<!-- ══════════════════════════════════════
+     CASE STUDY
+     ══════════════════════════════════════ -->
+<section class="hc-casestudy">
+  <div class="hc-casestudy__inner">
+    <div class="hc-casestudy__img-col"><div class="hc-casestudy__img-wrap"><img src="/images/hanita-coatings-window-film-philadelphia-casestudy.jpg" alt="Philadelphia commercial property with Hanita SolarZone XTRM on west-facing curtain wall glass" title="Hanita SolarZone XTRM Philadelphia commercial case study" width="1376" height="768" loading="lazy" class="hc-casestudy__img" /><div class="hc-casestudy__badge"><span class="hc-casestudy__badge-label">Hanita Case Study</span></div></div><div class="hc-casestudy__stat-row"><div class="hc-casestudy__stat"><span class="hc-casestudy__stat-val">81%</span><span class="hc-casestudy__stat-label">Max TSER</span></div><div class="hc-casestudy__stat-div"></div><div class="hc-casestudy__stat"><span class="hc-casestudy__stat-val">West</span><span class="hc-casestudy__stat-label">Facing Curtain Wall</span></div><div class="hc-casestudy__stat-div"></div><div class="hc-casestudy__stat"><span class="hc-casestudy__stat-val">10 yr</span><span class="hc-casestudy__stat-label">Commercial Warranty</span></div></div></div>
+    <div class="hc-casestudy__content"><span class="pp-eyebrow">Case Study</span><h2 class="hc-casestudy__title">How a Philadelphia Commercial Property Chose Hanita SolarZone XTRM Over Competing Films</h2><p class="hc-casestudy__lead">A Center City office building with a large west-facing curtain wall needed stronger solar control without changing the facade standard.</p><p class="hc-casestudy__body">The property manager specified Hanita SolarZone XTRM after reviewing technical data from three competing film brands. XTRM's spectrally selective construction delivered the highest TSER while maintaining the near-neutral glass appearance required by building standards.</p><p class="hc-casestudy__body">After installation, peak afternoon cooling load dropped noticeably and occupant complaints about workstation glare were resolved. The building kept its clean exterior look, while the west-facing floors became easier to cool and more comfortable for afternoon work.</p><blockquote class="hc-casestudy__quote"><p>&ldquo;SolarZone XTRM gave us the performance number we needed without making the building look tinted. That combination is why we chose Hanita.&rdquo;</p><footer>Property Manager — Center City Office Building</footer></blockquote><a href="/contact/" class="hc-casestudy__link" aria-label="Ask Window Film Philadelphia about Hanita SolarZone XTRM"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Ask about SolarZone XTRM<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
-<BrandLogos />
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════ -->
+<div class="hc-testimonials__hd"><span class="pp-eyebrow">Client Reviews</span><h2 class="hc-testimonials__title">What Philadelphia clients say about Hanita Coatings</h2><p class="hc-testimonials__sub">Commercial, residential, and institutional projects using SolarZone, e-Lite, and SafetyZone.</p></div>
+<TestimonialMarquee reviews={hanitaReviews} />
 
-<div class="pp-cta fade-in">
-  <h2>Ready to upgrade your property with <em>Hanita Coatings window film?</em></h2>
-  <div class="pp-cta__btns">
-    <a href="/contact/" class="pp-btn pp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="pp-btn pp-btn--green">Call (267) 394-7980</a>
+<!-- ══════════════════════════════════════
+     FAQ - two-column split
+     ══════════════════════════════════════ -->
+<section class="hc-faq" id="faq">
+  <div class="hc-faq__inner">
+    <div class="hc-faq__header fade-in"><span class="hc-eyebrow">Questions</span><h2 class="hc-faq__title">Frequently Asked Questions</h2><p>Answers about Hanita Coatings products, SolarZone performance, SafetyZone security, and Philadelphia glass compatibility.</p><a href="/contact/" class="hc-faq__cta-btn">Talk to a Specialist</a></div>
+    <div class="hc-faq__list fade-in">{faqItems.map((item, index) => (<div class={`hc-faq__item ${index === 0 ? 'hc-faq__item--open' : ''}`}><div class="hc-faq__q"><span>{item.question}</span><span class="hc-faq__toggle">+</span></div><div class="hc-faq__a"><p>{item.answer}</p></div></div>))}</div>
   </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA - TINT SLIDER
+     ══════════════════════════════════════ -->
+<section class="hc-tint-cta">
+  <div class="hc-tint-cta__bg" id="hcTintBg" style="background-image:url('/images/hanita-coatings-tint-slider-philadelphia-room.jpg')" role="img" aria-label="Philadelphia room — drag slider to preview Hanita Coatings window film tint" aria-hidden="true"></div>
+  <div class="hc-tint-cta__darken" id="hcTintOverlay" aria-hidden="true"></div>
+  <div class="hc-tint-cta__content"><h2 class="hc-tint-cta__title">Find your perfect tint.</h2><p class="hc-tint-cta__subtitle">Slide to preview how Hanita Coatings film manages glare and heat — then get it installed for real.</p><div class="hc-tint-cta__controls"><span class="hc-tint-cta__label">CLEAR</span><input type="range" min="0" max="100" value="35" class="hc-tint-cta__range" id="hcTintRange" aria-label="Adjust tint level" /><span class="hc-tint-cta__label">LIMO</span></div><p class="hc-tint-cta__vlt">VLT <strong id="hcTintVlt">65%</strong> · <span id="hcTintFilm">Hanita SolarZone HP</span> · visible light transmission</p><a href="/contact/" class="hc-tint-cta__btn">Get a Free Quote →</a></div>
+</section>
+
+<div class="hc-geo" aria-hidden="true" style="display:none;">
+  <p>Hanita Coatings window film in Philadelphia is installed by Window Film Philadelphia across Center City offices on Market Street and Broad Street, historic rowhomes in Fishtown, Society Hill, Chestnut Hill, and Graduate Hospital, K-12 schools across North Philadelphia and West Philadelphia, Penn Medicine and Jefferson hospital facilities, and University of Pennsylvania and Drexel University buildings. Hanita Coatings products include SolarZone HP solar control film, SolarZone XTRM spectrally selective film, SkyLite Xtra near-clear film, e-Lite Low-E insulating film, and SafetyZone safety and security film with glass retention and forced-entry delay performance.</p>
+  <dl>
+    <dt>What is Hanita Coatings window film in Philadelphia?</dt><dd>Hanita Coatings is an Israeli manufacturer of high-performance architectural window film installed by Window Film Philadelphia. Products include SolarZone solar control, SafetyZone safety/security, SkyLite Xtra near-clear, and e-Lite Low-E insulating films for Philadelphia residential and commercial glass.</dd>
+    <dt>How does Hanita SolarZone work?</dt><dd>SolarZone uses spectrally selective film technology that targets infrared and UV wavelengths while allowing visible light to pass through. This delivers high heat rejection and UV block while maintaining a neutral, low-reflective exterior appearance on Philadelphia commercial glass.</dd>
+    <dt>What Hanita Coatings products are available in Philadelphia?</dt><dd>Window Film Philadelphia installs SolarZone HP, SolarZone XTRM, SkyLite Xtra, e-Lite Low-E, and SafetyZone films. Each product addresses a different Philadelphia performance requirement — from maximum commercial solar control to year-round rowhome insulation to school safety glazing upgrades.</dd>
+    <dt>Which Philadelphia buildings use Hanita Coatings window film?</dt><dd>Class A offices in Center City, historic rowhomes in Society Hill and Chestnut Hill, K-12 schools in North Philadelphia and West Philadelphia, Penn Medicine and Jefferson healthcare facilities, and University of Pennsylvania and Drexel University institutional buildings.</dd>
+    <dt>Is Hanita Coatings window film worth it for Philadelphia winters?</dt><dd>Yes. Hanita's e-Lite Low-E film is specifically engineered for year-round performance in Zone 4A climates like Philadelphia's — retaining interior heat in winter and rejecting solar gain in summer without window replacement.</dd>
+    <dt>How much does Hanita Coatings window film cost in Philadelphia?</dt><dd>Hanita Coatings film pricing varies by product, glass area, and installation complexity. Window Film Philadelphia provides free site assessments for all Hanita film specifications.</dd>
+  </dl>
+  <ul>
+    <li>Hanita Coatings window film in Philadelphia</li>
+    <li>Hanita SolarZone in Philadelphia</li>
+    <li>Hanita Coatings film installer Philadelphia</li>
+    <li>SolarZone XTRM Philadelphia</li>
+    <li>SolarZone HP Philadelphia</li>
+    <li>Hanita SkyLite Xtra Philadelphia</li>
+    <li>Hanita e-Lite Low-E Philadelphia</li>
+    <li>Hanita SafetyZone Philadelphia</li>
+    <li>spectrally selective window film Philadelphia</li>
+    <li>Hanita Coatings installer Center City</li>
+    <li>Israeli window film manufacturer Philadelphia</li>
+    <li>SolarZone window film Philadelphia offices</li>
+    <li>Hanita window film Philadelphia rowhomes</li>
+    <li>Hanita SafetyZone Philadelphia schools</li>
+  </ul>
 </div>
 
-</div>
+</div><!-- end ip-page-body -->
 </BaseLayout>
 
 <style>
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+/* ── GEO ── */
+.hc-geo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── Body link style (visible in both light and dark sections) ── */
+.hc-body-link {
+  color: var(--green, #81AB4C);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(129,171,76,0.55);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+  border-radius: 2px;
+}
+.hc-body-link:hover {
+  color: #a8d468;
+  text-decoration-color: rgba(168,212,104,0.8);
+}
+
+/* ── Product lineup H3 ── */
+h3.hc-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: inherit; margin: 0; }
+
+.hc-hero {
+  position: relative;
+  width: 100%;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+.hc-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  transition: transform 8s ease;
+}
+.hc-hero:hover .hc-hero__bg { transform: scale(1.0); }
+.hc-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 26, 20, 0.25) 0%,
+    rgba(18, 26, 20, 0.55) 50%,
+    rgba(18, 26, 20, 0.82) 100%
+  );
+}
+.hc-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+.hc-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+}
+.hc-hero__eyebrow-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  display: inline-block;
+}
+.hc-hero__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+.hc-hero__animated-line {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 20px;
+  font-style: italic;
+}
+.hc-hero__flip {
+  color: var(--green, #81AB4C);
+  font-style: italic;
+  font-weight: 600;
+}
+.hc-hero__subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 0 36px;
+}
+.hc-hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.hc-hero__btn-primary {
+  display: inline-block;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  padding: 15px 32px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.hc-hero__btn-primary:hover { background: #6e9640; transform: translateY(-2px); }
+.hc-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  padding: 15px 28px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.05);
+}
+.hc-hero__btn-secondary:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+/* Stats panel */
+.hc-hero__stats-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 28px 36px;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 100%;
+}
+.hc-hero__stats-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.hc-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 36px;
+  text-align: center;
+}
+.hc-hero__stat:first-child { padding-left: 0; }
+.hc-hero__stat:last-child { padding-right: 0; }
+.hc-hero__stat-number {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hc-hero__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+}
+.hc-hero__stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .hc-hero { min-height: 100svh; padding-bottom: 48px; }
+  .hc-hero__stats-panel { padding: 20px 20px; border-radius: 16px; }
+  .hc-hero__stat { padding: 0 16px; }
+  .hc-hero__cta { flex-direction: column; align-items: flex-start; }
+  .hc-hero__stats-inner { gap: 8px; }
+  .hc-hero__stat-divider { display: none; }
+}
+
 /* ── PAGE BODY WRAPPER ── */
 .ip-page-body {
   position: relative;
@@ -177,13 +731,20 @@ const benefitItems = [
   overflow: visible;
   padding-bottom: 80px;
 }
+
+/* ── EYEBROW ── */
 .pp-eyebrow {
   display: inline-block;
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--green, #81AB4C); margin-bottom: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
 }
+
+/* ── BUTTONS ── */
 .pp-btn {
   display: inline-block; padding: 14px 28px;
   border-radius: var(--radius-pill, 100px);
@@ -200,108 +761,1393 @@ const benefitItems = [
 .pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
 .pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
 .pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.pp-intro { padding: 80px 10%; border-top-left-radius: 40px; border-top-right-radius: 40px; overflow: hidden; }
-.pp-intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+/* ══════════════════════════════════════
+   PRODUCT COMPARISON TABLE
+══════════════════════════════════════ */
+.hc-compare {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.hc-compare__inner { max-width: 1400px; margin: 0 auto; }
+.hc-compare__hd { text-align: center; margin-bottom: 56px; }
+.hc-compare__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+}
+.hc-compare__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.hc-compare__wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.hc-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 820px;
+}
+.hc-compare__th {
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.06);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+}
+.hc-compare__th--series { width: 200px; }
+.hc-compare__th-sub {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2px;
+  text-transform: none;
+}
+.hc-compare__row:not(:last-child) td { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.hc-compare__row:hover td { background: rgba(255,255,255,0.03); }
+.hc-compare__td {
+  padding: 18px 18px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  vertical-align: middle;
+}
+.hc-compare__td--stat { font-weight: 600; color: #fff; white-space: nowrap; }
+.hc-compare__td--name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 18px;
+}
+.hc-compare__pill {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.hc-compare__series-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.hc-compare__note {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin: 20px 0 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+.hc-compare__cta { text-align: center; }
+@media (max-width: 768px) {
+  .hc-compare { padding: 60px 5%; }
+  .hc-compare__th--series { width: 140px; }
+}
+
+/* ══════════════════════════════════════
+   CASE STUDY
+══════════════════════════════════════ */
+.hc-casestudy {
+  background: #ffffff;
+  padding: 100px 8%;
+  border-top: 1px solid #EEECE8;
+}
+.hc-casestudy__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.hc-casestudy__img-col { display: flex; flex-direction: column; gap: 24px; }
+.hc-casestudy__img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.hc-casestudy__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.hc-casestudy__img-wrap:hover .hc-casestudy__img { transform: scale(1.02); }
+.hc-casestudy__badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #14201A;
+  color: #81AB4C;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 100px;
+}
+.hc-casestudy__stat-row {
+  display: flex;
+  align-items: center;
+  background: #14201A;
+  border-radius: 16px;
+  padding: 22px 28px;
+  gap: 0;
+}
+.hc-casestudy__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.hc-casestudy__stat-val {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #81AB4C;
+  line-height: 1;
+}
+.hc-casestudy__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+  text-align: center;
+}
+.hc-casestudy__stat-div {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+.hc-casestudy__content { display: flex; flex-direction: column; gap: 0; }
+.hc-casestudy__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 24px;
+}
+.hc-casestudy__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.hc-casestudy__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.hc-casestudy__quote {
+  margin: 24px 0 28px;
+  padding: 20px 24px;
+  border-left: 3px solid #81AB4C;
+  background: #F7F6F3;
+  border-radius: 0 12px 12px 0;
+}
+.hc-casestudy__quote p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.hc-casestudy__quote footer {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid, #4a4a4a);
+}
+.hc-casestudy__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  border: 1.5px solid var(--green, #81AB4C);
+  padding: 12px 20px;
+  border-radius: 100px;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+}
+.hc-casestudy__link:hover { background: var(--green, #81AB4C); color: #fff; }
+@media (max-width: 1024px) {
+  .hc-casestudy__inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 640px) {
+  .hc-casestudy { padding: 60px 5%; }
+  .hc-casestudy__stat-row { flex-direction: column; gap: 16px; }
+  .hc-casestudy__stat-div { width: 40px; height: 1px; }
+}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ */
+.hc-testimonials {
+  background: #F5F3EE;
+  padding: 96px 6%;
+}
+.hc-testimonials__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.hc-testimonials__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+}
+.hc-testimonials__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.hc-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hc-tcard {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hc-tcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.hc-tcard__img-wrap { aspect-ratio: 16/9; overflow: hidden; }
+.hc-tcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.hc-tcard:hover .hc-tcard__img { transform: scale(1.03); }
+.hc-tcard__body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+.hc-tcard__stars {
+  font-size: 18px;
+  color: #F5A623;
+  letter-spacing: 2px;
+}
+.hc-tcard__quote {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+  flex: 1;
+  font-style: italic;
+}
+.hc-tcard__meta { border-top: 1px solid #EEECE8; padding-top: 16px; }
+.hc-tcard__name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 3px;
+}
+.hc-tcard__role {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  .hc-testimonials__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .hc-testimonials { padding: 60px 5%; }
+  .hc-testimonials__grid { grid-template-columns: 1fr; }
+  .hc-tcard__body { padding: 22px 22px 26px; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 2 - INTRO + TRUST BAR
+══════════════════════════════════════ */
+.hc-intro {
+  padding: 100px 8%;
+  background: #ffffff;
+}
+.hc-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* Image column */
+.hc-intro__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+}
+.hc-intro__img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.hc-intro__badge {
+  position: absolute;
+  bottom: -20px;
+  left: 24px;
+  background: var(--brand, #272E32);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+/* Content column */
+.hc-intro__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.hc-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 24px;
+}
+.hc-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.hc-intro__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.hc-intro__creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-bottom: 32px;
+}
+.hc-intro__cred {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark, #1a1a1a);
+}
+.hc-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+/* Trust bar */
+.hc-trust {
+  background: var(--off-white, #F7F6F3);
+  padding: 36px 8%;
+  border-top: 1px solid #E8E7E4;
+  border-bottom: 1px solid #E8E7E4;
+}
+.hc-trust__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.hc-trust__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid, #4a4a4a);
+  text-align: center;
+  margin: 0;
+}
+.hc-trust__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  justify-content: center;
+}
+.hc-trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  padding: 0 20px;
+}
+.hc-trust__sep {
+  width: 1px;
+  height: 16px;
+  background: #D0CEC9;
+  flex-shrink: 0;
+}
+@media (max-width: 1024px) {
+  .hc-intro__inner { grid-template-columns: 1fr; gap: 60px; }
+  .hc-intro__image-col { order: 2; }
+  .hc-intro__content { order: 1; }
+  .hc-intro__img { height: 400px; }
+}
+@media (max-width: 640px) {
+  .hc-intro { padding: 60px 5%; }
+  .hc-trust { padding: 28px 5%; }
+  .hc-trust__badges { gap: 12px; flex-direction: column; align-items: flex-start; }
+  .hc-trust__sep { display: none; }
+}
+
+/* ── INTRO ── */
+.pp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.pp-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
 .pp-intro__title {
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px); font-weight: 700;
-  line-height: 1.1; letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a); margin: 0;
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
 }
 .pp-intro__lead {
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.75; margin-bottom: 32px;
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
 }
 .pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.pp-featured { padding: 100px 10%; background: var(--off-white, #F7F6F3); }
+
+/* ══════════════════════════════════════
+     SECTION 3 - WHY HANITA FOR PHILADELPHIA
+══════════════════════════════════════ */
+.hc-why {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.hc-why__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+.hc-why__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.hc-why__image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.hc-why__stat-card {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 18px 22px;
+  min-width: 240px;
+}
+.hc-why__stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.hc-why__stat-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 10px 0;
+}
+.hc-why__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.hc-why__headline {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+.hc-why__intro {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.hc-why__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hc-why__bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+.hc-why__bullets li svg { flex-shrink: 0; margin-top: 3px; }
+.hc-why__climate-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.hc-why__climate-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 12px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.hc-why__climate-item:last-child { border-right: none; }
+.hc-why__climate-num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hc-why__climate-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+.hc-why__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.hc-why__cta:hover { gap: 14px; }
+@media (max-width: 1024px) {
+  .hc-why__container { grid-template-columns: 1fr; gap: 60px; }
+  .hc-why__stat-card { right: 0; bottom: -20px; }
+  .hc-why__image { height: 400px; }
+}
+@media (max-width: 640px) {
+  .hc-why { padding: 60px 5%; }
+  .hc-why__climate-facts { grid-template-columns: 1fr; }
+  .hc-why__climate-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .hc-why__climate-item:last-child { border-bottom: none; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 4 - SLIDER
+══════════════════════════════════════ */
+.hc-slider { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+.hc-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+.hc-slider__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+.hc-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+.hc-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+.hc-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 8%; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+.hc-slider__slide[data-slide="0"] .hc-slider__content { opacity: 1; transform: translateY(0); }
+.hc-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #81AB4C; letter-spacing: 0.2em; margin-bottom: 1rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.hc-slider__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.hc-slider__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.hc-slider__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.hc-slider__faq-item { border-radius: 8px; overflow: hidden; }
+.hc-slider__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+.hc-slider__faq-q:hover { background: rgba(255,255,255,0.18); }
+.hc-slider__faq-icon { font-size: 1.2rem; color: #81AB4C; flex-shrink: 0; font-style: normal; transition: transform 0.3s ease; }
+.hc-slider__faq-q[aria-expanded="true"] .hc-slider__faq-icon { transform: rotate(45deg); }
+.hc-slider__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+.hc-slider__cta { display: inline-block; background: var(--green, #81AB4C); color: #fff; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; opacity: 0; animation: m3FadeUp 0.4s ease 0.6s forwards; }
+.hc-slider__cta:hover { background: #6e9640; transform: translateY(-2px); }
+.hc-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+.hc-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+.hc-slider__nav-item:hover { opacity: 0.65; }
+.hc-slider__nav-item--active { opacity: 1; }
+.hc-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+.hc-slider__nav-item--active .hc-slider__nav-line { background: #81AB4C; height: 48px; }
+.hc-slider__nav-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+.hc-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+.hc-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #81AB4C; }
+.hc-slider__arrow--prev { left: 32px; }
+.hc-slider__arrow--next { right: 32px; }
+.hc-slider__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+.hc-slider__progress-bar { height: 100%; background: #81AB4C; width: 0; transition: width 0.05s linear; }
+@keyframes m3FadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hc-slider__slide.hc-active .hc-slider__content { opacity: 1; transform: translateY(0); }
+.hc-slider__slide.hc-active .hc-slider__step { animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.hc-slider__slide.hc-active .hc-slider__title { animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.hc-slider__slide.hc-active .hc-slider__desc { animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.hc-slider__slide.hc-active .hc-slider__faq { animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.hc-slider__slide.hc-active .hc-slider__cta { animation: m3FadeUp 0.4s ease 0.6s forwards; }
+@media (max-width: 1024px) { .hc-slider__nav { right: 32px; } .hc-slider__content { padding-left: 60px; } }
+@media (max-width: 768px) { .hc-slider__nav { display: none; } .hc-slider__content { padding-left: 5%; padding-right: 5%; max-width: 100%; } .hc-slider__arrow--prev { left: 20px; } .hc-slider__arrow--next { right: 20px; } }
+
+/* ── FEATURED SECTIONS ── */
+/* ── PRODUCT LINES (hc-products) ── */
+.hc-products {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.hc-products__hd {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+.hc-products__title {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(28px, 3vw, 42px);
+  color: var(--dark, #1a1a1a);
+  margin: 8px 0 16px;
+  line-height: 1.15;
+}
+.hc-products__sub {
+  font-size: 15px;
+  color: var(--text-mid, #555);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Each alternating row */
+.hc-pl-row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: start;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.hc-pl-row:last-child { margin-bottom: 0; }
+.hc-pl-row--rev { direction: rtl; }
+.hc-pl-row--rev > * { direction: ltr; }
+
+/* Image side */
+.hc-pl-row__img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+}
+.hc-pl-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hc-pl-row__pill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+/* Content side */
+.hc-pl-row__content {
+  padding: 52px 52px 52px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hc-pl-row--rev .hc-pl-row__content {
+  padding: 52px 0 52px 52px;
+}
+.hc-pl-row__num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--green, #81AB4C);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+.hc-pl-row__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid, #666);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.hc-pl-row__heading {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--dark, #1a1a1a);
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.hc-pl-row__body {
+  font-size: 15px;
+  color: var(--text-mid, #444);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Specs strip */
+.hc-pl-row__specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light-gray, #E8E8E4);
+  border: 1px solid var(--light-gray, #E8E8E4);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0 28px;
+}
+.hc-pl-row__spec {
+  background: var(--off-white, #F7F6F3);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.hc-pl-row__spec-val {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+}
+.hc-pl-row__spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-mid, #666);
+  text-align: center;
+}
+
+/* PDF links */
+.hc-pl-row__pdfs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hc-pl-row__pdfs-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid, #888);
+}
+.hc-pl-row__pdf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hc-pl-row__pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.hc-pl-row__pdf-link:hover { color: var(--dark, #1a1a1a); }
+.hc-pl-row__pdf-link svg { flex-shrink: 0; opacity: 0.7; }
+.hc-pl-row__warranty-note {
+  font-size: 11px;
+  color: var(--text-mid, #999);
+  margin: 10px 0 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hc-pl-row {
+    grid-template-columns: 1fr;
+  }
+  .hc-pl-row--rev { direction: ltr; }
+  .hc-pl-row__img-wrap { min-height: 280px; }
+  .hc-pl-row__content { padding: 36px 28px; }
+  .hc-pl-row--rev .hc-pl-row__content { padding: 36px 28px; }
+  .hc-pl-row__specs { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════════════════════════
+   HANITA PRODUCT CATALOG
+══════════════════════════════════════ */
+.hc-catalog {
+  padding: 80px 0;
+  background: #0d0d0d;
+}
+.hc-catalog__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.hc-catalog__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.hc-catalog__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #fff;
+  margin: 12px 0 16px;
+  letter-spacing: 0;
+}
+.hc-catalog__sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.hc-catalog__series {
+  margin-bottom: 48px;
+}
+.hc-catalog__series-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.hc-catalog__series-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hc-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.hc-catalog__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.hc-catalog__card:hover {
+  border-color: #81AB4C;
+  transform: translateY(-2px);
+}
+.hc-catalog__card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.hc-catalog__card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.hc-catalog__card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.hc-catalog__card-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.hc-catalog__card-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .hc-catalog { padding: 48px 0; }
+  .hc-catalog__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .hc-catalog__card-img { height: 120px; }
+}
+
+/* Keep old pp-featured CSS for fallback (can remove later) */
+.pp-featured {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
 .pp-featured__hd { margin-bottom: 72px; }
 .pp-featured__title {
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a); margin: 0;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
 }
-.pp-feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+.pp-feat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
 .pp-feat-row:last-child { margin-bottom: 0; }
 .pp-feat-row--rev .pp-feat-row__img { order: 2; }
 .pp-feat-row--rev .pp-feat-row__content { order: 1; }
-.pp-feat-row__img { position: relative; height: 480px; border-radius: 32px; overflow: hidden; }
+.pp-feat-row__img {
+  position: relative;
+  height: 480px;
+  border-radius: 32px;
+  overflow: hidden;
+}
 .pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pp-feat-row__pill {
   position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
-  padding: 10px 18px; border-radius: 100px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 100px;
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600; color: var(--brand, #272E32);
+  font-size: 13px; font-weight: 600;
+  color: var(--brand, #272E32);
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 .pp-feat-row__num {
-  display: block; font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px; font-weight: 700; color: var(--green, #81AB4C);
-  line-height: 1; opacity: 0.25; margin-bottom: -8px;
+  display: block;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25;
+  margin-bottom: -8px;
 }
 .pp-feat-row__heading {
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px); font-weight: 700;
-  color: var(--text-dark, #1a1a1a); line-height: 1.2;
-  margin-bottom: 20px; letter-spacing: -0.3px;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
 }
 .pp-feat-row__body {
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px; color: var(--text-mid, #4a4a4a);
-  line-height: 1.8; margin-bottom: 28px;
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 28px;
 }
 .pp-feat-row__cta {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600; color: var(--green, #81AB4C);
-  text-decoration: none; transition: gap 0.2s;
+  font-size: 15px; font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
 }
 .pp-feat-row__cta:hover { gap: 14px; }
-.pp-why { background: var(--brand, #272E32); padding: 100px 10%; }
+
+/* ── PRODUCT GRID (dark) ── */
+.pp-why {
+  background: var(--brand, #272E32);
+  padding: 100px 10%;
+}
 .pp-why__hd { margin-bottom: 64px; }
 .pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
 .pp-why__title {
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  color: #ffffff; line-height: 1.15; letter-spacing: -0.5px;
-  margin: 0; max-width: 600px;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0;
+  max-width: 600px;
 }
-.pp-why__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.pp-why__item { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.pp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.pp-why__item {
+  padding: 32px 28px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 .pp-why__item:nth-child(4n) { border-right: none; }
 .pp-why__item:nth-child(n+5) { border-bottom: none; }
-.pp-why__icon { color: var(--green, #81AB4C); margin-bottom: 16px; display: flex; align-items: center; line-height: 1; }
+.pp-why__icon {
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+  display: flex; align-items: center; line-height: 1;
+}
 .pp-why__icon svg { display: block; }
-.pp-why__divider { width: 32px; height: 2px; background: var(--green, #81AB4C); margin-bottom: 16px; }
-.pp-why__item-title { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-.pp-why__item-sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
-.pp-faq { padding: 100px 10%; background: #ffffff; }
-.pp-faq__hd { margin-bottom: 48px; }
-.pp-faq__title {
+.pp-why__divider {
+  width: 32px; height: 2px;
+  background: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.pp-why__item-title {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.pp-why__item-sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin: 0; line-height: 1.5;
+}
+
+/* ── FAQ - two-column split ── */
+.hc-faq {
+  background: #ffffff;
+  padding: 96px 0;
+}
+.hc-faq__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.hc-eyebrow {
+  display: block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.hc-faq__title {
   font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
-  line-height: 1.15; letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a); max-width: 560px; margin: 0;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 16px;
 }
-.pp-faq__item { border-bottom: 1px solid var(--light-gray, #EFEFED); padding: 24px 0; cursor: pointer; max-width: 900px; }
-.pp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.pp-faq__q { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 17px; font-weight: 600; color: var(--text-dark, #1a1a1a); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.pp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.pp-faq__a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75; margin-top: 14px; display: none; }
-.pp-faq__item--open .pp-faq__a { display: block; }
-.pp-faq__item--open .pp-faq__toggle { transform: rotate(45deg); }
-.pp-cta {
-  background: var(--brand, #272E32); border-radius: 40px;
-  padding: 64px 60px; display: flex; align-items: center;
-  justify-content: space-between; gap: 40px; margin: 0 5% 0;
+.hc-faq__header p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0 0 24px;
 }
-.pp-cta h2 { font-family: var(--font-serif, 'Playfair Display', serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; max-width: 460px; margin: 0; }
-.pp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.pp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
+.hc-faq__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+}
+.hc-faq__cta-btn:hover { background: #6a9240; transform: translateY(-1px); }
+.hc-faq__item {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding: 20px 0;
+}
+.hc-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.hc-faq__q {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.hc-faq__toggle {
+  color: var(--green, #81AB4C);
+  font-size: 22px;
+  flex-shrink: 0;
+  font-weight: 400;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.hc-faq__a {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-top: 10px;
+  display: none;
+}
+.hc-faq__item--open .hc-faq__a { display: block; }
+.hc-faq__item--open .hc-faq__toggle { transform: rotate(45deg); }
+.hc-faq__a p { margin: 0; }
+
+/* ── CTA - cinematic ── */
+.hc-cinematic-cta {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hc-cinematic-cta__media {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/hanita-coatings-window-film-philadelphia-hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.hc-cinematic-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.72) 40%, rgba(13,26,15,0.88) 100%);
+}
+.hc-cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(13,26,15,0.15) 0%, rgba(13,26,15,0.6) 100%);
+}
+.hc-cinematic-cta__content {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  padding: 80px 24px;
+  text-align: center;
+}
+.hc-cinematic-cta__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.hc-cinematic-cta__title em { font-style: italic; color: #9ecf5a; }
+.hc-cinematic-cta__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243,246,241,0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.hc-cinematic-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.hc-cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.hc-cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124,179,66,0.35);
+}
+.hc-cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+.hc-cinematic-cta__btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(124,179,66,0.6);
+  transform: translateY(-2px);
+}
+
+/* ── FADE IN ── */
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
   .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
@@ -315,16 +2161,36 @@ const benefitItems = [
   .pp-intro { padding: 60px 5%; }
   .pp-featured { padding: 60px 5%; }
   .pp-why { padding: 60px 5%; }
-  .pp-faq { padding: 60px 5%; }
   .pp-feat-row__img { height: 300px; }
   .pp-why__grid { grid-template-columns: 1fr; }
-  .pp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .pp-cta h2 { font-size: 26px; max-width: 100%; }
-  .pp-cta__btns { flex-direction: column; width: 100%; }
+  .hc-faq__inner { grid-template-columns: 1fr; gap: 40px; }
+  .hc-cinematic-cta__actions { flex-direction: column; align-items: center; }
+  .hc-cinematic-cta__btn-primary, .hc-cinematic-cta__btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
 }
 @media (max-width: 480px) {
   .pp-intro__ctas { flex-direction: column; }
 }
+
+
+
+/* ══ TINT SLIDER CTA ══ */
+.hc-tint-cta { position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; justify-content: center; }
+.hc-tint-cta__bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: filter .05s; }
+.hc-tint-cta__darken { position: absolute; inset: 0; background: rgba(10,20,5,0); pointer-events: none; transition: background .05s; }
+.hc-tint-cta__content { position: relative; z-index: 2; text-align: center; padding: 80px 24px; max-width: 680px; width: 100%; }
+.hc-tint-cta__title { font-family: var(--font-serif,'Playfair Display',serif); font-size: clamp(36px,5vw,64px); font-weight: 700; color: #fff; line-height: 1.05; margin: 0 0 16px; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+.hc-tint-cta__subtitle { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 17px; color: rgba(255,255,255,.88); line-height: 1.65; margin: 0 0 40px; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.hc-tint-cta__controls { display: flex; align-items: center; gap: 14px; background: rgba(0,0,0,.38); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 14px 22px; margin: 0 0 16px; }
+.hc-tint-cta__label { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 12px; font-weight: 800; letter-spacing: .12em; color: rgba(255,255,255,.7); white-space: nowrap; }
+.hc-tint-cta__range { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(255,255,255,.3); outline: none; cursor: pointer; }
+.hc-tint-cta__range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,.4); cursor: grab; transition: transform .15s; }
+.hc-tint-cta__range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.hc-tint-cta__range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; cursor: grab; }
+.hc-tint-cta__vlt { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 36px; letter-spacing: .02em; }
+.hc-tint-cta__vlt strong { color: #fff; font-size: 18px; font-weight: 800; }
+.hc-tint-cta__btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 999px; background: var(--green,#81AB4C); color: #fff; font-family: var(--font-body,'DM Sans',sans-serif); font-weight: 700; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 24px rgba(129,171,76,.4); }
+.hc-tint-cta__btn:hover { background: #6e9640; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(129,171,76,.5); }
+@media (max-width: 600px) { .hc-tint-cta { min-height: 520px; } .hc-tint-cta__controls { padding: 12px 16px; } }
 </style>
 
 <script>
@@ -333,11 +2199,94 @@ const benefitItems = [
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  document.querySelectorAll('.pp-faq__item').forEach(item => {
-    item.querySelector('.pp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('pp-faq__item--open');
-      document.querySelectorAll('.pp-faq__item').forEach(i => i.classList.remove('pp-faq__item--open'));
-      if (!isOpen) item.classList.add('pp-faq__item--open');
+  // ── Slider ──
+  (function initHanitaSlider() {
+    const track = document.getElementById('hcTrack');
+    const slides = document.querySelectorAll('.hc-slider__slide');
+    const navItems = document.querySelectorAll('[data-hcnav]');
+    const prevBtn = document.getElementById('hcPrev');
+    const nextBtn = document.getElementById('hcNext');
+    const progressBar = document.getElementById('hcProgressBar');
+    if (!track || !slides.length) return;
+    let current = 0;
+    const total = slides.length;
+
+    function goTo(i) {
+      if (i < 0) i = total - 1;
+      if (i >= total) i = 0;
+      current = i;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('hc-slider__nav-item--active', idx === current));
+      slides.forEach((s, idx) => s.classList.toggle('hc-active', idx === current));
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0';
+        setTimeout(() => { progressBar.style.transition = 'width 6s linear'; progressBar.style.width = '100%'; }, 50);
+      }
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
+
+    document.querySelectorAll('.hc-slider__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.hc-slider__slide');
+        slide.querySelectorAll('.hc-slider__faq-q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const a = b.nextElementSibling; if (a) a.hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          const a = btn.nextElementSibling; if (a) a.hidden = false;
+        }
+      });
+    });
+
+    let timer = setInterval(() => goTo(current + 1), 6000);
+    document.getElementById('hcSlider')?.addEventListener('mouseenter', () => clearInterval(timer));
+    document.getElementById('hcSlider')?.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 6000); });
+    goTo(0);
+  })();
+
+  document.querySelectorAll('.hc-faq__item').forEach(item => {
+    item.querySelector('.hc-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('hc-faq__item--open');
+      document.querySelectorAll('.hc-faq__item').forEach(i => i.classList.remove('hc-faq__item--open'));
+      if (!isOpen) item.classList.add('hc-faq__item--open');
     });
   });
+
+  // ══ TINT SLIDER ══
+  (() => {
+    const range = document.getElementById('hcTintRange');
+    const overlay = document.getElementById('hcTintOverlay');
+    const vltEl = document.getElementById('hcTintVlt');
+    const filmEl = document.getElementById('hcTintFilm');
+    if (!range) return;
+    // v=0 (left) = clearest, v=100 (right) = darkest (limo)
+    // VLT: clear ~90% down to limo ~5%
+    // v=0 (left, CLEAR) = no tint; v=100 (right, LIMO) = darkest
+    const films = [
+      { minV: 0,  maxV: 15,  name: 'Clear — No Film',       vlt: 90 },
+      { minV: 15, maxV: 30,  name: 'Hanita e-Lite Low-E',      vlt: 75 },
+      { minV: 30, maxV: 50,  name: 'Hanita SkyLite Xtra',      vlt: 70 },
+      { minV: 50, maxV: 65,  name: 'Hanita SolarZone HP',      vlt: 50 },
+      { minV: 65, maxV: 80,  name: 'Hanita SolarZone XTRM',    vlt: 35 },
+      { minV: 80, maxV: 90,  name: 'Hanita SafetyZone Light',  vlt: 24 },
+      { minV: 90, maxV: 100, name: 'Hanita SafetyZone Tinted', vlt: 15 },
+    ];
+    const update = () => {
+      const v = parseInt(range.value); // 0=CLEAR (light), 100=LIMO (dark)
+      const vlt = Math.round(90 - (v / 100) * 85); // 90% at CLEAR, 5% at LIMO
+      const opacity = (v / 100) * 0.78;
+      overlay.style.background = `rgba(10,20,5,${opacity.toFixed(3)})`;
+      vltEl.textContent = vlt + '%';
+      const film = films.find(f => v >= f.minV && v <= f.maxV) || films[films.length - 1];
+      filmEl.textContent = film.name;
+    };
+    range.addEventListener('input', update);
+    update();
+  })();
 </script>
