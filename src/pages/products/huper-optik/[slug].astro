@@ -1,0 +1,755 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import products from '../../../data/huper-optik-products.json';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product: p } = Astro.props;
+const serviceUrl = `https://www.windowfilmphiladelphia.net/products/huper-optik/${p.slug}/`;
+const title = `Huper Optik ${p.name} Window Film Philadelphia | Certified Installer`;
+const description = `${p.shortDescription} Window Film Philadelphia is a certified Huper Optik installer serving Philadelphia and surrounding areas.`;
+const descriptionParagraphs = p.description.split('\n\n').slice(0, 4);
+const specRows = [
+  ['VLT', p.specs.vlt],
+  ['IR Rejection', p.specs.irRejection],
+  ['UV Block', p.specs.uvBlock],
+  ['Thickness', p.specs.thickness],
+  ['Warranty', p.specs.warranty],
+  ['Series', p.series],
+  ['Brand', 'Huper Optik'],
+  ['Construction', p.series.includes('Ceramic') || p.series.includes('Select') || p.series.includes('Fusion') ? 'TiN Ceramic / Metal-Free' : p.series.includes('Therm-X') ? 'Low-Emissivity Insulating' : p.series.includes('Shield') ? 'Safety / Glass Retention' : 'Architectural Film'],
+].filter(([, value]) => Boolean(value));
+const statChips = [
+  ['VLT', p.specs.vlt],
+  ['IR Rejection', p.specs.irRejection],
+  ['UV Block', p.specs.uvBlock],
+  ['Thickness', p.specs.thickness],
+].filter(([, value]) => Boolean(value));
+const relatedProducts = p.relatedSlugs
+  .map((slug) => products.find((item) => item.slug === slug))
+  .filter(Boolean);
+const categoryText = `${p.categories.join(' ')} ${p.series}`.toLowerCase();
+
+// Application use cases per product type
+const applications = categoryText.includes('safety') || categoryText.includes('security')
+  ? [
+      ['Schools and Campuses', 'Glass fragment retention and forced-entry delay for Philadelphia school entry doors, sidelites, and shared common spaces.'],
+      ['Government Buildings', 'Discreet retrofit safety film for public-facing glass in Philadelphia City Hall, civic buildings, and administrative offices.'],
+      ['Retail Storefronts', 'Smash-and-grab deterrence for Philadelphia storefronts on Walnut Street, Chestnut Street, and high-value commercial corridors.'],
+    ]
+  : categoryText.includes('insulation') || categoryText.includes('therm')
+    ? [
+        ['Philadelphia Rowhomes', 'Year-round thermal improvement for Fishtown, South Philly, Fairmount, and Graduate Hospital rowhomes with older single-pane glass.'],
+        ['Historic Properties', 'Interior-surface insulating upgrade for Philadelphia preservation district buildings where window replacement is restricted by guidelines.'],
+        ['Apartments and Condos', 'Low-E performance upgrade for Philadelphia multi-unit buildings with aging single-pane glass and zone-4A climate exposure.'],
+      ]
+    : categoryText.includes('fusion') || categoryText.includes('privacy')
+      ? [
+          ['Retail Storefronts', 'Solar control and daytime privacy for Walnut Street boutiques, Old City galleries, and South Street storefronts facing heavy foot traffic.'],
+          ['Restaurants and Cafés', 'Street-facing window management for Rittenhouse Square, Fishtown, and East Passyunk restaurants balancing ambiance with solar comfort.'],
+          ['Conference Rooms', 'Daytime privacy for street-level conference rooms, professional offices, and medical suites on Philadelphia commercial corridors.'],
+        ]
+      : [
+          ['Center City Offices', 'Glare and solar control for Philadelphia Class A office towers, boutique suites, and corporate campuses from Market Street to University City.'],
+          ['Philadelphia Rowhomes', 'UV and heat management for Fishtown, Chestnut Hill, Rittenhouse, and Graduate Hospital residences without window replacement.'],
+          ['Retail and Restaurants', 'Comfortable customer-facing glass with solar control for Walnut Street, Passyunk, East Girard, and Old City storefronts.'],
+        ];
+
+const faqItems = [
+  {
+    question: `What is Huper Optik ${p.name} used for in Philadelphia?`,
+    answer: `${p.name} is used for ${p.categories.join(', ').toLowerCase()} applications across Philadelphia homes, offices, storefronts, schools, and commercial properties. It belongs to the ${p.series} and is selected based on glass type, orientation, privacy goals, and performance requirements.`,
+  },
+  {
+    question: `What are the key specifications for Huper Optik ${p.name}?`,
+    answer: `Key specifications include ${specRows.slice(0, 4).map(([label, value]) => `${label}: ${value}`).join('; ')}. Window Film Philadelphia confirms final compatibility during the site assessment before recommending any Huper Optik product.`,
+  },
+  {
+    question: `Who installs Huper Optik ${p.name} in Philadelphia?`,
+    answer: `Window Film Philadelphia is a certified Huper Optik installer serving Philadelphia and the surrounding area. We evaluate the glass, document the product selection, and install Huper Optik films according to manufacturer guidance.`,
+  },
+  {
+    question: `Does Huper Optik ${p.name} interfere with Wi-Fi, GPS, or cellular signals?`,
+    answer: p.series.includes('Shield') || p.series.includes('Therm') || p.series.includes('Traditional') || p.series.includes('Dekorativ')
+      ? `Signal interference depends on the film construction. Contact Window Film Philadelphia to discuss the specific installation environment and signal concerns during your site assessment.`
+      : `No. Huper Optik's TiN ceramic construction is 100% metal-free — it does not affect Wi-Fi, GPS, cellular networks, smart-home signals, or electronic key fobs.`,
+  },
+];
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 3, name: 'Huper Optik', item: 'https://www.windowfilmphiladelphia.net/products/huper-optik/' },
+      { '@type': 'ListItem', position: 4, name: `Huper Optik ${p.name}`, item: serviceUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `Huper Optik ${p.name}`,
+    brand: { '@type': 'Brand', name: 'Huper Optik' },
+    image: `https://www.windowfilmphiladelphia.net${p.image}`,
+    description: p.shortDescription,
+    category: p.series,
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      areaServed: 'Philadelphia, PA',
+      url: serviceUrl,
+    },
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={p.image}
+  serviceName={`Huper Optik ${p.name}`}
+  serviceDesc={description}
+  serviceUrl={serviceUrl}
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
+  <!-- HERO -->
+  <section class="hosub-hero" style={`--hosub-hero-image: url('${p.image}'); --hosub-series: ${p.seriesColor};`}>
+    <div class="hosub-hero__overlay"></div>
+    <div class="hosub-hero__inner">
+      <span class="hosub-badge" style={`background:${p.seriesColor}`}>{p.series}</span>
+      <h1 class="hosub-hero__title">Huper Optik {p.name}</h1>
+      <p class="hosub-hero__sub">Philadelphia's certified Huper Optik installer — precision film selection, professional installation, manufacturer warranty.</p>
+      {statChips.length > 0 && (
+        <div class="hosub-stat-row" aria-label="Product specifications">
+          {statChips.map(([label, value]) => (
+            <span class="hosub-stat"><strong>{value}</strong> {label}</span>
+          ))}
+        </div>
+      )}
+      <div class="hosub-hero__btns">
+        <a href="/contact/" class="hosub-btn">Get a Quote</a>
+        {p.pdfUrl && (
+          <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer" class="hosub-btn hosub-btn--outline">Spec Sheet PDF</a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="hosub-overview fade-in">
+    <div class="hosub-overview__inner">
+      <div class="hosub-overview__image-wrap">
+        <img
+          src={p.image}
+          alt={`Huper Optik ${p.name} window film installed in Philadelphia`}
+          title={`Huper Optik ${p.name} Philadelphia`}
+          width="640"
+          height="480"
+          loading="lazy"
+          class="hosub-overview__image"
+        />
+      </div>
+      <div class="hosub-overview__content">
+        <span class="hosub-eyebrow">{p.series}</span>
+        <h2>About Huper Optik {p.name}</h2>
+        {descriptionParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="hosub-tags" aria-label="Product categories">
+          {p.categories.map((category) => <span class="hosub-tag">{category}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="hosub-benefits fade-in">
+    <div class="hosub-section-head">
+      <span class="hosub-eyebrow hosub-eyebrow--light">Key Benefits</span>
+      <h2>What Huper Optik {p.name} Delivers</h2>
+    </div>
+    <div class="hosub-benefits__grid">
+      {p.benefits.map((benefit) => (
+        <article class="hosub-benefit">
+          <span class="hosub-benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+              <path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8.5 12l2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <h3>{benefit.heading}</h3>
+          <p>{benefit.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  {specRows.length > 0 && (
+    <section class="hosub-specs fade-in">
+      <div class="hosub-specs__inner">
+        <div class="hosub-specs__left">
+          <span class="hosub-eyebrow">Technical Data</span>
+          <h2>{p.name} Specifications</h2>
+          <p>All specifications are for reference and subject to glass type, configuration, and installation conditions. Window Film Philadelphia verifies compatibility during your site assessment.</p>
+          {p.pdfUrl && (
+            <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer" class="hosub-pdf-link">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+                <path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M14 3v6h6M12 18v-6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Download {p.name} Spec Sheet
+            </a>
+          )}
+        </div>
+        <table class="hosub-specs__table">
+          <tbody>
+            {specRows.map(([label, value]) => (
+              <tr><th>{label}</th><td>{value}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <!-- APPLICATIONS -->
+  <section class="hosub-apps fade-in">
+    <div class="hosub-section-head">
+      <span class="hosub-eyebrow">Local Use Cases</span>
+      <h2>Philadelphia Applications</h2>
+    </div>
+    <div class="hosub-apps__grid">
+      {applications.map(([heading, body]) => (
+        <article class="hosub-app">
+          <span class="hosub-app__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+              <path d="M4 21V5l8-3 8 3v16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 21v-6h6v6M8 8h.01M12 8h.01M16 8h.01M8 12h.01M16 12h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <h3>{heading}</h3>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  {relatedProducts.length > 0 && (
+    <section class="hosub-related fade-in">
+      <div class="hosub-section-head">
+        <span class="hosub-eyebrow">Related Products</span>
+        <h2>Other Huper Optik Options</h2>
+      </div>
+      <div class="hosub-related__grid">
+        {relatedProducts.map((item) => (
+          <a href={`/products/huper-optik/${item.slug}/`} class="hosub-related__card">
+            <img
+              src={item.image}
+              alt={`Huper Optik ${item.name} window film Philadelphia`}
+              title={`Huper Optik ${item.name} Philadelphia`}
+              width="280"
+              height="180"
+              loading="lazy"
+            />
+            <div class="hosub-related__card-body">
+              <span class="hosub-related__series" style={`color:${item.seriesColor}`}>{item.series}</span>
+              <h3>{item.name}</h3>
+              <p>{item.shortDescription.slice(0, 100)}…</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <a href="/products/huper-optik/" class="hosub-related__all">View all Huper Optik products →</a>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="hosub-cta fade-in">
+    <div class="hosub-cta__inner">
+      <h2>Install Huper Optik {p.name} in Philadelphia</h2>
+      <p>Window Film Philadelphia is a certified Huper Optik installer. Contact us for a free site assessment and product recommendation.</p>
+      <a href="/contact/" class="hosub-cta__btn">Get a Free Quote</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ──────────────────────────────────────────
+     HERO
+  ────────────────────────────────────────── */
+  .hosub-hero {
+    min-height: 580px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 140px 24px 100px;
+    background-image: var(--hosub-hero-image);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden;
+  }
+  .hosub-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.84), rgba(0,0,0,0.52)), rgba(0,0,0,0.3);
+  }
+  .hosub-hero__inner {
+    position: relative;
+    width: min(1120px, 100%);
+    z-index: 1;
+  }
+  .hosub-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    border-radius: 999px;
+    padding: 5px 14px;
+    color: #fff;
+    font: 700 0.74rem/1 var(--font-body, 'DM Sans', sans-serif);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .hosub-hero__title {
+    max-width: 880px;
+    margin: 18px 0 12px;
+    color: #fff;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(2.6rem, 6vw, 5.4rem);
+    line-height: 0.95;
+    letter-spacing: 0;
+  }
+  .hosub-hero__sub {
+    max-width: 560px;
+    margin: 0 0 22px;
+    color: rgba(255,255,255,0.72);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .hosub-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .hosub-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    min-height: 42px;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 8px;
+    padding: 8px 14px;
+    background: rgba(0,0,0,0.34);
+    color: rgba(255,255,255,0.72);
+    font-size: 0.82rem;
+  }
+  .hosub-stat strong { color: #fff; font-size: 1rem; }
+  .hosub-hero__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .hosub-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 6px;
+    padding: 0 26px;
+    background: #81AB4C;
+    color: #fff;
+    text-decoration: none;
+    font: 800 0.92rem/1 var(--font-body, 'DM Sans', sans-serif);
+    letter-spacing: 0.02em;
+    transition: background 0.18s;
+  }
+  .hosub-btn:hover { background: #6b9340; }
+  .hosub-btn--outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.9);
+  }
+  .hosub-btn--outline:hover { background: rgba(255,255,255,0.08); }
+
+  /* ──────────────────────────────────────────
+     SHARED ATOMS
+  ────────────────────────────────────────── */
+  .hosub-eyebrow {
+    display: inline-block;
+    color: #81AB4C;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .hosub-eyebrow--light { color: rgba(255,255,255,0.55); }
+  .hosub-section-head {
+    width: min(960px, 100%);
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+  .hosub-section-head h2 {
+    margin: 0;
+    color: #151515;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(1.9rem, 3vw, 2.9rem);
+    line-height: 1.07;
+  }
+
+  /* ──────────────────────────────────────────
+     OVERVIEW
+  ────────────────────────────────────────── */
+  .hosub-overview {
+    padding: 86px 24px;
+    background: #fff;
+  }
+  .hosub-overview__inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: center;
+  }
+  .hosub-overview__image-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.16);
+    background: #111;
+    aspect-ratio: 4 / 3;
+  }
+  .hosub-overview__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hosub-overview__content h2 {
+    margin: 0 0 18px;
+    color: #151515;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.08;
+  }
+  .hosub-overview__content p {
+    color: #444;
+    line-height: 1.75;
+    margin: 0 0 14px;
+  }
+  .hosub-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .hosub-tag {
+    border: 1px solid #dce5d3;
+    border-radius: 999px;
+    padding: 6px 13px;
+    color: #2f431d;
+    background: #f6faf1;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  /* ──────────────────────────────────────────
+     BENEFITS
+  ────────────────────────────────────────── */
+  .hosub-benefits {
+    padding: 86px 24px;
+    background: #161616;
+  }
+  .hosub-benefits .hosub-section-head h2 { color: #fff; }
+  .hosub-benefits__grid {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .hosub-benefit {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 28px;
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.72);
+  }
+  .hosub-benefit__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: rgba(129,171,76,0.14);
+    color: #81AB4C;
+  }
+  .hosub-benefit h3 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1.04rem;
+    line-height: 1.3;
+  }
+  .hosub-benefit p { margin: 0; line-height: 1.64; }
+
+  /* ──────────────────────────────────────────
+     SPECS
+  ────────────────────────────────────────── */
+  .hosub-specs {
+    padding: 86px 24px;
+    background: #fff;
+  }
+  .hosub-specs__inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: start;
+  }
+  .hosub-specs__left h2 {
+    margin: 0 0 14px;
+    color: #151515;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.08;
+  }
+  .hosub-specs__left p {
+    color: #555;
+    line-height: 1.68;
+    margin: 0 0 20px;
+  }
+  .hosub-pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1.5px solid #81AB4C;
+    border-radius: 6px;
+    color: #2f431d;
+    text-decoration: none;
+    font: 700 0.88rem/1 var(--font-body, 'DM Sans', sans-serif);
+    transition: background 0.18s;
+  }
+  .hosub-pdf-link:hover { background: #f6faf1; }
+  .hosub-specs__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .hosub-specs__table th,
+  .hosub-specs__table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: left;
+    vertical-align: top;
+  }
+  .hosub-specs__table tr:last-child th,
+  .hosub-specs__table tr:last-child td { border-bottom: 0; }
+  .hosub-specs__table th {
+    width: 40%;
+    color: #222;
+    background: #f5f7f2;
+    font-weight: 800;
+    font-size: 0.88rem;
+  }
+  .hosub-specs__table td { color: #444; font-size: 0.92rem; }
+
+  /* ──────────────────────────────────────────
+     APPLICATIONS
+  ────────────────────────────────────────── */
+  .hosub-apps {
+    padding: 86px 24px;
+    background: #f4f7f0;
+  }
+  .hosub-apps__grid {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .hosub-app {
+    background: #fff;
+    border: 1px solid #dde5d5;
+    border-radius: 10px;
+    padding: 28px;
+    color: #4a4a4a;
+  }
+  .hosub-app__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: rgba(129,171,76,0.1);
+    color: #81AB4C;
+  }
+  .hosub-app h3 {
+    margin: 0 0 10px;
+    color: #171717;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1.04rem;
+    line-height: 1.3;
+  }
+  .hosub-app p { margin: 0; line-height: 1.62; }
+
+  /* ──────────────────────────────────────────
+     RELATED
+  ────────────────────────────────────────── */
+  .hosub-related {
+    padding: 86px 24px;
+    background: #fff;
+  }
+  .hosub-related__grid {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .hosub-related__card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    background: #fff;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .hosub-related__card:hover {
+    transform: translateY(-3px);
+    border-color: #81AB4C;
+  }
+  .hosub-related__card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .hosub-related__card-body {
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+  .hosub-related__series {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hosub-related__card h3 {
+    margin: 0 0 6px;
+    color: #151515;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1.02rem;
+    line-height: 1.3;
+  }
+  .hosub-related__card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+  .hosub-related__all {
+    display: table;
+    margin: 30px auto 0;
+    color: #2f431d;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 0.94rem;
+  }
+  .hosub-related__all:hover { color: #81AB4C; }
+
+  /* ──────────────────────────────────────────
+     CTA
+  ────────────────────────────────────────── */
+  .hosub-cta {
+    padding: 80px 24px;
+    background: #81AB4C;
+    color: #fff;
+  }
+  .hosub-cta__inner {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hosub-cta h2 {
+    margin: 0 0 14px;
+    color: #fff;
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    line-height: 1.08;
+  }
+  .hosub-cta p {
+    max-width: 620px;
+    margin: 0 auto 28px;
+    color: rgba(255,255,255,0.88);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  .hosub-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border-radius: 6px;
+    padding: 0 30px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font: 800 0.95rem/1 var(--font-body, 'DM Sans', sans-serif);
+    transition: background 0.18s;
+  }
+  .hosub-cta__btn:hover { background: #2f431d; }
+
+  /* ──────────────────────────────────────────
+     RESPONSIVE
+  ────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hosub-hero { min-height: 520px; padding-top: 120px; }
+    .hosub-overview__inner,
+    .hosub-specs__inner { grid-template-columns: 1fr; }
+    .hosub-benefits__grid,
+    .hosub-apps__grid,
+    .hosub-related__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 620px) {
+    .hosub-hero { padding: 110px 18px 72px; }
+    .hosub-stat { width: 100%; justify-content: space-between; }
+    .hosub-overview,
+    .hosub-benefits,
+    .hosub-specs,
+    .hosub-apps,
+    .hosub-related,
+    .hosub-cta { padding: 58px 18px; }
+    .hosub-benefit,
+    .hosub-app { padding: 22px; }
+    .hosub-benefits__grid,
+    .hosub-apps__grid,
+    .hosub-related__grid { grid-template-columns: 1fr; }
+    .hosub-specs__table th,
+    .hosub-specs__table td { padding: 12px; }
+    .hosub-hero__btns { flex-direction: column; }
+    .hosub-btn { width: 100%; }
+  }
+</style>
