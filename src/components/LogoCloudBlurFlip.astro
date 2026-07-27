@@ -34,9 +34,13 @@ const {
   </div>
   <div class="lcbf__grid">
     {items.map((logo, i) => (
-      <div class="lcbf__cell" style={`--d:${i * 70}ms`}>
-        <img src={logo.src} alt={logo.alt} loading="lazy" />
-      </div>
+      logo.href
+        ? <a class="lcbf__cell" href={logo.href} style={`--d:${i * 70}ms`}>
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </a>
+        : <div class="lcbf__cell" style={`--d:${i * 70}ms`}>
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
     ))}
   </div>
 </section>
