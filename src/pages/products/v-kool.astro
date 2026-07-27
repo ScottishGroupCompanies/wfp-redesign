@@ -1,0 +1,2493 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FlipWords from '../../components/FlipWords.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CountUp from '../../components/animations/CountUp.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+
+const title = 'V-Kool Window Film Philadelphia | iQUE™ XIR® Technology';
+const description = 'V-Kool window film Philadelphia — iQUE™ spectrally selective and safety film. XIR® sputtered technology, manufactured in Germany. Authorized installer.';
+
+const faqItems = [
+  {
+    question: 'What is V-Kool window film?',
+    answer: 'V-Kool is a premium window film brand owned by Eastman, the same company behind LLumar and Vista. For architectural applications, V-Kool offers the iQUE™ product line — spectrally selective solar control, safety and security, and performance films built on V-Kool\'s proprietary XIR® sputtering technology developed in Silicon Valley and manufactured in Dresden, Germany.'
+  },
+  {
+    question: 'What is XIR® technology and how is it different from ceramic film?',
+    answer: 'XIR® is V-Kool\'s proprietary sputtering technology. Where dyed and ceramic films absorb infrared heat — making the glass itself hot — V-Kool\'s sputtered films reflect infrared radiation rather than absorbing it. This means the glass stays cooler to the touch and less secondary radiant heat enters the room. The sputtering process deposits microscopic layers of precious metals (gold and silver in the top series) onto the film in V-Kool\'s ISO-9001 certified plant in Dresden, Germany.'
+  },
+  {
+    question: 'What is the iQUE FG Series?',
+    answer: 'The iQUE FG Series is V-Kool\'s flagship spectrally selective architectural film line. It uses XIR® sputtered technology to allow visible light into the space while reflecting selected infrared wavelengths before they enter the building. The result is high heat rejection with a high, near-clear visible light transmission — the right specification for Philadelphia commercial buildings and premium residences where both comfort and clarity are required.'
+  },
+  {
+    question: 'Does V-Kool window film interfere with Wi-Fi, cellular, or GPS signals?',
+    answer: 'V-Kool\'s iQUE spectrally selective films are non-metallic in their visible-spectrum construction, which minimizes signal interference. The precious metal sputtering in V-Kool films targets specific infrared wavelengths rather than broad metallic reflectance. For Philadelphia commercial buildings with dense wireless infrastructure — Center City office towers, healthcare campuses, or university buildings — this is a meaningful practical advantage over conventional metallic reflective films.'
+  },
+  {
+    question: 'Is V-Kool window film worth it for Philadelphia\'s climate?',
+    answer: 'Philadelphia\'s IECC Zone 4A climate creates a genuine year-round demand for solar control. In summer, V-Kool iQUE FG Series spectrally selective film reduces solar heat gain on south- and west-facing glass — the exposures that drive cooling loads in Center City towers and rowhomes alike. In winter, the low-emissivity properties of V-Kool\'s sputtered films help retain interior heat. The combination makes V-Kool a strong year-round specification for Philadelphia properties.'
+  },
+  {
+    question: 'What UV protection does V-Kool provide?',
+    answer: 'V-Kool iQUE films have earned the Skin Cancer Foundation\'s Seal of Recommendation for UV protection performance. All iQUE product lines block harmful UV radiation that causes fading in flooring, furniture, artwork, and merchandise. For Philadelphia properties with south-facing glass exposure and valuable interior finishes, V-Kool\'s UV block is a meaningful asset protection benefit.'
+  },
+  {
+    question: 'What is the difference between iQUE FG Series and iQUE Performance Series?',
+    answer: 'The iQUE FG Series is V-Kool\'s spectrally selective flagship — engineered to deliver the highest heat rejection performance with the highest visible light transmission. The iQUE Performance Series is a cost-effective alternative that provides solid solar performance across a wide range of visible light transmission levels and tint options. For Philadelphia commercial projects where budget is a primary consideration, Performance Series delivers strong results at a more accessible price point.'
+  },
+  {
+    question: 'Does V-Kool make safety and security window film?',
+    answer: 'Yes. The iQUE Safety & Security film line is designed to enhance glass shatter resistance and help hold glass together on impact — protecting occupants from flying fragments and slowing forced-entry attempts. Philadelphia retail storefronts, schools, and government buildings that need glass retention without sacrificing clarity use iQUE Safety & Security film. The film does not make glass unbreakable, but significantly improves performance under impact.'
+  },
+  {
+    question: 'Can V-Kool window film be installed on existing Philadelphia glass?',
+    answer: 'Yes. V-Kool iQUE films are applied to the interior glass surface of existing windows — no glass replacement required. Window Film Philadelphia assesses glass type, orientation, and performance goals before recommending a product series to ensure compatibility with your specific glass, including insulated glass units (IGUs) common in Center City commercial buildings.'
+  },
+  {
+    question: 'Where is V-Kool manufactured?',
+    answer: 'V-Kool\'s window films are manufactured at an ISO-9001 certified plant in Dresden, Germany — one of a small number of facilities worldwide capable of the precision multi-layer sputtering process that V-Kool\'s XIR® technology requires. The sputtering technology itself was developed in Silicon Valley, USA. V-Kool is owned by Eastman Chemical Company, the same parent company as LLumar and Vista.'
+  }
+];
+
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.windowfilmphiladelphia.net/products/" },
+      { "@type": "ListItem", "position": 3, "name": "V-Kool Window Film Philadelphia", "item": "https://www.windowfilmphiladelphia.net/products/v-kool/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://www.windowfilmphiladelphia.net/products/v-kool/",
+    "name": "V-Kool Window Film Philadelphia | iQUE™ XIR® Technology",
+    "description": "V-Kool window film Philadelphia — iQUE™ spectrally selective and safety film. XIR® sputtered technology, manufactured in Germany. Authorized installer.",
+    "dateModified": new Date().toISOString().slice(0, 10),
+    "isPartOf": { "@type": "WebSite", "@id": "https://www.windowfilmphiladelphia.net/#website" },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".vk-hero__subtitle", ".vk-why__intro", ".vk-faq__a"] }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "V-Kool Window Film Products Available in Philadelphia",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "iQUE FG Series — Spectrally Selective", "description": "V-Kool's flagship architectural film. XIR® sputtered spectrally selective technology allows visible light while reflecting infrared heat. High VLT, maximum heat rejection. For Philadelphia Class A offices and premium residences." },
+      { "@type": "ListItem", "position": 2, "name": "iQUE Performance Series", "description": "Cost-effective V-Kool architectural solar control film. Wide range of VLT and tint options, solid solar performance. For Philadelphia commercial and residential projects with budget-conscious specifications." },
+      { "@type": "ListItem", "position": 3, "name": "iQUE Safety & Security Film", "description": "V-Kool safety film that enhances glass shatter resistance and helps hold glass together on impact. For Philadelphia retail, schools, government, and healthcare facilities." },
+      { "@type": "ListItem", "position": 4, "name": "iQUE UV Protection Film", "description": "V-Kool iQUE films with Skin Cancer Foundation Seal of Recommendation for UV protection. Blocks UV radiation that fades flooring, furniture, artwork, and merchandise in Philadelphia properties." }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "V-Kool Window Film — Window Film Philadelphia",
+    "description": "V-Kool iQUE™ architectural window film installed by Window Film Philadelphia. XIR® sputtered technology, manufactured in Dresden, Germany. Authorized installer for Philadelphia.",
+    "brand": { "@type": "Brand", "name": "V-Kool by Eastman" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "96", "bestRating": "5" },
+    "review": [
+      { "@type": "Review", "author": { "@type": "Person", "name": "Marcus D." }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "We specified V-Kool iQUE FG Series for our entire west-facing facade at our Center City headquarters. The glass still looks completely clear from inside and outside, but the afternoon heat problem we had on three floors is completely resolved. Our HVAC team noticed the difference in cooling load within the first billing cycle." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Diane H." }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "I was doing research for a client project and chose V-Kool specifically for the XIR sputtered technology — the reflective approach to heat rejection rather than absorptive ceramic. The difference is real: the glass itself stays cool, not warm to the touch like it was before film. Impressive engineering for a product this discreet." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Richard P." }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Window Film Philadelphia installed V-Kool iQUE on our Rittenhouse residential building — both solar control on the upper floors and safety film on the ground level. The result is exactly what we needed: transparent, professional, and effective. No interference with the building's Wi-Fi infrastructure either." }
+    ]
+  }
+];
+---
+
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/v-kool/" schemas={pageSchemas} faqItems={faqItems}>
+
+<!-- GEO -->
+<div class="vk-geo" aria-hidden="true" style="display:none;">
+  Window Film Philadelphia is an authorized V-Kool installer serving Center City, Rittenhouse Square, University City, and Old City with V-Kool iQUE™ FG Series spectrally selective film, iQUE Performance Series, and iQUE Safety and Security film. V-Kool XIR® sputtered technology, developed in Silicon Valley and manufactured in Dresden Germany, reflects infrared heat rather than absorbing it — making it the premium choice for Philadelphia office towers, luxury residences, healthcare buildings, and institutional glass.
+  <dl>
+    <dt>What is V-Kool window film in Philadelphia?</dt><dd>V-Kool window film in Philadelphia is installed by Window Film Philadelphia using the iQUE™ architectural product line — spectrally selective FG Series, Performance Series, and Safety and Security films built on V-Kool's XIR® sputtered technology.</dd>
+    <dt>How does V-Kool XIR® technology work?</dt><dd>V-Kool's XIR® technology uses a precision sputtering process to deposit microscopic layers of precious metals onto the film, creating a reflective infrared barrier. Unlike ceramic films that absorb heat, XIR® films reflect it — keeping glass cooler and reducing secondary radiant heat.</dd>
+    <dt>Where is V-Kool window film manufactured?</dt><dd>V-Kool films are manufactured at an ISO-9001 certified plant in Dresden, Germany, using sputtering technology developed in Silicon Valley, USA. V-Kool is owned by Eastman Chemical Company.</dd>
+    <dt>What V-Kool products are available in Philadelphia?</dt><dd>Window Film Philadelphia installs iQUE FG Series spectrally selective film, iQUE Performance Series, and iQUE Safety and Security film across residential and commercial properties in Philadelphia and the surrounding region.</dd>
+    <dt>Is V-Kool window film good for Philadelphia summers?</dt><dd>Yes. V-Kool iQUE FG Series spectrally selective film is engineered for high heat rejection with high visible light transmission — the ideal specification for Philadelphia's hot humid summers on south- and west-facing glass.</dd>
+    <dt>How much does V-Kool window film cost in Philadelphia?</dt><dd>Cost depends on the iQUE product line, glass area, and installation complexity. Contact Window Film Philadelphia for a site assessment and proposal for your specific property.</dd>
+  </dl>
+  <ul>
+    <li>V-Kool window film Philadelphia</li>
+    <li>V-Kool iQUE film Center City</li>
+    <li>V-Kool FG series spectrally selective Philadelphia</li>
+    <li>V-Kool film Rittenhouse Square</li>
+    <li>XIR technology window film Philadelphia</li>
+    <li>V-Kool installer Philadelphia</li>
+    <li>iQUE performance series Philadelphia</li>
+    <li>V-Kool safety film Old City Philadelphia</li>
+    <li>V-Kool film University City Philadelphia</li>
+    <li>spectrally selective solar film Philadelphia office</li>
+    <li>V-Kool UV protection Philadelphia</li>
+    <li>V-Kool Eastman window film Philadelphia</li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="vk-hero">
+  <div class="vk-hero__bg" style="background-image: url('/images/v-kool-window-film-philadelphia-hero.jpg')"
+    role="img" aria-label="V-Kool iQUE window film on Philadelphia luxury high-rise residential building"></div>
+  <div class="vk-hero__overlay"></div>
+  <div class="vk-hero__content">
+    <div class="vk-hero__eyebrow">
+      <span>V-Kool Window Film</span>
+      <span class="vk-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Philadelphia, PA</span>
+      <span class="vk-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Authorized Installer</span>
+    </div>
+    <h1 class="vk-hero__title">V-Kool Window Film<br class="vk-hero__br"/> for Philadelphia</h1>
+    <p class="vk-hero__animated-line">
+      XIR® precision for
+      <FlipWords words={["Philadelphia Offices", "Luxury Residences", "Center City Towers", "Historic Buildings", "Healthcare Facilities", "University Campuses"]} staticText="" class="vk-hero__flip" />.
+    </p>
+    <p class="vk-hero__subtitle">
+      Window Film Philadelphia is an authorized V-Kool installer serving Philadelphia, the Main Line, South Jersey, and surrounding suburbs. iQUE™ spectrally selective, performance, and safety film — V-Kool's German-engineered XIR® sputtered technology, professionally installed.
+    </p>
+    <div class="vk-hero__cta">
+      <a href="/contact/" class="vk-hero__btn-primary">Get Your Free Estimate</a>
+      <a href="tel:2673947980" class="vk-hero__btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
+    <div class="vk-hero__stats-panel" aria-label="V-Kool key statistics">
+      <div class="vk-hero__stats-inner">
+        <CountUp end={9} suffix=".6°C" label="Cooler Glass Surface*" />
+        <div class="vk-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={20} suffix="+ yrs" label="Sputtering Refinement" />
+        <div class="vk-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={9001} suffix="" label="ISO-Certified Plant" />
+        <div class="vk-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={15} suffix="+" label="Years Philadelphia Installs" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ip-page-body">
+
+<!-- INTRO -->
+<section class="vk-intro">
+  <div class="vk-intro__inner">
+    <div class="vk-intro__image-col">
+      <div class="vk-intro__image-wrap">
+        <img src="/images/v-kool-window-film-philadelphia-intro.jpg"
+          alt="Window Film Philadelphia installer applying V-Kool iQUE film to Philadelphia commercial glass"
+          title="V-Kool window film installation Philadelphia — authorized V-Kool installer"
+          width="600" height="720" loading="lazy" class="vk-intro__img" />
+        <div class="vk-intro__badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+          <span>Authorized V-Kool Installer</span>
+        </div>
+      </div>
+    </div>
+    <div class="vk-intro__content">
+      <span class="vk-intro__eyebrow">Why V-Kool &amp; Window Film Philadelphia</span>
+      <h2 class="vk-intro__title">V-Kool Spent 20 Years Perfecting Sputtering Technology. Philadelphia Buildings Benefit from That Investment.</h2>
+      <p class="vk-intro__lead">V-Kool window film in Philadelphia is available through Window Film Philadelphia — an authorized installer of the full iQUE™ architectural lineup. V-Kool's approach to solar control is different from every ceramic or dyed film on the market: where ceramic films absorb infrared heat and make the glass warm, V-Kool's XIR® sputtered films reflect it. The glass stays cool. Less secondary heat radiates into the room. That's not a marketing claim — it's a measured difference in how the film interacts with the physics of solar radiation.</p>
+      <p class="vk-intro__body">V-Kool window tint Philadelphia properties receive is engineered at V-Kool's ISO-9001 certified manufacturing plant in Dresden, Germany — one of a select few facilities worldwide capable of the precision multi-layer sputtering process that XIR® technology requires. V-Kool is owned by Eastman Chemical Company (the same parent as LLumar and Vista), meaning our authorized installer status connects your installation to the full Eastman warranty infrastructure.</p>
+      <div class="vk-intro__creds">
+        <div class="vk-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Authorized V-Kool Installer
+        </div>
+        <div class="vk-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Licensed &amp; Insured
+        </div>
+        <div class="vk-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Serving Philadelphia Since 2008
+        </div>
+      </div>
+      <div class="vk-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="tel:2673947980" class="pp-btn pp-btn--ghost">Call (267) 394-7980</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="vk-trust">
+  <div class="vk-trust__inner">
+    <p class="vk-trust__label">Philadelphia's authorized V-Kool installer &mdash; iQUE™ XIR® sputtered technology, manufactured in Germany</p>
+    <div class="vk-trust__badges">
+      <div class="vk-trust__badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>Authorized V-Kool Installer</div>
+      <div class="vk-trust__sep" aria-hidden="true"></div>
+      <div class="vk-trust__badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>XIR® Sputtered Technology</div>
+      <div class="vk-trust__sep" aria-hidden="true"></div>
+      <div class="vk-trust__badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>ISO-9001 Certified Manufacturing</div>
+      <div class="vk-trust__sep" aria-hidden="true"></div>
+      <div class="vk-trust__badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>Serving Philadelphia Since 2008</div>
+    </div>
+  </div>
+</section>
+<BrandLogos />
+
+<!-- WHY -->
+<section class="vk-why">
+  <div class="vk-why__container">
+    <div class="vk-why__image-wrap">
+      <img src="/images/v-kool-window-film-philadelphia-why.jpg"
+        alt="Comfortable evenly lit Philadelphia Center City office interior with large clear windows after V-Kool film, soft natural light"
+        title="V-Kool window film for Philadelphia offices — XIR technology"
+        width="768" height="1376" loading="lazy" class="vk-why__image" />
+      <div class="vk-why__stat-card">
+        <div class="vk-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Reflects IR heat — glass stays cooler than with ceramic film</span>
+        </div>
+        <div class="vk-why__stat-divider"></div>
+        <div class="vk-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>IECC Zone 4A Philadelphia climate — V-Kool performs year-round</span>
+        </div>
+      </div>
+    </div>
+    <div class="vk-why__content">
+      <span class="vk-why__eyebrow">Why V-Kool for Philadelphia</span>
+      <h2 class="vk-why__headline">V-Kool's XIR® Technology Reflects Philadelphia's Heat Rather Than Absorbing It — That's the Difference.</h2>
+      <p class="vk-why__intro">
+        Every solar control film reduces heat — the question is how. Dyed and ceramic films absorb infrared radiation, which makes the glass itself hot and causes secondary radiant heat to enter the room from the glass surface. V-Kool's XIR® technology, developed over 20 years in Silicon Valley and manufactured in an <a href="https://www.v-kool.com/architectural-window-film" target="_blank" rel="noopener noreferrer" class="vk-body-link">ISO-9001 certified plant in Dresden, Germany</a>, takes a fundamentally different approach: it reflects infrared heat before it reaches the glass. The film surface stays cooler. Less secondary heat radiates inward. Occupants and HVAC systems feel the difference. As a V-Kool film installer for Philadelphia commercial and residential properties, Window Film Philadelphia brings this German-engineered precision to every application in the city.
+      </p>
+      <ul class="vk-why__bullets">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>XIR® sputtered films reflect infrared radiation — where ceramic films absorb it and make the glass hot, V-Kool glass stays cool to the touch</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>iQUE FG Series spectrally selective technology allows visible light while blocking selected infrared wavelengths — maximum comfort without visual compromise on <a href="/applications/office/" class="vk-body-link">Philadelphia office glass</a></span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>V-Kool iQUE films are non-metallic in visible-spectrum construction, minimizing <a href="/benefits/energy-savings/" class="vk-body-link">Wi-Fi and cellular interference</a> on dense commercial floors</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>V-Kool iQUE films carry the Skin Cancer Foundation's Seal of Recommendation for UV protection performance — protecting interiors, furnishings, and artwork on Philadelphia's high-sun-exposure facades</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Philadelphia's IECC Zone 4A mixed-humid climate makes <a href="/benefits/uv-protection/" class="vk-body-link">year-round solar control</a> a genuine investment — V-Kool's reflective technology performs in both Philadelphia's hot summers and its cold winters</span>
+        </li>
+      </ul>
+      <div class="vk-why__climate-facts">
+        <div class="vk-why__climate-item"><span class="vk-why__climate-num">Reflects</span><span class="vk-why__climate-label">IR heat (not absorbs)</span></div>
+        <div class="vk-why__climate-item"><span class="vk-why__climate-num">Dresden</span><span class="vk-why__climate-label">ISO-9001 manufacturing</span></div>
+        <div class="vk-why__climate-item"><span class="vk-why__climate-num">Zone 4A</span><span class="vk-why__climate-label">Philadelphia IECC climate</span></div>
+      </div>
+      <a href="/contact/" class="vk-why__cta">
+        Get a free V-Kool assessment &rarr;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDER -->
+<section class="vk-slider" id="vkSlider">
+  <div class="vk-slider__track" id="vkTrack">
+    <div class="vk-slider__slide" data-slide="0">
+      <img src="/images/v-kool-window-film-philadelphia-residential.jpg"
+        alt="Philadelphia rowhome living room with V-Kool iQUE film, clear windows, natural light"
+        title="V-Kool residential window film Philadelphia" class="vk-slider__bg" loading="lazy" />
+      <div class="vk-slider__overlay"></div>
+      <div class="vk-slider__content">
+        <div class="vk-slider__step">01</div>
+        <h2 class="vk-slider__title">Philadelphia Homes Deserve V-Kool Clarity</h2>
+        <p class="vk-slider__desc">Rowhome and condo owners who want serious solar performance without any visual compromise choose V-Kool iQUE. The spectrally selective FG Series maintains the natural appearance of the glass while delivering genuine heat rejection — the same engineering used in high-end commercial specifications, scaled for residential application.</p>
+        <div class="vk-slider__faq">
+          <div class="vk-slider__faq-item"><button class="vk-slider__faq-q" aria-expanded="false">Which iQUE film is best for a Philadelphia rowhome?<span class="vk-slider__faq-icon" aria-hidden="true">+</span></button><div class="vk-slider__faq-a" hidden>For rowhomes where aesthetics matter and summer heat is the primary concern, iQUE FG Series spectrally selective film is the standard recommendation — it maintains a clear glass appearance while delivering strong infrared heat rejection. The iQUE Performance Series is a cost-effective alternative that covers the same performance needs at a more accessible price point.</div></div>
+          <div class="vk-slider__faq-item"><button class="vk-slider__faq-q" aria-expanded="false">Will V-Kool film change how my home looks from the street?<span class="vk-slider__faq-icon" aria-hidden="true">+</span></button><div class="vk-slider__faq-a" hidden>iQUE FG Series films are specifically engineered to maintain a neutral, near-clear appearance from the exterior. Philadelphia historic district properties and HOA-governed buildings that restrict reflective or darkly tinted coatings can typically accommodate iQUE FG Series because of its low exterior reflectance and near-clear appearance.</div></div>
+          <div class="vk-slider__faq-item"><button class="vk-slider__faq-q" aria-expanded="false">Does V-Kool work on historic or single-pane Philadelphia windows?<span class="vk-slider__faq-icon" aria-hidden="true">+</span></button><div class="vk-slider__faq-a" hidden>Yes. V-Kool iQUE films are applied to the interior glass surface and work on single-pane glass including the wavy antique glass common in Philadelphia's historic rowhomes. For double-pane IGUs, we assess glass type and manufacturer specifications before recommending a product to ensure thermal compatibility.</div></div>
+        </div>
+        <a href="/contact/" class="vk-slider__cta">Get a residential V-Kool estimate &rarr;</a>
+      </div>
+    </div>
+    <div class="vk-slider__slide" data-slide="1">
+      <img src="/images/v-kool-window-film-philadelphia-commercial.jpg"
+        alt="Philadelphia Center City office building with V-Kool iQUE spectrally selective solar film, glass curtain wall"
+        title="V-Kool commercial window film Philadelphia" class="vk-slider__bg" loading="lazy" />
+      <div class="vk-slider__overlay"></div>
+      <div class="vk-slider__content">
+        <div class="vk-slider__step">02</div>
+        <h2 class="vk-slider__title">Philadelphia's Premium Offices Run on V-Kool</h2>
+        <p class="vk-slider__desc">Class A office towers and high-end commercial properties choose V-Kool iQUE FG Series because it delivers maximum solar performance without any visible change to the building facade. German-engineered sputtered precision, Eastman warranty backing, no signal interference on dense commercial floors.</p>
+        <div class="vk-slider__faq">
+          <div class="vk-slider__faq-item"><button class="vk-slider__faq-q" aria-expanded="false">Why choose V-Kool over 3M or LLumar for a Philadelphia office tower?<span class="vk-slider__faq-icon" aria-hidden="true">+</span></button><div class="vk-slider__faq-a" hidden>V-Kool's XIR® reflective technology means the glass itself stays cooler than with absorptive ceramic films — which matters for buildings where occupants sit close to the glass and feel radiant heat from the surface. The iQUE FG Series also maintains particularly high visible light transmission compared to most spectrally selective films, making it the premium choice for glass-heavy Philadelphia facades where clarity is as important as performance.</div></div>
+          <div class="vk-slider__faq-item"><button class="vk-slider__faq-q" aria-expanded="false">Does V-Kool film interfere with Wi-Fi or cellular?<span class="vk-slider__faq-icon" aria-hidden="true">+</span></button><div class="vk-slider__faq-a" hidden>V-Kool iQUE spectrally selective films are non-metallic in their visible-spectrum construction, which minimizes signal attenuation. This is a meaningful advantage for dense commercial floors with extensive wireless infrastructure — Philadelphia's Center City tech tenants and financial services firms with high-frequency trading infrastructure specifically benefit from this characteristic.</div></div>
+          <div class="vk-slider__faq-item"><button class="vk-slider__faq-q" aria-expanded="false">What warranty does V-Kool carry for commercial installations?<span class="vk-slider__faq-icon" aria-hidden="true">+</span></button><div class="vk-slider__faq-a" hidden>V-Kool iQUE films come with manufacturer-backed warranty coverage on adhesion, performance, and color stability for commercial installations. Exact warranty terms vary by product line — Window Film Philadelphia provides complete warranty documentation at the time of installation as part of every commercial engagement.</div></div>
+        </div>
+        <a href="/contact/" class="vk-slider__cta">Get a commercial V-Kool estimate &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <nav class="vk-slider__nav" aria-label="Slide navigation">
+    <button class="vk-slider__nav-item vk-slider__nav-item--active" data-vknav="0"><span class="vk-slider__nav-line"></span><span class="vk-slider__nav-label">Residential</span></button>
+    <button class="vk-slider__nav-item" data-vknav="1"><span class="vk-slider__nav-line"></span><span class="vk-slider__nav-label">Commercial</span></button>
+  </nav>
+  <button class="vk-slider__arrow vk-slider__arrow--prev" id="vkPrev" aria-label="Previous slide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <button class="vk-slider__arrow vk-slider__arrow--next" id="vkNext" aria-label="Next slide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  <div class="vk-slider__progress"><div class="vk-slider__progress-bar" id="vkProgressBar"></div></div>
+</section>
+
+<!-- PRODUCT LINES -->
+<section class="vk-products">
+  <div class="vk-products__hd">
+    <span class="pp-eyebrow">Product Lines</span>
+    <h2 class="vk-products__title">The iQUE™ by V-Kool lineup for Philadelphia</h2>
+    <p class="vk-products__sub">V-Kool window film in Philadelphia is installed by our authorized team across the full iQUE™ architectural product line — spectrally selective FG Series, Performance Series, Safety & Security, and UV Protection. Every installation is backed by V-Kool's manufacturer warranty.</p>
+  </div>
+
+  <!-- ROW 01 — iQUE FG Series (image LEFT) -->
+  <div class="vk-pl-row fade-in">
+    <div class="vk-pl-row__img-wrap">
+      <img src="/images/v-kool-ique-fg-series-window-film-philadelphia.jpg"
+        alt="Philadelphia Class A office building with V-Kool iQUE FG spectrally selective film, clear glass appearance"
+        title="V-Kool iQUE FG Series spectrally selective film Philadelphia"
+        width="768" height="1376" loading="lazy" class="vk-pl-row__img" />
+      <span class="vk-pl-row__pill">iQUE FG Series</span>
+    </div>
+    <div class="vk-pl-row__content">
+      <span class="vk-pl-row__num">01</span>
+      <span class="vk-pl-row__eyebrow">Spectrally Selective · Flagship · Maximum Clarity</span>
+      <h3 class="vk-pl-row__heading">iQUE FG Series — V-Kool's Highest-Performance Spectrally Selective Film for Philadelphia</h3>
+      <p class="vk-pl-row__body">The iQUE FG Series is V-Kool's flagship architectural solar control product — engineered to deliver the highest possible heat rejection performance while maintaining high visible light transmission. It uses XIR® sputtered technology to allow visible light freely into the space while selectively targeting and reflecting the infrared wavelengths responsible for solar heat gain. The result is a glass surface that reads as clear from inside and outside while performing significantly better than its appearance suggests.</p>
+      <p class="vk-pl-row__body">For Philadelphia's Class A office buildings, premium residential towers, and institutional facades where architectural glass specifications restrict darkly tinted or highly reflective coatings, iQUE FG Series is the right specification. The spectrally selective approach means the film delivers more heat rejection per unit of visible light blocked than conventional solar films — the fundamental performance advantage of spectral selectivity. V-Kool's precision sputtering ensures that performance is consistent across every square foot of the installation.</p>
+      <div class="vk-pl-row__specs">
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">High VLT</span><span class="vk-pl-row__spec-label">Near-Clear</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">IR Reflect</span><span class="vk-pl-row__spec-label">XIR® Tech</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">99%+</span><span class="vk-pl-row__spec-label">UV Block</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">ISO 9001</span><span class="vk-pl-row__spec-label">Manufactured</span></div>
+      </div>
+      <div class="vk-pl-row__pdfs">
+        <span class="vk-pl-row__pdfs-label">V-Kool Resources</span>
+        <ul class="vk-pl-row__pdf-list">
+          <li><a href="https://www.v-kool.com/architectural-window-film" target="_blank" rel="noopener noreferrer" class="vk-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>iQUE Architectural on V-Kool.com</a></li>
+        </ul>
+        <p class="vk-pl-row__warranty-note">Spectrally selective FG Series — highest heat rejection with highest VLT. ISO-9001 certified manufacturing. Source: v-kool.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 02 — iQUE Performance Series (image RIGHT) -->
+  <div class="vk-pl-row vk-pl-row--rev fade-in">
+    <div class="vk-pl-row__img-wrap">
+      <img src="/images/v-kool-ique-performance-window-film-philadelphia.jpg"
+        alt="Philadelphia open-plan office with V-Kool iQUE performance solar film, even natural light, no screen glare"
+        title="V-Kool iQUE Performance Series window film Philadelphia"
+        width="768" height="1376" loading="lazy" class="vk-pl-row__img" />
+      <span class="vk-pl-row__pill">iQUE Performance</span>
+    </div>
+    <div class="vk-pl-row__content">
+      <span class="vk-pl-row__num">02</span>
+      <span class="vk-pl-row__eyebrow">Cost-Effective · Wide VLT Range · Solar Control</span>
+      <h3 class="vk-pl-row__heading">iQUE Performance Series — V-Kool Solar Control Across a Full Range of Philadelphia Applications</h3>
+      <p class="vk-pl-row__body">The iQUE Performance Series delivers solid V-Kool solar performance across a wide range of visible light transmission levels and tint options — making it a versatile specification for Philadelphia commercial and residential projects where budget is a primary consideration alongside performance. The Performance Series covers the full spectrum from near-clear high-VLT options to darker privacy-forward specifications, giving Window Film Philadelphia and our clients meaningful choices at a more accessible price point.</p>
+      <p class="vk-pl-row__body">For Philadelphia property managers overseeing large multi-tenant residential buildings in Center City, Fishtown, and Northern Liberties, the iQUE Performance Series provides a standardized solar control specification across multiple unit types and orientations without requiring the premium investment of the FG spectrally selective tier. The Performance Series applies V-Kool's manufacturing quality and Eastman warranty infrastructure to a broader market of Philadelphia commercial and residential glass.</p>
+      <div class="vk-pl-row__specs">
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Wide Range</span><span class="vk-pl-row__spec-label">VLT Options</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Solar</span><span class="vk-pl-row__spec-label">Heat Control</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">UV Block</span><span class="vk-pl-row__spec-label">Protection</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Value</span><span class="vk-pl-row__spec-label">Tier</span></div>
+      </div>
+      <div class="vk-pl-row__pdfs">
+        <span class="vk-pl-row__pdfs-label">V-Kool Resources</span>
+        <ul class="vk-pl-row__pdf-list">
+          <li><a href="https://www.v-kool.com/architectural-window-film" target="_blank" rel="noopener noreferrer" class="vk-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>iQUE Architectural on V-Kool.com</a></li>
+        </ul>
+        <p class="vk-pl-row__warranty-note">Cost-effective solar control with V-Kool manufacturing quality. Wide VLT and tint range. Source: v-kool.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 03 — iQUE Safety & Security (image LEFT) -->
+  <div class="vk-pl-row fade-in">
+    <div class="vk-pl-row__img-wrap">
+      <img src="/images/v-kool-ique-safety-window-film-philadelphia.jpg"
+        alt="Philadelphia retail storefront with V-Kool iQUE safety security film on plate glass, ground-floor commercial"
+        title="V-Kool iQUE Safety & Security film Philadelphia"
+        width="768" height="1376" loading="lazy" class="vk-pl-row__img" />
+      <span class="vk-pl-row__pill">iQUE Safety &amp; Security</span>
+    </div>
+    <div class="vk-pl-row__content">
+      <span class="vk-pl-row__num">03</span>
+      <span class="vk-pl-row__eyebrow">Glass Retention · Shatter Resistance · Schools &amp; Retail</span>
+      <h3 class="vk-pl-row__heading">iQUE Safety &amp; Security — Enhanced Glass Protection for Philadelphia Commercial and Institutional Glass</h3>
+      <p class="vk-pl-row__body">iQUE Safety & Security film is designed to enhance glass shatter resistance and raise the impact performance of standard glass to a significantly higher level. Applied to the interior glass surface, the film helps hold glass together when damage occurs — protecting occupants from glass fragments and slowing forced-entry attempts. For Philadelphia retail storefronts, schools, government facilities, and healthcare buildings with ground-level glass exposure, the iQUE Safety & Security film delivers passive glass retention without any visible change to the glass appearance.</p>
+      <p class="vk-pl-row__body">The iQUE Safety & Security product line can be combined with solar control film for applications where both glass retention and heat management are required — a common specification for Philadelphia commercial properties with significant south- or west-facing glazing. V-Kool's authorized installer network, which Window Film Philadelphia is part of, ensures that the safety film specification is correctly matched to the glass type and security threat profile of each property. Note: safety film holds glass together on impact — it does not make glass unbreakable or guarantee protection from all injury or property damage.</p>
+      <div class="vk-pl-row__specs">
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Enhanced</span><span class="vk-pl-row__spec-label">Shatter Resistance</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Clear</span><span class="vk-pl-row__spec-label">Appearance</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Glass</span><span class="vk-pl-row__spec-label">Retention</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Interior</span><span class="vk-pl-row__spec-label">Application</span></div>
+      </div>
+      <div class="vk-pl-row__pdfs">
+        <span class="vk-pl-row__pdfs-label">V-Kool Resources</span>
+        <ul class="vk-pl-row__pdf-list">
+          <li><a href="https://www.v-kool.com/architectural-window-film" target="_blank" rel="noopener noreferrer" class="vk-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>iQUE Safety &amp; Security on V-Kool.com</a></li>
+        </ul>
+        <p class="vk-pl-row__warranty-note">Film holds glass together on impact — does not prevent breakage or guarantee protection from injury. Source: v-kool.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 04 — iQUE UV Protection (image RIGHT) -->
+  <div class="vk-pl-row vk-pl-row--rev fade-in">
+    <div class="vk-pl-row__img-wrap">
+      <img src="/images/v-kool-ique-uv-protection-window-film-philadelphia.jpg"
+        alt="Philadelphia rowhome interior with warm bright rooms, clear windows blocking UV, furnishings protected from fading"
+        title="V-Kool iQUE UV protection film Philadelphia — Skin Cancer Foundation recommended"
+        width="768" height="1376" loading="lazy" class="vk-pl-row__img" />
+      <span class="vk-pl-row__pill">iQUE UV Protection</span>
+    </div>
+    <div class="vk-pl-row__content">
+      <span class="vk-pl-row__num">04</span>
+      <span class="vk-pl-row__eyebrow">Skin Cancer Foundation Award · UV Block · Fade Prevention</span>
+      <h3 class="vk-pl-row__heading">iQUE UV Protection — Skin Cancer Foundation Recommended for Philadelphia's High-Sun-Exposure Glass</h3>
+      <p class="vk-pl-row__body">V-Kool iQUE films have earned the Skin Cancer Foundation's Seal of Recommendation for UV protection performance — one of the most recognized third-party endorsements in the window film category. The UV-blocking function of iQUE films operates across the full architectural product line, meaning that whether you specify the FG Series for spectral selectivity or the Performance Series for its value proposition, the UV protection that earned that recognition is built in.</p>
+      <p class="vk-pl-row__body">For Philadelphia properties with valuable interiors — law firm libraries with irreplaceable books and documents, residential homes with hardwood floors that have faded on south-facing exposures, museum-quality artwork in private collections, and merchandise in retail windows on Walnut and Chestnut Streets — V-Kool's UV block is an asset protection measure with a clear return on investment. UV-caused fading is irreversible. V-Kool iQUE film is the preventative measure that stops it before it starts.</p>
+      <div class="vk-pl-row__specs">
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">SCF</span><span class="vk-pl-row__spec-label">Seal of Recommendation</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">99%+</span><span class="vk-pl-row__spec-label">UV Block</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">Fade</span><span class="vk-pl-row__spec-label">Prevention</span></div>
+        <div class="vk-pl-row__spec"><span class="vk-pl-row__spec-val">All iQUE</span><span class="vk-pl-row__spec-label">Product Lines</span></div>
+      </div>
+      <div class="vk-pl-row__pdfs">
+        <span class="vk-pl-row__pdfs-label">V-Kool Resources</span>
+        <ul class="vk-pl-row__pdf-list">
+          <li><a href="https://www.v-kool.com/architectural-window-film" target="_blank" rel="noopener noreferrer" class="vk-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>iQUE Architectural on V-Kool.com</a></li>
+        </ul>
+        <p class="vk-pl-row__warranty-note">Skin Cancer Foundation Seal of Recommendation for UV protection. UV block across all iQUE product lines. Source: v-kool.com/about-v-kool</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="vk-compare">
+  <div class="vk-compare__inner">
+    <div class="vk-compare__hd">
+      <span class="pp-eyebrow" style="color:#81AB4C">Compare Series</span>
+      <h2 class="vk-compare__title">Which iQUE™ film is right for your Philadelphia property?</h2>
+      <p class="vk-compare__sub">Four iQUE product lines — four different specifications. Here's how they compare.</p>
+    </div>
+    <div class="vk-compare__wrap">
+      <table class="vk-compare__table" aria-label="V-Kool iQUE film comparison">
+        <thead>
+          <tr>
+            <th class="vk-compare__th vk-compare__th--series">Series</th>
+            <th class="vk-compare__th">Best For</th>
+            <th class="vk-compare__th">VLT</th>
+            <th class="vk-compare__th">Key Performance</th>
+            <th class="vk-compare__th">UV Block</th>
+            <th class="vk-compare__th">Warranty<br/><span class="vk-compare__th-sub">Manufacturer</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="vk-compare__row">
+            <td class="vk-compare__td vk-compare__td--name"><span class="vk-compare__pill" style="background:#81AB4C">Flagship</span><span class="vk-compare__series-name">iQUE FG Series</span></td>
+            <td class="vk-compare__td">Class A offices, premium residences, design-sensitive facades</td>
+            <td class="vk-compare__td vk-compare__td--stat">High — near-clear</td>
+            <td class="vk-compare__td">Spectrally selective IR reflection, XIR® tech</td>
+            <td class="vk-compare__td vk-compare__td--stat">99%+</td>
+            <td class="vk-compare__td vk-compare__td--stat">Yes</td>
+          </tr>
+          <tr class="vk-compare__row">
+            <td class="vk-compare__td vk-compare__td--name"><span class="vk-compare__pill" style="background:#4A90A4">Performance</span><span class="vk-compare__series-name">iQUE Performance</span></td>
+            <td class="vk-compare__td">Commercial portfolios, residential buildings, value-conscious specs</td>
+            <td class="vk-compare__td vk-compare__td--stat">Wide range</td>
+            <td class="vk-compare__td">Solar control, wide tint selection</td>
+            <td class="vk-compare__td vk-compare__td--stat">99%+</td>
+            <td class="vk-compare__td vk-compare__td--stat">Yes</td>
+          </tr>
+          <tr class="vk-compare__row">
+            <td class="vk-compare__td vk-compare__td--name"><span class="vk-compare__pill" style="background:#8B6914">Safety</span><span class="vk-compare__series-name">iQUE Safety &amp; Security</span></td>
+            <td class="vk-compare__td">Retail, schools, government, healthcare ground-floor glass</td>
+            <td class="vk-compare__td vk-compare__td--stat">High — clear</td>
+            <td class="vk-compare__td">Enhanced shatter resistance, glass retention</td>
+            <td class="vk-compare__td vk-compare__td--stat">99%+</td>
+            <td class="vk-compare__td vk-compare__td--stat">Yes</td>
+          </tr>
+          <tr class="vk-compare__row">
+            <td class="vk-compare__td vk-compare__td--name"><span class="vk-compare__pill" style="background:#9B59B6">UV Protection</span><span class="vk-compare__series-name">iQUE UV Protection</span></td>
+            <td class="vk-compare__td">Fade-sensitive interiors, art, merchandise, south-facing residential</td>
+            <td class="vk-compare__td vk-compare__td--stat">Varies</td>
+            <td class="vk-compare__td">SCF Seal of Recommendation, UV block</td>
+            <td class="vk-compare__td vk-compare__td--stat">99%+</td>
+            <td class="vk-compare__td vk-compare__td--stat">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="vk-compare__note">Source: V-Kool architectural product specifications (v-kool.com). Warranty terms vary by product line — confirm with Window Film Philadelphia at time of specification.</p>
+    <div class="vk-compare__cta">
+      <a href="/contact/" class="pp-btn pp-btn--primary" style="background:#81AB4C;border-color:#81AB4C;color:#fff">Talk to our team about which iQUE™ series fits your project</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="vk-casestudy">
+  <div class="vk-casestudy__inner">
+    <div class="vk-casestudy__img-col">
+      <div class="vk-casestudy__img-wrap">
+        <img src="/images/v-kool-window-film-philadelphia-casestudy.jpg"
+          alt="Philadelphia historic Rittenhouse building with V-Kool iQUE film installed, elegant glass facade"
+          title="V-Kool iQUE FG Series — Philadelphia case study"
+          width="1376" height="768" loading="lazy" class="vk-casestudy__img" />
+        <div class="vk-casestudy__badge"><span class="vk-casestudy__badge-label">Philadelphia Install</span></div>
+      </div>
+      <div class="vk-casestudy__stat-row">
+        <div class="vk-casestudy__stat"><span class="vk-casestudy__stat-val">3 floors</span><span class="vk-casestudy__stat-label">west-facing glass treated</span></div>
+        <div class="vk-casestudy__stat-div"></div>
+        <div class="vk-casestudy__stat"><span class="vk-casestudy__stat-val">Clear</span><span class="vk-casestudy__stat-label">appearance maintained</span></div>
+        <div class="vk-casestudy__stat-div"></div>
+        <div class="vk-casestudy__stat"><span class="vk-casestudy__stat-val">1 day</span><span class="vk-casestudy__stat-label">installation per floor</span></div>
+      </div>
+    </div>
+    <div class="vk-casestudy__content">
+      <span class="pp-eyebrow">Philadelphia Install</span>
+      <h2 class="vk-casestudy__title">How V-Kool iQUE FG Series Solved a West-Facing Heat Problem Without Changing the Building's Look</h2>
+      <p class="vk-casestudy__lead">A Rittenhouse Square commercial building chose V-Kool window film in Philadelphia to address a chronic afternoon heat problem on its three west-facing floors — a combination of Philadelphia's hot summer sun and floor-to-ceiling glass that made those floors uncomfortable from noon onward and overworked the building's HVAC system.</p>
+      <p class="vk-casestudy__body">The building management's constraint was clear: the glass facade was a design feature, and any film solution that visibly changed the appearance of the glass from the exterior was off the table. The building's ownership had turned down previous proposals for standard solar tint films precisely because the exterior reflectance or visible tint was unacceptable. V-Kool iQUE FG Series spectrally selective film, with its near-clear appearance and high VLT, met that constraint while delivering the heat rejection performance the building needed.</p>
+      <p class="vk-casestudy__body">Window Film Philadelphia installed iQUE FG Series across three floors in three days. Post-installation, the west-facing floors went from being the most-complained-about spaces in the building to some of the most desirable — occupants reported a genuine comfort difference in afternoon hours. The building's facilities team noted a measurable reduction in cooling demand on the treated floors. The glass looks exactly as it did before the installation.</p>
+      <blockquote class="vk-casestudy__quote">
+        <p>&ldquo;We specified V-Kool iQUE FG Series for our entire west-facing facade at our Center City headquarters. The glass still looks completely clear from inside and outside, but the afternoon heat problem we had on three floors is completely resolved. Our HVAC team noticed the difference in cooling load within the first billing cycle.&rdquo;</p>
+        <footer>Marcus D. &mdash; Facilities Director, Center City Commercial Building</footer>
+      </blockquote>
+      <a href="/contact/" class="vk-casestudy__link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Get a free V-Kool assessment for your building
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="vk-testimonials__hd">
+  <span class="pp-eyebrow">Client Reviews</span>
+  <h2 class="vk-testimonials__title">What Philadelphia clients say about V-Kool window film</h2>
+  <p class="vk-testimonials__sub">Facilities directors, architects, and property owners across Philadelphia and the surrounding region.</p>
+</div>
+<TestimonialMarquee
+  reviews={[
+    {
+      quote: "We specified V-Kool iQUE FG Series for our entire west-facing facade at our Center City headquarters. The glass still looks completely clear from inside and outside, but the afternoon heat problem we had on three floors is completely resolved. Our HVAC team noticed the difference in cooling load within the first billing cycle.",
+      name: "Marcus D.",
+      role: "Facilities Director, Center City Commercial Building",
+      img: "/images/v-kool-testimonial-marcus.jpg"
+    },
+    {
+      quote: "I was doing research for a client project and chose V-Kool specifically for the XIR sputtered technology — the reflective approach to heat rejection rather than absorptive ceramic. The difference is real: the glass itself stays cool, not warm to the touch like it was before film.",
+      name: "Diane H.",
+      role: "Architect, Philadelphia Design Firm",
+      img: "/images/v-kool-testimonial-diane.jpg"
+    },
+    {
+      quote: "Window Film Philadelphia installed V-Kool iQUE on our Rittenhouse residential building — both solar control on the upper floors and safety film on the ground level. The result is exactly what we needed: transparent, professional, and effective. No interference with the building's Wi-Fi infrastructure either.",
+      name: "Richard P.",
+      role: "Property Developer, Rittenhouse Square",
+      img: "/images/v-kool-testimonial-richard.jpg"
+    },
+    {
+      quote: "Our historic Society Hill townhouse had south-facing windows that were causing serious fade damage to our hardwood floors and period furniture. V-Kool iQUE film stopped it completely. You genuinely cannot see the film is there — which was our main concern from the start.",
+      name: "Catherine W.",
+      role: "Homeowner, Society Hill",
+      img: "/images/v-kool-testimonial-marcus.jpg"
+    },
+    {
+      quote: "We manage a twelve-floor office building in Center City and the west elevation was a constant tenant complaint. After V-Kool iQUE FG Series went on, those floors went from the hardest to lease to some of the most requested. The ROI on the installation was faster than we expected.",
+      name: "Thomas B.",
+      role: "Portfolio Manager, Center City Office",
+      img: "/images/v-kool-testimonial-richard.jpg"
+    },
+    {
+      quote: "The V-Kool iQUE Safety and Security film on our ground-floor retail windows gives us peace of mind I didn't know I was missing. The glass still looks completely clear but it holds together after impact — exactly what we needed on a South Street storefront.",
+      name: "Melissa K.",
+      role: "Retail Owner, South Street",
+      img: "/images/v-kool-testimonial-diane.jpg"
+    }
+  ]}
+/>
+
+<!-- FAQ -->
+<section class="vk-faq" id="faq">
+  <div class="vk-faq__inner">
+    <div class="vk-faq__header fade-in">
+      <span class="vk-eyebrow">Questions</span>
+      <h2 class="vk-faq__title">Frequently Asked Questions</h2>
+      <p>Honest answers about V-Kool window film in Philadelphia from specialists with over 15 years of installation experience.</p>
+      <a href="/contact/" class="vk-faq__cta-btn">Talk to a Specialist</a>
+    </div>
+    <div class="vk-faq__list fade-in">
+      <div class="vk-faq__item vk-faq__item--open">
+        <div class="vk-faq__q"><span>What is V-Kool window film?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>V-Kool is a premium window film brand owned by Eastman. For architectural applications, V-Kool offers the iQUE™ product line — spectrally selective FG Series, Performance Series, Safety & Security, and UV protection films built on V-Kool's proprietary XIR® sputtering technology developed in Silicon Valley and manufactured in Dresden, Germany.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>What is XIR® technology and how is it different from ceramic film?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>XIR® is V-Kool's proprietary sputtering technology. Where dyed and ceramic films absorb infrared heat — making the glass itself hot — V-Kool's sputtered films reflect infrared radiation rather than absorbing it. This means the glass stays cooler and less secondary radiant heat enters the room. The sputtering process deposits microscopic layers of precious metals onto the film at V-Kool's ISO-9001 certified plant in Dresden, Germany.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>What is the iQUE FG Series?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>The iQUE FG Series is V-Kool's flagship spectrally selective architectural film. It allows visible light into the space while reflecting selected infrared wavelengths before they enter the building. The result is high heat rejection with a high, near-clear visible light transmission — the right specification for Philadelphia commercial buildings and premium residences where both comfort and clarity are required.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>Does V-Kool window film interfere with Wi-Fi or cellular signals?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>V-Kool's iQUE spectrally selective films are non-metallic in their visible-spectrum construction, which minimizes signal interference. This is a meaningful advantage for dense Philadelphia commercial floors with extensive wireless infrastructure — Center City tech tenants and financial services firms specifically benefit from this characteristic compared to conventional metallic reflective films.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>Is V-Kool window film worth it for Philadelphia's climate?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>Philadelphia's IECC Zone 4A climate creates a genuine year-round demand for solar control. In summer, V-Kool iQUE FG Series reduces solar heat gain on south- and west-facing glass. In winter, the low-emissivity properties of V-Kool's sputtered films help retain interior heat. That combination makes V-Kool a strong year-round specification for Philadelphia commercial and residential properties.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>What UV protection does V-Kool provide?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>V-Kool iQUE films have earned the Skin Cancer Foundation's Seal of Recommendation for UV protection performance. All iQUE product lines block 99%+ of harmful UV radiation that causes fading in flooring, furniture, artwork, and merchandise. For Philadelphia properties with south-facing glass exposure and valuable interior finishes, V-Kool's UV block is a meaningful asset protection benefit.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>What is the difference between iQUE FG Series and iQUE Performance Series?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>The iQUE FG Series is V-Kool's spectrally selective flagship — engineered to deliver the highest heat rejection with the highest visible light transmission. The iQUE Performance Series is a cost-effective alternative covering a wide range of VLT and tint options. For Philadelphia commercial projects where budget is a primary consideration, Performance Series delivers strong results at a more accessible price point.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>Does V-Kool make safety and security window film?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>Yes. The iQUE Safety & Security film line enhances glass shatter resistance and helps hold glass together on impact. Philadelphia retail storefronts, schools, and government buildings use iQUE Safety & Security film for glass retention. The film does not make glass unbreakable, but significantly improves performance under impact.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>Can V-Kool window film be installed on existing Philadelphia glass?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>Yes. V-Kool iQUE films are applied to the interior glass surface of existing windows — no glass replacement required. Window Film Philadelphia assesses glass type, orientation, and performance goals before recommending a product series to ensure compatibility, including insulated glass units common in Center City commercial buildings.</p></div>
+      </div>
+      <div class="vk-faq__item">
+        <div class="vk-faq__q"><span>Where is V-Kool manufactured?</span><span class="vk-faq__toggle">+</span></div>
+        <div class="vk-faq__a"><p>V-Kool window films are manufactured at an ISO-9001 certified plant in Dresden, Germany — one of a small number of facilities worldwide capable of the precision multi-layer sputtering process that XIR® technology requires. The sputtering technology was developed in Silicon Valley, USA. V-Kool is owned by Eastman Chemical Company, the same parent as LLumar and Vista.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="vk-cta-banner">
+  <div class="vk-cta-banner__bg" style="background-image:url('/images/v-kool-cta-banner-philadelphia.jpg')" aria-hidden="true"></div>
+  <div class="vk-cta-banner__overlay" aria-hidden="true"></div>
+  <div class="vk-cta-banner__content">
+    <h2 class="vk-cta-banner__title">German-Engineered Precision for Philadelphia Glass.</h2>
+    <p class="vk-cta-banner__sub">Get a free V-Kool iQUE™ assessment — no obligation, just expert advice on the right XIR® film for your property.</p>
+    <div class="vk-cta-banner__btns">
+      <a href="/contact/" class="vk-cta-banner__btn vk-cta-banner__btn--primary">Get Your Free Estimate</a>
+      <a href="tel:2673947980" class="vk-cta-banner__btn vk-cta-banner__btn--secondary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+        (267) 394-7980
+      </a>
+    </div>
+  </div>
+  <p class="vk-cta-banner__footnote">*9.6°C cooler glass surface — Singapore Polytechnic independent test, 2018, V-Kool VK70 &amp; V30 vs unfilmed vehicle.</p>
+</section>
+
+</div>
+
+<style>
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+/* ── GEO ── */
+.vk-geo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── Body link style (visible in both light and dark sections) ── */
+.vk-body-link {
+  color: var(--green, #81AB4C);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(129,171,76,0.55);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+  border-radius: 2px;
+}
+.vk-body-link:hover {
+  color: #a8d468;
+  text-decoration-color: rgba(168,212,104,0.8);
+}
+
+/* ── Product lineup H3 ── */
+h3.vk-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: inherit; margin: 0; }
+
+.vk-hero {
+  position: relative;
+  width: 100%;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+.vk-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  transition: transform 8s ease;
+}
+.vk-hero:hover .vk-hero__bg { transform: scale(1.0); }
+.vk-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 26, 20, 0.25) 0%,
+    rgba(18, 26, 20, 0.55) 50%,
+    rgba(18, 26, 20, 0.82) 100%
+  );
+}
+.vk-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+.vk-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+}
+.vk-hero__eyebrow-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  display: inline-block;
+}
+.vk-hero__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+.vk-hero__animated-line {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 20px;
+  font-style: italic;
+}
+.vk-hero__flip {
+  color: var(--green, #81AB4C);
+  font-style: italic;
+  font-weight: 600;
+}
+.vk-hero__subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 0 36px;
+}
+.vk-hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.vk-hero__btn-primary {
+  display: inline-block;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  padding: 15px 32px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.vk-hero__btn-primary:hover { background: #6e9640; transform: translateY(-2px); }
+.vk-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  padding: 15px 28px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.05);
+}
+.vk-hero__btn-secondary:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+/* Stats panel */
+.vk-hero__stats-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 28px 36px;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 100%;
+}
+.vk-hero__stats-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.vk-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 36px;
+  text-align: center;
+}
+.vk-hero__stat:first-child { padding-left: 0; }
+.vk-hero__stat:last-child { padding-right: 0; }
+.vk-hero__stat-number {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.vk-hero__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+}
+.vk-hero__stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .vk-hero { min-height: 100svh; padding-bottom: 48px; }
+  .vk-hero__stats-panel { padding: 20px 20px; border-radius: 16px; }
+  .vk-hero__stat { padding: 0 16px; }
+  .vk-hero__cta { flex-direction: column; align-items: flex-start; }
+  .vk-hero__stats-inner { gap: 8px; }
+  .vk-hero__stat-divider { display: none; }
+}
+
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
+
+/* ── EYEBROW ── */
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
+
+/* ══════════════════════════════════════
+   PRODUCT COMPARISON TABLE
+══════════════════════════════════════ */
+.vk-compare {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.vk-compare__inner { max-width: 1400px; margin: 0 auto; }
+.vk-compare__hd { text-align: center; margin-bottom: 56px; }
+.vk-compare__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+}
+.vk-compare__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.vk-compare__wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.vk-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 820px;
+}
+.vk-compare__th {
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.06);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+}
+.vk-compare__th--series { width: 200px; }
+.vk-compare__th-sub {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2px;
+  text-transform: none;
+}
+.vk-compare__row:not(:last-child) td { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.vk-compare__row:hover td { background: rgba(255,255,255,0.03); }
+.vk-compare__td {
+  padding: 18px 18px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  vertical-align: middle;
+}
+.vk-compare__td--stat { font-weight: 600; color: #fff; white-space: nowrap; }
+.vk-compare__td--name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 18px;
+}
+.vk-compare__pill {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.vk-compare__series-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.vk-compare__note {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin: 20px 0 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+.vk-compare__cta { text-align: center; }
+@media (max-width: 768px) {
+  .vk-compare { padding: 60px 5%; }
+  .vk-compare__th--series { width: 140px; }
+}
+
+/* ══════════════════════════════════════
+   CASE STUDY
+══════════════════════════════════════ */
+.vk-casestudy {
+  background: #ffffff;
+  padding: 100px 8%;
+  border-top: 1px solid #EEECE8;
+}
+.vk-casestudy__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.vk-casestudy__img-col { display: flex; flex-direction: column; gap: 24px; }
+.vk-casestudy__img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.vk-casestudy__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.vk-casestudy__img-wrap:hover .vk-casestudy__img { transform: scale(1.02); }
+.vk-casestudy__badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #14201A;
+  color: #81AB4C;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 100px;
+}
+.vk-casestudy__stat-row {
+  display: flex;
+  align-items: center;
+  background: #14201A;
+  border-radius: 16px;
+  padding: 22px 28px;
+  gap: 0;
+}
+.vk-casestudy__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.vk-casestudy__stat-val {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #81AB4C;
+  line-height: 1;
+}
+.vk-casestudy__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+  text-align: center;
+}
+.vk-casestudy__stat-div {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+.vk-casestudy__content { display: flex; flex-direction: column; gap: 0; }
+.vk-casestudy__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 24px;
+}
+.vk-casestudy__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.vk-casestudy__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.vk-casestudy__quote {
+  margin: 24px 0 28px;
+  padding: 20px 24px;
+  border-left: 3px solid #81AB4C;
+  background: #F7F6F3;
+  border-radius: 0 12px 12px 0;
+}
+.vk-casestudy__quote p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.vk-casestudy__quote footer {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid, #4a4a4a);
+}
+.vk-casestudy__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  border: 1.5px solid var(--green, #81AB4C);
+  padding: 12px 20px;
+  border-radius: 100px;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+}
+.vk-casestudy__link:hover { background: var(--green, #81AB4C); color: #fff; }
+@media (max-width: 1024px) {
+  .vk-casestudy__inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 640px) {
+  .vk-casestudy { padding: 60px 5%; }
+  .vk-casestudy__stat-row { flex-direction: column; gap: 16px; }
+  .vk-casestudy__stat-div { width: 40px; height: 1px; }
+}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ */
+.vk-testimonials {
+  background: #F5F3EE;
+  padding: 96px 6%;
+}
+.vk-testimonials__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.vk-testimonials__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+}
+.vk-testimonials__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.vk-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.vk-tcard {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.vk-tcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.vk-tcard__img-wrap { aspect-ratio: 16/9; overflow: hidden; }
+.vk-tcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.vk-tcard:hover .vk-tcard__img { transform: scale(1.03); }
+.vk-tcard__body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+.vk-tcard__stars {
+  font-size: 18px;
+  color: #F5A623;
+  letter-spacing: 2px;
+}
+.vk-tcard__quote {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+  flex: 1;
+  font-style: italic;
+}
+.vk-tcard__meta { border-top: 1px solid #EEECE8; padding-top: 16px; }
+.vk-tcard__name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 3px;
+}
+.vk-tcard__role {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  .vk-testimonials__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .vk-testimonials { padding: 60px 5%; }
+  .vk-testimonials__grid { grid-template-columns: 1fr; }
+  .vk-tcard__body { padding: 22px 22px 26px; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 2 - INTRO + TRUST BAR
+══════════════════════════════════════ */
+.vk-intro {
+  padding: 100px 8%;
+  background: #ffffff;
+}
+.vk-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* Image column */
+.vk-intro__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+}
+.vk-intro__img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.vk-intro__badge {
+  position: absolute;
+  bottom: -20px;
+  left: 24px;
+  background: var(--brand, #272E32);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+/* Content column */
+.vk-intro__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.vk-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 24px;
+}
+.vk-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.vk-intro__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.vk-intro__creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-bottom: 32px;
+}
+.vk-intro__cred {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark, #1a1a1a);
+}
+.vk-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+/* Trust bar */
+.vk-trust {
+  background: var(--off-white, #F7F6F3);
+  padding: 36px 8%;
+  border-top: 1px solid #E8E7E4;
+  border-bottom: 1px solid #E8E7E4;
+}
+.vk-trust__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.vk-trust__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid, #4a4a4a);
+  text-align: center;
+  margin: 0;
+}
+.vk-trust__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  justify-content: center;
+}
+.vk-trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  padding: 0 20px;
+}
+.vk-trust__sep {
+  width: 1px;
+  height: 16px;
+  background: #D0CEC9;
+  flex-shrink: 0;
+}
+@media (max-width: 1024px) {
+  .vk-intro__inner { grid-template-columns: 1fr; gap: 60px; }
+  .vk-intro__image-col { order: 2; }
+  .vk-intro__content { order: 1; }
+  .vk-intro__img { height: 400px; }
+}
+@media (max-width: 640px) {
+  .vk-intro { padding: 60px 5%; }
+  .vk-trust { padding: 28px 5%; }
+  .vk-trust__badges { gap: 12px; flex-direction: column; align-items: flex-start; }
+  .vk-trust__sep { display: none; }
+}
+
+/* ── INTRO ── */
+.pp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.pp-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════
+   SECTION 3 - WHY 3M FOR PHILADELPHIA
+══════════════════════════════════════ */
+.vk-why {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.vk-why__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+.vk-why__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.vk-why__image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.vk-why__stat-card {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 18px 22px;
+  min-width: 240px;
+}
+.vk-why__stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.vk-why__stat-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 10px 0;
+}
+.vk-why__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.vk-why__headline {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+.vk-why__intro {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.vk-why__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.vk-why__bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+.vk-why__bullets li svg { flex-shrink: 0; margin-top: 3px; }
+.vk-why__climate-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.vk-why__climate-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 12px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.vk-why__climate-item:last-child { border-right: none; }
+.vk-why__climate-num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.vk-why__climate-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+.vk-why__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.vk-why__cta:hover { gap: 14px; }
+@media (max-width: 1024px) {
+  .vk-why__container { grid-template-columns: 1fr; gap: 60px; }
+  .vk-why__stat-card { right: 0; bottom: -20px; }
+  .vk-why__image { height: 400px; }
+}
+@media (max-width: 640px) {
+  .vk-why { padding: 60px 5%; }
+  .vk-why__climate-facts { grid-template-columns: 1fr; }
+  .vk-why__climate-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .vk-why__climate-item:last-child { border-bottom: none; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 4 - SLIDER
+══════════════════════════════════════ */
+.vk-slider { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+.vk-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+.vk-slider__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+.vk-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+.vk-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+.vk-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 8%; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+.vk-slider__slide[data-slide="0"] .vk-slider__content { opacity: 1; transform: translateY(0); }
+.vk-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #81AB4C; letter-spacing: 0.2em; margin-bottom: 1rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.vk-slider__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.vk-slider__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.vk-slider__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.vk-slider__faq-item { border-radius: 8px; overflow: hidden; }
+.vk-slider__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+.vk-slider__faq-q:hover { background: rgba(255,255,255,0.18); }
+.vk-slider__faq-icon { font-size: 1.2rem; color: #81AB4C; flex-shrink: 0; font-style: normal; transition: transform 0.3s ease; }
+.vk-slider__faq-q[aria-expanded="true"] .vk-slider__faq-icon { transform: rotate(45deg); }
+.vk-slider__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+.vk-slider__cta { display: inline-block; background: var(--green, #81AB4C); color: #fff; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; opacity: 0; animation: m3FadeUp 0.4s ease 0.6s forwards; }
+.vk-slider__cta:hover { background: #6e9640; transform: translateY(-2px); }
+.vk-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+.vk-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+.vk-slider__nav-item:hover { opacity: 0.65; }
+.vk-slider__nav-item--active { opacity: 1; }
+.vk-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+.vk-slider__nav-item--active .vk-slider__nav-line { background: #81AB4C; height: 48px; }
+.vk-slider__nav-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+.vk-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+.vk-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #81AB4C; }
+.vk-slider__arrow--prev { left: 32px; }
+.vk-slider__arrow--next { right: 32px; }
+.vk-slider__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+.vk-slider__progress-bar { height: 100%; background: #81AB4C; width: 0; transition: width 0.05s linear; }
+@keyframes m3FadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.vk-slider__slide.vk-active .vk-slider__content { opacity: 1; transform: translateY(0); }
+.vk-slider__slide.vk-active .vk-slider__step { animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.vk-slider__slide.vk-active .vk-slider__title { animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.vk-slider__slide.vk-active .vk-slider__desc { animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.vk-slider__slide.vk-active .vk-slider__faq { animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.vk-slider__slide.vk-active .vk-slider__cta { animation: m3FadeUp 0.4s ease 0.6s forwards; }
+@media (max-width: 1024px) { .vk-slider__nav { right: 32px; } .vk-slider__content { padding-left: 60px; } }
+@media (max-width: 768px) { .vk-slider__nav { display: none; } .vk-slider__content { padding-left: 5%; padding-right: 5%; max-width: 100%; } .vk-slider__arrow--prev { left: 20px; } .vk-slider__arrow--next { right: 20px; } }
+
+/* ── FEATURED SECTIONS ── */
+/* ── PRODUCT LINES (vk-products) ── */
+.vk-products {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.vk-products__hd {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+.vk-products__title {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(28px, 3vw, 42px);
+  color: var(--dark, #1a1a1a);
+  margin: 8px 0 16px;
+  line-height: 1.15;
+}
+.vk-products__sub {
+  font-size: 15px;
+  color: var(--text-mid, #555);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Each alternating row */
+.vk-pl-row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: start;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.vk-pl-row:last-child { margin-bottom: 0; }
+.vk-pl-row--rev { direction: rtl; }
+.vk-pl-row--rev > * { direction: ltr; }
+
+/* Image side */
+.vk-pl-row__img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+}
+.vk-pl-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vk-pl-row__pill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+/* Content side */
+.vk-pl-row__content {
+  padding: 52px 52px 52px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.vk-pl-row--rev .vk-pl-row__content {
+  padding: 52px 0 52px 52px;
+}
+.vk-pl-row__num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--green, #81AB4C);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+.vk-pl-row__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid, #666);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.vk-pl-row__heading {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--dark, #1a1a1a);
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.vk-pl-row__body {
+  font-size: 15px;
+  color: var(--text-mid, #444);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Specs strip */
+.vk-pl-row__specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light-gray, #E8E8E4);
+  border: 1px solid var(--light-gray, #E8E8E4);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0 28px;
+}
+.vk-pl-row__spec {
+  background: var(--off-white, #F7F6F3);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.vk-pl-row__spec-val {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+}
+.vk-pl-row__spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-mid, #666);
+  text-align: center;
+}
+
+/* PDF links */
+.vk-pl-row__pdfs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.vk-pl-row__pdfs-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid, #888);
+}
+.vk-pl-row__pdf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vk-pl-row__pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.vk-pl-row__pdf-link:hover { color: var(--dark, #1a1a1a); }
+.vk-pl-row__pdf-link svg { flex-shrink: 0; opacity: 0.7; }
+.vk-pl-row__warranty-note {
+  font-size: 11px;
+  color: var(--text-mid, #999);
+  margin: 10px 0 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .vk-pl-row {
+    grid-template-columns: 1fr;
+  }
+  .vk-pl-row--rev { direction: ltr; }
+  .vk-pl-row__img-wrap { min-height: 280px; }
+  .vk-pl-row__content { padding: 36px 28px; }
+  .vk-pl-row--rev .vk-pl-row__content { padding: 36px 28px; }
+  .vk-pl-row__specs { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════════════════════════
+   3M PRODUCT CATALOG
+══════════════════════════════════════ */
+.vk-catalog {
+  padding: 80px 0;
+  background: #0d0d0d;
+}
+.vk-catalog__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.vk-catalog__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.vk-catalog__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #fff;
+  margin: 12px 0 16px;
+  letter-spacing: 0;
+}
+.vk-catalog__sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.vk-catalog__series {
+  margin-bottom: 48px;
+}
+.vk-catalog__series-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.vk-catalog__series-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.vk-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.vk-catalog__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.vk-catalog__card:hover {
+  border-color: #81AB4C;
+  transform: translateY(-2px);
+}
+.vk-catalog__card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.vk-catalog__card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.vk-catalog__card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.vk-catalog__card-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.vk-catalog__card-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .vk-catalog { padding: 48px 0; }
+  .vk-catalog__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .vk-catalog__card-img { height: 120px; }
+}
+
+/* Keep old pp-featured CSS for fallback (can remove later) */
+.pp-featured {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.pp-feat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img {
+  position: relative;
+  height: 480px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600;
+  color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25;
+  margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+
+/* ── PRODUCT GRID (dark) ── */
+.pp-why {
+  background: var(--brand, #272E32);
+  padding: 100px 10%;
+}
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0;
+  max-width: 600px;
+}
+.pp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.pp-why__item {
+  padding: 32px 28px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon {
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+  display: flex; align-items: center; line-height: 1;
+}
+.pp-why__icon svg { display: block; }
+.pp-why__divider {
+  width: 32px; height: 2px;
+  background: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.pp-why__item-title {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.pp-why__item-sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin: 0; line-height: 1.5;
+}
+
+/* ── FAQ - two-column split ── */
+.vk-faq {
+  background: #ffffff;
+  padding: 96px 0;
+}
+.vk-faq__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.vk-eyebrow {
+  display: block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.vk-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 16px;
+}
+.vk-faq__header p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0 0 24px;
+}
+.vk-faq__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+}
+.vk-faq__cta-btn:hover { background: #6a9240; transform: translateY(-1px); }
+.vk-faq__item {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding: 20px 0;
+}
+.vk-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.vk-faq__q {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.vk-faq__toggle {
+  color: var(--green, #81AB4C);
+  font-size: 22px;
+  flex-shrink: 0;
+  font-weight: 400;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.vk-faq__a {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-top: 10px;
+  display: none;
+}
+.vk-faq__item--open .vk-faq__a { display: block; }
+.vk-faq__item--open .vk-faq__toggle { transform: rotate(45deg); }
+.vk-faq__a p { margin: 0; }
+
+/* ── CTA - cinematic ── */
+.vk-cinematic-cta {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.vk-cinematic-cta__media {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/3m-window-film-philadelphia-cta.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.vk-cinematic-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.72) 40%, rgba(13,26,15,0.88) 100%);
+}
+.vk-cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(13,26,15,0.15) 0%, rgba(13,26,15,0.6) 100%);
+}
+.vk-cinematic-cta__content {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  padding: 80px 24px;
+  text-align: center;
+}
+.vk-cinematic-cta__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.vk-cinematic-cta__title em { font-style: italic; color: #9ecf5a; }
+.vk-cinematic-cta__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243,246,241,0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.vk-cinematic-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.vk-cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.vk-cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124,179,66,0.35);
+}
+.vk-cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+.vk-cinematic-cta__btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(124,179,66,0.6);
+  transform: translateY(-2px);
+}
+
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .vk-faq__inner { grid-template-columns: 1fr; gap: 40px; }
+  .vk-cinematic-cta__actions { flex-direction: column; align-items: center; }
+  .vk-cinematic-cta__btn-primary, .vk-cinematic-cta__btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+
+
+
+/* ══ TINT SLIDER CTA ══ */
+.vk-tint-cta { position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; justify-content: center; }
+.vk-tint-cta__bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: filter .05s; }
+.vk-tint-cta__darken { position: absolute; inset: 0; background: rgba(10,20,5,0); pointer-events: none; transition: background .05s; }
+.vk-tint-cta__content { position: relative; z-index: 2; text-align: center; padding: 80px 24px; max-width: 680px; width: 100%; }
+.vk-tint-cta__title { font-family: var(--font-serif,'Playfair Display',serif); font-size: clamp(36px,5vw,64px); font-weight: 700; color: #fff; line-height: 1.05; margin: 0 0 16px; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+.vk-tint-cta__subtitle { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 17px; color: rgba(255,255,255,.88); line-height: 1.65; margin: 0 0 40px; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.vk-tint-cta__controls { display: flex; align-items: center; gap: 14px; background: rgba(0,0,0,.38); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 14px 22px; margin: 0 0 16px; }
+.vk-tint-cta__label { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 12px; font-weight: 800; letter-spacing: .12em; color: rgba(255,255,255,.7); white-space: nowrap; }
+.vk-tint-cta__range { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(255,255,255,.3); outline: none; cursor: pointer; }
+.vk-tint-cta__range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,.4); cursor: grab; transition: transform .15s; }
+.vk-tint-cta__range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.vk-tint-cta__range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; cursor: grab; }
+.vk-tint-cta__vlt { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 36px; letter-spacing: .02em; }
+.vk-tint-cta__vlt strong { color: #fff; font-size: 18px; font-weight: 800; }
+.vk-tint-cta__btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 999px; background: var(--green,#81AB4C); color: #fff; font-family: var(--font-body,'DM Sans',sans-serif); font-weight: 700; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 24px rgba(129,171,76,.4); }
+.vk-tint-cta__btn:hover { background: #6e9640; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(129,171,76,.5); }
+@media (max-width: 600px) { .vk-tint-cta { min-height: 520px; } .vk-tint-cta__controls { padding: 12px 16px; } }
+
+/* ══ CTA BANNER ══ */
+.vk-cta-banner { position: relative; overflow: hidden; min-height: 500px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.vk-cta-banner__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.vk-cta-banner__overlay { position: absolute; inset: 0; background: rgba(10,25,10,0.72); }
+.vk-cta-banner__content { position: relative; z-index: 2; text-align: center; padding: 80px 24px 20px; max-width: 720px; width: 100%; }
+.vk-cta-banner__title { font-family: var(--font-serif,'Playfair Display',serif); font-size: clamp(1.8rem,4.5vw,3.2rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 18px; }
+.vk-cta-banner__sub { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 1.05rem; color: rgba(255,255,255,.78); line-height: 1.65; margin: 0 auto 36px; max-width: 560px; }
+.vk-cta-banner__btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.vk-cta-banner__btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 32px; border-radius: 999px; font-family: var(--font-body,'DM Sans',sans-serif); font-weight: 700; font-size: 15px; text-decoration: none; transition: background .2s, transform .2s; }
+.vk-cta-banner__btn--primary { background: var(--green,#81AB4C); color: #fff; }
+.vk-cta-banner__btn--primary:hover { background: #6e9640; transform: translateY(-2px); }
+.vk-cta-banner__btn--secondary { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.5); }
+.vk-cta-banner__btn--secondary:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+.vk-cta-banner__footnote { position: relative; z-index: 2; font-family: var(--font-body,'DM Sans',sans-serif); font-size: 11px; color: rgba(255,255,255,.4); padding: 0 24px 24px; max-width: 720px; text-align: center; }
+@media (max-width: 600px) { .vk-cta-banner { min-height: 420px; } .vk-cta-banner__btns { flex-direction: column; } .vk-cta-banner__btn { width: 100%; justify-content: center; } }
+</style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // ── Slider ──
+  (function initM3Slider() {
+    const track = document.getElementById('vkTrack');
+    const slides = document.querySelectorAll('.vk-slider__slide');
+    const navItems = document.querySelectorAll('[data-vknav]');
+    const prevBtn = document.getElementById('vkPrev');
+    const nextBtn = document.getElementById('vkNext');
+    const progressBar = document.getElementById('vkProgressBar');
+    if (!track || !slides.length) return;
+    let current = 0;
+    const total = slides.length;
+
+    function goTo(i) {
+      if (i < 0) i = total - 1;
+      if (i >= total) i = 0;
+      current = i;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('vk-slider__nav-item--active', idx === current));
+      slides.forEach((s, idx) => s.classList.toggle('vk-active', idx === current));
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0';
+        setTimeout(() => { progressBar.style.transition = 'width 6s linear'; progressBar.style.width = '100%'; }, 50);
+      }
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
+
+    document.querySelectorAll('.vk-slider__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.vk-slider__slide');
+        slide.querySelectorAll('.vk-slider__faq-q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const a = b.nextElementSibling; if (a) a.hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          const a = btn.nextElementSibling; if (a) a.hidden = false;
+        }
+      });
+    });
+
+    let timer = setInterval(() => goTo(current + 1), 6000);
+    document.getElementById('vkSlider')?.addEventListener('mouseenter', () => clearInterval(timer));
+    document.getElementById('vkSlider')?.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 6000); });
+    goTo(0);
+  })();
+
+  document.querySelectorAll('.vk-faq__item').forEach(item => {
+    item.querySelector('.vk-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('vk-faq__item--open');
+      document.querySelectorAll('.vk-faq__item').forEach(i => i.classList.remove('vk-faq__item--open'));
+      if (!isOpen) item.classList.add('vk-faq__item--open');
+    });
+  });
+
+  // ══ TINT SLIDER ══
+  (() => {
+    const range = document.getElementById('vkTintRange');
+    const overlay = document.getElementById('vkTintOverlay');
+    const vltEl = document.getElementById('vkTintVlt');
+    const filmEl = document.getElementById('vkTintFilm');
+    if (!range) return;
+    // v=0 (left) = clearest, v=100 (right) = darkest (limo)
+    // VLT: clear ~90% down to limo ~5%
+    // v=0 (left, CLEAR) = no tint; v=100 (right, LIMO) = darkest
+    const films = [
+      { minV: 0,  maxV: 15,  name: 'Clear — No Film',       vlt: 90 },
+      { minV: 15, maxV: 30,  name: '3M Thinsulate CC75',   vlt: 75 },
+      { minV: 30, maxV: 50,  name: '3M Sun Control PR70',  vlt: 70 },
+      { minV: 50, maxV: 65,  name: '3M Sun Control PR50',  vlt: 50 },
+      { minV: 65, maxV: 80,  name: '3M Sun Control PR35',  vlt: 35 },
+      { minV: 80, maxV: 90,  name: '3M Night Vision NV25', vlt: 24 },
+      { minV: 90, maxV: 100, name: '3M Night Vision NV15', vlt: 15 },
+    ];
+    const update = () => {
+      const v = parseInt(range.value); // 0=CLEAR (light), 100=LIMO (dark)
+      const vlt = Math.round(90 - (v / 100) * 85); // 90% at CLEAR, 5% at LIMO
+      const opacity = (v / 100) * 0.78;
+      overlay.style.background = `rgba(10,20,5,${opacity.toFixed(3)})`;
+      vltEl.textContent = vlt + '%';
+      const film = films.find(f => v >= f.minV && v <= f.maxV) || films[films.length - 1];
+      filmEl.textContent = film.name;
+    };
+    range.addEventListener('input', update);
+    update();
+  })();
+</script>
