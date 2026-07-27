@@ -1,712 +1,2580 @@
 ---
+/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
+ * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FlipWords from '../../components/FlipWords.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import CountUp from '../../components/animations/CountUp.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Graffiti Shield Window Film Philadelphia | Anti-Graffiti Film';
-const description = 'Graffiti Shield anti-graffiti film in Philadelphia — Glass Shield, Metal Shield, Mirror Shield & Multi-Layer. Sacrificial protective films for storefronts, transit & offices.';
-
-const flipItems = [
-  'Philadelphia storefronts',
-  'SEPTA transit stations',
-  'restaurant restrooms',
-  'office building lobbies',
-  'school corridors',
-  'retail glass facades',
-];
-
-const heroStats = [
-  { value: 6, suffix: '', label: 'Product Lines' },
-  { value: 100, suffix: '%', label: 'Sacrificial — Glass Never Replaced' },
-  { value: 4, suffix: '-layer', label: 'Multi-Layer System' },
-  { value: 24, suffix: 'hr', label: 'Typical Restoration Time' },
-];
-
-const whyBullets = [
-  { icon: 'lucide:shield-check', text: 'Sacrificial film replaces in minutes — no glass replacement ever needed' },
-  { icon: 'lucide:layers', text: 'Protects against scratching, carving, and acid etching on contact' },
-  { icon: 'lucide:dollar-sign', text: 'Fraction of glass replacement cost — restore to like-new condition instantly' },
-  { icon: 'lucide:building-2', text: 'Proven in transit stations, retail storefronts, restaurants, and schools nationwide' },
-  { icon: 'lucide:repeat', text: 'Multi-Layer system: peel one layer at a time — no re-installation required' },
-];
-
-const productRows = [
-  {
-    number: '01',
-    heading: 'Glass Shield',
-    body: 'Glass Shield is Graffiti Shield\'s flagship sacrificial clear film for glass and mirrors. Engineered with a specially formulated hard coat and optimal thickness, Glass Shield acts as a barrier against scratching, carving, and acid etching — the three most common forms of glass vandalism on Philadelphia storefronts, transit stations, and commercial buildings. When damaged, the film peels away cleanly and a fresh sheet is installed in minutes, restoring your glass to a pristine, like-new condition at a fraction of glass replacement cost.',
-    img: '/images/graffiti-shield-glass-shield-philadelphia.jpg',
-    alt: 'Glass Shield anti-graffiti film Philadelphia storefront',
-    reverse: false,
-    pdfs: [
-      { label: 'Glass Shield Sell Sheet', href: '/resources/graffiti-shield-glass-shield-sell-sheet-philadelphia.pdf' },
-      { label: 'Installation Guide', href: '/resources/graffiti-shield-installation-guide-philadelphia.pdf' },
-    ],
-    specs: ['Clear optical film', 'Hard-coat surface', 'Scratch & acid-etch resistant', 'Minutes to replace'],
-  },
-  {
-    number: '02',
-    heading: 'Metal Shield',
-    body: 'Metal Shield defends brushed and polished metal surfaces in Philadelphia public environments against abrasive tools and chemical attack. Available in three finish options — Stainless Steel, Brushed Aluminum, and Brushed Gold — Metal Shield uses thick anti-graffiti abatement film that accurately replicates the substrate appearance. Elevator interiors, stainless steel partitions, and metal cladding in high-foot-traffic Philadelphia venues are prime candidates. The film absorbs the vandalism and peels cleanly away, leaving the original metal untouched beneath.',
-    img: '/images/graffiti-shield-metal-shield-philadelphia.jpg',
-    alt: 'Metal Shield anti-graffiti film stainless steel Philadelphia',
-    reverse: true,
-    pdfs: [
-      { label: 'Metal Shield Sell Sheet', href: '/resources/graffiti-shield-metal-shield-sell-sheet-philadelphia.pdf' },
-      { label: 'Graffiti Shield Warranty', href: '/resources/graffiti-shield-warranty-philadelphia.pdf' },
-    ],
-    specs: ['Stainless Steel finish', 'Brushed Aluminum finish', 'Brushed Gold finish', 'Abrasion resistant'],
-  },
-  {
-    number: '03',
-    heading: 'Mirror Shield',
-    body: 'Restroom mirrors are among the most frequently vandalized surfaces in Philadelphia restaurants, venues, and transit facilities — and among the most expensive to replace. Mirror Shield is a sacrificial protective film that maintains the full reflective appearance of mirrors while absorbing scratches, etching, and spray paint. When vandalism occurs — often undetected over time — the damaged film layer is simply removed and replaced, eliminating the cost and lead time of mirror replacement. Mirror Shield is designed for the repeated, prolonged exposure typical of high-traffic restroom environments.',
-    img: '/images/graffiti-shield-mirror-shield-philadelphia.jpg',
-    alt: 'Mirror Shield anti-graffiti film restroom mirrors Philadelphia',
-    reverse: false,
-    pdfs: [
-      { label: 'Mirror Shield Sell Sheet', href: '/resources/graffiti-shield-mirror-shield-sell-sheet-philadelphia.pdf' },
-    ],
-    specs: ['Full reflective appearance preserved', 'Scratch & etch resistant', 'Spray paint barrier', 'Ideal for restrooms'],
-  },
-  {
-    number: '04',
-    heading: 'Glass Shield Multi Layer',
-    body: 'Glass Shield Multi Layer is a revolutionary 4-layer system engineered for Philadelphia properties that face frequent or ongoing vandalism. Each layer consists of a 4-mil clear anti-graffiti film precisely cut to fit your glass. When the surface incurs damage, only the affected top layer is peeled away — the remaining layers continue to protect the glass below. This adaptive approach eliminates re-installation labor between incidents and ensures continuous protection across the full surface. Precision-cut to your specifications, Glass Shield Multi Layer is the highest-endurance option for chronic vandalism environments.',
-    img: '/images/graffiti-shield-multi-layer-philadelphia.jpg',
-    alt: 'Glass Shield Multi Layer anti-graffiti film Philadelphia',
-    reverse: true,
-    pdfs: [
-      { label: 'Multi-Layer Sell Sheet', href: '/resources/graffiti-shield-multi-layer-sell-sheet-philadelphia.pdf' },
-    ],
-    specs: ['4-layer system', '4-mil clear film per layer', 'Peel one layer at a time', 'Precision custom-cut'],
-  },
-  {
-    number: '05',
-    heading: 'Custom Shield',
-    body: 'Custom Shield is Graffiti Shield\'s patent-pending line of protective products tailored to specific and unconventional substrates. Where standard glass or metal films do not apply — stone facades, painted brick, specialty cladding, or non-standard surfaces — Custom Shield provides a matched anti-graffiti solution that either mimics the underlying surface appearance or provides direct protective coverage. Philadelphia\'s diverse architectural surfaces, from historic stone facades in Old City to modern cladding in University City, are ideal candidates for Custom Shield\'s versatile substrate-specific approach.',
-    img: '/images/graffiti-shield-window-film-philadelphia-why.jpg',
-    alt: 'Custom Shield anti-graffiti film Philadelphia specialty surfaces',
-    reverse: false,
-    pdfs: [],
-    specs: ['Patent-pending technology', 'Substrate-matched appearance', 'Stone, brick, specialty cladding', 'Unconventional surfaces'],
-  },
-  {
-    number: '06',
-    heading: 'Printed Films',
-    body: 'Graffiti Shield\'s in-house printed films combine anti-graffiti surface protection with custom graphics and branding. Rather than treating protection and presentation as separate programs, Printed Films allow Philadelphia property managers and retailers to deliver messaging, advertising, or decorative themes directly through the protective surface layer. When the printed film is damaged or the campaign changes, the entire layer is replaced — updating the design and renewing the protection in one step. This approach is particularly effective for retail storefronts, transit advertising panels, and venue entrance glass throughout Philadelphia.',
-    img: '/images/graffiti-shield-cta-bg-philadelphia.jpg',
-    alt: 'Printed anti-graffiti film custom graphics Philadelphia',
-    reverse: true,
-    pdfs: [],
-    specs: ['In-house printing', 'Custom graphics + protection', 'Branding & advertising', 'Replace design & film in one step'],
-  },
-];
-
-const compareRows = [
-  { product: 'Glass Shield',             substrate: 'Glass / Mirrors',      finish: 'Clear optical',       layers: '1',     thickness: 'Standard',  bestFor: 'Storefronts, transit glass, lobbies' },
-  { product: 'Glass Shield Multi Layer', substrate: 'Glass / Mirrors',      finish: 'Clear optical',       layers: '4',     thickness: '4-mil ×4',  bestFor: 'High-frequency vandalism zones' },
-  { product: 'Metal Shield — SS',        substrate: 'Stainless Steel',      finish: 'Stainless replica',   layers: '1',     thickness: 'Thick',     bestFor: 'Elevator interiors, partitions' },
-  { product: 'Metal Shield — BA',        substrate: 'Brushed Aluminum',     finish: 'Brushed aluminum replica', layers: '1', thickness: 'Thick',   bestFor: 'Aluminum cladding, signage frames' },
-  { product: 'Metal Shield — BG',        substrate: 'Brushed Gold',         finish: 'Brushed gold replica', layers: '1',    thickness: 'Thick',     bestFor: 'Decorative fixtures, hospitality' },
-  { product: 'Mirror Shield',            substrate: 'Mirrors',              finish: 'Reflective',          layers: '1',     thickness: 'Standard',  bestFor: 'Restrooms, fitting rooms' },
-  { product: 'Custom Shield',            substrate: 'Specialty surfaces',   finish: 'Substrate-matched',   layers: '1',     thickness: 'Custom',    bestFor: 'Stone, brick, unconventional materials' },
-  { product: 'Printed Films',            substrate: 'Glass',                finish: 'Full-color printed',  layers: '1',     thickness: 'Standard',  bestFor: 'Retail branding, transit advertising' },
-];
+const description = 'Graffiti Shield anti-graffiti film in Philadelphia — Glass Shield, Metal Shield, Mirror Shield & Multi-Layer. Authorized installer, manufacturer warranty.';
 
 const gsReviews = [
   { quote: "SEPTA commissioned Graffiti Shield for our Broad Street Line platform barriers after acid-etching incidents cost us over $40,000 in glass replacement one year. Glass Shield Multi Layer has held up through dozens of incidents without a single glass replacement. The film replacement takes under two hours per panel.", name: "David R.", role: "Facilities Director · Philadelphia Transit Authority", img: "/images/gs-testimonial-david.jpg" },
-  { quote: "Our Passyunk Avenue restaurant had its front windows etched twice in three months. After Window Film Philadelphia installed Glass Shield, we've had two more incidents and both times the film was replaced same-day. The glass underneath is still perfect. I honestly wish we'd done this two years earlier.", name: "Sarah M.", role: "Owner · South Philadelphia Restaurant", img: "/images/gs-testimonial-sarah.jpg" },
+  { quote: "Our Passyunk Avenue restaurant had its front windows etched twice in three months. After Window Film Philadelphia installed Glass Shield, we've had two more incidents and both times the film was replaced same-day. The glass underneath is still perfect.", name: "Sarah M.", role: "Owner · South Philadelphia Restaurant", img: "/images/gs-testimonial-sarah.jpg" },
   { quote: "We manage a Center City office tower with heavy elevator traffic. Metal Shield on the Stainless Steel panels has completely eliminated our elevator interior restoration budget. Before, we were spending about $8,000 a year on panel repairs. Last year it was $0.", name: "Marcus T.", role: "Property Manager · Center City High-Rise", img: "/images/gs-testimonial-marcus.jpg" },
-  { quote: "Our Rittenhouse Square retail location had a graffiti problem on the ground-floor windows that was affecting customer perception of the brand. Glass Shield was installed in a morning and we haven't had a visible incident since — the film handles it without us ever knowing.", name: "Jennifer K.", role: "Regional Manager · Philadelphia Retail Chain", img: "/images/gs-testimonial-jennifer.jpg" },
-  { quote: "The restrooms at our Old City venue were being scratched constantly. Mirror Shield has changed our maintenance operations entirely — we used to close early to handle mirror damage. Now the team just peels the layer and puts a new one on. It takes fifteen minutes.", name: "Robert V.", role: "Operations Manager · Old City Event Venue", img: "/images/gs-testimonial-robert.jpg" },
-  { quote: "Our school district installed Glass Shield on the ground-floor corridor windows at three Philadelphia middle schools. The cost was a fraction of what we would have spent on glass replacement and we have complete peace of mind knowing the protection renews in minutes.", name: "Karen L.", role: "Facilities Coordinator · Philadelphia School District", img: "/images/gs-testimonial-karen.jpg" },
+  { quote: "Our Rittenhouse Square retail location had a graffiti problem on the ground-floor windows that was affecting customer perception of the brand. Glass Shield was installed in a morning and we haven't had a visible incident since.", name: "Jennifer K.", role: "Regional Manager · Philadelphia Retail Chain", img: "/images/gs-testimonial-jennifer.jpg" },
+  { quote: "The restrooms at our Old City venue were being scratched constantly. Mirror Shield has changed our maintenance operations entirely — we used to close early to handle mirror damage. Now the team peels the layer and puts a new one on. It takes fifteen minutes.", name: "Robert V.", role: "Operations Manager · Old City Event Venue", img: "/images/gs-testimonial-robert.jpg" },
+  { quote: "Our school district installed Glass Shield on the ground-floor corridor windows at three Philadelphia middle schools. The cost was a fraction of what we would have spent on glass replacement and we have complete peace of mind.", name: "Karen L.", role: "Facilities Coordinator · Philadelphia School District", img: "/images/gs-testimonial-karen.jpg" },
 ];
 
-const faqItems = [
-  { question: 'What is Graffiti Shield and how does it work?', answer: 'Graffiti Shield makes sacrificial protective films for glass, metal, and mirrors. The film absorbs vandalism — scratching, carving, acid etching — instead of the underlying surface. When the film is damaged, it peels away cleanly and a fresh sheet is installed, restoring the surface to like-new condition in minutes.' },
-  { question: 'How is Graffiti Shield different from standard safety window film?', answer: 'Safety film is engineered to hold glass together on impact. Graffiti Shield films are engineered to sacrifice themselves when vandalized — they absorb scratches, etching, and chemical attack so the glass beneath never needs replacement. Both protect glass, but they address different threats.' },
-  { question: 'What surfaces can Graffiti Shield protect?', answer: 'Graffiti Shield makes films for glass, mirrors, stainless steel, brushed aluminum, brushed gold metal finishes, and specialty substrates through their Custom Shield line. If a surface is targeted by vandals in Philadelphia, there is likely a Graffiti Shield product for it.' },
-  { question: 'How long does it take to replace a damaged Graffiti Shield film?', answer: 'Most single-layer film replacements are completed within one to two hours depending on the number of panels. The Glass Shield Multi Layer system allows individual layer removal without full replacement, reducing restoration time even further for properties with frequent incidents.' },
-  { question: 'What is the Glass Shield Multi Layer system?', answer: 'Glass Shield Multi Layer is a 4-layer system where each 4-mil clear film layer can be peeled away individually when damaged, without removing the remaining protective layers. This means a property facing repeated vandalism gets continuous protection without repeated full re-installation.' },
-  { question: 'Is Graffiti Shield film visible on the glass?', answer: 'Glass Shield and Mirror Shield are optically clear — the film is not visible in normal use. Metal Shield films are available in finish-matched replicas (Stainless Steel, Brushed Aluminum, Brushed Gold) that accurately replicate the underlying material appearance.' },
-  { question: 'Does Graffiti Shield film affect the appearance of my windows?', answer: 'Glass Shield maintains full optical clarity and does not affect visible light transmission or the appearance of your glass. It is not a solar control or tinted film — it is a clear protective layer that is essentially invisible once installed.' },
-  { question: 'What is the warranty on Graffiti Shield products?', answer: 'Graffiti Shield provides a limited manufacturer warranty covering film defects and performance. Our installation is additionally warranted for workmanship. Warranty terms are provided in full at the time of installation.' },
-  { question: 'Can Graffiti Shield be installed on existing windows without replacing the glass?', answer: 'Yes. Graffiti Shield films are applied directly to existing glass surfaces — no glass removal or replacement is needed. The installation is non-invasive and most Philadelphia commercial projects are completed within a single business day.' },
-  { question: 'How do I get Graffiti Shield installed in Philadelphia?', answer: 'Contact Window Film Philadelphia for a free site assessment. We will evaluate your glass, metal, and mirror surfaces, identify the highest-risk areas, and recommend the appropriate Graffiti Shield product for each location. We provide written specifications and a proposal before any work begins.' },
-];
-
-const pageSchemas = [
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
-      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.windowfilmphiladelphia.net/products/" },
-      { "@type": "ListItem", "position": 3, "name": "Graffiti Shield Window Film Philadelphia", "item": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/" }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/#webpage",
-    "url": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/",
-    "name": "Graffiti Shield Window Film Philadelphia | Anti-Graffiti Film",
-    "description": "Graffiti Shield anti-graffiti film in Philadelphia — Glass Shield, Metal Shield, Mirror Shield & Multi-Layer. Sacrificial protective films for storefronts, transit & offices.",
-    "dateModified": new Date().toISOString().slice(0, 10),
-    "isPartOf": { "@type": "WebSite", "@id": "https://www.windowfilmphiladelphia.net/#website" },
-    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".gs-hero__subtitle", ".gs-intro__copy", ".gs-why__body"] }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Graffiti Shield Products Available in Philadelphia",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Glass Shield", "description": "Clear hard-coat sacrificial film for glass — protects against scratching, carving, and acid etching on Philadelphia storefronts, transit stations, and commercial buildings." },
-      { "@type": "ListItem", "position": 2, "name": "Metal Shield", "description": "Thick anti-graffiti film for stainless steel, brushed aluminum, and brushed gold metal surfaces in Philadelphia public environments." },
-      { "@type": "ListItem", "position": 3, "name": "Mirror Shield", "description": "Sacrificial protective film for mirrors — maintains full reflective appearance while absorbing scratches, etching, and spray paint." },
-      { "@type": "ListItem", "position": 4, "name": "Glass Shield Multi Layer", "description": "4-layer 4-mil clear anti-graffiti system — peel individual layers as damaged for continuous protection without full re-installation." },
-      { "@type": "ListItem", "position": 5, "name": "Custom Shield", "description": "Patent-pending films tailored to specialty substrates including stone, brick, and unconventional architectural surfaces." },
-      { "@type": "ListItem", "position": 6, "name": "Printed Films", "description": "Custom graphics combined with anti-graffiti protection — replace design and renew protection in one step for Philadelphia retail and transit advertising." }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Graffiti Shield Window Film Philadelphia",
-    "brand": { "@type": "Brand", "name": "Graffiti Shield" },
-    "description": "Sacrificial anti-graffiti protective films for glass, metal, and mirrors in Philadelphia — Glass Shield, Metal Shield, Mirror Shield, and Multi-Layer systems.",
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "6" },
-    "review": gsReviews.map(r => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": r.name },
-      "reviewBody": r.quote,
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-    }))
-  }
-];
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  canonical="https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/"
-  serviceName="Graffiti Shield Window Film Philadelphia"
-  serviceDesc="Sacrificial anti-graffiti protective films for Philadelphia glass, metal, and mirrors. Glass Shield, Metal Shield, Mirror Shield, and Multi-Layer systems."
-  serviceUrl="https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/"
-  faqItems={faqItems}
-  schemas={pageSchemas}
->
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/">
 
-  <!-- ══ HERO ══ -->
-  <section class="gs-hero">
-    <div class="gs-hero__bg" role="img" aria-label="Philadelphia storefront with Graffiti Shield anti-graffiti protective film installed on large plate glass windows" style="background-image:url('/images/graffiti-shield-window-film-philadelphia-hero.jpg')"></div>
-    <div class="gs-hero__overlay"></div>
-    <div class="gs-hero__inner">
-      <div class="gs-hero__content">
-        <p class="gs-hero__eyebrow">
-          <span>GRAFFITI SHIELD AUTHORIZED INSTALLER</span>
-          <span>GLASS · METAL · MIRROR PROTECTION</span>
-          <span>PHILADELPHIA & GREATER REGION</span>
-        </p>
-        <h1 class="gs-hero__h1">Graffiti Shield window film<br>in Philadelphia</h1>
-        <p class="gs-hero__flip">Protecting <FlipWords words={flipItems} /></p>
-        <p class="gs-hero__subtitle">Sacrificial protective films for Philadelphia glass, metal, and mirror surfaces. When vandalism strikes, only the film is replaced — never the glass beneath.</p>
-        <div class="gs-hero__ctas">
-          <a href="/contact/" class="gs-hero__cta gs-hero__cta--primary">Get a free assessment</a>
-          <a href="#products" class="gs-hero__cta gs-hero__cta--secondary">Explore products</a>
-        </div>
-      </div>
-      <div class="gs-hero__stats">
-        {heroStats.map(s => (
-          <div class="gs-hero__stat">
-            <span class="gs-hero__stat-val">
-              <CountUp value={s.value} />{s.suffix}
-            </span>
-            <span class="gs-hero__stat-label">{s.label}</span>
-          </div>
-        ))}
+<!-- ═══════════════════════════════════════════
+     STRUCTURED DATA
+═══════════════════════════════════════════ -->
+<script type="application/ld+json">{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/#breadcrumb",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.windowfilmphiladelphia.net/products/" },
+    { "@type": "ListItem", "position": 3, "name": "Graffiti Shield Window Film Philadelphia", "item": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/" }
+  ]
+})}</script>
+
+<script type="application/ld+json">{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/#webpage",
+  "url": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/",
+  "name": "Graffiti Shield Window Film Philadelphia | Anti-Graffiti Film",
+  "description": "Graffiti Shield anti-graffiti film in Philadelphia — Sun Control, Thinsulate, Scotchshield, Fasara & Daylight Redirecting film. Authorized 3M installer, manufacturer warranty. Free estimate.",
+  "dateModified": new Date().toISOString().slice(0, 10),
+  "isPartOf": { "@type": "WebSite", "@id": "https://www.windowfilmphiladelphia.net/#website", "url": "https://www.windowfilmphiladelphia.net/", "name": "Window Film Philadelphia" },
+  "breadcrumb": { "@id": "https://www.windowfilmphiladelphia.net/products/graffiti-shield-window-film/#breadcrumb" },
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".gs-hero__subtitle", ".gs-why__intro", ".gs-geo", ".gs-faq__a"] }
+})}</script>
+
+<script type="application/ld+json">{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Graffiti Shield Products Available in Philadelphia",
+  "description": "Full Graffiti Shield anti-graffiti film lineup installed in Philadelphia by an authorized installer with manufacturer-backed warranty.",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Glass Shield", "description": "Clear hard-coat sacrificial film for glass and mirrors — protects Philadelphia storefronts, transit stations, and commercial buildings against scratching, carving, and acid etching." },
+    { "@type": "ListItem", "position": 2, "name": "Metal Shield", "description": "Thick anti-graffiti film for stainless steel, brushed aluminum, and brushed gold metal surfaces in Philadelphia public environments." },
+    { "@type": "ListItem", "position": 3, "name": "Mirror Shield", "description": "Sacrificial protective film for mirrors — maintains full reflective appearance while absorbing scratches, etching, and spray paint." },
+    { "@type": "ListItem", "position": 4, "name": "Glass Shield Multi Layer", "description": "4-layer 4-mil clear anti-graffiti system — peel individual layers as damaged for continuous protection without full re-installation." },
+    { "@type": "ListItem", "position": 5, "name": "Custom Shield", "description": "Patent-pending films tailored to specialty substrates including stone, brick, and unconventional architectural surfaces in Philadelphia." },
+    { "@type": "ListItem", "position": 6, "name": "Printed Films", "description": "Custom graphics combined with anti-graffiti protection — replace design and renew protection in one step for Philadelphia retail and transit advertising." }
+  ]
+})}</script>
+
+<script type="application/ld+json">{JSON.stringify({"@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is Graffiti Shield and how does it work?", "acceptedAnswer": { "@type": "Answer", "text": "Graffiti Shield makes sacrificial protective films for glass, metal, and mirrors. The film absorbs vandalism — scratching, carving, acid etching — instead of the underlying surface. When damaged, the film peels away cleanly and is replaced in minutes." } },
+    { "@type": "Question", "name": "How is Graffiti Shield different from standard safety window film?", "acceptedAnswer": { "@type": "Answer", "text": "Safety film holds glass together on impact. Graffiti Shield is sacrificial — it absorbs scratches, etching, and chemical attack so the glass beneath never needs replacement." } },
+    { "@type": "Question", "name": "What surfaces can Graffiti Shield protect?", "acceptedAnswer": { "@type": "Answer", "text": "Graffiti Shield makes films for glass, mirrors, stainless steel, brushed aluminum, brushed gold metal finishes, and specialty substrates through Custom Shield." } },
+    { "@type": "Question", "name": "How long does it take to replace a damaged Graffiti Shield film?", "acceptedAnswer": { "@type": "Answer", "text": "Most single-layer film replacements are completed within one to two hours. The Glass Shield Multi Layer system allows individual layer removal without full replacement." } },
+    { "@type": "Question", "name": "What is the Glass Shield Multi Layer system?", "acceptedAnswer": { "@type": "Answer", "text": "A 4-layer system where each 4-mil clear film layer can be peeled away individually when damaged, without removing the remaining protective layers." } },
+    { "@type": "Question", "name": "Is Graffiti Shield film visible on the glass?", "acceptedAnswer": { "@type": "Answer", "text": "Glass Shield and Mirror Shield are optically clear — not visible in normal use. Metal Shield finishes are finish-matched replicas that accurately replicate the underlying material appearance." } },
+    { "@type": "Question", "name": "Does Graffiti Shield affect the appearance of my windows?", "acceptedAnswer": { "@type": "Answer", "text": "Glass Shield maintains full optical clarity and does not affect visible light transmission or window appearance. It is a clear protective layer, essentially invisible once installed." } },
+    { "@type": "Question", "name": "What is the warranty on Graffiti Shield products?", "acceptedAnswer": { "@type": "Answer", "text": "Graffiti Shield provides a limited manufacturer warranty covering film defects and performance. Installation is additionally warranted for workmanship." } },
+    { "@type": "Question", "name": "Can Graffiti Shield be installed on existing windows without replacing the glass?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Applied directly to existing glass. Non-invasive. Most Philadelphia commercial projects completed within a single business day." } },
+    { "@type": "Question", "name": "How do I get Graffiti Shield installed in Philadelphia?", "acceptedAnswer": { "@type": "Answer", "text": "Contact Window Film Philadelphia for a free site assessment. We evaluate your surfaces, identify high-risk areas, and recommend the right Graffiti Shield product. Written proposal before any work begins." } }
+  ]}</script>
+
+<!-- ═══════════════════════════════════════════
+     GEO — visually hidden, speakable-targeted direct answer
+═══════════════════════════════════════════ -->
+<div class="gs-geo" aria-hidden="true">
+  Graffiti Shield anti-graffiti film in Philadelphia, installed by Window Film Philadelphia — authorized installer for Glass Shield clear sacrificial anti-graffiti film, Metal Shield stainless steel and brushed aluminum protective film, Mirror Shield restroom mirror protection, Glass Shield Multi Layer 4-layer system, Custom Shield specialty substrate film, and Printed Films custom graphics. Serving Center City, Old City, South Philadelphia, University City, and Fishtown. Commercial applications include SEPTA transit stations, retail storefronts, restaurant and bar interiors, office building lobbies, elevator interiors, school corridor glass, and healthcare facility mirrors. Graffiti Shield sacrificial films protect glass and metal surfaces against scratching, carving, and acid etching without requiring glass replacement.
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="gs-hero">
+  <div
+    class="gs-hero__bg"
+    style="background-image: url('/images/graffiti-shield-window-film-philadelphia-hero.jpg')"
+    role="img"
+    aria-label="Philadelphia storefront with Graffiti Shield anti-graffiti protective film installed on large plate glass windows"
+  ></div>
+  <div class="gs-hero__overlay"></div>
+
+  <div class="gs-hero__content">
+
+    <div class="gs-hero__eyebrow">
+      <span>Graffiti Shield</span>
+      <span class="gs-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Philadelphia, PA</span>
+      <span class="gs-hero__eyebrow-dot" aria-hidden="true"></span>
+      <span>Authorized Installer</span>
+    </div>
+
+    <h1 class="gs-hero__title">Graffiti Shield window film<br class="gs-hero__br"/> in Philadelphia</h1>
+
+    <p class="gs-hero__animated-line">
+      Anti-graffiti protection for
+      <FlipWords
+        words={["storefronts", "transit stations", "restaurant restrooms", "office lobbies", "school corridors", "elevator interiors"]}
+        staticText=""
+        class="gs-hero__flip"
+      />.
+    </p>
+
+    <p class="gs-hero__subtitle">
+      Window Film Philadelphia is an authorized Graffiti Shield installer serving Philadelphia, South Jersey, and the surrounding region. Glass Shield, Metal Shield, Mirror Shield, Multi Layer — the full Graffiti Shield lineup, professionally installed with a manufacturer-backed warranty.
+    </p>
+
+    <div class="gs-hero__cta">
+      <a href="/contact/" class="gs-hero__btn-primary">Get Your Free Estimate</a>
+      <a href="tel:2673947980" class="gs-hero__btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
+
+    <div class="gs-hero__stats-panel" aria-label="Key 3M window film statistics">
+      <div class="gs-hero__stats-inner">
+        <CountUp end={6} suffix="" label="Product Lines" />
+        <div class="gs-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={4} suffix="-layer" label="Multi-Layer System" />
+        <div class="gs-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={100} suffix="%" label="Sacrificial — Glass Never Replaced" />
+        <div class="gs-hero__stat-divider" aria-hidden="true"></div>
+        <CountUp end={24} suffix="hr" label="Typical Restoration Time" />
       </div>
     </div>
-  </section>
 
-  <!-- ══ INTRO ══ -->
-  <div class="ip-page-body">
+  </div>
+</section>
 
-  <section class="gs-intro">
-    <div class="gs-intro__img-wrap">
-      <img src="/images/graffiti-shield-window-film-philadelphia-intro.jpg" alt="Professional installer applying Graffiti Shield protective film to Philadelphia storefront glass" title="Graffiti Shield film installation Philadelphia" loading="eager" />
-    </div>
-    <div class="gs-intro__copy">
-      <p class="gs-intro__eyebrow eyebrow">GRAFFITI SHIELD AUTHORIZED INSTALLER · PHILADELPHIA</p>
-      <h2 class="gs-intro__h2">Philadelphia's anti-graffiti film specialist.</h2>
-      <p>Window Film Philadelphia is an authorized anti-graffiti window film installer Philadelphia property owners and facilities managers rely on for Graffiti Shield products. Graffiti Shield anti-graffiti film in Philadelphia protects glass storefronts, transit barriers, restaurant mirrors, and metal elevator interiors from scratching, carving, and acid etching — the three most costly forms of vandalism affecting Philadelphia commercial property.</p>
-      <p>The Graffiti Shield system is sacrificial by design: the film absorbs vandalism so the surface beneath never needs replacement. According to Graffiti Shield Inc., "damaged film can be swiftly replaced, restoring your glass surfaces to a pristine, like-new condition in moments." That means zero lead time for glass procurement, zero business closure, and a restoration cost that is a fraction of replacing the original material.</p>
-      <div class="gs-intro__badges">
+<div class="ip-page-body">
+
+<!-- ══════════════════════════════════════
+     SECTION 2 - INTRO + TRUST BAR
+     ══════════════════════════════════════ -->
+<section class="gs-intro">
+  <div class="gs-intro__inner">
+
+    <div class="gs-intro__image-col">
+      <div class="gs-intro__image-wrap">
+        <img
+          src="/images/graffiti-shield-window-film-philadelphia-intro.jpg"
+          alt="Professional installer applying Graffiti Shield protective film to Philadelphia storefront glass"
+          title="Graffiti Shield film installation Philadelphia — authorized installer"
+          width="600"
+          height="720"
+          loading="lazy"
+          class="gs-intro__img"
+        />
         <div class="gs-intro__badge">
-          <strong>Graffiti Shield</strong>
-          <span>Authorized Installer</span>
-        </div>
-        <div class="gs-intro__badge">
-          <strong>6 Product Lines</strong>
-          <span>Glass · Metal · Mirror</span>
-        </div>
-        <div class="gs-intro__badge">
-          <strong>Philadelphia</strong>
-          <span>Commercial Specialist</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+          <span>Graffiti Shield Authorized Installer</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ══ TRUST BAR ══ -->
-  <section class="gs-trust">
-    <p class="gs-trust__label eyebrow">Our full manufacturer lineup</p>
-    <BrandLogos />
-  </section>
-
-  <!-- ══ WHY ══ -->
-  <section class="gs-why">
-    <div class="gs-why__img-wrap">
-      <img src="/images/graffiti-shield-window-film-philadelphia-why.jpg" alt="Pristine clean Philadelphia transit station with protected glass surfaces — no graffiti damage" title="Graffiti Shield anti-graffiti protection Philadelphia transit" loading="lazy" />
-      <div class="gs-why__img-stat">
-        <span class="gs-why__img-stat-val">100%</span>
-        <span class="gs-why__img-stat-label">Glass Preserved — Zero Replacements</span>
+    <div class="gs-intro__content">
+      <span class="gs-intro__eyebrow">Why Graffiti Shield &amp; Window Film Philadelphia</span>
+      <h2 class="gs-intro__title">The Sacrificial Film Standard. Installed by Philadelphia's Anti-Graffiti Specialists.</h2>
+      <p class="gs-intro__lead">Graffiti Shield invented the sacrificial film category for glass, metal, and mirror protection. Their products absorb vandalism — scratching, carving, acid etching — so the underlying surface never needs replacement. According to Graffiti Shield Inc., "damaged film can be swiftly replaced, restoring your glass surfaces to a pristine, like-new condition in moments."</p>
+      <p class="gs-intro__body">Window Film Philadelphia is an authorized Graffiti Shield installer serving the Greater Philadelphia region. That means we carry the full product lineup — Glass Shield, Metal Shield, Mirror Shield, Multi Layer, Custom Shield, and Printed Films — and every installation is backed by a manufacturer warranty. From a single storefront to a multi-surface transit facility, we spec, install, and warrant every product the way Graffiti Shield requires.</p>
+      <div class="gs-intro__creds">
+        <div class="gs-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Graffiti Shield Authorized Installer
+        </div>
+        <div class="gs-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Licensed &amp; Insured
+        </div>
+        <div class="gs-intro__cred">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#81AB4C" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#81AB4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Serving Philadelphia Since 2008
+        </div>
+      </div>
+      <div class="gs-intro__ctas">
+        <a href="/contact/" class="pp-btn pp-btn--primary">Get a Free Quote</a>
+        <a href="tel:2673947980" class="pp-btn pp-btn--ghost">Call (267) 394-7980</a>
       </div>
     </div>
+
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<section class="gs-trust">
+  <div class="gs-trust__inner">
+    <p class="gs-trust__label">Philadelphia's authorized Graffiti Shield installer &mdash; stocking the full product lineup</p>
+    <div class="gs-trust__badges">
+      <div class="gs-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Graffiti Shield Authorized Installer
+      </div>
+      <div class="gs-trust__sep" aria-hidden="true"></div>
+      <div class="gs-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Licensed &amp; Insured
+      </div>
+      <div class="gs-trust__sep" aria-hidden="true"></div>
+      <div class="gs-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Manufacturer-Backed Warranty
+      </div>
+      <div class="gs-trust__sep" aria-hidden="true"></div>
+      <div class="gs-trust__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.27L12 14.54l-5.62 3.96 2.09-6.27L3 8.26h6.91L12 2z" fill="#81AB4C"/></svg>
+        Serving Philadelphia Since 2008
+      </div>
+    </div>
+  </div>
+</section>
+<BrandLogos />
+
+<!-- ══════════════════════════════════════
+     SECTION 3 - WHY 3M FOR PHILADELPHIA
+     ══════════════════════════════════════ -->
+<section class="gs-why">
+  <div class="gs-why__container">
+
+    <div class="gs-why__image-wrap">
+      <img
+        src="/images/graffiti-shield-window-film-philadelphia-why.jpg"
+        alt="Pristine clean Philadelphia transit station with protected glass surfaces — no graffiti damage visible"
+          title="Graffiti Shield anti-graffiti protection Philadelphia transit"
+        width="768"
+        height="960"
+        loading="lazy"
+        class="gs-why__image"
+      />
+      <div class="gs-why__stat-card">
+        <div class="gs-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Glass preserved — zero replacements needed</span>
+        </div>
+        <div class="gs-why__stat-divider"></div>
+        <div class="gs-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Film replaced in under 2 hours per incident</span>
+        </div>
+      </div>
+    </div>
+
     <div class="gs-why__content">
-      <p class="eyebrow">WHY GRAFFITI SHIELD IN PHILADELPHIA</p>
-      <h2 class="gs-why__h2">Philadelphia's vandalism rate makes sacrificial film the only rational choice.</h2>
-      <p class="gs-why__body">Philadelphia's dense commercial corridors — South Street, Market Street, Passyunk Avenue, Old City, and SEPTA's transit network — face recurring glass vandalism that costs property owners thousands of dollars per incident in glass replacement. Graffiti Shield anti-graffiti film in Philadelphia eliminates that cost permanently. The film is the expendable layer; the glass is protected for the life of the building. When vandalism occurs, a trained installer replaces only the film — typically within two hours — and the surface is indistinguishable from new. For <a href="/applications/office/">Philadelphia commercial buildings</a>, transit authorities, and retail operators, this is not a convenience product. It is a maintenance cost control strategy that pays for itself on the first incident it prevents.</p>
-      <ul class="gs-why__bullets">
-        {whyBullets.map(b => (
-          <li><span class="gs-why__bullet-icon">✓</span>{b.text}</li>
-        ))}
-      </ul>
-      <div class="gs-why__climate">
-        <span>Old City storefronts</span>
-        <span>South Street corridor</span>
-        <span>SEPTA stations</span>
-        <span>Center City office lobbies</span>
-        <span>University City campuses</span>
-      </div>
-      <p class="gs-why__ext">
-        Learn more about Graffiti Shield's full product line at <a href="https://graffiti-shield.com/products/" target="_blank" rel="noopener noreferrer">graffiti-shield.com</a>.
+      <span class="gs-why__eyebrow">Why Graffiti Shield in Philadelphia</span>
+      <h2 class="gs-why__headline">Philadelphia's Vandalism Rate Makes Sacrificial Film the Only Rational Choice</h2>
+      <p class="gs-why__intro">
+        Philadelphia's dense commercial corridors — South Street, Market Street, Passyunk Avenue, Old City, and SEPTA's transit network — face recurring glass vandalism that costs property owners thousands annually in glass replacement. Graffiti Shield anti-graffiti film in Philadelphia eliminates that cost permanently. The film is the expendable layer; the glass is protected for the life of the building. When vandalism occurs, the film is replaced within hours — and the surface is indistinguishable from new. For <a href="/applications/office/" class="gs-body-link">Philadelphia commercial buildings</a>, transit authorities, and retail operators, this is not a convenience product. It is a maintenance cost control strategy that pays for itself on the first incident it prevents.
       </p>
-      <div class="gs-why__links">
-        <a href="/benefits/safety-and-security/">→ Safety &amp; security film for Philadelphia</a>
-        <a href="/applications/retail/">→ Retail window film solutions</a>
+      <ul class="gs-why__bullets">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sacrificial film replaces in minutes — no glass procurement, no business closure, no lead time
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Protects against scratching, carving, and acid etching — the three most costly forms of glass vandalism in Philadelphia
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Philadelphia <a href="/benefits/safety-and-security/" class="gs-body-link">safety and security film</a> programs often combine Graffiti Shield with impact-protection safety film for complete glass protection</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Graffiti Shield's Printed Films combine anti-graffiti protection with custom graphics — ideal for <a href="/applications/retail/" class="gs-body-link">retail window film</a> advertising applications</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Graffiti Shield's manufacturer warranty covers film defects and performance — every installation is additionally warranted by Window Film Philadelphia
+        </li>
+      </ul>
+      <div class="gs-why__climate-facts">
+        <div class="gs-why__climate-item">
+          <span class="gs-why__climate-num">$0</span>
+          <span class="gs-why__climate-label">Glass replacement after film installed</span>
+        </div>
+        <div class="gs-why__climate-item">
+          <span class="gs-why__climate-num">&lt;2 hr</span>
+          <span class="gs-why__climate-label">Typical film replacement time</span>
+        </div>
+        <div class="gs-why__climate-item">
+          <span class="gs-why__climate-num">6</span>
+          <span class="gs-why__climate-label">Product lines for every surface</span>
+        </div>
       </div>
+      <p style="font-family:var(--font-body,'DM Sans',sans-serif);font-size:15px;color:var(--text-mid,#4a4a4a);line-height:1.7;margin:0 0 18px;">Learn more about Graffiti Shield's full product lineup at <a href="https://graffiti-shield.com/products/" target="_blank" rel="noopener noreferrer" class="gs-body-link">graffiti-shield.com</a>.</p>
+      <a href="/contact/" class="gs-why__cta">
+        Get a free site assessment &rarr;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+      </a>
     </div>
-  </section>
 
-  <!-- ══ RESIDENTIAL / COMMERCIAL SLIDER ══ -->
-  <section class="gs-slider" id="gs-slider">
-    <div class="gs-slider__track" id="gsTrack">
+  </div>
+</section>
 
-      <!-- Slide 1: Residential -->
-      <div class="gs-slider__slide">
-        <div class="gs-slider__bg" style="background-image:url('/images/graffiti-shield-window-film-philadelphia-residential.jpg')"></div>
-        <div class="gs-slider__overlay"></div>
-        <div class="gs-slider__content">
-          <p class="gs-slider__eyebrow eyebrow">RESIDENTIAL PROTECTION</p>
-          <h2 class="gs-slider__h2">Philadelphia homes & rowhomes.</h2>
-          <p class="gs-slider__desc">Philadelphia rowhomes and townhouses with street-level windows are vulnerable to opportunistic scratching and etching. Glass Shield installs on ground-floor windows, sidelights, and decorative glass panels — protecting the original glass while remaining optically invisible. When damage occurs, only the film is replaced, preserving original historic glass that cannot be cost-effectively reproduced.</p>
-          <div class="gs-slider__faq">
-            <details><summary>Will Glass Shield affect how my windows look?</summary><p>Glass Shield is optically clear — it does not affect visible light transmission, color, or the appearance of your glass. Once installed, it is essentially invisible in normal use.</p></details>
-            <details><summary>How long does residential installation take?</summary><p>Most residential installations are completed in a half-day or less depending on the number of panels. We work around your schedule with minimal disruption to your home.</p></details>
-            <details><summary>Is Glass Shield permanent?</summary><p>No — Glass Shield is a replaceable film layer. When damaged, it peels cleanly away and a fresh sheet is installed. There is no adhesive residue left on the glass. You can remove it at any time.</p></details>
+<!-- ══════════════════════════════════════
+     SECTION 4 - RESIDENTIAL / COMMERCIAL SLIDER
+     ══════════════════════════════════════ -->
+<section class="gs-slider" id="gsSlider">
+  <div class="gs-slider__track" id="gsTrack">
+
+    <!-- SLIDE 01: Residential -->
+    <div class="gs-slider__slide" data-slide="0">
+      <img src="/images/graffiti-shield-window-film-philadelphia-residential.jpg" alt="Philadelphia rowhome entryway with Graffiti Shield protective film on sidelight windows"
+          title="Graffiti Shield residential film installation Philadelphia" class="gs-slider__bg" loading="lazy" />
+      <div class="gs-slider__overlay"></div>
+      <div class="gs-slider__content">
+        <div class="gs-slider__step">01</div>
+        <h2 class="gs-slider__title">Philadelphia homes & rowhomes.</h2>
+        <p class="gs-slider__desc">Philadelphia rowhomes and townhouses with street-level windows are vulnerable to opportunistic scratching and etching. Glass Shield installs on ground-floor windows, sidelights, and decorative glass panels — protecting the original glass while remaining optically invisible. When damage occurs, only the film is replaced, preserving original historic glass at a fraction of replacement cost.</p>
+        <div class="gs-slider__faq">
+          <div class="gs-slider__faq-item">
+            <button class="gs-slider__faq-q" aria-expanded="false">Will Glass Shield affect how my windows look?<span class="gs-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="gs-slider__faq-a" hidden>Glass Shield is optically clear — it does not affect visible light transmission, color, or the appearance of your glass. Once installed, it is essentially invisible in normal use.</div>
+          </div>
+          <div class="gs-slider__faq-item">
+            <button class="gs-slider__faq-q" aria-expanded="false">How long does residential installation take?<span class="gs-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="gs-slider__faq-a" hidden>Most residential installations are completed in a half-day or less depending on the number of panels. We work around your schedule with minimal disruption to your home.</div>
+          </div>
+          <div class="gs-slider__faq-item">
+            <button class="gs-slider__faq-q" aria-expanded="false">Is Glass Shield permanent?<span class="gs-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="gs-slider__faq-a" hidden>No — Glass Shield is a replaceable film layer. When damaged, it peels cleanly away and a fresh sheet is installed. There is no adhesive residue left on the glass. You can remove it at any time.</div>
           </div>
         </div>
+        <a href="/contact/" class="gs-slider__cta">Get a residential assessment &rarr;</a>
       </div>
+    </div>
 
-      <!-- Slide 2: Commercial -->
-      <div class="gs-slider__slide">
-        <div class="gs-slider__bg" style="background-image:url('/images/graffiti-shield-window-film-philadelphia-commercial.jpg')"></div>
-        <div class="gs-slider__overlay"></div>
-        <div class="gs-slider__content">
-          <p class="gs-slider__eyebrow eyebrow">COMMERCIAL PROTECTION</p>
-          <h2 class="gs-slider__h2">Offices, retail & transit.</h2>
-          <p class="gs-slider__desc">Philadelphia commercial properties — storefronts, office lobbies, transit platforms, restaurant interiors — face glass and metal vandalism at a rate that makes standard reactive maintenance unsustainable. Graffiti Shield's commercial lineup covers every surface type: Glass Shield for storefront glass, Metal Shield for elevator panels and stainless partitions, Mirror Shield for restrooms, and Glass Shield Multi Layer for high-frequency vandalism zones. One authorized installer, every surface, across your entire portfolio.</p>
-          <div class="gs-slider__faq">
-            <details><summary>Can Graffiti Shield be installed without closing my business?</summary><p>Yes. Most commercial Graffiti Shield installations are completed during business hours with minimal disruption. Larger projects can be phased by floor or zone. We coordinate with your operations team on timing.</p></details>
-            <details><summary>Does Metal Shield look exactly like real stainless steel?</summary><p>Metal Shield finishes are engineered to accurately replicate the appearance of stainless steel, brushed aluminum, and brushed gold. In normal lighting and at normal viewing distances, the film is indistinguishable from the original metal surface.</p></details>
-            <details><summary>Can you protect an entire building's ground floor?</summary><p>Yes. We regularly scope and install Graffiti Shield across multi-surface ground-floor installations in Philadelphia — glass storefronts, entry doors, elevator interiors, and lobby mirrors in a single project. Contact us for a portfolio assessment.</p></details>
+    <!-- SLIDE 02: Commercial -->
+    <div class="gs-slider__slide" data-slide="1">
+      <img src="/images/graffiti-shield-window-film-philadelphia-commercial.jpg" alt="Modern Philadelphia office lobby with Graffiti Shield protective film on floor-to-ceiling glass"
+          title="Graffiti Shield commercial film installation Philadelphia" class="gs-slider__bg" loading="lazy" />
+      <div class="gs-slider__overlay"></div>
+      <div class="gs-slider__content">
+        <div class="gs-slider__step">02</div>
+        <h2 class="gs-slider__title">Offices, retail & transit.</h2>
+        <p class="gs-slider__desc">Philadelphia commercial properties face glass and metal vandalism at a rate that makes reactive maintenance unsustainable. Graffiti Shield's commercial lineup covers every surface: Glass Shield for storefront glass, Metal Shield for elevator panels and stainless partitions, Mirror Shield for restrooms, and Multi Layer for high-frequency vandalism zones.</p>
+        <div class="gs-slider__faq">
+          <div class="gs-slider__faq-item">
+            <button class="gs-slider__faq-q" aria-expanded="false">Can Graffiti Shield be installed without closing my business?<span class="gs-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="gs-slider__faq-a" hidden>Yes. Most commercial Graffiti Shield installations are completed during business hours with minimal disruption. Larger projects can be phased by floor or zone. We coordinate with your operations team on timing.</div>
+          </div>
+          <div class="gs-slider__faq-item">
+            <button class="gs-slider__faq-q" aria-expanded="false">Does Metal Shield look exactly like real stainless steel?<span class="gs-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="gs-slider__faq-a" hidden>Metal Shield finishes are engineered to accurately replicate the appearance of stainless steel, brushed aluminum, and brushed gold. In normal lighting and at normal viewing distances, the film is indistinguishable from the original metal surface.</div>
+          </div>
+          <div class="gs-slider__faq-item">
+            <button class="gs-slider__faq-q" aria-expanded="false">Can you protect an entire building's ground floor?<span class="gs-slider__faq-icon" aria-hidden="true">+</span></button>
+            <div class="gs-slider__faq-a" hidden>Yes. We regularly scope and install Graffiti Shield across multi-surface ground-floor installations in Philadelphia — glass storefronts, entry doors, elevator interiors, and lobby mirrors in a single project. Contact us for a portfolio assessment.</div>
           </div>
         </div>
+        <a href="/contact/" class="gs-slider__cta">Get a commercial assessment &rarr;</a>
       </div>
-
     </div>
 
-    <!-- Slider controls -->
-    <div class="gs-slider__nav">
-      <button class="gs-slider__btn" id="gsPrev" aria-label="Previous slide">&#8592;</button>
-      <div class="gs-slider__dots">
-        <button class="gs-slider__dot is-active" data-gsnav="0" aria-label="Slide 1"></button>
-        <button class="gs-slider__dot" data-gsnav="1" aria-label="Slide 2"></button>
-      </div>
-      <button class="gs-slider__btn" id="gsNext" aria-label="Next slide">&#8594;</button>
+  </div>
+
+  <!-- Right nav -->
+  <nav class="gs-slider__nav" aria-label="Slide navigation">
+    <button class="gs-slider__nav-item gs-slider__nav-item--active" data-gsnav="0">
+      <span class="gs-slider__nav-line"></span>
+      <span class="gs-slider__nav-label">Residential</span>
+    </button>
+    <button class="gs-slider__nav-item" data-gsnav="1">
+      <span class="gs-slider__nav-line"></span>
+      <span class="gs-slider__nav-label">Commercial</span>
+    </button>
+  </nav>
+
+  <!-- Arrows -->
+  <button class="gs-slider__arrow gs-slider__arrow--prev" id="gsPrev" aria-label="Previous slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="gs-slider__arrow gs-slider__arrow--next" id="gsNext" aria-label="Next slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+  <!-- Progress bar -->
+  <div class="gs-slider__progress"><div class="gs-slider__progress-bar" id="gsProgressBar"></div></div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     FEATURED SECTIONS - 3 numbered alternating rows
+     ══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PRODUCT LINES - alternating rows
+     ══════════════════════════════════════ -->
+<section class="gs-products">
+  <div class="gs-products__hd">
+    <span class="pp-eyebrow">Product Lines</span>
+    <h2 class="gs-products__title">The Graffiti Shield lineup for Philadelphia</h2>
+    <p class="gs-products__sub">Graffiti Shield window film in Philadelphia is available through Window Film Philadelphia across the complete Graffiti Shield lineup — from clear glass protection and multi-layer systems to metal finishes, mirror protection, and custom printed films. Every installation is backed by Graffiti Shield's manufacturer warranty.</p>
+  </div>
+
+  <!-- ROW 01 — Glass Shield -->
+  <div class="gs-pl-row fade-in">
+    <div class="gs-pl-row__img-wrap">
+      <img src="/images/graffiti-shield-glass-shield-philadelphia.jpg" alt="Glass Shield anti-graffiti film on Philadelphia storefront window" title="Graffiti Shield Glass Shield film Philadelphia" width="768" height="1376" loading="lazy" class="gs-pl-row__img" />
+      <span class="gs-pl-row__pill">Glass Shield</span>
     </div>
-    <div class="gs-slider__progress"><div class="gs-slider__bar" id="gsProgressBar"></div></div>
-  </section>
-
-  <!-- ══ PRODUCT LINES ══ -->
-  <section class="gs-products" id="products">
-    <div class="gs-products__head">
-      <p class="eyebrow">GRAFFITI SHIELD PRODUCT LINES</p>
-      <h2>Six systems. Every surface Philadelphia throws at us.</h2>
-    </div>
-
-    {productRows.map((row) => (
-      <div class={`gs-pl-row ${row.reverse ? 'gs-pl-row--rev' : ''}`}>
-        <div class="gs-pl-row__img">
-          <img src={row.img} alt={row.alt} title={row.alt} loading="lazy" />
-        </div>
-        <div class="gs-pl-row__copy">
-          <span class="gs-pl-row__num">{row.number}</span>
-          <h3 class="gs-pl-row__h3">{row.heading}</h3>
-          <p>{row.body}</p>
-          <ul class="gs-pl-row__specs">
-            {row.specs.map(s => <li>{s}</li>)}
-          </ul>
-          {row.pdfs.length > 0 && (
-            <div class="gs-pl-row__pdfs">
-              {row.pdfs.map(pdf => (
-                <a href={pdf.href} target="_blank" rel="noopener noreferrer" class="gs-pl-row__pdf">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                  {pdf.label}
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
+    <div class="gs-pl-row__content">
+      <span class="gs-pl-row__num">01</span>
+      <span class="gs-pl-row__eyebrow">Graffiti Shield Glass Shield</span>
+      <h3 class="gs-pl-row__heading">Glass Shield — Clear sacrificial protection for glass and mirrors</h3>
+      <p class="gs-pl-row__body">Glass Shield is Graffiti Shield's flagship sacrificial clear film for glass and mirrors. Engineered with a specially formulated hard coat and optimal thickness, Glass Shield acts as a barrier against scratching, carving, and acid etching — the three most common forms of glass vandalism on Philadelphia storefronts, transit stations, and commercial buildings. When damaged, the film peels away cleanly and a fresh sheet is installed in minutes, restoring the glass to a pristine, like-new condition at a fraction of glass replacement cost.</p>
+      <p class="gs-pl-row__body">For Philadelphia's South Street corridor, Old City storefronts, and SEPTA transit platforms, Glass Shield is the standard specification. The film is optically clear — it does not change the appearance, tint, or visible light transmission of your glass. Graffiti Shield window film in Philadelphia is installed by our certified team on ground-floor glass, lobby windows, and any surface targeted by repeated vandalism incidents.</p>
+      <div class="gs-pl-row__specs">
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Clear</span><span class="gs-pl-row__spec-label">Optical Film</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Hard-coat</span><span class="gs-pl-row__spec-label">Surface</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Scratch &amp; Etch</span><span class="gs-pl-row__spec-label">Resistant</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Minutes</span><span class="gs-pl-row__spec-label">To Replace</span></div>
       </div>
-    ))}
-  </section>
+      <div class="gs-pl-row__pdfs">
+        <span class="gs-pl-row__pdfs-label">Graffiti Shield Technical Documents</span>
+        <ul class="gs-pl-row__pdf-list">
+          <li><a href="/resources/graffiti-shield-glass-shield-sell-sheet-philadelphia.pdf" target="_blank" rel="noopener" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Glass Shield Sell Sheet</a></li>
+          <li><a href="/resources/graffiti-shield-installation-guide-philadelphia.pdf" target="_blank" rel="noopener" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Installation Guide</a></li>
+        </ul>
+        <p class="gs-pl-row__warranty-note">Source: graffiti-shield.com/products/</p>
+      </div>
+    </div>
+  </div>
 
-  <!-- ══ COMPARISON TABLE ══ -->
-  <section class="gs-compare">
-    <div class="gs-compare__head">
-      <p class="eyebrow">GRAFFITI SHIELD PRODUCT COMPARISON</p>
-      <h2>Choose the right system for your Philadelphia surfaces.</h2>
+  <!-- ROW 02 — Metal Shield -->
+  <div class="gs-pl-row gs-pl-row--rev fade-in">
+    <div class="gs-pl-row__img-wrap">
+      <img src="/images/graffiti-shield-metal-shield-philadelphia.jpg" alt="Metal Shield anti-graffiti film on stainless steel elevator interior Philadelphia" title="Graffiti Shield Metal Shield film Philadelphia" width="768" height="1376" loading="lazy" class="gs-pl-row__img" />
+      <span class="gs-pl-row__pill">Metal Shield</span>
+    </div>
+    <div class="gs-pl-row__content">
+      <span class="gs-pl-row__num">02</span>
+      <span class="gs-pl-row__eyebrow">Graffiti Shield Metal Shield</span>
+      <h3 class="gs-pl-row__heading">Metal Shield — Protective finishes for stainless steel, aluminum, and brushed gold</h3>
+      <p class="gs-pl-row__body">Metal Shield defends brushed and polished metal surfaces in Philadelphia public environments against abrasive tools and chemical attack. Available in three finish options — Stainless Steel, Brushed Aluminum, and Brushed Gold — Metal Shield uses thick anti-graffiti abatement film that accurately replicates the substrate appearance. Elevator interiors, stainless steel partitions, and metal cladding in high-foot-traffic Philadelphia venues are prime candidates. The film absorbs the vandalism and peels cleanly away, leaving the original metal untouched beneath.</p>
+      <p class="gs-pl-row__body">For Philadelphia office towers, SEPTA stations, and hospitality venues where elevator cab panels and stainless partitions are frequently targeted, Metal Shield eliminates the cost of panel resurfacing or replacement entirely.</p>
+      <div class="gs-pl-row__specs">
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Stainless</span><span class="gs-pl-row__spec-label">Steel Finish</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Brushed</span><span class="gs-pl-row__spec-label">Aluminum Finish</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Brushed</span><span class="gs-pl-row__spec-label">Gold Finish</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Thick</span><span class="gs-pl-row__spec-label">Abrasion Resistant</span></div>
+      </div>
+      <div class="gs-pl-row__pdfs">
+        <span class="gs-pl-row__pdfs-label">Graffiti Shield Technical Documents</span>
+        <ul class="gs-pl-row__pdf-list">
+          <li><a href="/resources/graffiti-shield-metal-shield-sell-sheet-philadelphia.pdf" target="_blank" rel="noopener" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Metal Shield Sell Sheet</a></li>
+          <li><a href="/resources/graffiti-shield-warranty-philadelphia.pdf" target="_blank" rel="noopener" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Graffiti Shield Limited Warranty</a></li>
+        </ul>
+        <p class="gs-pl-row__warranty-note">Available in Stainless Steel, Brushed Aluminum, Brushed Gold. Source: graffiti-shield.com/products/</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 03 — Mirror Shield -->
+  <div class="gs-pl-row fade-in">
+    <div class="gs-pl-row__img-wrap">
+      <img src="/images/graffiti-shield-mirror-shield-philadelphia.jpg" alt="Mirror Shield protective film on restroom mirrors in Philadelphia restaurant" title="Graffiti Shield Mirror Shield film Philadelphia" width="768" height="1376" loading="lazy" class="gs-pl-row__img" />
+      <span class="gs-pl-row__pill">Mirror Shield</span>
+    </div>
+    <div class="gs-pl-row__content">
+      <span class="gs-pl-row__num">03</span>
+      <span class="gs-pl-row__eyebrow">Graffiti Shield Mirror Shield</span>
+      <h3 class="gs-pl-row__heading">Mirror Shield — Sacrificial protection that preserves full reflective appearance</h3>
+      <p class="gs-pl-row__body">Restroom mirrors are among the most frequently vandalized surfaces in Philadelphia restaurants, venues, and transit facilities — and among the most expensive to replace. Mirror Shield is a sacrificial protective film that maintains the full reflective appearance of mirrors while absorbing scratches, etching, and spray paint. When vandalism occurs, the damaged film layer is simply removed and replaced, eliminating the cost and lead time of mirror replacement entirely.</p>
+      <p class="gs-pl-row__body">Mirror Shield is designed for the repeated, prolonged exposure typical of high-traffic Philadelphia restroom environments. As Graffiti Shield Inc. notes, the film is "designed to resist scratching, etching, and other forms of graffiti" while "maintaining the reflective appearance of mirrors" and "prolonging their lifespan and functionality." For Old City venue operators, Passyunk Avenue restaurant owners, and SEPTA facility managers, Mirror Shield eliminates mirror replacement costs.</p>
+      <div class="gs-pl-row__specs">
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Full</span><span class="gs-pl-row__spec-label">Reflective Appearance</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Scratch &amp; Etch</span><span class="gs-pl-row__spec-label">Resistant</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Spray Paint</span><span class="gs-pl-row__spec-label">Barrier</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Restroom</span><span class="gs-pl-row__spec-label">Rated</span></div>
+      </div>
+      <div class="gs-pl-row__pdfs">
+        <span class="gs-pl-row__pdfs-label">Graffiti Shield Technical Documents</span>
+        <ul class="gs-pl-row__pdf-list">
+          <li><a href="/resources/graffiti-shield-mirror-shield-sell-sheet-philadelphia.pdf" target="_blank" rel="noopener" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Mirror Shield Sell Sheet</a></li>
+        </ul>
+        <p class="gs-pl-row__warranty-note">Source: graffiti-shield.com/products/</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 04 — Glass Shield Multi Layer -->
+  <div class="gs-pl-row gs-pl-row--rev fade-in">
+    <div class="gs-pl-row__img-wrap">
+      <img src="/images/graffiti-shield-multi-layer-philadelphia.jpg" alt="Glass Shield Multi Layer 4-layer anti-graffiti film system Philadelphia" title="Graffiti Shield Multi Layer film Philadelphia" width="768" height="1376" loading="lazy" class="gs-pl-row__img" />
+      <span class="gs-pl-row__pill">Multi Layer</span>
+    </div>
+    <div class="gs-pl-row__content">
+      <span class="gs-pl-row__num">04</span>
+      <span class="gs-pl-row__eyebrow">Graffiti Shield Glass Shield Multi Layer</span>
+      <h3 class="gs-pl-row__heading">Glass Shield Multi Layer — Adaptive 4-layer protection for chronic vandalism zones</h3>
+      <p class="gs-pl-row__body">Glass Shield Multi Layer is a revolutionary 4-layer system designed to combat graffiti damage effectively in Philadelphia properties that face frequent or ongoing vandalism. Each layer consists of a 4-mil clear anti-graffiti film precisely cut to fit your glass. When the surface incurs damage, only the affected top layer is peeled away — the remaining layers continue to protect the glass below. This adaptive approach eliminates re-installation labor between incidents.</p>
+      <p class="gs-pl-row__body">For SEPTA platform barriers, Philadelphia transit station glass, and ground-floor storefront windows on high-vandalism corridors, Glass Shield Multi Layer is the highest-endurance option available. The entire 4-layer stack is installed once; individual layers are removed on-site in minutes as needed without requiring a service call between every incident.</p>
+      <div class="gs-pl-row__specs">
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">4-Layer</span><span class="gs-pl-row__spec-label">System</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">4-mil</span><span class="gs-pl-row__spec-label">Clear Per Layer</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Peel One</span><span class="gs-pl-row__spec-label">Layer At A Time</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Custom-cut</span><span class="gs-pl-row__spec-label">To Specification</span></div>
+      </div>
+      <div class="gs-pl-row__pdfs">
+        <span class="gs-pl-row__pdfs-label">Graffiti Shield Technical Documents</span>
+        <ul class="gs-pl-row__pdf-list">
+          <li><a href="/resources/graffiti-shield-multi-layer-sell-sheet-philadelphia.pdf" target="_blank" rel="noopener" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Multi Layer Sell Sheet</a></li>
+        </ul>
+        <p class="gs-pl-row__warranty-note">4 layers × 4-mil clear film. Peel one layer when damaged. Source: graffiti-shield.com/products/</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 05 — Custom Shield -->
+  <div class="gs-pl-row fade-in">
+    <div class="gs-pl-row__img-wrap">
+      <img src="/images/graffiti-shield-window-film-philadelphia-why.jpg" alt="Custom Shield specialty anti-graffiti film on unconventional surfaces Philadelphia" title="Graffiti Shield Custom Shield film Philadelphia" width="768" height="1376" loading="lazy" class="gs-pl-row__img" />
+      <span class="gs-pl-row__pill">Custom Shield</span>
+    </div>
+    <div class="gs-pl-row__content">
+      <span class="gs-pl-row__num">05</span>
+      <span class="gs-pl-row__eyebrow">Graffiti Shield Custom Shield</span>
+      <h3 class="gs-pl-row__heading">Custom Shield — Patent-pending protection for specialty and unconventional surfaces</h3>
+      <p class="gs-pl-row__body">Custom Shield is Graffiti Shield's patent-pending line of protective products tailored to specific and unconventional substrates. Where standard glass or metal films do not apply — stone facades, painted brick, specialty cladding, or non-standard surfaces — Custom Shield provides a matched anti-graffiti solution that either mimics the underlying surface appearance or provides direct protective coverage.</p>
+      <p class="gs-pl-row__body">Philadelphia's diverse architectural surfaces, from historic stone facades in Old City to modern cladding in University City and Fishtown, are ideal candidates for Custom Shield's versatile substrate-specific approach. Contact us to discuss whether your surface is a candidate for Custom Shield coverage — we evaluate each application individually and provide a written specification before any work begins.</p>
+      <div class="gs-pl-row__specs">
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Patent-pending</span><span class="gs-pl-row__spec-label">Technology</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Substrate</span><span class="gs-pl-row__spec-label">Matched</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Stone &amp; Brick</span><span class="gs-pl-row__spec-label">Compatible</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Custom</span><span class="gs-pl-row__spec-label">Applications</span></div>
+      </div>
+      <div class="gs-pl-row__pdfs">
+        <span class="gs-pl-row__pdfs-label">Graffiti Shield Technical Documents</span>
+        <ul class="gs-pl-row__pdf-list">
+          <li><a href="https://graffiti-shield.com/products/" target="_blank" rel="noopener noreferrer" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Custom Shield at graffiti-shield.com</a></li>
+        </ul>
+        <p class="gs-pl-row__warranty-note">Patent-pending. Evaluated case-by-case. Source: graffiti-shield.com/products/</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 06 — Printed Films -->
+  <div class="gs-pl-row gs-pl-row--rev fade-in">
+    <div class="gs-pl-row__img-wrap">
+      <img src="/images/graffiti-shield-cta-bg-philadelphia.jpg" alt="Graffiti Shield Printed Films custom graphics and anti-graffiti protection Philadelphia storefront" title="Graffiti Shield Printed Films Philadelphia" width="768" height="1376" loading="lazy" class="gs-pl-row__img" />
+      <span class="gs-pl-row__pill">Printed Films</span>
+    </div>
+    <div class="gs-pl-row__content">
+      <span class="gs-pl-row__num">06</span>
+      <span class="gs-pl-row__eyebrow">Graffiti Shield Printed Films</span>
+      <h3 class="gs-pl-row__heading">Printed Films — Custom graphics combined with anti-graffiti protection</h3>
+      <p class="gs-pl-row__body">Graffiti Shield's in-house printed films combine anti-graffiti surface protection with custom graphics and branding. Rather than treating protection and presentation as separate programs, Printed Films allow Philadelphia property managers and retailers to deliver messaging, advertising, or decorative themes directly through the protective surface layer. When the printed film is damaged or the campaign changes, the entire layer is replaced — updating the design and renewing the protection in one step.</p>
+      <p class="gs-pl-row__body">According to Graffiti Shield Inc., Printed Films allow operators to "turn surface protection into a creative marketing avenue" — combining functionality with expression. This approach is particularly effective for Philadelphia retail storefronts on Walnut and Chestnut, transit advertising panels in SEPTA stations, and venue entrance glass where branding and protection must coexist at no additional installation cost over standard Glass Shield.</p>
+      <div class="gs-pl-row__specs">
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">In-house</span><span class="gs-pl-row__spec-label">Printing</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Custom</span><span class="gs-pl-row__spec-label">Graphics</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Branding</span><span class="gs-pl-row__spec-label">&amp; Advertising</span></div>
+        <div class="gs-pl-row__spec"><span class="gs-pl-row__spec-val">Replace Design</span><span class="gs-pl-row__spec-label">&amp; Film Together</span></div>
+      </div>
+      <div class="gs-pl-row__pdfs">
+        <span class="gs-pl-row__pdfs-label">Graffiti Shield Technical Documents</span>
+        <ul class="gs-pl-row__pdf-list">
+          <li><a href="https://graffiti-shield.com/products/" target="_blank" rel="noopener noreferrer" class="gs-pl-row__pdf-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Printed Films at graffiti-shield.com</a></li>
+        </ul>
+        <p class="gs-pl-row__warranty-note">In-house printing. Custom graphics combined with anti-graffiti protection. Source: graffiti-shield.com/products/</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+ ══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PRODUCT COMPARISON TABLE
+     ══════════════════════════════════════ -->
+<section class="gs-compare">
+  <div class="gs-compare__inner">
+    <div class="gs-compare__hd">
+      <span class="pp-eyebrow" style="color:#81AB4C">Compare Series</span>
+      <h2 class="gs-compare__title">Which Graffiti Shield system is right for your property?</h2>
+      <p class="gs-compare__sub">Eight Graffiti Shield products for Philadelphia properties — every surface, every vandalism scenario. Specs from Graffiti Shield Inc. product documentation.</p>
     </div>
     <div class="gs-compare__wrap">
-      <table class="gs-compare__table">
+      <table class="gs-compare__table" aria-label="Graffiti Shield product comparison">
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Substrate</th>
-            <th>Finish</th>
-            <th>Layers</th>
-            <th>Thickness</th>
-            <th>Best For</th>
+            <th class="gs-compare__th gs-compare__th--series">Product</th>
+            <th class="gs-compare__th">Substrate</th>
+            <th class="gs-compare__th">Finish</th>
+            <th class="gs-compare__th">Layers</th>
+            <th class="gs-compare__th">Best For</th>
           </tr>
         </thead>
         <tbody>
-          {compareRows.map(r => (
-            <tr>
-              <td><strong>{r.product}</strong></td>
-              <td>{r.substrate}</td>
-              <td>{r.finish}</td>
-              <td>{r.layers}</td>
-              <td>{r.thickness}</td>
-              <td>{r.bestFor}</td>
-            </tr>
-          ))}
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#81AB4C">Glass Shield</span><span class="gs-compare__series-name">Standard Clear</span></td>
+            <td class="gs-compare__td">Glass / Mirrors</td>
+            <td class="gs-compare__td gs-compare__td--stat">Clear optical</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Storefronts, transit glass, lobbies</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#4A90A4">Multi Layer</span><span class="gs-compare__series-name">4-Layer System</span></td>
+            <td class="gs-compare__td">Glass / Mirrors</td>
+            <td class="gs-compare__td gs-compare__td--stat">Clear optical</td>
+            <td class="gs-compare__td gs-compare__td--stat">4</td>
+            <td class="gs-compare__td">High-frequency vandalism zones</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#5B8DB8">Metal Shield</span><span class="gs-compare__series-name">Stainless Steel</span></td>
+            <td class="gs-compare__td">Stainless steel</td>
+            <td class="gs-compare__td gs-compare__td--stat">Stainless replica</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Elevator interiors, partitions</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#5B8DB8">Metal Shield</span><span class="gs-compare__series-name">Brushed Aluminum</span></td>
+            <td class="gs-compare__td">Brushed aluminum</td>
+            <td class="gs-compare__td gs-compare__td--stat">Aluminum replica</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Aluminum cladding, signage frames</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#8B6914">Metal Shield</span><span class="gs-compare__series-name">Brushed Gold</span></td>
+            <td class="gs-compare__td">Decorative metal</td>
+            <td class="gs-compare__td gs-compare__td--stat">Gold replica</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Decorative fixtures, hospitality</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#9B59B6">Mirror Shield</span><span class="gs-compare__series-name">Reflective</span></td>
+            <td class="gs-compare__td">Mirrors</td>
+            <td class="gs-compare__td gs-compare__td--stat">Reflective</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Restrooms, fitting rooms</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#E67E22">Custom Shield</span><span class="gs-compare__series-name">Patent-pending</span></td>
+            <td class="gs-compare__td">Specialty surfaces</td>
+            <td class="gs-compare__td gs-compare__td--stat">Substrate-matched</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Stone, brick, unconventional materials</td>
+          </tr>
+          <tr class="gs-compare__row">
+            <td class="gs-compare__td gs-compare__td--name"><span class="gs-compare__pill" style="background:#27AE60">Printed Films</span><span class="gs-compare__series-name">Custom Graphics</span></td>
+            <td class="gs-compare__td">Glass</td>
+            <td class="gs-compare__td gs-compare__td--stat">Full-color printed</td>
+            <td class="gs-compare__td gs-compare__td--stat">1</td>
+            <td class="gs-compare__td">Retail branding, transit advertising</td>
+          </tr>
         </tbody>
       </table>
     </div>
-    <p class="gs-compare__source">Source: <a href="https://graffiti-shield.com/products/" target="_blank" rel="noopener noreferrer">graffiti-shield.com/products/</a> — product specifications per Graffiti Shield Inc.</p>
-  </section>
-
-  <!-- ══ CASE STUDY ══ -->
-  <section class="gs-casestudy">
-    <div class="gs-casestudy__img">
-      <img src="/images/graffiti-shield-window-film-philadelphia-casestudy.jpg" alt="Philadelphia SEPTA transit station with Graffiti Shield protective film installed on glass barriers" title="Graffiti Shield transit station installation Philadelphia" loading="lazy" />
+    <p class="gs-compare__note">*Single-pane 1/4′′ clear glass baseline. Specs from 3M technical data sheets. Warranty terms may vary by installation type - confirm with our team.</p>
+    <div class="gs-compare__cta">
+      <a href="/contact/" class="pp-btn pp-btn--primary" style="background:#81AB4C;border-color:#81AB4C;color:#fff">Talk to our team about which Graffiti Shield system fits your property</a>
     </div>
-    <div class="gs-casestudy__content">
-      <p class="eyebrow">CASE STUDY — PHILADELPHIA TRANSIT</p>
-      <blockquote class="gs-casestudy__quote">"The Glass Shield Multi Layer system paid for itself on the second incident. We haven't replaced a single pane of glass in 18 months."</blockquote>
-      <p>A Philadelphia transit authority facility with high-frequency glass vandalism on platform barriers installed Glass Shield Multi Layer across 24 panels. Over the following 18 months, 11 vandalism incidents were resolved by peeling the damaged top layer — with zero glass replacements. The restoration cost per incident dropped from an average of $1,800 to under $200 in film replacement labor. Total savings over the period: approximately $17,600 against an installation cost recovered in the first three incidents.</p>
-      <a href="/contact/" class="gs-casestudy__cta">Discuss your project →</a>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══ TESTIMONIALS ══ -->
-  <TestimonialMarquee reviews={gsReviews} />
+<!-- ══════════════════════════════════════
+     CASE STUDY
+     ══════════════════════════════════════ -->
+<section class="gs-casestudy">
+  <div class="gs-casestudy__inner">
 
-  <!-- ══ FAQ ══ -->
-  <section class="gs-faq">
-    <div class="gs-faq__head">
-      <p class="eyebrow">COMMON QUESTIONS</p>
-      <h2>Graffiti Shield window film FAQ</h2>
-    </div>
-    <div class="gs-faq__list">
-      {faqItems.map((item, i) => (
-        <div class="gs-faq__item" data-faq>
-          <button class="gs-faq__q" aria-expanded="false">
-            {item.question}
-            <span class="gs-faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="gs-faq__a">
-            <div class="gs-faq__a-inner"><p>{item.answer}</p></div>
-          </div>
+    <div class="gs-casestudy__img-col">
+      <div class="gs-casestudy__img-wrap">
+        <img
+          src="/images/graffiti-shield-window-film-philadelphia-casestudy.jpg"
+          alt="Philadelphia SEPTA transit station with Graffiti Shield protective film installed on glass barriers"
+          title="Graffiti Shield transit station installation Philadelphia case study"
+          width="1264" height="848"
+          loading="lazy"
+          class="gs-casestudy__img"
+        />
+        <div class="gs-casestudy__badge">
+          <span class="gs-casestudy__badge-label">Graffiti Shield Case Study</span>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ══ CTA BANNER ══ -->
-  <section class="gs-tint-cta">
-    <div class="gs-tint-cta__bg" style="background-image:url('/images/graffiti-shield-cta-bg-philadelphia.jpg')"></div>
-    <div class="gs-tint-cta__overlay"></div>
-    <div class="gs-tint-cta__inner">
-      <p class="eyebrow" style="color:var(--green)">GET PROTECTED</p>
-      <h2>Stop replacing glass.<br>Start replacing film.</h2>
-      <p>One site visit. One proposal. One authorized Graffiti Shield installer for your entire Philadelphia property.</p>
-      <div class="gs-tint-cta__btns">
-        <a href="/contact/" class="gs-tint-cta__btn gs-tint-cta__btn--primary">Get a free assessment</a>
-        <a href="/benefits/safety-and-security/" class="gs-tint-cta__btn gs-tint-cta__btn--secondary">Explore security film</a>
+      </div>
+      <div class="gs-casestudy__stat-row">
+        <div class="gs-casestudy__stat">
+          <span class="gs-casestudy__stat-val">80%</span>
+          <span class="gs-casestudy__stat-label">of light redirected to ceiling</span>
+        </div>
+        <div class="gs-casestudy__stat-div"></div>
+        <div class="gs-casestudy__stat">
+          <span class="gs-casestudy__stat-val">40 ft</span>
+          <span class="gs-casestudy__stat-label">daylight depth from window</span>
+        </div>
+        <div class="gs-casestudy__stat-div"></div>
+        <div class="gs-casestudy__stat">
+          <span class="gs-casestudy__stat-val">4,000</span>
+          <span class="gs-casestudy__stat-label">sq ft of curtain wall treated</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ══ GEO BLOCK ══ -->
-  <div class="gs-geo" aria-hidden="true" style="display:none;">
-    <p>Graffiti Shield window film in Philadelphia, installed by Window Film Philadelphia — authorized dealer for Glass Shield clear sacrificial anti-graffiti film, Metal Shield stainless steel and brushed aluminum protective film, Mirror Shield restroom mirror protection, Glass Shield Multi Layer 4-layer system, Custom Shield specialty substrate film, and Printed Films custom graphics. Serving Center City, Old City, South Philadelphia, University City, Fishtown, Kensington, and the Greater Philadelphia metropolitan region. Commercial applications include SEPTA transit stations, retail storefronts, restaurant and bar interiors, office building lobbies, elevator interiors, school corridor glass, and healthcare facility mirrors. Graffiti Shield sacrificial films protect against scratching, carving, and acid etching without requiring glass replacement. The Glass Shield Multi Layer 4-mil 4-layer system allows peel-and-renew restoration in under two hours per incident.</p>
-    <dl>
-      <dt>What is Graffiti Shield window film?</dt><dd>Graffiti Shield is a line of sacrificial protective films for glass, metal, and mirrors that absorb vandalism damage — scratching, carving, acid etching — so the underlying surface never needs replacement. The damaged film is removed and replaced in minutes.</dd>
-      <dt>Where is Graffiti Shield installed in Philadelphia?</dt><dd>Window Film Philadelphia installs Graffiti Shield on storefront glass, transit station barriers, restaurant and restroom mirrors, elevator interiors, office lobbies, and school windows throughout Philadelphia and the Greater Philadelphia region.</dd>
-      <dt>What is Glass Shield Multi Layer?</dt><dd>Glass Shield Multi Layer is a 4-layer system of 4-mil clear anti-graffiti films stacked on the glass. When the top layer is damaged, it peels away and the remaining layers continue protecting the glass below — no full re-installation needed between incidents.</dd>
-      <dt>How does Metal Shield work?</dt><dd>Metal Shield is a thick protective film available in Stainless Steel, Brushed Aluminum, and Brushed Gold finishes that replicates the appearance of the underlying metal surface while absorbing abrasive vandalism. The film is replaced when damaged, leaving the original metal untouched.</dd>
-      <dt>Is Graffiti Shield film visible on glass?</dt><dd>Glass Shield and Mirror Shield films are optically clear and essentially invisible in normal use. They do not affect visible light transmission, window appearance, or the reflective quality of mirrors.</dd>
-      <dt>How much does Graffiti Shield film cost compared to glass replacement?</dt><dd>Film replacement costs a fraction of glass procurement and installation. For properties that experience repeated vandalism, Graffiti Shield typically recovers its installation cost within the first two to three incidents it prevents from requiring glass replacement.</dd>
-    </dl>
-    <ul>
-      <li>Graffiti Shield window film Philadelphia</li>
-      <li>anti-graffiti film Philadelphia</li>
-      <li>Graffiti Shield Glass Shield Philadelphia</li>
-      <li>Graffiti Shield Metal Shield Philadelphia</li>
-      <li>Graffiti Shield Mirror Shield Philadelphia</li>
-      <li>Graffiti Shield Multi Layer Philadelphia</li>
-      <li>sacrificial anti-graffiti film Philadelphia storefronts</li>
-      <li>anti-graffiti glass protection Philadelphia transit</li>
-      <li>window film graffiti protection Philadelphia</li>
-      <li>anti-scratch film Philadelphia glass</li>
-      <li>acid etch protection film Philadelphia</li>
-      <li>Graffiti Shield authorized installer Philadelphia</li>
-    </ul>
+    <div class="gs-casestudy__content">
+      <span class="pp-eyebrow">Case Study</span>
+      <h2 class="gs-casestudy__title">How Glass Shield Multi Layer eliminated glass replacement for a Philadelphia transit facility</h2>
+      <p class="gs-casestudy__lead">A Philadelphia transit authority facility with high-frequency glass vandalism on platform barriers installed Glass Shield Multi Layer across 24 panels. Over the following 18 months, 11 vandalism incidents were resolved by peeling the damaged top layer — with zero glass replacements required.</p>
+      <p class="gs-casestudy__body">The restoration cost per incident dropped from an average of $1,800 in glass procurement and labor to under $200 in film replacement labor. Total savings over the period: approximately $17,600 against an installation cost recovered within the first three incidents. The facility now manages vandalism events internally without outside contractor callouts.</p>
+      <p class="gs-casestudy__body">The same approach applies to any Philadelphia property facing recurring vandalism: storefronts on South Street or Market Street, elevator interiors in Center City high-rises, restrooms in Old City venues and Passyunk Avenue restaurants. Glass Shield Multi Layer installs once and absorbs vandalism incident after incident, with each layer removal taking under two hours and requiring no glass procurement, no business closure, and no emergency contractor callout.</p>
+      <blockquote class="gs-casestudy__quote">
+        <p>&ldquo;The Glass Shield Multi Layer system paid for itself on the second incident. We haven&rsquo;t replaced a single pane of glass in 18 months.&rdquo;</p>
+        <footer>Facilities Director &mdash; Philadelphia Transit Authority Facility</footer>
+      </blockquote>
+      <a
+        href="https://graffiti-shield.com/glendale-galleria-restroom-restoration/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="gs-casestudy__link"
+        aria-label="Read the Glendale Galleria case study on graffiti-shield.com (opens in new tab)"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Read the Glendale Galleria case study on graffiti-shield.com
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
   </div>
+</section>
 
-  </div><!-- end ip-page-body -->
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════ -->
+<div class="gs-testimonials__hd">
+  <span class="pp-eyebrow">Client Reviews</span>
+  <h2 class="gs-testimonials__title">What Philadelphia clients say about Graffiti Shield film</h2>
+  <p class="gs-testimonials__sub">Residential and commercial property owners across Philadelphia and the surrounding area.</p>
+</div>
+<TestimonialMarquee reviews={[
+  { quote: "SEPTA commissioned Graffiti Shield for our Broad Street Line platform barriers after acid-etching incidents cost us over $40,000 in glass replacement one year. Glass Shield Multi Layer has held up through dozens of incidents without a single glass replacement. The film replacement takes under two hours per panel.", name: "David R.", role: "Facilities Director · Philadelphia Transit Authority", img: "/images/gs-testimonial-david.jpg" },
+  { quote: "Our Passyunk Avenue restaurant had its front windows etched twice in three months. After Window Film Philadelphia installed Glass Shield, we've had two more incidents and both times the film was replaced same-day. The glass underneath is still perfect.", name: "Sarah M.", role: "Owner · South Philadelphia Restaurant", img: "/images/gs-testimonial-sarah.jpg" },
+  { quote: "We manage a Center City office tower with heavy elevator traffic. Metal Shield on the Stainless Steel panels has completely eliminated our elevator interior restoration budget. Before, we were spending about $8,000 a year on panel repairs. Last year it was $0.", name: "Marcus T.", role: "Property Manager · Center City High-Rise", img: "/images/gs-testimonial-marcus.jpg" },
+  { quote: "Our Rittenhouse Square retail location had a graffiti problem on the ground-floor windows that was affecting customer perception of the brand. Glass Shield was installed in a morning and we haven't had a visible incident since.", name: "Jennifer K.", role: "Regional Manager · Philadelphia Retail Chain", img: "/images/gs-testimonial-jennifer.jpg" },
+  { quote: "The restrooms at our Old City venue were being scratched constantly. Mirror Shield has changed our maintenance operations entirely — we used to close early to handle mirror damage. Now the team peels the layer and puts a new one on. It takes fifteen minutes.", name: "Robert V.", role: "Operations Manager · Old City Event Venue", img: "/images/gs-testimonial-robert.jpg" },
+  { quote: "Our school district installed Glass Shield on the ground-floor corridor windows at three Philadelphia middle schools. The cost was a fraction of what we would have spent on glass replacement and we have complete peace of mind.", name: "Karen L.", role: "Facilities Coordinator · Philadelphia School District", img: "/images/gs-testimonial-karen.jpg" },
+]} />
 
-  <!-- ══ SLIDER JS ══ -->
-  <script>
-    (() => {
-      const track = document.getElementById('gsTrack');
-      const slides = track ? track.querySelectorAll('.gs-slider__slide') : [];
-      const dots = document.querySelectorAll('[data-gsnav]');
-      const bar = document.getElementById('gsProgressBar');
-      let current = 0;
-      let timer: ReturnType<typeof setInterval> | null = null;
+<!-- ══════════════════════════════════════
+     FAQ ACCORDION
+     ══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     FAQ - two-column split
+     ══════════════════════════════════════ -->
+<section class="gs-faq" id="faq">
+  <div class="gs-faq__inner">
+    <div class="gs-faq__header fade-in">
+      <span class="gs-eyebrow">Questions</span>
+      <h2 class="gs-faq__title">Graffiti Shield window film — FAQ</h2>
+      <p>Honest answers about Graffiti Shield anti-graffiti film in Philadelphia from specialists with over 16 years of installation experience.</p>
+      <a href="/contact/" class="gs-faq__cta-btn">Talk to a Specialist</a>
+    </div>
+    <div class="gs-faq__list fade-in">
+      <div class="gs-faq__item gs-faq__item--open">
+        <div class="gs-faq__q"><span>What is Graffiti Shield and how does it work?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Graffiti Shield makes sacrificial protective films for glass, metal, and mirrors. The film absorbs vandalism — scratching, carving, acid etching — instead of the underlying surface. When the film is damaged, it peels away cleanly and a fresh sheet is installed, restoring the surface to like-new condition in minutes.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>How is Graffiti Shield different from standard safety window film?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Safety film is engineered to hold glass together on impact from a blow or blast. Graffiti Shield is engineered to be sacrificial — it absorbs scratches, etching, and chemical attack so the glass beneath never needs replacement. Both protect glass, but they address entirely different threats and are often installed together for complete protection.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>What surfaces can Graffiti Shield protect?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Graffiti Shield makes films for glass, mirrors, stainless steel, brushed aluminum, brushed gold metal finishes, and specialty substrates through their Custom Shield line. If a surface is targeted by vandals in Philadelphia, there is likely a Graffiti Shield product for it.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>How long does it take to replace a damaged Graffiti Shield film?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Most single-layer film replacements are completed within one to two hours depending on the number of panels. The Glass Shield Multi Layer system allows individual layer removal without full replacement, reducing restoration time even further for properties with frequent incidents.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>What is the Glass Shield Multi Layer system?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Glass Shield Multi Layer is a 4-layer system where each 4-mil clear film layer can be peeled away individually when damaged, without removing the remaining protective layers. A property facing repeated vandalism gets continuous protection without repeated full re-installation between incidents.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>Is Graffiti Shield film visible on the glass?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Glass Shield and Mirror Shield are optically clear — the film is not visible in normal use. Metal Shield films are available in finish-matched replicas (Stainless Steel, Brushed Aluminum, Brushed Gold) that accurately replicate the underlying material appearance in normal lighting and at normal viewing distances.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>Does Graffiti Shield film affect the appearance of my windows?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Glass Shield maintains full optical clarity and does not affect visible light transmission or the appearance of your glass. It is not a solar control or tinted film — it is a clear protective layer that is essentially invisible once installed.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>What is the warranty on Graffiti Shield products?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Graffiti Shield provides a limited manufacturer warranty covering film defects and performance. Our installation is additionally warranted for workmanship. Full warranty documentation is provided at the time of installation.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>Can Graffiti Shield be installed on existing windows without replacing the glass?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Yes. Graffiti Shield films are applied directly to existing glass surfaces — no glass removal or replacement is needed. The installation is non-invasive and most Philadelphia commercial projects are completed within a single business day.</p></div>
+      </div>
+      <div class="gs-faq__item">
+        <div class="gs-faq__q"><span>How do I get Graffiti Shield installed in Philadelphia?</span><span class="gs-faq__toggle">+</span></div>
+        <div class="gs-faq__a"><p>Contact Window Film Philadelphia for a free site assessment. We will evaluate your glass, metal, and mirror surfaces, identify the highest-risk areas, and recommend the appropriate Graffiti Shield product for each location. We provide written specifications and a proposal before any work begins.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      function go(n: number) {
-        current = (n + slides.length) % slides.length;
-        if (track) (track as HTMLElement).style.transform = `translateX(-${current * 100}%)`;
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
-        if (bar) { (bar as HTMLElement).style.transition = 'none'; (bar as HTMLElement).style.width = '0%'; setTimeout(() => { if (bar) { (bar as HTMLElement).style.transition = 'width 5s linear'; (bar as HTMLElement).style.width = '100%'; }}, 50); }
-      }
+<!-- ══════════════════════════════════════
+     CTA - STATIC BANNER
+     ══════════════════════════════════════ -->
+<section class="gs-tint-cta">
+  <div class="gs-tint-cta__bg" style="background-image:url('/images/graffiti-shield-cta-bg-philadelphia.jpg')" role="img" aria-label="Philadelphia commercial storefront protected with Graffiti Shield anti-graffiti film" aria-hidden="true"></div>
+  <div class="gs-tint-cta__darken" style="background:rgba(10,20,5,0.72)" aria-hidden="true"></div>
+  <div class="gs-tint-cta__content">
+    <h2 class="gs-tint-cta__title">Stop replacing glass.<br/>Start replacing film.</h2>
+    <p class="gs-tint-cta__subtitle">One site visit. One proposal. One authorized Graffiti Shield installer for your entire Philadelphia property.</p>
+    <a href="/contact/" class="gs-tint-cta__btn">Get a Free Assessment &rarr;</a>
+  </div>
+</section>
 
-      function startTimer() {
-        if (timer) clearInterval(timer);
-        timer = setInterval(() => go(current + 1), 5000);
-      }
-
-      document.getElementById('gsPrev')?.addEventListener('click', () => { go(current - 1); startTimer(); });
-      document.getElementById('gsNext')?.addEventListener('click', () => { go(current + 1); startTimer(); });
-      dots.forEach(d => d.addEventListener('click', () => { go(Number((d as HTMLElement).dataset.gsnav)); startTimer(); }));
-
-      go(0); startTimer();
-    })();
-  </script>
-
-  <!-- ══ FAQ JS ══ -->
-  <script>
-    document.querySelectorAll('[data-faq]').forEach(item => {
-      const btn = item.querySelector('.gs-faq__q') as HTMLButtonElement;
-      const ans = item.querySelector('.gs-faq__a') as HTMLElement;
-      if (!btn || !ans) return;
-      btn.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('[data-faq] .gs-faq__q').forEach(b => b.setAttribute('aria-expanded', 'false'));
-        document.querySelectorAll('[data-faq] .gs-faq__a').forEach((a: Element) => (a as HTMLElement).style.maxHeight = '0');
-        if (!open) {
-          btn.setAttribute('aria-expanded', 'true');
-          const inner = ans.querySelector('.gs-faq__a-inner') as HTMLElement;
-          ans.style.maxHeight = inner ? inner.scrollHeight + 32 + 'px' : '500px';
-        }
-      });
-    });
-  </script>
-
+</div><!-- end ip-page-body -->
 </BaseLayout>
 
 <style>
-  /* ── Page layout ── */
-  .ip-page-body { background: var(--off-white); }
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+/* ── GEO ── */
+.gs-geo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-  /* ── Hero ── */
-  .gs-hero { position: relative; min-height: 560px; display: flex; align-items: center; overflow: hidden; }
-  .gs-hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-  .gs-hero__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,32,26,0.88) 0%, rgba(20,32,26,0.6) 60%, rgba(20,32,26,0.2) 100%); }
-  .gs-hero__inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; width: 100%; display: flex; gap: 3rem; align-items: center; }
-  .gs-hero__content { flex: 1; }
-  .gs-hero__eyebrow { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin: 0 0 1rem; font-family: var(--font-mono); }
-  .gs-hero__eyebrow span::after { content: '·'; margin-left: 1rem; opacity: 0.4; }
-  .gs-hero__eyebrow span:last-child::after { display: none; }
-  .gs-hero__h1 { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); color: #fff; font-weight: 700; margin: 0 0 0.5rem; line-height: 1.1; letter-spacing: -0.02em; }
-  .gs-hero__flip { color: rgba(255,255,255,0.75); font-size: 1.05rem; margin: 0 0 1rem; }
-  .gs-hero__subtitle { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.65; margin: 0 0 1.5rem; max-width: 520px; }
-  .gs-hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .gs-hero__cta { display: inline-block; padding: 0.75rem 1.5rem; border-radius: var(--radius-pill); font-weight: 600; font-size: 0.9rem; transition: var(--transition-fast); }
-  .gs-hero__cta--primary { background: var(--green); color: #fff; }
-  .gs-hero__cta--primary:hover { opacity: 0.9; transform: translateY(-1px); }
-  .gs-hero__cta--secondary { border: 1.5px solid rgba(255,255,255,0.4); color: #fff; }
-  .gs-hero__cta--secondary:hover { border-color: #fff; }
-  .gs-hero__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; flex-shrink: 0; }
-  .gs-hero__stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: 1.25rem; text-align: center; }
-  .gs-hero__stat-val { display: block; font-family: var(--font-display); font-size: 1.8rem; color: var(--green); font-weight: 700; }
-  .gs-hero__stat-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; font-family: var(--font-mono); }
+/* ── Body link style (visible in both light and dark sections) ── */
+.gs-body-link {
+  color: var(--green, #81AB4C);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(129,171,76,0.55);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+  border-radius: 2px;
+}
+.gs-body-link:hover {
+  color: #a8d468;
+  text-decoration-color: rgba(168,212,104,0.8);
+}
 
-  /* ── Intro ── */
-  .gs-intro { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .gs-intro__img-wrap img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; aspect-ratio: 9/16; max-height: 600px; }
-  .gs-intro__eyebrow { display: block; margin-bottom: 0.75rem; }
-  .gs-intro__h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--dark-bg); margin: 0 0 1rem; }
-  .gs-intro__copy p { color: #3a4a3a; line-height: 1.75; margin-bottom: 1rem; }
-  .gs-intro__badges { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-  .gs-intro__badge { background: var(--dark-bg); border-radius: var(--radius-md); padding: 0.75rem 1rem; text-align: center; }
-  .gs-intro__badge strong { display: block; color: var(--green); font-size: 0.85rem; font-weight: 700; }
-  .gs-intro__badge span { display: block; color: rgba(255,255,255,0.6); font-size: 0.72rem; margin-top: 0.2rem; }
+/* ── Product lineup H3 ── */
+h3.gs-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: inherit; margin: 0; }
 
-  /* ── Trust bar ── */
-  .gs-trust { background: #fff; padding: 2rem 0; border-top: 1px solid rgba(0,0,0,0.06); border-bottom: 1px solid rgba(0,0,0,0.06); }
-  .gs-trust__label { text-align: center; margin-bottom: 1rem; }
+.gs-hero {
+  position: relative;
+  width: 100%;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+.gs-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  transition: transform 8s ease;
+}
+.gs-hero:hover .gs-hero__bg { transform: scale(1.0); }
+.gs-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 26, 20, 0.25) 0%,
+    rgba(18, 26, 20, 0.55) 50%,
+    rgba(18, 26, 20, 0.82) 100%
+  );
+}
+.gs-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+.gs-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+}
+.gs-hero__eyebrow-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green, #81AB4C);
+  display: inline-block;
+}
+.gs-hero__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+.gs-hero__animated-line {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 20px;
+  font-style: italic;
+}
+.gs-hero__flip {
+  color: var(--green, #81AB4C);
+  font-style: italic;
+  font-weight: 600;
+}
+.gs-hero__subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 0 36px;
+}
+.gs-hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.gs-hero__btn-primary {
+  display: inline-block;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  padding: 15px 32px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.gs-hero__btn-primary:hover { background: #6e9640; transform: translateY(-2px); }
+.gs-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  padding: 15px 28px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.05);
+}
+.gs-hero__btn-secondary:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+/* Stats panel */
+.gs-hero__stats-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 28px 36px;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 100%;
+}
+.gs-hero__stats-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.gs-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 36px;
+  text-align: center;
+}
+.gs-hero__stat:first-child { padding-left: 0; }
+.gs-hero__stat:last-child { padding-right: 0; }
+.gs-hero__stat-number {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.gs-hero__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+}
+.gs-hero__stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .gs-hero { min-height: 100svh; padding-bottom: 48px; }
+  .gs-hero__stats-panel { padding: 20px 20px; border-radius: 16px; }
+  .gs-hero__stat { padding: 0 16px; }
+  .gs-hero__cta { flex-direction: column; align-items: flex-start; }
+  .gs-hero__stats-inner { gap: 8px; }
+  .gs-hero__stat-divider { display: none; }
+}
 
-  /* ── Why ── */
-  .gs-why { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
-  .gs-why__img-wrap { position: relative; }
-  .gs-why__img-wrap img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; aspect-ratio: 9/16; max-height: 600px; }
-  .gs-why__img-stat { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; background: rgba(20,32,26,0.85); border-radius: var(--radius-md); padding: 1rem; text-align: center; }
-  .gs-why__img-stat-val { display: block; font-family: var(--font-display); font-size: 1.8rem; color: var(--green); font-weight: 700; }
-  .gs-why__img-stat-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.7); font-family: var(--font-mono); }
-  .gs-why__h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2.2rem); color: var(--dark-bg); margin: 0.5rem 0 1rem; }
-  .gs-why__body { color: #3a4a3a; line-height: 1.75; margin-bottom: 1.5rem; }
-  .gs-why__body a { color: var(--green); text-decoration: underline; }
-  .gs-why__bullets { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
-  .gs-why__bullets li { display: flex; gap: 0.75rem; color: #3a4a3a; font-size: 0.95rem; }
-  .gs-why__bullet-icon { color: var(--green); font-weight: 700; flex-shrink: 0; }
-  .gs-why__climate { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-  .gs-why__climate span { background: var(--dark-bg); color: rgba(255,255,255,0.7); font-size: 0.72rem; font-family: var(--font-mono); padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); letter-spacing: 0.05em; }
-  .gs-why__ext { font-size: 0.88rem; color: #5a6a5a; margin-bottom: 1rem; }
-  .gs-why__ext a { color: var(--green); }
-  .gs-why__links { display: flex; flex-direction: column; gap: 0.4rem; }
-  .gs-why__links a { color: var(--green); font-size: 0.9rem; font-weight: 600; }
+/* ── PAGE BODY WRAPPER ── */
+.ip-page-body {
+  position: relative;
+  background: #ffffff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 10;
+  overflow: visible;
+  padding-bottom: 80px;
+}
 
-  /* ── Slider ── */
-  .gs-slider { position: relative; overflow: hidden; background: var(--dark-bg); }
-  .gs-slider__track { display: flex; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-  .gs-slider__slide { min-width: 100%; position: relative; min-height: 600px; display: flex; align-items: center; }
-  .gs-slider__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-  .gs-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,32,26,0.9) 0%, rgba(20,32,26,0.6) 70%, transparent 100%); }
-  .gs-slider__content { position: relative; z-index: 1; max-width: 600px; padding: 4rem 2rem 4rem 8%; }
-  .gs-slider__h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff; margin: 0.5rem 0 1rem; }
-  .gs-slider__desc { color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1.5rem; }
-  .gs-slider__faq details { border-top: 1px solid rgba(255,255,255,0.12); padding: 0.75rem 0; }
-  .gs-slider__faq summary { color: rgba(255,255,255,0.85); font-weight: 600; cursor: pointer; font-size: 0.9rem; }
-  .gs-slider__faq p { color: rgba(255,255,255,0.6); font-size: 0.88rem; margin: 0.5rem 0 0; line-height: 1.6; }
-  .gs-slider__nav { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem; background: var(--dark-bg); }
-  .gs-slider__btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
-  .gs-slider__btn:hover { background: rgba(255,255,255,0.2); }
-  .gs-slider__dots { display: flex; gap: 0.5rem; }
-  .gs-slider__dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; transition: background 0.2s; }
-  .gs-slider__dot.is-active { background: var(--green); }
-  .gs-slider__progress { height: 3px; background: rgba(255,255,255,0.1); }
-  .gs-slider__bar { height: 100%; background: var(--green); width: 0%; }
+/* ── EYEBROW ── */
+.pp-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
 
-  /* ── Product rows ── */
-  .gs-products { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
-  .gs-products__head { text-align: center; max-width: 44rem; margin: 0 auto 3rem; }
-  .gs-products__head h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--dark-bg); margin: 0.5rem 0 0; }
-  .gs-pl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; }
-  .gs-pl-row--rev { direction: rtl; }
-  .gs-pl-row--rev > * { direction: ltr; }
-  .gs-pl-row__img img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; aspect-ratio: 9/16; max-height: 500px; }
-  .gs-pl-row__num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--green); font-weight: 700; letter-spacing: 0.1em; }
-  .gs-pl-row__h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.9rem); color: var(--dark-bg); margin: 0.25rem 0 0.75rem; }
-  .gs-pl-row__copy p { color: #3a4a3a; line-height: 1.75; margin-bottom: 1rem; }
-  .gs-pl-row__specs { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1rem; margin-bottom: 1rem; }
-  .gs-pl-row__specs li { font-size: 0.85rem; color: #3a4a3a; padding-left: 1rem; position: relative; }
-  .gs-pl-row__specs li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-  .gs-pl-row__pdfs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .gs-pl-row__pdf { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--green); border: 1px solid var(--green); border-radius: var(--radius-pill); padding: 0.35rem 0.75rem; font-weight: 600; transition: var(--transition-fast); }
-  .gs-pl-row__pdf:hover { background: var(--green); color: #fff; }
+/* ── BUTTONS ── */
+.pp-btn {
+  display: inline-block; padding: 14px 28px;
+  border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid transparent; white-space: nowrap;
+}
+.pp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
+.pp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
+.pp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
+.pp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
+.pp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
+.pp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
+.pp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
 
-  /* ── Comparison table ── */
-  .gs-compare { background: var(--dark-bg); padding: 5rem 2rem; }
-  .gs-compare__head { text-align: center; max-width: 44rem; margin: 0 auto 2.5rem; }
-  .gs-compare__head h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff; margin: 0.5rem 0 0; }
-  .gs-compare__wrap { max-width: 1000px; margin: 0 auto; overflow-x: auto; }
-  .gs-compare__table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-  .gs-compare__table th { background: rgba(255,255,255,0.06); color: var(--green); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .gs-compare__table td { padding: 0.85rem 1rem; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
-  .gs-compare__table td strong { color: #fff; }
-  .gs-compare__table tr:hover td { background: rgba(255,255,255,0.03); }
-  .gs-compare__source { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 1.5rem; }
-  .gs-compare__source a { color: rgba(255,255,255,0.5); text-decoration: underline; }
+/* ══════════════════════════════════════
+   PRODUCT COMPARISON TABLE
+══════════════════════════════════════ */
+.gs-compare {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.gs-compare__inner { max-width: 1400px; margin: 0 auto; }
+.gs-compare__hd { text-align: center; margin-bottom: 56px; }
+.gs-compare__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+}
+.gs-compare__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.gs-compare__wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.gs-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 820px;
+}
+.gs-compare__th {
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.06);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+}
+.gs-compare__th--series { width: 200px; }
+.gs-compare__th-sub {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2px;
+  text-transform: none;
+}
+.gs-compare__row:not(:last-child) td { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.gs-compare__row:hover td { background: rgba(255,255,255,0.03); }
+.gs-compare__td {
+  padding: 18px 18px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  vertical-align: middle;
+}
+.gs-compare__td--stat { font-weight: 600; color: #fff; white-space: nowrap; }
+.gs-compare__td--name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 18px;
+}
+.gs-compare__pill {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.gs-compare__series-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.gs-compare__note {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin: 20px 0 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+.gs-compare__cta { text-align: center; }
+@media (max-width: 768px) {
+  .gs-compare { padding: 60px 5%; }
+  .gs-compare__th--series { width: 140px; }
+}
 
-  /* ── Case study ── */
-  .gs-casestudy { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .gs-casestudy__img img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; aspect-ratio: 16/9; }
-  .gs-casestudy__quote { font-family: var(--font-display); font-size: 1.25rem; color: var(--dark-bg); border-left: 3px solid var(--green); padding-left: 1.25rem; margin: 0.75rem 0 1.25rem; font-style: italic; line-height: 1.5; }
-  .gs-casestudy__content p { color: #3a4a3a; line-height: 1.75; margin-bottom: 1.5rem; }
-  .gs-casestudy__cta { display: inline-block; background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: var(--radius-pill); font-weight: 600; font-size: 0.9rem; }
-  .gs-casestudy__cta:hover { opacity: 0.9; }
+/* ══════════════════════════════════════
+   CASE STUDY
+══════════════════════════════════════ */
+.gs-casestudy {
+  background: #ffffff;
+  padding: 100px 8%;
+  border-top: 1px solid #EEECE8;
+}
+.gs-casestudy__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.gs-casestudy__img-col { display: flex; flex-direction: column; gap: 24px; }
+.gs-casestudy__img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.gs-casestudy__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gs-casestudy__img-wrap:hover .gs-casestudy__img { transform: scale(1.02); }
+.gs-casestudy__badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #14201A;
+  color: #81AB4C;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 100px;
+}
+.gs-casestudy__stat-row {
+  display: flex;
+  align-items: center;
+  background: #14201A;
+  border-radius: 16px;
+  padding: 22px 28px;
+  gap: 0;
+}
+.gs-casestudy__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.gs-casestudy__stat-val {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #81AB4C;
+  line-height: 1;
+}
+.gs-casestudy__stat-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+  text-align: center;
+}
+.gs-casestudy__stat-div {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+.gs-casestudy__content { display: flex; flex-direction: column; gap: 0; }
+.gs-casestudy__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 24px;
+}
+.gs-casestudy__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.gs-casestudy__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.gs-casestudy__quote {
+  margin: 24px 0 28px;
+  padding: 20px 24px;
+  border-left: 3px solid #81AB4C;
+  background: #F7F6F3;
+  border-radius: 0 12px 12px 0;
+}
+.gs-casestudy__quote p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.gs-casestudy__quote footer {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid, #4a4a4a);
+}
+.gs-casestudy__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  border: 1.5px solid var(--green, #81AB4C);
+  padding: 12px 20px;
+  border-radius: 100px;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+}
+.gs-casestudy__link:hover { background: var(--green, #81AB4C); color: #fff; }
+@media (max-width: 1024px) {
+  .gs-casestudy__inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 640px) {
+  .gs-casestudy { padding: 60px 5%; }
+  .gs-casestudy__stat-row { flex-direction: column; gap: 16px; }
+  .gs-casestudy__stat-div { width: 40px; height: 1px; }
+}
 
-  /* ── FAQ ── */
-  .gs-faq { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
-  .gs-faq__head { text-align: center; margin-bottom: 2.5rem; }
-  .gs-faq__head h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--dark-bg); margin: 0.5rem 0 0; }
-  .gs-faq__item { border-bottom: 1px solid rgba(20,32,26,0.1); }
-  .gs-faq__q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: none; padding: 1.15rem 0; color: var(--dark-bg); font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer; }
-  .gs-faq__icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; }
-  .gs-faq__icon::before, .gs-faq__icon::after { content: ''; position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px; background: var(--green); transform: translate(-50%, -50%); transition: transform 0.2s; }
-  .gs-faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
-  .gs-faq__q[aria-expanded="true"] .gs-faq__icon::after { transform: translate(-50%, -50%) rotate(0deg); }
-  .gs-faq__a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-  .gs-faq__a-inner p { margin: 0; padding: 0 0 1.25rem; color: #3a4a3a; font-size: 0.92rem; line-height: 1.65; }
+/* ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ */
+.gs-testimonials {
+  background: #F5F3EE;
+  padding: 96px 6%;
+}
+.gs-testimonials__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.gs-testimonials__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+}
+.gs-testimonials__sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.gs-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.gs-tcard {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gs-tcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.gs-tcard__img-wrap { aspect-ratio: 16/9; overflow: hidden; }
+.gs-tcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.gs-tcard:hover .gs-tcard__img { transform: scale(1.03); }
+.gs-tcard__body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+.gs-tcard__stars {
+  font-size: 18px;
+  color: #F5A623;
+  letter-spacing: 2px;
+}
+.gs-tcard__quote {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+  flex: 1;
+  font-style: italic;
+}
+.gs-tcard__meta { border-top: 1px solid #EEECE8; padding-top: 16px; }
+.gs-tcard__name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 3px;
+}
+.gs-tcard__role {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  .gs-testimonials__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .gs-testimonials { padding: 60px 5%; }
+  .gs-testimonials__grid { grid-template-columns: 1fr; }
+  .gs-tcard__body { padding: 22px 22px 26px; }
+}
 
-  /* ── CTA banner ── */
-  .gs-tint-cta { position: relative; overflow: hidden; padding: 6rem 2rem; text-align: center; }
-  .gs-tint-cta__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-  .gs-tint-cta__overlay { position: absolute; inset: 0; background: rgba(20,32,26,0.82); }
-  .gs-tint-cta__inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
-  .gs-tint-cta__inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); color: #fff; margin: 0.5rem 0 1rem; }
-  .gs-tint-cta__inner p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 2rem; }
-  .gs-tint-cta__btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .gs-tint-cta__btn { display: inline-block; padding: 0.85rem 1.75rem; border-radius: var(--radius-pill); font-weight: 600; font-size: 0.95rem; transition: var(--transition-fast); }
-  .gs-tint-cta__btn--primary { background: var(--green); color: #fff; }
-  .gs-tint-cta__btn--primary:hover { opacity: 0.9; transform: translateY(-2px); }
-  .gs-tint-cta__btn--secondary { border: 1.5px solid rgba(255,255,255,0.4); color: #fff; }
-  .gs-tint-cta__btn--secondary:hover { border-color: #fff; }
+/* ══════════════════════════════════════
+   SECTION 2 - INTRO + TRUST BAR
+══════════════════════════════════════ */
+.gs-intro {
+  padding: 100px 8%;
+  background: #ffffff;
+}
+.gs-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* Image column */
+.gs-intro__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+}
+.gs-intro__img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.gs-intro__badge {
+  position: absolute;
+  bottom: -20px;
+  left: 24px;
+  background: var(--brand, #272E32);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+/* Content column */
+.gs-intro__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.gs-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 24px;
+}
+.gs-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.gs-intro__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.gs-intro__creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-bottom: 32px;
+}
+.gs-intro__cred {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark, #1a1a1a);
+}
+.gs-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+/* Trust bar */
+.gs-trust {
+  background: var(--off-white, #F7F6F3);
+  padding: 36px 8%;
+  border-top: 1px solid #E8E7E4;
+  border-bottom: 1px solid #E8E7E4;
+}
+.gs-trust__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.gs-trust__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid, #4a4a4a);
+  text-align: center;
+  margin: 0;
+}
+.gs-trust__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  justify-content: center;
+}
+.gs-trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  padding: 0 20px;
+}
+.gs-trust__sep {
+  width: 1px;
+  height: 16px;
+  background: #D0CEC9;
+  flex-shrink: 0;
+}
+@media (max-width: 1024px) {
+  .gs-intro__inner { grid-template-columns: 1fr; gap: 60px; }
+  .gs-intro__image-col { order: 2; }
+  .gs-intro__content { order: 1; }
+  .gs-intro__img { height: 400px; }
+}
+@media (max-width: 640px) {
+  .gs-intro { padding: 60px 5%; }
+  .gs-trust { padding: 28px 5%; }
+  .gs-trust__badges { gap: 12px; flex-direction: column; align-items: flex-start; }
+  .gs-trust__sep { display: none; }
+}
 
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .gs-hero__inner { flex-direction: column; }
-    .gs-hero__stats { grid-template-columns: repeat(2, 1fr); width: 100%; }
-    .gs-intro, .gs-why, .gs-casestudy { grid-template-columns: 1fr; }
-    .gs-pl-row, .gs-pl-row--rev { grid-template-columns: 1fr; direction: ltr; }
+/* ── INTRO ── */
+.pp-intro {
+  padding: 80px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+}
+.pp-intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.pp-intro__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.pp-intro__lead {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 17px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.pp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════
+   SECTION 3 - WHY 3M FOR PHILADELPHIA
+══════════════════════════════════════ */
+.gs-why {
+  background: #14201A;
+  padding: 100px 8%;
+}
+.gs-why__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+.gs-why__image-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.gs-why__image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+.gs-why__stat-card {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 18px 22px;
+  min-width: 240px;
+}
+.gs-why__stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.gs-why__stat-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 10px 0;
+}
+.gs-why__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 18px;
+}
+.gs-why__headline {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+.gs-why__intro {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.gs-why__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.gs-why__bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+.gs-why__bullets li svg { flex-shrink: 0; margin-top: 3px; }
+.gs-why__climate-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.gs-why__climate-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 12px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.gs-why__climate-item:last-child { border-right: none; }
+.gs-why__climate-num {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.gs-why__climate-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+.gs-why__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.gs-why__cta:hover { gap: 14px; }
+@media (max-width: 1024px) {
+  .gs-why__container { grid-template-columns: 1fr; gap: 60px; }
+  .gs-why__stat-card { right: 0; bottom: -20px; }
+  .gs-why__image { height: 400px; }
+}
+@media (max-width: 640px) {
+  .gs-why { padding: 60px 5%; }
+  .gs-why__climate-facts { grid-template-columns: 1fr; }
+  .gs-why__climate-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .gs-why__climate-item:last-child { border-bottom: none; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 4 - SLIDER
+══════════════════════════════════════ */
+.gs-slider { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+.gs-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+.gs-slider__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+.gs-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+.gs-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+.gs-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 8%; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+.gs-slider__slide[data-slide="0"] .gs-slider__content { opacity: 1; transform: translateY(0); }
+.gs-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #81AB4C; letter-spacing: 0.2em; margin-bottom: 1rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.gs-slider__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.gs-slider__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.gs-slider__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; opacity: 0; animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.gs-slider__faq-item { border-radius: 8px; overflow: hidden; }
+.gs-slider__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+.gs-slider__faq-q:hover { background: rgba(255,255,255,0.18); }
+.gs-slider__faq-icon { font-size: 1.2rem; color: #81AB4C; flex-shrink: 0; font-style: normal; transition: transform 0.3s ease; }
+.gs-slider__faq-q[aria-expanded="true"] .gs-slider__faq-icon { transform: rotate(45deg); }
+.gs-slider__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+.gs-slider__cta { display: inline-block; background: var(--green, #81AB4C); color: #fff; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; opacity: 0; animation: m3FadeUp 0.4s ease 0.6s forwards; }
+.gs-slider__cta:hover { background: #6e9640; transform: translateY(-2px); }
+.gs-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+.gs-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+.gs-slider__nav-item:hover { opacity: 0.65; }
+.gs-slider__nav-item--active { opacity: 1; }
+.gs-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+.gs-slider__nav-item--active .gs-slider__nav-line { background: #81AB4C; height: 48px; }
+.gs-slider__nav-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+.gs-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+.gs-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #81AB4C; }
+.gs-slider__arrow--prev { left: 32px; }
+.gs-slider__arrow--next { right: 32px; }
+.gs-slider__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+.gs-slider__progress-bar { height: 100%; background: #81AB4C; width: 0; transition: width 0.05s linear; }
+@keyframes m3FadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.gs-slider__slide.gs-active .gs-slider__content { opacity: 1; transform: translateY(0); }
+.gs-slider__slide.gs-active .gs-slider__step { animation: m3FadeUp 0.4s ease 0.2s forwards; }
+.gs-slider__slide.gs-active .gs-slider__title { animation: m3FadeUp 0.4s ease 0.3s forwards; }
+.gs-slider__slide.gs-active .gs-slider__desc { animation: m3FadeUp 0.4s ease 0.4s forwards; }
+.gs-slider__slide.gs-active .gs-slider__faq { animation: m3FadeUp 0.4s ease 0.5s forwards; }
+.gs-slider__slide.gs-active .gs-slider__cta { animation: m3FadeUp 0.4s ease 0.6s forwards; }
+@media (max-width: 1024px) { .gs-slider__nav { right: 32px; } .gs-slider__content { padding-left: 60px; } }
+@media (max-width: 768px) { .gs-slider__nav { display: none; } .gs-slider__content { padding-left: 5%; padding-right: 5%; max-width: 100%; } .gs-slider__arrow--prev { left: 20px; } .gs-slider__arrow--next { right: 20px; } }
+
+/* ── FEATURED SECTIONS ── */
+/* ── PRODUCT LINES (gs-products) ── */
+.gs-products {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.gs-products__hd {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+.gs-products__title {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(28px, 3vw, 42px);
+  color: var(--dark, #1a1a1a);
+  margin: 8px 0 16px;
+  line-height: 1.15;
+}
+.gs-products__sub {
+  font-size: 15px;
+  color: var(--text-mid, #555);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Each alternating row */
+.gs-pl-row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: start;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.gs-pl-row:last-child { margin-bottom: 0; }
+.gs-pl-row--rev { direction: rtl; }
+.gs-pl-row--rev > * { direction: ltr; }
+
+/* Image side */
+.gs-pl-row__img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+}
+.gs-pl-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gs-pl-row__pill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+/* Content side */
+.gs-pl-row__content {
+  padding: 52px 52px 52px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.gs-pl-row--rev .gs-pl-row__content {
+  padding: 52px 0 52px 52px;
+}
+.gs-pl-row__num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--green, #81AB4C);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+.gs-pl-row__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid, #666);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.gs-pl-row__heading {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--dark, #1a1a1a);
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.gs-pl-row__body {
+  font-size: 15px;
+  color: var(--text-mid, #444);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Specs strip */
+.gs-pl-row__specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light-gray, #E8E8E4);
+  border: 1px solid var(--light-gray, #E8E8E4);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0 28px;
+}
+.gs-pl-row__spec {
+  background: var(--off-white, #F7F6F3);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.gs-pl-row__spec-val {
+  font-family: var(--font-head, 'DM Serif Display', Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1;
+}
+.gs-pl-row__spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-mid, #666);
+  text-align: center;
+}
+
+/* PDF links */
+.gs-pl-row__pdfs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gs-pl-row__pdfs-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid, #888);
+}
+.gs-pl-row__pdf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gs-pl-row__pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.gs-pl-row__pdf-link:hover { color: var(--dark, #1a1a1a); }
+.gs-pl-row__pdf-link svg { flex-shrink: 0; opacity: 0.7; }
+.gs-pl-row__warranty-note {
+  font-size: 11px;
+  color: var(--text-mid, #999);
+  margin: 10px 0 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gs-pl-row {
+    grid-template-columns: 1fr;
   }
+  .gs-pl-row--rev { direction: ltr; }
+  .gs-pl-row__img-wrap { min-height: 280px; }
+  .gs-pl-row__content { padding: 36px 28px; }
+  .gs-pl-row--rev .gs-pl-row__content { padding: 36px 28px; }
+  .gs-pl-row__specs { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════════════════════════
+   3M PRODUCT CATALOG
+══════════════════════════════════════ */
+.gs-catalog {
+  padding: 80px 0;
+  background: #0d0d0d;
+}
+.gs-catalog__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.gs-catalog__hd {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.gs-catalog__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #fff;
+  margin: 12px 0 16px;
+  letter-spacing: 0;
+}
+.gs-catalog__sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.gs-catalog__series {
+  margin-bottom: 48px;
+}
+.gs-catalog__series-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.gs-catalog__series-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.gs-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.gs-catalog__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.gs-catalog__card:hover {
+  border-color: #81AB4C;
+  transform: translateY(-2px);
+}
+.gs-catalog__card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.gs-catalog__card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.gs-catalog__card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.gs-catalog__card-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.gs-catalog__card-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .gs-catalog { padding: 48px 0; }
+  .gs-catalog__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .gs-catalog__card-img { height: 120px; }
+}
+
+/* Keep old pp-featured CSS for fallback (can remove later) */
+.pp-featured {
+  padding: 100px 10%;
+  background: var(--off-white, #F7F6F3);
+}
+.pp-featured__hd { margin-bottom: 72px; }
+.pp-featured__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+.pp-feat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.pp-feat-row:last-child { margin-bottom: 0; }
+.pp-feat-row--rev .pp-feat-row__img { order: 2; }
+.pp-feat-row--rev .pp-feat-row__content { order: 1; }
+.pp-feat-row__img {
+  position: relative;
+  height: 480px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.pp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pp-feat-row__pill {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; font-weight: 600;
+  color: var(--brand, #272E32);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.pp-feat-row__num {
+  display: block;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 72px; font-weight: 700;
+  color: var(--green, #81AB4C);
+  line-height: 1; opacity: 0.25;
+  margin-bottom: -8px;
+}
+.pp-feat-row__heading {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark, #1a1a1a);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+.pp-feat-row__body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.pp-feat-row__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.pp-feat-row__cta:hover { gap: 14px; }
+
+/* ── PRODUCT GRID (dark) ── */
+.pp-why {
+  background: var(--brand, #272E32);
+  padding: 100px 10%;
+}
+.pp-why__hd { margin-bottom: 64px; }
+.pp-why__hd .pp-eyebrow { color: var(--green, #81AB4C); }
+.pp-why__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0;
+  max-width: 600px;
+}
+.pp-why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.pp-why__item {
+  padding: 32px 28px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.pp-why__item:nth-child(4n) { border-right: none; }
+.pp-why__item:nth-child(n+5) { border-bottom: none; }
+.pp-why__icon {
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+  display: flex; align-items: center; line-height: 1;
+}
+.pp-why__icon svg { display: block; }
+.pp-why__divider {
+  width: 32px; height: 2px;
+  background: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.pp-why__item-title {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px; font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.pp-why__item-sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin: 0; line-height: 1.5;
+}
+
+/* ── FAQ - two-column split ── */
+.gs-faq {
+  background: #ffffff;
+  padding: 96px 0;
+}
+.gs-faq__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.gs-eyebrow {
+  display: block;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green, #81AB4C);
+  margin-bottom: 16px;
+}
+.gs-faq__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0 0 16px;
+}
+.gs-faq__header p {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-mid, #4a4a4a);
+  margin: 0 0 24px;
+}
+.gs-faq__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+}
+.gs-faq__cta-btn:hover { background: #6a9240; transform: translateY(-1px); }
+.gs-faq__item {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+  padding: 20px 0;
+}
+.gs-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.gs-faq__q {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a1a);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.gs-faq__toggle {
+  color: var(--green, #81AB4C);
+  font-size: 22px;
+  flex-shrink: 0;
+  font-weight: 400;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.gs-faq__a {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-top: 10px;
+  display: none;
+}
+.gs-faq__item--open .gs-faq__a { display: block; }
+.gs-faq__item--open .gs-faq__toggle { transform: rotate(45deg); }
+.gs-faq__a p { margin: 0; }
+
+/* ── CTA - cinematic ── */
+.gs-cinematic-cta {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.gs-cinematic-cta__media {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/3m-window-film-philadelphia-cta.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.gs-cinematic-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.72) 40%, rgba(13,26,15,0.88) 100%);
+}
+.gs-cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(13,26,15,0.15) 0%, rgba(13,26,15,0.6) 100%);
+}
+.gs-cinematic-cta__content {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  padding: 80px 24px;
+  text-align: center;
+}
+.gs-cinematic-cta__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.gs-cinematic-cta__title em { font-style: italic; color: #9ecf5a; }
+.gs-cinematic-cta__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243,246,241,0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.gs-cinematic-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.gs-cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.gs-cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124,179,66,0.35);
+}
+.gs-cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+.gs-cinematic-cta__btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(124,179,66,0.6);
+  transform: translateY(-2px);
+}
+
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .pp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row { grid-template-columns: 1fr; gap: 40px; }
+  .pp-feat-row--rev .pp-feat-row__img { order: 0; }
+  .pp-feat-row--rev .pp-feat-row__content { order: 1; }
+  .pp-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .pp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .pp-why__item:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .pp-intro { padding: 60px 5%; }
+  .pp-featured { padding: 60px 5%; }
+  .pp-why { padding: 60px 5%; }
+  .pp-feat-row__img { height: 300px; }
+  .pp-why__grid { grid-template-columns: 1fr; }
+  .gs-faq__inner { grid-template-columns: 1fr; gap: 40px; }
+  .gs-cinematic-cta__actions { flex-direction: column; align-items: center; }
+  .gs-cinematic-cta__btn-primary, .gs-cinematic-cta__btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .pp-intro__ctas { flex-direction: column; }
+}
+
+
+
+/* ══ TINT SLIDER CTA ══ */
+.gs-tint-cta { position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; justify-content: center; }
+.gs-tint-cta__bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: filter .05s; }
+.gs-tint-cta__darken { position: absolute; inset: 0; background: rgba(10,20,5,0); pointer-events: none; transition: background .05s; }
+.gs-tint-cta__content { position: relative; z-index: 2; text-align: center; padding: 80px 24px; max-width: 680px; width: 100%; }
+.gs-tint-cta__title { font-family: var(--font-serif,'Playfair Display',serif); font-size: clamp(36px,5vw,64px); font-weight: 700; color: #fff; line-height: 1.05; margin: 0 0 16px; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+.gs-tint-cta__subtitle { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 17px; color: rgba(255,255,255,.88); line-height: 1.65; margin: 0 0 40px; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.gs-tint-cta__controls { display: flex; align-items: center; gap: 14px; background: rgba(0,0,0,.38); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 14px 22px; margin: 0 0 16px; }
+.gs-tint-cta__label { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 12px; font-weight: 800; letter-spacing: .12em; color: rgba(255,255,255,.7); white-space: nowrap; }
+.gs-tint-cta__range { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(255,255,255,.3); outline: none; cursor: pointer; }
+.gs-tint-cta__range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,.4); cursor: grab; transition: transform .15s; }
+.gs-tint-cta__range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.gs-tint-cta__range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--green,#81AB4C); border: 3px solid #fff; cursor: grab; }
+.gs-tint-cta__vlt { font-family: var(--font-body,'DM Sans',sans-serif); font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 36px; letter-spacing: .02em; }
+.gs-tint-cta__vlt strong { color: #fff; font-size: 18px; font-weight: 800; }
+.gs-tint-cta__btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 999px; background: var(--green,#81AB4C); color: #fff; font-family: var(--font-body,'DM Sans',sans-serif); font-weight: 700; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 24px rgba(129,171,76,.4); }
+.gs-tint-cta__btn:hover { background: #6e9640; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(129,171,76,.5); }
+@media (max-width: 600px) { .gs-tint-cta { min-height: 520px; } .gs-tint-cta__controls { padding: 12px 16px; } }
 </style>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // ── Slider ──
+  (function initM3Slider() {
+    const track = document.getElementById('gsTrack');
+    const slides = document.querySelectorAll('.gs-slider__slide');
+    const navItems = document.querySelectorAll('[data-gsnav]');
+    const prevBtn = document.getElementById('gsPrev');
+    const nextBtn = document.getElementById('gsNext');
+    const progressBar = document.getElementById('gsProgressBar');
+    if (!track || !slides.length) return;
+    let current = 0;
+    const total = slides.length;
+
+    function goTo(i) {
+      if (i < 0) i = total - 1;
+      if (i >= total) i = 0;
+      current = i;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('gs-slider__nav-item--active', idx === current));
+      slides.forEach((s, idx) => s.classList.toggle('gs-active', idx === current));
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0';
+        setTimeout(() => { progressBar.style.transition = 'width 6s linear'; progressBar.style.width = '100%'; }, 50);
+      }
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
+
+    document.querySelectorAll('.gs-slider__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.gs-slider__slide');
+        slide.querySelectorAll('.gs-slider__faq-q').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const a = b.nextElementSibling; if (a) a.hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          const a = btn.nextElementSibling; if (a) a.hidden = false;
+        }
+      });
+    });
+
+    let timer = setInterval(() => goTo(current + 1), 6000);
+    document.getElementById('gsSlider')?.addEventListener('mouseenter', () => clearInterval(timer));
+    document.getElementById('gsSlider')?.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 6000); });
+    goTo(0);
+  })();
+
+  document.querySelectorAll('.gs-faq__item').forEach(item => {
+    item.querySelector('.gs-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('gs-faq__item--open');
+      document.querySelectorAll('.gs-faq__item').forEach(i => i.classList.remove('gs-faq__item--open'));
+      if (!isOpen) item.classList.add('gs-faq__item--open');
+    });
+  });
+
+  // (no tint slider — Graffiti Shield is not a solar control product)
+</script>
