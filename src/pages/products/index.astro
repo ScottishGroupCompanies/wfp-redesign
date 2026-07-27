@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSubpage from '../../components/HeroSubpage.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
+import AccordionVertical from '../../components/AccordionVertical.astro';
+import LogoCloudBlurFlip from '../../components/LogoCloudBlurFlip.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import CTATintSlider from '../../components/CTATintSlider.astro';
+import MobileStickyCTA from '../../components/MobileStickyCTA.astro';
+import SplitTextReveal from '../../components/animations/SplitTextReveal.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
+
+// { question, answer } format for BaseLayout schema
+const faqSchema = [
+  { question: 'How do I know which window film brand is right for my property?', answer: 'Every property is different — glass type, building orientation, occupancy type, and budget all factor in. During our free on-site consultation, we assess your specific situation and recommend the film brand and performance level that makes the most sense for your goals.' },
+  { question: 'Are all these brands available for both residential and commercial projects?', answer: 'Yes. Every brand we carry offers residential and commercial product lines. Some brands like 3M, Madico, and Solar Gard have specialized commercial-grade films for high-rise buildings, government facilities, and healthcare environments.' },
+  { question: 'Do you offer manufacturer warranties on all installations?', answer: 'All our installations carry a manufacturer warranty on film adhesion, peeling, bubbling, and fading for the original property owner. Warranty terms vary by brand — we provide full documentation at the time of installation.' },
+  { question: 'Can I mix different brands on different windows of the same building?', answer: 'Absolutely. Many projects use different film types on different elevations — for example, a high-performance ceramic on the west-facing facade and a decorative film on the street-level storefront. We spec each area independently.' },
+  { question: 'How do I verify that a brand is genuinely premium vs. budget film?', answer: 'Look for established manufacturer warranty programs, third-party lab testing (e.g., NFRC ratings), and certified installer networks. All the brands we carry meet these criteria. Budget films often lack these safeguards and degrade within a few years.' },
+  { question: 'What is the lead time for ordering these film brands?', answer: 'Most standard film orders ship within 5–10 business days. Specialty films (decorative prints, custom patterns, specialty tints) may require 2–4 weeks. We maintain a local inventory of the most popular films for same-week installation on time-sensitive projects.' },
+];
+
+const title = 'Window Film Products Philadelphia | 3M, LLumar, Vista & More';
+const description = 'Window Film Philadelphia installs every leading manufacturer — 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, V-Kool and more. One certified installer, every brand, manufacturer warranties.';
+
+const ICONS = {
+  cube: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>',
+  sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+  layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+};
+
+const bentoItems = [
+  {
+    span: 'lg',
+    title: '3M Window Film',
+    desc: 'Science-backed solar, safety, and decorative film since 1966. The gold standard for commercial and residential installs.',
+    img: '/images/3m-window-film-philadelphia-hero.jpg',
+    href: '/products/3m-window-film/',
+  },
+  {
+    span: 'sm',
+    title: 'LLumar',
+    desc: 'Performance solar and safety film trusted by homeowners and Fortune 500 facility managers worldwide.',
+    img: '/images/llumar-window-film-philadelphia-hero.jpg',
+    href: '/products/llumar/',
+  },
+  {
+    span: 'sm',
+    title: 'Vista Window Film',
+    desc: 'Spectrally selective film engineered for architects who demand performance without sacrificing natural light.',
+    img: '/images/2021-09-vista-window-film-philadelphia.jpg',
+    href: '/products/vista-window-film/',
+  },
+  {
+    span: 'sm',
+    title: 'Solar Gard',
+    desc: 'Saint-Gobain\'s professional-grade line for high-occupancy buildings. Bomb-blast, anti-graffiti, and solar control.',
+    img: '/images/2021-09-solar-gard-window-film-philadelphia.jpg',
+    href: '/products/solar-gard-window-film/',
+  },
+  {
+    span: 'sm',
+    title: 'Huper Optik',
+    desc: 'German-engineered 100% ceramic film — zero signal interference, lifetime residential warranty.',
+    img: '/images/huper-optik-window-film-philadelphia-hero.jpg',
+    href: '/products/huper-optik/',
+  },
+  {
+    span: 'sm',
+    title: 'Madico',
+    desc: 'Over 100 years of film science. SafetyPly and ClearPly certified films for government, education, and healthcare.',
+    img: '/images/madico-window-film-philadelphia-hero.jpg',
+    href: '/products/madico-window-film/',
+  },
+  {
+    span: 'sm',
+    title: 'V-Kool',
+    desc: 'Multi-layer sputtered precision. Maximum solar heat rejection with some of the highest VLT levels in the category.',
+    img: '/images/2021-09-vista-window-film-philadelphia.jpg',
+    href: '/products/v-kool/',
+  },
+];
+
+const accordionItems = [
+  {
+    title: '3M Window Film',
+    description: '3M invented window film in 1966 and remains the global benchmark. Their Prestige Series delivers up to 97% IR rejection with crystal-clear aesthetics. Scotchshield safety film is specified by government facilities and schools nationwide. Every 3M installation at Window Film Philadelphia is backed by a manufacturer warranty.',
+    img: '/images/3m-window-film-philadelphia-hero.jpg',
+    icon: ICONS.cube,
+    href: '/products/3m-window-film/',
+    ctaText: 'Explore 3M Window Film',
+  },
+  {
+    title: 'LLumar',
+    description: 'LLumar\'s ATC Series is one of the most widely installed commercial films in the world — non-metallic, no signal interference, NFRC-certified. Their Low-E film is the Philadelphia four-season choice, rejecting solar heat in summer while retaining indoor warmth in winter. 15-year commercial warranty on solar control products.',
+    img: '/images/llumar-window-film-philadelphia-hero.jpg',
+    icon: ICONS.sun,
+    href: '/products/llumar/',
+    ctaText: 'Explore LLumar',
+  },
+  {
+    title: 'Vista Window Film',
+    description: 'Vista by Eastman uses proprietary spectrally selective technology to filter solar energy while preserving natural light and curb appeal. Non-metallic — no GPS, Wi-Fi, or cellular degradation. Sustainably sourced materials and architectural aesthetic options make Vista the choice for design-forward Philadelphia properties.',
+    img: '/images/2021-09-vista-window-film-philadelphia.jpg',
+    icon: ICONS.layers,
+    href: '/products/vista-window-film/',
+    ctaText: 'Explore Vista',
+  },
+  {
+    title: 'Solar Gard',
+    description: 'Saint-Gobain\'s Solar Gard line has served the professional installer market since 1973. Duran and Schwarz series deliver exceptional solar control for high-occupancy Philadelphia commercial buildings. Bomb-blast mitigation and anti-graffiti sacrificial films are available. Backed by one of the industry\'s most rigorous quality management systems.',
+    img: '/images/2021-09-solar-gard-window-film-philadelphia.jpg',
+    icon: ICONS.shield,
+    href: '/products/solar-gard-window-film/',
+    ctaText: 'Explore Solar Gard',
+  },
+];
+
+const logoItems = [
+  { src: '/images/2021-09-3m-window-film-philadelphia.jpg', alt: '3M Window Film', href: '/products/3m-window-film/' },
+  { src: '/images/2021-09-llumar-window-film-philadelphia.jpg', alt: 'LLumar Window Film', href: '/products/llumar/' },
+  { src: '/images/2021-09-vista-window-film-philadelphia.jpg', alt: 'Vista Window Film', href: '/products/vista-window-film/' },
+  { src: '/images/2021-09-solar-gard-window-film-philadelphia.jpg', alt: 'Solar Gard', href: '/products/solar-gard-window-film/' },
+  { src: '/images/2021-09-huper-optik-window-film-philadelphia.jpg', alt: 'Huper Optik', href: '/products/huper-optik/' },
+  { src: '/images/2021-09-madico-window-film-philadelphia.jpg', alt: 'Madico', href: '/products/madico-window-film/' },
+];
+
+// { q, a } format for AccordionFAQ component
+const faqItems = [
+  {
+    q: 'How do I know which window film brand is right for my property?',
+    a: 'Every property is different — glass type, building orientation, occupancy type, and budget all factor in. During our free on-site consultation, we assess your specific situation and recommend the film brand and performance level that makes the most sense for your goals.',
+  },
+  {
+    q: 'Are all these brands available for both residential and commercial projects?',
+    a: 'Yes. Every brand we carry offers residential and commercial product lines. Some brands like 3M, Madico, and Solar Gard have specialized commercial-grade films for high-rise buildings, government facilities, and healthcare environments.',
+  },
+  {
+    q: 'Do you offer manufacturer warranties on all installations?',
+    a: 'All our installations carry a manufacturer warranty on film adhesion, peeling, bubbling, and fading for the original property owner. Warranty terms vary by brand — we provide full documentation at the time of installation.',
+  },
+  {
+    q: 'Can I mix different brands on different windows of the same building?',
+    a: 'Absolutely. Many projects use different film types on different elevations — for example, a high-performance ceramic on the west-facing facade and a decorative film on the street-level storefront. We spec each area independently.',
+  },
+  {
+    q: 'How do I verify that a brand is genuinely premium vs. budget film?',
+    a: 'Look for established manufacturer warranty programs, third-party lab testing (e.g., NFRC ratings), and certified installer networks. All the brands we carry meet these criteria. Budget films often lack these safeguards and degrade within a few years.',
+  },
+  {
+    q: 'What is the lead time for ordering these film brands?',
+    a: 'Most standard film orders ship within 5–10 business days. Specialty films (decorative prints, custom patterns, specialty tints) may require 2–4 weeks. We maintain a local inventory of the most popular films for same-week installation on time-sensitive projects.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/products/"
+  serviceName="Window Film Products Philadelphia"
+  serviceDesc="Window Film Philadelphia installs every leading manufacturer — 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, V-Kool and more. One certified installer, every brand, manufacturer warranties."
+  serviceUrl="https://www.windowfilmphiladelphia.net/products/"
+  faqItems={faqSchema}
+>
+
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Window Film Products Philadelphia", "item": "https://www.windowfilmphiladelphia.net/products/" }
+    ]
+  })}</script>
+
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Window Film Brands Available in Philadelphia",
+    "description": "Professional window film brands installed by Window Film Philadelphia — 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, V-Kool, and more.",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "3M Window Film", "url": "https://www.windowfilmphiladelphia.net/products/3m-window-film/" },
+      { "@type": "ListItem", "position": 2, "name": "LLumar Window Film", "url": "https://www.windowfilmphiladelphia.net/products/llumar/" },
+      { "@type": "ListItem", "position": 3, "name": "Vista Window Film", "url": "https://www.windowfilmphiladelphia.net/products/vista-window-film/" },
+      { "@type": "ListItem", "position": 4, "name": "Solar Gard Window Film", "url": "https://www.windowfilmphiladelphia.net/products/solar-gard-window-film/" },
+      { "@type": "ListItem", "position": 5, "name": "Huper Optik", "url": "https://www.windowfilmphiladelphia.net/products/huper-optik/" },
+      { "@type": "ListItem", "position": 6, "name": "Madico Window Film", "url": "https://www.windowfilmphiladelphia.net/products/madico-window-film/" },
+      { "@type": "ListItem", "position": 7, "name": "V-Kool Window Film", "url": "https://www.windowfilmphiladelphia.net/products/v-kool/" }
+    ]
+  })}</script>
+
+  <!-- ══ 1. HERO ══ -->
+  <HeroSubpage
+    eyebrow="TOP BRANDS · EVERY APPLICATION · EXPERT ADVICE"
+    title={"The industry's best\nwindow film brands,\nall in one place."}
+    subtitle="Window Film Philadelphia partners with every leading manufacturer to offer the most comprehensive product selection in the Greater Philadelphia region."
+    bg="/images/2021-10-window-film-brands-philadelphia.jpg"
+    ctaText="Get a free quote"
+    ctaHref="/contact/"
+    secondaryText="See all brands"
+    secondaryHref="#all-brands"
+  />
+
+  <!-- ══ 2. TRUST STRIP ══ -->
+  <TrustStrip title="OUR MANUFACTURER PARTNERS" />
+
+  <!-- ══ 3. INTRO BAND ══ -->
+  <section class="prod-intro">
+    <div class="prod-intro__inner">
+      <SplitTextReveal
+        text="One installer. Every major manufacturer."
+        as="h2"
+        class="prod-intro__heading font-display"
+      />
+      <p class="prod-intro__body">
+        We're certified installers for 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, V-Kool, and more.
+        That means we recommend the right film for your project — not whichever brand we happen to carry.
+        Every installation is backed by a manufacturer warranty.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ 4. FEATURED BRANDS BENTO ══ -->
+  <BentoGridPhoto
+    heading="Brands we trust. Films we spec."
+    sub="Every manufacturer we carry has earned its place — certified installer programs, rigorous testing, and long-term warranty backing."
+    items={bentoItems}
+  />
+
+  <!-- ══ 5. BRAND DEEP DIVES — ACCORDION ══ -->
+  <section class="prod-accordion">
+    <div class="prod-accordion__head">
+      <p class="prod-accordion__eyebrow">FLAGSHIP BRANDS</p>
+      <h2 class="prod-accordion__title font-display">The four brands we spec most.</h2>
+      <p class="prod-accordion__sub">Click any brand to see why we recommend it — and what it's built for.</p>
+    </div>
+    <AccordionVertical items={accordionItems} />
+  </section>
+
+  <!-- ══ 6. ALL BRANDS LOGO CLOUD ══ -->
+  <section id="all-brands" class="prod-logocloud">
+    <LogoCloudBlurFlip
+      heading="Complete manufacturer lineup"
+      sub="Every brand we install — click any logo to explore its full product line."
+      items={logoItems}
+    />
+  </section>
+
+  <!-- ══ 7. TESTIMONIALS ══ -->
+  <TestimonialMarquee />
+
+  <!-- ══ 8. FAQ ══ -->
+  <section class="prod-faq">
+    <div class="prod-faq__head">
+      <p class="prod-faq__eyebrow">COMMON QUESTIONS</p>
+      <h2 class="prod-faq__title font-display">Window film brand FAQ</h2>
+    </div>
+    <AccordionFAQ items={faqItems} />
+  </section>
+
+  <!-- ══ 9. CTA ══ -->
+  <CTATintSlider
+    heading="Find your perfect tint."
+    sub="Drag to preview how window film tames Philadelphia heat and glare — then get it installed for real."
+    ctaText="Get a Free Quote"
+    ctaHref="/contact/"
+  />
+
+  <!-- ══ 10. MOBILE STICKY CTA ══ -->
+  <MobileStickyCTA phone="(267) 394-7980" quoteHref="/contact/" />
+
+  <ScrollReveal />
+
+</BaseLayout>
+
+<style>
+  /* ── Intro band ── */
+  .prod-intro {
+    background: var(--cream, #f5f0e8);
+    padding: 5rem 1.5rem;
+    text-align: center;
+  }
+  .prod-intro__inner { max-width: 44rem; margin: 0 auto; }
+  .prod-intro__heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--ink, #0d1b2a);
+    font-weight: 700;
+    margin: 0 0 1.25rem;
+  }
+  .prod-intro__body {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #3a4a5a;
+    margin: 0;
+  }
+
+  /* ── Accordion section wrapper ── */
+  .prod-accordion {
+    background: var(--ink, #0d1b2a);
+    padding: 5rem 1.5rem;
+  }
+  .prod-accordion__head {
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto 3rem;
+  }
+  .prod-accordion__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brand-green, #7CB342);
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+  .prod-accordion__title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: #fff;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+  }
+  .prod-accordion__sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* ── Logo cloud wrapper (for anchor target) ── */
+  .prod-logocloud { scroll-margin-top: 80px; }
+
+  /* ── FAQ section ── */
+  .prod-faq {
+    background: var(--cream, #f5f0e8);
+    padding: 5rem 1.5rem;
+  }
+  .prod-faq__head {
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto 2.5rem;
+  }
+  .prod-faq__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brand-green, #7CB342);
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+  .prod-faq__title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--ink, #0d1b2a);
+    font-weight: 700;
+    margin: 0;
+  }
+</style>

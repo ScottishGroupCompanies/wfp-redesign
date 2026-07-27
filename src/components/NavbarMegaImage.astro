@@ -1,0 +1,133 @@
+---
+// NavbarMegaImage.astro
+// Floating pill navbar with an image mega-menu. Hovering (or focusing) a
+// top item with children opens a large dark panel of image cards. Built for
+// Services → Residential / Commercial / Government / Specialty using the
+// real Cloudinary category photos. Pure CSS + a little vanilla JS for
+// keyboard/touch. Navy panel, green accents.
+//
+// HOW TO USE:
+//   <NavbarMegaImage />   (uses the WFP nav + Services mega-menu by default)
+
+interface MegaCard { title: string; desc: string; img: string; href: string; }
+interface NavItem { label: string; href: string; cards?: MegaCard[]; }
+interface Props { logo?: string; items?: NavItem[]; ctaText?: string; ctaHref?: string; }
+
+const {
+  logo = 'Window Film Co.',
+  ctaText = 'Get a Free Quote',
+  ctaHref = '/contact/',
+  items = [
+    {
+      label: 'Services', href: '/services/',
+      cards: [
+        { title: 'Residential', desc: 'Privacy, UV, and comfort for your home.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782907661/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cq_auto%2Cw_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175418_885cb5f7-7d7a-43f9-a1a2-33926a01abc1.png', href: '/services/residential/' },
+        { title: 'Commercial', desc: 'Solar control and branding for business.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782907660/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cq_auto%2Cw_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175417_997747da-e186-459f-83ee-82d3a284366e.png', href: '/services/commercial/' },
+        { title: 'Government & Public', desc: 'Security film for institutions.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782765437/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cfl_awebp%2Cq_auto%2Cw_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png', href: '/government-buildings/' },
+        { title: 'Specialty', desc: 'Decorative, anti-graffiti, and more.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782765436/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cfl_awebp%2Cq_auto%2Cw_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170303_116dd402-20cd-4cc2-96fd-f34262614195.png', href: '/benefits/blast-mitigation/' },
+      ],
+    },
+    { label: 'Applications', href: '/applications/' },
+    { label: 'Benefits', href: '/benefits/' },
+    { label: 'Products', href: '/products/' },
+    { label: 'About', href: '/about/' },
+  ],
+} = Astro.props;
+---
+
+<nav class="nmi">
+  <div class="nmi__bar">
+    <a href="/" class="nmi__logo">{logo}</a>
+    <ul class="nmi__items">
+      {items.map((it) => (
+        <li class={`nmi__item ${it.cards ? 'has-mega' : ''}`}>
+          <a href={it.href}>{it.label}{it.cards && <span class="nmi__caret">▾</span>}</a>
+          {it.cards && (
+            <div class="nmi__mega">
+              <div class="nmi__mega-grid">
+                {it.cards.map((c) => (
+                  <a class="nmi__card" href={c.href}>
+                    <span class="nmi__card-img"><img src={c.img} alt={c.title} loading="lazy" /></span>
+                    <span class="nmi__card-body">
+                      <b>{c.title}</b>
+                      <small>{c.desc}</small>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+    <a href={ctaHref} class="nmi__cta">{ctaText}</a>
+  </div>
+</nav>
+
+<style is:global>
+  .nmi { display: flex; justify-content: center; padding: 1.5rem; background: #0b1622; }
+  .nmi__bar {
+    display: flex; align-items: center; gap: 1.5rem;
+    max-width: 100%;
+    background: #0d1b2a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 9999px;
+    padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+  .nmi__logo { color: #fff; font-family: Georgia, serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; white-space: nowrap; }
+  .nmi__items { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+  .nmi__item { position: relative; }
+  .nmi__item > a {
+    display: flex; align-items: center; gap: 0.3rem;
+    padding: 0.55rem 1rem; border-radius: 9999px;
+    color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .nmi__item > a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .nmi__caret { font-size: 0.6rem; opacity: 0.6; }
+
+  .nmi__mega {
+    position: absolute; top: calc(100% + 14px); left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: min(680px, 88vw);
+    background: #0d1b2a;
+    border: 1px solid rgba(124,179,66,0.25);
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 50;
+  }
+  .nmi__item.has-mega:hover .nmi__mega,
+  .nmi__item.has-mega:focus-within .nmi__mega {
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nmi__mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .nmi__card {
+    display: flex; gap: 0.9rem; padding: 0.75rem; border-radius: 0.9rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nmi__card:hover { background: rgba(124,179,66,0.1); }
+  .nmi__card-img { display: block; width: 84px; height: 64px; border-radius: 0.6rem; overflow: hidden; flex-shrink: 0; }
+  .nmi__card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .nmi__card-body b { display: block; color: #fff; font-size: 0.92rem; }
+  .nmi__card-body small { color: rgba(255,255,255,0.55); font-size: 0.8rem; line-height: 1.35; }
+
+  .nmi__cta {
+    background: var(--brand-green); color: #0d1b2a; font-weight: 700; font-size: 0.88rem;
+    padding: 0.6rem 1.25rem; border-radius: 9999px; text-decoration: none; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .nmi__cta:hover { background: var(--brand-green-light); }
+
+  @media (max-width: 860px) {
+    .nmi__items { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nmi__mega { transition: opacity 0.2s ease; }
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+// BentoGridPhoto.astro
+// Asymmetric photo bento — one large feature card + smaller cards, mixed
+// spans. Images zoom subtly on hover, caption rises. Uses real Cloudinary
+// photos. Pure CSS. Good for services or applications overview sections.
+//
+// HOW TO USE:
+//   <BentoGridPhoto />   (default: 5 real application photos)
+//   Pass items={[{title, desc, img, href, span: 'lg'|'md'|'sm'}]}
+
+interface BentoItem { title: string; desc: string; img: string; href: string; span?: string; }
+interface Props { heading?: string; sub?: string; items?: BentoItem[]; }
+
+const {
+  heading = 'Every glass surface. Every industry.',
+  sub = 'Professional window film for homes, offices, and institutions.',
+  items = [
+    { span: 'lg', title: 'Homes & Condos', desc: 'Privacy, UV protection and comfort for living spaces.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782928259/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cq_auto%2Cw_1920/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_213616_509bcc09-ab60-49ed-a07e-c5f867aca22e.png', href: '/applications/homes-condos/' },
+    { span: 'sm', title: 'Office Buildings', desc: 'Solar control at scale.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782715033/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cq_auto%2Cw_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png', href: '/applications/office/' },
+    { span: 'sm', title: 'Retail & Restaurants', desc: 'Storefronts that stay cool.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1781806377/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_180834_da6c0b4c-131e-4533-a508-e5062f7151bf.png', href: '/applications/retail/' },
+    { span: 'md', title: 'Schools & Universities', desc: 'Security film campuses trust.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1781806219/https://res.cloudinary.com/deunehrew/image/fetch/f_auto%2Cq_auto%2Cw_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203926_92a46f96-3f3c-46a7-a55c-5a6c8cf64fb2.png', href: '/applications/schools-universities/' },
+    { span: 'md', title: 'Government Buildings', desc: 'Blast mitigation & safety compliance.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1781806028/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_175602_3ec0c373-ae60-4251-9694-bd03190474d1.png', href: '/government-buildings/' },
+  ],
+} = Astro.props;
+---
+
+<section class="bgp">
+  <div class="bgp__head">
+    <h2 class="bgp__title font-display">{heading}</h2>
+    <p class="bgp__sub">{sub}</p>
+  </div>
+  <div class="bgp__grid">
+    {items.map((it) => (
+      <a class={`bgp__card bgp__card--${it.span || 'sm'}`} href={it.href}>
+        <img src={it.img} alt={it.title} loading="lazy" />
+        <div class="bgp__overlay"></div>
+        <div class="bgp__body">
+          <h3>{it.title}</h3>
+          <p>{it.desc}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .bgp { background: var(--ink, #0d1b2a); padding: 4rem 1.5rem; }
+  .bgp__head { max-width: 40rem; margin: 0 auto 2.5rem; text-align: center; }
+  .bgp__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .bgp__sub { color: rgba(255,255,255,0.5); margin: 0; }
+
+  .bgp__grid {
+    max-width: 72rem; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 1rem;
+  }
+  .bgp__card--lg { grid-column: span 2; grid-row: span 2; }
+  .bgp__card--md { grid-column: span 2; grid-row: span 1; }
+  .bgp__card--sm { grid-column: span 1; grid-row: span 1; }
+
+  .bgp__card {
+    position: relative; overflow: hidden; border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+  }
+  .bgp__card img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bgp__card:hover img { transform: scale(1.06); }
+  .bgp__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,27,42,0.9), rgba(13,27,42,0.15) 55%);
+    transition: background 0.3s ease;
+  }
+  .bgp__card:hover .bgp__overlay {
+    background: linear-gradient(to top, rgba(13,27,42,0.95), rgba(124,179,66,0.12) 60%);
+  }
+  .bgp__body {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 1.25rem;
+  }
+  .bgp__body h3 { color: #fff; font-family: Georgia, serif; font-size: 1.15rem; margin: 0 0 0.2rem; }
+  .bgp__body p {
+    color: rgba(255,255,255,0.65); font-size: 0.82rem; margin: 0;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .bgp__card:hover .bgp__body p { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 860px) {
+    .bgp__grid { grid-template-columns: repeat(2, 1fr); }
+    .bgp__card--lg, .bgp__card--md { grid-column: span 2; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bgp__card img, .bgp__body p { transition: none; }
+    .bgp__body p { opacity: 1; transform: none; }
+  }
+</style>

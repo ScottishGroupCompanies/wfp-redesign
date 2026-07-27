@@ -1,0 +1,48 @@
+---
+// GradientText.astro
+// Animated gradient that sweeps across a word or phrase — tuned to the WFP
+// palette (brand green → deep navy → green). Use on ONE keyword in a
+// headline, not whole paragraphs. Pure CSS, no JS.
+//
+// HOW TO USE:
+//   <h2>Your <GradientText>glass</GradientText>, transformed.</h2>
+//   <GradientText from="var(--brand-green)" to="#0d1b2a">energy savings</GradientText>
+
+interface Props {
+  from?: string;
+  via?: string;
+  to?: string;
+  speed?: number; // seconds per loop
+}
+const { from = 'var(--brand-green)', via = '#a8d06b', to = '#4a7a1f', speed = 6 } = Astro.props;
+---
+
+<span
+  class="gradient-text"
+  style={`--g-from:${from}; --g-via:${via}; --g-to:${to}; --g-speed:${speed}s`}
+><slot /></span>
+
+<style>
+  .gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--g-from) 0%,
+      var(--g-via) 25%,
+      var(--g-to) 50%,
+      var(--g-via) 75%,
+      var(--g-from) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-sweep var(--g-speed, 6s) linear infinite;
+  }
+  @keyframes gradient-sweep {
+    to { background-position: 200% center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-text { animation: none; background-position: 0 center; }
+  }
+</style>

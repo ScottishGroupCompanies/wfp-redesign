@@ -1,0 +1,61 @@
+---
+// LineMaskReveal.astro
+// Editorial line-by-line reveal: each line rises from behind a clip mask
+// when scrolled into view, staggered. The classic "curtain" reveal used in
+// high-end editorial sites. Pass an array of lines (you control the breaks).
+// Pure CSS + IntersectionObserver, no libraries.
+//
+// HOW TO USE:
+//   <LineMaskReveal lines={["Your glass,", "transformed."]} as="h1"
+//     class="font-display text-6xl font-bold" />
+
+interface Props {
+  lines: string[];
+  as?: string;
+  class?: string;
+  stagger?: number; // ms between lines
+}
+const { lines, as: Tag = 'h2', class: cls = '', stagger = 120 } = Astro.props;
+---
+
+<Tag class={`line-mask ${cls}`} data-stagger={stagger} aria-label={lines.join(' ')}>
+  {lines.map((line, i) => (
+    <span class="line-mask__line" aria-hidden="true">
+      <span class="line-mask__inner" style={`--i:${i}`}>{line}</span>
+    </span>
+  ))}
+</Tag>
+
+<style is:global>
+  .line-mask { display: block; }
+  .line-mask__line {
+    display: block;
+    overflow: hidden;
+  }
+  .line-mask__inner {
+    display: block;
+    transform: translateY(105%);
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i) * var(--line-stagger, 120ms));
+    will-change: transform;
+  }
+  .line-mask.is-visible .line-mask__inner { transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .line-mask__inner { transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      el.style.setProperty('--line-stagger', (el.dataset.stagger || '120') + 'ms');
+      el.classList.add('is-visible');
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.line-mask').forEach((el) => observer.observe(el));
+</script>

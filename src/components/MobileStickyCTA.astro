@@ -1,0 +1,34 @@
+---
+// MobileStickyCTA.astro
+// Sticky call-to-action bar pinned to the bottom on mobile only.
+// CSS only — hidden on desktop (lg and up).
+//
+// HOW TO USE:
+//   <MobileStickyCTA phone="(267) 394-7980" quoteHref="/contact/" />
+//   Place once near the end of the page body.
+
+interface Props {
+  phone?: string;
+  phoneHref?: string;
+  quoteText?: string;
+  quoteHref?: string;
+}
+const {
+  phone = '(267) 394-7980',
+  phoneHref = 'tel:+12673947980',
+  quoteText = 'Free quote',
+  quoteHref = '/contact/',
+} = Astro.props;
+---
+
+<div class="mobile-cta fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 bg-ink/95 p-3 backdrop-blur lg:hidden">
+  <a href={phoneHref} class="flex-1 rounded-full border border-white/25 py-3 text-center font-semibold text-white">{phone}</a>
+  <a href={quoteHref} class="flex-1 rounded-full bg-brand py-3 text-center font-semibold text-white">{quoteText}</a>
+</div>
+
+<style>
+  /* Reserve space so the bar doesn't cover page content on mobile */
+  @media (max-width: 1023px) {
+    :global(body) { padding-bottom: 76px; }
+  }
+</style>

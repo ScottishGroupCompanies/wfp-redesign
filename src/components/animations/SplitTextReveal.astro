@@ -1,0 +1,70 @@
+---
+// SplitTextReveal.astro
+// Editorial headline that reveals character-by-character (or word-by-word)
+// when it scrolls into view — each unit rises from behind a clip mask, so
+// it reads like the line is being "developed" onto the page. More refined
+// than a plain word-stagger. Pure CSS + IntersectionObserver, no libraries.
+//
+// Brand: serif display type, white on dark or ink on cream. Pairs with a
+// mono uppercase eyebrow above it (the WFP signature contrast).
+//
+// HOW TO USE:
+//   <SplitTextReveal text="Your glass, transformed." by="word" />
+//   <SplitTextReveal text="Done right." by="char" as="h3" />
+//   by="word" (default) | "char"   ·   as="h2" (default)
+
+interface Props {
+  text: string;
+  by?: 'word' | 'char';
+  as?: string;
+  class?: string;
+  stagger?: number; // ms between units
+}
+
+const { text, by = 'word', as: Tag = 'h2', class: cls = '', stagger = 55 } = Astro.props;
+const units = by === 'char' ? Array.from(text) : text.split(' ');
+---
+
+<Tag class={`split-reveal ${cls}`} data-stagger={stagger} aria-label={text}>
+  {units.map((u, i) => (
+    <span class="split-reveal__unit" aria-hidden="true">
+      <span class="split-reveal__inner" style={`--i:${i}`}>{u === ' ' ? '\u00A0' : u}{by === 'word' && i < units.length - 1 ? '\u00A0' : ''}</span>
+    </span>
+  ))}
+</Tag>
+
+<style is:global>
+  .split-reveal { display: inline; }
+  .split-reveal__unit {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  .split-reveal__inner {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i) * var(--split-stagger, 55ms));
+    will-change: transform;
+  }
+  .split-reveal.is-visible .split-reveal__inner { transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .split-reveal__inner { transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      const stagger = el.dataset.stagger || '55';
+      el.style.setProperty('--split-stagger', stagger + 'ms');
+      el.classList.add('is-visible');
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.35 });
+
+  document.querySelectorAll('.split-reveal').forEach((el) => observer.observe(el));
+</script>

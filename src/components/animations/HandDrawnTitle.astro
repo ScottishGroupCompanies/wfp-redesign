@@ -1,0 +1,76 @@
+---
+// HandDrawnTitle.astro
+// A hand-drawn stroke (circle or underline) draws itself around/under a
+// highlighted word when scrolled into view — the human, marker-on-glass
+// feel. SVG path with stroke-dashoffset animation. No libraries.
+// Stroke uses the brand green.
+//
+// HOW TO USE:
+//   <HandDrawnTitle before="Keep it" highlight="cooler" after="all summer." shape="circle" />
+//   shape="circle" (loops around the word) | "underline"
+
+interface Props {
+  before?: string;
+  highlight: string;
+  after?: string;
+  shape?: 'circle' | 'underline';
+  class?: string;
+}
+const { before = '', highlight, after = '', shape = 'circle', class: cls = '' } = Astro.props;
+---
+
+<div class={`hand-drawn ${cls}`}>
+  <h2 class="hand-drawn__title font-display">
+    {before && <span>{before} </span>}
+    <span class="hand-drawn__mark">
+      {highlight}
+      <svg class="hand-drawn__svg" viewBox="0 0 300 120" fill="none" preserveAspectRatio="none" aria-hidden="true">
+        {shape === 'circle' ? (
+          <path class="hand-drawn__path"
+            d="M235 20 C 290 55, 250 100, 150 105 C 55 105, 20 95, 22 58 C 24 22, 90 15, 150 15 C 205 15, 235 35, 238 42"
+            stroke="var(--brand-green)" stroke-width="5" stroke-linecap="round" fill="none" />
+        ) : (
+          <path class="hand-drawn__path"
+            d="M12 88 C 90 78, 210 78, 288 84"
+            stroke="var(--brand-green)" stroke-width="6" stroke-linecap="round" fill="none" />
+        )}
+      </svg>
+    </span>
+    {after && <span> {after}</span>}
+  </h2>
+</div>
+
+<style is:global>
+  .hand-drawn__mark { position: relative; display: inline-block; white-space: nowrap; }
+  .hand-drawn__svg {
+    position: absolute;
+    left: -8%;
+    top: -18%;
+    width: 116%;
+    height: 150%;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .hand-drawn__path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  .hand-drawn.is-visible .hand-drawn__path {
+    animation: hand-draw 1.6s cubic-bezier(0.43, 0.13, 0.23, 0.96) forwards;
+  }
+  @keyframes hand-draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hand-drawn__path { stroke-dashoffset: 0; animation: none; }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.hand-drawn').forEach((el) => observer.observe(el));
+</script>

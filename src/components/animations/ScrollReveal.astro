@@ -1,0 +1,47 @@
+---
+// ScrollReveal.astro
+// Generic scroll-reveal utility (from the WFP homepage).
+// Add the class `scroll-reveal` to any element and it fades + rises
+// into view when it enters the viewport. Elements auto-stagger in
+// groups of 4 (0 / 100 / 200 / 300ms). Respects "reduce motion".
+//
+// HOW TO USE — two ways:
+//   A) Wrap content:  <ScrollReveal><div>...</div></ScrollReveal>
+//   B) Or just add the class yourself anywhere:  <div class="scroll-reveal">...</div>
+//      (drop <ScrollReveal /> once on the page to load the CSS + JS)
+---
+
+<div class="scroll-reveal"><slot /></div>
+
+<style is:global>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target as HTMLElement;
+        const delay = Number(el.dataset.delay || 0);
+        setTimeout(() => el.classList.add('visible'), delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll<HTMLElement>('.scroll-reveal').forEach((el, i) => {
+    el.dataset.delay = String((i % 4) * 100); // 0, 100, 200, 300ms stagger
+    observer.observe(el);
+  });
+</script>

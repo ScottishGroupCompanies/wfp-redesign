@@ -1,0 +1,87 @@
+---
+// LogoCloudBlurFlip.astro
+// Brand logos animate in with a blur-to-focus + subtle 3D flip, staggered,
+// when the section scrolls into view. Grid layout, logos shown in full color on white cards
+// . Pure CSS + IntersectionObserver, no libraries.
+//
+// HOW TO USE:
+//   <LogoCloudBlurFlip />   (uses the shared 12 brand logos)
+//   <LogoCloudBlurFlip heading="..." sub="..." items={[{src, alt}]} />
+
+interface BrandLogo { src: string; alt: string; href?: string; }
+
+const defaultLogos: BrandLogo[] = [
+  { src: '/images/2021-09-3m-window-film-philadelphia.jpg', alt: '3M' },
+  { src: '/images/2021-09-llumar-window-film-philadelphia.jpg', alt: 'LLumar' },
+  { src: '/images/2021-09-vista-window-film-philadelphia.jpg', alt: 'Vista' },
+  { src: '/images/2021-09-solar-gard-window-film-philadelphia.jpg', alt: 'Solar Gard' },
+  { src: '/images/2021-09-huper-optik-window-film-philadelphia.jpg', alt: 'Huper Optik' },
+  { src: '/images/2021-09-madico-window-film-philadelphia.jpg', alt: 'Madico' },
+];
+
+interface Props { heading?: string; sub?: string; items?: BrandLogo[]; }
+const {
+  heading = 'Trusted by leading businesses',
+  sub = 'We install every major brand of window film.',
+  items = defaultLogos,
+} = Astro.props;
+---
+
+<section class="lcbf">
+  <div class="lcbf__head">
+    <h2 class="lcbf__title font-display">{heading}</h2>
+    <p class="lcbf__sub">{sub}</p>
+  </div>
+  <div class="lcbf__grid">
+    {items.map((logo, i) => (
+      <div class="lcbf__cell" style={`--d:${i * 70}ms`}>
+        <img src={logo.src} alt={logo.alt} loading="lazy" />
+      </div>
+    ))}
+  </div>
+</section>
+
+<style is:global>
+  .lcbf { background: var(--ink, #0d1b2a); padding: 4rem 1.5rem; }
+  .lcbf__head { text-align: center; max-width: 40rem; margin: 0 auto 2.5rem; }
+  .lcbf__title { color: #fff; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 600; margin: 0 0 0.5rem; }
+  .lcbf__sub { color: rgba(255,255,255,0.5); font-size: 0.95rem; margin: 0; }
+  .lcbf__grid {
+    max-width: 64rem; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem;
+  }
+  .lcbf__cell {
+    display: flex; align-items: center; justify-content: center;
+    background: #fff;
+    border-radius: 0.85rem;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    opacity: 0; filter: blur(10px);
+    transform: perspective(600px) rotateX(-30deg);
+    transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+    transition-delay: var(--d, 0ms);
+  }
+  .lcbf.is-visible .lcbf__cell { opacity: 1; filter: blur(0); transform: perspective(600px) rotateX(0); }
+  .lcbf__cell:hover { box-shadow: 0 12px 32px rgba(124,179,66,0.35); transform: perspective(600px) rotateX(0) translateY(-3px); }
+  .lcbf__cell img {
+    max-height: 40px; max-width: 100%; object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .lcbf__cell:hover img { transform: scale(1.06); }
+
+  @media (max-width: 768px) { .lcbf__grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (prefers-reduced-motion: reduce) {
+    .lcbf__cell { opacity: 1; filter: none; transform: none; transition: box-shadow 0.3s ease; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('is-visible');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.lcbf').forEach((el) => io.observe(el));
+</script>

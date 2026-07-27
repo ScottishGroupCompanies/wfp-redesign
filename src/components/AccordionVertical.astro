@@ -1,0 +1,140 @@
+---
+// AccordionVertical.astro
+// Horizontal row of vertical panels; click one and it expands to reveal a
+// full-bleed photo with a description overlay, while the others collapse to
+// labeled spines. Rebuilt from the "vertical image accordion" pattern in
+// pure CSS + vanilla JS (no motion lib, no icon lib). Stacks on mobile.
+//
+// HOW TO USE:
+//   <AccordionVertical />   (defaults to the 4 service categories)
+//   items={[{ title, description, img, icon }]}
+
+interface Item { title: string; description: string; img: string; icon: string; href?: string; ctaText?: string; }
+interface Props { items?: Item[]; }
+
+const ICONS = {
+  home: '<path d="M3 11l9-8 9 8M5 10v10h14V10"/>',
+  building: '<rect x="4" y="3" width="16" height="18"/><path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h6"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+  sparkle: '<path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>',
+};
+
+const {
+  items = [
+    { title: 'Residential', description: 'Privacy, UV protection, and comfort for your home — see out clearly while keeping heat and glare outside.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782907661/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cq_auto%2Cw_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175418_885cb5f7-7d7a-43f9-a1a2-33926a01abc1.png', icon: ICONS.home },
+    { title: 'Commercial', description: 'Energy savings and a consistent look for offices and retail — lower cooling bills from the first season.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782907660/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cq_auto%2Cw_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175417_997747da-e186-459f-83ee-82d3a284366e.png', icon: ICONS.building },
+    { title: 'Government & Public', description: 'Security and safety film institutions trust — blast mitigation, forced-entry protection, and compliance.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782765437/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cfl_awebp%2Cq_auto%2Cw_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_163225_ef3d64e4-534f-42b3-bc9b-af78ddffac20.png', icon: ICONS.shield },
+    { title: 'Specialty', description: 'Decorative, anti-graffiti, and custom films — privacy patterns and branding without losing the light.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1782765436/https://res.cloudinary.com/deunehrew/image/fetch/f_webp%2Cfl_awebp%2Cq_auto%2Cw_1200/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_170303_116dd402-20cd-4cc2-96fd-f34262614195.png', icon: ICONS.sparkle },
+  ],
+} = Astro.props;
+---
+
+<div class="accv">
+  {items.map((item, i) => (
+    <div class={`accv__panel ${i === 0 ? 'is-open' : ''}`} data-panel style={`background-image:url('${item.img}')`}>
+      <button class="accv__tab" data-tab aria-expanded={i === 0 ? 'true' : 'false'}>
+        <span class="accv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg></span>
+        <span class="accv__title">{item.title}</span>
+      </button>
+      <div class="accv__content">
+        <div class="accv__desc">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          {item.href && <a class="accv__cta" href={item.href}>{item.ctaText || `Explore ${item.title}`} →</a>}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style is:global>
+  .accv {
+    display: flex; flex-direction: column;
+    height: auto; width: 100%; max-width: 64rem; margin: 0 auto;
+    border-radius: 1rem; overflow: hidden; gap: 4px;
+    background: var(--ink, #0d1b2a);
+  }
+  @media (min-width: 1024px) { .accv { flex-direction: row; height: 440px; } }
+
+  .accv__panel {
+    position: relative; overflow: hidden;
+    background-size: cover; background-position: center;
+    flex: 0 0 auto; display: flex;
+    transition: flex 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @media (min-width: 1024px) {
+    .accv__panel { flex-direction: column; }
+    .accv__panel { flex: 1 1 0; } /* collapsed default width */
+    .accv__panel.is-open { flex: 6 1 0; }
+  }
+  @media (max-width: 1023px) {
+    .accv__panel { flex-direction: column; }
+    .accv__panel.is-open .accv__content { max-height: 240px; }
+  }
+
+  .accv__tab {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--slate, #12293f);
+    color: #fff; border: none; cursor: pointer; padding: 1rem;
+    transition: background 0.2s;
+  }
+  .accv__tab:hover { background: #16324d; }
+  @media (min-width: 1024px) {
+    .accv__panel:not(.is-open) .accv__tab {
+      flex-direction: column; justify-content: flex-end; height: 100%; gap: 1rem;
+    }
+    .accv__panel:not(.is-open) .accv__title { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 1.05rem; }
+    .accv__panel.is-open .accv__tab { position: absolute; top: 0; left: 0; background: transparent; }
+    .accv__panel.is-open .accv__title { display: none; }
+  }
+  .accv__icon {
+    flex-shrink: 0; width: 40px; height: 40px; border-radius: 0.6rem;
+    background: var(--brand-green); color: var(--ink, #0d1b2a);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .accv__icon svg { width: 22px; height: 22px; }
+  .accv__title { font-family: Georgia, serif; font-weight: 600; }
+
+  .accv__content {
+    flex: 1; display: flex; align-items: flex-end;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  @media (min-width: 1024px) { .accv__content { max-height: none; width: 100%; } }
+  .accv__panel:not(.is-open) .accv__content { pointer-events: none; }
+  @media (min-width: 1024px) { .accv__panel:not(.is-open) .accv__content > * { opacity: 0; } }
+
+  .accv__desc {
+    margin: 1rem; padding: 0.9rem 1.1rem;
+    background: rgba(13,27,42,0.55); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 0.75rem;
+    color: #fff; opacity: 1;
+    transition: opacity 0.3s ease 0.15s;
+  }
+  .accv__desc h3 { font-family: Georgia, serif; font-size: 1.2rem; margin: 0 0 0.3rem; }
+  .accv__desc p { font-size: 0.88rem; line-height: 1.5; color: rgba(255,255,255,0.8); margin: 0 0 0.75rem; }
+  .accv__cta { display: inline-block; font-size: 0.85rem; font-weight: 600; color: var(--brand-green, #7CB342); text-decoration: none; letter-spacing: 0.02em; transition: opacity 0.2s; }
+  .accv__cta:hover { opacity: 0.8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .accv__panel, .accv__content { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.accv').forEach((root) => {
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
+    panels.forEach((panel) => {
+      const tab = panel.querySelector<HTMLElement>('[data-tab]');
+      tab?.addEventListener('click', () => {
+        panels.forEach((p) => {
+          p.classList.remove('is-open');
+          p.querySelector('[data-tab]')?.setAttribute('aria-expanded', 'false');
+        });
+        panel.classList.add('is-open');
+        tab.setAttribute('aria-expanded', 'true');
+      });
+    });
+  });
+</script>
