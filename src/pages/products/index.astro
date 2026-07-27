@@ -23,9 +23,9 @@ const allBrands = [
   { src: '/images/2021-09-hdclear-window-film-philadelphia.webp',         alt: 'HDClear',              href: '/products/hdclear-window-film/' },
   { src: '/images/2021-09-hanita-coatings-window-film-philadelphia.webp', alt: 'Hanita Coatings',      href: '/products/hanita-coatings-window-film/' },
   { src: '/images/2021-09-solyx-window-film-philadelphia.webp',           alt: 'Solyx',                href: '/products/solyx-window-film/' },
-  { src: '/images/nanotint-window-film-philadelphia-hero.jpg',            alt: 'NanoTint',             href: '/products/nanotint-window-film/' },
   { src: '/images/bird-divert-logo.png',                                  alt: 'Bird Divert',          href: '/products/bird-divert/' },
-  { src: '/images/v-kool-logo.png',                                       alt: 'V-Kool',               href: '/products/v-kool/' },
+  { src: '/images/drywired-logo.png',                                     alt: 'DryWired NanoTint',    href: '/products/nanotint-window-film/', bg: '#065070' },
+  { src: '/images/v-kool-logo.png',                                       alt: 'V-Kool',               href: '/products/v-kool/',              bg: '#1a1a1a' },
 ];
 
 const faqSchema = [
@@ -95,7 +95,7 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     </div>
     <div class="prod-brands__grid">
       {allBrands.map((brand) => (
-        <a class="prod-brand-card scroll-reveal" href={brand.href} aria-label={brand.alt}>
+        <a class="prod-brand-card scroll-reveal" href={brand.href} aria-label={brand.alt} style={brand.bg ? `background:${brand.bg}` : ''}>
           <img src={brand.src} alt={brand.alt} loading="lazy" />
         </a>
       ))}
