@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroSubpage from '../../components/HeroSubpage.astro';
-import TrustStrip from '../../components/TrustStrip.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 import AccordionFAQ from '../../components/AccordionFAQ.astro';
 import CTATintSlider from '../../components/CTATintSlider.astro';
@@ -71,8 +71,11 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     secondaryHref="#all-brands"
   />
 
-  <!-- ══ 2. TRUST STRIP ══ -->
-  <TrustStrip title="OUR MANUFACTURER PARTNERS" />
+  <!-- ══ 2. BRAND LOGOS (à la homes-condos) ══ -->
+  <section class="swt-trust">
+    <p class="swt-trust__label">Our manufacturer partners</p>
+    <BrandLogos />
+  </section>
 
   <!-- ══ 3. INTRO ══ -->
   <section class="prod-intro">
@@ -132,6 +135,24 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     --brand-green: var(--green);
     --cream:       var(--off-white);
     --slate:       #1c2e20;
+  }
+
+  /* ── Brand logos strip ── */
+  .swt-trust {
+    background: #ffffff;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .swt-trust__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4a5c48;
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
   }
 
   /* ── Intro band ── */
