@@ -2,87 +2,30 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroSubpage from '../../components/HeroSubpage.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
-import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
-import AccordionVertical from '../../components/AccordionVertical.astro';
-import LogoCloudBlurFlip from '../../components/LogoCloudBlurFlip.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 import AccordionFAQ from '../../components/AccordionFAQ.astro';
 import CTATintSlider from '../../components/CTATintSlider.astro';
 import MobileStickyCTA from '../../components/MobileStickyCTA.astro';
-import SplitTextReveal from '../../components/animations/SplitTextReveal.astro';
 import ScrollReveal from '../../components/animations/ScrollReveal.astro';
 
 const title = 'Window Film Products Philadelphia | 3M, LLumar, Vista & More';
 const description = 'Window Film Philadelphia installs every leading manufacturer — 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, V-Kool and more. One certified installer, every brand, manufacturer warranties.';
 
-const ICONS = {
-  cube: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>',
-  sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
-  layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
-  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
-};
-
-const bentoItems = [
-  { span: 'lg', title: '3M Window Film', desc: 'Science-backed solar, safety, and decorative film since 1966. The global gold standard.', img: '/images/3m-window-film-philadelphia-hero.jpg', href: '/products/3m-window-film/' },
-  { span: 'sm', title: 'LLumar', desc: 'Performance solar and safety film trusted by homeowners and Fortune 500 facility managers worldwide.', img: '/images/llumar-window-film-philadelphia-hero.jpg', href: '/products/llumar/' },
-  { span: 'sm', title: 'Vista Window Film', desc: 'Spectrally selective. Engineered for architects who demand performance without sacrificing natural light.', img: '/images/2021-09-vista-window-film-philadelphia.jpg', href: '/products/vista-window-film/' },
-  { span: 'sm', title: 'Solar Gard', desc: "Saint-Gobain's professional-grade line for high-occupancy buildings since 1973.", img: '/images/2021-09-solar-gard-window-film-philadelphia.jpg', href: '/products/solar-gard-window-film/' },
-  { span: 'sm', title: 'Huper Optik', desc: 'German-engineered 100% ceramic film. Zero signal interference. Lifetime residential warranty.', img: '/images/huper-optik-window-film-philadelphia-hero.jpg', href: '/products/huper-optik/' },
-  { span: 'sm', title: 'Madico', desc: 'Over 100 years of film science. SafetyPly and ClearPly certified for government and healthcare.', img: '/images/madico-window-film-philadelphia-hero.jpg', href: '/products/madico-window-film/' },
-  { span: 'sm', title: 'V-Kool', desc: 'Multi-layer sputtered precision. Maximum heat rejection at the highest VLT levels in the category.', img: '/images/2021-09-vista-window-film-philadelphia.jpg', href: '/products/v-kool/' },
-];
-
-const accordionItems = [
-  {
-    title: '3M Window Film',
-    description: '3M invented window film in 1966 and remains the global benchmark. Prestige Series delivers up to 97% IR rejection. Scotchshield safety film is specified by government facilities and schools nationwide. Every 3M installation is backed by a manufacturer warranty.',
-    img: '/images/3m-window-film-philadelphia-hero.jpg',
-    icon: ICONS.cube,
-    href: '/products/3m-window-film/',
-    ctaText: 'Explore 3M Window Film',
-  },
-  {
-    title: 'LLumar',
-    description: "LLumar's ATC Series is one of the most widely installed commercial films in the world — non-metallic, no signal interference, NFRC-certified. Their Low-E film is the Philadelphia four-season choice, rejecting solar heat in summer while retaining indoor warmth in winter.",
-    img: '/images/llumar-window-film-philadelphia-hero.jpg',
-    icon: ICONS.sun,
-    href: '/products/llumar/',
-    ctaText: 'Explore LLumar',
-  },
-  {
-    title: 'Vista Window Film',
-    description: 'Vista by Eastman uses proprietary spectrally selective technology to filter solar energy while preserving natural light and curb appeal. Non-metallic — no GPS, Wi-Fi, or cellular degradation. Sustainably sourced materials and architectural options for design-forward properties.',
-    img: '/images/2021-09-vista-window-film-philadelphia.jpg',
-    icon: ICONS.layers,
-    href: '/products/vista-window-film/',
-    ctaText: 'Explore Vista',
-  },
-  {
-    title: 'Solar Gard',
-    description: "Saint-Gobain's Solar Gard line has served the professional installer market since 1973. Duran and Schwarz series deliver exceptional solar control for high-occupancy Philadelphia commercial buildings. Bomb-blast mitigation and anti-graffiti sacrificial films available.",
-    img: '/images/2021-09-solar-gard-window-film-philadelphia.jpg',
-    icon: ICONS.shield,
-    href: '/products/solar-gard-window-film/',
-    ctaText: 'Explore Solar Gard',
-  },
-];
-
-// All 14 brands — fully clickable
 const allBrands = [
-  { src: '/images/2021-09-3m-window-film-philadelphia.webp', alt: '3M™ Window Film', href: '/products/3m-window-film/' },
-  { src: '/images/2021-09-llumar-window-film-philadelphia.webp', alt: 'LLumar', href: '/products/llumar/' },
-  { src: '/images/2021-09-vista-window-film-philadelphia.webp', alt: 'Vista Window Film', href: '/products/vista-window-film/' },
-  { src: '/images/2021-09-solar-gard-window-film-philadelphia.webp', alt: 'Solar Gard', href: '/products/solar-gard-window-film/' },
-  { src: '/images/2021-09-madico-window-film-philadelphia.webp', alt: 'Madico', href: '/products/madico-window-film/' },
-  { src: '/images/2021-09-huper-optik-window-film-philadelphia.webp', alt: 'Huper Optik', href: '/products/huper-optik/' },
-  { src: '/images/2021-09-casper-window-film-philadelphia.webp', alt: 'Casper Cloaking Film', href: '/products/casper-cloaking-film/' },
-  { src: '/images/c-bond-primer-window-film-philadelphia.webp', alt: 'C-Bond Systems', href: '/products/c-bond-window-film/' },
-  { src: '/images/2021-09-hdclear-window-film-philadelphia.webp', alt: 'HDClear', href: '/products/hdclear-window-film/' },
-  { src: '/images/2021-09-hanita-coatings-window-film-philadelphia.webp', alt: 'Hanita Coatings', href: '/products/hanita-coatings-window-film/' },
-  { src: '/images/2021-09-solyx-window-film-philadelphia.webp', alt: 'Solyx', href: '/products/solyx-window-film/' },
-  { src: '/images/drywired-liquid-nanotint-philadelphia-1.webp', alt: 'NanoTint', href: '/products/nanotint-window-film/' },
-  { src: '/images/bird-divert-film-philadelphia.webp', alt: 'Bird Divert', href: '/products/bird-divert/' },
-  { src: '/images/v-kool-window-film-philadelphia.jpg', alt: 'V-Kool', href: '/products/v-kool/' },
+  { src: '/images/2021-09-3m-window-film-philadelphia.webp',              alt: '3M Window Film',       href: '/products/3m-window-film/' },
+  { src: '/images/2021-09-llumar-window-film-philadelphia.webp',          alt: 'LLumar',               href: '/products/llumar/' },
+  { src: '/images/2021-09-vista-window-film-philadelphia.webp',           alt: 'Vista Window Film',    href: '/products/vista-window-film/' },
+  { src: '/images/2021-09-solar-gard-window-film-philadelphia.webp',      alt: 'Solar Gard',           href: '/products/solar-gard-window-film/' },
+  { src: '/images/2021-09-huper-optik-window-film-philadelphia.webp',     alt: 'Huper Optik',          href: '/products/huper-optik/' },
+  { src: '/images/2021-09-madico-window-film-philadelphia.webp',          alt: 'Madico',               href: '/products/madico-window-film/' },
+  { src: '/images/2021-09-casper-window-film-philadelphia.webp',          alt: 'Casper Cloaking Film', href: '/products/casper-cloaking-film/' },
+  { src: '/images/2021-09-cbond-window-film-philadelphia.webp',           alt: 'C-Bond Systems',       href: '/products/c-bond-window-film/' },
+  { src: '/images/2021-09-hdclear-window-film-philadelphia.webp',         alt: 'HDClear',              href: '/products/hdclear-window-film/' },
+  { src: '/images/2021-09-hanita-coatings-window-film-philadelphia.webp', alt: 'Hanita Coatings',      href: '/products/hanita-coatings-window-film/' },
+  { src: '/images/2021-09-solyx-window-film-philadelphia.webp',           alt: 'Solyx',                href: '/products/solyx-window-film/' },
+  { src: '/images/nanotint-window-film-philadelphia-hero.jpg',            alt: 'NanoTint',             href: '/products/nanotint-window-film/' },
+  { src: '/images/bird-divert-logo.png',                                  alt: 'Bird Divert',          href: '/products/bird-divert/' },
+  { src: '/images/v-kool-logo.png',                                       alt: 'V-Kool',               href: '/products/v-kool/' },
 ];
 
 const faqSchema = [
@@ -119,7 +62,7 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
   <!-- ══ 1. HERO ══ -->
   <HeroSubpage
     eyebrow="TOP BRANDS · EVERY APPLICATION · EXPERT ADVICE"
-    title={"The industry's best\nwindow film brands,\nall in one place."}
+    title={"Every brand.\nOne installer."}
     subtitle="Window Film Philadelphia partners with every leading manufacturer to offer the most comprehensive product selection in the Greater Philadelphia region."
     bg="/images/2021-10-window-film-brands-philadelphia.jpg"
     ctaText="Get a free quote"
@@ -131,14 +74,10 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
   <!-- ══ 2. TRUST STRIP ══ -->
   <TrustStrip title="OUR MANUFACTURER PARTNERS" />
 
-  <!-- ══ 3. INTRO BAND ══ -->
+  <!-- ══ 3. INTRO ══ -->
   <section class="prod-intro">
     <div class="prod-intro__inner">
-      <SplitTextReveal
-        text="One installer. Every major manufacturer."
-        as="h2"
-        class="prod-intro__heading"
-      />
+      <h2 class="prod-intro__heading">One installer. Every major manufacturer.</h2>
       <p class="prod-intro__body">
         We're certified installers for 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, V-Kool, and more.
         That means we recommend the right film for your project — not whichever brand we happen to carry.
@@ -147,36 +86,26 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     </div>
   </section>
 
-  <!-- ══ 4. FEATURED BRANDS BENTO ══ -->
-  <BentoGridPhoto
-    heading="Brands we trust. Films we spec."
-    sub="Every manufacturer we carry has earned its place — certified installer programs, rigorous testing, and long-term warranty backing."
-    items={bentoItems}
-  />
-
-  <!-- ══ 5. BRAND DEEP DIVES — ACCORDION ══ -->
-  <section class="prod-accordion">
-    <div class="prod-accordion__head">
-      <p class="eyebrow">FLAGSHIP BRANDS</p>
-      <h2 class="prod-accordion__title">The four brands we spec most.</h2>
-      <p class="prod-accordion__sub">Click any brand to see why we recommend it — and what it's built for.</p>
+  <!-- ══ 4. BRAND LOGO GRID ══ -->
+  <section id="all-brands" class="prod-brands">
+    <div class="prod-brands__head">
+      <p class="eyebrow">COMPLETE MANUFACTURER LINEUP</p>
+      <h2 class="prod-brands__title">Every brand we install.</h2>
+      <p class="prod-brands__sub">Click any logo to explore its full product line.</p>
     </div>
-    <AccordionVertical items={accordionItems} />
+    <div class="prod-brands__grid">
+      {allBrands.map((brand) => (
+        <a class="prod-brand-card scroll-reveal" href={brand.href} aria-label={brand.alt}>
+          <img src={brand.src} alt={brand.alt} loading="lazy" />
+        </a>
+      ))}
+    </div>
   </section>
 
-  <!-- ══ 6. ALL BRANDS LOGO CLOUD ══ -->
-  <section id="all-brands" class="prod-logocloud">
-    <LogoCloudBlurFlip
-      heading="Complete manufacturer lineup"
-      sub="Every brand we install — click any logo to explore its full product line."
-      items={allBrands}
-    />
-  </section>
-
-  <!-- ══ 7. TESTIMONIALS ══ -->
+  <!-- ══ 5. TESTIMONIALS ══ -->
   <TestimonialMarquee />
 
-  <!-- ══ 8. FAQ ══ -->
+  <!-- ══ 6. FAQ ══ -->
   <section class="prod-faq">
     <div class="prod-faq__head">
       <p class="eyebrow">COMMON QUESTIONS</p>
@@ -185,7 +114,7 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     <AccordionFAQ items={faqItems} />
   </section>
 
-  <!-- ══ 9. CTA ══ -->
+  <!-- ══ 7. CTA ══ -->
   <CTATintSlider
     heading="Find your perfect tint."
     sub="Drag to preview how window film tames Philadelphia heat and glare — then get it installed for real."
@@ -193,7 +122,7 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     ctaHref="/contact/"
   />
 
-  <!-- ══ 10. MOBILE STICKY CTA ══ -->
+  <!-- ══ 8. MOBILE STICKY ══ -->
   <MobileStickyCTA phone="(267) 394-7980" quoteHref="/contact/" />
 
   <ScrollReveal />
@@ -201,7 +130,7 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
 </BaseLayout>
 
 <style>
-  /* ── Map UI-library variables → site tokens ── */
+  /* ── Map UI-library vars → site tokens ── */
   :root {
     --ink:         var(--dark-bg);
     --brand-green: var(--green);
@@ -222,6 +151,7 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     color: var(--dark-bg);
     font-weight: 700;
     margin: 0 0 1.25rem;
+    letter-spacing: -0.02em;
   }
   .prod-intro__body {
     font-size: 1.05rem;
@@ -230,33 +160,68 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     margin: 0;
   }
 
-  /* ── Accordion section wrapper ── */
-  .prod-accordion {
+  /* ── Brand logo grid ── */
+  .prod-brands {
     background: var(--dark-bg);
     padding: 5rem 1.5rem;
+    scroll-margin-top: 80px;
   }
-  .prod-accordion__head {
+  .prod-brands__head {
     text-align: center;
     max-width: 40rem;
     margin: 0 auto 3rem;
   }
-  .prod-accordion__title {
+  .prod-brands__title {
     font-family: var(--font-display);
     font-size: clamp(1.6rem, 3.5vw, 2.4rem);
     color: #fff;
     font-weight: 700;
-    margin: 0.5rem 0 0.6rem;
+    margin: 0.5rem 0 0.5rem;
+    letter-spacing: -0.02em;
   }
-  .prod-accordion__sub {
-    color: rgba(255,255,255,0.55);
+  .prod-brands__sub {
+    color: rgba(255,255,255,0.5);
     font-size: 0.95rem;
     margin: 0;
   }
 
-  /* ── Logo cloud anchor ── */
-  .prod-logocloud { scroll-margin-top: 80px; }
+  .prod-brands__grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
 
-  /* ── FAQ section ── */
+  @media (max-width: 600px) {
+    .prod-brands__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .prod-brand-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  }
+  .prod-brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+  }
+  .prod-brand-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ── FAQ ── */
   .prod-faq {
     background: var(--off-white);
     padding: 5rem 1.5rem;
@@ -272,5 +237,6 @@ const faqItems = faqSchema.map(f => ({ q: f.question, a: f.answer }));
     color: var(--dark-bg);
     font-weight: 700;
     margin: 0.5rem 0 0;
+    letter-spacing: -0.02em;
   }
 </style>
