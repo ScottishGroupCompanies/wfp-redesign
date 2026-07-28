@@ -13,8 +13,13 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 const { title, description, pubDate, author, image, imageAlt, tags } = post.data;
+const tocHeadings = headings.filter((h) => h.depth === 2);
+// Estimate reading time from raw body length (200 wpm)
+const rawBody: string = post.body ?? '';
+const wordCount = rawBody.split(/\s+/).filter(Boolean).length;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
 
 // Recent posts for sidebar (exclude current)
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -73,6 +78,8 @@ const categories = [
         <span class="post-author">By {author}</span>
         <span class="post-sep">&#183;</span>
         <span class="post-date">{formatDate(pubDate)}</span>
+        <span class="post-sep">&#183;</span>
+        <span class="post-reading-time">{readingTime} min read</span>
       </div>
       {tags && tags.length > 0 && (
         <div class="post-tags">
@@ -95,6 +102,19 @@ const categories = [
       {image && (
         <div class="post-featured-img">
           <img src={image} alt={imageAlt || title} width="860" height="500" loading="eager" />
+        </div>
+      )}
+
+      {tocHeadings.length > 2 && (
+        <div class="post-toc">
+          <p class="post-toc__label">IN THIS ARTICLE</p>
+          <ol class="post-toc__list">
+            {tocHeadings.map((h) => (
+              <li class="post-toc__item">
+                <a href={`#${h.slug}`} class="post-toc__link">{h.text}</a>
+              </li>
+            ))}
+          </ol>
         </div>
       )}
 
@@ -215,6 +235,10 @@ const categories = [
 }
 .post-author { font-weight: 600; color: var(--text-mid, #4a4a4a); }
 .post-sep { color: var(--light-gray, #ccc); }
+.post-reading-time {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; color: var(--text-light, #888);
+}
 .post-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .post-tag {
   font-family: var(--font-body, 'DM Sans', sans-serif);
@@ -254,6 +278,47 @@ const categories = [
   width: 100%; height: 100%;
   object-fit: cover; display: block;
 }
+
+/* ── TABLE OF CONTENTS ── */
+.post-toc {
+  background: var(--off-white, #F7F6F3);
+  border-left: 4px solid var(--green, #81AB4C);
+  border-radius: 0 16px 16px 0;
+  padding: 24px 28px;
+  margin-bottom: 44px;
+}
+.post-toc__label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--green, #81AB4C);
+  margin: 0 0 14px;
+}
+.post-toc__list {
+  list-style: none;
+  padding: 0; margin: 0;
+  counter-reset: toc-counter;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.post-toc__item {
+  display: flex; align-items: baseline; gap: 10px;
+  counter-increment: toc-counter;
+}
+.post-toc__item::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px; font-weight: 700;
+  color: var(--green, #81AB4C);
+  flex-shrink: 0; min-width: 22px;
+}
+.post-toc__link {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px; font-weight: 500; line-height: 1.4;
+  color: var(--text-dark, #1a1a1a);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.post-toc__link:hover { color: var(--green, #81AB4C); text-decoration: underline; }
 
 /* ── PROSE CONTENT ── */
 .post-prose { font-family: var(--font-body, 'DM Sans', sans-serif); }
@@ -302,6 +367,18 @@ const categories = [
 .post-prose :global(blockquote p) { font-size: 16px; color: #3a5a1f; margin: 0; }
 .post-prose :global(hr) {
   border: none; border-top: 1px solid var(--light-gray, #EFEFED); margin: 36px 0;
+}
+
+/* FAQ section — auto-styled when writer includes the h2 */
+.post-prose :global(h2:has(+ h3)),
+.post-prose :global(h2[id*='frequently'], h2[id*='faq'], h2[id*='questions']) {
+  border-top: 1px solid var(--light-gray, #EFEFED);
+  padding-top: 36px;
+  margin-top: 56px;
+}
+.post-prose :global(h3[id*='']) {
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: var(--text-dark, #1a1a1a);
 }
 .post-prose :global(strong) { font-weight: 700; color: var(--text-dark, #1a1a1a); }
 .post-prose :global(em) { font-style: italic; }
