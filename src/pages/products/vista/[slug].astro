@@ -165,39 +165,40 @@ const pageSchemas = [
     </div>
   </section>
 
-  {specRows.length > 0 && (
+  {(specRows.length > 0 || p.pdfUrl) && (
     <section class="vtp-specs fade-in">
-      <div class="vtp-specs__inner">
-        <div>
-          <span class="vtp-eyebrow">Specifications</span>
-          <h2>{p.name} Product Data</h2>
+      {specRows.length > 0 && (
+        <div class="vtp-specs__inner">
+          <div>
+            <span class="vtp-eyebrow">Specifications</span>
+            <h2>{p.name} Product Data</h2>
+          </div>
+          <table class="vtp-specs__table">
+            <tbody>
+              {specRows.map(([label, value]) => (
+                <tr><th>{label}</th><td>{value}</td></tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <table class="vtp-specs__table">
-          <tbody>
-            {specRows.map(([label, value]) => (
-              <tr><th>{label}</th><td>{value}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  )}
-
-  {p.pdfUrl && (
-    <section class="vtp-pdf fade-in">
-      <div class="vtp-pdf__inner">
-        <span class="vtp-pdf__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 2v6h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <div class="vtp-pdf__copy">
-          <p class="vtp-pdf__label">Technical Document</p>
-          <p class="vtp-pdf__name">{p.pdfLabel}</p>
+      )}
+      {p.pdfUrl && (
+        <div class="vtp-pdf">
+          <div class="vtp-pdf__inner">
+            <span class="vtp-pdf__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 2v6h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <div class="vtp-pdf__copy">
+              <p class="vtp-pdf__label">Technical Document</p>
+              <p class="vtp-pdf__name">{p.pdfLabel}</p>
+            </div>
+            <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer" class="vtp-pdf__btn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M12 3v13M7 11l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Download PDF
+            </a>
+          </div>
         </div>
-        <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer" class="vtp-pdf__btn">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M12 3v13M7 11l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Download PDF
-        </a>
-      </div>
+      )}
     </section>
   )}
 
@@ -543,8 +544,7 @@ const pageSchemas = [
   }
   /* ── PDF DOWNLOAD STRIP ── */
   .vtp-pdf {
-    padding: 0 24px;
-    background: #f5f7f1;
+    padding: 32px 24px 0;
   }
   .vtp-pdf__inner {
     width: min(1180px, 100%);
@@ -553,11 +553,10 @@ const pageSchemas = [
     align-items: center;
     gap: 20px;
     padding: 28px 32px;
-    background: #fff;
+    background: #f5f7f1;
     border: 1px solid #dce5d3;
     border-radius: 10px;
-    transform: translateY(-28px);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    box-shadow: none;
   }
   .vtp-pdf__icon {
     flex-shrink: 0;
