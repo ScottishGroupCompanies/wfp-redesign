@@ -1,454 +1,2585 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
+import FlipWords from '../../components/FlipWords.astro';
 
-const title = 'High Security Window Film in Philadelphia | Window Film Philadelphia';
-const description = 'Protect your buildings with high security window film in Philadelphia. Perfect for banks, data centers, military bases, and police stations. Contact now!';
+const title = 'Secured Building Window Film Philadelphia | Blast & Security';
+const description = 'Security window film for Philadelphia secured buildings — blast mitigation, forced entry delay, ballistic resistance for banks and government facilities.';
 
-const featuredSections = [
+const today = new Date().toISOString().slice(0,10);
+
+const pageSchemas = [
   {
-    number: '01',
-    heading: 'Bomb Blast Protection',
-    body: 'Defend against high-impact events including natural disasters, explosions, and other threats with this comprehensive safety and security solution. Mitigate broken glass hazards, keeping building occupants safe from potential injury and death.',
-    img: '/images/bank-window-film-philadelphia_11zon.webp',
-    alt: 'Bomb blast protection secured building Philadelphia',
-    href: '/benefits/blast-mitigation/',
-    cta: 'Explore Blast Protection Film',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/#breadcrumb",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Applications", "item": "https://www.windowfilmphiladelphia.net/applications/" },
+      { "@type": "ListItem", "position": 3, "name": "Secured Building Window Film Philadelphia", "item": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/" }
+    ]
   },
   {
-    number: '02',
-    heading: 'Ballistic Resistance',
-    body: 'For premium security needs, ballistic resistance security film provides high-impact resistance against gunfire, explosions, natural disasters, and much more. This window film solution is the best alternative to ballistic-resistant glass, providing a more affordable option.',
-    img: '/images/ballistic-resistant-window-film-philadelphia.webp',
-    alt: 'Ballistic resistance window film Philadelphia',
-    href: '/benefits/ballistic-resistance/',
-    cta: 'Explore Ballistic Resistance Film',
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/#webpage",
+    "url": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/",
+    "name": "Secured Building Window Film Philadelphia | Blast & Security",
+    "description": "Security window film for Philadelphia secured buildings — blast mitigation, forced entry delay, ballistic resistance for banks, data centers, and government facilities.",
+    "dateModified": today,
+    "isPartOf": { "@type": "WebSite", "@id": "https://www.windowfilmphiladelphia.net/#website", "url": "https://www.windowfilmphiladelphia.net/", "name": "Window Film Philadelphia" },
+    "breadcrumb": { "@id": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/#breadcrumb" },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".of-hero__subtitle", ".of-whatis__body", ".sb-geo", ".swt-faq__a"] },
+    "about": { "@type": "Service", "@id": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/#service" }
   },
   {
-    number: '03',
-    heading: 'Safety and Security',
-    body: 'Deter intruders and guard against smash-and-grabs with safety and security window film. This innovative, durable film works by adding a thick layer of protection to your glass windows and doors. Mitigate glass hazards with this 24/7 passive security system.',
-    img: '/images/police-station-window-film-philadelphia_11zon.webp',
-    alt: 'Safety security window film secured building Philadelphia',
-    href: '/benefits/safety-and-security/',
-    cta: 'Explore Safety & Security Film',
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Security Window Film Types Available for Philadelphia Secured Buildings",
+    "description": "Professional security window film options for Philadelphia secured buildings including banks, data centers, police stations, and government facilities. Installed by certified technicians.",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Blast Mitigation Film", "description": "ASTM F1642 and GSA TS01 context blast-rated film systems that hold glass in place during explosive events and reduce flying glass projectile hazards for Philadelphia government and high-occupancy buildings." },
+      { "@type": "ListItem", "position": 2, "name": "Security & Anti-Intrusion Film", "description": "8–15 mil security film with attachment systems that delays forced entry at doors, sidelites, and vulnerable glazing for Philadelphia banks, police stations, and secured facilities." },
+      { "@type": "ListItem", "position": 3, "name": "Ballistic-Resistant Film System", "description": "Multi-layer PET ballistic system with C-Bond Secure primer that delays projectile penetration — a retrofit alternative to ballistic glass for Philadelphia high-security facilities. UL 752 tested system context." },
+      { "@type": "ListItem", "position": 4, "name": "Solar Control Security Film", "description": "Security film combined with solar control properties — heat rejection, UV block, and glare reduction in one installation for Philadelphia secured buildings with occupied spaces." }
+    ]
   },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Secured Building Window Film Philadelphia",
+    "description": "Security window film for Philadelphia secured buildings — blast mitigation, forced entry delay, ballistic resistance, and fragment retention for banks, data centers, and government facilities.",
+    "brand": { "@type": "Brand", "name": "Window Film Philadelphia" },
+    "category": "Security Window Film",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "url": "https://www.windowfilmphiladelphia.net/applications/secured-buildings/" }
+  }
 ];
 
-const whyItems = [
-  { icon: 'lucide:award',       title: '15+ Years Experience',        sub: 'Serving Philadelphia since 2008' },
-  { icon: 'lucide:badge-check', title: 'Factory-Certified Installers', sub: '3M, LLumar, Vista, Solar Gard' },
-  { icon: 'lucide:file-check',  title: 'Lifetime Warranty',            sub: 'On all residential & commercial films' },
-  { icon: 'lucide:calendar',    title: 'Free Consultations',           sub: 'On-site estimates, no obligation' },
-  { icon: 'lucide:star',        title: '4.9 Google Rating',            sub: '5,000+ projects completed' },
-  { icon: 'lucide:map-pin',     title: 'Philadelphia-Based',            sub: 'Local crews, same-week scheduling' },
-  { icon: 'lucide:layers',      title: 'Premium Film Brands',          sub: '3M, LLumar, Vista, Solar Gard, Madico' },
-  { icon: 'lucide:umbrella',    title: 'Fully Insured',                sub: 'Licensed & insured in PA and NJ' },
+const faqItems = [
+  { question: 'What is the difference between safety film, security film, and ballistic-resistant film?', answer: 'Safety film (4–8 mil) holds glass fragments together after accidental breakage to reduce injury risk. Security film (8–15 mil) adds a thicker adhesive layer designed to delay forced entry and slow sustained attacks. Ballistic-resistant film is the highest grade — a multi-layer PET system engineered to resist projectile penetration, often paired with C-Bond Secure primer. The right choice depends on your facility\'s threat profile, glass type, and security requirements.' },
+  { question: 'Can window film meet GSA blast mitigation standards for federal buildings?', answer: 'Blast mitigation film systems are engineered and tested in the context of ASTM F1642 airblast loading and GSA TS01 performance classification. We specify and install film systems that are tested to these standards — but performance depends on glass type, frame condition, attachment method, and installation quality. We provide documentation of the film specification and test context for your facility\'s compliance file.' },
+  { question: 'How does security film delay forced entry at secured building entries?', answer: 'When glass breaks under impact, security film holds the broken pane together in the frame. Instead of stepping through shattered glass in seconds, an intruder must continue attacking the filmed opening to gain entry. This delay — often measured in minutes rather than seconds — buys critical response time for security personnel and alarm systems. Attachment systems that anchor the filmed glass to the frame further increase the delay.' },
+  { question: 'Is ballistic-resistant window film the same as bulletproof glass?', answer: 'No. Ballistic-resistant window film is a retrofit multi-layer system that delays and resists projectile penetration — it is not bulletproof glass. Bulletproof glass is a heavy laminated glazing designed to stop specific rounds. Film-based ballistic systems can be applied to existing windows without structural modifications, making them a practical alternative when full glass replacement is not feasible. Only a tested system can be described by a specific resistance rating such as UL 752.' },
+  { question: 'What is C-Bond BRS and how does it enhance glass security?', answer: 'C-Bond BRS (Ballistic Resistant System) pairs security film with C-Bond Secure, a nanotechnology primer applied to the glass before film installation. The primer fills microscopic glass defects and improves adhesion, clarity, and cure behavior. The combined system is designed to resist projectile threats and is described with tested rating context. We verify current C-Bond documentation before specifying a system for your facility.' },
+  { question: 'Can security film be combined with access control and alarm systems?', answer: 'Yes. Security window film is a passive 24/7 protection layer — it works continuously without electronics or maintenance. It complements active alarm and access control systems rather than competing with them. When an impact occurs, film holds the glass in place and slows entry, which can trigger sensors faster and give security personnel critical response time. It is one layer in a comprehensive physical security plan.' },
+  { question: 'What thickness of security film do secured buildings need?', answer: 'Safety film for basic fragment retention typically runs 4–8 mil. Security film for delayed entry and smash-and-grab resistance starts at 8 mil and goes up to 15 mil for high-risk applications. Blast mitigation and ballistic-resistant systems use multi-layer configurations specified to the threat level. Thicker film generally provides more impact resistance, but the right choice also depends on glass type, frame strength, attachment method, and threat assessment. We assess all factors during your site evaluation.' },
+  { question: 'Does security window film affect the appearance of a secured facility?', answer: 'Modern security films are available in clear, tinted, reflective, and solar-control versions. Clear security film is virtually invisible — it maintains the professional appearance of your facility without any visible change. Tinted and reflective options can add one-way daytime privacy for sensitive operations. We bring samples to every site visit so you can see exactly how each option looks on your glass before committing.' },
+  { question: 'Can window film be installed on existing single-pane glass in historic government buildings?', answer: 'Yes. Security film is a retrofit solution designed for existing glass — it bonds directly to the interior or exterior surface of your current windows. For historic government buildings with single-pane glass where replacement is not feasible due to preservation constraints, security film provides a reversible, non-destructive security upgrade. We assess glass type, age, and frame condition before recommending a specific film system.' },
+  { question: 'What warranty and certification comes with high-security film installations?', answer: 'Manufacturer warranties for commercial security film typically run 10–15 years covering delamination, bubbling, and color shift. Our labor is separately warranted. For government, military, and financial facilities, we provide full documentation including film specifications, compliance certifications, chain-of-custody records, and test data context as required by your security protocols.' },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/secured-buildings/" serviceName="Secured Building Window Film" serviceDesc="Security window film for secured and government buildings in Philadelphia. Forced entry delay, blast mitigation, and ballistic resistance." serviceUrl="https://www.windowfilmphiladelphia.net/applications/secured-buildings/">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/applications/secured-buildings/"
+  serviceName="Secured Building Window Film Philadelphia"
+  serviceDesc="Security window film for Philadelphia secured buildings — blast mitigation, forced entry delay, ballistic resistance, and fragment retention for banks, data centers, and government facilities."
+  serviceUrl="https://www.windowfilmphiladelphia.net/applications/secured-buildings/"
+  faqItems={faqItems}
+  schemas={pageSchemas}
+>
 
-<InnerPageHero
-  title="High Security Window Film Philadelphia"
-  bgImage="/images/secured-building-window-film-philadelphia_11zon.webp"
-  desc="Bomb blast, ballistic, and security film for banks, data centers, military, and government facilities."
-/>
+  <!-- ══ HERO ══ -->
+  <section class="of-hero sb-hero">
+    <div
+      class="of-hero__bg"
+      role="img"
+      aria-label="Modern bank headquarters exterior in Center City Philadelphia with security window film installed on glass facade"
+      style="background-image: url('/images/sb-hero.jpg')"
+    ></div>
+    <div class="of-hero__overlay"></div>
 
-<div class="ip-page-body">
+    <div class="of-hero__content">
 
-<section class="bp-intro">
-  <div class="bp-intro__inner">
-    <div class="bp-intro__left">
-      <span class="bp-eyebrow">Secured Buildings</span>
-      <h1 class="bp-intro__title">Window Film Solutions for Philadelphia Secured Buildings</h1>
-    </div>
-    <div class="bp-intro__right">
-      <p class="bp-intro__lead">High security window film in Philadelphia provides top-level protection for secured buildings such as banks, police stations, data centers, and military bases. Our expert team handles large-scale projects requiring advanced security solutions. The film also reduces glare, improves energy efficiency, and enhances privacy. Whether you need bomb blast protection for a Bustleton data center or security film for a Nicetown-Tioga bank, this solution ensures your building remains safe and secure.</p>
-      <div class="bp-intro__ctas">
-        <a href="/contact/" class="bp-btn bp-btn--primary">Get a Free Quote</a>
-        <a href="/benefits/" class="bp-btn bp-btn--ghost">View Film Benefits</a>
+      <div class="of-hero__eyebrow">
+        <span>Secured Building Film</span>
+        <span class="of-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia, PA</span>
+        <span class="of-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Since 2008</span>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="bp-featured">
-  <div class="bp-featured__hd">
-    <span class="bp-eyebrow">Top Benefits</span>
-    <h2 class="bp-featured__title">Why Philadelphia secured buildings choose<br/>window film</h2>
-  </div>
+      <h1 class="of-hero__title">Secured Building Window Film<br class="of-hero__br"/> for Philadelphia</h1>
 
-  {featuredSections.map((a, i) => (
-    <div class={`bp-feat-row fade-in${i % 2 === 1 ? ' bp-feat-row--rev' : ''}`}>
-      <div class="bp-feat-row__img">
-        <img src={a.img} alt={a.alt} width="600" height="480" loading="lazy" />
-        <span class="bp-feat-row__pill">{a.heading}</span>
-      </div>
-      <div class="bp-feat-row__content">
-        <span class="bp-feat-row__num">{a.number}</span>
-        <h3 class="bp-feat-row__heading">{a.heading}</h3>
-        <p class="bp-feat-row__body">{a.body}</p>
-        <a href={a.href} class="bp-feat-row__cta">
-          {a.cta}
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+      <p class="of-hero__animated-line">
+        Defend your facility against
+        <FlipWords
+          words={["forced entry", "blast hazards", "ballistic threats", "smash-and-grab", "glass fragmentation"]}
+          staticText=""
+          class="of-hero__flip"
+        />.
+      </p>
+
+      <p class="of-hero__subtitle">
+        Security window film for Philadelphia secured buildings delays forced entry, retains glass fragments during blast events, and provides ballistic resistance for banks, data centers, police stations, and government facilities.
+      </p>
+
+      <div class="of-hero__cta">
+        <a href="/contact/" class="of-hero__btn-primary">Get a Free Security Assessment</a>
+        <a href="tel:2673947980" class="of-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
         </a>
       </div>
-    </div>
-  ))}
-</section>
 
-<section class="bp-why">
-  <div class="bp-why__hd">
-    <span class="bp-eyebrow">Why Window Film Philadelphia</span>
-    <h2 class="bp-why__title">Genuine partner in every aspect of your project</h2>
-  </div>
-  <div class="bp-why__grid">
-    {whyItems.map((item) => (
-      <div class="bp-why__item fade-in">
-        <div class="bp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-        <div class="bp-why__divider"></div>
-        <h4 class="bp-why__item-title">{item.title}</h4>
-        <p class="bp-why__item-sub">{item.sub}</p>
+      <div class="of-hero__stats-panel" aria-label="Key statistics">
+        <div class="of-hero__stats-inner">
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">15 mil</span>
+            <span class="of-hero__stat-label">Max Security Film Thickness</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">99%</span>
+            <span class="of-hero__stat-label">UV Rejection</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">500+</span>
+            <span class="of-hero__stat-label">Secured Installations</span>
+          </div>
+          <div class="of-hero__stat-divider" aria-hidden="true"></div>
+          <div class="of-hero__stat">
+            <span class="of-hero__stat-number">2008</span>
+            <span class="of-hero__stat-label">Serving Philadelphia Since</span>
+          </div>
+        </div>
       </div>
-    ))}
-  </div>
-</section>
 
-<section class="bp-faq">
-  <div class="bp-faq__hd">
-    <span class="bp-eyebrow">FAQ</span>
-    <h2 class="bp-faq__title">Common questions about high security window film</h2>
-  </div>
-  <div class="bp-faq__item bp-faq__item--open">
-    <div class="bp-faq__q">What is the difference between safety film, security film, and ballistic-resistant film? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Safety film holds glass together on impact to reduce injury from accidental breakage. Security film adds a thicker, more robust adhesive layer designed to slow or deter forced entry — effective against smash-and-grab and sustained impact. Ballistic-resistant film is the highest grade, engineered to resist bullets, shrapnel, and explosive blasts. The right solution depends on your threat profile, building type, and security requirements.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Can bomb blast film prevent injuries from explosive events? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Yes. Bomb blast mitigation film is specifically engineered to hold glass in place during an explosive event — preventing glass shards from becoming dangerous projectiles. The film absorbs blast energy and keeps the glass pane intact in its frame, significantly reducing the risk of life-threatening injuries to building occupants. This is a critical upgrade for government facilities, embassies, and high-occupancy commercial buildings.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Is ballistic-resistant film a replacement for ballistic glass? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Ballistic-resistant window film provides a cost-effective alternative to full ballistic glass replacement in many applications. It can be applied to existing glass to add impact resistance without the structural modifications required for ballistic glass. For facilities that need enhanced protection but cannot replace windows, film-based solutions offer a practical and affordable path to higher security standards.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Will security window film affect the appearance of my building? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Modern security films are designed to be virtually invisible or to provide a consistent reflective appearance that maintains a professional building aesthetic. We offer a range of visible light transmission levels and finishes — from clear safety film to tinted security film — so you can match your building's look while gaining the protection you need.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">Can window film be combined with access control and alarm systems? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">Absolutely. Security window film is a passive 24/7 layer of protection that works continuously without electronics or maintenance — complementing active alarm and access control systems rather than competing with them. In the event of an impact, film slows entry and holds glass in place, which can trigger sensors faster and buy critical response time for security personnel.</div>
-  </div>
-  <div class="bp-faq__item">
-    <div class="bp-faq__q">What warranty and certification comes with high-security installations? <span class="bp-faq__toggle">+</span></div>
-    <div class="bp-faq__a">All our security installations include a lifetime manufacturer warranty against peeling, bubbling, delamination, and color fade for the original property owner. We also provide a workmanship guarantee on every installation. For government, military, and financial facilities, we provide full documentation, compliance certifications, and chain-of-custody records as required by your security protocols.</div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<BrandLogos />
+  <div class="swt-body">
 
-<div class="bp-cta fade-in">
-  <h2>Ready to secure your <em>Philadelphia facility?</em></h2>
-  <div class="bp-cta__btns">
-    <a href="/contact/" class="bp-btn bp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="bp-btn bp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
+    <!-- ══ TRUST BAR ══ -->
+    <section class="swt-trust">
+      <div class="container">
+        <p class="swt-trust__label">Trusted by 500+ Philadelphia secured facilities — banks, data centers, police stations, and government buildings</p>
+        <BrandLogos />
+      </div>
+    </section>
 
-</div>
+    <!-- ══ WHAT IS SECURED BUILDING WINDOW FILM ══ -->
+    <section class="of-whatis">
+      <div class="of-whatis__container">
+        <div class="of-whatis__content">
+          <span class="of-whatis__eyebrow">What Is Security Window Film?</span>
+          <h2 class="of-whatis__title">Hardened Glass.<br/>Same Windows.</h2>
+          <p class="of-whatis__body">Security window film for Philadelphia secured buildings is a professionally applied polyester film that bonds directly to your existing glass — holding shattered fragments together on impact, delaying forced entry, and reducing blast hazards. No window replacement. No structural modifications. No downtime.</p>
+          <p class="of-whatis__body">Films are specified by thickness (4–15 mil), tested standards (<a href="https://www.astm.org/f1642-21" target="_blank" rel="noopener noreferrer">ASTM F1642 airblast loading</a>, UL 752 ballistic), and attachment method. For Philadelphia banks, data centers, and government facilities with documented threat assessments, security window film is one of the most cost-effective glass hardening upgrades available — a retrofit alternative to ballistic glass replacement.</p>
+          <div class="of-whatis__stats">
+            <div class="of-whatis__stat"><strong>8–15 mil</strong><span>Security film thickness range</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>10–15 yrs</strong><span>Manufacturer warranty</span></div>
+            <div class="of-whatis__stat-div"></div>
+            <div class="of-whatis__stat"><strong>Zero</strong><span>Window replacement needed</span></div>
+          </div>
+        </div>
+        <div class="of-whatis__image-wrap">
+          <img
+            src="/images/sb-whatis.jpg"
+            alt="Professional installer applying thick security window film to bank lobby glass in Philadelphia"
+            title="Professional installer applying thick security window film to bank lobby glass in Philadelphia"
+            class="of-whatis__image"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
 
+    <!-- ══ THE PROBLEM ══ -->
+    <section class="of-why" id="problem">
+      <div class="of-why__container">
+
+        <!-- Left: image + floating stat card -->
+        <div class="of-why__image-wrap">
+          <img
+            src="/images/sb-problem.jpg"
+            alt="Beautiful Center City Philadelphia federal building with large glass entry at golden hour — historic architecture with security vulnerabilities"
+            title="Beautiful Center City Philadelphia federal building with large glass entry at golden hour"
+            class="of-why__image"
+            loading="lazy"
+          />
+          <div class="of-why__stat-card">
+            <div class="of-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Glass is the #1 entry point in forced entry incidents</span>
+            </div>
+            <div class="of-why__stat-divider"></div>
+            <div class="of-why__stat-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Film costs a fraction of ballistic glass replacement</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: content -->
+        <div class="of-why__content">
+          <div class="of-why__eyebrow">Why It Matters</div>
+          <h2 class="of-why__headline">Philadelphia Secured Buildings Can't Afford Vulnerable Glass</h2>
+          <p class="of-why__intro">Banks, data centers, police stations, and federal facilities face documented physical security threats where glass is the most accessible entry point. Standard glass shatters on impact — creating immediate vulnerabilities for forced entry, smash-and-grab attacks, and blast events. Secured facilities need glass that holds together when attacked.</p>
+          <ul class="of-why__bullets">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Standard glass shatters in seconds — a break-in at a teller window or lobby entry creates immediate risk to staff and assets.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Flying glass fragments are among the leading causes of injury during blast events and forced entry attempts at secured facilities.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Government and financial facilities face compliance requirements for blast mitigation and forced entry resistance — standard glass does not meet these standards.
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Ballistic glass replacement requires structural modifications, permits, and extended construction — security film retrofits to existing glass in a fraction of the time.
+            </li>
+          </ul>
+          <div class="of-why__climate-facts">
+            <div class="of-why__climate-item">
+              <span class="of-why__climate-num">8–15 mil</span>
+              <span class="of-why__climate-label">Security film thickness for delayed entry (ASTM F1642)</span>
+            </div>
+            <div class="of-why__climate-item">
+              <span class="of-why__climate-num">UL 752</span>
+              <span class="of-why__climate-label">Ballistic-resistant material standard (tested systems only)</span>
+            </div>
+            <div class="of-why__climate-item">
+              <span class="of-why__climate-num">GSA TS01</span>
+              <span class="of-why__climate-label">Federal blast glazing performance classification</span>
+            </div>
+          </div>
+          <a href="/contact/" class="of-why__cta">
+            Get a free security assessment
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ BENTO BAND ══ -->
+    <section class="of-bento">
+      <div class="of-bento__header">
+        <h2 class="of-bento__title">Philadelphia Secured Buildings Face the Same Glass Threats. Security Film Addresses All of Them.</h2>
+        <p class="of-bento__sub">One installation. Multiple layers of protection. No window replacement required.</p>
+      </div>
+      <div class="of-bento__compact">
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3L5 8v7c0 5 4 9 9 10 5-1 9-5 9-10V8L14 3z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 14l3 3 5-5" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">Delay Forced Entry</h3>
+            <p class="of-bento-item__text">8–15 mil security film holds shattered glass in the frame, forcing intruders to sustain their attack instead of stepping through in seconds — buying critical response time.</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="9" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M14 7v2M14 19v2M7 14h2M19 14h2" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="14" r="3" fill="#7CB342" fill-opacity="0.15" stroke="#7CB342" stroke-width="1"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">Mitigate Blast Hazards</h3>
+            <p class="of-bento-item__text">ASTM F1642 and GSA TS01 context blast-rated film systems hold glass in place during explosive events — reducing flying glass projectile hazards for building occupants.</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="5" y="5" width="18" height="14" rx="2" stroke="#7CB342" stroke-width="1.5"/>
+            <path d="M9 23h10M14 19v4" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 11h12M8 14h8" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">Resist Ballistic Threats</h3>
+            <p class="of-bento-item__text">C-Bond BRS multi-layer PET systems with nanotechnology primer delay projectile penetration — a retrofit alternative to ballistic glass for high-security facilities.</p>
+          </div>
+        </div>
+
+        <div class="of-bento-item">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4c-1.5 4-5 6-9 6 0 7 4 12 9 14 5-2 9-7 9-14-4 0-7.5-2-9-6z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 14l3 3 5-6" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </svg>
+          <div>
+            <h3 class="of-bento-item__title">Add Solar + Privacy</h3>
+            <p class="of-bento-item__text">Security film with solar-control properties rejects heat and UV while one-way reflective options add daytime privacy for sensitive operations — security and comfort in one installation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ SECURED BUILDING SPACE TYPE GRID ══ -->
+    <section class="of-spaces">
+      <div class="of-spaces__container">
+
+        <div class="of-spaces__header">
+          <div class="of-spaces__eyebrow">Where We Install</div>
+          <h2 class="of-spaces__headline">The Right Security Film for Every Part of Your Facility</h2>
+          <p class="of-spaces__sub">Different areas of a secured building have different threat profiles. Here's how we approach each space in a Philadelphia secured facility.</p>
+        </div>
+
+        <div class="of-spaces__grid">
+
+          <!-- Card 1: Secured Entry & Lobby — hero -->
+          <div class="of-space-card of-space-card--hero">
+            <div class="of-space-card__hero-icon">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+                <rect x="4" y="10" width="36" height="24" rx="2" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M4 18h36M14 10v24M30 10v24" stroke="#7CB342" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="22" cy="22" r="3" fill="rgba(124,179,66,0.15)" stroke="#7CB342" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="of-space-card__hero-title">Secured Entry & Lobby</h3>
+            <p class="of-space-card__hero-text">Entry glass is the most accessible and most attacked vulnerability in any secured facility. Security film with attachment systems holds shattered glass in the frame, delaying forced entry at doors, sidelites, and vestibule glazing. Essential for bank lobbies, police station entries, and federal building checkpoints.</p>
+            <div class="of-space-card__pill">Forced Entry Delay + Fragment Retention</div>
+          </div>
+
+          <!-- Card 2: Data Center & Server Room — photo -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/sb-bento1.jpg"
+              alt="Modern data center interior with secured glass partitions and server racks — security window film for Philadelphia data centers"
+              title="Modern data center interior with secured glass partitions and server racks"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Data Centers</h3>
+              <p class="of-space-card__photo-text">Forced entry delay at perimeter glass and server room partitions for insurance compliance and critical infrastructure protection.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Teller Area & Cash Counting — photo -->
+          <div class="of-space-card of-space-card--photo">
+            <img
+              src="/images/sb-space1.jpg"
+              alt="Bank teller area with security glass partition in Philadelphia — security window film for financial institutions"
+              title="Bank teller area with security glass partition in Philadelphia"
+              width="400" height="480"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__photo-overlay"></div>
+            <div class="of-space-card__photo-content">
+              <h3 class="of-space-card__photo-title">Teller Areas</h3>
+              <p class="of-space-card__photo-text">Smash-and-grab resistance at teller glass, cash counting rooms, and ATM-adjacent glazing for Philadelphia financial institutions.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Police Station & Evidence Room — dark accent -->
+          <div class="of-space-card of-space-card--dark">
+            <div class="of-space-card__accent-line" aria-hidden="true"></div>
+            <div class="of-space-card__icon-row">
+              <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+                <path d="M5 28V12l12-7 12 7v16" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="12" y="18" width="10" height="10" rx="1" stroke="#7CB342" stroke-width="1.5"/>
+                <path d="M17 18v10" stroke="#7CB342" stroke-width="1.5" opacity="0.4"/>
+              </svg>
+            </div>
+            <h3 class="of-space-card__dark-title">Police Stations & Evidence Rooms</h3>
+            <p class="of-space-card__dark-text">Security film delays entry at booking areas, evidence rooms, and holding cell glazing. Clear safety film protects staff and detainees from glass fragment hazards during high-stress incidents.</p>
+            <div class="of-space-card__micro-pill">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 6.5L22 9l-5 5 1.18 7L12 18l-6.18 3L7 14 2 9l7-.5L12 2z" stroke="#7CB342" stroke-width="2" stroke-linejoin="round"/></svg>
+              Safety + Delayed Entry
+            </div>
+          </div>
+
+          <!-- Card 5: Federal Facility & Courthouse — dark pattern -->
+          <div class="of-space-card of-space-card--dark-pattern">
+            <div class="of-space-card__icon-row">
+              <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+                <path d="M17 4L5 10v14l12 6 12-6V10L17 4z" stroke="#7CB342" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 17l3 3 7-7" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="of-space-card__dark-title">Federal Facilities & Courthouses</h3>
+            <p class="of-space-card__dark-text">GSA and DoD context blast mitigation film systems for federal buildings, courthouses, and military installations. ASTM F1642 and GSA TS01 compliance documentation provided for your facility's security protocols.</p>
+            <div class="of-space-card__micro-pill">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 6.5L22 9l-5 5 1.18 7L12 18l-6.18 3L7 14 2 9l7-.5L12 2z" stroke="#7CB342" stroke-width="2" stroke-linejoin="round"/></svg>
+              Blast Mitigation + GSA Compliance
+            </div>
+          </div>
+
+          <!-- Card 6: Military & Critical Infrastructure — photo-badge -->
+          <div class="of-space-card of-space-card--badge">
+            <img
+              src="/images/sb-space3.jpg"
+              alt="Military facility exterior with secure perimeter — ballistic-resistant window film for Philadelphia critical infrastructure"
+              title="Military facility exterior with secure perimeter — ballistic-resistant window film"
+              width="520" height="360"
+              loading="lazy"
+              class="of-space-card__img"
+            />
+            <div class="of-space-card__badge-overlay"></div>
+            <div class="of-space-card__badge-content">
+              <div class="of-space-card__badge-pill">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                C-Bond BRS Available
+              </div>
+              <h3 class="of-space-card__badge-title">Military & Critical Infrastructure</h3>
+              <p class="of-space-card__badge-text">Ballistic-resistant film systems with C-Bond Secure primer for military installations, armories, and critical infrastructure. UL 752 tested system context documentation provided.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BENEFIT ROWS: BLAST + ENTRY + BALLISTIC + SOLAR ══ -->
+    <section class="of-benefits">
+      <div class="of-benefits__container">
+
+        <div class="of-benefits__header">
+          <div class="of-benefits__eyebrow">The Benefits</div>
+          <h2 class="of-benefits__headline">What Security Window Film Actually Does</h2>
+          <p class="of-benefits__intro">Blast mitigation, forced entry delay, ballistic resistance, and solar control — delivered in a single professional installation. No window replacement, no structural modifications, no downtime.</p>
+        </div>
+
+        <!-- Row 1: Blast Mitigation — image LEFT, text RIGHT -->
+        <div class="of-row">
+          <div class="of-row__image">
+            <img
+              src="/images/sb-gallery2.jpg"
+              alt="Attachment system installation anchoring security film to window frame for blast mitigation in Philadelphia secured building"
+              title="Attachment system installation anchoring security film to window frame for blast mitigation"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 01 · Blast Mitigation</div>
+            <h3 class="of-row__title">Hold glass in place during explosive events</h3>
+            <p class="of-row__body">Flying glass fragments are among the leading causes of injury during blast events. Blast mitigation film systems are engineered and tested in the context of ASTM F1642 airblast loading and GSA TS01 performance classification — they hold the glass pane in its frame during an explosive event, preventing shards from becoming dangerous projectiles.</p>
+            <blockquote class="of-pullquote">
+              <p class="of-pullquote__text">“Blast mitigation film reduces glass fragmentation hazards by holding the pane intact — but performance depends on the full glazing system, not just film thickness.”</p>
+              <cite class="of-pullquote__cite"><a href="https://www.cisa.gov/topics/physical-security" target="_blank" rel="noopener noreferrer">CISA — Physical Security Resources</a></cite>
+            </blockquote>
+            <p class="of-row__body">For government facilities, embassies, and high-occupancy commercial buildings, blast mitigation film is a critical upgrade. Performance depends on glass type, frame condition, attachment method, and installation quality — we assess all factors during your site evaluation. See our <a href="/benefits/blast-mitigation/">blast mitigation window film guide</a> for Philadelphia facilities.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                ASTM F1642 airblast loading test method context
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                GSA TS01 federal blast glazing performance classification context
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Reduces flying glass projectile hazards for building occupants
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 2: Forced Entry Delay — text LEFT, image RIGHT -->
+        <div class="of-row of-row--rev">
+          <div class="of-row__image">
+            <img
+              src="/images/sb-gallery1.jpg"
+              alt="Security film edge detail on thick commercial glass showing fragment retention for Philadelphia secured building"
+              title="Security film edge detail on thick commercial glass showing fragment retention"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 02 · Forced Entry Delay</div>
+            <h3 class="of-row__title">Delay intruders and buy critical response time</h3>
+            <p class="of-row__body">Standard glass shatters in seconds — a smash-and-grab at a teller window or lobby entry creates immediate vulnerability. Security film (8–15 mil) holds the broken pane together, forcing intruders to sustain their attack instead of stepping through. This delay — often the difference between a successful break-in and a prevented one — gives security personnel and alarm systems time to respond.</p>
+            <p class="of-row__body">Attachment systems that anchor the filmed glass to the frame further increase the delay. The <a href="/benefits/safety-and-security/">safety and security film</a> we install is certified to ANSI Z97.1 safety glazing standards and tested in the context of ASTM F1642. For banks, police stations, and secured facilities, it is a practical, insurance-eligible security upgrade at a fraction of laminated glass replacement cost.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                8–15 mil security film — delays sustained forced entry attempts
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Attachment systems anchor filmed glass to frame for maximum delay
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                May qualify for property insurance premium reduction — ask your broker
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 3: Ballistic Resistance — image LEFT, text RIGHT -->
+        <div class="of-row">
+          <div class="of-row__image">
+            <img
+              src="/images/sb-gallery3.jpg"
+              alt="Multi-layer ballistic-resistant window film visible edge showing PET film stack for Philadelphia high-security facility"
+              title="Multi-layer ballistic-resistant window film visible edge showing PET film stack"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 03 · Ballistic Resistance</div>
+            <h3 class="of-row__title">Resist projectile threats with C-Bond BRS systems</h3>
+            <p class="of-row__body">For facilities facing the highest threat levels, ballistic-resistant film systems provide a retrofit alternative to ballistic glass. The C-Bond BRS (Ballistic Resistant System) pairs multi-layer PET security film with C-Bond Secure nanotechnology primer — a mounting solution that fills microscopic glass defects and improves adhesion, clarity, and cure behavior.</p>
+            <p class="of-row__body">The combined system is designed to resist projectile penetration and is described with tested rating context such as <a href="/benefits/ballistic-resistance/">UL 752 ballistic-resistant material standards</a>. It is not bulletproof glass — but for facilities that need enhanced protection without full glass replacement, film-based ballistic systems offer a practical and cost-effective path to higher security standards.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                C-Bond BRS: multi-layer PET film + C-Bond Secure nanotechnology primer
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                UL 752 ballistic-resistant material standard context
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Retrofit to existing glass — no structural modifications required
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 4: Solar Control & Privacy — text LEFT, image RIGHT -->
+        <div class="of-row of-row--rev">
+          <div class="of-row__image">
+            <img
+              src="/images/sb-gallery4.jpg"
+              alt="C-Bond nanotechnology primer application on glass surface for enhanced adhesion and security in Philadelphia secured facility"
+              title="C-Bond nanotechnology primer application on glass surface for enhanced adhesion and security"
+              width="680" height="480" loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="of-row__text">
+            <div class="of-row__eyebrow">Benefit 04 · Solar Control & Privacy</div>
+            <h3 class="of-row__title">Security plus comfort in one installation</h3>
+            <p class="of-row__body">Security film doesn't have to be just about protection. Solar-control security films combine impact resistance with heat rejection, UV block, and glare reduction — making them ideal for secured buildings with occupied spaces like offices, visitor centers, and staff areas. Many security films also reject up to 99% of UV radiation, protecting equipment, documents, and interior furnishings.</p>
+            <p class="of-row__body">For sensitive operations that require visual privacy, one-way reflective security film provides daytime privacy from the exterior while preserving outward views for those inside. Tinted and reflective options maintain a professional, consistent building aesthetic. Many security films also reject up to 99% of UV, contributing to <a href="/benefits/uv-blocking-window-film-philadelphia/">UV protection</a> for equipment and documents. We offer a range of visible light transmission levels and finishes to match your facility's security and operational requirements.</p>
+            <ul class="of-row__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Solar-control security film: heat rejection + UV block + impact resistance
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                One-way reflective options for daytime privacy at sensitive operations
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#7CB342" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Clear, tinted, and reflective versions maintain professional facility appearance
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ FILM TYPES SLIDER ══ -->
+    <section class="of-ftype" id="ofFilmTypes">
+      <div class="of-ftype__track" id="ofFtypeTrack">
+
+        <!-- SLIDE 01: Blast Mitigation -->
+        <div class="of-ftype__slide of-ftype-active" data-slide="0">
+          <img src="/images/sb-bento2.jpg" alt="Blast mitigation security window film on Philadelphia government building lobby glass" title="Blast mitigation security window film on Philadelphia government building lobby glass" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">01</div>
+            <h2 class="of-ftype__title">Blast Mitigation Film.
+Glass Stays. Hazards Don't.</h2>
+            <p class="of-ftype__desc">ASTM F1642 and GSA TS01 context blast-rated film systems hold glass in its frame during explosive events, preventing shards from becoming dangerous projectiles. Essential for federal buildings, embassies, and high-occupancy commercial facilities in Philadelphia. Available across 3M ScotchShield, Solar Gard Armorcoat, and Madico SafetyShield.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">What standards apply to blast mitigation film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>ASTM F1642 is the airblast loading test method for glazing systems. GSA TS01 is the federal blast glazing performance classification. We specify film systems tested in the context of these standards and provide documentation for your compliance file. Performance depends on the full glazing system — film, glass, frame, and attachment.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does blast film require an attachment system?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>For blast mitigation applications, attachment systems that anchor the filmed glass to the frame are strongly recommended — they keep the filmed pane in the opening during a blast event rather than allowing it to push out. We assess your frame type and include attachment recommendations in every blast mitigation proposal.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can blast film be installed on existing glass?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Blast mitigation film is a retrofit solution applied to existing glass. We assess glass type, age, frame condition, and compatibility before specifying a system. For historic government buildings with single-pane glass where replacement is not feasible, blast film provides a non-destructive security upgrade.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get a blast mitigation assessment →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 02: Security / Anti-Intrusion -->
+        <div class="of-ftype__slide" data-slide="1">
+          <img src="/images/sb-case.jpg" alt="Security window film on Philadelphia financial district bank tower glass" title="Security window film on Philadelphia financial district bank tower glass" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">02</div>
+            <h2 class="of-ftype__title">Security Film.
+Entry Delayed. Threats Stopped.</h2>
+            <p class="of-ftype__desc">8–15 mil security film holds shattered glass in the frame on impact, delaying forced entry and smash-and-grab attempts. The 3M ScotchShield Ultra S800 meets ANSI Z97.1 safety glazing standards. For Philadelphia banks, police stations, and retail storefronts, security film is a practical, insurance-eligible upgrade at a fraction of laminated glass cost.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How long does security film delay entry?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Security film doesn't make glass unbreakable — it changes how broken glass behaves. Instead of shattering in seconds, the filmed pane stays together, forcing an intruder to sustain their attack. With an attachment system anchoring the film to the frame, the delay increases further. The exact delay depends on film thickness, glass type, frame condition, and attachment method.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">What thickness do I need for delayed entry?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Security film for delayed entry starts at 8 mil and goes up to 15 mil for high-risk applications. Thicker film generally provides more impact resistance, but the right choice depends on glass type, frame strength, attachment method, and threat level. We assess all factors during your site evaluation and recommend the optimal specification.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does security film qualify for insurance reductions?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Some commercial property insurers offer premium reductions for documented security upgrades. Security window film is a physical hardening measure that your broker may recognize. We provide written documentation of the film type, certification standards met, and installation date for your records.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get a security film estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 03: Ballistic-Resistant System -->
+        <div class="of-ftype__slide" data-slide="2">
+          <img src="/images/sb-space3.jpg" alt="Ballistic-resistant window film system on Philadelphia military facility exterior glass" title="Ballistic-resistant window film system on Philadelphia military facility exterior glass" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">03</div>
+            <h2 class="of-ftype__title">Ballistic-Resistant System.
+Retrofit. Not Bulletproof.</h2>
+            <p class="of-ftype__desc">The C-Bond BRS (Ballistic Resistant System) pairs multi-layer PET security film with C-Bond Secure nanotechnology primer. The primer fills microscopic glass defects and improves adhesion — the combined system delays and resists projectile penetration. UL 752 tested system context. A retrofit alternative to ballistic glass for military installations, armories, and critical infrastructure.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Is ballistic-resistant film bulletproof?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>No. Ballistic-resistant film delays and resists projectile penetration — it is not bulletproof glass. Only a tested system can be described by a specific resistance rating such as UL 752. Standard security film should never be described as stopping bullets. We verify current C-Bond documentation and test data before specifying any ballistic system.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">What is C-Bond Secure primer?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>C-Bond Secure is a nanotechnology mounting primer applied to glass before film installation. It fills microscopic glass defects and improves adhesion, clarity, and cure behavior. It is not a stand-alone ballistic film — it supports the multi-layer PET security film system as part of the C-Bond BRS.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">When is a ballistic system appropriate?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Ballistic-resistant film systems are specified for facilities facing documented projectile threat levels — military installations, armories, law enforcement facilities, and critical infrastructure. A threat assessment is required before selecting a ballistic system. We work with your security team to match the system to your threat profile and provide test documentation.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Discuss ballistic-resistant options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 04: Solar Control Security -->
+        <div class="of-ftype__slide" data-slide="3">
+          <img src="/images/sb-cta-bg.jpg" alt="Solar control security window film on Philadelphia secured building with skyline view" title="Solar control security window film on Philadelphia secured building with skyline view" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">04</div>
+            <h2 class="of-ftype__title">Solar Control Security.
+Protection Plus Comfort.</h2>
+            <p class="of-ftype__desc">Security film with solar-control properties combines impact resistance with heat rejection, UV block, and glare reduction. Ideal for secured buildings with occupied spaces — offices, visitor centers, and staff areas. Many security films reject up to 99% of UV radiation, protecting equipment, documents, and interior furnishings while maintaining occupant comfort.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can one film do security and solar control?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Solar-control security films combine a thick PET security base with solar-rejecting properties. They provide fragment retention and delayed entry while also rejecting heat and UV. For secured buildings with occupied spaces, this eliminates the need for separate security and solar installations.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does solar control affect security performance?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>No. The solar-control properties are integrated into the film without reducing its impact resistance. The film thickness and adhesive strength that provide security performance are maintained. Solar-control security films are available in clear, tinted, and reflective versions to match your facility's aesthetic and operational requirements.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can it also provide privacy?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Reflective solar-control security films provide one-way daytime privacy — the exterior appears reflective during daylight hours while those inside maintain outward views. This is ideal for sensitive operations, evidence rooms, and secure office areas. We offer a range of reflectance levels to match your privacy requirements.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Explore solar-control security options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 05: Privacy / One-Way Mirror -->
+        <div class="of-ftype__slide" data-slide="4">
+          <img src="/images/sb-space2.jpg" alt="One-way privacy security window film on Philadelphia courthouse lobby glass" title="One-way privacy security window film on Philadelphia courthouse lobby glass" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">05</div>
+            <h2 class="of-ftype__title">Privacy Security Film.
+Daytime Concealment.</h2>
+            <p class="of-ftype__desc">One-way reflective security film provides daytime privacy for sensitive operations — evidence rooms, secure offices, and confidential processing areas. The exterior appears reflective during daylight hours while those inside maintain full outward views. Combines visual privacy with fragment retention and forced entry delay.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does one-way privacy work at night?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>One-way mirror film relies on a brightness differential — it reverses at night when interior lights are on. For 24/7 privacy in areas used after dark, frosted security film is available. We assess your operational hours and recommend the right privacy solution for each area of your facility.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can privacy film still provide security?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Privacy security films are built on the same thick PET base as clear security film — the reflective or tinted layer is integrated without reducing impact resistance. You get fragment retention, delayed entry, and visual privacy in one installation.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Does it affect the building's appearance?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Reflective security film gives the building a consistent, professional mirrored appearance from the exterior. Clear security film is virtually invisible. We bring samples to every site visit so you can see exactly how each option looks on your glass before committing.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Explore privacy security options →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 06: Anti-Graffiti -->
+        <div class="of-ftype__slide" data-slide="5">
+          <img src="/images/sb-bento1.jpg" alt="Anti-graffiti security window film protecting accessible exterior glass on Philadelphia secured facility" title="Anti-graffiti security window film protecting accessible exterior glass on Philadelphia secured facility" class="of-ftype__bg" />
+          <div class="of-ftype__overlay"></div>
+          <div class="of-ftype__content">
+            <div class="of-ftype__step">06</div>
+            <h2 class="of-ftype__title">Anti-Graffiti Film.
+Protect. Peel. Replace.</h2>
+            <p class="of-ftype__desc">Anti-graffiti film is a clear sacrificial layer applied to accessible exterior glass, lobby glazing, and ground-floor windows. When vandalized — scratched, acid-etched, or spray-painted — only the film is replaced, not the glass. Essential for Philadelphia secured facilities in high foot-traffic areas and transit-adjacent locations.</p>
+            <div class="of-ftype__faq">
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">How is anti-graffiti film different from security film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Anti-graffiti film is optically clear with no tint or security properties — its sole purpose is to protect the glass surface from vandalism. It is applied as a sacrificial layer designed to be peeled off and replaced. Security film, by contrast, is thicker and designed for impact resistance and fragment retention. The two can be layered for comprehensive protection.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can it be applied to metal and mirrors?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Anti-graffiti film works on polished stainless steel, mirrors, and architectural metal surfaces in addition to glass. Elevator interiors, restroom mirrors, and lobby feature walls are common applications in Philadelphia secured facilities.</div>
+              </div>
+              <div class="of-ftype__faq-item">
+                <button class="of-ftype__faq-q" aria-expanded="false">Can it be combined with security film?<span class="of-ftype__faq-icon" aria-hidden="true">+</span></button>
+                <div class="of-ftype__faq-a" hidden>Yes. Anti-graffiti film can be applied as an outer sacrificial layer over security film for comprehensive protection — the anti-graffiti layer handles vandalism while the security layer provides impact resistance and fragment retention. We recommend this combination for ground-floor glass in high-traffic areas.</div>
+              </div>
+            </div>
+            <a href="/contact/" class="of-ftype__cta">Get an anti-graffiti estimate →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right nav -->
+      <nav class="of-ftype__nav" aria-label="Film type navigation">
+        <button class="of-ftype__nav-item of-ftype__nav-item--active" data-ofnav="0">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Blast Mitigation</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="1">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Security</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="2">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Ballistic (C-Bond)</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="3">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Solar Security</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="4">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Privacy</span>
+        </button>
+        <button class="of-ftype__nav-item" data-ofnav="5">
+          <span class="of-ftype__nav-line"></span>
+          <span class="of-ftype__nav-label">Anti-Graffiti</span>
+        </button>
+      </nav>
+
+      <!-- Arrows -->
+      <button class="of-ftype__arrow of-ftype__arrow--prev" id="ofFtypePrev" aria-label="Previous film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="of-ftype__arrow of-ftype__arrow--next" id="ofFtypeNext" aria-label="Next film type">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Progress bar -->
+      <div class="of-ftype__progress"><div class="of-ftype__progress-bar" id="ofFtypeProgressBar"></div></div>
+
+    </section>
+
+    <!-- ══ FEATURED PROJECT ══ -->
+    <section class="of-project" id="featuredProject">
+      <div class="of-project__inner">
+
+        <div class="of-project__image-col">
+          <img
+            src="/images/sb-case.jpg"
+            alt="Center City Philadelphia financial institution headquarters with security window film installed — protected teller glass and lobby entry"
+            title="Center City Philadelphia financial institution headquarters with security window film installed"
+            class="of-project__img"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+          <div class="of-project__stats-strip">
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">3</span>
+              <span class="of-project__stat-label">Entry Points Hardened</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">8 mil</span>
+              <span class="of-project__stat-label">Security Film Specified</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">0</span>
+              <span class="of-project__stat-label">Operational Disruption Days</span>
+            </div>
+            <div class="of-project__stat-div"></div>
+            <div class="of-project__stat">
+              <span class="of-project__stat-num">$0</span>
+              <span class="of-project__stat-label">Glass Replacement Cost</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="of-project__text-col">
+          <div class="of-project__eyebrow">Featured Project</div>
+          <h2 class="of-project__title">Center City Financial HQ.<br/>Full-Security Retrofit.</h2>
+
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Building Type</span>
+            <span class="of-project__detail-val">Financial institution headquarters, Center City Philadelphia — street-level teller glass, lobby entries, and data center windows</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Challenge</span>
+            <span class="of-project__detail-val">Street-level teller glass vulnerable to smash-and-grab. Lobby glazing needed blast mitigation per federal interagency security context. Data center windows required forced entry delay for insurance compliance.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Film Specified</span>
+            <span class="of-project__detail-val">3M ScotchShield Ultra safety film (8 mil) on teller glass with wet-glaze attachment system. Solar Gard Armorcoat 8-mil on lobby entries. C-Bond Secure primer on data center glazing for enhanced adhesion and glass strength.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Scope</span>
+            <span class="of-project__detail-val">Three entry points and data center perimeter glazing. Installation phased during off-hours to maintain 24/7 facility operations. Full documentation package provided including film specifications, test context, and chain-of-custody records.</span>
+          </div>
+          <div class="of-project__detail">
+            <span class="of-project__detail-label">Result</span>
+            <span class="of-project__detail-val">Measurable delay in penetration testing at entry points. Fragment retention validated per ASTM F1642 context. Insurance compliance documentation provided. Zero operational disruption during phased installation — facility remained fully operational throughout.</span>
+          </div>
+
+          <a href="/contact/" class="of-project__cta">Discuss your facility →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ GALLERY ══ -->
+    <section class="of-gallery" id="ofGallery">
+      <div class="of-gallery__header">
+        <p class="of-gallery__eyebrow">Our Work in Philadelphia</p>
+        <h2 class="of-gallery__title">Security Window Film<br/>Installed Across Philadelphia</h2>
+        <p class="of-gallery__sub">From Center City bank towers to neighborhood police precincts — every installation is specified to the facility's threat profile and executed by our certified Philadelphia security team.</p>
+      </div>
+      <div class="of-gallery__grid">
+
+        <div class="of-gallery__panel of-gallery__panel--tall">
+          <img src="/images/sb-case.jpg" alt="Philadelphia financial district bank tower with security window film at dusk — protected teller glass and lobby entry" title="Philadelphia financial district bank tower with security window film at dusk" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Center City Bank HQ</span>
+            <span class="of-gallery__label-sub">3M ScotchShield · 8 mil · Teller + Lobby</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/sb-gallery1.jpg" alt="Security film edge detail on thick commercial glass showing fragment retention for Philadelphia secured building" title="Security film edge detail on thick commercial glass" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Fragment Retention</span>
+            <span class="of-gallery__label-sub">Security Film · Impact Resistance</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/sb-gallery2.jpg" alt="Attachment system installation anchoring security film to window frame for blast mitigation in Philadelphia" title="Attachment system installation for blast mitigation" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Attachment System</span>
+            <span class="of-gallery__label-sub">Blast Mitigation · Frame Anchoring</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/sb-gallery3.jpg" alt="Multi-layer ballistic-resistant window film visible edge showing PET film stack for Philadelphia high-security facility" title="Multi-layer ballistic-resistant window film edge detail" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Ballistic System</span>
+            <span class="of-gallery__label-sub">C-Bond BRS · Multi-Layer PET</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/sb-bento2.jpg" alt="Police station lobby interior with secured glass entry vestibule and security window film in Philadelphia" title="Police station lobby with secured glass entry vestibule" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Police Station</span>
+            <span class="of-gallery__label-sub">Security Film · Delayed Entry</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/sb-gallery4.jpg" alt="C-Bond nanotechnology primer application on glass surface for enhanced adhesion and security in Philadelphia" title="C-Bond nanotechnology primer application on glass surface" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">C-Bond Primer</span>
+            <span class="of-gallery__label-sub">Nanotechnology · Enhanced Adhesion</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel">
+          <img src="/images/sb-whatis.jpg" alt="Professional installer applying thick security window film to bank lobby glass in Philadelphia" title="Professional installer applying security window film to bank lobby glass" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Professional Installation</span>
+            <span class="of-gallery__label-sub">Certified Technicians · Philly-Based</span>
+          </div>
+        </div>
+
+        <div class="of-gallery__panel of-gallery__panel--wide">
+          <img src="/images/sb-cta-bg.jpg" alt="Philadelphia skyline at night with secured buildings lit up — security window film protects facilities across the city" title="Philadelphia skyline at night with secured buildings lit up" class="of-gallery__img" loading="lazy" />
+          <div class="of-gallery__overlay"></div>
+          <div class="of-gallery__label">
+            <span class="of-gallery__label-title">Across the City</span>
+            <span class="of-gallery__label-sub">Banks · Data Centers · Government · Police</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ STATS BAR ══ -->
+    <section class="of-stats">
+      <div class="of-stats__inner">
+        <div class="of-stats__item">
+          <span class="of-stats__num">15 mil</span>
+          <span class="of-stats__label">Max Film Thickness<br/><small>Security film for high-risk applications</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">99%</span>
+          <span class="of-stats__label">UV Rejection<br/><small>Protects equipment, documents, interiors</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">$0</span>
+          <span class="of-stats__label">Glass Replacement Cost<br/><small>Film retrofits to existing windows</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">500+</span>
+          <span class="of-stats__label">Secured Installs<br/><small>Across Greater Philadelphia</small></span>
+        </div>
+        <div class="of-stats__div"></div>
+        <div class="of-stats__item">
+          <span class="of-stats__num">15 yr</span>
+          <span class="of-stats__label">Commercial Warranty<br/><small>3M ScotchShield series</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROCESS (es-process-split pattern) ══ -->
+    <section class="es-process-split">
+      <div class="es-process-split__container">
+        <div class="es-process-split__content">
+          <div class="es-process-split__eyebrow">How It Works</div>
+          <h2 class="es-process-split__title">From First Call to Finished Installation</h2>
+          <div class="es-accordion">
+
+            <details class="es-accordion__item" open>
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">01</span>
+                <span class="es-accordion__label">Free Site Assessment &amp; Consultation</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>A certified specialist visits your building to assess glass type, window orientation, existing coatings, and your goals — energy savings, glare control, privacy, security, or all four. We measure square footage, identify any IGU compatibility issues, and bring physical film samples so you can see exactly how each option looks on your glass before committing. No obligation.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">02</span>
+                <span class="es-accordion__label">Specification &amp; Written Proposal</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>You receive a written proposal specifying the exact film by manufacturer, SKU, and verified performance data — VLT, SHGC, UV block, and warranty terms. We include a full scope of work and schedule around your operations. Commercial buildings often need evening or weekend installation to avoid tenant disruption; we accommodate that.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">03</span>
+                <span class="es-accordion__label">Professional Installation</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>Our factory-trained team applies film using professional-grade tools — glass cleaned, prepped, and inspected before any film is cut. No bubbles, no lifting edges. We work floor by floor and leave the space spotless at the end of each shift.</p>
+              </div>
+            </details>
+
+            <details class="es-accordion__item">
+              <summary class="es-accordion__trigger">
+                <span class="es-accordion__number">04</span>
+                <span class="es-accordion__label">Walk-Through &amp; Warranty</span>
+                <span class="es-accordion__icon">+</span>
+              </summary>
+              <div class="es-accordion__body">
+                <p>We walk every window with you before we consider the job done. Every installation is backed by our labor warranty, and manufacturer warranties — up to 15 years commercial on 3M Prestige — transfer directly to the building owner. We provide written documentation of the film specification, installation date, and warranty terms.</p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+        <div class="es-process-split__image-wrapper">
+          <img
+            src="/images/office-process-consult.jpg"
+            alt="Window film specialist consulting with Philadelphia office property manager — site assessment, film samples, professional evaluation"
+            class="es-process-split__image"
+            width="848" height="1264" loading="lazy" decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS (cam-tcard pattern) ══ -->
+    <section class="cam-testimonials">
+      <div class="cam-testimonials__header">
+        <span class="cam-testimonials__eyebrow">Client Stories</span>
+        <h2 class="cam-testimonials__title">What Philadelphia Security Directors Say</h2>
+        <p class="cam-testimonials__sub">Real results from secured facilities across Greater Philadelphia.</p>
+      </div>
+      <div class="cam-testimonials__grid">
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/sb-testimonial1.jpg" alt="Bank security director in modern Philadelphia office reviewing building plans — security window film client" title="Bank security director in modern Philadelphia office reviewing building plans" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"After a smash-and-grab at a neighboring bank, we knew we had to harden our teller glass. The 3M ScotchShield installation gave us measurable delay in penetration testing. The documentation package satisfied our insurance compliance requirements. Zero disruption to banking operations during installation."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Marcus T.</p>
+              <p class="cam-tcard__role">Director of Security — Center City Financial Institution</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/sb-testimonial2.jpg" alt="Facility manager inspecting installed security film on commercial glass in Philadelphia secured building" title="Facility manager inspecting installed security film on commercial glass" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"We manage a data center that required forced entry delay at perimeter glass for insurance compliance. The C-Bond Secure primer combined with security film gave us the documentation we needed. The team worked around our 24/7 operations — no downtime, no compromised security during installation."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Jennifer L.</p>
+              <p class="cam-tcard__role">Facility Manager — Northeast Philadelphia Data Center</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cam-tcard">
+          <div class="cam-tcard__img-wrap">
+            <img src="/images/sb-testimonial3.jpg" alt="Federal building maintenance supervisor in uniform standing in modern building lobby in Philadelphia" title="Federal building maintenance supervisor in modern building lobby" class="cam-tcard__img" loading="lazy" />
+          </div>
+          <div class="cam-tcard__body">
+            <div class="cam-tcard__stars">★★★★★</div>
+            <p class="cam-tcard__quote">"Our federal facility needed blast mitigation film that met GSA context requirements. The team provided full test documentation and chain-of-custody records. The attachment system installation was clean and professional. Our compliance officer was satisfied with every detail of the specification package."</p>
+            <div class="cam-tcard__meta">
+              <p class="cam-tcard__name">Robert K.</p>
+              <p class="cam-tcard__role">Maintenance Supervisor — Federal Facility, Old City</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ PHILADELPHIA AREAS (ip-local + cam-neighborhoods pattern) ══ -->
+    <section class="ip-local">
+      <div class="ip-local__grid">
+        <div class="ip-local__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97443.81289285327!2d-75.2272!3d39.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e099!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            title="Window Film Philadelphia secured building service area map"
+          ></iframe>
+        </div>
+        <div class="ip-local__content">
+          <span class="cam-testimonials__eyebrow">Service Area</span>
+          <h2>Security Window Film Across Greater Philadelphia</h2>
+          <p>Our installation crews are Philadelphia-based. We serve secured facilities throughout the city and surrounding counties — no travel surcharge within the service area.</p>
+          <div class="cam-neighborhoods">
+            <div class="cam-nh"><span class="cam-nh__name">Center City</span><span class="cam-nh__desc">Banks, financial headquarters, and federal office buildings. Most of our high-security work happens here — teller glass hardening, lobby blast mitigation, and data center forced entry delay for financial institutions along Market Street.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Old City</span><span class="cam-nh__desc">Historic federal buildings with preservation constraints and security mandates. Security film retrofits to existing single-pane glass without the structural modifications that preservation codes prohibit.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">North Philadelphia</span><span class="cam-nh__desc">Police districts, evidence facilities, and neighborhood municipal security centers. Security film delays entry at booking areas and holding cell glazing for law enforcement facilities.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">West Philadelphia</span><span class="cam-nh__desc">University research facilities with controlled access and federal grant-funded operations. Security film provides perimeter hardening and fragment retention for sensitive research spaces.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Northeast Philadelphia</span><span class="cam-nh__desc">Data centers, distribution hubs, and critical infrastructure with perimeter security requirements. Forced entry delay film at perimeter glazing for insurance compliance and operational continuity.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">South Philadelphia</span><span class="cam-nh__desc">Precinct houses, training facilities, and municipal service buildings. Security film hardens accessible glass at entry points and evidence storage areas for law enforcement operations.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">Germantown/Mt. Airy</span><span class="cam-nh__desc">Historic civic buildings with aging single-pane glass needing security retrofit. Security film provides a non-destructive upgrade where glass replacement is not feasible in historic structures.</span></div>
+            <div class="cam-nh"><span class="cam-nh__name">University City</span><span class="cam-nh__desc">Research labs and federal grant-funded facilities with access control requirements. Security film integrates with existing layered security plans — access control, alarms, and physical hardening.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RESOURCES (res-section pattern) ══ -->
+    <section class="res-section">
+      <div class="res-section__inner">
+        <div class="res-section__image-col">
+          <img
+            src="/images/sb-whatis.jpg"
+            alt="Security window film specialist reviewing 3M ScotchShield and C-Bond documentation in a Philadelphia secured facility"
+            title="Security window film specialist reviewing 3M ScotchShield and C-Bond documentation"
+            class="res-section__img"
+            loading="lazy"
+          />
+        </div>
+        <div class="res-section__content-col">
+          <p class="res-section__eyebrow">Manufacturer Resources</p>
+          <h2 class="res-section__title">Security Window Film — Case Studies & Spec Data</h2>
+          <p class="res-section__body">Download official case studies and technical data sheets from 3M, Solar Gard, Madico, and C-Bond. These documents contain verified security performance data, blast mitigation test context, and product specifications for the security films we install in Philadelphia secured facilities.</p>
+          <ul class="res-section__list">
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-3m-scotchshield-safety-security-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M ScotchShield Ultra Series — Safety & Security Window Film Technical Data</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-3m-scotchshield-blast-mitigation-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M ScotchShield — Blast Mitigation Safety Spec (ASTM F1642 context)</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-3m-scotchshield-armed-forces-case-study-philadelphia.pdf" target="_blank" rel="noopener noreferrer">3M ScotchShield — Armed Forces Service Center Case Study</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-solar-gard-armorcoat-safety-security-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">Solar Gard Armorcoat — Safety & Security Window Film Specs</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-c-bond-brs-ballistic-resistant-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">C-Bond BRS — Ballistic Resistant System Specifications</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-madico-ballistic-resistance-statement-philadelphia.pdf" target="_blank" rel="noopener noreferrer">Madico — Safety & Security Film Bullet Resistance Statement</a>
+            </li>
+            <li class="res-section__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="/resources/secured-buildings-window-film-madico-safetyshield-security-spec-philadelphia.pdf" target="_blank" rel="noopener noreferrer">Madico SafetyShield — Security Window Film Specifications</a>
+            </li>
+          </ul>
+          <a href="/contact/" class="res-section__cta">Request a full security spec package →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ (swt-faq pattern) ══ -->
+    <section class="swt-faq" id="faq">
+      <div class="container">
+        <div class="swt-faq__layout">
+          <div class="swt-faq__header fade-in">
+            <span class="swt-eyebrow">Questions</span>
+            <h2 class="swt-h2">Frequently Asked Questions</h2>
+            <p>Honest answers about security window film for Philadelphia secured buildings from specialists with over 15 years of security installation experience.</p>
+            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
+          </div>
+          <div class="swt-faq__list fade-in">
+            {faqItems.map((item) => (
+              <div class="swt-faq__item">
+                <div class="swt-faq__q">
+                  <span>{item.question}</span>
+                  <span class="swt-faq__toggle">+</span>
+                </div>
+                <div class="swt-faq__a">
+                  <p set:html={item.answer}></p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ GEO BLOCK ══ -->
+    <div class="sb-geo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+      <h2>Secured Building Window Film Philadelphia — Security Installation</h2>
+      <p>Window Film Philadelphia installs security window film for secured buildings throughout Greater Philadelphia including Center City, Old City, North Philadelphia, West Philadelphia, Northeast Philadelphia, South Philadelphia, Germantown, and University City. We are a 3M authorized commercial window film dealer serving Philadelphia banks, data centers, police stations, federal facilities, military installations, and government buildings. Our certified installation team applies blast mitigation, security, ballistic-resistant, privacy, and anti-graffiti window film to commercial glass of all types including teller glass, lobby entries, data center windows, evidence room glazing, and historic single-pane windows. Security window film in Philadelphia delays forced entry through 8–15 mil film with attachment systems, retains glass fragments during blast events per ASTM F1642 and GSA TS01 context, and provides ballistic resistance through C-Bond BRS multi-layer PET systems with nanotechnology primer. Philadelphia secured building window film installations are backed by manufacturer warranties of up to 15 years and our own labor warranty. Contact Window Film Philadelphia for a free security assessment and written proposal.</p>
+      <ul>
+        <li>secured building window film for Philadelphia</li>
+        <li>bank window film Philadelphia</li>
+        <li>data center window film Philadelphia</li>
+        <li>police station window film Philadelphia</li>
+        <li>federal building window film Philadelphia</li>
+        <li>blast mitigation window film Philadelphia</li>
+        <li>ballistic resistant window film Philadelphia</li>
+        <li>security window film Philadelphia</li>
+        <li>C-Bond BRS window film Philadelphia</li>
+        <li>3M ScotchShield security film Philadelphia</li>
+        <li>forced entry delay window film Philadelphia</li>
+        <li>government building window film Philadelphia</li>
+      </ul>
+    </div>
+
+    <!-- ══ CTA BANNER (priv-cinematic-cta pattern) ══ -->
+    <section class="priv-cinematic-cta">
+      <div class="priv-cinematic-cta__media" aria-hidden="true" style="background-image: url('/images/sb-cta-bg.jpg');"></div>
+      <div class="priv-cinematic-cta__overlay" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__vignette" aria-hidden="true"></div>
+      <div class="priv-cinematic-cta__content">
+        <h2 class="priv-cinematic-cta__title">Ready to Secure Your Philadelphia Facility?</h2>
+        <p class="priv-cinematic-cta__text">Get a free security assessment — we'll evaluate your glass, your threat profile, and your compliance requirements, and give you a written proposal with verified test data and specification documentation. No obligation, no pressure.</p>
+        <div class="priv-cinematic-cta__actions">
+          <a href="/contact/" class="priv-cinematic-cta__btn-primary">Get Your Free Assessment</a>
+          <a href="tel:2673947980" class="priv-cinematic-cta__btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+            (267) 394-7980
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /swt-body -->
+
+
+<script>
+  // ── FAQ Accordion ──
+  document.querySelectorAll('.swt-faq__item').forEach(item => {
+    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('swt-faq__item--open');
+      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
+      if (!isOpen) item.classList.add('swt-faq__item--open');
+    });
+  });
+
+  // ── Film Types Slider ──
+  (() => {
+    const track = document.getElementById('ofFtypeTrack');
+    if (!track) return;
+    const slides = Array.from(document.querySelectorAll('.of-ftype__slide'));
+    const navItems = Array.from(document.querySelectorAll('[data-ofnav]'));
+    const progressBar = document.getElementById('ofFtypeProgressBar');
+    let current = 0;
+    let timer;
+    let progress = 0;
+    const DURATION = 7000;
+    const TICK = 50;
+
+    function goTo(idx) {
+      slides[current].classList.remove('of-ftype-active');
+      navItems[current] && navItems[current].classList.remove('of-ftype__nav-item--active');
+      current = ((idx % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('of-ftype-active');
+      navItems[current] && navItems[current].classList.add('of-ftype__nav-item--active');
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      progress = 0;
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      progress = 0;
+      timer = setInterval(() => {
+        progress += (TICK / DURATION) * 100;
+        if (progressBar) progressBar.style.width = Math.min(progress, 100) + '%';
+        if (progress >= 100) goTo(current + 1);
+      }, TICK);
+    }
+
+    goTo(0);
+    startTimer();
+
+    const nextBtn = document.getElementById('ofFtypeNext');
+    const prevBtn = document.getElementById('ofFtypePrev');
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); startTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    navItems.forEach(btn => btn.addEventListener('click', () => { goTo(Number(btn.dataset.ofnav)); startTimer(); }));
+
+    document.querySelectorAll('.of-ftype__faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.of-ftype__faq-item');
+        const answer = item && item.querySelector('.of-ftype__faq-a');
+        const icon = btn.querySelector('.of-ftype__faq-icon');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        const slide = btn.closest('.of-ftype__slide');
+        if (slide) {
+          slide.querySelectorAll('.of-ftype__faq-q').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            const ic = b.querySelector('.of-ftype__faq-icon');
+            if (ic) ic.style.transform = '';
+            const a = b.closest('.of-ftype__faq-item') && b.closest('.of-ftype__faq-item').querySelector('.of-ftype__faq-a');
+            if (a) a.hidden = true;
+          });
+        }
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          if (icon) icon.style.transform = 'rotate(45deg)';
+          if (answer) answer.hidden = false;
+        }
+      });
+    });
+  })();
+</script>
 </BaseLayout>
 
 <style>
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-.bp-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.bp-btn {
-  display: inline-block; padding: 14px 28px;
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: all 0.2s;
-  border: 2px solid transparent; white-space: nowrap;
-}
-.bp-btn--primary { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--primary:hover { background: #6e9640; border-color: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-btn--ghost { background: transparent; color: var(--brand, #272E32); border-color: var(--brand, #272E32); }
-.bp-btn--ghost:hover { background: var(--brand, #272E32); color: #fff; transform: translateY(-2px); }
-.bp-btn--white { background: #fff; color: var(--brand, #272E32); border-color: #fff; font-weight: 600; }
-.bp-btn--white:hover { background: var(--off-white, #F7F6F3); transform: translateY(-2px); }
-.bp-btn--green { background: var(--green, #81AB4C); color: #fff; border-color: var(--green, #81AB4C); }
-.bp-btn--green:hover { background: #6e9640; transform: translateY(-2px); color: #fff; }
-.bp-intro {
-  padding: 80px 10%;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  overflow: hidden;
-}
-.bp-intro__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.bp-intro__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(36px, 4.5vw, 58px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-}
-.bp-intro__lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-.bp-intro__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.bp-featured {
-  padding: 100px 10%;
-  background: var(--off-white, #F7F6F3);
-}
-.bp-featured__hd { margin-bottom: 72px; }
-.bp-featured__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 0;
-}
-.bp-feat-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-bottom: 100px;
-}
-.bp-feat-row:last-child { margin-bottom: 0; }
-.bp-feat-row--rev .bp-feat-row__img { order: 2; }
-.bp-feat-row--rev .bp-feat-row__content { order: 1; }
-.bp-feat-row__img {
-  position: relative;
-  height: 480px;
-  border-radius: 32px;
-  overflow: hidden;
-}
-.bp-feat-row__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bp-feat-row__pill {
-  position: absolute; bottom: 24px; left: 24px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  padding: 10px 18px;
-  border-radius: 100px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 600;
-  color: var(--brand, #272E32);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.bp-feat-row__num {
-  display: block;
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 72px;
-  font-weight: 700;
-  color: var(--green, #81AB4C);
-  line-height: 1;
-  opacity: 0.25;
-  margin-bottom: -8px;
-}
-.bp-feat-row__heading {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
-  line-height: 1.2;
-  margin-bottom: 20px;
-  letter-spacing: -0.3px;
-}
-.bp-feat-row__body {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px;
-  color: var(--text-mid, #4a4a4a);
-  line-height: 1.8;
-  margin-bottom: 28px;
-}
-.bp-feat-row__cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 600;
-  color: var(--green, #81AB4C);
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-.bp-feat-row__cta:hover { gap: 14px; }
-.bp-why {
-  background: var(--brand, #272E32);
-  padding: 100px 10%;
-}
-.bp-why__hd { margin-bottom: 64px; }
-.bp-why__hd .bp-eyebrow { color: var(--green, #81AB4C); }
-.bp-why__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin: 0;
-  max-width: 600px;
-}
-.bp-why__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-.bp-why__item {
-  padding: 32px 28px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.bp-why__item:nth-child(4n) { border-right: none; }
-.bp-why__item:nth-child(n+5) { border-bottom: none; }
-.bp-why__icon {
-  color: var(--green, #81AB4C);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-.bp-why__icon svg { display: block; }
-.bp-why__divider {
-  width: 32px; height: 2px;
-  background: var(--green, #81AB4C);
-  margin-bottom: 16px;
-}
-.bp-why__item-title {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-.bp-why__item-sub {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  margin: 0;
-  line-height: 1.5;
-}
-.bp-faq { padding: 100px 10%; background: #ffffff; }
-.bp-faq__hd { margin-bottom: 48px; }
-.bp-faq__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  max-width: 560px;
-  margin: 0;
-}
-.bp-faq__item {
-  border-bottom: 1px solid var(--light-gray, #EFEFED);
-  padding: 24px 0;
-  cursor: pointer;
-  max-width: 900px;
-}
-.bp-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
-.bp-faq__q {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 17px; font-weight: 600;
-  color: var(--text-dark, #1a1a1a);
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
-}
-.bp-faq__toggle { color: var(--green, #81AB4C); font-size: 22px; flex-shrink: 0; transition: transform 0.2s; }
-.bp-faq__a {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75;
-  margin-top: 14px; display: none;
-}
-.bp-faq__a a { color: var(--green, #81AB4C); }
-.bp-faq__item--open .bp-faq__a { display: block; }
-.bp-faq__item--open .bp-faq__toggle { transform: rotate(45deg); }
-.bp-cta {
-  background: var(--brand, #272E32);
-  border-radius: 40px;
-  padding: 64px 60px;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  margin: 0 5% 0;
-}
-.bp-cta h2 {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 32px; font-weight: 700;
-  color: #fff; line-height: 1.2;
-  max-width: 460px; margin: 0;
-}
-.bp-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.bp-cta__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 1024px) {
-  .bp-intro__inner { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row { grid-template-columns: 1fr; gap: 40px; }
-  .bp-feat-row--rev .bp-feat-row__img { order: 0; }
-  .bp-feat-row--rev .bp-feat-row__content { order: 1; }
-  .bp-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .bp-why__item:nth-child(4n) { border-right: 1px solid rgba(255,255,255,0.1); }
-  .bp-why__item:nth-child(2n) { border-right: none; }
-}
-@media (max-width: 768px) {
-  .bp-intro { padding: 60px 5%; }
-  .bp-featured { padding: 60px 5%; }
-  .bp-why { padding: 60px 5%; }
-  .bp-faq { padding: 60px 5%; }
-  .bp-why__grid { grid-template-columns: 1fr; }
-  .bp-feat-row__img { height: 300px; }
-  .bp-cta { flex-direction: column; padding: 40px 28px; text-align: center; }
-  .bp-cta h2 { font-size: 26px; max-width: 100%; }
-  .bp-cta__btns { flex-direction: column; width: 100%; }
-}
-@media (max-width: 480px) {
-  .bp-intro__ctas { flex-direction: column; }
-}
-</style>
+  /* ══════════════════════════════════════
+     SHARED TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --of-green:        #4E6B2A;
+    --of-green-light:  #7CB342;
+    --of-dark:         #0D1A0F;
+    --of-cream:        #F4EFE6;
+    --of-alt:          #ECE4D4;
+    --of-border:       #E1D6C1;
+    --of-text-sec:     #5a6650;
+    --of-white:        #ffffff;
+    --of-radius:       6px;
+  }
 
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.bp-faq__item').forEach(item => {
-    item.querySelector('.bp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('bp-faq__item--open');
-      document.querySelectorAll('.bp-faq__item').forEach(i => i.classList.remove('bp-faq__item--open'));
-      if (!isOpen) item.classList.add('bp-faq__item--open');
-    });
-  });
-</script>
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  .of-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .of-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  .of-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 26, 15, 0.55) 0%,
+      rgba(13, 26, 15, 0.78) 50%,
+      rgba(13, 26, 15, 0.95) 100%
+    );
+  }
+  .of-hero__content {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Eyebrow pill */
+  .of-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .of-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+
+  /* H1 */
+  .of-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .of-hero__br { display: none; }
+
+  /* Animated flip line */
+  .of-hero__animated-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(243, 246, 241, 0.9);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .of-hero__flip.flipwords-wrap { display: inline; }
+  .of-hero__flip .fw-word-col {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .of-hero__flip .fw-word {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    white-space: nowrap;
+    font-style: normal;
+    min-width: unset;
+  }
+  .of-hero__flip .fw-word.is-active { position: relative; }
+
+  /* Subtitle */
+  .of-hero__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+
+  /* CTA buttons */
+  .of-hero__cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .of-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    background: var(--of-green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid var(--of-green);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-primary:hover {
+    background: #3D5620;
+    border-color: #3D5620;
+    transform: translateY(-2px);
+  }
+  .of-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    background: transparent;
+    color: rgba(255,255,255,0.82);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--of-radius);
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .of-hero__btn-secondary:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.65);
+    transform: translateY(-2px);
+  }
+
+  /* Stats panel */
+  .of-hero__stats-panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--of-radius);
+    backdrop-filter: blur(8px);
+    padding: 24px 32px;
+  }
+  .of-hero__stats-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .of-hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .of-hero__stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--of-green-light);
+    line-height: 1;
+  }
+  .of-hero__stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+  }
+  .of-hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     TRUST BAR (shared swt- class)
+  ══════════════════════════════════════ */
+  .swt-trust {
+    background: #ffffff;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--of-border);
+  }
+  .swt-trust__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--of-text-sec);
+    text-align: center;
+    margin: 0 0 20px;
+    opacity: 0.7;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  .swt-body {
+    background: var(--of-white);
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .of-hero__content { padding: 90px 20px 60px; }
+    .of-hero__stats-inner { flex-wrap: wrap; gap: 20px; }
+    .of-hero__stat-divider { display: none; }
+    .of-hero__stat { flex: 0 0 45%; }
+    .of-hero__br { display: block; }
+    .of-hero__cta { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+  }
+
+  /* ══════════════════════════════════════
+     WHAT IS
+  ══════════════════════════════════════ */
+  .of-whatis {
+    background: #fff;
+    padding: 96px 5%;
+  }
+  .of-whatis__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-whatis__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 16px;
+  }
+  .of-whatis__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .of-whatis__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-whatis__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-whatis__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .of-whatis__stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--of-cream);
+    border-radius: var(--of-radius);
+    border: 1px solid var(--of-border);
+  }
+  .of-whatis__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
+  .of-whatis__stat strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-whatis__stat span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    color: var(--of-text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .of-whatis__stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--of-border);
+    flex-shrink: 0;
+  }
+  .of-whatis__image-wrap {
+    position: relative;
+    border-radius: var(--of-radius);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-whatis__image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     WHY / PROBLEM
+  ══════════════════════════════════════ */
+  .of-why {
+    background: var(--of-alt);
+    padding: 96px 5%;
+  }
+  .of-why__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .of-why__image-wrap {
+    position: relative;
+  }
+  .of-why__image {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: var(--of-radius);
+    display: block;
+    box-shadow: 0 24px 60px rgba(13,26,15,0.12);
+  }
+  .of-why__stat-card {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--of-dark);
+    border-radius: var(--of-radius);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 12px 32px rgba(13,26,15,0.25);
+    min-width: 240px;
+  }
+  .of-why__stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+  .of-why__stat-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .of-why__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--of-green);
+    margin-bottom: 14px;
+  }
+  .of-why__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--of-dark);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .of-why__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--of-text-sec);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .of-why__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-why__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--of-text-sec);
+    line-height: 1.65;
+  }
+  .of-why__bullets li svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .of-why__climate-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--of-border);
+    border-radius: var(--of-radius);
+  }
+  .of-why__climate-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .of-why__climate-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--of-green);
+    line-height: 1;
+  }
+  .of-why__climate-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: var(--of-text-sec);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .of-why__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--of-green);
+    text-decoration: none;
+    border-bottom: 2px solid var(--of-green);
+    padding-bottom: 2px;
+    transition: gap 0.2s;
+  }
+  .of-why__cta:hover { gap: 12px; }
+
+  /* ══════════════════════════════════════
+     BENTO BAND
+  ══════════════════════════════════════ */
+  .of-bento {
+    background: var(--of-dark);
+    padding: 80px 5%;
+  }
+  .of-bento__header {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .of-bento__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .of-bento__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.5);
+    line-height: 1.7;
+  }
+  .of-bento__compact {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .of-bento-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+  .of-bento-item:hover { background: rgba(255,255,255,0.07); }
+  .of-bento-item__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .of-bento-item__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(243,246,241,0.52);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     OFFICE SPACE TYPE GRID
+  ══════════════════════════════════════ */
+  .of-spaces {
+    background: #0d1a0f;
+    padding: 100px 24px;
+  }
+  .of-spaces__container { max-width: 1200px; margin: 0 auto; }
+  .of-spaces__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .of-spaces__eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 14px;
+  }
+  .of-spaces__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .of-spaces__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(243,246,241,0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Grid */
+  .of-spaces__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .of-space-card {
+    border-radius: 24px;
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Card 1: Hero — spans 6 cols */
+  .of-space-card--hero {
+    grid-column: span 6;
+    background: linear-gradient(145deg, #1a3024 0%, #0d1a0f 60%);
+    border: 1px solid rgba(124,179,66,0.15);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    min-height: 420px;
+  }
+  .of-space-card--hero:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: rgba(124,179,66,0.25); }
+  .of-space-card__hero-icon { margin-bottom: 24px; }
+  .of-space-card__hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .of-space-card__hero-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(243,246,241,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .of-space-card__pill {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.25);
+    padding: 6px 14px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Cards 2 & 3: Photo — each spans 3 cols */
+  .of-space-card--photo {
+    grid-column: span 3;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .of-space-card--photo:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--photo:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .of-space-card__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.3) 55%, rgba(10,20,14,0.05) 100%);
+  }
+  .of-space-card__photo-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px;
+    z-index: 5;
+  }
+  .of-space-card__photo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__photo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.75);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Cards 4 & 5: Dark — each spans 4 cols */
+  .of-space-card--dark,
+  .of-space-card--dark-pattern {
+    grid-column: span 4;
+    border-radius: 24px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .of-space-card--dark {
+    background: linear-gradient(145deg, #14201a 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.18);
+  }
+  .of-space-card--dark-pattern {
+    background: linear-gradient(145deg, #1a2e20 0%, #0d1a0f 100%);
+    border: 1px solid rgba(124,179,66,0.12);
+  }
+  .of-space-card--dark-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(124,179,66,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,179,66,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .of-space-card--dark:hover,
+  .of-space-card--dark-pattern:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.28); border-color: rgba(124,179,66,0.28); }
+  .of-space-card__accent-line {
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, #7CB342, transparent);
+  }
+  .of-space-card__icon-row { margin-bottom: 18px; }
+  .of-space-card__dark-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .of-space-card__dark-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.65;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+  .of-space-card__micro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(124,179,66,0.85);
+    background: rgba(124,179,66,0.08);
+    border: 1px solid rgba(124,179,66,0.18);
+    padding: 5px 10px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  /* Card 6: Badge photo — spans 4 cols */
+  .of-space-card--badge {
+    grid-column: span 4;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 280px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+  .of-space-card--badge:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .of-space-card--badge:hover .of-space-card__img { transform: scale(1.04); }
+  .of-space-card__badge-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,20,14,0.92) 0%, rgba(13,26,15,0.8) 50%, rgba(10,20,14,0.6) 100%);
+    z-index: 2;
+  }
+  .of-space-card__badge-content {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .of-space-card__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #7CB342;
+    background: rgba(124,179,66,0.12);
+    border: 1px solid rgba(124,179,66,0.22);
+    padding: 5px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
+  .of-space-card__badge-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F3F6F1;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .of-space-card__badge-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(243,246,241,0.72);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .of-space-card--hero { grid-column: span 12; min-height: auto; }
+    .of-space-card--photo { grid-column: span 6; }
+    .of-space-card--dark,
+    .of-space-card--dark-pattern,
+    .of-space-card--badge { grid-column: span 4; }
+  }
+  @media (max-width: 768px) {
+    .of-spaces { padding: 64px 20px; }
+    .of-space-card--hero,
+    .of-space-card--photo,
+    .of-space-card--dark,
+    .of-space-card--dark-pattern,
+    .of-space-card--badge { grid-column: span 12; }
+    .of-space-card--photo { min-height: 280px; }
+  }
+
+  /* ══════════════════════════════════════
+     BENEFIT ROWS
+  ══════════════════════════════════════ */
+  .of-benefits {
+    background: #F3F6F1;
+    padding: 100px 24px;
+  }
+  .of-benefits__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .of-benefits__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 72px;
+  }
+  .of-benefits__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 8px;
+  }
+  .of-benefits__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 12px 0 20px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .of-benefits__intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0625rem;
+    color: #4A5C48;
+    line-height: 1.75;
+  }
+  .of-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .of-row:last-child { margin-bottom: 0; }
+  .of-row--rev { direction: rtl; }
+  .of-row--rev > * { direction: ltr; }
+  .of-row__image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13,26,15,0.12);
+    position: relative;
+  }
+  .of-row__image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(124,179,66,0.15);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .of-row__image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .of-row__image:hover img { transform: scale(1.03); }
+  .of-row__text { display: flex; flex-direction: column; }
+  .of-row__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 12px;
+  }
+  .of-row__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: #14201A;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .of-row__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #4A5C48;
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+  .of-pullquote { border-left: 4px solid #7CB342; margin: 0 0 24px; padding: 16px 24px; background: #F5F9F0; border-radius: 0 8px 8px 0; }
+  .of-pullquote__text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: #14201A; line-height: 1.7; margin: 0 0 10px; }
+  .of-pullquote__cite { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #4A5C48; font-style: normal; display: block; }
+  .of-pullquote__cite a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .of-pullquote__cite a:hover { color: #2E6B30; }
+  .of-row__body a { color: #7CB342; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s ease; }
+  .of-row__body a:hover { color: #2E6B30; text-decoration-color: #2E6B30; }
+  .of-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .of-row__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: #14201A;
+    line-height: 1.5;
+  }
+  .of-row__bullets svg { flex-shrink: 0; margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    .of-benefits { padding: 64px 20px; }
+    .of-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 64px; }
+    .of-row--rev { direction: ltr; }
+    .of-row__image img { height: 320px; }
+    .of-benefits__header { margin-bottom: 48px; }
+  }
+
+  /* ══════════════════════════════════════
+     FILM TYPES SLIDER
+  ══════════════════════════════════════ */
+  .of-ftype { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
+  .of-ftype__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+  .of-ftype__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
+  .of-ftype__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .of-ftype__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+  .of-ftype__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+  .of-ftype-active .of-ftype__content { opacity: 1; transform: translateY(0); }
+  .of-ftype__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .of-ftype__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; white-space: pre-line; }
+  .of-ftype__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; }
+  .of-ftype__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .of-ftype__faq-item { border-radius: 8px; overflow: hidden; }
+  .of-ftype__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
+  .of-ftype__faq-q:hover { background: rgba(255,255,255,0.18); }
+  .of-ftype__faq-icon { font-size: 1.2rem; color: #7CB342; flex-shrink: 0; transition: transform 0.3s ease; }
+  .of-ftype__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
+  .of-ftype__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; }
+  .of-ftype__cta:hover { background: #2E6B30; transform: translateY(-2px); }
+  .of-ftype__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 20px; }
+  .of-ftype__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+  .of-ftype__nav-item:hover { opacity: 0.65; }
+  .of-ftype__nav-item--active { opacity: 1; }
+  .of-ftype__nav-line { display: block; width: 3px; height: 28px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+  .of-ftype__nav-item--active .of-ftype__nav-line { background: #7CB342; height: 44px; }
+  .of-ftype__nav-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+  .of-ftype__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
+  .of-ftype__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+  .of-ftype__arrow--prev { left: 32px; }
+  .of-ftype__arrow--next { right: 32px; }
+  .of-ftype__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
+  .of-ftype__progress-bar { height: 100%; background: #7CB342; width: 0; transition: width 0.05s linear; }
+  @media (max-width: 768px) {
+    .of-ftype__nav { display: none; }
+    .of-ftype__content { padding-left: 32px; padding-right: 32px; max-width: calc(100% - 64px); }
+    .of-ftype__arrow--prev { left: 16px; }
+    .of-ftype__arrow--next { right: 16px; }
+  }
+
+  /* ══════════════════════════════════════
+     FEATURED PROJECT
+  ══════════════════════════════════════ */
+  .of-project { background: #14201A; padding: 96px 5%; }
+  .of-project__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .of-project__image-col { display: flex; flex-direction: column; gap: 0; }
+  .of-project__img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px 12px 0 0; display: block; }
+  .of-project__stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); background: #7CB342; border-radius: 0 0 12px 12px; padding: 20px 16px; gap: 16px 0; }
+  .of-project__stat { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
+  .of-project__stat-num { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.1; }
+  .of-project__stat-label { font-family: 'Inter', sans-serif; font-size: 0.65rem; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; line-height: 1.3; }
+  .of-project__stat-div { display: none; }
+  .of-project__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 1.25rem; }
+  .of-project__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 2rem; }
+  .of-project__detail { border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 0; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; }
+  .of-project__detail:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+  .of-project__detail-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: #7CB342; padding-top: 2px; }
+  .of-project__detail-val { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.7; }
+  .of-project__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease; }
+  .of-project__cta:hover { background: #2E6B30; }
+  @media (max-width: 900px) {
+    .of-project__inner { grid-template-columns: 1fr; gap: 40px; }
+    .of-project__stats-strip { grid-template-columns: repeat(2, 1fr); row-gap: 16px; border-radius: 0 0 12px 12px; }
+    .of-project__stat-div { display: none; }
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY
+  ══════════════════════════════════════ */
+  .of-gallery { background: #F5F3EE; padding: 96px 5% 80px; }
+  .of-gallery__header { text-align: center; margin-bottom: 52px; }
+  .of-gallery__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+  .of-gallery__title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 1rem; }
+  .of-gallery__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; max-width: 580px; margin: 0 auto; line-height: 1.75; }
+  .of-gallery__grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 280px 280px; gap: 12px; }
+  .of-gallery__panel { position: relative; overflow: hidden; border-radius: 10px; cursor: default; }
+  .of-gallery__panel--tall { grid-row: span 2; }
+  .of-gallery__panel--wide { grid-column: span 2; }
+  .of-gallery__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .of-gallery__panel:hover .of-gallery__img { transform: scale(1.04); }
+  .of-gallery__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%); pointer-events: none; }
+  .of-gallery__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+  .of-gallery__label-title { display: block; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .of-gallery__label-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.75); }
+  @media (max-width: 900px) {
+    .of-gallery__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .of-gallery__panel--tall, .of-gallery__panel--wide { grid-column: span 1; grid-row: span 1; height: 240px; }
+    .of-gallery__panel { height: 220px; }
+  }
+  @media (max-width: 600px) {
+    .of-gallery__grid { grid-template-columns: 1fr; }
+    .of-gallery__panel, .of-gallery__panel--tall, .of-gallery__panel--wide { height: 220px; grid-column: span 1; grid-row: span 1; }
+  }
+
+  /* ══════════════════════════════════════
+     STATS BAR
+  ══════════════════════════════════════ */
+  .of-stats { background: #14201A; padding: 56px 5%; }
+  .of-stats__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .of-stats__item { flex: 1; min-width: 140px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; }
+  .of-stats__num { font-family: 'Space Mono', monospace; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #7CB342; line-height: 1; margin-bottom: 8px; }
+  .of-stats__label { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .of-stats__label small { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .of-stats__div { width: 1px; height: 60px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
+  @media (max-width: 768px) { .of-stats__div { display: none; } .of-stats__item { min-width: calc(50% - 24px); } }
+
+  /* ══════════════════════════════════════
+     SHARED DESIGN TOKENS
+  ══════════════════════════════════════ */
+  :root {
+    --swt-green:        #4E6B2A;
+    --swt-green-accent: #83A94A;
+    --swt-dark:         #2A241E;
+    --swt-border:       #E1D6C1;
+    --swt-text-sec:     #6E665C;
+    --swt-white:        #ffffff;
+    --swt-radius:       5px;
+  }
+
+  /* ══════════════════════════════════════
+     SWT SHARED (swt-btn, swt-eyebrow, swt-h2)
+  ══════════════════════════════════════ */
+  .swt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: var(--swt-radius); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+  .swt-btn--primary { background: var(--swt-green); color: var(--swt-white); border-color: var(--swt-green); }
+  .swt-btn--primary:hover { background: #3D5620; border-color: #3D5620; transform: translateY(-2px); }
+  .swt-eyebrow { display: inline-block; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 12px; }
+  .swt-h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; color: var(--swt-dark); line-height: 1.15; margin: 0 0 18px; }
+  .swt-h2--light { color: var(--swt-white); }
+  .swt-h2--center { text-align: center; }
+
+  /* ══════════════════════════════════════
+     ES-PROCESS-SPLIT + ES-ACCORDION
+  ══════════════════════════════════════ */
+  .es-process-split { padding: 120px 0; background: #F5F3EE; }
+  .es-process-split__container { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .es-process-split__eyebrow { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--swt-green); margin-bottom: 16px; }
+  .es-process-split__title { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #14201A; line-height: 1.15; margin: 0 0 40px; }
+  .es-accordion { display: flex; flex-direction: column; gap: 16px; }
+  .es-accordion__item { background: #fff; border-radius: 16px; overflow: hidden; transition: box-shadow 0.3s; }
+  .es-accordion__item:hover { box-shadow: 0 8px 32px rgba(20,32,26,0.08); }
+  .es-accordion__trigger { display: flex; align-items: center; gap: 20px; padding: 28px 32px; cursor: pointer; list-style: none; user-select: none; }
+  .es-accordion__trigger::-webkit-details-marker { display: none; }
+  .es-accordion__number { font-family: 'Space Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--swt-green); flex-shrink: 0; }
+  .es-accordion__label { font-family: 'Fraunces', Georgia, serif; font-size: 1.2rem; font-weight: 600; color: #14201A; flex: 1; }
+  .es-accordion__icon { font-size: 2rem; color: var(--swt-green); font-weight: 300; transition: transform 0.3s; flex-shrink: 0; line-height: 1; }
+  .es-accordion__item[open] .es-accordion__icon { transform: rotate(45deg); }
+  .es-accordion__body { padding: 0 32px 32px; font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.7; color: #4A5C48; }
+  .es-process-split__content { display: flex; flex-direction: column; }
+  .es-process-split__image-wrapper { position: relative; min-height: 600px; display: flex; align-items: stretch; }
+  .es-process-split__image { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 16px; box-shadow: 0 16px 48px rgba(20,32,26,0.12); display: block; }
+  @media (max-width: 900px) { .es-process-split__container { grid-template-columns: 1fr; } .es-process-split__image-wrapper { min-height: 400px; } }
+
+  /* ══════════════════════════════════════
+     CAM-TESTIMONIALS + CAM-TCARD
+  ══════════════════════════════════════ */
+  .cam-testimonials { background: #F5F3EE; padding: 96px 5%; }
+  .cam-testimonials__header { text-align: center; margin-bottom: 56px; }
+  .cam-testimonials__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; display: block; }
+  .cam-testimonials__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+  .cam-testimonials__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+  .cam-testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .cam-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+  .cam-tcard__img-wrap { overflow: hidden; aspect-ratio: 1/1; flex-shrink: 0; }
+  .cam-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+  .cam-tcard:hover .cam-tcard__img { transform: scale(1.03); }
+  .cam-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .cam-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+  .cam-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+  .cam-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+  .cam-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+  .cam-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7CB342; margin: 0; font-weight: 500; }
+  @media (max-width: 960px) { .cam-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .cam-testimonials { padding: 64px 5%; } }
+  @media (max-width: 600px) { .cam-tcard__img-wrap { aspect-ratio: 1/1; } }
+
+  /* ══════════════════════════════════════
+     IP-LOCAL + CAM-NEIGHBORHOODS
+  ══════════════════════════════════════ */
+  .ip-local { padding: 64px 5%; }
+  .ip-local__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .ip-local__content { display: flex; flex-direction: column; }
+  .ip-local__map { border-radius: 20px; overflow: hidden; height: 400px; }
+  .ip-local__map iframe { width: 100%; height: 100%; }
+  .ip-local__content h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: #14201A; margin: 12px 0 16px; }
+  .ip-local__content p { font-family: 'Inter', sans-serif; font-size: 16px; color: #4a4a4a; line-height: 1.8; margin-bottom: 20px; }
+  .cam-neighborhoods { display: flex; flex-direction: column; margin-top: 20px; }
+  .cam-nh { display: flex; align-items: flex-start; gap: 14px; padding: 11px 0; border-bottom: 1px solid #EFEFED; }
+  .cam-nh:last-child { border-bottom: none; }
+  .cam-nh__name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #7CB342; min-width: 130px; flex-shrink: 0; line-height: 1.65; }
+  .cam-nh__desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #4a4a4a; line-height: 1.65; }
+  @media (max-width: 768px) { .ip-local__grid { grid-template-columns: 1fr; } .ip-local__map { height: 280px; } }
+
+  /* ══════════════════════════════════════
+     RES-SECTION
+  ══════════════════════════════════════ */
+  .res-section { background: #F5F3EE; padding: 80px 0; }
+  .res-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .res-section__image-col { position: relative; border-radius: 16px; overflow: hidden; }
+  .res-section__img { width: 100%; height: 520px; object-fit: cover; object-position: center; display: block; border-radius: 16px; }
+  .res-section__content-col { display: flex; flex-direction: column; gap: 20px; }
+  .res-section__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0; }
+  .res-section__title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  .res-section__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.75; margin: 0; }
+  .res-section__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .res-section__item { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.5; }
+  .res-section__item svg { flex-shrink: 0; margin-top: 2px; }
+  .res-section__item a { color: #14201A; text-decoration: underline; text-decoration-color: #7CB342; text-underline-offset: 3px; transition: color 0.2s ease; font-weight: 500; }
+  .res-section__item a:hover { color: #7CB342; }
+  .res-section__cta { align-self: flex-start; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s ease; }
+  .res-section__cta:hover { gap: 8px; }
+  @media (max-width: 900px) { .res-section__inner { grid-template-columns: 1fr; gap: 40px; } .res-section__img { height: 360px; } }
+  @media (max-width: 600px) { .res-section__inner { padding: 0 20px; } .res-section { padding: 60px 0; } }
+
+  /* ══════════════════════════════════════
+     SWT-FAQ
+  ══════════════════════════════════════ */
+  .swt-faq { background: var(--swt-white); padding: 96px 0; }
+  .swt-faq__layout { display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start; }
+  .swt-faq__header p { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.75; color: var(--swt-text-sec); margin: 14px 0 24px; }
+  .swt-faq__header { display: flex; flex-direction: column; }
+  .swt-faq__list { display: flex; flex-direction: column; }
+  .swt-faq__item { border-bottom: 1px solid var(--swt-border); padding: 18px 0; }
+  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
+  .swt-faq__q { font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--swt-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 3px 0; }
+  .swt-faq__toggle { color: var(--swt-green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; line-height: 1; }
+  .swt-faq__a { font-family: 'Hanken Grotesk', sans-serif; font-size: 14px; color: var(--swt-text-sec); line-height: 1.8; margin-top: 10px; display: none; }
+  .swt-faq__a a { color: #7CB342; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .swt-faq__a a:hover { color: #2E6B30; }
+  .swt-faq__item--open .swt-faq__a { display: block; }
+  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
+  .sb-geo { display: none; }
+  .sb-hero { position: relative; }
+  @media (max-width: 768px) { .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ══════════════════════════════════════
+     CTA (priv-cinematic-cta pattern)
+  ══════════════════════════════════════ */
+  .priv-cinematic-cta { position: relative; min-height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .priv-cinematic-cta__media { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .priv-cinematic-cta__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.75) 40%, rgba(13,26,15,0.88) 100%); }
+  .priv-cinematic-cta__vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,26,15,0.2) 0%, rgba(13,26,15,0.6) 100%); }
+  .priv-cinematic-cta__content { position: relative; z-index: 10; max-width: 760px; padding: 80px 24px; text-align: center; }
+  .priv-cinematic-cta__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; color: #F3F6F1; margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+  .priv-cinematic-cta__text { font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: rgba(243,246,241,0.82); max-width: 620px; margin: 0 auto 40px; line-height: 1.75; }
+  .priv-cinematic-cta__actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .priv-cinematic-cta__btn-primary { display: inline-flex; align-items: center; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 16px 36px; border-radius: 100px; border: 2px solid #7CB342; transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s; }
+  .priv-cinematic-cta__btn-primary:hover { background: #6aa032; border-color: #6aa032; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(124,179,66,0.35); }
+  .priv-cinematic-cta__btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); color: #F3F6F1; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.3); transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+  .priv-cinematic-cta__btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: rgba(124,179,66,0.6); transform: translateY(-2px); }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE — WHATIS / WHY / BENTO
+  ══════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .of-whatis__container,
+    .of-why__container { gap: 48px; }
+    .of-bento__compact { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .of-whatis { padding: 64px 5%; }
+    .of-whatis__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-whatis__image { height: 280px; }
+    .of-why { padding: 64px 5%; }
+    .of-why__container { grid-template-columns: 1fr; gap: 36px; }
+    .of-why__image { height: 320px; }
+    .of-why__stat-card { position: static; margin-top: 16px; min-width: unset; }
+    .of-why__climate-facts { grid-template-columns: 1fr 1fr; }
+    .of-bento__compact { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .of-hero__stats-panel { padding: 20px 16px; }
+    .of-hero__stat { flex: 0 0 100%; }
+    .of-whatis__stats { flex-direction: column; gap: 16px; }
+    .of-whatis__stat-div { display: none; }
+    .of-why__climate-facts { grid-template-columns: 1fr; }
+  }
+</style>
