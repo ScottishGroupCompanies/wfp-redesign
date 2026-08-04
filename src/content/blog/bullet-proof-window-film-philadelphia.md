@@ -71,9 +71,9 @@ Professional installation matters for another reason: warranty. Llumar backs pro
 
 Security window film works best as part of a layered approach. No single product makes a building impervious, but combining film with other security elements compounds the protection. An alarm system detects intrusion. Security film delays it. Good lighting and visibility deter it. Access control limits who can approach vulnerable entry points in the first place.
 
-For Philadelphia businesses concerned about [smash-and-grab attempts](/security-window-film-philadelphia-smash-grab-delay/), this layered strategy is especially relevant. Security film on ground-floor windows, paired with an alarm and reinforced door hardware, creates multiple obstacles that most opportunistic criminals won't push through.
+For Philadelphia businesses concerned about [smash-and-grab prevention](/blog/security-window-film-philadelphia-smash-grab-delay/), this layered strategy is especially relevant. Security film on ground-floor windows, paired with an alarm and reinforced door hardware, creates multiple obstacles that most opportunistic criminals won't push through.
 
-Homeowners in areas like [South Philly or Fishtown](/residential-window-film-philadelphia-rowhomes-comfort/) can also benefit from security film's dual function: it provides break-in resistance while also offering the same UV protection and heat reduction that [energy-saving window films](/benefits/energy-saving-window-film-philadelphia/) are known for. The security configuration simply uses a thicker film construction to prioritize impact resistance over solar performance.
+Homeowners in [Philadelphia rowhomes](/blog/residential-window-film-philadelphia-rowhomes-comfort/) can also benefit from security film's dual function: it provides break-in resistance while also offering the same UV protection and heat reduction that [energy-saving window films](/benefits/energy-savings/) are known for. The security configuration simply uses a thicker film construction to prioritize impact resistance over solar performance.
 
 ## Is Security Window Film Right for Your Property?
 

@@ -33,7 +33,7 @@ Buildings across Philadelphia that benefit most from reflective window film span
 
 ## Solar Control Performance: The Numbers Behind the Film
 
-Privacy is only half the story. Reflective window film also functions as a high-performance [solar control window film](/benefits/solar-control/) — and the performance data from the brands we install is specific and verifiable.
+Privacy is only half the story. Reflective window film also functions as a high-performance [solar control window film](/benefits/energy-savings/) — and the performance data from the brands we install is specific and verifiable.
 
 **Vista Window Film** — including the Vista V-Series solar control line — delivers Total Solar Energy Rejected (TSER) values reaching **71%** on select products. That means up to 71% of incoming solar energy is reflected or absorbed before it can heat your interior space.
 

@@ -48,7 +48,7 @@ Non-metallic and non-reflective, ceramic films deliver excellent heat rejection 
 
 ## Energy Savings: What Philadelphia Owners Can Expect
 
-The [energy-saving benefits of window film](https://www.windowfilmphiladelphia.net/benefits/energy-saving-window-film-philadephia/) go beyond just comfort. When solar heat gain is reduced, your air conditioning doesn't have to work as hard to maintain a set temperature. That means:
+The [energy-saving benefits of window film](https://www.windowfilmphiladelphia.net/benefits/energy-savings/) go beyond just comfort. When solar heat gain is reduced, your air conditioning doesn't have to work as hard to maintain a set temperature. That means:
 
 - **Lower electricity bills** — especially during summer peak-rate hours
 - **Extended HVAC equipment life** — less run time means less wear

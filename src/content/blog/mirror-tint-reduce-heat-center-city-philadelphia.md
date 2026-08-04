@@ -83,7 +83,7 @@ Second, it’s a strong fit for **screen-heavy spaces**. If glare is the primary
 
 Third, it helps when you need a visible, functional change without tearing up the building. In many older homes, full window replacement can be complicated (and sometimes undesirable) compared with a well-chosen retrofit film.
 
-For readers weighing options, the [Energy-saving window film](/benefits/energy-saving-window-film-philadelphia/) approach is best when summer comfort and HVAC load are the priority, while [Glare reduction film](/benefits/glare-reduction-window-film-philadelphia/) focuses more on visual comfort (with heat reduction as a common bonus).
+For readers weighing options, the [Energy-saving window film](/benefits/energy-savings/) approach is best when summer comfort and HVAC load are the priority, while [Glare reduction film](/benefits/glare-reduction/) focuses more on visual comfort (with heat reduction as a common bonus).
 
 In all of these cases, does mirror tint reduce heat is best answered by matching the film to the sun path and the way the room is actually used.
 

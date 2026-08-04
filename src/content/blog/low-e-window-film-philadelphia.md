@@ -74,7 +74,7 @@ Older glass can have quirks, and a professional installer should set expectation
 
 Low-e film works best when it’s part of an overall comfort strategy. If you’re already improving insulation or air sealing, film can help your HVAC system maintain a steadier indoor temperature.
 
-For a deeper comparison of options, see [energy-saving window film options](/benefits/energy-saving-window-film-philadelphia/) and how different films approach solar control and comfort. If you’re upgrading a home, [residential window film services](/residential/) can target the rooms you live in most. If you manage an office or storefront, [commercial window film installations](/commercial/) can prioritize problem façades and high-occupancy areas.
+For a deeper comparison of options, see [energy-saving window film options](/benefits/energy-savings/) and how different films approach solar control and comfort. If you’re upgrading a home, [residential window film services](/applications/homes-condos/) can target the rooms you live in most. If you manage an office or storefront, [commercial window film installations](/applications/office/) can prioritize problem façades and high-occupancy areas.
 
 ## Get a Low-E Window Film Quote in Philadelphia
 

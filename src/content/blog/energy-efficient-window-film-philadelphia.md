@@ -47,7 +47,7 @@ Installation is fast — most whole-home projects are completed in a single day 
 
 ## Energy Efficient Window Film for Philadelphia Businesses
 
-For commercial properties, the ROI case is even stronger. Commercial buildings typically have large glass facades that drive significant solar heat load into occupied spaces. [Energy-saving window film](https://www.windowfilmphiladelphia.net/benefits/energy-saving-window-film-philadephia/) can:
+For commercial properties, the ROI case is even stronger. Commercial buildings typically have large glass facades that drive significant solar heat load into occupied spaces. [Energy-saving window film](https://www.windowfilmphiladelphia.net/benefits/energy-savings/) can:
 
 - Reduce peak cooling demand (which affects demand charges from PECO)
 - Create a more consistent temperature across the building, reducing hot-spot complaints from tenants or employees

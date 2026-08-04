@@ -43,7 +43,7 @@ A typical privacy-first frosted film is chosen for appearance, opacity, and ligh
 
 That does not mean every space needs solar film. It means the product should match the problem. A Manayunk bathroom window that faces a neighboring wall probably needs privacy, not serious heat rejection. A west-facing conference room near Market Street may need both privacy banding and solar control, especially if afternoon sun lands directly on seating or screens.
 
-For projects where heat is the main concern, [energy-saving window film in Philadelphia](/benefits/energy-saving-window-film-philadelphia/) is usually the more direct category. For projects where visibility is the issue, [privacy window film in Philadelphia](/benefits/privacy-window-film-philadelphia/) gives you more control over opacity, pattern, and how much daylight stays in the room.
+For projects where heat is the main concern, [energy-saving window film in Philadelphia](/benefits/energy-savings/) is usually the more direct category. For projects where visibility is the issue, [privacy window film in Philadelphia](/benefits/benefits/privacy-window-film-philadelphia/) gives you more control over opacity, pattern, and how much daylight stays in the room.
 
 ## Product Details That Matter for Frosted and Decorative Glass
 

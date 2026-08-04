@@ -12,7 +12,7 @@ category: "privacy-film"
 
 Philadelphia homes rarely have the same privacy problem twice. A bathroom transom in Old City needs soft daylight without silhouettes after dark, while a narrow glass insert beside a South Philly front door needs coverage at eye level from the sidewalk and stoop. That is why the best window film for day and night privacy Philadelphia homeowners choose is usually not reflective film at all. For bathrooms and doors, frosted and decorative privacy films are the better fit because they obscure views around the clock instead of depending on daylight conditions.
 
-In rowhomes near Passyunk Avenue, twins in Manayunk, and newer condos in Fishtown, privacy film also avoids the bulk of shutters or curtains on small panes. If you want a broader overview of how permanent obscurity levels work, our [privacy window film options in Philadelphia](/benefits/privacy-window-film-philadelphia/) page shows where full frost, partial frost, and patterned films make the most sense.
+In rowhomes near Passyunk Avenue, twins in Manayunk, and newer condos in Fishtown, privacy film also avoids the bulk of shutters or curtains on small panes. If you want a broader overview of how permanent obscurity levels work, our [privacy window film options in Philadelphia](/benefits/benefits/privacy-window-film-philadelphia/) page shows where full frost, partial frost, and patterned films make the most sense.
 
 ## Why Reflective Film Usually Fails at Night
 

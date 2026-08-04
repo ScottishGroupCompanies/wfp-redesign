@@ -54,7 +54,7 @@ Privacy is usually part of the brief, but not in the same way it is for resident
 
 That is why many **commercial window film Philadelphia** projects combine solar control film on exterior glass with decorative or privacy film on interior partitions. Frosted and gradient options work well for meeting rooms, healthcare-adjacent offices in University City, and client-facing suites in Center City where discretion matters but a boxed-in feeling does not.
 
-Our [privacy window film guide](/benefits/privacy-window-film-philadelphia/) covers the privacy side in more detail, including when a frosted finish makes more sense than a reflective look.
+Our [privacy window film guide](/benefits/benefits/privacy-window-film-philadelphia/) covers the privacy side in more detail, including when a frosted finish makes more sense than a reflective look.
 
 ## A smart fit for older Philadelphia buildings
 

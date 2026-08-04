@@ -33,7 +33,7 @@ For classic homes, Solyx is often the better starting point because the line inc
 
 3M Fasara usually leans cleaner and more architectural. Finishes such as Linen Crystal, Luce, and Matte Crystal are a smart fit when you want softened light and privacy without trying to pass the glass off as an original church panel. That works well for updated Fishtown entries, newer condos near SEPTA stops, and University City office or clinic doors where the goal is a refined pattern rather than a period replica.
 
-If privacy is the top concern, our page on [privacy window film in Philadelphia](https://www.windowfilmphiladelphia.net/benefits/privacy-window-film-philadelphia/) explains how opacity levels and street-facing sightlines affect comfort. If you want to compare frosted, patterned, and decorative looks more broadly, our [decorative window film options](https://www.windowfilmphiladelphia.net/benefits/decorative-promotional/) show how these finishes can work beyond the front door as well.
+If privacy is the top concern, our page on [privacy window film in Philadelphia](https://www.windowfilmphiladelphia.net/benefits/benefits/privacy-window-film-philadelphia/) explains how opacity levels and street-facing sightlines affect comfort. If you want to compare frosted, patterned, and decorative looks more broadly, our [decorative window film options](https://www.windowfilmphiladelphia.net/benefits/decorative-promotional/) show how these finishes can work beyond the front door as well.
 
 ## Where Stained Glass Style Film Performs Best
 

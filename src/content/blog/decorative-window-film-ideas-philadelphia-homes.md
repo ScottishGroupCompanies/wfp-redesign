@@ -36,7 +36,7 @@ A good decorative film installation should look intentional, not like a last-min
 
 For homeowners who want a refined look, 3M Fasara collections are popular because they offer subtle textures and layered patterns that feel more like finished glass than simple frosting. Solyx products are useful when the project needs a clean etched-glass effect, a decorative gradient, or a custom banded layout for sidelights and interior partitions. Many decorative films also block up to 99% of UV rays, so the upgrade can help protect flooring, fabrics, and artwork while it improves privacy.
 
-If you want to see how different textures and finishes fit residential spaces, our [decorative and promotional film solutions](/benefits/decorative-promotional/) page is a helpful starting point. Homeowners who are deciding between frosting, reflective privacy, or a softer obscured view can also compare broader [privacy window film options](/benefits/privacy-window-film-philadelphia/) before choosing a final look.
+If you want to see how different textures and finishes fit residential spaces, our [decorative and promotional film solutions](/benefits/decorative-promotional/) page is a helpful starting point. Homeowners who are deciding between frosting, reflective privacy, or a softer obscured view can also compare broader [privacy window film options](/benefits/benefits/privacy-window-film-philadelphia/) before choosing a final look.
 
 ## What Philadelphia homeowners should check before installation
 

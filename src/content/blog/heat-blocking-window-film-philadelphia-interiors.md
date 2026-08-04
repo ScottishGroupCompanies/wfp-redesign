@@ -39,7 +39,7 @@ Heat blocking window film Philadelphia building owners choose often solves sever
 
 A lot of owners worry that any heat-control solution will leave their windows dark or reflective. Modern architectural films give much more flexibility than older tint products. Some are nearly invisible from the inside, which is important for homes near Fairmount Park, offices that want a clean facade, and historic properties where appearance still matters.
 
-When heat is only part of the problem, film can also work alongside broader goals. If the room suffers from harsh monitor reflections, [glare reduction film](/benefits/glare-reduction/) may need to be part of the conversation. If the owner wants a wider efficiency strategy, [energy-saving window film options](/benefits/energy-saving-window-film-philadephia/) can address comfort and cooling load together. And for interiors with artwork, fabrics, or wood finishes at risk, [UV blocking window film for Philadelphia spaces](/benefits/uv-blocking-window-film-philadelphia/) adds another layer of protection.
+When heat is only part of the problem, film can also work alongside broader goals. If the room suffers from harsh monitor reflections, [glare reduction film](/benefits/glare-reduction/) may need to be part of the conversation. If the owner wants a wider efficiency strategy, [energy-saving window film options](/benefits/energy-savings/) can address comfort and cooling load together. And for interiors with artwork, fabrics, or wood finishes at risk, [UV blocking window film for Philadelphia spaces](/benefits/uv-blocking-window-film-philadelphia/) adds another layer of protection.
 
 ## Why Local Conditions Matter in Film Selection
 

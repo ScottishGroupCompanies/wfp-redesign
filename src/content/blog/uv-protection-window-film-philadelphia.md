@@ -43,7 +43,7 @@ Many UV protection window films also carry meaningful solar heat rejection prope
 
 For businesses in University City running commercial HVAC systems through July and August, this combination translates to measurable utility savings. For homeowners in Manayunk or South Philly dealing with afternoon heat buildup in west-facing rooms, the same film addresses comfort and fade protection simultaneously.
 
-Learn more about how these products work on our [energy-saving window film page](/benefits/energy-saving-window-film-philadephia/), where we break down solar heat rejection figures by film type.
+Learn more about how these products work on our [energy-saving window film page](/benefits/energy-savings/), where we break down solar heat rejection figures by film type.
 
 ## UV Film for Commercial Properties in Philadelphia
 

@@ -55,7 +55,7 @@ The [U.S. Department of Energy notes that window films help block solar heat gai
 
 Performance numbers matter here. 3M Prestige Series films can reject up to 97% of the sun's infrared light while blocking up to 99.9% of UV rays, which is useful when a bright office near Market Street needs heat control without a dark, reflective look. LLumar solar control films block over 99% of harmful UV rays, making them a strong fit for fading concerns in rooms with hardwood floors, artwork, or upholstered seating.
 
-If comfort is the main goal, our [energy-saving window film solutions](/benefits/energy-saving-window-film-philadephia/) and [UV-blocking window film options](/benefits/uv-blocking-window-film-philadelphia/) show how different products line up with heat and fade concerns. If the job also needs glass-hold performance or breakage containment, our [safety and security film page](/benefits/safety-and-security/) is the right place to compare those applications.
+If comfort is the main goal, our [energy-saving window film solutions](/benefits/energy-savings/) and [UV-blocking window film options](/benefits/uv-blocking-window-film-philadelphia/) show how different products line up with heat and fade concerns. If the job also needs glass-hold performance or breakage containment, our [safety and security film page](/benefits/safety-and-security/) is the right place to compare those applications.
 
 ## What install day usually looks like
 

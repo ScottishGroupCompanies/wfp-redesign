@@ -37,7 +37,7 @@ Glare reduction window film Philadelphia installations are especially helpful in
 
 One of the biggest advantages of glare reduction window film Philadelphia clients appreciate is that it protects daylight instead of replacing it with a darker, closed-in feeling. Heavy shades fix glare by blocking almost everything. Film can keep rooms open, reduce harsh brightness, and preserve the clean lines many Philadelphia homeowners want in renovated kitchens, sunrooms, and home offices.
 
-That is why glare control is often paired with broader comfort goals. A room that is easier on the eyes is usually easier to cool too, especially when the glass gets direct afternoon exposure. Our [glare reduction solutions](/benefits/glare-reduction/) are often installed alongside [energy-saving window film](/benefits/energy-saving-window-film-philadephia/) strategies for clients who want both visual comfort and lower cooling stress in summer.
+That is why glare control is often paired with broader comfort goals. A room that is easier on the eyes is usually easier to cool too, especially when the glass gets direct afternoon exposure. Our [glare reduction solutions](/benefits/glare-reduction/) are often installed alongside [energy-saving window film](/benefits/energy-savings/) strategies for clients who want both visual comfort and lower cooling stress in summer.
 
 ## Why Film Makes Sense for Philadelphia Architecture
 

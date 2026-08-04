@@ -22,7 +22,7 @@ One-way privacy film works on a simple rule: the brighter side of the glass sees
 
 Philadelphia homes make this trickier because the city has so many mixed-light conditions. Old City properties often have tall neighboring masonry that cuts direct sun early. Center City condos can have strong southern exposure on one elevation and deep shade on another. South Philly rowhomes may get intense afternoon sun on a rear wall but limited direct light at the street. Even a nearby SEPTA structure, mature street trees, or a porch roof can change how long the reflective effect lasts.
 
-If the goal is privacy plus comfort, it helps to compare one-way film to [privacy window film options for Philadelphia homes](/benefits/privacy-window-film-philadelphia/) and not treat every room the same.
+If the goal is privacy plus comfort, it helps to compare one-way film to [privacy window film options for Philadelphia homes](/benefits/benefits/privacy-window-film-philadelphia/) and not treat every room the same.
 
 ## Which Philadelphia Windows Usually Perform Best
 

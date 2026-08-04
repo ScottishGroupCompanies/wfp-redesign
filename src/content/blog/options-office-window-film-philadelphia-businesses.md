@@ -96,7 +96,7 @@ Decorative film offers a cost-effective alternative to etched glass or custom mi
 
 With so many options, the selection process can feel overwhelming. The best approach is to identify your primary problem first, then evaluate products that solve it.
 
-Start by walking your office during different times of day. Note which areas get direct sun, where glare is worst, which rooms need privacy, and whether any windows feel like security risks. If your building is in a [solar control priority zone](/benefits/solar-control/) — say, a south-facing glass tower in Center City — heat rejection is likely your first concern. If you're in a converted loft with ample shade from adjacent buildings, privacy or security may rank higher.
+Start by walking your office during different times of day. Note which areas get direct sun, where glare is worst, which rooms need privacy, and whether any windows feel like security risks. If your building is in a [solar control priority zone](/benefits/energy-savings/) — say, a south-facing glass tower in Center City — heat rejection is likely your first concern. If you're in a converted loft with ample shade from adjacent buildings, privacy or security may rank higher.
 
 You can also explore our [office applications page](/applications/office/) for more specific guidance on matching film types to common office layouts.
 

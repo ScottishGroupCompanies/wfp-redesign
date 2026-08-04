@@ -58,7 +58,7 @@ Diffuse light and modest solar load usually make north-facing windows a secondar
 
 ### Street-Level vs. Upper Floors
 
-Street-level windows on Passyunk or Girard often need privacy as much as heat control. Low-reflective heat films keep interiors cooler without looking mirrored at night. If you also want daytime privacy patterns, pair heat control with a tasteful decorative layer. See our [privacy window film options](/benefits/privacy-window-film-philadelphia/).
+Street-level windows on Passyunk or Girard often need privacy as much as heat control. Low-reflective heat films keep interiors cooler without looking mirrored at night. If you also want daytime privacy patterns, pair heat control with a tasteful decorative layer. See our [privacy window film options](/benefits/benefits/privacy-window-film-philadelphia/).
 
 Upper floors and high-rises near Rittenhouse or University City often need strong IR control with minimal reflectance to keep skyline views crisp. Ceramic and spectrally selective films are ideal.
 

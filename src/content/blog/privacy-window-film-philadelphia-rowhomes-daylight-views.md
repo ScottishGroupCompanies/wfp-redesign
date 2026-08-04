@@ -55,7 +55,7 @@ A simple way to think about it is by function:
 - Use reflective solar film where daytime privacy and heat reduction matter more than nighttime obscurity
 - Use decorative textures where design matters as much as screening the view
 
-That is also why many homeowners combine privacy film with solar performance on the same project. Street-facing glass in Philadelphia often has two problems at once: exposure to pedestrians and afternoon heat gain. Our [solar control solutions](/benefits/solar-control/) and [homes and condos page](/applications/homes-condos/) are useful starting points when both privacy and comfort need to be addressed together.
+That is also why many homeowners combine privacy film with solar performance on the same project. Street-facing glass in Philadelphia often has two problems at once: exposure to pedestrians and afternoon heat gain. Our [solar control solutions](/benefits/energy-savings/) and [homes and condos page](/applications/homes-condos/) are useful starting points when both privacy and comfort need to be addressed together.
 
 ## Why Privacy Film Makes Sense for Philadelphia Architecture
 

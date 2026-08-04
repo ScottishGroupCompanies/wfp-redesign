@@ -65,7 +65,7 @@ Before your installer measures windows, it helps to know a few basics. When you 
 - **Orientation matters.** South- and west-facing windows usually deliver the fastest comfort payback.
 - **Use cases matter.** A nursery, a kitchen, and a home office may need different glare and light levels.
 
-For homeowners who want a complete comfort plan, it often makes sense to start with [energy-saving window film options](/benefits/energy-saving-window-film-philadelphia/) and then narrow down the film based on how you use each room.
+For homeowners who want a complete comfort plan, it often makes sense to start with [energy-saving window film options](/benefits/energy-savings/) and then narrow down the film based on how you use each room.
 
 ## What you’ll notice after film goes on
 
@@ -107,4 +107,4 @@ A few practical add-ons that pair well with heat blocking window film philadelph
 
 ## Schedule a Philadelphia window film consultation
 
-If you’re ready to make summer rooms more comfortable, heat blocking window film philadelphia specialists can help you choose the right performance level for your glass, your layout, and your preferred look. Learn more about [residential window film installation](/residential/) and reach out to [schedule a consultation](/contact/) for a local quote in Philadelphia.
+If you’re ready to make summer rooms more comfortable, heat blocking window film philadelphia specialists can help you choose the right performance level for your glass, your layout, and your preferred look. Learn more about [residential window film installation](/applications/homes-condos/) and reach out to [schedule a consultation](/contact/) for a local quote in Philadelphia.

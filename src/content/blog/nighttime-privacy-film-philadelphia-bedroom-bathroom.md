@@ -16,7 +16,7 @@ The best window film for nighttime privacy Philadelphia homeowners can rely on i
 
 For most homes in Center City, South Philly, Fishtown, and Manayunk, the strongest nighttime privacy comes from frosted, matte, reeded, or opaque decorative films that physically obscure the view rather than trying to out-reflect the dark outdoors. If you still want outward visibility, a dual-reflective film can soften the mirror effect better than a standard reflective film, but it is still a compromise after dark, not a magic shield.
 
-If you want a broader look at residential privacy options first, our [privacy window film solutions for Philadelphia homes](/benefits/privacy-window-film-philadelphia/) page is a helpful starting point.
+If you want a broader look at residential privacy options first, our [privacy window film solutions for Philadelphia homes](/benefits/benefits/privacy-window-film-philadelphia/) page is a helpful starting point.
 
 ## Why Reflective Film Fails at Night
 
@@ -44,7 +44,7 @@ Nighttime privacy is not just about whether a film is called privacy film. The m
 
 Solyx is useful when style is part of the decision. Their catalog gives Philadelphia homeowners a wide range of reeded, ribbed, etched, gradient, and textured options that fit everything from modern condos in University City to older homes near Independence Hall where a plain mirrored look would feel out of place. If you want to see how design-oriented privacy films compare, our [decorative window film options](/benefits/decorative-promotional/) page shows where patterned and frosted products make the most sense.
 
-When privacy and heat control need to work together, 3M Sun Control Window Film Prestige is worth considering as a companion product on windows that do not need full obscurity. 3M says Prestige can reject up to 97% of the sun's infrared light. That is not a nighttime privacy stat, but it matters in Philadelphia bedrooms and sunrooms that stay hot through humid summer evenings. Our [energy-saving window film page](/benefits/energy-saving-window-film-philadephia/) explains how that type of comfort upgrade can pair with room-specific privacy planning.
+When privacy and heat control need to work together, 3M Sun Control Window Film Prestige is worth considering as a companion product on windows that do not need full obscurity. 3M says Prestige can reject up to 97% of the sun's infrared light. That is not a nighttime privacy stat, but it matters in Philadelphia bedrooms and sunrooms that stay hot through humid summer evenings. Our [energy-saving window film page](/benefits/energy-savings/) explains how that type of comfort upgrade can pair with room-specific privacy planning.
 
 ## How Philadelphia Homes Change the Answer
 

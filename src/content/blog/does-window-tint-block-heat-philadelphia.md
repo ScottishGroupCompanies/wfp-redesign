@@ -60,7 +60,7 @@ Philadelphia's building stock creates some specific heat-gain challenges that ge
 
 **Historic properties in Fairmount and Chestnut Hill** benefit from optically clear or lightly tinted ceramic films that meet historic preservation guidelines while dramatically reducing solar heat gain through older single-pane glass — some of which dates to the early 20th century.
 
-Our [energy-saving window film services in Philadelphia](/benefits/energy-saving-window-film-philadephia/) are designed to fit these varied property types, from narrow Fishtown rowhouses to large commercial towers.
+Our [energy-saving window film services in Philadelphia](/benefits/energy-savings/) are designed to fit these varied property types, from narrow Fishtown rowhouses to large commercial towers.
 
 ## What the Numbers Say About Energy Savings
 

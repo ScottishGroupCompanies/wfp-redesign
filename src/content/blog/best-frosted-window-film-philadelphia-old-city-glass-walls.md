@@ -37,7 +37,7 @@ These styles are the ones that tend to work best in Philadelphia office interior
 - **Reeded textures for historic-modern spaces:** Solyx Reeded Glass and 1/4 inch Reeded Glass fit Old City and Center City interiors that mix black metal frames, exposed brick, and restored wood floors.
 - **Striped and patterned films for branding:** Solyx White Frosted Stripes or similar etched patterns can add privacy while still leaving a space feeling designed, especially in reception zones and collaborative studios.
 
-Many companies also compare frosted finishes with broader [privacy window film options for Philadelphia offices](/benefits/privacy-window-film-philadelphia/) before choosing a final opacity level.
+Many companies also compare frosted finishes with broader [privacy window film options for Philadelphia offices](/benefits/benefits/privacy-window-film-philadelphia/) before choosing a final opacity level.
 
 ## Why Local Conditions Matter in Philadelphia
 

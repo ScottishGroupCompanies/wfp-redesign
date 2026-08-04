@@ -33,7 +33,7 @@ Residential window film is one of the most underrated home upgrades available. H
 
 ### Significant Energy Savings
 
-Heating and cooling account for nearly half of the average home's energy use. By reducing solar heat gain in summer, heat reducing window film can lower cooling costs by 20-40%, depending on window orientation, film type, and how well-insulated the rest of the home is. Our [energy saving window film page](https://www.windowfilmphiladelphia.net/benefits/energy-saving-window-film-philadephia/) covers the efficiency side in more detail.
+Heating and cooling account for nearly half of the average home's energy use. By reducing solar heat gain in summer, heat reducing window film can lower cooling costs by 20-40%, depending on window orientation, film type, and how well-insulated the rest of the home is. Our [energy saving window film page](https://www.windowfilmphiladelphia.net/benefits/energy-savings/) covers the efficiency side in more detail.
 
 ### Year-Round Comfort
 

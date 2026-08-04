@@ -48,7 +48,7 @@ We are careful about language, though. We do not sell standard frosted film as a
 
 ## When Solar-Control Film Beats Frosted Glass for Heat
 
-When the primary problem is heat, we usually start with [solar control films for Philadelphia buildings](/benefits/solar-control/). Ceramic, metalized, carbon, hybrid, and spectrally selective films are designed to manage incoming solar energy more deliberately than standard decorative frost. They can reduce solar heat gain, lower glare, and often block up to 99% or more of UV depending on product.
+When the primary problem is heat, we usually start with [solar control films for Philadelphia buildings](/benefits/energy-savings/). Ceramic, metalized, carbon, hybrid, and spectrally selective films are designed to manage incoming solar energy more deliberately than standard decorative frost. They can reduce solar heat gain, lower glare, and often block up to 99% or more of UV depending on product.
 
 Ceramic films use nano-ceramic construction to reject infrared heat without metalized layers. We like them when signal friendliness, a neutral look, and durability matter, such as condos, offices, schools, and medical spaces. Metalized films can provide strong heat rejection and a more reflective appearance, but we review aesthetics and possible RF concerns before recommending them.
 

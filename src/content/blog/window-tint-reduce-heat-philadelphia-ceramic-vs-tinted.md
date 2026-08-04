@@ -56,7 +56,7 @@ Philadelphia has a mix of brick rowhomes, converted lofts, SEPTA-facing office s
 
 A practical selection process usually starts with the glass itself, the direction it faces, and the time of day the discomfort shows up. If the complaint is mostly heat with a desire to preserve daylight, ceramic is usually the first category to test. If the complaint is mostly brightness, eye strain, or a desire for a darker look, tinted film may still be worth considering.
 
-Many property owners also benefit from reviewing [energy-saving window film options](/benefits/energy-saving-window-film-philadephia/) for the broader performance picture, especially in older Philadelphia buildings where HVAC systems are already working hard through humid summer stretches.
+Many property owners also benefit from reviewing [energy-saving window film options](/benefits/energy-savings/) for the broader performance picture, especially in older Philadelphia buildings where HVAC systems are already working hard through humid summer stretches.
 
 ## The Better Fit for Most Heat Problems
 
