@@ -279,6 +279,58 @@ if (slug !== 'camden') {
     if (visible.includes(term)) camdenLeak.push(term);
   }
   check('No Camden-specific text leaked', camdenLeak.length === 0, camdenLeak.join(', '));
+
+  // ─── 12b. CONTENT UNIQUENESS (not just city-name swaps) ───────────────
+  console.log('\n[12b] CONTENT UNIQUENESS (vs camden.astro)');
+  const camdenPath = path.join(ROOT, 'src/pages/cities/camden.astro');
+  if (fs.existsSync(camdenPath)) {
+    const camdenSrc = fs.readFileSync(camdenPath, 'utf8');
+
+    // Compare H2 headings — normalize by removing city names and state abbrevs
+    const normalize = (s) => s.replace(/Camden|Philadelphia|Cherry Hill|Newark|Voorhees|Haddonfield|Collingswood|Pennsauken|Merchantville|Maple Shade|Trenton|Atlantic City|Reading|Upper Darby/g, 'CITY').replace(/NJ|PA/g, 'ST').replace(/South Jersey|Delaware Valley/g, 'REGION').trim();
+    const camdenH2s = (camdenSrc.match(/<h2[^>]*>([\s\S]*?)<\/h2>/g) || []).map(h => normalize(h.replace(/<[^>]+>/g, '').trim())).filter(h => h.length > 5);
+    const pageH2s = (src.match(/<h2[^>]*>([\s\S]*?)<\/h2>/g) || []).map(h => normalize(h.replace(/<[^>]+>/g, '').trim())).filter(h => h.length > 5);
+    let dupH2s = [];
+    for (const h of pageH2s) {
+      if (camdenH2s.includes(h)) dupH2s.push(h);
+    }
+    check('No H2 headings match Camden (after city-name normalization)', dupH2s.length === 0, `${dupH2s.length} matches: ${dupH2s.slice(0, 3).join(' | ')}`);
+
+    // Compare FAQ questions
+    const camdenQs = (camdenSrc.match(/question:\s*'([^']+)'/g) || []).map(q => normalize(q.replace(/question:\s*'/, '').replace(/'$/, '')));
+    const pageQs = (src.match(/question:\s*'([^']+)'/g) || []).map(q => normalize(q.replace(/question:\s*'/, '').replace(/'$/, '')));
+    let dupQs = [];
+    for (const q of pageQs) {
+      if (camdenQs.includes(q)) dupQs.push(q);
+    }
+    check('No FAQ questions match Camden (after normalization)', dupQs.length === 0, `${dupQs.length} matches: ${dupQs.slice(0, 2).join(' | ')}`);
+
+    // Compare testimonial names and quotes (only name: fields in TestimonialSpotlight items array)
+    const camdenNames = (camdenSrc.match(/^\s+name:\s*'([^']+)'/gm) || []).map(n => n.replace(/^\s+name:\s*'/, '').replace(/'$/, ''));
+    const pageNames = (src.match(/^\s+name:\s*'([^']+)'/gm) || []).map(n => n.replace(/^\s+name:\s*'/, '').replace(/'$/, ''));
+    let dupNames = [];
+    for (const n of pageNames) {
+      if (camdenNames.includes(n)) dupNames.push(n);
+    }
+    check('No testimonial names match Camden', dupNames.length === 0, dupNames.join(', '));
+
+    const camdenQuotes = (camdenSrc.match(/quote:\s*'([^']+)'/g) || []).map(q => normalize(q.slice(0, 80)));
+    const pageQuotes = (src.match(/quote:\s*'([^']+)'/g) || []).map(q => normalize(q.slice(0, 80)));
+    let dupQuotes = [];
+    for (const q of pageQuotes) {
+      if (camdenQuotes.includes(q)) dupQuotes.push(q.slice(0, 50));
+    }
+    check('No testimonial quotes match Camden (after normalization)', dupQuotes.length === 0, `${dupQuotes.length} matches`);
+
+    // Compare component prop headings only (title= and heading= on component tags, not img title=, iframe title=, or schema name:)
+    const camdenProps = (camdenSrc.match(/^\s+(?:title|heading)="([^"]+)"/gm) || []).map(p => normalize(p.replace(/^\s+(?:title|heading)="/, '').replace(/"$/, ''))).filter(p => !p.includes('service area map') && !p.includes('City of'));
+    const pageProps = (src.match(/^\s+(?:title|heading)="([^"]+)"/gm) || []).map(p => normalize(p.replace(/^\s+(?:title|heading)="/, '').replace(/"$/, ''))).filter(p => !p.includes('service area map') && !p.includes('City of'));
+    let dupProps = [];
+    for (const p of pageProps) {
+      if (camdenProps.includes(p) && p.length > 10) dupProps.push(p);
+    }
+    check('No component prop headings match Camden (after normalization)', dupProps.length === 0, `${dupProps.length} matches: ${dupProps.slice(0, 2).join(' | ')}`);
+  }
 } else {
   check('Camden page (skip leak check)', true);
 }
