@@ -1,267 +1,1242 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import GalleryBanner from '../../components/GalleryBanner.astro';
+import TestimonialSpotlight from '../../components/TestimonialSpotlight.astro';
+import CtaLightRays from '../../components/CtaLightRays.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
 
-const title = 'Window Film Upper Darby Township PA | Window Film Contractor Upper Darby';
-const description = 'Window Film Philadelphia is the #1 source for window film in Upper Darby Township, PA. Expert 3M, LLumar, security, solar control, and privacy film installation. Free quotes!';
+const title = 'Window Film Upper Darby PA | Window Film Contractor PA';
+const description = 'Window film installation in Upper Darby, PA — solar control, security, privacy, and decorative film. Free estimates, certified installers.';
+
+const filmBenefits = [
+  {
+    number: '01',
+    title: 'Energy Savings',
+    detail: `<p>Upper Darby's densely built blocks of twin stone homes and rowhouses trap afternoon heat through south- and west-facing glass all summer. Solar control film rejects up to <strong>78% of solar heat gain</strong> at the pane, so interiors stay measurably cooler on July afternoons when highs push past 87°F.</p><ul><li>Cuts air-conditioning runtime across Drexel Hill and Highland Park twins with single-pane originals</li><li>Most Upper Darby homeowners notice cooler upstairs bedrooms within the first week</li><li>Low-E options also slow winter heat loss through older glass — useful across the township's pre-war building stock</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-energy.jpg',
+    imageAlt: 'Energy-saving window film in a Drexel Hill twin home living room — natural light preserved, summer heat reduced',
+  },
+  {
+    number: '02',
+    title: 'UV Protection',
+    detail: `<p>Pennsylvania summers pour UV through the wide front windows typical of Upper Darby's stone twins and colonials. UV-blocking film stops <strong>99% of UV-A and UV-B radiation</strong> — the leading cause of fading in the original hardwood floors, oriental rugs, and heirloom furniture common in these homes.</p><ul><li>Important for waiting areas at Delaware County Memorial Hospital and area medical offices</li><li>Optically clear — no visible tint, no change to daylight or the view down your street</li><li>Cuts fading by up to 60% versus unprotected glass over the life of the floor or fabric</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-uv.jpg',
+    imageAlt: 'UV-blocking window film protecting hardwood floors and furnishings in an Upper Darby stone twin home',
+  },
+  {
+    number: '03',
+    title: 'Privacy Film',
+    detail: `<p>At more than 10,000 residents per square mile, Upper Darby is one of Pennsylvania's most densely populated townships. Twin homes sit shoulder-to-shoulder, and apartment buildings near 69th Street look straight into neighboring units. Privacy film restores separation <strong>without darkening the room</strong>.</p><ul><li>One-way reflective film keeps daytime privacy in street-facing twins along Garrett Road and Lansdowne Avenue</li><li>Frosted film for medical exam rooms, attorney offices, and shared conference partitions</li><li>Clear frosted, gradient, patterned, and branded designs — all fully removable for tenants and landlords</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-privacy.jpg',
+    imageAlt: 'Frosted privacy window film on a partition in a Delaware County professional office near Upper Darby',
+  },
+  {
+    number: '04',
+    title: 'Safety & Security',
+    detail: `<p>Storefronts along the 69th Street shopping district and West Chester Pike carry real smash-and-grab exposure. Security film <strong>bonds the glass into a single sheet on impact</strong>, slowing forced entry and holding shards in place if a pane is struck.</p><ul><li>Keeps broken glass intact during break-in attempts, accidents, and severe weather</li><li>Used by schools, clinics, and government buildings to meet ANSI and GSA glazing safety standards</li><li>Bomb-blast mitigation configurations available for federally regulated facilities</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-safety.jpg',
+    imageAlt: 'Secure storefront entrance on 69th Street in Upper Darby with safety and security window film on the glass',
+  },
+  {
+    number: '05',
+    title: 'Anti-Graffiti',
+    detail: `<p>Glass etching and acid tagging are recurring costs for retailers along the 69th Street corridor, Garrett Road, and West Chester Pike. Anti-graffiti film is a <strong>sacrificial layer</strong> — when the surface is scratched or etched, the film is peeled and replaced, not the expensive pane underneath.</p><ul><li>Each swap costs a small fraction of full glass replacement</li><li>Most storefront owners recover the initial film cost within one or two prevented incidents</li><li>Available in clear or lightly tinted versions — effectively invisible to customers</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-graffiti.jpg',
+    imageAlt: 'Clean unmarked storefront glass along 69th Street in Upper Darby protected by anti-graffiti window film',
+  },
+  {
+    number: '06',
+    title: 'Glare Reduction',
+    detail: `<p>East- and west-facing windows in Drexel Hill, Cardington, and Stonehurst twins throw peak glare onto workstations and screens during morning and late afternoon. Glare reduction film filters up to <strong>85% of glare-causing visible light</strong> while keeping the room bright.</p><ul><li>Home offices and ground-floor retail see the biggest difference — monitors and displays become fully readable</li><li>Compatible with single-pane glass common in the township's older twin homes and rowhouses</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-glare.jpg',
+    imageAlt: 'Upper Darby home-office setup near a window with no screen glare after window film installation',
+  },
+  {
+    number: '07',
+    title: 'Decorative Film',
+    detail: `<p>Upper Darby's 69th Street revitalization and the Tower Theater district have brought new offices, clinics, and storefronts that benefit from designed glass. Frosted, patterned, and gradient films deliver an <strong>etched-glass look for a fraction of the cost</strong> of real etching.</p><ul><li>Custom-branded window graphics for 69th Street businesses — logos, hours, and seasonal signage</li><li>Well suited to medical waiting rooms, law firm lobbies, and Upper Darby School District interiors</li><li>Fully removable — no permanent modification to the glass or leasehold</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-decorative.jpg',
+    imageAlt: 'Decorative frosted glass pattern on a partition wall in an Upper Darby professional office or lobby',
+  },
+  {
+    number: '08',
+    title: 'Solar Control',
+    detail: `<p>Solar control film is the workhorse product we install across Upper Darby Township — heat gain, glare, and UV addressed in a single application for twins, rowhouses, apartments, offices, and institutional buildings alike.</p><ul><li>Spectrally selective options keep daylight and views while rejecting the majority of infrared heat</li><li>Ceramic films contain no metal — safe for buildings with Wi-Fi, cellular, and sensitive electronics</li><li>NFRC-rated films available with documented VLT, SHGC, and TSER specs for LEED and energy-code compliance</li></ul>`,
+    image: '/images/window-film-upper-darby-pa-film-solar.jpg',
+    imageAlt: 'Solar control window film on a Delaware County commercial office building exterior near Upper Darby',
+  },
+];
 
 const faqItems = [
-  { question: 'Is window film legal in Pennsylvania?', answer: 'Yes. Pennsylvania law permits residential and commercial window film without restriction. There are no state-level VLT regulations for homes or businesses in PA. We ensure every install is fully compliant with local codes.' },
-  { question: 'How does privacy film work for rowhouse and townhome windows in Upper Darby?', answer: 'Privacy film uses frosted, tinted, or reflective coatings to block outside sightlines while still letting natural light in. It is ideal for ground-floor windows facing shared walkways, alleys, or neighboring properties — giving you privacy without curtains or window treatments.' },
-  { question: 'How long does installation take?', answer: 'Most residential jobs take 4–8 hours depending on window count. Commercial projects are scoped per job. We typically have same-week availability and can often complete a standard residential install in a single day.' },
-  { question: 'What warranty comes with my installation?', answer: 'All residential and commercial installations include a lifetime manufacturer warranty against peeling, bubbling, and fading. The warranty transfers with the property if you sell.' },
-  { question: 'Do you offer free consultations in Delaware County?', answer: 'Yes — all consultations are free. We will come to your home or business in Upper Darby or the surrounding Delaware County communities, assess your needs, and provide a detailed written estimate at no charge and no obligation.' },
-  { question: 'Can security film help with break-in concerns in the area?', answer: 'Security film holds glass together on impact, making it significantly harder for an intruder to breach a window quickly. This is especially relevant for ground-floor commercial spaces along the 69th Street corridor and for residential properties with accessible windows. The film holds shards together, reducing injury risk and buying time during an attempted break-in.' },
+  { question: 'Can Upper Darby homeowners install window film without a permit?', answer: 'Yes. Pennsylvania places no statewide restriction on architectural window film for residential or commercial buildings, so solar, privacy, decorative, security, and anti-graffiti films can all be installed on Upper Darby properties without a permit. If your twin home sits in a Delaware County historic overlay or is covered by an HOA, your documents may include reflectivity guidance — we carry non-reflective and ceramic film options that satisfy most requirements and can help you through the approval process.' },
+  { question: 'What does window film cost for a Drexel Hill twin home?', answer: 'Cost depends on film category, total glass area, window count, and how accessible each pane is. A Drexel Hill twin with eight original windows has very different requirements than a 69th Street apartment building with floor-to-ceiling lobby glass. Rather than guess, we offer free on-site consultations and deliver a detailed written estimate calibrated to your specific windows and goals. No obligation, no charge.' },
+  { question: 'Do you work on apartment buildings near the 69th Street station?', answer: 'Yes. We install film in apartment buildings and mixed-use properties throughout the 69th Street corridor and the surrounding Upper Darby neighborhoods. Apartment work typically involves coordinating with building management, scheduling around tenant routines, and protecting common areas and finishes. During your free consultation we assess access, glass type, and any building-specific requirements before we begin.' },
+  { question: 'Which film manufacturers do you carry and what warranties apply?', answer: 'We install 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, and Solyx — all backed by manufacturer warranties covering defects such as peeling, bubbling, delamination, and color shift. Coverage periods and specifics vary by product line and whether the install is residential or commercial. We walk you through the warranty for your chosen film in full before any installation begins.' },
+  { question: 'How well does solar control film handle Upper Darby summer humidity?', answer: 'High-performance solar control films reject up to 85% of solar heat gain — the main driver of summer overheating in Upper Darby and across Delaware County. July highs here regularly reach the upper 80s°F with humidity in the 70s. Window film reduces hot spots near glass, lowers peak indoor temperatures, and eases air-conditioning load, often cutting cooling energy costs by 20–30%. The U.S. Department of Energy notes that windows account for 25–30% of a building\'s total heating and cooling energy loss.' },
+  { question: 'Will window film protect the hardwood floors common in Upper Darby stone twins?', answer: 'Yes — this is one of the most common reasons Upper Darby homeowners call us. The township\'s stone twins and colonials are full of original old-growth oak and pine floors that fade fast under untreated south-facing glass. UV-blocking film stops 99% or more of UV-A and UV-B radiation — the primary cause of fading — while remaining optically clear, so you keep your daylight and the view down the block.' },
+  { question: 'I rent my apartment in Upper Darby — can I still get window film?', answer: 'Absolutely. Window film is professionally removable at any time with heat and a mild adhesive solvent — no scratches, no residue, no permanent change to the glass. Many of our Upper Darby clients are renters in apartments near 69th Street who want heat reduction or privacy without modifying the unit permanently. When you move out, the film can be cleanly removed.' },
+  { question: 'Does window film help in Upper Darby winters or only during summer?', answer: 'Both seasons. Solar control film cuts heat gain in summer, and certain low-emissivity (low-e) films also reflect interior warmth back into the room during winter — the same principle behind double-pane Low-E glass. This dual-season performance matters in Upper Darby, where January temperatures frequently drop into the 20s°F. Combined summer and winter use can reduce total HVAC energy consumption by 5–15% across the year.' },
+  { question: 'What film works best for a street-facing twin on Garrett Road?', answer: 'It depends on your goals. If afternoon sun is the issue, ceramic solar control film rejects heat without darkening the glass. If passing pedestrians can see straight into your living room, one-way reflective film gives daytime privacy while keeping your outward view. For bathroom or basement windows, frosted decorative film provides permanent privacy. Many Garrett Road and Lansdowne Avenue clients layer solar film on upper floors and privacy film on ground-floor street-facing windows.' },
+  { question: 'Do you install anti-graffiti film on storefronts along the 69th Street shopping district?', answer: 'Yes — anti-graffiti film is one of our most-requested commercial products along 69th Street, Garrett Road, and West Chester Pike. It is a clear sacrificial layer: when glass gets scratched or tagged, we peel off the damaged film and apply a new sheet — a small fraction of what a new pane would cost. 69th Street merchants use it specifically because scratching and spray tagging are recurring expenses in a busy retail corridor.' },
+  { question: 'Will window film crack the older glass in Upper Darby twin homes?', answer: 'No, when the correct film is matched to the glass type. Many Upper Darby twins still have their original single-pane glass, which requires different film specs than double-pane insulated units. For sealed IGUs we select films rated to prevent thermal-stress cracking. Our installers inspect the glass and verify compatibility before applying anything. Major glass manufacturers do not void warranties when an IGU-rated film is properly installed.' },
+  { question: 'Are there Pennsylvania or PECO rebates available for window film?', answer: 'Potentially yes. The federal Inflation Reduction Act Section 25C tax credit covers qualifying building-envelope improvements — which can include energy-efficient window treatments — up to $1,200 per year for eligible residential projects. PECO and other Pennsylvania utility programs sometimes offer commercial efficiency incentives. We recommend checking current program availability with your utility and consulting a tax professional to confirm eligibility based on your film specification and property type.' },
+  { question: 'Do you serve all of Delaware County?', answer: 'Yes — from the 69th Street Transportation Center to the Springfield Mall corridor to Drexel Hill and beyond. We offer free, no-obligation on-site consultations anywhere in Upper Darby Township and throughout Delaware County. During the visit we assess window type, sun exposure, and your goals, then provide a detailed written estimate at no charge.' },
+];
+
+const today = new Date().toISOString().slice(0, 10);
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://www.windowfilmphiladelphia.net/cities/upper-darby-township/#breadcrumb',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Cities We Serve', item: 'https://www.windowfilmphiladelphia.net/cities/' },
+      { '@type': 'ListItem', position: 3, name: 'Window Film Upper Darby PA', item: 'https://www.windowfilmphiladelphia.net/cities/upper-darby-township/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/cities/upper-darby-township/#webpage',
+    url: 'https://www.windowfilmphiladelphia.net/cities/upper-darby-township/',
+    name: title,
+    description: description,
+    inLanguage: 'en-US',
+    isPartOf: { '@id': 'https://www.windowfilmphiladelphia.net/#website' },
+    about: { '@type': 'City', name: 'Upper Darby Township', containedInPlace: { '@type': 'State', name: 'Pennsylvania' } },
+    dateModified: today,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.ud-geo', '.ud-hero__subtitle', '.faq__a-inner p'],
+    },
+    breadcrumb: { '@id': 'https://www.windowfilmphiladelphia.net/cities/upper-darby-township/#breadcrumb' },
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/upper-darby-township/" faqItems={faqItems}>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/upper-darby-township/" faqItems={faqItems} schemas={pageSchemas}>
 
-<InnerPageHero
-  title="Window Film Solutions<br />Upper Darby, PA"
-  bgImage="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png"
-  desc="Serving Upper Darby and Delaware County since 2008."
-/>
-
-<div class="ip-page-body">
-<!-- ══════════════════════════════════════
-     PAGE HERO — 2-col: copy left, body right
-     ══════════════════════════════════════ -->
-<div class="ip-hero">
-  <div class="ip-hero__content fade-in">
-    <div class="ip-hero__eyebrow">
-      <span class="eyebrow-marquee"><span>Upper Darby Township, Pennsylvania</span></span>
-    </div>
-    <h2>Window Film in <em>Upper Darby, PA</em></h2>
-  </div>
-  <div class="ip-hero__body fade-in">
-    <p class="ip-hero__lead">Window Film Philadelphia has served Upper Darby homeowners, businesses, and commercial properties since 2008. Expert installation, premium films from 3M, LLumar, and Vista, and a lifetime warranty on every project — serving Delaware County from Drexel Hill to Havertown.</p>
-    <div class="ip-hero__ctas">
-      <a href="/contact/" class="ip-btn ip-btn--primary">Get a Free Quote</a>
-      <a href="tel:+126****7980" class="ip-btn ip-btn--ghost">Call (267) 394-7980</a>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     HERO IMAGE — full-width rounded
-     ══════════════════════════════════════ -->
-<div class="ip-hero-img-wrap">
-  <div class="ip-hero-img fade-in">
-    <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png" alt="Window film installation Upper Darby PA" width="1200" height="380" loading="lazy" />
-    <span class="ip-hero-img__caption">📍 Serving all Upper Darby neighborhoods &amp; surrounding Delaware County</span>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     MAIN CONTENT + SIDEBAR
-     ══════════════════════════════════════ -->
-<div class="ip-content-wrap">
-  <div class="ip-main prose">
-    <h2>Upper Darby's Trusted Window Film Experts</h2>
-    <p>At Window Film Philadelphia, we've been serving Upper Darby Township and the surrounding Delaware County communities since 2008. Whether you're dealing with the summer heat in a Drexel Hill colonial, want to add privacy to your townhome on the 69th Street corridor, or need to protect your commercial storefront from graffiti — our certified installers deliver flawless results every time.</p>
-    <p>Upper Darby's mix of dense rowhouse neighborhoods, sprawling suburbs like Drexel Hill and Havertown, and a bustling commercial district along 69th Street creates diverse window film needs. Our team understands the specific building types, orientations, and security concerns across every Upper Darby neighborhood.</p>
-
-    <div class="ip-callout">
-      <p><strong>Delaware County Advantage:</strong> Upper Darby's proximity to Philadelphia means summer heat and glare are constant challenges for homeowners and businesses alike. Solar control window film can reduce cooling costs by up to 30% — making it one of the best investments you can make for comfort and energy efficiency in Delaware County.</p>
-    </div>
-
-    <h2>Window Film Options for Upper Darby Properties</h2>
-    <p>We offer a curated selection of premium films from 3M, LLumar, Vista, and Solar Gard — matched to Upper Darby's specific climate and your project goals.</p>
-
-    <div class="ip-film-grid">
-      <div class="ip-film-card ip-film-card--featured">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <h3>Solar Control Film</h3>
-        <p>Maximum heat rejection and UV blocking. Ideal for Upper Darby homes and offices facing south or west.</p>
-        <div class="ip-film-price">From $6.50/sq ft installed</div>
-      </div>
-      <div class="ip-film-card">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <h3>Safety & Security Film</h3>
-        <p>Holds glass together on impact. Popular for commercial storefronts and ground-floor residential windows.</p>
-        <div class="ip-film-price">From $7.00/sq ft installed</div>
-      </div>
-      <div class="ip-film-card">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <h3>Decorative & Privacy Film</h3>
-        <p>Frosted, patterned, or custom-cut designs for bathrooms, conference rooms, and street-facing windows.</p>
-        <div class="ip-film-price">From $5.50/sq ft installed</div>
-      </div>
-      <div class="ip-film-card">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        <h3>Anti-Graffiti Film</h3>
-        <p>Sacrificial film layer protects glass from etching, paint, and graffiti. Easily replaced at low cost.</p>
-        <div class="ip-film-price">From $4.00/sq ft installed</div>
+<!-- ══ HERO ══ -->
+<section class="ud-hero">
+  <div class="ud-hero__overlay"></div>
+  <div class="ud-hero__container">
+    <div class="ud-hero__label">WINDOW FILM INSTALLATION &middot; UPPER DARBY, PA</div>
+    <div class="ud-hero__content">
+      <h1 class="ud-hero__title">Window Film in<br/>&mdash; Upper Darby Township</h1>
+      <p class="ud-hero__subtitle">Residential and commercial window film installation across Upper Darby Township and Delaware County, PA. Solar control, security, privacy, and decorative film for twin homes, rowhouses, apartments, and 69th Street storefronts — free estimates, certified installers, manufacturer-backed warranties.</p>
+      <div class="ud-hero__buttons">
+        <a href="/contact/" class="btn-hero btn-hero--primary">Get Your Free Estimate &rarr;</a>
+        <a href="tel:+12673947980" class="btn-hero btn-hero--secondary">Call (267) 394-7980</a>
       </div>
     </div>
-
-    <h2>Why Upper Darby Properties Choose Window Film Philadelphia</h2>
-    <ul>
-      <li>15+ years serving Philadelphia and Delaware County</li>
-      <li>Factory-certified installers from 3M, LLumar, and Vista</li>
-      <li>Lifetime manufacturer warranty on all residential and commercial films</li>
-      <li>Same-week appointments available across Delaware County</li>
-      <li>Free in-home and on-site consultations</li>
-      <li>Philadelphia's most reviewed window film contractor</li>
-    </ul>
-
-    <h2>Our Upper Darby Installation Process</h2>
-    <p>Call or submit a quote request and receive a detailed estimate within 24 hours. Our Upper Darby-area crew arrives on schedule, preps the surface, installs the film, and leaves your space spotless. Most residential jobs are completed in a single day.</p>
+    <div class="ud-hero__bottom">
+      <div class="ud-hero__tagline">Trusted by Upper Darby homeowners and businesses since 2008.</div>
+      <div class="ud-hero__stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="18">0</div>
+          <div class="hero-stat-item__label">Years Serving Delaware County</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="500">0</div>
+          <div class="hero-stat-item__label">Upper Darby Area Installs</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="99">0</div>
+          <div class="hero-stat-item__label">UV Block Rate</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="4.9">0</div>
+          <div class="hero-stat-item__label">Google Rating</div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="ip-sidebar">
-    <div class="ip-sidebar-cta-card fade-in">
-      <div class="ip-sidebar-cta-card__bg" style="background-image: url('https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203924_58c10bc0-70c3-4c30-9723-f394b87a2988.png')">
-        <div class="ip-sidebar-cta-card__overlay"></div>
-        <div class="ip-sidebar-cta-card__content">
-          <p class="ip-sidebar-cta-card__label">Any Questions? Let's talk</p>
-          <a href="tel:+126****7980" class="ip-sidebar-cta-card__phone">(267) 394-7980</a>
-          <a href="/contact/" class="ip-sidebar-cta-card__btn">Get a Free Quote →</a>
+<!-- ══ LOCAL CONTEXT ══ -->
+<section class="ud-why">
+  <div class="ud-why__container">
+
+    <div class="ud-why__image-wrap">
+      <img
+        src="/images/window-film-upper-darby-pa-urban-heat.jpg"
+        alt="69th Street Transportation Center and dense Upper Darby residential blocks - Delaware County's summer heat and density make window film essential"
+        class="ud-why__image"
+        loading="lazy"
+      />
+      <div class="ud-why__stat-card">
+        <div class="ud-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>87°F July average high</span>
+        </div>
+        <div class="ud-why__stat-divider"></div>
+        <div class="ud-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>10,000+ residents per sq mi</span>
         </div>
       </div>
     </div>
 
-    <div class="ip-sidebar-cities fade-in fade-in-delay-1">
-      <h4 class="ip-sidebar-cities__title">Cities We Serve</h4>
-      <ul class="ip-sidebar-cities__list">
-        <li><a href="/cities/philadelphia/" class="ip-sidebar-city-link">Philadelphia <span>PA</span></a></li>
-        <li><a href="/cities/camden/" class="ip-sidebar-city-link">Camden <span>NJ</span></a></li>
-        <li><a href="/cities/reading/" class="ip-sidebar-city-link">Reading <span>PA</span></a></li>
-        <li><a href="/cities/upper-darby-township/" class="ip-sidebar-city-link ip-sidebar-city-link--active">Upper Darby <span>PA</span></a></li>
+    <div class="ud-why__content">
+      <div class="ud-why__eyebrow">Delaware County Climate & Context</div>
+      <h2 class="line-mask ud-why__headline" data-stagger="140" aria-label="Upper Darby's Glass Runs Hot">
+        <span class="line-mask__line" aria-hidden="true"><span class="line-mask__inner" style="--i:0">Upper Darby's Glass</span></span>
+        <span class="line-mask__line" aria-hidden="true"><span class="line-mask__inner" style="--i:1">Runs Hot</span></span>
+      </h2>
+      <p class="ud-why__intro">Upper Darby Township packs roughly 86,000 residents into one of Pennsylvania's most densely developed footprints — over 10,000 people per square mile, with twin stone homes, rowhouses, and apartment towers stacked along the corridors radiating from the 69th Street Transportation Center. <a href="https://en.wikipedia.org/wiki/Upper_Darby_Township,_Pennsylvania" target="_blank" rel="noopener noreferrer" style="color:#7CB342">That density, paired with July highs near 87°F and 70s humidity</a>, turns untreated south- and west-facing glass into a real comfort and energy problem. Add a busy 69th Street retail corridor and the picture is clear: film is practical infrastructure here, not decoration.</p>
+      <ul class="ud-why__bullets">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Twin stone homes across Drexel Hill, Highland Park, and Cardington absorb and hold afternoon sun through original single-pane glass
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          At 10,000+ residents per square mile, street-facing windows sit within feet of sidewalks, neighbors, and 69th Street foot traffic
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+Storefronts along the 69th Street shopping district and West Chester Pike face recurring scratch-and-tag vandalism — a strong fit for anti-graffiti and security film
+        </li>
       </ul>
+      <div class="ud-why__climate-facts">
+        <div class="ud-why__climate-item">
+          <span class="ud-why__climate-num">87°F</span>
+          <span class="ud-why__climate-label"><a href="https://en.wikipedia.org/wiki/Upper_Darby_Township,_Pennsylvania" target="_blank" rel="noopener noreferrer" style="color:#7CB342">July average high in Upper Darby</a></span>
+        </div>
+        <div class="ud-why__climate-item">
+          <span class="ud-why__climate-num">10K/sq mi</span>
+          <span class="ud-why__climate-label">Population density among PA's highest</span>
+        </div>
+        <div class="ud-why__climate-item">
+          <span class="ud-why__climate-num">86K</span>
+          <span class="ud-why__climate-label">Residents across the township (2020 census)</span>
+        </div>
+      </div>
+      <p class="ud-why__closing">Since 2008, Window Film Philadelphia has installed film in Upper Darby Township for homeowners, retailers along 69th Street, apartment building managers, and the Upper Darby School District — <a href="/benefits/energy-savings/" style="color:#7CB342">solar control</a>, <a href="/benefits/safety-and-security/" style="color:#7CB342">security</a>, <a href="/benefits/privacy-window-film-philadelphia/" style="color:#7CB342">privacy</a>, and <a href="/benefits/decorative-promotional/" style="color:#7CB342">decorative film</a> applied by certified technicians with manufacturer-backed warranties on every job.</p>
+      <a href="/contact/" class="ud-why__cta">
+        Get a free Upper Darby assessment
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRUSTED EXPERTS ══ -->
+<section class="ud-expert">
+  <div class="ud-expert__container">
+    <div class="ud-expert__content">
+      <p class="ud-expert__eyebrow">DELAWARE COUNTY'S WINDOW FILM TEAM</p>
+      <h2 class="ud-expert__title">Delaware County's Window Film Team</h2>
+      <p class="ud-expert__body">Window Film Philadelphia has installed film across Upper Darby Township and Delaware County since 2008. Our certified crews work in the township's signature twin stone homes, the apartment buildings clustered around the 69th Street Transportation Center, and the storefronts that line 69th Street, Garrett Road, and West Chester Pike — matching the right film to each glass type and building style.</p>
+      <p class="ud-expert__body">Upper Darby's density and aging single-pane glass call for a specific approach: solar control that cuts July heat without darkening the room, security film that slows smash-and-grab along the 69th Street retail corridor, and privacy film that gives twin-home owners relief from close-set neighbors. Every installer on the job carries full insurance and factory certifications from 3M, LLumar, and Vista. We also serve nearby <a href="/cities/philadelphia/" style="color:#7CB342">Philadelphia</a> — two miles east across the city line — and <a href="/cities/camden/" style="color:#7CB342">South Jersey</a> across the Delaware River.</p>
+      <div class="ud-expert__stats">
+        <div class="ud-expert__stat">
+          <span class="ud-expert__stat-num">2008</span>
+          <span class="ud-expert__stat-label">Serving Delaware County since</span>
+        </div>
+        <div class="ud-expert__stat-divider"></div>
+        <div class="ud-expert__stat">
+          <span class="ud-expert__stat-num">500+</span>
+          <span class="ud-expert__stat-label">Upper Darby area installs completed</span>
+        </div>
+      </div>
+    </div>
+    <div class="ud-expert__image-col">
+      <img
+        src="/images/window-film-upper-darby-pa-expert-interior.jpg"
+        alt="Bright Upper Darby twin-home living room with large windows — window film keeps the interior comfortable year-round"
+        class="ud-expert__img"
+        loading="lazy"
+      />
     </div>
   </div>
+</section>
+
+<!-- ══ RESIDENTIAL + COMMERCIAL SLIDER ══ -->
+<section class="ud-prop-slider" id="udSlider">
+  <div class="ud-prop-slider__track" id="udTrack">
+
+    <!-- SLIDE 01: Commercial -->
+    <div class="ud-prop-slider__slide" data-slide="0">
+      <img src="/images/window-film-upper-darby-pa-commercial.jpg" alt="Storefront and office glass along 69th Street in Upper Darby PA — window film for Delaware County commercial properties" title="Storefront and office glass along 69th Street in Upper Darby PA — window film for Delaware County commercial properties" class="ud-prop-slider__bg" loading="lazy" />
+      <div class="ud-prop-slider__overlay"></div>
+      <div class="ud-prop-slider__content">
+        <div class="ud-prop-slider__step">01</div>
+        <h2 class="ud-prop-slider__title">Window Film for 69th Street
+Businesses</h2>
+        <p class="ud-prop-slider__desc">Upper Darby's commercial glass runs the length of the 69th Street shopping district, the West Chester Pike corridor, and the medical offices around Delaware County Memorial Hospital. We install solar, security, anti-graffiti, and decorative film across every one of those property types — matched to the glass, not the other way around.</p>
+        <ul class="ud-prop-slider__benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Solar control film lowers cooling load for 69th Street retail and West Chester Pike offices
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Security film holds storefront glass together on impact — slowing forced entry
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anti-graffiti film shields 69th Street storefronts from etching, scratching, and tagging
+          </li>
+        </ul>
+        <a href="/contact/" class="ud-prop-slider__cta">Get a commercial estimate →</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: Residential -->
+    <div class="ud-prop-slider__slide" data-slide="1">
+      <img src="/images/window-film-upper-darby-pa-residential-rowhouses.jpg" alt="Twin stone homes and rowhouses in Upper Darby PA — solar control and security window film for Delaware County residential properties" title="Twin stone homes and rowhouses in Upper Darby PA — solar control and security window film for Delaware County residential properties" class="ud-prop-slider__bg" loading="lazy" />
+      <div class="ud-prop-slider__overlay"></div>
+      <div class="ud-prop-slider__content">
+        <div class="ud-prop-slider__step">02</div>
+        <h2 class="ud-prop-slider__title">Window Film for Twin Homes
+Across Upper Darby</h2>
+        <p class="ud-prop-slider__desc">Drexel Hill twins, Highland Park colonials, Cardington rowhouses, and the apartment buildings near 69th Street Station — every residential style in the township shows up in our install history. Solar control, security, UV protection, privacy, and decorative film are all available, sized to the pane.</p>
+        <ul class="ud-prop-slider__benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Solar film rejects up to 78% of afternoon heat through south- and west-facing twin-home glass
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Security film keeps ground-floor street-facing windows intact on impact
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Blocks 99% of UV — protects the original hardwood floors common in Upper Darby's stone twins
+          </li>
+        </ul>
+        <a href="/contact/" class="ud-prop-slider__cta">Get a residential estimate →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right nav -->
+  <nav class="ud-prop-slider__nav" aria-label="Property type navigation">
+    <button class="ud-prop-slider__nav-item ud-prop-slider__nav-item--active" data-udpropnav="0">
+      <span class="ud-prop-slider__nav-line"></span>
+      <span class="ud-prop-slider__nav-label">Commercial</span>
+    </button>
+    <button class="ud-prop-slider__nav-item" data-udpropnav="1">
+      <span class="ud-prop-slider__nav-line"></span>
+      <span class="ud-prop-slider__nav-label">Residential</span>
+    </button>
+  </nav>
+
+  <!-- Arrows -->
+  <button class="ud-prop-slider__arrow ud-prop-slider__arrow--prev" id="udPropPrev" aria-label="Previous">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="ud-prop-slider__arrow ud-prop-slider__arrow--next" id="udPropNext" aria-label="Next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+</section>
+
+<!-- ══ APPLICATIONS GRID ══ -->
+<section class="ud-apps">
+  <div class="ud-apps__container">
+    <div class="ud-apps__header">
+      <div class="ud-apps__eyebrow">Applications</div>
+      <h2 class="ud-apps__title">Window Film Across Upper Darby's Building Mix</h2>
+      <p class="ud-apps__intro">Twin stone homes, 69th Street storefronts, Delaware County Memorial Hospital, Upper Darby School District buildings — every property type in the township has glass that benefits from film.</p>
+    </div>
+    <div class="ud-apps__grid">
+
+      <div class="ud-app-card" style="background-image: url('/images/window-film-upper-darby-pa-app-homes.jpg')">
+        <div class="ud-app-card__overlay"></div>
+        <div class="ud-app-card__content">
+          <h3 class="ud-app-card__title">Twin Homes & Rowhouses</h3>
+          <p class="ud-app-card__text">Solar control cuts July heat through the original glass of Drexel Hill and Highland Park twins. Security film reinforces ground-floor windows on every dense Upper Darby block.</p>
+          <span class="ud-app-card__stat">Up to 78% heat blocked</span>
+        </div>
+      </div>
+
+      <div class="ud-app-card" style="background-image: url('/images/window-film-upper-darby-pa-app-offices.jpg')">
+        <div class="ud-app-card__overlay"></div>
+        <div class="ud-app-card__content">
+          <h3 class="ud-app-card__title">Commercial Offices</h3>
+          <p class="ud-app-card__text">Glare-free workspaces and lower cooling bills along the West Chester Pike office corridor. Spectrally selective film keeps the view while rejecting heat.</p>
+          <span class="ud-app-card__stat">25-35% cost reduction</span>
+        </div>
+      </div>
+
+      <div class="ud-app-card" style="background-image: url('/images/window-film-upper-darby-pa-app-retail.jpg')">
+        <div class="ud-app-card__overlay"></div>
+        <div class="ud-app-card__content">
+          <h3 class="ud-app-card__title">Retail & Storefronts</h3>
+          <p class="ud-app-card__text">Security film holds 69th Street storefront glass together on impact — slowing smash-and-grab. Anti-graffiti film shields against etching and tagging.</p>
+          <span class="ud-app-card__stat">Impact resistant</span>
+        </div>
+      </div>
+
+      <div class="ud-app-card" style="background-image: url('/images/window-film-upper-darby-pa-app-healthcare.jpg')">
+        <div class="ud-app-card__overlay"></div>
+        <div class="ud-app-card__content">
+          <h3 class="ud-app-card__title">Healthcare Facilities</h3>
+          <p class="ud-app-card__text">UV film protects patients and staff at Delaware County Memorial Hospital and surrounding medical offices. Frosted film adds privacy for patient rooms and exam areas.</p>
+          <span class="ud-app-card__stat">99% UV blocked</span>
+        </div>
+      </div>
+
+      <div class="ud-app-card" style="background-image: url('/images/window-film-upper-darby-pa-app-schools.jpg')">
+        <div class="ud-app-card__overlay"></div>
+        <div class="ud-app-card__content">
+          <h3 class="ud-app-card__title">Schools & District Buildings</h3>
+          <p class="ud-app-card__text">Safety film for Upper Darby School District buildings. Reduces classroom glare and blocks the UV that fades displays, artwork, and gymnasium floors.</p>
+          <span class="ud-app-card__stat">Safety & UV rated</span>
+        </div>
+      </div>
+
+      <div class="ud-app-card" style="background-image: url('/images/window-film-upper-darby-pa-app-government.jpg')">
+        <div class="ud-app-card__overlay"></div>
+        <div class="ud-app-card__content">
+          <h3 class="ud-app-card__title">Government Buildings</h3>
+          <p class="ud-app-card__text">Security and blast-resistant film for Delaware County government facilities. Privacy film for offices handling sensitive records and public services.</p>
+          <span class="ud-app-card__stat">GSA compliant films</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FILM TYPES / BENEFITS ACCORDION ══ -->
+<AccordionBenefits
+  eyebrow="Film Types"
+  title="Eight Film Categories for Upper Darby Glass"
+  subtitle="Eight film categories, one professional installation. Select any benefit to explore the details — the image swaps to match."
+  benefits={filmBenefits}
+  id="upperDarbyBenefits"
+/>
+
+<!-- ══ BRANDS CAROUSEL ══ -->
+<section class="ud-brands">
+  <BrandLogos />
+  <div class="ud-brands__header">
+    <p class="ud-brands__eyebrow">Trusted Manufacturers</p>
+    <h2 class="ud-brands__title">The Manufacturers We Install Across Delaware County</h2>
+    <p class="ud-brands__sub">We install films from the industry's leading manufacturers — bringing Upper Darby and Delaware County the widest selection of solar control, security, decorative, and specialty films available.</p>
+  </div>
+
+  <!-- Brand card carousel -->
+  <div class="ud-brands__carousel-outer">
+    <button class="ud-brands__arrow ud-brands__arrow--left" id="brandsArrowLeft" aria-label="Previous brand"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+
+    <div class="ud-brands__carousel" id="brandsTrack">
+
+      <!-- 3M -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-3m.jpg" alt="3M solar control window film installed in a Delaware County commercial office near Upper Darby — heat and UV reduction" title="3M solar control window film installed in a Delaware County commercial office near Upper Darby — heat and UV reduction" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">3M</p>
+          <p class="ud-brands__card-desc"><em>The global standard in solar control and safety film - backed by 60+ years of glass science.</em></p>
+          <p class="ud-brands__card-sub">Solar Control · Safety &amp; Security · UV Protection · Decorative</p>
+        </div>
+      </div>
+
+      <!-- LLumar -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-llumar.jpg" alt="LLumar solar control window film on an Upper Darby commercial building — glare and heat rejection" title="LLumar solar control window film on an Upper Darby commercial building — glare and heat rejection" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">LLumar</p>
+          <p class="ud-brands__card-desc"><em>A top choice for commercial projects across Upper Darby and Delaware County - proven durability in dense urban environments.</em></p>
+          <p class="ud-brands__card-sub">Solar Control · Glare Reduction · Anti-Graffiti · Safety</p>
+        </div>
+      </div>
+
+      <!-- Vista -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-vista.jpg" alt="Vista residential window film in an Upper Darby twin home interior — UV protection and energy savings" title="Vista residential window film in an Upper Darby twin home interior — UV protection and energy savings" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Vista</p>
+          <p class="ud-brands__card-desc"><em>Eastman's residential-focused line - naturally clear films designed for Upper Darby's twin stone homes and 69th Street apartments.</em></p>
+          <p class="ud-brands__card-sub">Residential Solar · UV Protection · Privacy · Dual-Reflective</p>
+        </div>
+      </div>
+
+      <!-- Solar Gard -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-solargard.jpg" alt="Solar Gard high-performance window film on a Delaware County commercial building near Upper Darby — solar heat control" title="Solar Gard high-performance window film on a Delaware County commercial building near Upper Darby — solar heat control" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Solar Gard</p>
+          <p class="ud-brands__card-desc"><em>High-performance spectrally selective films for Upper Darby's commercial and institutional buildings - NFRC rated.</em></p>
+          <p class="ud-brands__card-sub">Spectrally Selective · Commercial Solar · LEED-Compliant · Safety</p>
+        </div>
+      </div>
+
+      <!-- Madico -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-madico.jpg" alt="Executive office interior with Madico optically clear safety window film" title="Executive office interior with Madico optically clear safety window film" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Madico</p>
+          <p class="ud-brands__card-desc"><em>Military-heritage safety films trusted by government and healthcare facilities - including Delaware County Memorial Hospital.</em></p>
+          <p class="ud-brands__card-sub">Safety &amp; Security · Bomb Blast Mitigation · Solar Control</p>
+        </div>
+      </div>
+
+      <!-- Solyx -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-solyx.jpg" alt="Elegant decorative frosted glass film in an Upper Darby professional office lobby" title="Elegant decorative frosted glass film in an Upper Darby professional office lobby" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Solyx</p>
+          <p class="ud-brands__card-desc"><em>The leading decorative film brand - custom frosted, patterned, and printed films for Upper Darby's offices, healthcare spaces, and storefronts.</em></p>
+          <p class="ud-brands__card-sub">Decorative · Frosted · Printed Patterns · Branded Graphics</p>
+        </div>
+      </div>
+
+      <!-- Huper Optik -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-huper-optik.jpg" alt="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" title="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Hüper Optik</p>
+          <p class="ud-brands__card-desc"><em>German-engineered ceramic nanotechnology - maximum heat rejection with zero metallic interference for Wi-Fi and cellular signals.</em></p>
+          <p class="ud-brands__card-sub">Ceramic Film · Signal-Safe · UV Block · Solar Control</p>
+        </div>
+      </div>
+
+      <!-- Casper -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-casper.jpg" alt="Casper cloaking film on conference room glass - LED screens invisible from outside" title="Casper cloaking film on conference room glass - LED screens invisible from outside" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Casper Cloaking</p>
+          <p class="ud-brands__card-desc"><em>The only film that makes LED and LCD screens appear frosted from outside - essential privacy for Upper Darby boardrooms and conference rooms.</em></p>
+          <p class="ud-brands__card-sub">Screen Privacy · Digital Cloaking · Conference Rooms · Security</p>
+        </div>
+      </div>
+
+      <!-- C-Bond -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-cbond.jpg" alt="C-Bond security film reinforcing a 69th Street storefront glass entrance in Upper Darby" title="C-Bond security film reinforcing a 69th Street storefront glass entrance in Upper Darby" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">C-Bond</p>
+          <p class="ud-brands__card-desc"><em>Nano-technology film that chemically bonds to glass, increasing impact resistance beyond standard safety film - the strongest hold available.</em></p>
+          <p class="ud-brands__card-sub">Safety &amp; Security · Nano-Bond · Impact Resistant · Storefronts</p>
+        </div>
+      </div>
+
+      <!-- HDClear -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-hdclear.jpg" alt="HDClear high-definition optically clear glass walls in a modern Upper Darby office" title="HDClear high-definition optically clear glass walls in a modern Upper Darby office" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">HDClear</p>
+          <p class="ud-brands__card-desc"><em>High-definition clarity film - optically pure solar control without the haze or reflection common in standard films. For premium commercial installs.</em></p>
+          <p class="ud-brands__card-sub">High Definition · Solar Control · UV Protection · Commercial</p>
+        </div>
+      </div>
+
+      <!-- Hanita Coatings -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-hanita.jpg" alt="Hanita Coatings architectural window film on a modern Delaware County commercial building" title="Hanita Coatings architectural window film on a modern Delaware County commercial building" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Hanita Coatings</p>
+          <p class="ud-brands__card-desc"><em>Israeli-engineered architectural films with industry-leading safety certifications - trusted on government and institutional projects worldwide.</em></p>
+          <p class="ud-brands__card-sub">Safety · Blast Mitigation · Solar Control · Institutional</p>
+        </div>
+      </div>
+
+      <!-- Graffiti Shield -->
+      <div class="ud-brands__card">
+        <img src="/images/window-film-upper-darby-pa-brand-graffiti-shield.jpg" alt="Clean unmarked storefront glass along 69th Street in Upper Darby protected by Graffiti Shield sacrificial film" title="Clean unmarked storefront glass along 69th Street in Upper Darby protected by Graffiti Shield sacrificial film" class="ud-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="ud-brands__card-body">
+          <p class="ud-brands__card-name">Graffiti Shield</p>
+          <p class="ud-brands__card-desc"><em>The industry standard in sacrificial anti-graffiti film - replaces damaged film, not glass. Critical for Upper Darby's 69th Street and West Chester Pike corridors.</em></p>
+          <p class="ud-brands__card-sub">Anti-Graffiti · Sacrificial Film · Storefronts · Urban Properties</p>
+        </div>
+      </div>
+
+    </div><!-- /ud-brands__carousel -->
+
+    <button class="ud-brands__arrow ud-brands__arrow--right" id="brandsArrowRight" aria-label="Next brand"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div><!-- /ud-brands__carousel-outer -->
+
+  <!-- Dots -->
+  <div class="ud-brands__dots" id="brandsDots"></div>
+
+</section>
+
+<!-- ══ TRUST / WHY US ══ -->
+<section class="ud-trust">
+  <div class="ud-trust__container">
+
+    <div class="ud-trust__image-col">
+      <img
+        src="/images/window-film-upper-darby-pa-trust-installer.jpg"
+        alt="Window Film Philadelphia certified installer reviewing film options with an Upper Darby homeowner"
+        class="ud-trust__img"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="ud-trust__content">
+      <p class="ud-trust__eyebrow">WHY WINDOW FILM PHILADELPHIA</p>
+      <h2 class="ud-trust__title">What Upper Darby Clients Can Count On</h2>
+
+      <div class="ud-trust__items">
+
+        <div class="ud-trust__item">
+          <div class="ud-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ud-trust__item-body">
+            <p class="ud-trust__item-title">18+ Years Serving Upper Darby and Delaware County</p>
+          </div>
+        </div>
+
+        <div class="ud-trust__item">
+          <div class="ud-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ud-trust__item-body">
+            <p class="ud-trust__item-title">Factory-Certified Installers from 3M, LLumar, and Vista</p>
+          </div>
+        </div>
+
+        <div class="ud-trust__item">
+          <div class="ud-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ud-trust__item-body">
+            <p class="ud-trust__item-title">Manufacturer-Backed Warranties on Residential and Commercial Films</p>
+          </div>
+        </div>
+
+        <div class="ud-trust__item">
+          <div class="ud-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ud-trust__item-body">
+            <p class="ud-trust__item-title">Prompt Scheduling Across Upper Darby and Delaware County</p>
+          </div>
+        </div>
+
+        <div class="ud-trust__item">
+          <div class="ud-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ud-trust__item-body">
+            <p class="ud-trust__item-title">Free In-Home and On-Site Consultations</p>
+          </div>
+        </div>
+
+        <div class="ud-trust__item">
+          <div class="ud-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="ud-trust__item-body">
+            <p class="ud-trust__item-title">Five-Star Reviews from Upper Darby and Delaware County Clients</p>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="/contact/" class="ud-trust__cta">Get your free Upper Darby estimate →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="ip-page-body">
+
+<!-- GEO / Speakable content — visually hidden, crawlable -->
+<div class="ud-geo" aria-hidden="true">
+  <p>Window film in Upper Darby Township is professionally installed by Window Film Philadelphia, a certified contractor serving Delaware County and the Pennsylvania Main Line since 2008. Window film for Upper Darby homes and businesses blocks up to 99% of UV-A and UV-B radiation and up to 85% of solar heat gain — the U.S. Department of Energy reports that windows account for 25–30% of a building's total heating and cooling energy loss. Available window film solutions in Upper Darby include solar control, privacy, security, anti-graffiti, and decorative film; all installations include manufacturer-backed warranties and a free on-site consultation.</p>
+  <dl>
+    <dt>What is window film installation in Upper Darby Township?</dt>
+    <dd>Window film installation in Upper Darby is the professional application of thin polyester or ceramic film to interior glass surfaces — solar control, security, privacy, anti-graffiti, and decorative film applied by certified technicians from Window Film Philadelphia.</dd>
+    <dt>How much does window film cost in Upper Darby, PA?</dt>
+    <dd>Window film cost in Upper Darby varies based on film type, glass area, number of windows, and site accessibility. Each film category — solar control, privacy, decorative, security, and anti-graffiti — carries different pricing. Free on-site consultations and written estimates are provided for all Upper Darby properties.</dd>
+    <dt>Which Upper Darby neighborhoods does Window Film Philadelphia serve?</dt>
+    <dd>Window Film Philadelphia serves all Upper Darby neighborhoods including Drexel Hill, Highland Park, Cardington, Stonehurst, Kirklyn, Secane, Aronimink, and Llanerch Hills, plus the apartment buildings and storefronts clustered around the 69th Street Transportation Center.</dd>
+    <dt>What is the best window film for Upper Darby homes and businesses?</dt>
+    <dd>The best window film for Upper Darby properties depends on goals: solar control film for heat reduction in twin stone homes, security film for 69th Street storefronts, UV film for fading prevention in homes with original hardwood, privacy film for street-facing twins, and anti-graffiti film for retail along 69th Street and West Chester Pike.</dd>
+    <dt>Does window film block UV rays in Upper Darby properties?</dt>
+    <dd>Yes. Architectural window film blocks 99% or more of UV-A and UV-B radiation, protecting the original hardwood floors, furniture, and artwork common in Upper Darby's stone twins and colonials — critical for properties with large south- and west-facing glass.</dd>
+  </dl>
+  <ul>
+    <li>window film Upper Darby PA</li>
+    <li>window film installation Upper Darby Township Pennsylvania</li>
+    <li>solar control window film Upper Darby</li>
+    <li>security window film Upper Darby PA</li>
+    <li>privacy window film Upper Darby</li>
+    <li>anti-graffiti window film Upper Darby</li>
+    <li>UV protection window film Upper Darby</li>
+    <li>decorative window film Upper Darby PA</li>
+    <li>window film contractor Upper Darby Delaware County</li>
+    <li>commercial window film Upper Darby</li>
+    <li>residential window film Upper Darby PA</li>
+    <li>window tinting Upper Darby PA</li>
+  </ul>
 </div>
 
 <!-- ══════════════════════════════════════
-     UPPER DARBY GALLERY — 4 image features
+     GALLERY BANNER — editorial "Our Work" with fanned photo strips
      ══════════════════════════════════════ -->
-<div class="ip-gallery fade-in">
-  <div class="ip-gallery__header">
-    <p class="section-eyebrow">Our Work in Upper Darby</p>
-    <h2>Recent Upper Darby Installations</h2>
-  </div>
-  <div class="ip-gallery__grid ip-gallery__grid--four">
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203924_58c10bc0-70c3-4c30-9723-f394b87a2988.png" alt="Upper Darby window film installation - residential solar control" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Residential solar control film — Drexel Hill</div>
-    </div>
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203926_92a46f96-3f3c-46a7-a55c-5a6c8cf64fb2.png" alt="Upper Darby window film installation - commercial storefront" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">69th Street commercial storefront security</div>
-    </div>
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203928_59a50c20-d5d8-4fe2-ba48-883fb410520e.png" alt="Upper Darby window film installation - privacy film" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Privacy film — Havertown townhome</div>
-    </div>
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203108_a943f5ca-34d8-43a7-8e38-3190e0069f87.png" alt="Upper Darby window film installation - office building" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Office building glare reduction project</div>
-    </div>
-  </div>
-</div>
+<GalleryBanner
+  titleLines={["OUR", "WORK."]}
+  eyebrow="Upper Darby Installations"
+  description="A selection of window film installations across Upper Darby offices, 69th Street storefronts, Delaware County medical facilities, and twin homes. Every project measured, applied, and finished by our own certified team."
+  photos={[
+    '/images/window-film-upper-darby-pa-gallery-privacy-medical.jpg',
+    '/images/window-film-upper-darby-pa-gallery-restaurant.jpg',
+    '/images/window-film-upper-darby-pa-gallery-solar-office.jpg',
+    '/images/window-film-upper-darby-pa-gallery-residential.jpg',
+    '/images/window-film-upper-darby-pa-gallery-film-detail.jpg',
+  ]}
+  hintText="Hover the photos · click to bring forward"
+  theme="light"
+/>
 
 <!-- ══════════════════════════════════════
-     LOCAL AREA — map + neighborhood copy
+     LOCAL AREA - map + neighborhood copy
      ══════════════════════════════════════ -->
-<div class="ip-local fade-in">
+<div class="ip-local">
+  <ScrollReveal>
   <div class="ip-local__grid">
     <div class="ip-local__map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49041.3!2d-75.27!3d39.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c6dde38f4d11%3A0x79f9dafe3a2fdf54!2sUpper%20Darby%20Township%2C%20PA!5e0!3m2!1sen!2sus!4v1714000000000"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12206.4!2d-75.31!3d39.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c7d8d8e8e8e8%3A0x0!2sUpper%20Darby%20Township%2C%20PA!5e0!3m2!1sen!2sus!4v1714000000000"
         width="100%" height="100%"
         style="border:0;"
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Upper Darby PA service area map"
+        title="Upper Darby Township PA service area map"
       ></iframe>
     </div>
     <div class="ip-local__content">
       <p class="section-eyebrow">Local Expertise</p>
-      <h2>We know Upper Darby inside and out</h2>
-      <p>From Drexel Hill colonials to Havertown townhomes to the bustling 69th Street commercial corridor — our crews work in every Upper Darby neighborhood, every week. We understand Delaware County's humid summers, diverse housing stock, and the specific window film needs of both dense urban blocks and suburban properties.</p>
-      <div class="ip-tags">
-        <span class="ip-tag">Upper Darby</span>
-        <span class="ip-tag">Drexel Hill</span>
-        <span class="ip-tag">Havertown</span>
-        <span class="ip-tag">Secane</span>
-        <span class="ip-tag">Aldan</span>
-        <span class="ip-tag">Darby</span>
-        <span class="ip-tag">Collingdale</span>
-        <span class="ip-tag">Sharon Hill</span>
-        <span class="ip-tag">+ more</span>
+      <h2>From Drexel Hill to the 69th Street Station</h2>
+      <p>Our crews film glass in every section of Upper Darby Township, every week — the twin stone homes of Drexel Hill, the apartment towers ringing the 69th Street Transportation Center, the storefronts along West Chester Pike and Garrett Road. We know the township's density, its aging single-pane glass, and the way afternoon sun hits a west-facing twin in July. Window film is available across all Upper Darby neighborhoods — contact us for a free on-site estimate.</p>
+      <div class="ud-neighborhoods">
+        <div class="ud-nh"><span class="ud-nh__name">Drexel Hill</span><span class="ud-nh__desc">The township's largest residential section — twin stone homes, colonials, and split-levels on tree-lined streets. Solar control and UV-blocking film are the most-requested installs, protecting original hardwood throughout.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Highland Park</span><span class="ud-nh__desc">Dense residential blocks just north of 69th Street — twins and rowhouses set close to the sidewalk. Privacy film and solar control are popular for street-facing windows.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Cardington</span><span class="ud-nh__desc">Rowhouses and twins near the 69th Street corridor. Security film for ground-floor windows and solar film for west-facing glass are the common requests.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Stonehurst</span><span class="ud-nh__desc">Older residential section with original single-pane twins — strong candidates for interior solar control and UV protection film.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Kirklyn</span><span class="ud-nh__desc">Quiet residential pocket near the western edge — twins and small colonials. Solar control film cuts July heat gain through south-facing front windows.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Secane</span><span class="ud-nh__desc">Residential area along the trolley line — a mix of twins and apartment buildings. Privacy film for close-set units and solar film for upper floors.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Aronimink</span><span class="ud-nh__desc">Older residential neighborhood with character stone twins. UV protection and frosted privacy film are frequent requests.</span></div>
+        <div class="ud-nh"><span class="ud-nh__name">Llanerch Hills</span><span class="ud-nh__desc">Residential section in the southeast — twins and split-levels. Solar control and security film for street-facing ground-floor windows.</span></div>
       </div>
     </div>
   </div>
+  </ScrollReveal>
 </div>
 
 <!-- ══════════════════════════════════════
      FAQ ACCORDION
      ══════════════════════════════════════ -->
-<div class="ip-faq">
-  <div class="ip-faq__hd">
-    <p class="section-eyebrow">FAQ</p>
-    <h2 class="section-title" style="margin:0 auto;">Common questions about Upper Darby window film</h2>
-  </div>
-  <div class="ip-faq__item ip-faq__item--open">
-    <div class="ip-faq__q">Is window film legal in Pennsylvania? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. Pennsylvania law permits residential and commercial window film without restriction. There are no state-level VLT regulations for homes or businesses in PA. We ensure every install is fully compliant with local codes.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How does privacy film work for rowhouse and townhome windows in Upper Darby? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Privacy film uses frosted, tinted, or reflective coatings to block outside sightlines while still letting natural light in. It is ideal for ground-floor windows facing shared walkways, alleys, or neighboring properties — giving you privacy without curtains or window treatments.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How long does installation take? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Most residential jobs take 4–8 hours depending on window count. Commercial projects are scoped per job. We typically have same-week availability and can often complete a standard residential install in a single day.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">What warranty comes with my installation? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">All residential and commercial installations include a lifetime manufacturer warranty against peeling, bubbling, and fading. The warranty transfers with the property if you sell.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Do you offer free consultations in Delaware County? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes — all consultations are free. We will come to your home or business in Upper Darby or the surrounding Delaware County communities, assess your needs, and provide a detailed written estimate at no charge and no obligation.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Can security film help with break-in concerns in the area? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Security film holds glass together on impact, making it significantly harder for an intruder to breach a window quickly. This is especially relevant for ground-floor commercial spaces along the 69th Street corridor and for residential properties with accessible windows. The film holds shards together, reducing injury risk and buying time during an attempted break-in.</div>
-  </div>
-</div>
+<!-- ══════════════════════════════════════
+     TESTIMONIAL SPOTLIGHT — cursor-following green spotlight
+     ══════════════════════════════════════ -->
+<TestimonialSpotlight
+  eyebrow="Client Reviews"
+  title="Upper Darby Homeowners and Retailers on Their Installs"
+  subtitle="Residential and commercial property owners across Upper Darby Township and Delaware County."
+  items={[
+    {
+      quote: 'Our administrative offices on School Lane face west, and the glare on staff monitors was constant. The solar and frosted film combination fixed it in a single visit — the crew worked around the school schedule and left every room spotless.',
+      name: 'Daniel P.',
+      detail: 'Facilities Coordinator · Upper Darby School District',
+      avatar: '/images/window-film-upper-darby-pa-testimonial-commercial-1.jpg',
+    },
+    {
+      quote: 'We lease ground-floor retail along 69th Street and the anti-graffiti film has saved us from three pane replacements already. When the glass gets tagged, it is a film swap, not a glass order. The scheduling team keeps it simple and fast.',
+      name: 'Mei L.',
+      detail: 'Property Manager · 69th Street Mixed-Use Building',
+      avatar: '/images/window-film-upper-darby-pa-testimonial-commercial-2.jpg',
+    },
+    {
+      quote: 'Our Drexel Hill twin has a wall of south-facing windows in the living room. After the solar film went up the room is finally usable in July, and the fading on our original hardwood has stopped completely. Wish we had done it years ago.',
+      name: 'Robert C.',
+      detail: 'Homeowner · Drexel Hill, PA',
+      avatar: '/images/window-film-upper-darby-pa-testimonial-residential.jpg',
+    },
+  ]}
+/>
 
 <!-- ══════════════════════════════════════
-     CTA BANNER
+     RESOURCES / SPEC SHEETS
      ══════════════════════════════════════ -->
-<BrandLogos />
-
-<div class="ip-cta fade-in">
-  <h2>Ready to get started in <em>Upper Darby?</em></h2>
-  <div class="ip-cta__btns">
-    <a href="/contact/" class="ip-btn ip-btn--white">Get a Free Quote</a>
-    <a href="tel:+126****7980" class="ip-btn ip-btn--green">Call (267) 394-7980</a>
+<section class="ud-resources fade-in">
+  <div class="ud-resources__grid">
+    <div class="ud-resources__image-col">
+      <img
+        src="/images/window-film-upper-darby-pa-resources-meeting-room.jpg"
+        alt="Window Film Philadelphia reviewing manufacturer window film spec sheets and performance data with an Upper Darby commercial client"
+        class="ud-resources__img"
+        loading="lazy"
+        width="1472"
+        height="832"
+      />
+    </div>
+    <div class="ud-resources__content">
+      <p class="ud-resources__eyebrow">Manufacturer Resources</p>
+      <h2 class="ud-resources__title">Spec Sheets and Performance Data for Your Install</h2>
+      <p class="ud-resources__desc">Performance data, solar heat gain coefficients, VLT ratings, and product details from the brands we install across Upper Darby and Delaware County. Download and compare before your consultation.</p>
+      <ul class="ud-resources__list">
+        <li class="ud-resources__item">
+          <a href="/resources/3m-prestige-solar-control-window-film-upper-darby-pa-product-bulletin.pdf" class="ud-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="ud-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="ud-resources__link-text"><strong>3M Prestige Series</strong><span>Solar Control &middot; Product Bulletin &middot; PDF</span></span>
+            <span class="ud-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="ud-resources__item">
+          <a href="/resources/llumar-solar-control-window-film-upper-darby-pa-performance-specs.pdf" class="ud-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="ud-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="ud-resources__link-text"><strong>LLumar Solar Control Series</strong><span>Glare Reduction &middot; Performance Specs &middot; PDF</span></span>
+            <span class="ud-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="ud-resources__item">
+          <a href="/resources/solyx-decorative-window-film-upper-darby-pa-sxlt-1305-spec-sheet.pdf" class="ud-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="ud-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="ud-resources__link-text"><strong>Solyx SXLT-1305 Decorative Film</strong><span>Privacy &middot; Spec Sheet &middot; PDF</span></span>
+            <span class="ud-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="ud-resources__item">
+          <a href="/resources/vista-solar-control-window-film-upper-darby-pa-spec-sheet.pdf" class="ud-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="ud-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="ud-resources__link-text"><strong>Vista Solar Control Series</strong><span>Glare Reduction &middot; Spec Sheet &middot; PDF</span></span>
+            <span class="ud-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="ud-resources__item">
+          <a href="/resources/solar-gard-panorama-solar-control-window-film-upper-darby-pa-performance-data.pdf" class="ud-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="ud-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="ud-resources__link-text"><strong>Solar Gard Panorama Series</strong><span>Energy Savings &middot; Performance Data &middot; PDF</span></span>
+            <span class="ud-resources__arrow">&darr;</span>
+          </a>
+        </li>
+      </ul>
+      <a href="/contact/" class="ud-resources__cta">Ask us which film is right for your property &rarr;</a>
+    </div>
   </div>
-</div>
+</section>
 
+<!-- ══════════════════════════════════════
+     FAQ — Accordion FAQ (library style, Upper Darby palette)
+     ══════════════════════════════════════ -->
+<AccordionFAQ
+  eyebrow="FAQ"
+  heading="Upper Darby Window Film, Explained"
+  sub="Everything you need to know before your install."
+  items={faqItems.map(f => ({ q: f.question, a: f.answer }))}
+/>
+
+<!-- ══════════════════════════════════════
+     CTA — LIGHT RAYS
+     ══════════════════════════════════════ -->
 </div><!-- end ip-page-body -->
+
+<CtaLightRays
+  eyebrow="Upper Darby Window Film Professionals"
+  title="Bring Better Glass to Upper Darby Properties"
+  sub="Cut heat, block UV, add privacy, and protect against graffiti — all with one professional installation. Free estimates across Upper Darby Township and Delaware County. Prompt scheduling available."
+  btnLabel="Get Your Free Upper Darby Estimate"
+  btnHref="/contact/"
+/>
+
+
 
 </BaseLayout>
 
 <style>
+/* ── HERO BUTTONS (mirrored from services page) ── */
+.btn-hero {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.btn-hero--primary { background: #7CB342; color: #fff; border: 2px solid #7CB342; }
+.btn-hero--primary:hover { background: #6fa037; border-color: #6fa037; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,179,66,0.3); color: #fff; }
+.btn-hero--secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+.btn-hero--secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); transform: translateY(-2px); color: #fff; }
+
+/* ── HERO STAT ITEMS (mirrored from services page) ── */
+.hero-stat-item { text-align: center; }
+.hero-stat-item__number {
+  font-family: 'Space Mono', monospace;
+  font-size: 40px; font-weight: 700; color: #fff;
+  line-height: 1; margin-bottom: 8px;
+}
+.hero-stat-item__number::after { content: '+'; font-size: 28px; margin-left: 4px; opacity: 0.7; }
+.hero-stat-item:nth-child(3) .hero-stat-item__number::after { content: '%'; }
+.hero-stat-item:nth-child(4) .hero-stat-item__number::after { content: '★'; color: #7CB342; }
+.hero-stat-item__label { font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ── CAMDEN CINEMATIC HERO ── */
+.ud-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  background-image: url('/images/window-film-upper-darby-pa-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.ud-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(13,26,15,0.5) 0%, rgba(13,26,15,0.45) 50%, rgba(13,26,15,0.75) 100%);
+  z-index: 1;
+}
+.ud-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ud-hero__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7CB342;
+  padding-top: 140px;
+}
+.ud-hero__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 720px;
+}
+.ud-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.ud-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.ud-hero__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ud-hero__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 60px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.ud-hero__tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  max-width: 360px;
+}
+.ud-hero__stats {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  .ud-hero__container { padding: 0 24px; }
+  .ud-hero__label { padding-top: 100px; }
+  .ud-hero__bottom { flex-direction: column; gap: 24px; }
+  .ud-hero__stats { justify-content: flex-start; gap: 32px; }
+}
+
+/* ── LOCAL CONTEXT SECTION (es-why pattern) ── */
+.ud-why { background: #F3F6F1; padding: 100px 24px; }
+.ud-why__container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.ud-why__image-wrap { position: relative; border-radius: 20px; overflow: visible; }
+.ud-why__image { width: 100%; height: auto; display: block; border-radius: 20px; object-fit: cover; aspect-ratio: 4/5; }
+.ud-why__stat-card { position: absolute; bottom: 32px; left: -24px; background: rgba(14,26,20,0.88); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; min-width: 220px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+.ud-why__stat-item { display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; color: rgba(243,246,241,0.9); line-height: 1.3; }
+.ud-why__stat-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 2px 0; }
+.ud-why__content { padding-right: 20px; }
+.ud-why__eyebrow { display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7CB342; margin-bottom: 16px; }
+.ud-why__headline { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.01em; }
+.ud-why__intro { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.8; margin-bottom: 28px; }
+.ud-why__bullets { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 14px; }
+.ud-why__bullets li { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #4A5C48; line-height: 1.6; }
+.ud-why__bullets svg { flex-shrink: 0; margin-top: 2px; }
+.ud-why__climate-facts { display: flex; gap: 24px; margin: 28px 0; flex-wrap: wrap; }
+.ud-why__climate-item { display: flex; flex-direction: column; gap: 4px; }
+.ud-why__climate-num { font-family: 'Space Mono', monospace; font-size: 1.5rem; font-weight: 700; color: #7CB342; line-height: 1; }
+.ud-why__climate-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #4A5C48; max-width: 140px; line-height: 1.4; }
+.ud-why__closing { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-style: italic; color: rgba(74,92,72,0.75); line-height: 1.7; margin-bottom: 32px; padding-left: 16px; border-left: 2px solid rgba(124,179,66,0.35); }
+.ud-why__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; transition: gap 0.2s ease; }
+.ud-why__cta:hover { gap: 14px; }
+@media (max-width: 900px) { .ud-why__container { grid-template-columns: 1fr; } .ud-why__stat-card { left: 0; } .ud-masonry__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .ud-masonry__grid { grid-template-columns: 1fr; } .ud-masonry__item img { height: 260px; } }
+@media (max-width: 600px) { .ud-why { padding: 60px 16px; } }
+
+/* ── PROPERTY TYPE SLIDER ── */
+.ud-prop-slider { position: relative; width: 100%; min-height: 88vh; overflow: hidden; background: #14201A; }
+.ud-prop-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+.ud-prop-slider__slide { position: relative; min-width: 100%; min-height: 88vh; flex-shrink: 0; display: flex; align-items: center; }
+.ud-prop-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+.ud-prop-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+.ud-prop-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; }
+.ud-prop-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; }
+.ud-prop-slider__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.25rem; white-space: pre-line; }
+.ud-prop-slider__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 1.75rem; }
+.ud-prop-slider__benefits { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 14px; }
+.ud-prop-slider__benefits li { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
+.ud-prop-slider__benefits svg { flex-shrink: 0; margin-top: 2px; }
+.ud-prop-slider__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; }
+.ud-prop-slider__cta:hover { background: #2E6B30; transform: translateY(-2px); color: #fff; }
+.ud-prop-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+.ud-prop-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+.ud-prop-slider__nav-item:hover { opacity: 0.65; }
+.ud-prop-slider__nav-item--active { opacity: 1; }
+.ud-prop-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+.ud-prop-slider__nav-item--active .ud-prop-slider__nav-line { background: #7CB342; height: 48px; }
+.ud-prop-slider__nav-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; }
+.ud-prop-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s, color 0.3s; }
+.ud-prop-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+.ud-prop-slider__arrow--prev { left: 32px; }
+.ud-prop-slider__arrow--next { right: 32px; }
+@media (max-width: 768px) { .ud-prop-slider__content { padding-left: 24px; padding-right: 24px; } .ud-prop-slider__nav { display: none; } }
+
+/* ── APPLICATIONS GRID ── */
+.ud-apps { background: #F5F3EE; padding: 96px 0; }
+.ud-apps__container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+.ud-apps__header { text-align: center; margin-bottom: 56px; }
+.ud-apps__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+.ud-apps__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+.ud-apps__intro { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 640px; margin: 0 auto; line-height: 1.75; }
+.ud-apps__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ud-app-card { position: relative; min-height: 380px; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+.ud-app-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(13,26,15,0.25); }
+.ud-app-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,26,15,0.92) 0%, rgba(13,26,15,0.55) 50%, rgba(13,26,15,0.3) 100%); transition: background 0.4s ease; z-index: 1; }
+.ud-app-card:hover .ud-app-card__overlay { background: linear-gradient(to top, rgba(13,26,15,0.96) 0%, rgba(13,26,15,0.65) 50%, rgba(13,26,15,0.4) 100%); }
+.ud-app-card__content { position: relative; z-index: 2; padding: 28px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.ud-app-card__title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+.ud-app-card__text { font-family: 'Inter', sans-serif; font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 16px; }
+.ud-app-card__stat { display: inline-block; background: #7CB342; color: #fff; padding: 7px 18px; border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+@media (max-width: 1024px) { .ud-apps__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .ud-apps__grid { grid-template-columns: 1fr; } .ud-apps__container { padding: 0 20px; } .ud-apps { padding: 60px 0; } }
+
+/* ── FILM TYPES SECTION ── */
+.ud-films { background: #0d1a0f; padding: 80px 0; }
+.ud-films__header { text-align: center; padding: 0 24px 56px; }
+.ud-films__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+.ud-films__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin: 0 0 0.75rem; }
+.ud-films__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.6); margin: 0; }
+.ud-films__main { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 260px 1fr; gap: 0; }
+.ud-films__tabs { display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 0; }
+.ud-films__tab { display: flex; align-items: center; gap: 12px; background: transparent; border: none; border-left: 3px solid transparent; padding: 16px 24px; text-align: left; cursor: pointer; color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; transition: all 0.2s ease; }
+.ud-films__tab:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); }
+.ud-films__tab--active { color: #fff; border-left-color: #7CB342; background: rgba(124,179,66,0.08); }
+.ud-films__tab-icon { width: 18px; height: 18px; flex-shrink: 0; stroke: currentColor; }
+.ud-films__content { padding-left: 48px; display: flex; flex-direction: column; gap: 0; }
+.ud-films__images { margin-bottom: 32px; }
+.ud-films__img-set { display: none; }
+.ud-films__img-set--active { display: block; }
+.ud-films__img { width: 100%; height: 300px; object-fit: cover; border-radius: 12px; display: block; }
+.ud-films__panels { }
+.ud-films__panel { display: none; }
+.ud-films__panel--active { display: block; }
+.ud-films__panel-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 700; color: #fff; line-height: 1.25; margin: 0 0 20px; }
+.ud-films__panel-list { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.ud-films__panel-list li { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; padding-left: 20px; position: relative; }
+.ud-films__panel-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: #7CB342; }
+.ud-films__panel-stat { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.ud-films__panel-stat-num { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: #7CB342; line-height: 1; }
+.ud-films__panel-stat-label { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+.ud-films__panel-cta { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s ease; }
+.ud-films__panel-cta:hover { gap: 10px; }
+@media (max-width: 900px) { .ud-films__main { grid-template-columns: 1fr; } .ud-films__tabs { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0; } .ud-films__tab { border-left: none; border-bottom: 3px solid transparent; flex: 1; justify-content: center; padding: 12px 8px; font-size: 0.78rem; } .ud-films__tab--active { border-bottom-color: #7CB342; border-left-color: transparent; } .ud-films__content { padding-left: 0; padding-top: 32px; } }
+@media (max-width: 600px) { .ud-films__main { padding: 0 20px; } .ud-films { padding: 60px 0; } }
+
+/* ── TRUSTED EXPERTS SECTION ── */
+.ud-expert { background: #fff; padding: 96px 0; }
+.ud-expert__container { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.ud-expert__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 20px; }
+.ud-expert__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 28px; letter-spacing: -0.02em; }
+.ud-expert__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.8; margin: 0 0 20px; }
+.ud-expert__stats { display: flex; align-items: center; gap: 32px; margin-top: 40px; padding-top: 40px; border-top: 1px solid #e8ede6; }
+.ud-expert__stat { display: flex; flex-direction: column; gap: 6px; }
+.ud-expert__stat-num { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: #7CB342; line-height: 1; }
+.ud-expert__stat-label { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #4A5C48; }
+.ud-expert__stat-divider { width: 1px; height: 52px; background: #d0dace; flex-shrink: 0; }
+.ud-expert__image-col { position: relative; }
+.ud-expert__img { width: 100%; height: 560px; object-fit: cover; border-radius: 20px; display: block; }
+@media (max-width: 960px) { .ud-expert__container { grid-template-columns: 1fr; padding: 0 32px; } .ud-expert { padding: 64px 0; } .ud-expert__img { height: 400px; } }
+@media (max-width: 600px) { .ud-expert__container { padding: 0 20px; } .ud-expert__stats { gap: 20px; } }
+
+/* ── TRUST / WHY US SECTION ── */
+.ud-trust { background: #F5F3EE; padding: 96px 0; }
+.ud-trust__container { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.ud-trust__image-col { position: relative; }
+.ud-trust__img { width: 100%; height: 680px; object-fit: cover; object-position: top center; border-radius: 20px; display: block; }
+.ud-trust__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 20px; }
+.ud-trust__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 40px; letter-spacing: -0.02em; }
+.ud-trust__items { display: flex; flex-direction: column; }
+.ud-trust__item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid #ddd8d0; }
+.ud-trust__item:first-child { border-top: 1px solid #ddd8d0; }
+.ud-trust__check { flex-shrink: 0; margin-top: 1px; }
+.ud-trust__item-body { flex: 1; }
+.ud-trust__item-title { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: #14201A; margin: 0; line-height: 1.5; }
+.ud-trust__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; margin-top: 36px; transition: gap 0.2s ease; }
+.ud-trust__cta:hover { gap: 14px; }
+@media (max-width: 960px) { .ud-trust__container { grid-template-columns: 1fr; padding: 0 32px; } .ud-trust { padding: 64px 0; } .ud-trust__img { height: 400px; } }
+@media (max-width: 600px) { .ud-trust__container { padding: 0 20px; } }
+
+/* ── BRANDS SECTION WRAPPER ── */
+.ud-brands { background: #fff; padding-top: 72px; padding-bottom: 72px; }
+.ud-brands__header { text-align: center; padding: 0 24px 48px; }
+.ud-brands__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+.ud-brands__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+.ud-brands__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 600px; margin: 0 auto; line-height: 1.75; }
+
+/* ── Brand card carousel ── */
+.ud-brands__carousel-outer {
+  position: relative;
+  padding: 48px 80px 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.ud-brands__carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.ud-brands__carousel::-webkit-scrollbar { display: none; }
+.ud-brands__carousel:active { cursor: grabbing; }
+.ud-brands__card {
+  flex: 0 0 calc(25% - 18px);
+  scroll-snap-align: start;
+  background: #fff;
+  border: 1px solid #e8ede6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ud-brands__card-photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+.ud-brands__card-body {
+  padding: 20px 22px 24px;
+}
+.ud-brands__card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #14201A;
+  margin: 0 0 8px;
+}
+.ud-brands__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #3a4a38;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.ud-brands__card-desc em { font-style: italic; }
+.ud-brands__card-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: #7CB342;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.ud-brands__arrow {
+  position: absolute;
+  top: calc(48px + 140px);
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #d8e4d4;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  color: #14201A;
+  transition: box-shadow 0.2s ease;
+}
+.ud-brands__arrow:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+.ud-brands__arrow--left  { left: 24px; }
+.ud-brands__arrow--right { right: 24px; }
+.ud-brands__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 32px;
+}
+.ud-brands__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d0dace;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.ud-brands__dot--active {
+  background: #7CB342;
+  transform: scale(1.3);
+}
+@media (max-width: 1100px) {
+  .ud-brands__card { flex: 0 0 calc(33.33% - 16px); }
+}
+@media (max-width: 760px) {
+  .ud-brands__card { flex: 0 0 calc(80% - 12px); }
+  .ud-brands__carousel-outer { padding: 48px 24px 0; }
+  .ud-brands__arrow { display: none; }
+}
+
 /* ── PAGE BODY WRAPPER ── */
 .ip-page-body {
   position: relative;
   background: #ffffff;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
   margin-top: -40px;
   z-index: 10;
   overflow: visible;
-  padding-bottom: 80px;
 }
 
 /* ── PAGE HERO ── */
@@ -311,13 +1286,6 @@ const faqItems = [
   color: var(--text-dark, #1a1a1a); margin-bottom: 20px;
 }
 .ip-hero h1 em { font-style: italic; color: var(--green, #81AB4C); }
-.ip-hero h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(40px, 5vw, 64px); font-weight: 600;
-  line-height: 1.1; letter-spacing: -0.8px;
-  color: var(--text-dark, #1a1a1a); margin-bottom: 20px;
-}
-.ip-hero h2 em { font-style: italic; color: var(--green, #81AB4C); }
 
 .ip-hero__lead {
   font-family: var(--font-body, 'DM Sans', sans-serif);
@@ -361,60 +1329,18 @@ const faqItems = [
 }
 
 /* ── GALLERY ── */
-.ip-gallery {
-  padding: 64px 5%;
-  background: var(--off-white, #F7F6F3);
-  margin: 0 5%;
-  border-radius: var(--radius-xl, 40px);
-}
-.ip-gallery__header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.ip-gallery__header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 12px 0 0;
-}
-.ip-gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.ip-gallery__grid--four {
-  grid-template-columns: repeat(4, 1fr);
-}
-.ip-gallery__item {
-  border-radius: var(--radius-lg, 24px);
-  overflow: hidden;
-  position: relative;
-  aspect-ratio: 3/2;
-}
-.ip-gallery__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-.ip-gallery__item:hover img {
-  transform: scale(1.05);
-}
-.ip-gallery__item-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-  color: #fff;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
-  font-weight: 500;
-}
+/* ── CAM MASONRY GALLERY ── */
+.ud-masonry { background: #F5F3EE; padding: 100px 0 80px; }
+.ud-masonry__header { max-width: 1200px; margin: 0 auto 56px; padding: 0 40px; text-align: center; }
+.ud-masonry__eyebrow { display: block; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #7CB342; margin-bottom: 16px; }
+.ud-masonry__title { font-family: var(--font-serif, Georgia, serif); font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 16px; letter-spacing: -0.01em; }
+.ud-masonry__sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 1rem; color: #4A5C48; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+.ud-masonry__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.ud-masonry__item { position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; }
+.ud-masonry__item img { width: 100%; height: 320px; object-fit: cover; display: block; border-radius: 12px; transition: transform 0.4s ease; }
+.ud-masonry__item:hover img { transform: scale(1.03); }
+.ud-masonry__caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 16px 14px; background: linear-gradient(to top, rgba(13,26,15,0.75) 0%, transparent 100%); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.9); border-radius: 0 0 12px 12px; opacity: 0; transition: opacity 0.3s ease; }
+.ud-masonry__item:hover .ud-masonry__caption { opacity: 1; }
 
 /* ── CONTENT + SIDEBAR ── */
 .ip-content-wrap {
@@ -478,7 +1404,7 @@ const faqItems = [
 .ip-film-card p { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: var(--text-mid, #4a4a4a); line-height: 1.6; margin: 0; }
 .ip-film-price { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; font-weight: 600; color: var(--green, #81AB4C); margin-top: 10px; }
 
-/* Sidebar */
+/* Sidebar cards */
 .ip-sidebar { padding: 64px 0; position: sticky; top: 100px; align-self: start; }
 
 /* ── SIDEBAR CTA CARD ── */
@@ -512,119 +1438,196 @@ const faqItems = [
 .ip-sidebar-cta-card__label {
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 13px;
-  color: rgba(255,255,255,0.85);
-  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  margin: 0;
 }
 .ip-sidebar-cta-card__phone {
-  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
   text-decoration: none;
-  letter-spacing: -0.3px;
+  line-height: 1.1;
 }
 .ip-sidebar-cta-card__btn {
   display: inline-block;
-  margin-top: 4px;
+  margin-top: 8px;
+  background: var(--green, #81AB4C);
+  color: #fff;
   padding: 10px 20px;
-  background: #ffffff;
-  color: var(--brand, #272E32);
-  border-radius: var(--radius-pill, 100px);
+  border-radius: 100px;
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s;
-  align-self: flex-start;
+  width: fit-content;
 }
-.ip-sidebar-cta-card__btn:hover { background: var(--green, #81AB4C); color: #fff; transform: translateY(-2px); }
 
-/* ── SIDEBAR CITIES ── */
+/* ── SIDEBAR CITIES LIST ── */
 .ip-sidebar-cities {
-  background: var(--off-white, #F7F6F3);
+  background: transparent;
+  border: 1px solid var(--off-white, #F7F6F3);
   border-radius: 20px;
-  padding: 28px 24px;
+  padding: 24px;
+  margin-bottom: 20px;
 }
 .ip-sidebar-cities__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
-  font-size: 18px; font-weight: 600;
-  color: var(--text-dark, #1a1a1a);
-  margin-bottom: 16px;
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
 }
-.ip-sidebar-cities__list { list-style: none; padding: 0; margin: 0; }
-.ip-sidebar-cities__list li { margin-bottom: 6px; }
+.ip-sidebar-cities__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ip-sidebar-cities__list li {
+  border-bottom: 1px solid var(--light-gray, #EFEFED);
+}
+.ip-sidebar-cities__list li:last-child {
+  border-bottom: none;
+}
 .ip-sidebar-city-link {
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px; font-weight: 500;
-  color: var(--text-mid, #4a4a4a);
-  text-decoration: none;
-  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
   border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark, #1a1a1a);
+  text-decoration: none;
+  transition: all 0.2s;
 }
-.ip-sidebar-city-link:hover { background: var(--green-light, #eef4e4); color: var(--text-dark, #1a1a1a); }
-.ip-sidebar-city-link span { font-size: 12px; color: var(--text-light, #888); font-weight: 400; }
-.ip-sidebar-city-link--active { background: var(--green-light, #eef4e4); color: var(--green, #81AB4C) !important; font-weight: 600; }
-.ip-sidebar-city-link--active span { color: var(--green, #81AB4C); }
+.ip-sidebar-city-link span {
+  font-size: 11px;
+  color: var(--text-light, #888);
+}
+.ip-sidebar-city-link:hover {
+  background: var(--green, #81AB4C);
+  color: #ffffff;
+}
+.ip-sidebar-city-link:hover span {
+  color: rgba(255,255,255,0.75);
+}
+.ip-sidebar-city-link--active {
+  background: var(--green, #81AB4C);
+  color: #ffffff;
+}
+.ip-sidebar-city-link--active span {
+  color: rgba(255,255,255,0.75);
+}
 
 /* ── LOCAL AREA ── */
 .ip-local {
   padding: 64px 5%;
+  margin: 0 5%;
 }
 .ip-local__grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
 }
 .ip-local__map {
   border-radius: var(--radius-xl, 40px);
   overflow: hidden;
-  height: 360px;
+  height: 400px;
 }
-.ip-local__map iframe { width: 100%; height: 100%; display: block; }
+.ip-local__map iframe {
+  width: 100%;
+  height: 100%;
+}
 .ip-local__content h2 {
   font-family: var(--font-serif);
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--text-dark, #1a1a1a);
-  margin: 12px 0 20px;
-  line-height: 1.15;
+  margin: 12px 0 16px;
 }
 .ip-local__content p {
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px; color: var(--text-mid, #4a4a4a); line-height: 1.8; margin-bottom: 24px;
-}
-.ip-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.ip-tag {
-  display: inline-block;
-  padding: 6px 14px;
-  background: var(--off-white, #F7F6F3);
-  border: 1.5px solid var(--light-gray, #EFEFED);
-  border-radius: var(--radius-pill, 100px);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 13px; font-weight: 500;
+  font-size: 16px;
   color: var(--text-mid, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.ip-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ip-tag {
+  background: #fff; border: 1px solid var(--light-gray, #EFEFED);
+  padding: 6px 14px; border-radius: var(--radius-pill, 100px);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px; color: var(--text-mid, #4a4a4a); font-weight: 500;
 }
 
-/* ── FAQ ── */
+/* ── NEIGHBORHOOD LIST ── */
+.ud-neighborhoods { display: flex; flex-direction: column; margin-top: 20px; }
+.ud-nh { display: flex; align-items: flex-start; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--light-gray, #EFEFED); }
+.ud-nh:last-child { border-bottom: none; }
+.ud-nh__name { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; font-weight: 700; color: var(--green, #81AB4C); min-width: 110px; flex-shrink: 0; line-height: 1.65; }
+.ud-nh__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: var(--text-mid, #4a4a4a); line-height: 1.65; }
+
+/* ── TESTIMONIALS ── */
+.ud-testimonials { background: #F5F3EE; padding: 96px 5%; }
+.ud-testimonials__header { text-align: center; margin-bottom: 56px; }
+.ud-testimonials__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; display: block; }
+.ud-testimonials__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+.ud-testimonials__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+.ud-testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+.ud-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+.ud-tcard__img-wrap { overflow: hidden; height: 220px; flex-shrink: 0; }
+.ud-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+.ud-tcard:hover .ud-tcard__img { transform: scale(1.03); }
+.ud-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.ud-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+.ud-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+.ud-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+.ud-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+.ud-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7CB342; margin: 0; font-weight: 500; }
+@media (max-width: 960px) { .ud-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .ud-testimonials { padding: 64px 5%; } }
+@media (max-width: 600px) { .ud-tcard__img-wrap { height: 180px; } }
+
+/* ── RESOURCES / SPEC SHEETS ── */
+.ud-resources { background: #ffffff; padding: 96px 5%; }
+.ud-resources__grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.ud-resources__image-col { position: relative; }
+.ud-resources__img { width: 100%; height: 480px; object-fit: cover; border-radius: 20px; display: block; }
+.ud-resources__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 16px; display: block; }
+.ud-resources__title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.8vw, 2.25rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 18px; }
+.ud-resources__desc { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; line-height: 1.8; margin: 0 0 32px; }
+.ud-resources__list { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; }
+.ud-resources__item { border-bottom: 1px solid #e8ede6; }
+.ud-resources__item:first-child { border-top: 1px solid #e8ede6; }
+.ud-resources__link { display: flex; align-items: center; gap: 14px; padding: 14px 8px; text-decoration: none; color: #14201A; transition: background 0.2s ease, padding-left 0.2s ease; border-radius: 8px; }
+.ud-resources__link:hover { background: #f3f6f1; padding-left: 14px; }
+.ud-resources__pdf-icon { flex-shrink: 0; color: #7CB342; }
+.ud-resources__link-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.ud-resources__link-text strong { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #14201A; }
+.ud-resources__link-text span { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #7a8a78; }
+.ud-resources__arrow { font-size: 1rem; color: #7CB342; font-weight: 700; flex-shrink: 0; }
+.ud-resources__cta { display: inline-flex; align-items: center; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; transition: gap 0.2s ease; gap: 0; }
+.ud-resources__cta:hover { gap: 4px; }
+@media (max-width: 960px) { .ud-resources__grid { grid-template-columns: 1fr; } .ud-resources { padding: 64px 5%; } .ud-resources__img { height: 320px; } }
+
+/* ── FAQ ACCORDION ── */
 .ip-faq {
   padding: 64px 5%;
-  background: var(--off-white, #F7F6F3);
   margin: 0 5%;
-  border-radius: var(--radius-xl, 40px);
 }
 .ip-faq__hd {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 .section-eyebrow {
-  display: inline-block;
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 11px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--green, #81AB4C);
-  margin-bottom: 12px;
+  margin: 0 0 8px;
 }
 .section-title {
   font-family: var(--font-serif);
@@ -632,94 +1635,384 @@ const faqItems = [
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--text-dark, #1a1a1a);
-  max-width: 600px;
 }
 .ip-faq__item {
   border-bottom: 1px solid var(--light-gray, #EFEFED);
   cursor: pointer;
 }
-.ip-faq__item:first-of-type { border-top: 1px solid var(--light-gray, #EFEFED); }
+.ip-faq__item:last-child { border-bottom: none; }
 .ip-faq__q {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px 0;
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 16px; font-weight: 600;
+  font-size: 16px; font-weight: 500;
   color: var(--text-dark, #1a1a1a);
-  gap: 16px;
 }
 .ip-faq__toggle {
-  font-size: 22px; font-weight: 300;
+  font-size: 24px;
   color: var(--green, #81AB4C);
-  flex-shrink: 0; line-height: 1;
+  font-weight: 300;
+  transition: transform 0.2s;
 }
+.ip-faq__item--open .ip-faq__toggle { transform: rotate(45deg); }
 .ip-faq__a {
   display: none;
   padding: 0 0 20px;
   font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px; color: var(--text-mid, #4a4a4a); line-height: 1.75;
+  font-size: 15px;
+  color: var(--text-mid, #4a4a4a);
+  line-height: 1.7;
 }
 .ip-faq__item--open .ip-faq__a { display: block; }
-.ip-faq__item--open .ip-faq__toggle { color: var(--green, #81AB4C); }
 
-/* ── CTA ── */
+/* ── CTA BANNER ── */
 .ip-cta {
-  margin: 0 5%;
-  padding: 80px 5%;
+  margin: 0 5% 40px;
+  padding: 64px 5%;
   background: var(--brand, #272E32);
   border-radius: var(--radius-xl, 40px);
   text-align: center;
 }
 .ip-cta h2 {
   font-family: var(--font-serif);
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(28px, 3.5vw, 48px);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 12px;
+  margin: 0 0 32px;
   letter-spacing: -0.5px;
 }
 .ip-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
-.ip-cta__btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+.ip-cta__btns { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
 
-/* ── FADE IN ── */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.in-view { opacity: 1; transform: translateY(0); }
+/* ── CINEMATIC CTA ── */
+.ud-cinematic-cta {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ud-cinematic-cta__media {
+  position: absolute;
+  inset: 0;
+}
+.ud-cinematic-cta__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.ud-cinematic-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.75) 40%, rgba(13,26,15,0.88) 100%);
+}
+.ud-cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(13,26,15,0.2) 0%, rgba(13,26,15,0.6) 100%);
+}
+.ud-cinematic-cta__content {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  padding: 80px 24px;
+  text-align: center;
+}
+.ud-cinematic-cta__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.ud-cinematic-cta__text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243,246,241,0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.ud-cinematic-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.ud-cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.ud-cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124,179,66,0.35);
+  color: #fff;
+}
+.ud-cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.ud-cinematic-cta__btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(124,179,66,0.6);
+  color: #F3F6F1;
+  transform: translateY(-2px);
+}
+
+/* ── CITIES TICKER ── */
+.ud-cities-ticker {
+  background: #14201A;
+  padding: 20px 0;
+  overflow: hidden;
+}
+.ud-cities-ticker__track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: ud-ticker-scroll 40s linear infinite;
+  white-space: nowrap;
+}
+.ud-cities-ticker span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #F3F6F1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.ud-cities-ticker__dot {
+  width: 6px;
+  height: 6px;
+  background: #7CB342;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@keyframes ud-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ud-cities-ticker__track { animation: none; }
+}
+
+/* ── GEO / SR-ONLY ── */
+.ud-geo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── FADE IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+.fade-in-delay-1 { animation-delay: 0.15s; }
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── LINE MASK REVEAL (inline — avoids scoped style issues) ── */
+.line-mask { display: block; }
+.line-mask__line { display: block; overflow: hidden; }
+.line-mask__inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i) * var(--line-stagger, 120ms));
+  will-change: transform;
+}
+.line-mask.is-visible .line-mask__inner { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .line-mask__inner { transform: none; transition: none; }
+}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .ip-gallery__grid--four { grid-template-columns: repeat(2, 1fr); }
-  .ip-content-wrap { grid-template-columns: 1fr; }
-  .ip-sidebar { position: static; }
-  .ip-local__grid { grid-template-columns: 1fr; }
-  .ip-hero { grid-template-columns: 1fr; gap: 30px; }
+  .ip-content-wrap {
+    grid-template-columns: 1fr;
+  }
+  .ip-sidebar {
+    position: static;
+    padding: 0 0 64px;
+  }
+  .ip-local__grid {
+    grid-template-columns: 1fr;
+  }
+  .ip-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-@media (max-width: 640px) {
-  .ip-gallery__grid--four { grid-template-columns: 1fr 1fr; }
-  .ip-film-grid { grid-template-columns: 1fr; }
-  .ip-hero { padding: 60px 5%; }
+@media (max-width: 768px) {
+  .ip-hero {
+    grid-template-columns: 1fr;
+    padding: 48px 5%;
+    gap: 24px;
+  }
+  .ip-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+  .ud-masonry__grid { columns: 1; }
+  .ud-masonry__header { padding: 0 20px; }
+  .ip-film-grid {
+    grid-template-columns: 1fr;
+  }
+  .ip-cta__btns {
+    flex-direction: column;
+  }
+  .ip-cta__btns .ip-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // FAQ accordion
-  document.querySelectorAll('.ip-faq__item').forEach(item => {
-    item.addEventListener('click', () => {
-      const isOpen = item.classList.contains('ip-faq__item--open');
-      document.querySelectorAll('.ip-faq__item').forEach(i => i.classList.remove('ip-faq__item--open'));
-      if (!isOpen) item.classList.add('ip-faq__item--open');
+  // Brand card carousel
+  (function() {
+    const track = document.getElementById('brandsTrack');
+    const dotsContainer = document.getElementById('brandsDots');
+    const cards = track ? Array.from(track.querySelectorAll('.ud-brands__card')) : [];
+    const visibleCount = () => window.innerWidth > 1100 ? 4 : window.innerWidth > 760 ? 3 : 1;
+    let dots = [];
+    function buildDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      dots = [];
+      const pages = Math.ceil(cards.length / visibleCount());
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 'ud-brands__dot' + (i === 0 ? ' ud-brands__dot--active' : '');
+        d.setAttribute('aria-label', `Brand page ${i + 1}`);
+        d.addEventListener('click', () => scrollToPage(i));
+        dotsContainer.appendChild(d);
+        dots.push(d);
+      }
+    }
+    function scrollToPage(i) {
+      if (!track || !cards[0]) return;
+      const cardW = cards[0].getBoundingClientRect().width + 24;
+      track.scrollTo({ left: i * visibleCount() * cardW, behavior: 'smooth' });
+    }
+    function updateDots() {
+      if (!track || !cards[0]) return;
+      const cardW = cards[0].getBoundingClientRect().width + 24;
+      const page = Math.round(track.scrollLeft / (visibleCount() * cardW));
+      dots.forEach((d, i) => d.classList.toggle('ud-brands__dot--active', i === page));
+    }
+    if (track) {
+      track.addEventListener('scroll', updateDots, { passive: true });
+      document.getElementById('brandsArrowLeft')?.addEventListener('click', () => { const cardW = cards[0]?.getBoundingClientRect().width + 24 || 300; track.scrollBy({ left: -(visibleCount() * cardW), behavior: 'smooth' }); });
+      document.getElementById('brandsArrowRight')?.addEventListener('click', () => { const cardW = cards[0]?.getBoundingClientRect().width + 24 || 300; track.scrollBy({ left: visibleCount() * cardW, behavior: 'smooth' }); });
+      // drag to scroll
+      let isDown = false, startX = 0, scrollLeft = 0;
+      track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+      track.addEventListener('mouseleave', () => isDown = false);
+      track.addEventListener('mouseup', () => isDown = false);
+      track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX); });
+    }
+    buildDots();
+    window.addEventListener('resize', buildDots);
+  })();
+
+  // Film types tab switcher
+  document.querySelectorAll('.ud-films__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.getAttribute('data-udtab');
+      document.querySelectorAll('.ud-films__tab').forEach(t => t.classList.remove('ud-films__tab--active'));
+      document.querySelectorAll('.ud-films__img-set').forEach(s => s.classList.remove('ud-films__img-set--active'));
+      document.querySelectorAll('.ud-films__panel').forEach(p => p.classList.remove('ud-films__panel--active'));
+      tab.classList.add('ud-films__tab--active');
+      document.querySelector(`.ud-films__img-set[data-udtab="${key}"]`)?.classList.add('ud-films__img-set--active');
+      document.querySelector(`.ud-films__panel[data-udtab="${key}"]`)?.classList.add('ud-films__panel--active');
     });
   });
 
-  // Fade-in on scroll
-  const fadeEls = document.querySelectorAll('.fade-in');
+  // Property type slider
+  (function(){
+    const track = document.getElementById('udTrack');
+    const navItems = document.querySelectorAll('[data-udpropnav]');
+    const prev = document.getElementById('udPropPrev');
+    const next = document.getElementById('udPropNext');
+    if (!track) return;
+    let cur = 0;
+    const total = 2;
+    function goTo(i) {
+      cur = (i + total) % total;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('ud-prop-slider__nav-item--active', idx === cur));
+    }
+    prev?.addEventListener('click', () => goTo(cur - 1));
+    next?.addEventListener('click', () => goTo(cur + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
+    goTo(0);
+  })();
+
+  // Count-up animation for hero stats
+  const countUp = (el) => {
+    const target = parseFloat(el.getAttribute('data-count') || '0');
+    const isDecimal = target % 1 !== 0;
+    const duration = 1800;
+    const start = performance.now();
+    const animate = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const value = target * ease;
+      el.textContent = isDecimal ? value.toFixed(1) : Math.round(value).toLocaleString();
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  };
+
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+        countUp(entry.target);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
-});
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.hero-stat-item__number[data-count]').forEach(el => observer.observe(el));
+
+  // Line mask reveal
+  const lineMaskObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.style.setProperty('--line-stagger', (el.dataset.stagger || '120') + 'ms');
+      el.classList.add('is-visible');
+      lineMaskObserver.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.line-mask').forEach((el) => lineMaskObserver.observe(el));
 </script>
