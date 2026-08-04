@@ -1,186 +1,708 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import GalleryBanner from '../../components/GalleryBanner.astro';
+import TestimonialSpotlight from '../../components/TestimonialSpotlight.astro';
+import CtaLightRays from '../../components/CtaLightRays.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
 
 const title = 'Window Film Reading PA | Window Film Contractor Reading';
-const description = 'Window Film Philadelphia is the #1 source for window film in Reading, PA. Get 3M, energy saving, LLumar, security, or privacy film for your home or business. Free quotes!';
+const description = 'Window film installation in Reading, PA — solar control, security, privacy, and decorative film. Free estimates, certified installers, lifetime warranty.';
+
+const filmBenefits = [
+  {
+    number: '01',
+    title: 'Energy Savings',
+    detail: `<p>Reading sits in the Schuylkill River valley, where July afternoons regularly hit 85°F and humidity lingers in the 70s. Solar control film rejects up to <strong>78% of solar heat</strong> at the glass, before it ever reaches your living space. Brick rowhouses throughout Downtown Reading and Hampden Heights trap that heat well past sundown — film breaks the cycle.</p><ul><li>Cuts HVAC runtime and monthly cooling bills across the summer season</li><li>Measurable interior temperature drops of 10–15°F on west-facing rooms during peak afternoon sun</li><li>Low-E variants also reduce winter heat loss through single-pane glass common in Reading's older housing stock</li></ul>`,
+    image: '/images/window-film-reading-pa-film-energy.jpg',
+    imageAlt: 'Energy-saving window film in a Reading PA brick rowhome living room — natural light filtered, cooler interior',
+  },
+  {
+    number: '02',
+    title: 'UV Protection',
+    detail: `<p>Pennsylvania summers deliver intense UV exposure that fades hardwood floors, rugs, and furniture long before their time. UV-blocking film stops <strong>99% of UV-A and UV-B radiation</strong> at the glass — the same rays that discolor merchandise in Penn Street storefronts and artwork in Wyomissing living rooms.</p><ul><li>Essential for Reading Hospital clinical spaces and Albright College campus buildings with large glazing</li><li>Optically clear — preserves natural light and outward views with no visible tint</li><li>Reduces fading by up to 60% versus unprotected glass</li></ul>`,
+    image: '/images/window-film-reading-pa-film-uv.jpg',
+    imageAlt: 'UV-blocking window film protecting a Reading PA home interior from sun damage and fading',
+  },
+  {
+    number: '03',
+    title: 'Privacy Film',
+    detail: `<p>Reading's dense brick rowhome blocks and closely spaced commercial corridors leave ground-floor windows exposed to foot traffic and neighboring buildings. Privacy film adds a barrier <strong>without darkening the room</strong> — frosted, reflective, and gradient options all let daylight through.</p><ul><li>One-way reflective film preserves Schuylkill River and Mount Penn views from West Reading condos</li><li>Frosted film for Reading Hospital exam rooms, Berks County government offices, and law firm conference spaces</li><li>Available in clear frosted, custom patterns, gradient, and branded designs — every option fully removable</li></ul>`,
+    image: '/images/window-film-reading-pa-film-privacy.jpg',
+    imageAlt: 'Frosted privacy window film on a conference room partition in a Reading PA office',
+  },
+  {
+    number: '04',
+    title: 'Safety & Security',
+    detail: `<p>Property crime remains a reality in parts of Reading, where the city has worked hard to recover from decades of economic decline. Security film <strong>bonds glass fragments together on impact</strong>, transforming a pane that would shatter into shards into a barrier that holds — slowing forced entry and protecting occupants.</p><ul><li>Keeps glass intact during break-in attempts, storms, and accidents rather than shattering into hazardous shards</li><li>Institutional and government buildings rely on security film to meet ANSI and GSA glazing safety benchmarks</li><li>Bomb blast mitigation configurations available for federally regulated facilities</li></ul>`,
+    image: '/images/window-film-reading-pa-film-safety.jpg',
+    imageAlt: 'Secure commercial building entrance in Reading PA with safety and security window film on glass doors',
+  },
+  {
+    number: '05',
+    title: 'Anti-Graffiti',
+    detail: `<p>Storefronts along Penn Street and Fifth Street know the recurring cost of scratched and acid-etched glass. Anti-graffiti film is a <strong>sacrificial barrier</strong> — vandalism damages the film, not the pane underneath, and a quick film swap restores the surface for a fraction of glass replacement.</p><ul><li>Each film replacement costs a small percentage of what new glass would run</li><li>Most Reading business owners recover the initial investment within the first one or two incidents prevented</li><li>Comes in clear or lightly tinted versions — visually invisible on installed glass</li></ul>`,
+    image: '/images/window-film-reading-pa-film-graffiti.jpg',
+    imageAlt: 'Clean commercial storefront glass in Reading PA protected by anti-graffiti window film',
+  },
+  {
+    number: '06',
+    title: 'Glare Reduction',
+    detail: `<p>East- and west-facing windows in Hampden Heights, Glenside, and Muhlenberg Township catch direct sun during morning and afternoon hours — making screens, monitors, and workspaces difficult to use. Glare reduction film filters up to <strong>85% of visible glare</strong> while keeping the room bright.</p><ul><li>Open-plan offices and home workspaces see immediate improvement — screens become readable without squinting</li><li>Works on every glass type, including the single-pane windows found throughout Reading's historic housing stock</li></ul>`,
+    image: '/images/window-film-reading-pa-film-glare.jpg',
+    imageAlt: 'Reading PA office worker at computer desk near window with no screen glare after window film installation',
+  },
+  {
+    number: '07',
+    title: 'Decorative Film',
+    detail: `<p>West Reading's revitalized arts corridor and the ongoing conversion of factory buildings into loft workspaces have created demand for distinctive glass design. Frosted, patterned, and gradient films deliver an <strong>etched-glass look without etched-glass cost</strong>.</p><ul><li>Custom-branded window graphics for Reading businesses — logos, wayfinding signage, and repeating patterns</li><li>A strong fit for Reading Hospital waiting areas, Albright College library spaces, and Berks County office lobbies</li><li>Completely removable — no permanent change to the underlying glass</li></ul>`,
+    image: '/images/window-film-reading-pa-film-decorative.jpg',
+    imageAlt: 'Decorative frosted glass pattern on a partition wall in a Reading PA office or lobby',
+  },
+  {
+    number: '08',
+    title: 'Solar Control',
+    detail: `<p>Solar control film is the most versatile category we install across Reading and Berks County — one application addresses heat gain, glare, and UV simultaneously for homes, offices, retail stores, and institutional properties.</p><ul><li>Spectrally selective films reject infrared heat while preserving natural light and clear views</li><li>Ceramic constructions contain zero metal — no interference with Wi-Fi, cellular, or sensitive medical electronics</li><li>NFRC-rated options available with documented VLT, SHGC, and TSER values for energy code and LEED compliance</li></ul>`,
+    image: '/images/window-film-reading-pa-film-solar.jpg',
+    imageAlt: 'Solar control window film on a modern Reading PA commercial office building exterior',
+  },
+];
 
 const faqItems = [
-  { question: 'Is window film legal in Pennsylvania?', answer: 'Yes. Pennsylvania has no state restrictions on residential or commercial window film. We ensure every installation meets local code requirements and manufacturer specifications for a flawless, compliant finish.' },
-  { question: 'How long does installation take in Reading?', answer: 'Most residential projects are completed in 4–8 hours. Commercial and multi-window jobs are scoped individually. Anti-graffiti and decorative film installations often finish in a single afternoon.' },
-  { question: 'What warranty comes with my Reading installation?', answer: 'All residential and commercial films include a lifetime manufacturer warranty covering peeling, bubbling, and fading. The warranty transfers to the next property owner if you sell your home or business.' },
-  { question: 'How much does window film cost in Reading?', answer: 'Solar control film starts around $5–$8 per sq ft installed. Security film starts at $7/sq ft. Anti-graffiti film starts at $4/sq ft. Request a free on-site estimate for an accurate price on your specific project.' },
-  { question: 'Do you offer free consultations in Reading?', answer: 'Yes — all consultations are completely free. We come to your Reading home or business, assess your windows, discuss your goals, and provide a detailed written estimate at no charge and no obligation.' },
-  { question: 'How soon can you schedule in Reading?', answer: 'We typically offer same-week availability across Berks County. During peak summer months, booking 1–2 weeks in advance is recommended to secure your preferred installation date.' },
+  { question: 'Is window film permitted on Reading homes and businesses?', answer: 'Yes. Pennsylvania imposes no statewide restriction on architectural window film for residential or commercial buildings. Solar, privacy, decorative, security, and anti-graffiti films can all be installed without a permit. If your property sits within a Reading historic district or falls under an HOA, your documents may include reflectivity guidelines — we carry non-reflective film options that satisfy most requirements and can help you navigate the approval process.' },
+  { question: 'How is window film priced for Berks County properties?', answer: 'Cost depends on film category, total glass area, window count, and how accessible each pane is. Solar control, privacy, decorative, security, and anti-graffiti films each sit at different price points, and no two Reading buildings are identical. Rather than guess, we offer free on-site consultations and deliver a detailed written estimate calibrated to your specific windows and objectives. No obligation, no charge.' },
+  { question: 'What should I expect during a window film installation?', answer: 'Several variables shape the process: how many windows we are filming, their size and type, the film selected, glass accessibility, and the building layout. A single rowhouse looks very different from a multi-floor commercial install. During your free consultation we evaluate the full scope, give you a realistic schedule, work around your routine, and handle all cleanup when we finish.' },
+  { question: 'What kind of warranty covers window film in Reading?', answer: 'Warranty coverage depends on the manufacturer and product line. Leading brands — 3M, LLumar, Vista, and Solar Gard among them — back their architectural films with manufacturer warranties against peeling, bubbling, delamination, and color shift. Coverage periods and specifics vary by film, so we review the warranty for your chosen product in full before any installation begins.' },
+  { question: 'How effective is solar control film during Pennsylvania summers?', answer: 'High-performance solar control films reject up to 85% of solar heat gain — the main cause of summer overheating in Reading and across Berks County. July highs here regularly reach the mid-80s°F with humidity in the 70s. Window film reduces hot spots near glass, lowers peak indoor temperatures, and eases air-conditioning load, often cutting cooling energy costs by 20–30%. The U.S. Department of Energy reports that windows account for 25–30% of a building\'s total heating and cooling energy loss.' },
+  { question: 'Does window film really block UV radiation?', answer: 'Yes. Most architectural window films block 99% or more of UV-A and UV-B radiation — including clear, low-reflectivity options. UV is the leading cause of fading in hardwood floors, upholstery, artwork, and retail merchandise, and it contributes to skin damage with prolonged exposure near windows. UV-blocking film reduces fading by up to 60% versus unprotected glass without noticeably reducing visible light.' },
+  { question: 'Can window film be taken off without harming the glass?', answer: 'Yes. Window film is professionally removable at any point with no permanent damage to the glass. The process uses heat and a mild adhesive solvent, leaving no scratches, marks, or residue behind. Renters, property managers, and building owners who want a non-permanent upgrade often choose window film precisely for this flexibility.' },
+  { question: 'Does window film help in winter or only in summer?', answer: 'Both. Solar control film cuts heat gain in summer. Certain low-emissivity (low-e) films also retain interior warmth in winter by reflecting radiant heat back into the room — the same principle behind double-pane Low-E glass. This dual-season performance matters in Reading, where January temperatures frequently drop into the 20s°F. Year-round use can reduce total HVAC energy consumption by 5–15%.' },
+  { question: 'What distinguishes privacy film from solar control film?', answer: 'Solar control film reduces heat gain and glare while keeping a clear outward view — it works by filtering infrared energy at the glass. Privacy film — including frosted, whiteout, and one-way mirror variants — obscures the view into a space, either around the clock (frosted) or from one direction during daylight hours (reflective). Many Reading clients layer both: solar film on main living areas for energy savings, frosted film on bathrooms, conference rooms, or street-facing glass for privacy.' },
+  { question: 'Do you apply anti-graffiti film to Reading storefronts?', answer: 'Yes. Anti-graffiti film — also called sacrificial film — is a clear protective layer applied to exterior glass and smooth surfaces. When vandalism happens, the damaged film peels off and is replaced for a fraction of what new glass would cost. It is a popular choice for Penn Street and Fifth Street storefronts and commercial corridors across Reading where scratching and spray tagging are recurring problems.' },
+  { question: 'Will window film affect my window manufacturer\'s warranty?', answer: 'No — when professionally installed on standard single-pane, double-pane, or tempered glass. For sealed insulated glass units (IGUs), we select film types rated for that specific glass to prevent heat-stress buildup. Our installers verify the glass specification before recommending any product. Most major glass manufacturers do not void warranties when an IGU-rated film is correctly applied.' },
+  { question: 'Are there tax incentives for energy-saving window film in Pennsylvania?', answer: 'Potentially yes. The federal Inflation Reduction Act Section 25C tax credit covers qualifying building-envelope improvements — which can include energy-efficient window treatments — up to $1,200 per year for eligible residential projects. Pennsylvania also offers commercial energy efficiency incentive programs. We recommend consulting a tax professional to confirm eligibility based on your film specification and property type.' },
+  { question: 'Do you provide free on-site estimates across Berks County?', answer: 'Yes. We offer free, no-obligation consultations at your home or business anywhere in Reading and throughout Berks County. During the visit we assess window type, sun exposure, and your goals, then deliver a detailed written estimate. No pressure, no charge.' },
+];
+
+const today = new Date().toISOString().slice(0, 10);
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://www.windowfilmphiladelphia.net/cities/reading/#breadcrumb',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Cities We Serve', item: 'https://www.windowfilmphiladelphia.net/cities/' },
+      { '@type': 'ListItem', position: 3, name: 'Window Film Reading PA', item: 'https://www.windowfilmphiladelphia.net/cities/reading/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/cities/reading/#webpage',
+    url: 'https://www.windowfilmphiladelphia.net/cities/reading/',
+    name: title,
+    description: description,
+    inLanguage: 'en-US',
+    isPartOf: { '@id': 'https://www.windowfilmphiladelphia.net/#website' },
+    about: { '@type': 'City', name: 'Reading', containedInPlace: { '@type': 'State', name: 'Pennsylvania' } },
+    dateModified: today,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.rd-geo', '.rd-hero__subtitle', '.faq__a-inner p'],
+    },
+    breadcrumb: { '@id': 'https://www.windowfilmphiladelphia.net/cities/reading/#breadcrumb' },
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/reading/" faqItems={faqItems}>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/reading/" faqItems={faqItems} schemas={pageSchemas}>
 
-<InnerPageHero
-  title="Window Film Solutions<br />Reading, PA"
-  bgImage="/images/reading-pa-hero.png"
-  desc="Serving Reading and greater Berks County homeowners and businesses since 2008."
-/>
-
-<div class="ip-page-body">
-<!-- ══════════════════════════════════════
-     PAGE HERO — 2-col: copy left, body right
-     ══════════════════════════════════════ -->
-<div class="ip-hero">
-  <div class="ip-hero__content fade-in">
-    <div class="ip-hero__eyebrow">
-      <span class="eyebrow-marquee"><span>Reading, Pennsylvania</span></span>
-    </div>
-    <h2>Window Film in <em>Reading, PA</em></h2>
-  </div>
-  <div class="ip-hero__body fade-in">
-    <p class="ip-hero__lead">Window Film Philadelphia has served Reading homeowners, businesses, and commercial properties since 2008. Expert installation, premium films from 3M, LLumar, and Vista, and a lifetime warranty on every project.</p>
-    <div class="ip-hero__ctas">
-      <a href="/contact/" class="ip-btn ip-btn--primary">Get a Free Quote</a>
-      <a href="tel:+126****7980" class="ip-btn ip-btn--ghost">Call (267) 394-7980</a>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     HERO IMAGE — full-width rounded
-     ══════════════════════════════════════ -->
-<div class="ip-hero-img-wrap">
-  <div class="ip-hero-img fade-in">
-    <img src="/images/reading-pa-hero.png" alt="Window film Reading PA — downtown Reading, Pennsylvania with historic brick buildings on Penn Street corridor" width="1200" height="380" loading="lazy" />
-    <span class="ip-hero-img__caption">📍 Serving Reading, Wyomissing, and all Berks County communities</span>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     MAIN CONTENT + SIDEBAR
-     ══════════════════════════════════════ -->
-<div class="ip-content-wrap">
-  <div class="ip-main prose">
-    <h2>Reading's Trusted Window Film Experts</h2>
-    <p>At Window Film Philadelphia, we've been serving Reading and the greater Berks County community since 2008. Whether you're looking to cut summer cooling costs in your West Reading home, protect your shop on Penn Street from graffiti, add privacy film to a conference room at a Wyomissing office park, or reinforce glass at a warehouse near the Port Industrial Corridor — our certified installers deliver flawless results every time.</p>
-    <p>Reading's mix of historic brick rowhouses, mid-century commercial buildings, and modern industrial facilities each present unique window film opportunities. Our team has experience across every building type in the area, selecting the right film for each project's specific climate exposure, security needs, and aesthetic goals.</p>
-
-    <div class="ip-callout">
-      <p><strong>Reading Energy Savings:</strong> With Reading's humid summers regularly pushing temperatures into the 90s, solar control window film can reduce cooling costs by 30–40% on south and west-facing windows. That pays for the installation in just a few seasons.</p>
-    </div>
-
-    <h2>Window Film Options for Reading Properties</h2>
-    <p>We offer a curated selection of premium films from 3M, LLumar, Vista, and Solar Gard — matched to Reading's specific climate and your project goals.</p>
-
-    <div class="ip-film-grid">
-      <div class="ip-film-card ip-film-card--featured">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <h3>Solar Control Film</h3>
-        <p>Maximum heat rejection and UV blocking. Ideal for Reading homes and offices facing south or west.</p>
-        <div class="ip-film-price">From $6.50/sq ft installed</div>
-      </div>
-      <div class="ip-film-card">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <h3>Safety & Security Film</h3>
-        <p>Holds glass together on impact. Popular for storefronts, ground-floor offices, and industrial facilities.</p>
-        <div class="ip-film-price">From $7.00/sq ft installed</div>
-      </div>
-      <div class="ip-film-card">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <h3>Decorative & Privacy Film</h3>
-        <p>Frosted, patterned, or custom-cut designs for bathrooms, conference rooms, and storefronts.</p>
-        <div class="ip-film-price">From $5.50/sq ft installed</div>
-      </div>
-      <div class="ip-film-card">
-        <svg class="ip-film-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        <h3>Anti-Graffiti Film</h3>
-        <p>Sacrificial film layer protects glass from etching, paint, and graffiti. Easily replaced at low cost.</p>
-        <div class="ip-film-price">From $4.00/sq ft installed</div>
+<!-- ══ HERO ══ -->
+<section class="rd-hero">
+  <div class="rd-hero__overlay"></div>
+  <div class="rd-hero__container">
+    <div class="rd-hero__label">WINDOW FILM INSTALLATION &middot; READING, PA</div>
+    <div class="rd-hero__content">
+      <h1 class="rd-hero__title">Window Film in Reading<br/>&mdash; Berks County's Best</h1>
+      <p class="rd-hero__subtitle">Professional residential and commercial window film installation in Reading, PA and throughout Berks County. Solar control, security, privacy, and decorative film for Reading homes and businesses — free estimates, certified installers, lifetime warranty.</p>
+      <div class="rd-hero__buttons">
+        <a href="/contact/" class="btn-hero btn-hero--primary">Get Your Free Estimate &rarr;</a>
+        <a href="tel:+12673947980" class="btn-hero btn-hero--secondary">Call (267) 394-7980</a>
       </div>
     </div>
-
-    <figure class="ip-inline-image">
-      <img src="/images/reading-solar-home.png" alt="Window film installation on a brick rowhome in Reading PA, solar control film applied to reduce energy costs" width="1200" height="675" loading="lazy" />
-
-    </figure>
-
-    <h2>Why Reading Properties Choose Window Film Philadelphia</h2>
-    <ul>
-      <li>15+ years serving Philadelphia and Berks County</li>
-      <li>Factory-certified installers from 3M, LLumar, and Vista</li>
-      <li>Lifetime manufacturer warranty on all residential and commercial films</li>
-      <li>Same-week appointments available across Berks County</li>
-      <li>Free in-home and on-site consultations</li>
-      <li>Philadelphia's most reviewed window film contractor</li>
-    </ul>
-
-    <figure class="ip-inline-image ip-inline-image--right">
-      <img src="/images/reading-pro-installer.png" alt="Certified window film installer working on a Reading PA residential property" width="800" height="450" loading="lazy" />
-
-    </figure>
-
-    <h2>Our Reading Installation Process</h2>
-    <p>Call or submit a quote request and receive a detailed estimate within 24 hours. Our Reading-area crew arrives on schedule, preps the surface, installs the film, and leaves your space spotless. Most residential jobs are completed in a single day.</p>
+    <div class="rd-hero__bottom">
+      <div class="rd-hero__tagline">Trusted by Reading homeowners and businesses since 2008.</div>
+      <div class="rd-hero__stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="18">0</div>
+          <div class="hero-stat-item__label">Years Serving Berks County</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="500">0</div>
+          <div class="hero-stat-item__label">Reading Area Installs</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="99">0</div>
+          <div class="hero-stat-item__label">UV Block Rate</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-item__number" data-count="4.9">0</div>
+          <div class="hero-stat-item__label">Google Rating</div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="ip-sidebar">
-    <div class="ip-sidebar-cta-card fade-in">
-      <div class="ip-sidebar-cta-card__bg" style="background-image: url('https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203924_58c10bc0-70c3-4c30-9723-f394b87a2988.png')">
-        <div class="ip-sidebar-cta-card__overlay"></div>
-        <div class="ip-sidebar-cta-card__content">
-          <p class="ip-sidebar-cta-card__label">Any Questions? Let's talk</p>
-          <a href="tel:+126****7980" class="ip-sidebar-cta-card__phone">(267) 394-7980</a>
-          <a href="/contact/" class="ip-sidebar-cta-card__btn">Get a Free Quote →</a>
+<!-- ══ LOCAL CONTEXT ══ -->
+<section class="rd-why">
+  <div class="rd-why__container">
+
+    <div class="rd-why__image-wrap">
+      <img
+        src="/images/window-film-reading-pa-urban-heat.jpg"
+        alt="Schuylkill River flowing through Reading PA with the Reading Pagoda visible on Mount Penn — Berks County's summer heat and humidity make window film essential"
+        class="rd-why__image"
+        loading="lazy"
+      />
+      <div class="rd-why__stat-card">
+        <div class="rd-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>83-87°F summer highs</span>
+        </div>
+        <div class="rd-why__stat-divider"></div>
+        <div class="rd-why__stat-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>68-72% summer humidity</span>
         </div>
       </div>
     </div>
 
-    <div class="ip-sidebar-cities fade-in fade-in-delay-1">
-      <h4 class="ip-sidebar-cities__title">Cities We Serve</h4>
-      <ul class="ip-sidebar-cities__list">
-        <li><a href="/cities/philadelphia/" class="ip-sidebar-city-link">Philadelphia <span>PA</span></a></li>
-        <li><a href="/cities/camden/" class="ip-sidebar-city-link">Camden <span>NJ</span></a></li>
-        <li><a href="/cities/reading/" class="ip-sidebar-city-link ip-sidebar-city-link--active">Reading <span>PA</span></a></li>
-        <li><a href="/cities/upper-darby-township/" class="ip-sidebar-city-link">Upper Darby <span>PA</span></a></li>
+    <div class="rd-why__content">
+      <div class="rd-why__eyebrow">Berks County Climate & Context</div>
+      <h2 class="line-mask rd-why__headline" data-stagger="140" aria-label="Reading Buildings Deserve Better Glass">
+        <span class="line-mask__line" aria-hidden="true"><span class="line-mask__inner" style="--i:0">Reading Buildings</span></span>
+        <span class="line-mask__line" aria-hidden="true"><span class="line-mask__inner" style="--i:1">Deserve Better Glass</span></span>
+      </h2>
+      <p class="rd-why__intro">Reading's position in the Schuylkill River valley, its dense brick construction, and its ongoing economic recovery create a set of conditions that make window film a practical investment, not a luxury. July afternoons climb toward 85°F with humidity holding in the upper 60s and low 70s. The city's many historic brick rowhomes and converted factory lofts absorb and hold that heat deep into the evening. And after decades of economic hardship — <a href="https://en.wikipedia.org/wiki/Reading,_Pennsylvania" target="_blank" rel="noopener noreferrer" style="color:#7CB342">Reading was once labeled America's poorest city</a> — property crime remains a daily concern for business owners, making security film one of our most frequently requested products here.</p>
+      <ul class="rd-why__bullets">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Summer highs of 83-87°F with 68-72% humidity turn south- and west-facing glass into radiant heat sources without solar control film
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Reading's brick rowhome and factory-loft building stock absorbs and retains solar heat far longer than newer suburban construction
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+Property crime rates above the national average make security and anti-smash film one of the highest-value installs we perform across Reading and Berks County
+        </li>
       </ul>
+      <div class="rd-why__climate-facts">
+        <div class="rd-why__climate-item">
+          <span class="rd-why__climate-num">85°F</span>
+          <span class="rd-why__climate-label"><a href="https://en.wikipedia.org/wiki/Reading,_Pennsylvania" target="_blank" rel="noopener noreferrer" style="color:#7CB342">Avg July high in Reading</a></span>
+        </div>
+        <div class="rd-why__climate-item">
+          <span class="rd-why__climate-num">~95K</span>
+          <span class="rd-why__climate-label">City population (429K metro)</span>
+        </div>
+        <div class="rd-why__climate-item">
+          <span class="rd-why__climate-num">68-72%</span>
+          <span class="rd-why__climate-label">Relative humidity in peak summer months</span>
+        </div>
+      </div>
+      <p class="rd-why__closing">Since 2008, Window Film Philadelphia has installed window film in Reading for homeowners, commercial tenants, and property managers throughout Berks County — <a href="/benefits/energy-savings/" style="color:#7CB342">solar control</a>, <a href="/benefits/safety-and-security/" style="color:#7CB342">security</a>, <a href="/benefits/privacy-window-film-philadelphia/" style="color:#7CB342">privacy</a>, and <a href="/benefits/decorative-promotional/" style="color:#7CB342">decorative film</a> applied by certified technicians with a lifetime warranty on every job.</p>
+      <a href="/contact/" class="rd-why__cta">
+        Get a free Reading assessment
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRUSTED EXPERTS ══ -->
+<section class="rd-expert">
+  <div class="rd-expert__container">
+    <div class="rd-expert__content">
+      <p class="rd-expert__eyebrow">READING'S WINDOW FILM CREW</p>
+      <h2 class="rd-expert__title">Window Film Installation, Tailored to Reading</h2>
+      <p class="rd-expert__body">Window Film Philadelphia has been applying window film across Reading and the broader Berks County market since 2008. Our certified installers handle every category of project — cooling a Hampden Heights rowhouse with solar film, hardening a Penn Street storefront with security film, adding frosted privacy to a Reading Hospital clinic, or outfitting a Wyomissing home office with glare-reduction film. Every install is measured, cut, and finished by our own technicians.</p>
+      <p class="rd-expert__body">Reading's built environment poses its own set of challenges: aging brick rowhomes with single-pane glass, factory buildings converted to loft use, institutional campuses with large curtain-wall glazing, and commercial corridors where property crime is a daily reality. Our film recommendations account for all of it — heat rejection, security reinforcement, UV protection, and visual privacy delivered in a single professional visit. Every window film contractor working in Reading should carry full insurance and current manufacturer certifications; ours do. We also serve <a href="/cities/philadelphia/" style="color:#7CB342">Philadelphia</a>, <a href="/cities/camden/" style="color:#7CB342">South Jersey</a>, and communities throughout the greater region.</p>
+      <div class="rd-expert__stats">
+        <div class="rd-expert__stat">
+          <span class="rd-expert__stat-num">2008</span>
+          <span class="rd-expert__stat-label">Serving Berks County since</span>
+        </div>
+        <div class="rd-expert__stat-divider"></div>
+        <div class="rd-expert__stat">
+          <span class="rd-expert__stat-num">500+</span>
+          <span class="rd-expert__stat-label">Reading area installs completed</span>
+        </div>
+      </div>
+    </div>
+    <div class="rd-expert__image-col">
+      <img
+        src="/images/window-film-reading-pa-expert-interior.jpg"
+        alt="Warm Reading PA residential interior with large windows — window film keeps this Berks County home comfortable year-round"
+        class="rd-expert__img"
+        loading="lazy"
+      />
     </div>
   </div>
+</section>
+
+<!-- ══ RESIDENTIAL + COMMERCIAL SLIDER ══ -->
+<section class="rd-prop-slider" id="rdSlider">
+  <div class="rd-prop-slider__track" id="rdTrack">
+
+    <!-- SLIDE 01: Commercial -->
+    <div class="rd-prop-slider__slide" data-slide="0">
+      <img src="/images/window-film-reading-pa-commercial.jpg" alt="Modern commercial office in Reading PA with floor-to-ceiling windows - window film for Berks County commercial properties" title="Modern commercial office in Reading PA with floor-to-ceiling windows - window film for Berks County commercial properties" class="rd-prop-slider__bg" loading="lazy" />
+      <div class="rd-prop-slider__overlay"></div>
+      <div class="rd-prop-slider__content">
+        <div class="rd-prop-slider__step">01</div>
+        <h2 class="rd-prop-slider__title">Window Film for Reading's
+Commercial Spaces</h2>
+        <p class="rd-prop-slider__desc">Penn Street storefronts, Fifth Street offices, Reading Hospital clinical wings, and Berks County government buildings — our crews install solar, security, anti-graffiti, and decorative film across the full spectrum of Reading commercial properties.</p>
+        <ul class="rd-prop-slider__benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Solar control film cuts cooling costs 25-35% in Berks County commercial buildings
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Security film reinforces storefront glass against smash-and-grab and holds fragments on impact
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Anti-graffiti film shields exterior glass from etching, scratching, and spray tagging
+          </li>
+        </ul>
+        <a href="/contact/" class="rd-prop-slider__cta">Get a commercial estimate →</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: Residential -->
+    <div class="rd-prop-slider__slide" data-slide="1">
+      <img src="/images/window-film-reading-pa-residential-rowhouses.jpg" alt="Brick rowhouses in Reading PA - solar control and security window film for Berks County residential homes" title="Brick rowhouses in Reading PA - solar control and security window film for Berks County residential homes" class="rd-prop-slider__bg" loading="lazy" />
+      <div class="rd-prop-slider__overlay"></div>
+      <div class="rd-prop-slider__content">
+        <div class="rd-prop-slider__step">02</div>
+        <h2 class="rd-prop-slider__title">Window Film for Reading
+Homes and Rowhouses</h2>
+        <p class="rd-prop-slider__desc">Downtown Reading brick rowhomes, Wyomissing colonials, West Reading bungalows, and Muhlenberg Township split-levels — our crews film every residential property type across the Reading area. Solar control, security, UV protection, privacy, and decorative film all available.</p>
+        <ul class="rd-prop-slider__benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Solar control film cuts afternoon heat gain up to 78% through south- and west-facing glass
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Security film holds rowhouse ground-floor windows together on impact
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#7CB342" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#7CB342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Blocks 99% of UV - protects hardwood floors, furniture, and artwork from fading
+          </li>
+        </ul>
+        <a href="/contact/" class="rd-prop-slider__cta">Get a residential estimate →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right nav -->
+  <nav class="rd-prop-slider__nav" aria-label="Property type navigation">
+    <button class="rd-prop-slider__nav-item rd-prop-slider__nav-item--active" data-rdpropnav="0">
+      <span class="rd-prop-slider__nav-line"></span>
+      <span class="rd-prop-slider__nav-label">Commercial</span>
+    </button>
+    <button class="rd-prop-slider__nav-item" data-rdpropnav="1">
+      <span class="rd-prop-slider__nav-line"></span>
+      <span class="rd-prop-slider__nav-label">Residential</span>
+    </button>
+  </nav>
+
+  <!-- Arrows -->
+  <button class="rd-prop-slider__arrow rd-prop-slider__arrow--prev" id="rdPropPrev" aria-label="Previous">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="rd-prop-slider__arrow rd-prop-slider__arrow--next" id="rdPropNext" aria-label="Next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+</section>
+
+<!-- ══ APPLICATIONS GRID ══ -->
+<section class="rd-apps">
+  <div class="rd-apps__container">
+    <div class="rd-apps__header">
+      <div class="rd-apps__eyebrow">Applications</div>
+      <h2 class="rd-apps__title">Where Reading Uses Window Film</h2>
+      <p class="rd-apps__intro">Reading Hospital clinical wings, Downtown Reading brick rowhomes, Albright College campus buildings, and Berks County government offices — window film delivers measurable benefits across every property type in the Reading area.</p>
+    </div>
+    <div class="rd-apps__grid">
+
+      <div class="rd-app-card" style="background-image: url('/images/window-film-reading-pa-app-homes.jpg')">
+        <div class="rd-app-card__overlay"></div>
+        <div class="rd-app-card__content">
+          <h3 class="rd-app-card__title">Homes &amp; Rowhouses</h3>
+          <p class="rd-app-card__text">Solar control film cuts summer heat in Downtown Reading brick row homes. Security film reinforces ground-floor windows across every Reading neighborhood.</p>
+          <span class="rd-app-card__stat">Up to 78% heat blocked</span>
+        </div>
+      </div>
+
+      <div class="rd-app-card" style="background-image: url('/images/window-film-reading-pa-app-offices.jpg')">
+        <div class="rd-app-card__overlay"></div>
+        <div class="rd-app-card__content">
+          <h3 class="rd-app-card__title">Commercial Offices</h3>
+          <p class="rd-app-card__text">Glare-free workspaces and lower cooling bills along the Penn Street corridor. Spectrally selective film preserves views of Mount Penn and the Pagoda.</p>
+          <span class="rd-app-card__stat">25-35% cost reduction</span>
+        </div>
+      </div>
+
+      <div class="rd-app-card" style="background-image: url('/images/window-film-reading-pa-app-retail.jpg')">
+        <div class="rd-app-card__overlay"></div>
+        <div class="rd-app-card__content">
+          <h3 class="rd-app-card__title">Retail &amp; Storefronts</h3>
+          <p class="rd-app-card__text">Security film holds glass together on impact — protecting Fifth Street storefronts from smash-and-grab. Anti-graffiti film shields against etching and tagging.</p>
+          <span class="rd-app-card__stat">Impact resistant</span>
+        </div>
+      </div>
+
+      <div class="rd-app-card" style="background-image: url('/images/window-film-reading-pa-app-healthcare.jpg')">
+        <div class="rd-app-card__overlay"></div>
+        <div class="rd-app-card__content">
+          <h3 class="rd-app-card__title">Healthcare Facilities</h3>
+          <p class="rd-app-card__text">UV film protects patients and staff at Reading Hospital and surrounding Tower Health clinics. Frosted film adds privacy for patient rooms and exam areas.</p>
+          <span class="rd-app-card__stat">99% UV blocked</span>
+        </div>
+      </div>
+
+      <div class="rd-app-card" style="background-image: url('/images/window-film-reading-pa-app-schools.jpg')">
+        <div class="rd-app-card__overlay"></div>
+        <div class="rd-app-card__content">
+          <h3 class="rd-app-card__title">Schools &amp; Universities</h3>
+          <p class="rd-app-card__text">Safety film for Albright College and Reading Area Community College buildings. Reduces classroom glare and blocks UV that fades displays, artwork, and flooring.</p>
+          <span class="rd-app-card__stat">Safety &amp; UV rated</span>
+        </div>
+      </div>
+
+      <div class="rd-app-card" style="background-image: url('/images/window-film-reading-pa-app-government.jpg')">
+        <div class="rd-app-card__overlay"></div>
+        <div class="rd-app-card__content">
+          <h3 class="rd-app-card__title">Government Buildings</h3>
+          <p class="rd-app-card__text">Security and blast-resistant film for Berks County government facilities. Privacy film for offices handling sensitive records and public services.</p>
+          <span class="rd-app-card__stat">GSA compliant films</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FILM TYPES / BENEFITS ACCORDION ══ -->
+<AccordionBenefits
+  eyebrow="Film Types"
+  title="Eight Films, One Reading Installer"
+  subtitle="Eight film categories, one certified crew. Select any benefit to explore the details — the image swaps to match."
+  benefits={filmBenefits}
+  id="readingBenefits"
+/>
+
+<!-- ══ BRANDS CAROUSEL ══ -->
+<section class="rd-brands">
+  <BrandLogos />
+  <div class="rd-brands__header">
+    <p class="rd-brands__eyebrow">Trusted Manufacturers</p>
+    <h2 class="rd-brands__title">Manufacturers We Trust for Reading Installs</h2>
+    <p class="rd-brands__sub">We install films from the industry's leading manufacturers — bringing you the widest selection of solar control, security, decorative, and specialty films available anywhere across Berks County.</p>
+  </div>
+
+  <!-- Brand card carousel -->
+  <div class="rd-brands__carousel-outer">
+    <button class="rd-brands__arrow rd-brands__arrow--left" id="brandsArrowLeft" aria-label="Previous brand"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+
+    <div class="rd-brands__carousel" id="brandsTrack">
+
+      <!-- 3M -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-3m.jpg" alt="3M solar control window film installed in a Reading PA commercial office — heat and UV reduction" title="3M solar control window film installed in a Reading PA commercial office — heat and UV reduction" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">3M</p>
+          <p class="rd-brands__card-desc"><em>The global standard in solar control and safety film — backed by six decades of glass science research.</em></p>
+          <p class="rd-brands__card-sub">Solar Control · Safety &amp; Security · UV Protection · Decorative</p>
+        </div>
+      </div>
+
+      <!-- LLumar -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-llumar.jpg" alt="LLumar solar control window film on a Reading PA commercial building — glare and heat rejection" title="LLumar solar control window film on a Reading PA commercial building — glare and heat rejection" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">LLumar</p>
+          <p class="rd-brands__card-desc"><em>A dependable choice for commercial projects across Reading and Berks County — proven durability in dense urban environments.</em></p>
+          <p class="rd-brands__card-sub">Solar Control · Glare Reduction · Anti-Graffiti · Safety</p>
+        </div>
+      </div>
+
+      <!-- Vista -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-vista.jpg" alt="Vista residential window film in a Reading PA home interior — UV protection and energy savings" title="Vista residential window film in a Reading PA home interior — UV protection and energy savings" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Vista</p>
+          <p class="rd-brands__card-desc"><em>Eastman's residential-focused line — naturally clear films built for Reading's brick rowhomes and Wyomissing colonials.</em></p>
+          <p class="rd-brands__card-sub">Residential Solar · UV Protection · Privacy · Dual-Reflective</p>
+        </div>
+      </div>
+
+      <!-- Solar Gard -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-solargard.jpg" alt="Solar Gard high-performance window film on a Reading PA commercial building — solar heat control" title="Solar Gard high-performance window film on a Reading PA commercial building — solar heat control" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Solar Gard</p>
+          <p class="rd-brands__card-desc"><em>High-performance spectrally selective films for Reading's commercial and institutional buildings — NFRC rated.</em></p>
+          <p class="rd-brands__card-sub">Spectrally Selective · Commercial Solar · LEED-Compliant · Safety</p>
+        </div>
+      </div>
+
+      <!-- Madico -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-madico.jpg" alt="Executive office interior with Madico optically clear safety window film" title="Executive office interior with Madico optically clear safety window film" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Madico</p>
+          <p class="rd-brands__card-desc"><em>Military-heritage safety films trusted by government and healthcare facilities — including Reading Hospital and Berks County offices.</em></p>
+          <p class="rd-brands__card-sub">Safety &amp; Security · Bomb Blast Mitigation · Solar Control</p>
+        </div>
+      </div>
+
+      <!-- Solyx -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-solyx.jpg" alt="Elegant decorative frosted glass film in a Reading PA professional office lobby" title="Elegant decorative frosted glass film in a Reading PA professional office lobby" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Solyx</p>
+          <p class="rd-brands__card-desc"><em>The leading decorative film brand — custom frosted, patterned, and printed films for Reading offices, healthcare spaces, and storefronts.</em></p>
+          <p class="rd-brands__card-sub">Decorative · Frosted · Printed Patterns · Branded Graphics</p>
+        </div>
+      </div>
+
+      <!-- Huper Optik -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-huper-optik.jpg" alt="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" title="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Hüper Optik</p>
+          <p class="rd-brands__card-desc"><em>German-engineered ceramic nanotechnology — maximum heat rejection with zero metallic interference for Wi-Fi and cellular signals.</em></p>
+          <p class="rd-brands__card-sub">Ceramic Film · Signal-Safe · UV Block · Solar Control</p>
+        </div>
+      </div>
+
+      <!-- Casper -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-casper.jpg" alt="Casper cloaking film on conference room glass - LED screens invisible from outside" title="Casper cloaking film on conference room glass - LED screens invisible from outside" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Casper Cloaking</p>
+          <p class="rd-brands__card-desc"><em>The only film that makes LED and LCD screens appear frosted from outside — essential privacy for Reading boardrooms and trading floors.</em></p>
+          <p class="rd-brands__card-sub">Screen Privacy · Digital Cloaking · Conference Rooms · Security</p>
+        </div>
+      </div>
+
+      <!-- C-Bond -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-cbond.jpg" alt="C-Bond security film reinforcing a commercial storefront glass entrance in Berks County" title="C-Bond security film reinforcing a commercial storefront glass entrance in Berks County" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">C-Bond</p>
+          <p class="rd-brands__card-desc"><em>Nano-technology film that chemically bonds to glass, increasing impact resistance beyond standard safety film — the strongest hold available.</em></p>
+          <p class="rd-brands__card-sub">Safety &amp; Security · Nano-Bond · Impact Resistant · Storefronts</p>
+        </div>
+      </div>
+
+      <!-- HDClear -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-hdclear.jpg" alt="HDClear high-definition optically clear glass walls in a modern Reading office" title="HDClear high-definition optically clear glass walls in a modern Reading office" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">HDClear</p>
+          <p class="rd-brands__card-desc"><em>High-definition clarity film — optically pure solar control without the haze or reflection common in standard films. For premium commercial installs.</em></p>
+          <p class="rd-brands__card-sub">High Definition · Solar Control · UV Protection · Commercial</p>
+        </div>
+      </div>
+
+      <!-- Hanita Coatings -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-hanita.jpg" alt="Hanita Coatings architectural window film on a modern Berks County commercial building" title="Hanita Coatings architectural window film on a modern Berks County commercial building" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Hanita Coatings</p>
+          <p class="rd-brands__card-desc"><em>Israeli-engineered architectural films with industry-leading safety certifications — trusted on government and institutional projects worldwide.</em></p>
+          <p class="rd-brands__card-sub">Safety · Blast Mitigation · Solar Control · Institutional</p>
+        </div>
+      </div>
+
+      <!-- Graffiti Shield -->
+      <div class="rd-brands__card">
+        <img src="/images/window-film-reading-pa-brand-graffiti-shield.jpg" alt="Clean unmarked storefront glass in Reading PA protected by Graffiti Shield sacrificial film" title="Clean unmarked storefront glass in Reading PA protected by Graffiti Shield sacrificial film" class="rd-brands__card-photo" width="420" height="400" loading="lazy" />
+        <div class="rd-brands__card-body">
+          <p class="rd-brands__card-name">Graffiti Shield</p>
+          <p class="rd-brands__card-desc"><em>The industry standard in sacrificial anti-graffiti film — replaces damaged film, not glass. Essential for Reading's Penn Street and Fifth Street corridors.</em></p>
+          <p class="rd-brands__card-sub">Anti-Graffiti · Sacrificial Film · Storefronts · Urban Properties</p>
+        </div>
+      </div>
+
+    </div><!-- /rd-brands__carousel -->
+
+    <button class="rd-brands__arrow rd-brands__arrow--right" id="brandsArrowRight" aria-label="Next brand"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div><!-- /rd-brands__carousel-outer -->
+
+  <!-- Dots -->
+  <div class="rd-brands__dots" id="brandsDots"></div>
+
+</section>
+
+<!-- ══ TRUST / WHY US ══ -->
+<section class="rd-trust">
+  <div class="rd-trust__container">
+
+    <div class="rd-trust__image-col">
+      <img
+        src="/images/window-film-reading-pa-trust-installer.jpg"
+        alt="Window Film Philadelphia certified installer reviewing film options with a Reading property owner"
+        class="rd-trust__img"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="rd-trust__content">
+      <p class="rd-trust__eyebrow">WHY WINDOW FILM PHILADELPHIA</p>
+      <h2 class="rd-trust__title">What Reading Property Owners Get from Us</h2>
+
+      <div class="rd-trust__items">
+
+        <div class="rd-trust__item">
+          <div class="rd-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="rd-trust__item-body">
+            <p class="rd-trust__item-title">18+ Years Serving Berks County and Greater Philadelphia</p>
+          </div>
+        </div>
+
+        <div class="rd-trust__item">
+          <div class="rd-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="rd-trust__item-body">
+            <p class="rd-trust__item-title">Factory-Certified Installers from 3M, LLumar, and Vista</p>
+          </div>
+        </div>
+
+        <div class="rd-trust__item">
+          <div class="rd-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="rd-trust__item-body">
+            <p class="rd-trust__item-title">Lifetime Manufacturer Warranty on All Residential and Commercial Films</p>
+          </div>
+        </div>
+
+        <div class="rd-trust__item">
+          <div class="rd-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="rd-trust__item-body">
+            <p class="rd-trust__item-title">Prompt Scheduling Across Reading and Berks County</p>
+          </div>
+        </div>
+
+        <div class="rd-trust__item">
+          <div class="rd-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="rd-trust__item-body">
+            <p class="rd-trust__item-title">Free In-Home and On-Site Consultations</p>
+          </div>
+        </div>
+
+        <div class="rd-trust__item">
+          <div class="rd-trust__check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7CB342"/><path d="M7 12.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="rd-trust__item-body">
+            <p class="rd-trust__item-title">Philadelphia Region's Most Reviewed Window Film Contractor</p>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="/contact/" class="rd-trust__cta">Get your free Reading estimate →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="ip-page-body">
+
+<!-- GEO / Speakable content — visually hidden, crawlable -->
+<div class="rd-geo" aria-hidden="true">
+  <p>Window film in Reading, PA is professionally installed by Window Film Philadelphia, a certified contractor serving Berks County and the greater Philadelphia region since 2008. Window film for Reading homes and businesses blocks up to 99% of UV-A and UV-B radiation and up to 85% of solar heat gain — the U.S. Department of Energy reports that windows account for 25–30% of a building's total heating and cooling energy loss. Available window film solutions in Reading include solar control, privacy, security, anti-graffiti, and decorative film; all installations include a lifetime manufacturer warranty and free on-site consultation.</p>
+  <dl>
+    <dt>What is window film installation in Reading, PA?</dt>
+    <dd>Window film installation in Reading is the professional application of thin polyester or ceramic film to interior glass surfaces — solar control, security, privacy, anti-graffiti, and decorative film applied by certified technicians from Window Film Philadelphia.</dd>
+    <dt>How much does window film cost in Reading, PA?</dt>
+    <dd>Window film cost in Reading varies based on film type, glass area, number of windows, and site accessibility. Each film category — solar control, privacy, decorative, security, and anti-graffiti — carries different pricing. Free on-site consultations and written estimates are provided for all Reading properties.</dd>
+    <dt>Which Reading neighborhoods does Window Film Philadelphia serve?</dt>
+    <dd>Window Film Philadelphia serves all Reading neighborhoods including Downtown Reading, Hampden Heights, Glenside, Alsace Township, Muhlenberg Township, Wyomissing, West Reading, and Sinking Spring.</dd>
+    <dt>What is the best window film for Reading homes and businesses?</dt>
+    <dd>The best window film for Reading properties depends on goals: solar control film for heat reduction, security film for smash-and-grab protection, UV film for fading prevention, privacy film for street-facing glass, and anti-graffiti film for storefronts along Penn Street and Fifth Street.</dd>
+    <dt>Does window film block UV rays in Reading properties?</dt>
+    <dd>Yes. Architectural window film blocks 99% or more of UV-A and UV-B radiation, protecting hardwood floors, furniture, artwork, and retail merchandise from fading — critical for Reading's urban properties with large south- and west-facing glass.</dd>
+  </dl>
+  <ul>
+    <li>window film Reading PA</li>
+    <li>window film installation Reading Pennsylvania</li>
+    <li>solar control window film Reading</li>
+    <li>security window film Reading PA</li>
+    <li>privacy window film Reading</li>
+    <li>anti-graffiti window film Reading</li>
+    <li>UV protection window film Reading</li>
+    <li>decorative window film Reading PA</li>
+    <li>window film contractor Reading Berks County</li>
+    <li>commercial window film Reading</li>
+    <li>residential window film Reading PA</li>
+    <li>window tinting Reading PA</li>
+  </ul>
 </div>
 
 <!-- ══════════════════════════════════════
-     READING GALLERY — 4 image features
+     GALLERY BANNER — editorial "Our Work" with fanned photo strips
      ══════════════════════════════════════ -->
-<div class="ip-gallery fade-in">
-  <div class="ip-gallery__header">
-    <p class="section-eyebrow">Our Work in Reading</p>
-    <h2>Recent Reading Installations</h2>
-  </div>
-  <div class="ip-gallery__grid">
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203924_58c10bc0-70c3-4c30-9723-f394b87a2988.png" alt="Reading PA window film installation - commercial project" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Commercial storefront security film</div>
-    </div>
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203926_92a46f96-3f3c-46a7-a55c-5a6c8cf64fb2.png" alt="Reading PA window film installation - residential project" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Residential solar control film</div>
-    </div>
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203928_59a50c20-d5d8-4fe2-ba48-883fb410520e.png" alt="Reading PA window film installation - office project" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Office building privacy film</div>
-    </div>
-    <div class="ip-gallery__item">
-      <img src="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203924_58c10bc0-70c3-4c30-9723-f394b87a2988.png" alt="Reading PA window film installation - industrial project" width="600" height="400" loading="lazy" />
-      <div class="ip-gallery__item-caption">Industrial facility security film</div>
-    </div>
-  </div>
-</div>
+<GalleryBanner
+  titleLines={["OUR", "WORK."]}
+  eyebrow="Reading Installations"
+  description="A selection of window film installations across Reading offices, retail storefronts, medical facilities, and homes. Every project measured, applied, and finished by our own certified team."
+  photos={[
+    '/images/window-film-reading-pa-gallery-privacy-medical.jpg',
+    '/images/window-film-reading-pa-gallery-restaurant.jpg',
+    '/images/window-film-reading-pa-gallery-solar-office.jpg',
+    '/images/window-film-reading-pa-gallery-residential.jpg',
+    '/images/window-film-reading-pa-gallery-film-detail.jpg',
+  ]}
+  hintText="Hover the photos · click to bring forward"
+  theme="light"
+/>
 
 <!-- ══════════════════════════════════════
-     LOCAL AREA — map + neighborhood copy
+     LOCAL AREA - map + neighborhood copy
      ══════════════════════════════════════ -->
-<div class="ip-local fade-in">
+<div class="ip-local">
+  <ScrollReveal>
   <div class="ip-local__grid">
     <div class="ip-local__map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48480.3!2d-75.93!3d40.34!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6705c3a3a3a3b%3A0x79f9dafe3a2fdf54!2sReading%2C%20PA!5e0!3m2!1sen!2sus!4v1714000000000"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12188.5!2d-75.93!3d40.33!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6709e8e8e8e8e%3A0x0!2sReading%2C%20PA!5e0!3m2!1sen!2sus!4v1714000000000"
         width="100%" height="100%"
         style="border:0;"
         allowfullscreen
@@ -191,92 +713,530 @@ const faqItems = [
     </div>
     <div class="ip-local__content">
       <p class="section-eyebrow">Local Expertise</p>
-      <h2>We know Reading inside and out</h2>
-      <p>From the historic homes of Centre Park and the Penn Street commercial corridor to modern office parks in Wyomissing and industrial facilities near the Port — our crews work in every Reading neighborhood, every week. We understand Berks County's humid summers, cold winters, and the specific building styles across the region.</p>
-      <div class="ip-tags">
-        <span class="ip-tag">Reading</span>
-        <span class="ip-tag">Wyomissing</span>
-        <span class="ip-tag">West Reading</span>
-        <span class="ip-tag">Muhlenberg</span>
-        <span class="ip-tag">Sinking Spring</span>
-        <span class="ip-tag">Wernersville</span>
-        <span class="ip-tag">Birdsboro</span>
-        <span class="ip-tag">+ more</span>
+      <h2>Berks County is Our Backyard</h2>
+      <p>From Downtown Reading brick rowhomes to the Penn Street commercial corridor to suburban Wyomissing colonials — our crews work in every Reading neighborhood and surrounding Berks County community, every week. We understand the Schuylkill River valley's humid summers, the city's ongoing revitalization, and the specific building stock across the metro area. Window film for Reading properties is available across all neighborhoods — contact us for a free on-site estimate.</p>
+      <div class="rd-neighborhoods">
+        <div class="rd-nh"><span class="rd-nh__name">Downtown Reading</span><span class="rd-nh__desc">City core — Penn Street commercial corridor, Fifth Street storefronts, historic factory-turned-loft buildings. Security and solar control window film are the most-requested installs.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">Hampden Heights</span><span class="rd-nh__desc">Residential neighborhood east of the Schuylkill River — brick rowhomes and twin homes. Solar control and UV window film are the most popular choices for homes with west-facing glass.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">Glenside</span><span class="rd-nh__desc">Established residential area with older homes and single-pane windows — ideal candidates for interior solar control and low-E film to cut year-round energy loss.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">Alsace Township</span><span class="rd-nh__desc">Rural-suburban mix northeast of Reading — newer construction and larger homes with expansive glass. Heat-rejection and UV-blocking window film protect interiors year-round.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">Muhlenberg Township</span><span class="rd-nh__desc">Growing township with a mix of residential and commercial properties. Both homeowners and businesses benefit from solar control and security window film installed by our Berks County crews.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">Wyomissing</span><span class="rd-nh__desc">Affluent borough west of Reading — larger colonials and split-levels with sunrooms and big windows. Solar, UV, and glare reduction film are the most common requests.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">West Reading</span><span class="rd-nh__desc">Revitalized arts corridor with shops, restaurants, and loft apartments. Decorative and anti-graffiti window film serve the storefront-heavy main street environment.</span></div>
+        <div class="rd-nh"><span class="rd-nh__name">Sinking Spring</span><span class="rd-nh__desc">Borough along the Lancaster Pike corridor — residential homes and small businesses. Solar control and privacy window film address the area's mix of property types.</span></div>
       </div>
     </div>
   </div>
+  </ScrollReveal>
 </div>
 
 <!-- ══════════════════════════════════════
      FAQ ACCORDION
      ══════════════════════════════════════ -->
-
-<figure class="ip-inline-image">
-  <img src="/images/reading-commercial.png" alt="Window film installation team completing a commercial project in Reading PA, security film on storefront glass" width="1200" height="675" loading="lazy" />
-
-</figure>
-
-<div class="ip-faq">
-  <div class="ip-faq__hd">
-    <p class="section-eyebrow">FAQ</p>
-    <h2 class="section-title" style="margin:0 auto;">Common questions about Reading window film</h2>
-  </div>
-  <div class="ip-faq__item ip-faq__item--open">
-    <div class="ip-faq__q">Is window film legal in Pennsylvania? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. Pennsylvania has no state restrictions on residential or commercial window film. We ensure every installation meets local code requirements and manufacturer specifications for a flawless, compliant finish.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How long does installation take in Reading? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Most residential projects are completed in 4–8 hours. Commercial and multi-window jobs are scoped individually. Anti-graffiti and decorative film installations often finish in a single afternoon.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">What warranty comes with my Reading installation? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">All residential and commercial films include a lifetime manufacturer warranty covering peeling, bubbling, and fading. The warranty transfers to the next property owner if you sell your home or business.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How much does window film cost in Reading? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Solar control film starts around $5–$8 per sq ft installed. Security film starts at $7/sq ft. Anti-graffiti film starts at $4/sq ft. Request a free on-site estimate for an accurate price on your specific project.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Do you offer free consultations in Reading? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes — all consultations are completely free. We come to your Reading home or business, assess your windows, discuss your goals, and provide a detailed written estimate at no charge and no obligation.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How soon can you schedule in Reading? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">We typically offer same-week availability across Berks County. During peak summer months, booking 1–2 weeks in advance is recommended to secure your preferred installation date.</div>
-  </div>
-</div>
+<!-- ══════════════════════════════════════
+     TESTIMONIAL SPOTLIGHT — cursor-following green spotlight
+     ══════════════════════════════════════ -->
+<TestimonialSpotlight
+  eyebrow="Client Reviews"
+  title="Reading Property Owners, in Their Words"
+  subtitle="Residential and commercial property owners across Reading and Berks County."
+  items={[
+    {
+      quote: 'Our outpatient clinic had exam rooms where patients were constantly squinting into the afternoon sun. The solar and frosted film combination solved it in a single afternoon — the crew was efficient, respectful of patient privacy, and left the space spotless.',
+      name: 'Thomas B.',
+      detail: 'Facilities Manager · Reading Hospital Outpatient Clinic',
+      avatar: '/images/window-film-reading-pa-testimonial-commercial-1.jpg',
+    },
+    {
+      quote: 'We own a mixed-use building on Penn Street and the anti-graffiti film has paid for itself three times over. Every time someone scratches the glass, it is a film swap instead of a pane replacement. The scheduling team keeps it simple and fast.',
+      name: 'Gregory H.',
+      detail: 'Property Manager · Downtown Reading',
+      avatar: '/images/window-film-reading-pa-testimonial-commercial-2.jpg',
+    },
+    {
+      quote: 'Our Wyomissing colonial has a wall of south-facing windows in the family room. After the solar film install the room is actually usable in July, and the fading on our hardwood has stopped completely. Wish we had done it years ago.',
+      name: 'Sandra L.',
+      detail: 'Homeowner · Wyomissing, PA',
+      avatar: '/images/window-film-reading-pa-testimonial-residential.jpg',
+    },
+  ]}
+/>
 
 <!-- ══════════════════════════════════════
-     CTA BANNER
+     RESOURCES / SPEC SHEETS
      ══════════════════════════════════════ -->
-<BrandLogos />
-
-<div class="ip-cta fade-in">
-  <h2>Ready to get started in <em>Reading?</em></h2>
-  <div class="ip-cta__btns">
-    <a href="/contact/" class="ip-btn ip-btn--white">Get a Free Quote</a>
-    <a href="tel:+126****7980" class="ip-btn ip-btn--green">Call (267) 394-7980</a>
+<section class="rd-resources fade-in">
+  <div class="rd-resources__grid">
+    <div class="rd-resources__image-col">
+      <img
+        src="/images/window-film-reading-pa-resources-meeting-room.jpg"
+        alt="Window Film Philadelphia reviewing manufacturer window film spec sheets and performance data with a Reading PA commercial client"
+        class="rd-resources__img"
+        loading="lazy"
+        width="1472"
+        height="832"
+      />
+    </div>
+    <div class="rd-resources__content">
+      <p class="rd-resources__eyebrow">Manufacturer Resources</p>
+      <h2 class="rd-resources__title">Download Film Specs Before We Visit</h2>
+      <p class="rd-resources__desc">Performance data, solar heat gain coefficients, VLT ratings, and product details from the brands we install across Reading and Berks County. Download and compare before your consultation.</p>
+      <ul class="rd-resources__list">
+        <li class="rd-resources__item">
+          <a href="/resources/3m-prestige-solar-control-window-film-reading-pa-product-bulletin.pdf" class="rd-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="rd-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="rd-resources__link-text"><strong>3M Prestige Series</strong><span>Solar Control &middot; Product Bulletin &middot; PDF</span></span>
+            <span class="rd-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="rd-resources__item">
+          <a href="/resources/llumar-solar-control-window-film-reading-pa-performance-specs.pdf" class="rd-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="rd-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="rd-resources__link-text"><strong>LLumar Solar Control Series</strong><span>Glare Reduction &middot; Performance Specs &middot; PDF</span></span>
+            <span class="rd-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="rd-resources__item">
+          <a href="/resources/solyx-decorative-window-film-reading-pa-sxlt-1305-spec-sheet.pdf" class="rd-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="rd-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="rd-resources__link-text"><strong>Solyx SXLT-1305 Decorative Film</strong><span>Privacy &middot; Spec Sheet &middot; PDF</span></span>
+            <span class="rd-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="rd-resources__item">
+          <a href="/resources/vista-solar-control-window-film-reading-pa-spec-sheet.pdf" class="rd-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="rd-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="rd-resources__link-text"><strong>Vista Solar Control Series</strong><span>Glare Reduction &middot; Spec Sheet &middot; PDF</span></span>
+            <span class="rd-resources__arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="rd-resources__item">
+          <a href="/resources/solar-gard-panorama-solar-control-window-film-reading-pa-performance-data.pdf" class="rd-resources__link" target="_blank" rel="noopener noreferrer" download>
+            <span class="rd-resources__pdf-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
+            <span class="rd-resources__link-text"><strong>Solar Gard Panorama Series</strong><span>Energy Savings &middot; Performance Data &middot; PDF</span></span>
+            <span class="rd-resources__arrow">&darr;</span>
+          </a>
+        </li>
+      </ul>
+      <a href="/contact/" class="rd-resources__cta">Ask us which film is right for your property &rarr;</a>
+    </div>
   </div>
-</div>
+</section>
 
+<!-- ══════════════════════════════════════
+     FAQ — Accordion FAQ (library style, Reading palette)
+     ══════════════════════════════════════ -->
+<AccordionFAQ
+  eyebrow="FAQ"
+  heading="Reading Window Film Questions, Answered"
+  sub="Everything you need to know before your install."
+  items={faqItems.map(f => ({ q: f.question, a: f.answer }))}
+/>
+
+<!-- ══════════════════════════════════════
+     CTA — LIGHT RAYS
+     ══════════════════════════════════════ -->
 </div><!-- end ip-page-body -->
+
+<CtaLightRays
+  eyebrow="Reading Window Film Professionals"
+  title="Let's Upgrade Your Reading Windows"
+  sub="Cut heat, block UV, add privacy, and protect against graffiti — all with one professional installation. Free estimates across Reading and Berks County. Prompt scheduling available."
+  btnLabel="Get Your Free Reading Estimate"
+  btnHref="/contact/"
+/>
+
+
 
 </BaseLayout>
 
 <style>
+/* ── HERO BUTTONS (mirrored from services page) ── */
+.btn-hero {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.btn-hero--primary { background: #7CB342; color: #fff; border: 2px solid #7CB342; }
+.btn-hero--primary:hover { background: #6fa037; border-color: #6fa037; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,179,66,0.3); color: #fff; }
+.btn-hero--secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+.btn-hero--secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); transform: translateY(-2px); color: #fff; }
+
+/* ── HERO STAT ITEMS (mirrored from services page) ── */
+.hero-stat-item { text-align: center; }
+.hero-stat-item__number {
+  font-family: 'Space Mono', monospace;
+  font-size: 40px; font-weight: 700; color: #fff;
+  line-height: 1; margin-bottom: 8px;
+}
+.hero-stat-item__number::after { content: '+'; font-size: 28px; margin-left: 4px; opacity: 0.7; }
+.hero-stat-item:nth-child(3) .hero-stat-item__number::after { content: '%'; }
+.hero-stat-item:nth-child(4) .hero-stat-item__number::after { content: '★'; color: #7CB342; }
+.hero-stat-item__label { font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ── READING CINEMATIC HERO ── */
+.rd-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  background-image: url('/images/window-film-reading-pa-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.rd-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(13,26,15,0.5) 0%, rgba(13,26,15,0.45) 50%, rgba(13,26,15,0.75) 100%);
+  z-index: 1;
+}
+.rd-hero__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rd-hero__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7CB342;
+  padding-top: 140px;
+}
+.rd-hero__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 720px;
+}
+.rd-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.rd-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.rd-hero__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.rd-hero__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 60px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.rd-hero__tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  max-width: 360px;
+}
+.rd-hero__stats {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  .rd-hero__container { padding: 0 24px; }
+  .rd-hero__label { padding-top: 100px; }
+  .rd-hero__bottom { flex-direction: column; gap: 24px; }
+  .rd-hero__stats { justify-content: flex-start; gap: 32px; }
+}
+
+/* ── LOCAL CONTEXT SECTION (es-why pattern) ── */
+.rd-why { background: #F3F6F1; padding: 100px 24px; }
+.rd-why__container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.rd-why__image-wrap { position: relative; border-radius: 20px; overflow: visible; }
+.rd-why__image { width: 100%; height: auto; display: block; border-radius: 20px; object-fit: cover; aspect-ratio: 4/5; }
+.rd-why__stat-card { position: absolute; bottom: 32px; left: -24px; background: rgba(14,26,20,0.88); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; min-width: 220px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+.rd-why__stat-item { display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; color: rgba(243,246,241,0.9); line-height: 1.3; }
+.rd-why__stat-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 2px 0; }
+.rd-why__content { padding-right: 20px; }
+.rd-why__eyebrow { display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7CB342; margin-bottom: 16px; }
+.rd-why__headline { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.01em; }
+.rd-why__intro { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.8; margin-bottom: 28px; }
+.rd-why__bullets { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 14px; }
+.rd-why__bullets li { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #4A5C48; line-height: 1.6; }
+.rd-why__bullets svg { flex-shrink: 0; margin-top: 2px; }
+.rd-why__climate-facts { display: flex; gap: 24px; margin: 28px 0; flex-wrap: wrap; }
+.rd-why__climate-item { display: flex; flex-direction: column; gap: 4px; }
+.rd-why__climate-num { font-family: 'Space Mono', monospace; font-size: 1.5rem; font-weight: 700; color: #7CB342; line-height: 1; }
+.rd-why__climate-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #4A5C48; max-width: 140px; line-height: 1.4; }
+.rd-why__closing { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-style: italic; color: rgba(74,92,72,0.75); line-height: 1.7; margin-bottom: 32px; padding-left: 16px; border-left: 2px solid rgba(124,179,66,0.35); }
+.rd-why__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; transition: gap 0.2s ease; }
+.rd-why__cta:hover { gap: 14px; }
+@media (max-width: 900px) { .rd-why__container { grid-template-columns: 1fr; } .rd-why__stat-card { left: 0; } .rd-masonry__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .rd-masonry__grid { grid-template-columns: 1fr; } .rd-masonry__item img { height: 260px; } }
+@media (max-width: 600px) { .rd-why { padding: 60px 16px; } }
+
+/* ── PROPERTY TYPE SLIDER ── */
+.rd-prop-slider { position: relative; width: 100%; min-height: 88vh; overflow: hidden; background: #14201A; }
+.rd-prop-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+.rd-prop-slider__slide { position: relative; min-width: 100%; min-height: 88vh; flex-shrink: 0; display: flex; align-items: center; }
+.rd-prop-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+.rd-prop-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
+.rd-prop-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 80px; color: #fff; }
+.rd-prop-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #7CB342; letter-spacing: 0.2em; margin-bottom: 1rem; }
+.rd-prop-slider__title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.25rem; white-space: pre-line; }
+.rd-prop-slider__desc { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 1.75rem; }
+.rd-prop-slider__benefits { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 14px; }
+.rd-prop-slider__benefits li { display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
+.rd-prop-slider__benefits svg { flex-shrink: 0; margin-top: 2px; }
+.rd-prop-slider__cta { display: inline-block; background: #7CB342; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; }
+.rd-prop-slider__cta:hover { background: #2E6B30; transform: translateY(-2px); color: #fff; }
+.rd-prop-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
+.rd-prop-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
+.rd-prop-slider__nav-item:hover { opacity: 0.65; }
+.rd-prop-slider__nav-item--active { opacity: 1; }
+.rd-prop-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
+.rd-prop-slider__nav-item--active .rd-prop-slider__nav-line { background: #7CB342; height: 48px; }
+.rd-prop-slider__nav-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; }
+.rd-prop-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s, color 0.3s; }
+.rd-prop-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #7CB342; }
+.rd-prop-slider__arrow--prev { left: 32px; }
+.rd-prop-slider__arrow--next { right: 32px; }
+@media (max-width: 768px) { .rd-prop-slider__content { padding-left: 24px; padding-right: 24px; } .rd-prop-slider__nav { display: none; } }
+
+/* ── APPLICATIONS GRID ── */
+.rd-apps { background: #F5F3EE; padding: 96px 0; }
+.rd-apps__container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+.rd-apps__header { text-align: center; margin-bottom: 56px; }
+.rd-apps__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+.rd-apps__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+.rd-apps__intro { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 640px; margin: 0 auto; line-height: 1.75; }
+.rd-apps__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.rd-app-card { position: relative; min-height: 380px; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+.rd-app-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(13,26,15,0.25); }
+.rd-app-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,26,15,0.92) 0%, rgba(13,26,15,0.55) 50%, rgba(13,26,15,0.3) 100%); transition: background 0.4s ease; z-index: 1; }
+.rd-app-card:hover .rd-app-card__overlay { background: linear-gradient(to top, rgba(13,26,15,0.96) 0%, rgba(13,26,15,0.65) 50%, rgba(13,26,15,0.4) 100%); }
+.rd-app-card__content { position: relative; z-index: 2; padding: 28px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.rd-app-card__title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+.rd-app-card__text { font-family: 'Inter', sans-serif; font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 16px; }
+.rd-app-card__stat { display: inline-block; background: #7CB342; color: #fff; padding: 7px 18px; border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+@media (max-width: 1024px) { .rd-apps__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .rd-apps__grid { grid-template-columns: 1fr; } .rd-apps__container { padding: 0 20px; } .rd-apps { padding: 60px 0; } }
+
+/* ── FILM TYPES SECTION ── */
+.rd-films { background: #0d1a0f; padding: 80px 0; }
+.rd-films__header { text-align: center; padding: 0 24px 56px; }
+.rd-films__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+.rd-films__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin: 0 0 0.75rem; }
+.rd-films__sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.6); margin: 0; }
+.rd-films__main { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 260px 1fr; gap: 0; }
+.rd-films__tabs { display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 0; }
+.rd-films__tab { display: flex; align-items: center; gap: 12px; background: transparent; border: none; border-left: 3px solid transparent; padding: 16px 24px; text-align: left; cursor: pointer; color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; transition: all 0.2s ease; }
+.rd-films__tab:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); }
+.rd-films__tab--active { color: #fff; border-left-color: #7CB342; background: rgba(124,179,66,0.08); }
+.rd-films__tab-icon { width: 18px; height: 18px; flex-shrink: 0; stroke: currentColor; }
+.rd-films__content { padding-left: 48px; display: flex; flex-direction: column; gap: 0; }
+.rd-films__images { margin-bottom: 32px; }
+.rd-films__img-set { display: none; }
+.rd-films__img-set--active { display: block; }
+.rd-films__img { width: 100%; height: 300px; object-fit: cover; border-radius: 12px; display: block; }
+.rd-films__panels { }
+.rd-films__panel { display: none; }
+.rd-films__panel--active { display: block; }
+.rd-films__panel-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 700; color: #fff; line-height: 1.25; margin: 0 0 20px; }
+.rd-films__panel-list { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.rd-films__panel-list li { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; padding-left: 20px; position: relative; }
+.rd-films__panel-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: #7CB342; }
+.rd-films__panel-stat { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.rd-films__panel-stat-num { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: #7CB342; line-height: 1; }
+.rd-films__panel-stat-label { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+.rd-films__panel-cta { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s ease; }
+.rd-films__panel-cta:hover { gap: 10px; }
+@media (max-width: 900px) { .rd-films__main { grid-template-columns: 1fr; } .rd-films__tabs { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0; } .rd-films__tab { border-left: none; border-bottom: 3px solid transparent; flex: 1; justify-content: center; padding: 12px 8px; font-size: 0.78rem; } .rd-films__tab--active { border-bottom-color: #7CB342; border-left-color: transparent; } .rd-films__content { padding-left: 0; padding-top: 32px; } }
+@media (max-width: 600px) { .rd-films__main { padding: 0 20px; } .rd-films { padding: 60px 0; } }
+
+/* ── TRUSTED EXPERTS SECTION ── */
+.rd-expert { background: #fff; padding: 96px 0; }
+.rd-expert__container { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.rd-expert__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 20px; }
+.rd-expert__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: #14201A; line-height: 1.15; margin: 0 0 28px; letter-spacing: -0.02em; }
+.rd-expert__body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; line-height: 1.8; margin: 0 0 20px; }
+.rd-expert__stats { display: flex; align-items: center; gap: 32px; margin-top: 40px; padding-top: 40px; border-top: 1px solid #e8ede6; }
+.rd-expert__stat { display: flex; flex-direction: column; gap: 6px; }
+.rd-expert__stat-num { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: #7CB342; line-height: 1; }
+.rd-expert__stat-label { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #4A5C48; }
+.rd-expert__stat-divider { width: 1px; height: 52px; background: #d0dace; flex-shrink: 0; }
+.rd-expert__image-col { position: relative; }
+.rd-expert__img { width: 100%; height: 560px; object-fit: cover; border-radius: 20px; display: block; }
+@media (max-width: 960px) { .rd-expert__container { grid-template-columns: 1fr; padding: 0 32px; } .rd-expert { padding: 64px 0; } .rd-expert__img { height: 400px; } }
+@media (max-width: 600px) { .rd-expert__container { padding: 0 20px; } .rd-expert__stats { gap: 20px; } }
+
+/* ── TRUST / WHY US SECTION ── */
+.rd-trust { background: #F5F3EE; padding: 96px 0; }
+.rd-trust__container { max-width: 1280px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.rd-trust__image-col { position: relative; }
+.rd-trust__img { width: 100%; height: 680px; object-fit: cover; object-position: top center; border-radius: 20px; display: block; }
+.rd-trust__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 20px; }
+.rd-trust__title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 40px; letter-spacing: -0.02em; }
+.rd-trust__items { display: flex; flex-direction: column; }
+.rd-trust__item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid #ddd8d0; }
+.rd-trust__item:first-child { border-top: 1px solid #ddd8d0; }
+.rd-trust__check { flex-shrink: 0; margin-top: 1px; }
+.rd-trust__item-body { flex: 1; }
+.rd-trust__item-title { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: #14201A; margin: 0; line-height: 1.5; }
+.rd-trust__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; margin-top: 36px; transition: gap 0.2s ease; }
+.rd-trust__cta:hover { gap: 14px; }
+@media (max-width: 960px) { .rd-trust__container { grid-template-columns: 1fr; padding: 0 32px; } .rd-trust { padding: 64px 0; } .rd-trust__img { height: 400px; } }
+@media (max-width: 600px) { .rd-trust__container { padding: 0 20px; } }
+
+/* ── BRANDS SECTION WRAPPER ── */
+.rd-brands { background: #fff; padding-top: 72px; padding-bottom: 72px; }
+.rd-brands__header { text-align: center; padding: 0 24px 48px; }
+.rd-brands__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; }
+.rd-brands__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+.rd-brands__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 600px; margin: 0 auto; line-height: 1.75; }
+
+/* ── Brand card carousel ── */
+.rd-brands__carousel-outer {
+  position: relative;
+  padding: 48px 80px 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.rd-brands__carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.rd-brands__carousel::-webkit-scrollbar { display: none; }
+.rd-brands__carousel:active { cursor: grabbing; }
+.rd-brands__card {
+  flex: 0 0 calc(25% - 18px);
+  scroll-snap-align: start;
+  background: #fff;
+  border: 1px solid #e8ede6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.rd-brands__card-photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+.rd-brands__card-body {
+  padding: 20px 22px 24px;
+}
+.rd-brands__card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #14201A;
+  margin: 0 0 8px;
+}
+.rd-brands__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #3a4a38;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.rd-brands__card-desc em { font-style: italic; }
+.rd-brands__card-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: #7CB342;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.rd-brands__arrow {
+  position: absolute;
+  top: calc(48px + 140px);
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #d8e4d4;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  color: #14201A;
+  transition: box-shadow 0.2s ease;
+}
+.rd-brands__arrow:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+.rd-brands__arrow--left  { left: 24px; }
+.rd-brands__arrow--right { right: 24px; }
+.rd-brands__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 32px;
+}
+.rd-brands__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d0dace;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.rd-brands__dot--active {
+  background: #7CB342;
+  transform: scale(1.3);
+}
+@media (max-width: 1100px) {
+  .rd-brands__card { flex: 0 0 calc(33.33% - 16px); }
+}
+@media (max-width: 760px) {
+  .rd-brands__card { flex: 0 0 calc(80% - 12px); }
+  .rd-brands__carousel-outer { padding: 48px 24px 0; }
+  .rd-brands__arrow { display: none; }
+}
+
 /* ── PAGE BODY WRAPPER ── */
 .ip-page-body {
   position: relative;
   background: #ffffff;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
   margin-top: -40px;
   z-index: 10;
   overflow: visible;
-  padding-bottom: 80px;
 }
 
 /* ── PAGE HERO ── */
@@ -369,57 +1329,18 @@ const faqItems = [
 }
 
 /* ── GALLERY ── */
-.ip-gallery {
-  padding: 64px 5%;
-  background: var(--off-white, #F7F6F3);
-  margin: 0 5%;
-  border-radius: var(--radius-xl, 40px);
-}
-.ip-gallery__header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.ip-gallery__header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--text-dark, #1a1a1a);
-  margin: 12px 0 0;
-}
-.ip-gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.ip-gallery__item {
-  border-radius: var(--radius-lg, 24px);
-  overflow: hidden;
-  position: relative;
-  aspect-ratio: 3/2;
-}
-.ip-gallery__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-.ip-gallery__item:hover img {
-  transform: scale(1.05);
-}
-.ip-gallery__item-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-  color: #fff;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
-  font-weight: 500;
-}
+/* ── RD MASONRY GALLERY ── */
+.rd-masonry { background: #F5F3EE; padding: 100px 0 80px; }
+.rd-masonry__header { max-width: 1200px; margin: 0 auto 56px; padding: 0 40px; text-align: center; }
+.rd-masonry__eyebrow { display: block; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #7CB342; margin-bottom: 16px; }
+.rd-masonry__title { font-family: var(--font-serif, Georgia, serif); font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 16px; letter-spacing: -0.01em; }
+.rd-masonry__sub { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 1rem; color: #4A5C48; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+.rd-masonry__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.rd-masonry__item { position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; }
+.rd-masonry__item img { width: 100%; height: 320px; object-fit: cover; display: block; border-radius: 12px; transition: transform 0.4s ease; }
+.rd-masonry__item:hover img { transform: scale(1.03); }
+.rd-masonry__caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 16px 14px; background: linear-gradient(to top, rgba(13,26,15,0.75) 0%, transparent 100%); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.9); border-radius: 0 0 12px 12px; opacity: 0; transition: opacity 0.3s ease; }
+.rd-masonry__item:hover .rd-masonry__caption { opacity: 1; }
 
 /* ── CONTENT + SIDEBAR ── */
 .ip-content-wrap {
@@ -643,6 +1564,55 @@ const faqItems = [
   font-size: 13px; color: var(--text-mid, #4a4a4a); font-weight: 500;
 }
 
+/* ── NEIGHBORHOOD LIST ── */
+.rd-neighborhoods { display: flex; flex-direction: column; margin-top: 20px; }
+.rd-nh { display: flex; align-items: flex-start; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--light-gray, #EFEFED); }
+.rd-nh:last-child { border-bottom: none; }
+.rd-nh__name { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; font-weight: 700; color: var(--green, #81AB4C); min-width: 110px; flex-shrink: 0; line-height: 1.65; }
+.rd-nh__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 13px; color: var(--text-mid, #4a4a4a); line-height: 1.65; }
+
+/* ── TESTIMONIALS ── */
+.rd-testimonials { background: #F5F3EE; padding: 96px 5%; }
+.rd-testimonials__header { text-align: center; margin-bottom: 56px; }
+.rd-testimonials__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin-bottom: 0.75rem; display: block; }
+.rd-testimonials__title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 1rem; }
+.rd-testimonials__sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: #4A5C48; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+.rd-testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+.rd-tcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,26,15,0.07); display: flex; flex-direction: column; }
+.rd-tcard__img-wrap { overflow: hidden; height: 220px; flex-shrink: 0; }
+.rd-tcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s ease; }
+.rd-tcard:hover .rd-tcard__img { transform: scale(1.03); }
+.rd-tcard__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.rd-tcard__stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 2px; }
+.rd-tcard__quote { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #3a4a38; line-height: 1.75; margin: 0; font-style: italic; flex: 1; }
+.rd-tcard__meta { border-top: 1px solid #e8ede6; padding-top: 14px; margin-top: auto; }
+.rd-tcard__name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: #14201A; margin: 0 0 3px; }
+.rd-tcard__role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7CB342; margin: 0; font-weight: 500; }
+@media (max-width: 960px) { .rd-testimonials__grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .rd-testimonials { padding: 64px 5%; } }
+@media (max-width: 600px) { .rd-tcard__img-wrap { height: 180px; } }
+
+/* ── RESOURCES / SPEC SHEETS ── */
+.rd-resources { background: #ffffff; padding: 96px 5%; }
+.rd-resources__grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.rd-resources__image-col { position: relative; }
+.rd-resources__img { width: 100%; height: 480px; object-fit: cover; border-radius: 20px; display: block; }
+.rd-resources__eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: #7CB342; margin: 0 0 16px; display: block; }
+.rd-resources__title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.8vw, 2.25rem); font-weight: 700; color: #14201A; line-height: 1.2; margin: 0 0 18px; }
+.rd-resources__desc { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4A5C48; line-height: 1.8; margin: 0 0 32px; }
+.rd-resources__list { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; }
+.rd-resources__item { border-bottom: 1px solid #e8ede6; }
+.rd-resources__item:first-child { border-top: 1px solid #e8ede6; }
+.rd-resources__link { display: flex; align-items: center; gap: 14px; padding: 14px 8px; text-decoration: none; color: #14201A; transition: background 0.2s ease, padding-left 0.2s ease; border-radius: 8px; }
+.rd-resources__link:hover { background: #f3f6f1; padding-left: 14px; }
+.rd-resources__pdf-icon { flex-shrink: 0; color: #7CB342; }
+.rd-resources__link-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.rd-resources__link-text strong { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #14201A; }
+.rd-resources__link-text span { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #7a8a78; }
+.rd-resources__arrow { font-size: 1rem; color: #7CB342; font-weight: 700; flex-shrink: 0; }
+.rd-resources__cta { display: inline-flex; align-items: center; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #7CB342; text-decoration: none; transition: gap 0.2s ease; gap: 0; }
+.rd-resources__cta:hover { gap: 4px; }
+@media (max-width: 960px) { .rd-resources__grid { grid-template-columns: 1fr; } .rd-resources { padding: 64px 5%; } .rd-resources__img { height: 320px; } }
+
 /* ── FAQ ACCORDION ── */
 .ip-faq {
   padding: 64px 5%;
@@ -716,6 +1686,149 @@ const faqItems = [
 .ip-cta h2 em { font-style: italic; color: var(--green, #81AB4C); }
 .ip-cta__btns { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
 
+/* ── CINEMATIC CTA ── */
+.rd-cinematic-cta {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.rd-cinematic-cta__media {
+  position: absolute;
+  inset: 0;
+}
+.rd-cinematic-cta__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.rd-cinematic-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,26,15,0.88) 0%, rgba(46,107,48,0.75) 40%, rgba(13,26,15,0.88) 100%);
+}
+.rd-cinematic-cta__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(13,26,15,0.2) 0%, rgba(13,26,15,0.6) 100%);
+}
+.rd-cinematic-cta__content {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  padding: 80px 24px;
+  text-align: center;
+}
+.rd-cinematic-cta__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.rd-cinematic-cta__text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(243,246,241,0.82);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.rd-cinematic-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.rd-cinematic-cta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #7CB342;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 2px solid #7CB342;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.rd-cinematic-cta__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124,179,66,0.35);
+  color: #fff;
+}
+.rd-cinematic-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #F3F6F1;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.rd-cinematic-cta__btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(124,179,66,0.6);
+  color: #F3F6F1;
+  transform: translateY(-2px);
+}
+
+/* ── CITIES TICKER ── */
+.rd-cities-ticker {
+  background: #14201A;
+  padding: 20px 0;
+  overflow: hidden;
+}
+.rd-cities-ticker__track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: rd-ticker-scroll 40s linear infinite;
+  white-space: nowrap;
+}
+.rd-cities-ticker span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #F3F6F1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.rd-cities-ticker__dot {
+  width: 6px;
+  height: 6px;
+  background: #7CB342;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@keyframes rd-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rd-cities-ticker__track { animation: none; }
+}
+
+/* ── GEO / SR-ONLY ── */
+.rd-geo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
 /* ── FADE IN ANIMATION ── */
 .fade-in {
   opacity: 0;
@@ -725,6 +1838,21 @@ const faqItems = [
 .fade-in-delay-1 { animation-delay: 0.15s; }
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── LINE MASK REVEAL (inline — avoids scoped style issues) ── */
+.line-mask { display: block; }
+.line-mask__line { display: block; overflow: hidden; }
+.line-mask__inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i) * var(--line-stagger, 120ms));
+  will-change: transform;
+}
+.line-mask.is-visible .line-mask__inner { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .line-mask__inner { transform: none; transition: none; }
 }
 
 /* ── RESPONSIVE ── */
@@ -750,8 +1878,10 @@ const faqItems = [
     gap: 24px;
   }
   .ip-gallery__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
+  .rd-masonry__grid { columns: 1; }
+  .rd-masonry__header { padding: 0 20px; }
   .ip-film-grid {
     grid-template-columns: 1fr;
   }
@@ -763,50 +1893,126 @@ const faqItems = [
     text-align: center;
   }
 }
-@media (max-width: 600px) {
-  .ip-gallery__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ── INLINE CONTENT IMAGES ── */
-.ip-inline-image {
-  margin: 32px 0;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.ip-inline-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
-.ip-inline-image--right {
-  float: right;
-  margin: 0 0 24px 32px;
-  max-width: 48%;
-}
-@media (max-width: 768px) {
-  .ip-inline-image--right {
-    float: none;
-    margin: 24px 0;
-    max-width: 100%;
-  }
-}
-
 </style>
 
 <script>
-// FAQ accordion toggle
-document.querySelectorAll('.ip-faq__item').forEach(item => {
-  item.addEventListener('click', () => {
-    const isOpen = item.classList.contains('ip-faq__item--open');
-    // Close all
-    document.querySelectorAll('.ip-faq__item--open').forEach(open => {
-      open.classList.remove('ip-faq__item--open');
+  // Brand card carousel
+  (function() {
+    const track = document.getElementById('brandsTrack');
+    const dotsContainer = document.getElementById('brandsDots');
+    const cards = track ? Array.from(track.querySelectorAll('.rd-brands__card')) : [];
+    const visibleCount = () => window.innerWidth > 1100 ? 4 : window.innerWidth > 760 ? 3 : 1;
+    let dots = [];
+    function buildDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      dots = [];
+      const pages = Math.ceil(cards.length / visibleCount());
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 'rd-brands__dot' + (i === 0 ? ' rd-brands__dot--active' : '');
+        d.setAttribute('aria-label', `Brand page ${i + 1}`);
+        d.addEventListener('click', () => scrollToPage(i));
+        dotsContainer.appendChild(d);
+        dots.push(d);
+      }
+    }
+    function scrollToPage(i) {
+      if (!track || !cards[0]) return;
+      const cardW = cards[0].getBoundingClientRect().width + 24;
+      track.scrollTo({ left: i * visibleCount() * cardW, behavior: 'smooth' });
+    }
+    function updateDots() {
+      if (!track || !cards[0]) return;
+      const cardW = cards[0].getBoundingClientRect().width + 24;
+      const page = Math.round(track.scrollLeft / (visibleCount() * cardW));
+      dots.forEach((d, i) => d.classList.toggle('rd-brands__dot--active', i === page));
+    }
+    if (track) {
+      track.addEventListener('scroll', updateDots, { passive: true });
+      document.getElementById('brandsArrowLeft')?.addEventListener('click', () => { const cardW = cards[0]?.getBoundingClientRect().width + 24 || 300; track.scrollBy({ left: -(visibleCount() * cardW), behavior: 'smooth' }); });
+      document.getElementById('brandsArrowRight')?.addEventListener('click', () => { const cardW = cards[0]?.getBoundingClientRect().width + 24 || 300; track.scrollBy({ left: visibleCount() * cardW, behavior: 'smooth' }); });
+      // drag to scroll
+      let isDown = false, startX = 0, scrollLeft = 0;
+      track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+      track.addEventListener('mouseleave', () => isDown = false);
+      track.addEventListener('mouseup', () => isDown = false);
+      track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX); });
+    }
+    buildDots();
+    window.addEventListener('resize', buildDots);
+  })();
+
+  // Film types tab switcher
+  document.querySelectorAll('.rd-films__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.getAttribute('data-rdtab');
+      document.querySelectorAll('.rd-films__tab').forEach(t => t.classList.remove('rd-films__tab--active'));
+      document.querySelectorAll('.rd-films__img-set').forEach(s => s.classList.remove('rd-films__img-set--active'));
+      document.querySelectorAll('.rd-films__panel').forEach(p => p.classList.remove('rd-films__panel--active'));
+      tab.classList.add('rd-films__tab--active');
+      document.querySelector(`.rd-films__img-set[data-rdtab="${key}"]`)?.classList.add('rd-films__img-set--active');
+      document.querySelector(`.rd-films__panel[data-rdtab="${key}"]`)?.classList.add('rd-films__panel--active');
     });
-    // Toggle clicked
-    if (!isOpen) item.classList.add('ip-faq__item--open');
   });
-});
+
+  // Property type slider
+  (function(){
+    const track = document.getElementById('rdTrack');
+    const navItems = document.querySelectorAll('[data-rdpropnav]');
+    const prev = document.getElementById('rdPropPrev');
+    const next = document.getElementById('rdPropNext');
+    if (!track) return;
+    let cur = 0;
+    const total = 2;
+    function goTo(i) {
+      cur = (i + total) % total;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      navItems.forEach((n, idx) => n.classList.toggle('rd-prop-slider__nav-item--active', idx === cur));
+    }
+    prev?.addEventListener('click', () => goTo(cur - 1));
+    next?.addEventListener('click', () => goTo(cur + 1));
+    navItems.forEach((n, i) => n.addEventListener('click', () => goTo(i)));
+    goTo(0);
+  })();
+
+  // Count-up animation for hero stats
+  const countUp = (el) => {
+    const target = parseFloat(el.getAttribute('data-count') || '0');
+    const isDecimal = target % 1 !== 0;
+    const duration = 1800;
+    const start = performance.now();
+    const animate = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const value = target * ease;
+      el.textContent = isDecimal ? value.toFixed(1) : Math.round(value).toLocaleString();
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.hero-stat-item__number[data-count]').forEach(el => observer.observe(el));
+
+  // Line mask reveal
+  const lineMaskObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.style.setProperty('--line-stagger', (el.dataset.stagger || '120') + 'ms');
+      el.classList.add('is-visible');
+      lineMaskObserver.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.line-mask').forEach((el) => lineMaskObserver.observe(el));
 </script>
