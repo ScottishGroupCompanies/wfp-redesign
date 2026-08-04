@@ -1,0 +1,215 @@
+---
+/**
+ * GalleryBanner — Editorial full-width banner with giant cropped typography
+ * and fanned photo strips. Adapted from windowfilm-ui2.vercel.app.
+ * Uses WFP color palette (green/charcoal, no blue).
+ *
+ * Props:
+ *   titleLines   — string[] of giant display lines (e.g. ["OUR", "WORK."])
+ *   eyebrow      — small label above the title
+ *   description  — supporting copy below the title
+ *   photos       — string[] of image URLs (up to 5 shown)
+ *   hintText     — caption under the strips
+ *   theme        — "light" or "dark"
+ */
+interface Props {
+  titleLines?: string[];
+  eyebrow?: string;
+  description?: string;
+  photos?: string[];
+  hintText?: string;
+  theme?: 'light' | 'dark';
+}
+
+const {
+  titleLines = ['OUR', 'WORK.'],
+  eyebrow = 'RESIDENTIAL INSTALLS',
+  description = 'A collection of real window film installations. Every project measured, applied, and finished by our own certified team.',
+  photos = [],
+  hintText = 'Hover the photos · click to bring forward',
+  theme = 'light',
+} = Astro.props;
+---
+
+<section class={`gb gb--${theme}`}>
+  <div class="gb__inner">
+
+    <!-- LEFT: cropped editorial typography -->
+    <div class="gb__text">
+      {eyebrow && <p class="gb__eyebrow">{eyebrow}</p>}
+      <h2 class="gb__title" aria-label={titleLines.join(' ')}>
+        {titleLines.map((line) => (
+          <span class="gb__title-line">{line}</span>
+        ))}
+      </h2>
+      {description && <p class="gb__desc">{description}</p>}
+    </div>
+
+    <!-- RIGHT: fanned photo strips -->
+    <div class="gb__gallery">
+      <div class="gb__strips">
+        {photos.slice(0, 5).map((src, i) => (
+          <button class="gb__strip" style={`--i:${i}; --n:${Math.min(photos.length, 5)};`} aria-label={`View photo ${i + 1}`}>
+            <img src={src} alt={`Project photo ${i + 1}`} loading="lazy" draggable="false" />
+          </button>
+        ))}
+      </div>
+      <p class="gb__hint">{hintText}</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .gb {
+    overflow: hidden;
+    padding: 4.5rem 0;
+  }
+  .gb--light { background: #F5F3EE; color: #14201A; }
+  .gb--dark  { background: #14201A; color: #fff; }
+
+  .gb__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 900px) {
+    .gb__inner { grid-template-columns: 1.1fr 1fr; }
+  }
+
+  /* ---- left: typography ---- */
+  .gb__eyebrow {
+    margin-left: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #7CB342;
+    margin-bottom: 0.75rem;
+  }
+  .gb__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    line-height: 0.86;
+    letter-spacing: -0.03em;
+    font-size: clamp(4rem, 11vw, 9rem);
+    text-transform: uppercase;
+    margin-left: -0.45em;
+    user-select: none;
+  }
+  .gb__title-line { display: block; }
+  .gb__desc {
+    margin-left: 1.5rem;
+    margin-top: 1.25rem;
+    max-width: 24rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+  /* ---- right: photo strips ---- */
+  .gb__gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .gb__strips {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    filter: drop-shadow(0 24px 40px rgba(0,0,0,0.25));
+  }
+  .gb__strip {
+    position: relative;
+    width: 72px;
+    height: 260px;
+    margin-left: -10px;
+    border: none;
+    padding: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #14201A;
+    transform: rotate(calc((var(--i) - (var(--n) - 1) / 2) * 2.5deg))
+               translateY(calc((var(--i) - (var(--n) - 1) / 2) * (var(--i) - (var(--n) - 1) / 2) * 4px));
+    transition:
+      width 0.5s cubic-bezier(0.34, 1.4, 0.64, 1),
+      transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1),
+      margin 0.5s cubic-bezier(0.34, 1.4, 0.64, 1);
+    z-index: calc(10 + var(--i));
+  }
+  .gb__strip:first-child { margin-left: 0; }
+  .gb__strip img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  /* group hover: strips spread apart */
+  .gb__strips:hover .gb__strip {
+    margin-left: 6px;
+    transform: rotate(calc((var(--i) - (var(--n) - 1) / 2) * 4deg))
+               translateY(calc((var(--i) - (var(--n) - 1) / 2) * (var(--i) - (var(--n) - 1) / 2) * 6px));
+  }
+  .gb__strips:hover .gb__strip:first-child { margin-left: 0; }
+
+  /* single strip hover: expands into a full card */
+  .gb__strip:hover {
+    width: 190px;
+    transform: rotate(0deg) translateY(-12px) !important;
+    z-index: 99;
+  }
+
+  /* clicked: stays forward */
+  .gb__strip.is-active {
+    width: 190px;
+    transform: rotate(0deg) translateY(-8px) !important;
+    z-index: 90;
+  }
+
+  .gb__hint {
+    padding: 0.55rem 1.2rem;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    border: 1px solid currentColor;
+  }
+
+  @media (max-width: 899px) {
+    .gb__title { margin-left: -0.3em; }
+    .gb__strips { height: 240px; }
+    .gb__strip { height: 200px; width: 56px; }
+    .gb__strip:hover, .gb__strip.is-active { width: 150px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gb__strip { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.gb').forEach((root) => {
+    const strips = Array.from(root.querySelectorAll<HTMLElement>('.gb__strip'));
+    strips.forEach((strip) => {
+      strip.addEventListener('click', () => {
+        const wasActive = strip.classList.contains('is-active');
+        strips.forEach((s) => s.classList.remove('is-active'));
+        if (!wasActive) strip.classList.add('is-active');
+      });
+    });
+  });
+</script>

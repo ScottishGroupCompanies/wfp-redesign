@@ -1,11 +1,75 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import Benefits from '../../components/Benefits.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import GalleryBanner from '../../components/GalleryBanner.astro';
+import TestimonialSpotlight from '../../components/TestimonialSpotlight.astro';
+import CtaLightRays from '../../components/CtaLightRays.astro';
+import ScrollReveal from '../../components/animations/ScrollReveal.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
 
 const title = 'Window Film Camden NJ | Window Film Contractor Camden';
 const description = 'Window Film Philadelphia is the #1 source for window film in Camden, NJ. Get 3M, energy saving, LLumar, security, or privacy film for your home or business. Free quotes!';
+
+const filmBenefits = [
+  {
+    number: '01',
+    title: 'Energy Savings',
+    detail: `<p>Camden's urban heat island pushes summer highs past 88°F. Solar control film blocks up to <strong>78% of solar heat</strong> before it enters your space. South Jersey rowhouses with west-facing glass can see interior temperature drops of 10–15°F on peak summer days.</p><ul><li>Reduces HVAC run time and cooling costs</li><li>Most Camden homeowners see measurable bill reductions within the first summer</li><li>Low-E film also cuts winter heating loss through glass — year-round savings for older building stock</li></ul>`,
+    image: '/images/window-film-camden-film-energy.jpg',
+    imageAlt: 'Energy-saving window film in a Camden NJ rowhouse living room — natural light filtered, cooler interior',
+  },
+  {
+    number: '02',
+    title: 'UV Protection',
+    detail: `<p>Delaware River humidity combined with South Jersey sun accelerates UV damage to flooring, furniture, and artwork. UV film blocks <strong>99% of UV-A and UV-B rays</strong> — the primary cause of fading in hardwood floors, rugs, drapes, and upholstery.</p><ul><li>Critical for healthcare facilities like Cooper University Health Care</li><li>Optically clear — no visible tint, no impact on natural light or views</li><li>Reduces fading by up to 60% compared to unprotected glass</li></ul>`,
+    image: '/images/window-film-camden-film-uv.jpg',
+    imageAlt: 'UV-blocking window film protecting a South Jersey home interior from sun damage and fading',
+  },
+  {
+    number: '03',
+    title: 'Privacy Film',
+    detail: `<p>Camden's dense urban layout puts homes and ground-floor offices in close view of pedestrians and neighboring buildings. Privacy film solves this <strong>without sacrificing natural light</strong>.</p><ul><li>Waterfront condo buildings benefit from one-way reflective film that preserves Delaware River views</li><li>Frosted film for healthcare exam rooms, legal offices, and conference rooms</li><li>Available in clear frosted, custom patterns, gradient, and branded designs — all fully removable</li></ul>`,
+    image: '/images/window-film-camden-film-privacy.jpg',
+    imageAlt: 'Frosted privacy window film on a conference room partition in a Camden NJ office',
+  },
+  {
+    number: '04',
+    title: 'Safety & Security',
+    detail: `<p>With a crime rate of 45 per 1,000 residents, Camden businesses and homeowners face real smash-and-grab risk. Security film <strong>holds glass together on impact</strong>, significantly slowing forced entry.</p><ul><li>Prevents glass from shattering into shards during break-ins, accidents, or severe weather</li><li>Government and institutional facilities use security film to meet ANSI and GSA glass safety standards</li><li>Bomb blast mitigation configurations available for federal-standard secured facilities</li></ul>`,
+    image: '/images/window-film-camden-film-safety.jpg',
+    imageAlt: 'Secure commercial building entrance in Camden NJ with safety and security window film on glass doors',
+  },
+  {
+    number: '05',
+    title: 'Anti-Graffiti',
+    detail: `<p>Camden's high crime rate makes glass etching and acid graffiti a real cost for businesses along Ferry Avenue, Broadway, and the Route 38 corridor. Anti-graffiti film acts as a <strong>sacrificial layer</strong> — when tagged or etched, you replace the film, not the expensive glass panel.</p><ul><li>Each replacement costs a fraction of glass replacement</li><li>Most business owners recoup the initial film cost within 1–2 incidents prevented</li><li>Available in clear or lightly tinted versions — invisible protection</li></ul>`,
+    image: '/images/window-film-camden-film-graffiti.jpg',
+    imageAlt: 'Clean commercial storefront glass in South Jersey protected by anti-graffiti window film',
+  },
+  {
+    number: '06',
+    title: 'Glare Reduction',
+    detail: `<p>East- and west-facing rowhouse windows in Cramer Hill, Parkside, and Whitman Park create peak glare during morning and afternoon work hours. Glare reduction film filters up to <strong>85% of glare-causing visible light</strong> while preserving natural daylight.</p><ul><li>Conference rooms and open offices benefit immediately — screens and monitors become fully visible</li><li>Compatible with all glass types, including single-pane windows common in Camden's older building stock</li></ul>`,
+    image: '/images/window-film-camden-film-glare.jpg',
+    imageAlt: 'Camden NJ office worker at computer desk near window with no screen glare after window film installation',
+  },
+  {
+    number: '07',
+    title: 'Decorative Film',
+    detail: `<p>Camden's waterfront development and Cooper Grant revitalization have brought new commercial and residential spaces that benefit from decorative glass design. Frosted, patterned, and gradient films create an <strong>etched-glass appearance at a fraction of the cost</strong>.</p><ul><li>Branded window graphics for Camden businesses — logos, signage, and custom patterns</li><li>Ideal for healthcare waiting rooms, law firm lobbies, and school libraries</li><li>Fully removable without permanent modification to the glass</li></ul>`,
+    image: '/images/window-film-camden-film-decorative.jpg',
+    imageAlt: 'Decorative frosted glass pattern on a partition wall in a Camden NJ office or lobby',
+  },
+  {
+    number: '08',
+    title: 'Solar Control',
+    detail: `<p>Solar control film is the broadest-purpose film we install in Camden — addressing heat gain, glare, and UV in a single application for homes, offices, retail, and institutional properties.</p><ul><li>Spectrally selective options preserve natural light and views while rejecting significant solar heat</li><li>Ceramic films contain no metal — safe for buildings with Wi-Fi, cellular, and sensitive electronic equipment</li><li>NFRC-rated films available with documented VLT, SHGC, and TSER specs for LEED and energy code compliance</li></ul>`,
+    image: '/images/window-film-camden-film-solar.jpg',
+    imageAlt: 'Solar control window film on a modern South Jersey commercial office building exterior',
+  },
+];
 
 const faqItems = [
   { question: 'Is window film legal in New Jersey?', answer: 'Yes. New Jersey state law places no restrictions on residential or commercial architectural window film. You can install solar, privacy, decorative, security, or anti-graffiti film on any home or business without a permit. If your property is governed by a Camden HOA or falls within a historic district, your documents may include reflectivity guidelines — we carry non-reflective film options that meet most requirements and can assist with the approval process.' },
@@ -51,7 +115,7 @@ const faqItems = [
   "about": {"@type": "City", "name": "Camden", "containedInPlace": {"@type": "State", "name": "New Jersey"}},
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".cam-geo", ".cam-hero__subtitle", ".ip-faq__a"]
+    "cssSelector": [".cam-geo", ".cam-hero__subtitle", ".faq__a-inner p"]
   },
   "breadcrumb": {"@id": "https://www.windowfilmphiladelphia.net/cities/camden/#breadcrumb"}
 }
@@ -119,8 +183,11 @@ const faqItems = [
     </div>
 
     <div class="cam-why__content">
-      <div class="cam-why__eyebrow">South Jersey Climate &amp; Context</div>
-      <h2 class="cam-why__headline">Why Camden Needs Window Film</h2>
+      <div class="cam-why__eyebrow">South Jersey Climate & Context</div>
+      <h2 class="line-mask cam-why__headline" data-stagger="140" aria-label="Why Camden Needs Window Film">
+        <span class="line-mask__line" aria-hidden="true"><span class="line-mask__inner" style="--i:0">Why Camden</span></span>
+        <span class="line-mask__line" aria-hidden="true"><span class="line-mask__inner" style="--i:1">Needs Window Film</span></span>
+      </h2>
       <p class="cam-why__intro">Three conditions unique to Camden make window film less of an upgrade and more of a practical necessity. Summer heat regularly pushes past 88°F with 72-74% humidity. The <a href="https://dep.nj.gov/wp-content/uploads/dsr/urban-heat-island-camden-rps-2004.pdf" target="_blank" rel="noopener noreferrer" style="color:#7CB342">NJ Department of Environmental Protection formally identified Camden as an urban heat island</a> - dense brick and asphalt amplifying temperatures well beyond surrounding suburbs. And with one of New Jersey's highest crime rates, security film is one of our most-requested installs here.</p>
       <ul class="cam-why__bullets">
         <li>
@@ -341,187 +408,14 @@ in Camden, NJ</h2>
   </div>
 </section>
 
-<!-- ══ FILM TYPES ══ -->
-<section class="cam-films" id="film-types">
-
-  <div class="cam-films__header">
-    <p class="cam-films__eyebrow">FILM TYPES</p>
-    <h2 class="cam-films__title">Window Film Solutions for Camden Properties</h2>
-    <p class="cam-films__sub">Select a film type to learn more</p>
-  </div>
-
-  <div class="cam-films__main">
-
-    <!-- LEFT: Tab list -->
-    <div class="cam-films__tabs">
-      <button class="cam-films__tab cam-films__tab--active" data-camtab="energy">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
-        <span>Energy Savings</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="uv">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>UV Protection</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="privacy">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-        <span>Privacy Film</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="glare">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/></svg>
-        <span>Glare Reduction</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="graffiti">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <span>Anti-Graffiti</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="safety">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        <span>Safety &amp; Security</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="decorative">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>Decorative Film</span>
-      </button>
-      <button class="cam-films__tab" data-camtab="solar">
-        <svg class="cam-films__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/></svg>
-        <span>Solar Control</span>
-      </button>
-    </div>
-
-    <!-- RIGHT: Content area -->
-    <div class="cam-films__content">
-
-      <!-- Image area -->
-      <div class="cam-films__images">
-        <div class="cam-films__img-set cam-films__img-set--active" data-camtab="energy">
-          <img src="/images/window-film-camden-film-energy.jpg" alt="Energy-saving window film in a Camden NJ rowhouse living room - natural light filtered, cooler interior" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="uv">
-          <img src="/images/window-film-camden-film-uv.jpg" alt="UV-blocking window film protecting a South Jersey home interior from sun damage and fading" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="privacy">
-          <img src="/images/window-film-camden-film-privacy.jpg" alt="Frosted privacy window film on a conference room partition in a Camden NJ office" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="glare">
-          <img src="/images/window-film-camden-film-glare.jpg" alt="Camden NJ office worker at computer desk near window with no screen glare after window film installation" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="graffiti">
-          <img src="/images/window-film-camden-film-graffiti.jpg" alt="Clean commercial storefront glass in South Jersey protected by anti-graffiti window film" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="safety">
-          <img src="/images/window-film-camden-film-safety.jpg" alt="Secure commercial building entrance in Camden NJ with safety and security window film on glass doors" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="decorative">
-          <img src="/images/window-film-camden-film-decorative.jpg" alt="Decorative frosted glass pattern on a partition wall in a Camden NJ office or lobby" class="cam-films__img" loading="lazy" />
-        </div>
-        <div class="cam-films__img-set" data-camtab="solar">
-          <img src="/images/window-film-camden-film-solar.jpg" alt="Solar control window film on a modern South Jersey commercial office building exterior" class="cam-films__img" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- Panel area -->
-      <div class="cam-films__panels">
-
-        <div class="cam-films__panel cam-films__panel--active" data-camtab="energy">
-          <h3 class="cam-films__panel-title">Lower Your Cooling Bills Through Camden Summers</h3>
-          <ul class="cam-films__panel-list">
-            <li>Camden's urban heat island pushes summer highs past 88°F - solar control film blocks up to 78% of heat before it enters your space</li>
-            <li>South Jersey rowhouses with west-facing glass can see interior temperature drops of 10-15°F on peak summer days</li>
-            <li>Reduces HVAC run time and cooling costs - most Camden homeowners and businesses see measurable bill reductions within the first summer</li>
-            <li>Low-E film also cuts winter heating loss through glass - year-round savings for older Camden building stock</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">78%</span><span class="cam-films__panel-stat-label">Solar heat blocked</span></div>
-          <a href="/benefits/energy-savings/" class="cam-films__panel-cta">Explore energy-saving window film in Camden →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="uv">
-          <h3 class="cam-films__panel-title">Stop the Fading Before It Starts</h3>
-          <ul class="cam-films__panel-list">
-            <li>Delaware River humidity combined with South Jersey sun accelerates UV damage to flooring, furniture, and artwork faster than drier climates</li>
-            <li>UV film blocks 99% of UV-A and UV-B rays - the primary cause of fading in hardwood floors, rugs, drapes, and upholstery</li>
-            <li>Critical for healthcare facilities like Cooper University Health Care, where patient room materials must maintain appearance</li>
-            <li>Optically clear - no visible tint, no impact on natural light or views</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">99%</span><span class="cam-films__panel-stat-label">UV rays blocked</span></div>
-          <a href="/services/uv-protection-film/" class="cam-films__panel-cta">Explore UV window film for Camden →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="privacy">
-          <h3 class="cam-films__panel-title">Privacy for Urban Camden Living and Working</h3>
-          <ul class="cam-films__panel-list">
-            <li>Camden's dense urban layout puts homes and ground-floor offices in close view of pedestrians and neighboring buildings - privacy film solves this without sacrificing natural light</li>
-            <li>Waterfront condo buildings benefit from one-way reflective film that preserves Delaware River views while eliminating nighttime visibility from outside</li>
-            <li>Frosted film for healthcare exam rooms, legal offices, and conference rooms that need all-day, all-direction privacy</li>
-            <li>Available in clear frosted, custom patterns, gradient, and branded designs - all fully removable</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">All-Day</span><span class="cam-films__panel-stat-label">Privacy coverage options available</span></div>
-          <a href="/benefits/privacy-window-film-philadelphia/" class="cam-films__panel-cta">Explore privacy window film in Camden →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="glare">
-          <h3 class="cam-films__panel-title">Eliminate Screen Glare in Camden Homes and Offices</h3>
-          <ul class="cam-films__panel-list">
-            <li>East- and west-facing rowhouse windows in Cramer Hill, Parkside, and Whitman Park create peak glare during morning and afternoon work hours</li>
-            <li>Glare reduction film filters up to 85% of glare-causing visible light while preserving the brightness and warmth of natural daylight</li>
-            <li>Conference rooms and open offices across Camden's commercial district benefit immediately - presentation screens and monitors become fully visible regardless of sun position</li>
-            <li>Compatible with all glass types, including single-pane windows common in Camden's older building stock</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">85%</span><span class="cam-films__panel-stat-label">Max glare reduction</span></div>
-          <a href="/benefits/glare-reduction/" class="cam-films__panel-cta">Explore glare-reducing window film for Camden →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="graffiti">
-          <h3 class="cam-films__panel-title">Protect Camden Storefronts from Etching and Tagging</h3>
-          <ul class="cam-films__panel-list">
-            <li>Camden's high crime rate makes glass etching and acid graffiti a real cost for businesses along Ferry Avenue, Broadway, and the Route 38 corridor</li>
-            <li>Anti-graffiti film acts as a sacrificial layer over the glass - when tagged or etched, you replace the film, not the expensive glass panel</li>
-            <li>Each replacement costs a fraction of glass replacement - most Camden business owners recoup the initial film cost within 1-2 incidents prevented</li>
-            <li>Available in clear or lightly tinted versions - invisible protection that doesn't alter storefront aesthetics</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">Film</span><span class="cam-films__panel-stat-label">Not glass - replaced at a fraction of the cost</span></div>
-          <a href="/benefits/anti-graffiti/" class="cam-films__panel-cta">Explore anti-graffiti window film options →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="safety">
-          <h3 class="cam-films__panel-title">Security Film for Camden's Urban Environment</h3>
-          <ul class="cam-films__panel-list">
-            <li>With a crime rate of 45 per 1,000 residents, Camden businesses and homeowners face real smash-and-grab risk - security film holds glass together on impact, significantly slowing forced entry</li>
-            <li>Thick safety film prevents glass from shattering into shards during break-ins, accidents, or severe weather - protecting occupants from laceration injuries</li>
-            <li>Government and institutional facilities including Camden County buildings and Rutgers-Camden use security film to meet ANSI and GSA glass safety standards</li>
-            <li>Also provides bomb blast mitigation - available in configurations that meet federal standards for secured facilities</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">Impact</span><span class="cam-films__panel-stat-label">Resistant - holds glass together on forced entry</span></div>
-          <a href="/benefits/safety-and-security/" class="cam-films__panel-cta">Explore safety &amp; security window film →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="decorative">
-          <h3 class="cam-films__panel-title">Custom Glass Aesthetics for Camden Spaces</h3>
-          <ul class="cam-films__panel-list">
-            <li>Camden's waterfront development and Cooper Grant revitalization have brought a wave of new commercial and residential spaces that benefit from decorative glass design</li>
-            <li>Frosted, patterned, and gradient films create an etched-glass appearance at a fraction of the cost - without permanent modification to the glass</li>
-            <li>Branded window graphics for Camden businesses - logos, signage, and custom patterns applied directly to storefront or office glass</li>
-            <li>Ideal for healthcare waiting rooms, law firm lobbies, school libraries, and any professional space where aesthetics and function need to coexist</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">Custom</span><span class="cam-films__panel-stat-label">Patterns, gradients, and branded graphics available</span></div>
-          <a href="/benefits/decorative-promotional/" class="cam-films__panel-cta">Explore decorative window film in Camden →</a>
-        </div>
-
-        <div class="cam-films__panel" data-camtab="solar">
-          <h3 class="cam-films__panel-title">Solar Control Across Every Camden Building Type</h3>
-          <ul class="cam-films__panel-list">
-            <li>Solar control film is the broadest-purpose film we install in Camden - addressing heat gain, glare, and UV in a single application for homes, offices, retail, and institutional properties</li>
-            <li>Spectrally selective options preserve natural light and outward views while rejecting significant solar heat - ideal for Camden's waterfront condos and commercial high-rises</li>
-            <li>Ceramic solar control films contain no metal, making them safe for buildings with Wi-Fi, cellular, and sensitive electronic equipment</li>
-            <li>NFRC-rated films available with documented VLT, SHGC, and TSER specs - required for LEED and energy code compliance on commercial projects</li>
-          </ul>
-          <div class="cam-films__panel-stat"><span class="cam-films__panel-stat-num">NFRC</span><span class="cam-films__panel-stat-label">Rated films - documented, verifiable performance</span></div>
-          <a href="/contact/" class="cam-films__panel-cta">Get a Camden solar control window film estimate →</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ══ FILM TYPES / BENEFITS ACCORDION ══ -->
+<AccordionBenefits
+  eyebrow="Film Types"
+  title="Window Film Solutions for Camden Properties"
+  subtitle="Eight film categories, one professional installation. Select any benefit to explore the details — the image swaps to match."
+  benefits={filmBenefits}
+  id="camdenBenefits"
+/>
 
 <!-- ══ BRANDS CAROUSEL ══ -->
 <section class="cam-brands">
@@ -757,65 +651,28 @@ in Camden, NJ</h2>
 </div>
 
 <!-- ══════════════════════════════════════
-     GALLERY
+     GALLERY BANNER — editorial "Our Work" with fanned photo strips
      ══════════════════════════════════════ -->
-<section class="cam-masonry fade-in">
-  <div class="cam-masonry__header">
-    <span class="cam-masonry__eyebrow">Our Work</span>
-    <h2 class="cam-masonry__title">Window Film in Camden &ndash; Installed</h2>
-    <p class="cam-masonry__sub">A selection of window film installations across Camden offices, retail storefronts, medical facilities, and homes.</p>
-  </div>
-  <div class="cam-masonry__grid">
-
-    <div class="cam-masonry__item">
-      <img src="/images/window-film-camden-gallery-privacy-medical.jpg"
-        alt="Frosted privacy window film on glass office partitions in a Camden medical facility"
-        loading="lazy" width="1472" height="832" />
-      <div class="cam-masonry__caption">Frosted Privacy Film – Medical Office, Camden</div>
-    </div>
-
-    <div class="cam-masonry__item">
-      <img src="/images/window-film-camden-gallery-restaurant.jpg"
-        alt="Decorative frosted window film on glass partitions in a Camden waterfront restaurant"
-        loading="lazy" width="832" height="1248" />
-      <div class="cam-masonry__caption">Decorative Film – Waterfront Restaurant, Camden</div>
-    </div>
-
-    <div class="cam-masonry__item">
-      <img src="/images/window-film-camden-gallery-solar-office.jpg"
-        alt="Solar control window film on a Camden commercial office building with waterfront views"
-        loading="lazy" width="1472" height="832" />
-      <div class="cam-masonry__caption">Solar Control Film – Commercial Office, Camden</div>
-    </div>
-
-    <div class="cam-masonry__item">
-      <img src="/images/window-film-camden-gallery-residential.jpg"
-        alt="UV protection window film on a South Jersey rowhouse bedroom window, warm afternoon light"
-        loading="lazy" width="832" height="1248" />
-      <div class="cam-masonry__caption">UV Protection Film – Residential, Cherry Hill</div>
-    </div>
-
-    <div class="cam-masonry__item">
-      <img src="/images/window-film-camden-gallery-film-detail.jpg"
-        alt="Solar control window film installed in a Camden penthouse office with floor-to-ceiling glass and city skyline"
-        loading="lazy" width="1472" height="832" />
-      <div class="cam-masonry__caption">Solar Control Film – Penthouse Office, Camden Waterfront</div>
-    </div>
-
-    <div class="cam-masonry__item">
-      <img src="/images/window-film-camden-gallery-antigraffiti.jpg"
-        alt="Professional window film installer applying anti-graffiti protective film to a Camden retail storefront"
-        loading="lazy" width="1472" height="832" />
-      <div class="cam-masonry__caption">Anti-Graffiti Film – Retail Storefront, Camden</div>
-    </div>
-
-  </div>
-</section>
+<GalleryBanner
+  titleLines={["OUR", "WORK."]}
+  eyebrow="Camden Installations"
+  description="A selection of window film installations across Camden offices, retail storefronts, medical facilities, and homes. Every project measured, applied, and finished by our own certified team."
+  photos={[
+    '/images/window-film-camden-gallery-privacy-medical.jpg',
+    '/images/window-film-camden-gallery-restaurant.jpg',
+    '/images/window-film-camden-gallery-solar-office.jpg',
+    '/images/window-film-camden-gallery-residential.jpg',
+    '/images/window-film-camden-gallery-film-detail.jpg',
+  ]}
+  hintText="Hover the photos · click to bring forward"
+  theme="light"
+/>
 
 <!-- ══════════════════════════════════════
      LOCAL AREA - map + neighborhood copy
      ══════════════════════════════════════ -->
-<div class="ip-local fade-in">
+<div class="ip-local">
+  <ScrollReveal>
   <div class="ip-local__grid">
     <div class="ip-local__map">
       <iframe
@@ -844,66 +701,40 @@ in Camden, NJ</h2>
       </div>
     </div>
   </div>
+  </ScrollReveal>
 </div>
 
 <!-- ══════════════════════════════════════
      FAQ ACCORDION
      ══════════════════════════════════════ -->
 <!-- ══════════════════════════════════════
-     TESTIMONIALS
+     TESTIMONIAL SPOTLIGHT — cursor-following green spotlight
      ══════════════════════════════════════ -->
-<section class="cam-testimonials fade-in">
-  <div class="cam-testimonials__header">
-    <p class="cam-testimonials__eyebrow">Client Reviews</p>
-    <h2 class="cam-testimonials__title">What Camden Clients Say</h2>
-    <p class="cam-testimonials__sub">Residential and commercial property owners across Camden and South Jersey.</p>
-  </div>
-  <div class="cam-testimonials__grid">
-
-    <div class="cam-tcard">
-      <div class="cam-tcard__img-wrap">
-        <img src="/images/window-film-camden-testimonial-commercial-1.jpg" alt="Rebecca K., Operations Director at a Camden NJ law firm, after window film installation by Window Film Philadelphia" class="cam-tcard__img" loading="lazy" width="1472" height="832" />
-      </div>
-      <div class="cam-tcard__body">
-        <div class="cam-tcard__stars" aria-label="5 out of 5 stars">&starf;&starf;&starf;&starf;&starf;</div>
-        <blockquote class="cam-tcard__quote">&ldquo;Our conference rooms used to be unusable in the afternoon &mdash; the glare was that bad. After the frosted and solar film install the space is completely transformed. Professional crew, no mess, done in one visit.&rdquo;</blockquote>
-        <div class="cam-tcard__meta">
-          <p class="cam-tcard__name">Rebecca K.</p>
-          <p class="cam-tcard__role">Operations Director &middot; Camden Law Firm</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="cam-tcard">
-      <div class="cam-tcard__img-wrap">
-        <img src="/images/window-film-camden-testimonial-commercial-2.jpg" alt="Marcus T., property manager for Camden NJ commercial buildings, after anti-graffiti window film installation" class="cam-tcard__img" loading="lazy" width="1472" height="832" />
-      </div>
-      <div class="cam-tcard__body">
-        <div class="cam-tcard__stars" aria-label="5 out of 5 stars">&starf;&starf;&starf;&starf;&starf;</div>
-        <blockquote class="cam-tcard__quote">&ldquo;We manage several properties along the waterfront corridor and anti-graffiti film has been a game-changer for our ground-floor retail tenants. Window Film Philadelphia handles everything &mdash; quote, install, done.&rdquo;</blockquote>
-        <div class="cam-tcard__meta">
-          <p class="cam-tcard__name">Marcus T.</p>
-          <p class="cam-tcard__role">Property Manager &middot; Camden Waterfront</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="cam-tcard">
-      <div class="cam-tcard__img-wrap">
-        <img src="/images/window-film-camden-testimonial-residential.jpg" alt="Jennifer M., Cherry Hill NJ homeowner, in her living room after residential solar control window film installation" class="cam-tcard__img" loading="lazy" width="1472" height="832" />
-      </div>
-      <div class="cam-tcard__body">
-        <div class="cam-tcard__stars" aria-label="5 out of 5 stars">&starf;&starf;&starf;&starf;&starf;</div>
-        <blockquote class="cam-tcard__quote">&ldquo;I was skeptical but the difference is night and day. Our living room used to be unbearable in the summer. Now it&rsquo;s actually comfortable and my hardwood floors look exactly the same as the day we installed them.&rdquo;</blockquote>
-        <div class="cam-tcard__meta">
-          <p class="cam-tcard__name">Jennifer M.</p>
-          <p class="cam-tcard__role">Homeowner &middot; Cherry Hill, NJ</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+<TestimonialSpotlight
+  eyebrow="Client Reviews"
+  title="What Camden Clients Say"
+  subtitle="Residential and commercial property owners across Camden and South Jersey."
+  items={[
+    {
+      quote: 'Our conference rooms used to be unusable in the afternoon — the glare was that bad. After the frosted and solar film install the space is completely transformed. Professional crew, no mess, done in one visit.',
+      name: 'Rebecca K.',
+      detail: 'Operations Director · Camden Law Firm',
+      avatar: '/images/window-film-camden-testimonial-commercial-1.jpg',
+    },
+    {
+      quote: 'We manage several properties along the waterfront corridor and anti-graffiti film has been a game-changer for our ground-floor retail tenants. Window Film Philadelphia handles everything — quote, install, done.',
+      name: 'Marcus T.',
+      detail: 'Property Manager · Camden Waterfront',
+      avatar: '/images/window-film-camden-testimonial-commercial-2.jpg',
+    },
+    {
+      quote: 'I was skeptical but the difference is night and day. Our living room used to be unbearable in the summer. Now it\u2019s actually comfortable and my hardwood floors look exactly the same as the day we installed them.',
+      name: 'Jennifer M.',
+      detail: 'Homeowner · Cherry Hill, NJ',
+      avatar: '/images/window-film-camden-testimonial-residential.jpg',
+    },
+  ]}
+/>
 
 <!-- ══════════════════════════════════════
      RESOURCES / SPEC SHEETS
@@ -965,93 +796,29 @@ in Camden, NJ</h2>
     </div>
   </div>
 </section>
-<div class="ip-faq">
-  <div class="ip-faq__hd">
-    <p class="section-eyebrow">FAQ</p>
-    <h2 class="section-title" style="margin:0 auto;">Common questions about Camden window film</h2>
-  </div>
-  <div class="ip-faq__item ip-faq__item--open">
-    <div class="ip-faq__q">Is window film legal in New Jersey? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. New Jersey state law places no restrictions on residential or commercial architectural window film. You can install solar, privacy, decorative, security, or anti-graffiti film on any home or business without a permit. If your property is governed by a Camden HOA or falls within a historic district, your documents may include reflectivity guidelines — we carry non-reflective film options that meet most requirements and can assist with the approval process.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How much does window film cost in Camden, NJ? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Pricing depends on film type, glass area, and site accessibility. As a general guide: solar control film runs $5–$9 per sq ft installed; privacy and decorative film runs $6–$10 per sq ft; security film starts at $7–$12 per sq ft; anti-graffiti film starts at $4–$6 per sq ft. Most Camden homeowners spend $400–$900 for a typical room. Commercial projects are quoted by scope. All quotes are free and include a written estimate. Window film for Camden installs is priced competitively with no hidden fees.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How long does window film installation take? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Installation timelines depend on several factors: the number and size of windows, film type, glass accessibility, building layout, and any site-specific conditions. A small residential project looks very different from a multi-floor commercial installation. During your free on-site consultation, we assess the full scope and give you a realistic timeline. We schedule around your routine and handle all cleanup — you won't be left with a mess or a guessing game.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">What warranty comes with window film? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Warranty terms vary by manufacturer and product line. Many leading brands — including 3M, LLumar, Vista, and Solar Gard — offer manufacturer warranties on their architectural window films covering defects such as peeling, bubbling, delamination, and color change. Coverage periods and specific terms differ by film, so we'll walk you through the warranty for whichever product you choose. Ask us about warranty details when you request your free estimate.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">How much heat does window film block in South Jersey summers? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">High-performance solar control films block up to 85% of solar heat gain — the primary driver of summer overheating in Camden and South Jersey. Summers here regularly reach the upper 80s to mid-90s&deg;F with high humidity. Window film reduces hot spots near glass, lowers peak indoor temperatures, and cuts air-conditioning load, often reducing cooling energy costs by 20–30%. The <a href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank" rel="noopener noreferrer">U.S. Department of Energy</a> notes that windows account for 25–30% of a building's total heating and cooling energy loss.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Does window film block UV rays? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. Most architectural window films block 99% or more of UV-A and UV-B radiation — even clear, low-reflectivity films. UV radiation is the leading cause of fading in hardwood floors, upholstery, artwork, and retail merchandise. It also contributes to skin damage with prolonged exposure near windows. UV-blocking film reduces fading by up to 60% compared to unprotected glass without significantly reducing visible light.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Can window film be removed later? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. Window film is professionally removable at any time with no permanent damage to the glass surface. The removal process uses heat and a mild adhesive solvent, leaving no scratches, marks, or residue. Renters, property managers, and owners who want a non-permanent upgrade often choose window film for exactly this flexibility.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Does window film work in winter, or only in summer? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Both. Solar control film reduces heat gain in summer. Certain low-emissivity (low-e) films also retain interior heat in winter by reflecting radiant energy back into the room — the same principle behind double-pane Low-E glass. This dual-season benefit is valuable in Camden, where January temperatures regularly dip into the 20s&deg;F. Year-round performance can reduce total HVAC energy use by 5–15%.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">What is the difference between privacy film and solar control film? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Solar control film is designed to reduce heat gain and glare while maintaining a clear outward view — it works by filtering infrared energy. Privacy film — including frosted, whiteout, and one-way mirror film — is designed to obscure the view into a space, either all day (frosted) or from one direction during daylight (one-way/reflective). Many Camden clients combine both: solar film on main living areas for energy savings, and frosted film on bathrooms, conference rooms, or street-facing glass for privacy.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Do you install anti-graffiti film on Camden commercial properties? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. Anti-graffiti film (also called sacrificial film) is a clear protective layer applied to exterior glass and smooth surfaces. When vandalism occurs, the damaged film is simply peeled off and replaced at a fraction of the cost of glass replacement. It is popular on Camden storefronts along Federal Street, Broadway, and the waterfront commercial corridor, where scratch and spray vandalism are recurring issues.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Will window film damage my windows or void their warranty? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">No — when professionally installed on standard single-pane, double-pane, or tempered glass. For sealed insulated glass units (IGUs), we select film types rated for that glass to prevent heat-stress buildup. Our installers verify the glass specification before recommending any product. Most major glass manufacturers do not void warranties when an IGU-rated film is correctly installed.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Is there a tax credit or rebate for window film in New Jersey? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Potentially yes. The federal Inflation Reduction Act Section 25C tax credit covers qualifying building-envelope improvements — which can include energy-efficient window treatments — up to $1,200 per year for eligible residential projects. New Jersey's Clean Energy Program also offers rebates for commercial building efficiency upgrades. We recommend consulting a tax professional to confirm eligibility based on film specification and property type.</div>
-  </div>
-  <div class="ip-faq__item">
-    <div class="ip-faq__q">Do you offer free consultations in Camden, NJ? <span class="ip-faq__toggle">+</span></div>
-    <div class="ip-faq__a">Yes. We offer free, no-obligation consultations at your home or business anywhere in Camden and throughout Camden County. During the visit we assess window type, sun exposure, and your goals, then provide a detailed written estimate. No pressure, no charge.</div>
-  </div>
 
 <!-- ══════════════════════════════════════
-     CINEMATIC CTA
+     FAQ — Accordion FAQ (library style, Camden palette)
+     ══════════════════════════════════════ -->
+<AccordionFAQ
+  eyebrow="FAQ"
+  heading="Common questions about Camden window film"
+  sub="Everything you need to know before your install."
+  items={faqItems.map(f => ({ q: f.question, a: f.answer }))}
+/>
+
+<!-- ══════════════════════════════════════
+     CTA — LIGHT RAYS
      ══════════════════════════════════════ -->
 </div><!-- end ip-page-body -->
 
-<section class="cam-cinematic-cta">
-  <div class="cam-cinematic-cta__media" aria-hidden="true">
-    <img src="/images/window-film-camden-cta-bg.jpg"
-      alt="Professional window film installation in Camden NJ — floor-to-ceiling commercial glass with solar control film applied"
-      loading="lazy" width="1920" height="560" />
-  </div>
-  <div class="cam-cinematic-cta__overlay" aria-hidden="true"></div>
-  <div class="cam-cinematic-cta__vignette" aria-hidden="true"></div>
-  <div class="cam-cinematic-cta__content">
-    <h2 class="cam-cinematic-cta__title">Ready to Protect Your Camden Property?</h2>
-    <p class="cam-cinematic-cta__text">
-      Cut heat, block UV, add privacy, and protect against graffiti — all with one professional installation. Free estimates across Camden and South Jersey.
-    </p>
-    <div class="cam-cinematic-cta__actions">
-      <a href="/contact/" class="cam-cinematic-cta__btn-primary">Get Your Free Estimate</a>
-      <a href="tel:2673947980" class="cam-cinematic-cta__btn-secondary">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.45.99-.99v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/>
-        </svg>
-        (267) 394-7980
-      </a>
-    </div>
-  </div>
-</section>
+<CtaLightRays
+  eyebrow="Camden Window Film Professionals"
+  title="Ready to transform your Camden glass?"
+  sub="Cut heat, block UV, add privacy, and protect against graffiti — all with one professional installation. Free estimates across Camden and South Jersey. Same-week appointments available."
+  btnLabel="Get Your Free Camden Estimate"
+  btnHref="/contact/"
+/>
 
 
 
@@ -1441,12 +1208,9 @@ in Camden, NJ</h2>
   background: #ffffff;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
   margin-top: -40px;
   z-index: 10;
   overflow: visible;
-  padding-bottom: 80px;
 }
 
 /* ── PAGE HERO ── */
@@ -2050,6 +1814,21 @@ in Camden, NJ</h2>
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ── LINE MASK REVEAL (inline — avoids scoped style issues) ── */
+.line-mask { display: block; }
+.line-mask__line { display: block; overflow: hidden; }
+.line-mask__inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i) * var(--line-stagger, 120ms));
+  will-change: transform;
+}
+.line-mask.is-visible .line-mask__inner { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .line-mask__inner { transform: none; transition: none; }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .ip-content-wrap {
@@ -2199,14 +1978,15 @@ in Camden, NJ</h2>
 
   document.querySelectorAll('.hero-stat-item__number[data-count]').forEach(el => observer.observe(el));
 
-  // FAQ accordion
-  document.querySelectorAll('.ip-faq__item').forEach(item => {
-    item.addEventListener('click', () => {
-      const isOpen = item.classList.contains('ip-faq__item--open');
-      document.querySelectorAll('.ip-faq__item--open').forEach(open => {
-        open.classList.remove('ip-faq__item--open');
-      });
-      if (!isOpen) item.classList.add('ip-faq__item--open');
+  // Line mask reveal
+  const lineMaskObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.style.setProperty('--line-stagger', (el.dataset.stagger || '120') + 'ms');
+      el.classList.add('is-visible');
+      lineMaskObserver.unobserve(el);
     });
-  });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.line-mask').forEach((el) => lineMaskObserver.observe(el));
 </script>

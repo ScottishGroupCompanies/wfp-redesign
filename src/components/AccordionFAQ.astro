@@ -9,8 +9,9 @@
 //   items={[{ q, a }]}   ·   single={false} to allow multiple open
 
 interface QA { q: string; a: string; }
-interface Props { heading?: string; sub?: string; items?: QA[]; single?: boolean; }
+interface Props { eyebrow?: string; heading?: string; sub?: string; items?: QA[]; single?: boolean; }
 const {
+  eyebrow = 'FAQ',
   heading = 'Frequently asked questions',
   sub = 'Everything you need to know before your install.',
   single = true,
@@ -27,7 +28,8 @@ const {
 
 <section class="faq">
   <div class="faq__head">
-    <h2 class="faq__title font-display">{heading}</h2>
+    {eyebrow && <p class="faq__eyebrow">{eyebrow}</p>}
+    <h2 class="faq__title">{heading}</h2>
     <p class="faq__sub">{sub}</p>
   </div>
 
@@ -38,58 +40,146 @@ const {
           <span>{item.q}</span>
           <span class="faq__icon" aria-hidden="true"><span></span><span></span></span>
         </button>
-        <div class="faq__a"><div class="faq__a-inner"><p>{item.a}</p></div></div>
+        <div class="faq__a"><div class="faq__a-inner"><p set:html={item.a} /></div></div>
       </div>
     ))}
   </div>
 </section>
 
-<style is:global>
-  .faq { background: var(--ink, #0d1b2a); padding: 4rem 1.5rem 3rem; }
-  .faq__head { max-width: 42rem; margin: 0 auto 2.5rem; text-align: center; }
-  .faq__title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
-  .faq__sub { color: rgba(255,255,255,0.5); margin: 0; }
-  .faq__list { max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+<style>
+  .faq {
+    background: #14201A;
+    padding: 96px 5% 80px;
+  }
+  .faq__head {
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+  .faq__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #7CB342;
+    margin: 0 0 12px;
+  }
+  .faq__title {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+  .faq__sub {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .faq__list {
+    max-width: 44rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
   .faq__item {
-    background: var(--slate, #12293f);
-    border: 1px solid rgba(255,255,255,0.08); border-radius: 0.85rem; overflow: hidden;
+    background: #1a2e22;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.85rem;
+    overflow: hidden;
     transition: border-color 0.3s ease;
   }
-  .faq__item.is-open { border-color: rgba(124,179,66,0.5); }
+  .faq__item.is-open {
+    border-color: rgba(124,179,66,0.5);
+  }
   .faq__q {
-    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    background: none; border: none; cursor: pointer; text-align: left;
-    padding: 1.15rem 1.35rem; color: #fff; font-size: 1rem; font-weight: 600;
-    font-family: inherit;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 1.15rem 1.35rem;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
   }
-  .faq__icon { position: relative; flex-shrink: 0; width: 20px; height: 20px; }
+  .faq__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
   .faq__icon span {
-    position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; border-radius: 2px;
-    background: var(--brand-green); transform: translate(-50%, -50%); transition: transform 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: #7CB342;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
   }
-  .faq__icon span:last-child { transform: translate(-50%, -50%) rotate(90deg); }
-  .faq__item.is-open .faq__icon span:last-child { transform: translate(-50%, -50%) rotate(0); }
+  .faq__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .faq__item.is-open .faq__icon span:last-child {
+    transform: translate(-50%, -50%) rotate(0);
+  }
 
-  .faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
-  .faq__item.is-open .faq__a { grid-template-rows: 1fr; }
+  .faq__a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+  .faq__item.is-open .faq__a {
+    grid-template-rows: 1fr;
+  }
   .faq__a-inner { overflow: hidden; }
-  .faq__a-inner p { margin: 0; padding: 0 1.35rem 1.25rem; color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.65; }
+  .faq__a-inner p {
+    margin: 0;
+    padding: 0 1.35rem 1.25rem;
+    font-family: 'Inter', sans-serif;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  .faq__a-inner a {
+    color: #7CB342;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    .faq__a { transition: none; } .faq__icon span { transition: none; }
+    .faq__a { transition: none; }
+    .faq__icon span { transition: none; }
   }
 </style>
 
 <script>
-  document.querySelectorAll<HTMLElement>('.faq__list').forEach((list) => {
+  document.querySelectorAll('.faq__list').forEach((list) => {
     const single = list.dataset.single === 'true';
-    const items = Array.from(list.querySelectorAll<HTMLElement>('[data-item]'));
+    const items = Array.from(list.querySelectorAll('[data-item]'));
     items.forEach((item) => {
-      const btn = item.querySelector<HTMLElement>('[data-q]');
+      const btn = item.querySelector('[data-q]');
       btn?.addEventListener('click', () => {
         const isOpen = item.classList.contains('is-open');
-        if (single) items.forEach((it) => { it.classList.remove('is-open'); it.querySelector('[data-q]')?.setAttribute('aria-expanded', 'false'); });
+        if (single) {
+          items.forEach((it) => {
+            it.classList.remove('is-open');
+            it.querySelector('[data-q]')?.setAttribute('aria-expanded', 'false');
+          });
+        }
         item.classList.toggle('is-open', !isOpen);
         btn.setAttribute('aria-expanded', String(!isOpen));
       });
