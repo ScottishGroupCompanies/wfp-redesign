@@ -10,7 +10,7 @@ import ScrollReveal from '../../components/animations/ScrollReveal.astro';
 import InnerPageHero from '../../components/InnerPageHero.astro';
 
 const title = 'Window Film Camden NJ | Window Film Contractor Camden';
-const description = 'Window Film Philadelphia is the #1 source for window film in Camden, NJ. Get 3M, energy saving, LLumar, security, or privacy film for your home or business. Free quotes!';
+const description = 'Window film installation in Camden, NJ — solar control, security, privacy, and decorative film for homes and businesses. Free estimates, certified installers.';
 
 const filmBenefits = [
   {
@@ -86,40 +86,40 @@ const faqItems = [
   { question: 'Is there a tax credit or rebate for window film in New Jersey?', answer: 'Potentially yes. The federal Inflation Reduction Act Section 25C tax credit covers qualifying building-envelope improvements — which can include energy-efficient window treatments — up to $1,200 per year for eligible residential projects. New Jersey\'s Clean Energy Program also offers rebates for commercial building efficiency upgrades. We recommend consulting a tax professional to confirm eligibility based on film specification and property type.' },
   { question: 'Do you offer free consultations in Camden, NJ?', answer: 'Yes. We offer free, no-obligation consultations at your home or business anywhere in Camden and throughout Camden County. During the visit we assess window type, sun exposure, and your goals, then provide a detailed written estimate. No pressure, no charge.' },
 ];
+
+const today = new Date().toISOString().slice(0, 10);
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://www.windowfilmphiladelphia.net/cities/camden/#breadcrumb',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Cities We Serve', item: 'https://www.windowfilmphiladelphia.net/cities/' },
+      { '@type': 'ListItem', position: 3, name: 'Window Film Camden NJ', item: 'https://www.windowfilmphiladelphia.net/cities/camden/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/cities/camden/#webpage',
+    url: 'https://www.windowfilmphiladelphia.net/cities/camden/',
+    name: title,
+    description: description,
+    inLanguage: 'en-US',
+    isPartOf: { '@id': 'https://www.windowfilmphiladelphia.net/#website' },
+    about: { '@type': 'City', name: 'Camden', containedInPlace: { '@type': 'State', name: 'New Jersey' } },
+    dateModified: today,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.cam-geo', '.cam-hero__subtitle', '.faq__a-inner p'],
+    },
+    breadcrumb: { '@id': 'https://www.windowfilmphiladelphia.net/cities/camden/#breadcrumb' },
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/camden/" faqItems={faqItems}>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": "https://www.windowfilmphiladelphia.net/cities/camden/#breadcrumb",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/"},
-    {"@type": "ListItem", "position": 2, "name": "Cities We Serve", "item": "https://www.windowfilmphiladelphia.net/cities/"},
-    {"@type": "ListItem", "position": 3, "name": "Window Film Camden NJ", "item": "https://www.windowfilmphiladelphia.net/cities/camden/"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://www.windowfilmphiladelphia.net/cities/camden/#webpage",
-  "url": "https://www.windowfilmphiladelphia.net/cities/camden/",
-  "name": "Window Film Camden NJ | Window Film Contractor Camden",
-  "description": "Window Film Philadelphia is the #1 source for window film in Camden, NJ. Get 3M, energy saving, LLumar, security, or privacy film for your home or business. Free quotes!",
-  "inLanguage": "en-US",
-  "isPartOf": {"@id": "https://www.windowfilmphiladelphia.net/#website"},
-  "about": {"@type": "City", "name": "Camden", "containedInPlace": {"@type": "State", "name": "New Jersey"}},
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [".cam-geo", ".cam-hero__subtitle", ".faq__a-inner p"]
-  },
-  "breadcrumb": {"@id": "https://www.windowfilmphiladelphia.net/cities/camden/#breadcrumb"}
-}
-</script>
+<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/camden/" faqItems={faqItems} schemas={pageSchemas}>
 
 <!-- ══ HERO ══ -->
 <section class="cam-hero">
@@ -217,7 +217,7 @@ Camden's crime rate of 45 per 1,000 residents makes security and anti-smash film
           <span class="cam-why__climate-label">Relative humidity in peak summer months</span>
         </div>
       </div>
-      <p class="cam-why__closing">Since 2008, Window Film Philadelphia has installed window film in Camden for homeowners, commercial tenants, and property managers throughout South Jersey — solar control, security, privacy, and decorative film installed by certified technicians with a lifetime warranty on every job.</p>
+      <p class="cam-why__closing">Since 2008, Window Film Philadelphia has installed window film in Camden for homeowners, commercial tenants, and property managers throughout South Jersey — <a href="/benefits/energy-savings/" style="color:#7CB342">solar control</a>, <a href="/benefits/safety-and-security/" style="color:#7CB342">security</a>, <a href="/benefits/privacy-window-film-philadelphia/" style="color:#7CB342">privacy</a>, and <a href="/benefits/decorative-promotional/" style="color:#7CB342">decorative film</a> installed by certified technicians with a lifetime warranty on every job.</p>
       <a href="/contact/" class="cam-why__cta">
         Get a free Camden assessment
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
@@ -264,7 +264,7 @@ Camden's crime rate of 45 per 1,000 residents makes security and anti-smash film
 
     <!-- SLIDE 01: Commercial -->
     <div class="cam-prop-slider__slide" data-slide="0">
-      <img src="/images/window-film-camden-nj-commercial.jpg" alt="Modern commercial office in Camden NJ with floor-to-ceiling windows - window film for South Jersey commercial properties" class="cam-prop-slider__bg" loading="lazy" />
+      <img src="/images/window-film-camden-nj-commercial.jpg" alt="Modern commercial office in Camden NJ with floor-to-ceiling windows - window film for South Jersey commercial properties" title="Modern commercial office in Camden NJ with floor-to-ceiling windows - window film for South Jersey commercial properties" class="cam-prop-slider__bg" loading="lazy" />
       <div class="cam-prop-slider__overlay"></div>
       <div class="cam-prop-slider__content">
         <div class="cam-prop-slider__step">01</div>
@@ -291,7 +291,7 @@ in Camden, NJ</h2>
 
     <!-- SLIDE 02: Residential -->
     <div class="cam-prop-slider__slide" data-slide="1">
-      <img src="/images/window-film-camden-nj-residential-rowhouses.jpg" alt="Brick rowhouses in Camden NJ - solar control and security window film for South Jersey residential homes" class="cam-prop-slider__bg" loading="lazy" />
+      <img src="/images/window-film-camden-nj-residential-rowhouses.jpg" alt="Brick rowhouses in Camden NJ - solar control and security window film for South Jersey residential homes" title="Brick rowhouses in Camden NJ - solar control and security window film for South Jersey residential homes" class="cam-prop-slider__bg" loading="lazy" />
       <div class="cam-prop-slider__overlay"></div>
       <div class="cam-prop-slider__content">
         <div class="cam-prop-slider__step">02</div>
@@ -434,7 +434,7 @@ in Camden, NJ</h2>
 
       <!-- 3M -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-3m.jpg" alt="3M solar control window film installed in a Camden NJ commercial office — heat and UV reduction" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-3m.jpg" alt="3M solar control window film installed in a Camden NJ commercial office — heat and UV reduction" title="3M solar control window film installed in a Camden NJ commercial office — heat and UV reduction" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">3M</p>
           <p class="cam-brands__card-desc"><em>The global standard in solar control and safety film - backed by 60+ years of glass science.</em></p>
@@ -444,7 +444,7 @@ in Camden, NJ</h2>
 
       <!-- LLumar -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-llumar.jpg" alt="LLumar solar control window film on a Camden NJ commercial building — glare and heat rejection" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-llumar.jpg" alt="LLumar solar control window film on a Camden NJ commercial building — glare and heat rejection" title="LLumar solar control window film on a Camden NJ commercial building — glare and heat rejection" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">LLumar</p>
           <p class="cam-brands__card-desc"><em>A top choice for commercial projects across Camden and South Jersey - proven durability in urban environments.</em></p>
@@ -454,7 +454,7 @@ in Camden, NJ</h2>
 
       <!-- Vista -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-vista.jpg" alt="Vista residential window film in a Camden NJ home interior — UV protection and energy savings" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-vista.jpg" alt="Vista residential window film in a Camden NJ home interior — UV protection and energy savings" title="Vista residential window film in a Camden NJ home interior — UV protection and energy savings" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Vista</p>
           <p class="cam-brands__card-desc"><em>Eastman's residential-focused line - naturally clear films designed for Camden rowhouses and waterfront condos.</em></p>
@@ -464,7 +464,7 @@ in Camden, NJ</h2>
 
       <!-- Solar Gard -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-solargard.jpg" alt="Solar Gard high-performance window film on a Camden NJ commercial building — solar heat control" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-solargard.jpg" alt="Solar Gard high-performance window film on a Camden NJ commercial building — solar heat control" title="Solar Gard high-performance window film on a Camden NJ commercial building — solar heat control" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Solar Gard</p>
           <p class="cam-brands__card-desc"><em>High-performance spectrally selective films for Camden's commercial and institutional buildings - NFRC rated.</em></p>
@@ -474,7 +474,7 @@ in Camden, NJ</h2>
 
       <!-- Madico -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-madico.jpg" alt="Executive office interior with Madico optically clear safety window film" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-madico.jpg" alt="Executive office interior with Madico optically clear safety window film" title="Executive office interior with Madico optically clear safety window film" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Madico</p>
           <p class="cam-brands__card-desc"><em>Military-heritage safety films trusted by government and healthcare facilities - including Cooper University Health Care.</em></p>
@@ -484,7 +484,7 @@ in Camden, NJ</h2>
 
       <!-- Solyx -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-solyx.jpg" alt="Elegant decorative frosted glass film in a Camden NJ professional office lobby" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-solyx.jpg" alt="Elegant decorative frosted glass film in a Camden NJ professional office lobby" title="Elegant decorative frosted glass film in a Camden NJ professional office lobby" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Solyx</p>
           <p class="cam-brands__card-desc"><em>The leading decorative film brand - custom frosted, patterned, and printed films for Camden's offices, healthcare spaces, and storefronts.</em></p>
@@ -494,7 +494,7 @@ in Camden, NJ</h2>
 
       <!-- Huper Optik -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-huper-optik.jpg" alt="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-huper-optik.jpg" alt="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" title="Crystal-clear Huper Optik ceramic window film in a luxury high-rise interior" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Hüper Optik</p>
           <p class="cam-brands__card-desc"><em>German-engineered ceramic nanotechnology - maximum heat rejection with zero metallic interference for Wi-Fi and cellular signals.</em></p>
@@ -504,7 +504,7 @@ in Camden, NJ</h2>
 
       <!-- Casper -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-casper.jpg" alt="Casper cloaking film on conference room glass - LED screens invisible from outside" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-casper.jpg" alt="Casper cloaking film on conference room glass - LED screens invisible from outside" title="Casper cloaking film on conference room glass - LED screens invisible from outside" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Casper Cloaking</p>
           <p class="cam-brands__card-desc"><em>The only film that makes LED and LCD screens appear frosted from outside - essential privacy for Camden boardrooms and trading floors.</em></p>
@@ -514,7 +514,7 @@ in Camden, NJ</h2>
 
       <!-- C-Bond -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-cbond.jpg" alt="C-Bond security film reinforcing a commercial storefront glass entrance in South Jersey" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-cbond.jpg" alt="C-Bond security film reinforcing a commercial storefront glass entrance in South Jersey" title="C-Bond security film reinforcing a commercial storefront glass entrance in South Jersey" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">C-Bond</p>
           <p class="cam-brands__card-desc"><em>Nano-technology film that chemically bonds to glass, increasing impact resistance beyond standard safety film - the strongest hold available.</em></p>
@@ -524,7 +524,7 @@ in Camden, NJ</h2>
 
       <!-- HDClear -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-hdclear.jpg" alt="HDClear high-definition optically clear glass walls in a modern Camden office" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-hdclear.jpg" alt="HDClear high-definition optically clear glass walls in a modern Camden office" title="HDClear high-definition optically clear glass walls in a modern Camden office" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">HDClear</p>
           <p class="cam-brands__card-desc"><em>High-definition clarity film - optically pure solar control without the haze or reflection common in standard films. For premium commercial installs.</em></p>
@@ -534,7 +534,7 @@ in Camden, NJ</h2>
 
       <!-- Hanita Coatings -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-hanita.jpg" alt="Hanita Coatings architectural window film on a modern South Jersey commercial building" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-hanita.jpg" alt="Hanita Coatings architectural window film on a modern South Jersey commercial building" title="Hanita Coatings architectural window film on a modern South Jersey commercial building" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Hanita Coatings</p>
           <p class="cam-brands__card-desc"><em>Israeli-engineered architectural films with industry-leading safety certifications - trusted on government and institutional projects worldwide.</em></p>
@@ -544,7 +544,7 @@ in Camden, NJ</h2>
 
       <!-- Graffiti Shield -->
       <div class="cam-brands__card">
-        <img src="/images/window-film-camden-brand-graffiti-shield.jpg" alt="Clean unmarked storefront glass in South Jersey protected by Graffiti Shield sacrificial film" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
+        <img src="/images/window-film-camden-brand-graffiti-shield.jpg" alt="Clean unmarked storefront glass in South Jersey protected by Graffiti Shield sacrificial film" title="Clean unmarked storefront glass in South Jersey protected by Graffiti Shield sacrificial film" class="cam-brands__card-photo" width="420" height="400" loading="lazy" />
         <div class="cam-brands__card-body">
           <p class="cam-brands__card-name">Graffiti Shield</p>
           <p class="cam-brands__card-desc"><em>The industry standard in sacrificial anti-graffiti film - replaces damaged film, not glass. Critical for Camden's Ferry Ave and Broadway corridors.</em></p>
@@ -645,9 +645,35 @@ in Camden, NJ</h2>
 
 <div class="ip-page-body">
 
-<!-- GEO / Speakable paragraph — visually hidden, crawlable -->
+<!-- GEO / Speakable content — visually hidden, crawlable -->
 <div class="cam-geo" aria-hidden="true">
-  Window film in Camden, NJ is professionally installed by Window Film Philadelphia, a certified contractor serving Camden County and South Jersey since 2008. Window film for Camden homes and businesses blocks up to 99% of UV-A and UV-B radiation and up to 85% of solar heat gain — the U.S. Department of Energy reports that windows account for 25–30% of a building's total heating and cooling energy loss. Available window film solutions in Camden include solar control, privacy, security, anti-graffiti, and decorative film; all installations include a lifetime manufacturer warranty and free on-site consultation.
+  <p>Window film in Camden, NJ is professionally installed by Window Film Philadelphia, a certified contractor serving Camden County and South Jersey since 2008. Window film for Camden homes and businesses blocks up to 99% of UV-A and UV-B radiation and up to 85% of solar heat gain — the U.S. Department of Energy reports that windows account for 25–30% of a building's total heating and cooling energy loss. Available window film solutions in Camden include solar control, privacy, security, anti-graffiti, and decorative film; all installations include a lifetime manufacturer warranty and free on-site consultation.</p>
+  <dl>
+    <dt>What is window film installation in Camden, NJ?</dt>
+    <dd>Window film installation in Camden is the professional application of thin polyester or ceramic film to interior glass surfaces — solar control, security, privacy, anti-graffiti, and decorative film applied by certified technicians from Window Film Philadelphia.</dd>
+    <dt>How much does window film cost in Camden, NJ?</dt>
+    <dd>Window film cost in Camden depends on film type, glass area, and site accessibility. Solar control film runs $5–$9 per sq ft; privacy and decorative film $6–$10 per sq ft; security film $7–$12 per sq ft; anti-graffiti film $4–$6 per sq ft. Free written estimates are provided for all Camden properties.</dd>
+    <dt>Which Camden neighborhoods does Window Film Philadelphia serve?</dt>
+    <dd>Window Film Philadelphia serves all Camden neighborhoods including Cramer Hill, the waterfront commercial corridor, Cooper University Hospital area, Cherry Hill, Haddonfield, Collingswood, Pennsauken, Merchantville, Maple Shade, and Voorhees.</dd>
+    <dt>What is the best window film for Camden homes and businesses?</dt>
+    <dd>The best window film for Camden properties depends on goals: solar control film for heat reduction, security film for smash-and-grab protection, UV film for fading prevention, privacy film for street-facing glass, and anti-graffiti film for storefronts along Broadway and Federal Street.</dd>
+    <dt>Does window film block UV rays in Camden properties?</dt>
+    <dd>Yes. Architectural window film blocks 99% or more of UV-A and UV-B radiation, protecting hardwood floors, furniture, artwork, and retail merchandise from fading — critical for Camden's urban properties with large south- and west-facing glass.</dd>
+  </dl>
+  <ul>
+    <li>window film Camden NJ</li>
+    <li>window film installation Camden New Jersey</li>
+    <li>solar control window film Camden</li>
+    <li>security window film Camden NJ</li>
+    <li>privacy window film Camden</li>
+    <li>anti-graffiti window film Camden</li>
+    <li>UV protection window film Camden</li>
+    <li>decorative window film Camden NJ</li>
+    <li>window film contractor Camden South Jersey</li>
+    <li>commercial window film Camden</li>
+    <li>residential window film Camden NJ</li>
+    <li>window tinting Camden NJ</li>
+  </ul>
 </div>
 
 <!-- ══════════════════════════════════════
