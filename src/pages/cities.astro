@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSubpage from '../components/HeroSubpage.astro';
 import BrandLogos from '../components/BrandLogos.astro';
 import CTAAvatars from '../components/CTAAvatars.astro';
+import CoveragePinMap from '../components/CoveragePinMap.astro';
 
 const title = 'Window Film Service Areas | Philadelphia Metro | PA & NJ';
 const description = 'Window Film Philadelphia serves Philadelphia, Reading, Upper Darby Township, Camden, and the surrounding metro area. Leading residential and commercial window film across PA and NJ.';
@@ -114,31 +115,12 @@ const alsoServing = [
 </section>
 
 <!-- ══════════════════════════════════════
-     ALSO SERVING — pill links
+     COVERAGE MAP — interactive pin map
      ══════════════════════════════════════ -->
-<section class="cp-also">
-  <div class="cp-also__inner">
-    <div class="cp-also__left">
-      <span class="cp-eyebrow">Broader Service Area</span>
-      <h2 class="cp-also__title">Don't see your city?</h2>
-      <p class="cp-also__body">We travel throughout the Philadelphia metropolitan area and regularly serve communities across South Jersey, Delaware County, and Chester County. Contact us to discuss your project — we'd be happy to come to you.</p>
-      <a href="/contact/" class="cp-btn cp-btn--primary">Contact Us</a>
-    </div>
-    <div class="cp-also__right">
-      <p class="cp-also__also-label">Also serving:</p>
-      <ul class="cp-also__pills">
-        {alsoServing.map((s) => (
-          <li>
-            <a href={s.href} class="cp-also__pill">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-              {s.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-</section>
+<CoveragePinMap
+  title="Don't see your city?"
+  subtitle="We travel throughout the Philadelphia metropolitan area and regularly serve communities across South Jersey, Delaware County, and Chester County. Contact us to discuss your project."
+/>
 
 <!-- ══════════════════════════════════════
      BRAND LOGOS
