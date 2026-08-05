@@ -7,9 +7,10 @@ import HowItWorksSlideshow from '../../components/HowItWorksSlideshow.astro';
 import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
 import AccordionBenefits from '../../components/AccordionBenefits.astro';
 import AccordionFAQ from '../../components/AccordionFAQ.astro';
-import TestimonialSpotlight from '../../components/TestimonialSpotlight.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import CoveragePinMap from '../../components/CoveragePinMap.astro';
 import CTAAvatars from '../../components/CTAAvatars.astro';
-import { Icon } from 'astro-icon/components';
 
 const title = 'Residential Window Film Philadelphia | Home Window Tinting';
 const description = 'Professional residential window film installation in Philadelphia. Energy savings, UV protection, privacy, security, and decorative film for homes, condos, and apartments. Free consultation.';
@@ -54,26 +55,6 @@ const bentoItems = [
   { span: 'md', title: 'Modern Kitchens', desc: 'Solar control without darkening.', img: '/images/residential/kitchen-interior.jpg', href: '/contact/' },
 ];
 
-const whyItems = [
-  { icon: 'lucide:award', title: '15+ Years Experience', sub: 'Serving Philadelphia homeowners since 2008' },
-  { icon: 'lucide:badge-check', title: 'Factory-Certified Installers', sub: '3M, LLumar, Vista, Solar Gard, and more' },
-  { icon: 'lucide:file-check', title: 'Manufacturer Warranty', sub: 'Coverage on most residential films' },
-  { icon: 'lucide:calendar', title: 'Free In-Home Consultation', sub: 'On-site assessment, no obligation' },
-  { icon: 'lucide:star', title: '4.9 Google Rating', sub: 'Trusted by thousands of Philadelphia homeowners' },
-  { icon: 'lucide:map-pin', title: 'Philadelphia-Based', sub: 'Local crews serving the Delaware Valley' },
-  { icon: 'lucide:layers', title: 'Premium Film Brands', sub: '3M, LLumar, Vista, Solar Gard, Madico' },
-  { icon: 'lucide:umbrella', title: 'Fully Insured', sub: 'Licensed & insured in PA and NJ' },
-];
-
-const neighborhoods = [
-  { name: 'Center City', housing: 'High-rise condos & apartments', note: 'Floor-to-ceiling glass with intense solar exposure. Glare reduction and solar control film keep units comfortable.', href: '/cities/philadelphia/' },
-  { name: 'South Philadelphia', housing: 'Rowhomes & twins', note: 'Bay windows face south and west, trapping heat in summer. Solar control film cuts cooling costs and protects interiors.', href: '/cities/philadelphia/' },
-  { name: 'Main Line', housing: 'Estates & historic homes', note: 'Older single-pane windows benefit from clear UV film and low-E coatings that preserve historic character.', href: '/contact/' },
-  { name: 'Fishtown & Northern Liberties', housing: 'New construction & renovations', note: 'Large modern windows with high solar heat gain. Spectrally selective film rejects heat without darkening interiors.', href: '/cities/philadelphia/' },
-  { name: 'Camden, NJ', housing: 'Rowhomes & waterfront condos', note: 'West-facing Delaware River views mean intense afternoon glare. Solar and glare reduction film solve both.', href: '/cities/camden/' },
-  { name: 'Reading, PA', housing: 'Historic homes & farms', note: 'Single-pane glass and large farmhouse windows benefit from UV protection and insulation film.', href: '/cities/reading/' },
-];
-
 const housingTypes = [
   { name: 'Rowhomes & Twins', desc: 'Philadelphia\'s signature housing stock. Bay windows and south-facing facades trap heat in summer. Solar control and UV protection film keep interiors cool without sacrificing light.', img: '/images/residential/housing-rowhomes.jpg', alt: 'South Philadelphia rowhome with window film installed' },
   { name: 'Condos & Apartments', desc: 'High-rise units with floor-to-ceiling glass face intense solar exposure and glare. Spectrally selective film rejects heat while maintaining views and natural light.', img: '/images/residential/housing-condos.jpg', alt: 'Center City condo with residential window film installed' },
@@ -81,10 +62,10 @@ const housingTypes = [
 ];
 
 const testimonials = [
-  { quote: 'Our electric bill dropped nearly $400 in the first summer after the film was installed. The west side of the house is actually comfortable now — before, it was unbearable by 3pm.', name: 'Jennifer K.', detail: 'Society Hill rowhome' },
-  { quote: 'I was skeptical because we tried blinds before and they didn\'t help. But window film actually solved the glare and heat. The HVAC runs half as much and the rooms are still bright.', name: 'Marcus T.', detail: 'Fishtown renovation' },
-  { quote: 'We have a 1920s home with original glass. The clear UV film protects our hardwood floors and artwork without changing the look of the windows at all. You can\'t tell it\'s there.', name: 'Sarah & David L.', detail: 'Chestnut Hill historic home' },
-  { quote: 'The crew was professional, on time, and cleaned up everything. They walked us through every window before they left. The privacy film on our street-facing windows is perfect.', name: 'Rachel M.', detail: 'South Philly twin' },
+  { quote: 'Our electric bill dropped nearly $400 in the first summer after the film was installed. The west side of the house is actually comfortable now — before, it was unbearable by 3pm.', name: 'Jennifer K.', role: 'Society Hill rowhome', img: '/images/residential/avatar-jennifer.jpg' },
+  { quote: 'I was skeptical because we tried blinds before and they didn\'t help. But window film actually solved the glare and heat. The HVAC runs half as much and the rooms are still bright.', name: 'Marcus T.', role: 'Fishtown renovation', img: '/images/residential/avatar-marcus.jpg' },
+  { quote: 'We have a 1920s home with original glass. The clear UV film protects our hardwood floors and artwork without changing the look of the windows at all. You can\'t tell it\'s there.', name: 'Sarah & David L.', role: 'Chestnut Hill historic home', img: '/images/residential/avatar-sarah.jpg' },
+  { quote: 'The crew was professional, on time, and cleaned up everything. They walked us through every window before they left. The privacy film on our street-facing windows is perfect.', name: 'Rachel M.', role: 'South Philly twin', img: '/images/residential/avatar-rachel.jpg' },
 ];
 
 const processSlides = [
@@ -283,45 +264,49 @@ const howToSteps = [
   items={bentoItems}
 />
 
-<!-- ═══ WHY CHOOSE US — icon grid ═══ -->
-<section class="rsh-why">
-  <div class="rsh-container">
-    <div class="rsh-why__hd">
-      <span class="rsh-eyebrow">Why Window Film Philadelphia</span>
-      <h2 class="rsh-why__title">Your home deserves a contractor who gets it right</h2>
-    </div>
-    <div class="rsh-why__grid">
-      {whyItems.map((item) => (
-        <div class="rsh-why__item">
-          <div class="rsh-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-          <div class="rsh-why__divider"></div>
-          <h4 class="rsh-why__item-title">{item.title}</h4>
-          <p class="rsh-why__item-sub">{item.sub}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+<!-- ═══ WHY CHOOSE US — BackAndForthSection (image/text rows) ═══ -->
+<BackAndForthSection
+  heading="15+ years serving Philadelphia homeowners"
+  body="Since 2008, we've installed window film in thousands of Philadelphia homes — from South Philly rowhomes to Main Line estates. We've seen every glass type, every orientation, every problem. That experience means we recommend the right film the first time.\nEvery installation is backed by the manufacturer's warranty and our own labor guarantee. We're factory-certified installers for 3M, LLumar, Vista, Solar Gard, Madico, and more."
+  imageSrc="/images/residential/home-exterior.jpg"
+  imageAlt="Philadelphia home exterior with residential window film installed"
+  ctaLabel="Get a Free Quote"
+  ctaHref="/contact/"
+/>
 
-<!-- ═══ SERVICE AREA — neighborhoods grid (charcoal, not brown) ═══ -->
-<section class="rsh-areas">
-  <div class="rsh-container">
-    <div class="rsh-areas__hd">
-      <span class="rsh-eyebrow rsh-eyebrow--light">Where We Work</span>
-      <h2 class="rsh-areas__title">Residential window film across Philadelphia</h2>
-      <p class="rsh-areas__sub">We serve homeowners throughout the Delaware Valley. Each area has its own housing stock and solar exposure — here's what we see most often.</p>
-    </div>
-    <div class="rsh-areas__grid">
-      {neighborhoods.map((n) => (
-        <a href={n.href} class="rsh-areas__card">
-          <h3 class="rsh-areas__name">{n.name}</h3>
-          <span class="rsh-areas__housing">{n.housing}</span>
-          <p class="rsh-areas__note">{n.note}</p>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
+<BackAndForthSection
+  heading="Factory-certified, fully insured installation"
+  body="Our crews are factory-certified by every major window film manufacturer. That matters because film performance depends on correct installation — the wrong prep or application method can void the warranty and underperform.\nWe're licensed and insured in both Pennsylvania and New Jersey. Every crew member is trained on C-Bond primer, precision plotter cutting, and the specific installation standards each manufacturer requires."
+  imageSrc="/images/residential/bento-install.jpg"
+  imageAlt="Professional installer applying window film with precision tools"
+  flip={true}
+  altBg={true}
+/>
+
+<BackAndForthSection
+  heading="Free in-home consultation, no pressure"
+  body="We come to your home, assess every pane, discuss your goals, and give you a detailed quote — at no cost and no obligation. No pushy sales tactics. No upselling.\nYou'll know exactly what film goes on what glass, why we selected it, and what you can realistically expect it to do. Then you decide."
+  imageSrc="/images/residential/gallery-1-measure.jpg"
+  imageAlt="Window film consultant measuring windows in a Philadelphia home"
+  ctaLabel="Book a Free Consultation"
+  ctaHref="/contact/"
+/>
+
+<!-- ═══ SERVICE AREA — CoveragePinMap (interactive map) ═══ -->
+<CoveragePinMap
+  title="Residential window film across Philadelphia"
+  subtitle="We serve homeowners throughout the Delaware Valley. Hover any pin to see install counts."
+  cities={[
+    { name: 'Philadelphia', stat: '900+ installs', left: '50%', top: '46%' },
+    { name: 'Upper Darby', stat: '300+ installs', left: '41%', top: '44%' },
+    { name: 'Camden', stat: '250+ installs', left: '56%', top: '50%' },
+    { name: 'Reading', stat: '150+ installs', left: '24%', top: '28%' },
+    { name: 'Cherry Hill', stat: '180+ installs', left: '62%', top: '56%' },
+    { name: 'Norristown', stat: '200+ installs', left: '39%', top: '38%' },
+    { name: 'Wilmington', stat: '140+ installs', left: '36%', top: '72%' },
+    { name: 'Voorhees', stat: '110+ installs', left: '68%', top: '58%' },
+  ]}
+/>
 
 <!-- ═══ INSTALLATION — HowItWorksSlideshow ═══ -->
 <HowItWorksSlideshow
@@ -331,13 +316,8 @@ const howToSteps = [
   slides={processSlides}
 />
 
-<!-- ═══ TESTIMONIALS ═══ -->
-<TestimonialSpotlight
-  eyebrow="Homeowner Reviews"
-  title="What Philadelphia homeowners say"
-  subtitle="Real reviews from real installations across the Delaware Valley."
-  items={testimonials}
-/>
+<!-- ═══ TESTIMONIALS — TestimonialMarquee (scrolling cards with avatars) ═══ -->
+<TestimonialMarquee reviews={testimonials} />
 
 <!-- ═══ FAQ ═══ -->
 <AccordionFAQ
@@ -673,145 +653,15 @@ const howToSteps = [
   margin: 0;
 }
 
-/* ── WHY CHOOSE US ══ */
-.rsh-why { padding: 80px 0; }
-.rsh-why__hd {
-  max-width: 680px;
-  margin: 0 auto 48px;
-  text-align: center;
-}
-.rsh-why__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--rsh-text-dark);
-  margin: 0;
-}
-.rsh-why__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.rsh-why__item {
-  text-align: center;
-  padding: 32px 20px;
-}
-.rsh-why__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--rsh-radius);
-  background: var(--rsh-green-light);
-  color: var(--rsh-green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-}
-.rsh-why__divider {
-  width: 40px;
-  height: 2px;
-  background: var(--rsh-green);
-  margin: 0 auto 20px;
-  opacity: 0.4;
-}
-.rsh-why__item-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--rsh-text-dark);
-  margin: 0 0 8px;
-}
-.rsh-why__item-sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8125rem;
-  color: var(--rsh-text-mid);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ── SERVICE AREA — charcoal, not brown ══ */
-.rsh-areas {
-  background: var(--rsh-charcoal);
-  padding: 80px 0;
-}
-.rsh-areas__hd {
-  max-width: 680px;
-  margin: 0 auto 48px;
-  text-align: center;
-}
-.rsh-areas__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.15;
-  color: #F3F6F1;
-  margin: 0 0 16px;
-}
-.rsh-areas__sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  color: rgba(243, 246, 241, 0.55);
-  line-height: 1.7;
-  margin: 0;
-}
-.rsh-areas__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.rsh-areas__card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rsh-radius);
-  padding: 28px;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-  display: block;
-}
-.rsh-areas__card:hover {
-  border-color: rgba(129, 171, 76, 0.5);
-  transform: translateY(-4px);
-}
-.rsh-areas__name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #F3F6F1;
-  margin: 0 0 8px;
-}
-.rsh-areas__housing {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--rsh-green);
-  margin-bottom: 14px;
-}
-.rsh-areas__note {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.875rem;
-  color: rgba(243, 246, 241, 0.6);
-  line-height: 1.6;
-  margin: 0;
-}
-
 /* ── RESPONSIVE ══ */
 @media (max-width: 992px) {
   .rsh-intro__container { grid-template-columns: 1fr; gap: 32px; }
-  .rsh-why__grid { grid-template-columns: repeat(2, 1fr); }
-  .rsh-areas__grid { grid-template-columns: repeat(2, 1fr); }
   .rsh-hero__stats-panel { max-width: 100%; }
 }
 @media (max-width: 720px) {
   .rsh-housing__row { grid-template-columns: 1fr; gap: 2rem; }
   .rsh-housing__row--rev { direction: ltr; }
   .rsh-housing__img { order: -1; }
-  .rsh-why__grid { grid-template-columns: 1fr; }
-  .rsh-areas__grid { grid-template-columns: 1fr; }
   .rsh-hero__stats-inner { flex-wrap: wrap; }
   .rsh-hero__stat-divider { display: none; }
 }
