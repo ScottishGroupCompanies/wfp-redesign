@@ -1,19 +1,14 @@
 ---
 /**
- * CoveragePinMap — stylized SVG map with location pins.
- * Hover or focus a pin for a green tooltip with city name and stat.
+ * CoveragePinMap — stylized SVG map with location pins + HTML tooltips.
+ * JS-driven hover to avoid CSS transform/SVG attribute conflicts.
  * Adapted from windowfilm-ui2.vercel.app component library.
- *
- * Props:
- *   title    — heading text (default: "Cities we serve")
- *   subtitle — supporting paragraph
- *   cities   — array of { name, stat, x, y } where x/y are 0–800 / 0–450 SVG units
  */
 interface City {
   name: string;
   stat: string;
-  x: number;
-  y: number;
+  x: number;  // 0–800 SVG units
+  y: number;  // 0–450 SVG units
 }
 interface Props {
   title?: string;
@@ -24,16 +19,16 @@ const {
   title = "Cities we serve",
   subtitle = "Certified installers across the Greater Philadelphia region.",
   cities = [
-    { name: "Philadelphia, PA", stat: "Primary service area", x: 340, y: 215 },
-    { name: "Upper Darby, PA", stat: "Delaware County", x: 305, y: 200 },
-    { name: "Camden, NJ", stat: "South Jersey hub", x: 365, y: 230 },
-    { name: "Reading, PA", stat: "Berks County", x: 200, y: 160 },
-    { name: "Cherry Hill, NJ", stat: "Camden County", x: 400, y: 250 },
-    { name: "Norristown, PA", stat: "Montgomery County", x: 280, y: 190 },
-    { name: "Wilmington, DE", stat: "New Castle County", x: 260, y: 320 },
-    { name: "Chester, PA", stat: "Delaware County", x: 300, y: 270 },
-    { name: "Voorhees, NJ", stat: "Camden County", x: 430, y: 260 },
-    { name: "Haddonfield, NJ", stat: "Camden County", x: 390, y: 245 },
+    { name: "Philadelphia, PA",   stat: "Primary service area",  x: 340, y: 215 },
+    { name: "Upper Darby, PA",    stat: "Delaware County",        x: 305, y: 200 },
+    { name: "Camden, NJ",         stat: "South Jersey hub",       x: 365, y: 230 },
+    { name: "Reading, PA",        stat: "Berks County",           x: 200, y: 160 },
+    { name: "Cherry Hill, NJ",    stat: "Camden County",          x: 400, y: 252 },
+    { name: "Norristown, PA",     stat: "Montgomery County",      x: 280, y: 185 },
+    { name: "Wilmington, DE",     stat: "New Castle County",      x: 260, y: 320 },
+    { name: "Chester, PA",        stat: "Delaware County",        x: 303, y: 273 },
+    { name: "Voorhees, NJ",       stat: "Camden County",          x: 430, y: 262 },
+    { name: "Haddonfield, NJ",    stat: "Camden County",          x: 390, y: 248 },
   ],
 } = Astro.props;
 ---
@@ -45,42 +40,59 @@ const {
       <h2 class="cpm__title">{title}</h2>
       <p class="cpm__subtitle">{subtitle}</p>
     </div>
-    <div class="cpm__map-wrap">
-      <svg class="cpm__svg" viewBox="0 0 800 450" role="img" aria-label="Map of the Greater Philadelphia service region">
+
+    <div class="cpm__wrap">
+      <!-- HTML tooltips — absolutely positioned, driven by JS -->
+      {cities.map((city, i) => (
+        <div class="cpm__tip" id={`cpm-tip-${i}`} role="tooltip">
+          <strong>{city.name}</strong>
+          <span>{city.stat}</span>
+        </div>
+      ))}
+
+      <svg class="cpm__svg" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg"
+           aria-label="Map of the Greater Philadelphia service region">
         <defs>
-          <linearGradient id="cpm-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#eef4e4" />
-            <stop offset="100%" stop-color="#e8ede0" />
+          <linearGradient id="cpm-land" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#eef4e4" />
+            <stop offset="100%" stop-color="#e2ecda" />
           </linearGradient>
-          <filter id="cpm-pin-shadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#272E32" flood-opacity="0.3" />
+          <filter id="cpm-shadow" x="-100%" y="-100%" width="300%" height="300%">
+            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#27421a" flood-opacity="0.25" />
           </filter>
+          <pattern id="cpm-dots" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="9" cy="9" r="0.9" fill="#bfcfaf" />
+          </pattern>
         </defs>
 
-        <!-- Landmass -->
-        <path d="M 50,80 Q 120,60 200,70 L 350,50 Q 500,55 650,70 L 750,100 Q 780,150 770,220 L 760,300 Q 740,360 700,390 L 550,400 Q 400,410 250,400 L 100,380 Q 60,340 50,280 L 45,200 Q 48,140 50,80 Z"
-          fill="url(#cpm-bg-grad)" stroke="#d4dcc8" stroke-width="1.5" />
-
-        <!-- Rivers -->
-        <path d="M 320,80 Q 340,160 350,240 L 360,340" fill="none" stroke="#c4d4ec" stroke-width="2.5" opacity="0.6" />
-        <path d="M 370,60 Q 375,150 365,250 Q 360,320 380,390" fill="none" stroke="#c4d4ec" stroke-width="2.5" opacity="0.6" />
-
-        <!-- Dotted texture -->
-        <pattern id="cpm-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-          <circle cx="10" cy="10" r="0.8" fill="#cdd5c0" />
-        </pattern>
-        <path d="M 50,80 Q 120,60 200,70 L 350,50 Q 500,55 650,70 L 750,100 Q 780,150 770,220 L 760,300 Q 740,360 700,390 L 550,400 Q 400,410 250,400 L 100,380 Q 60,340 50,280 L 45,200 Q 48,140 50,80 Z"
+        <!-- Landmass fill -->
+        <path d="M60,90 Q130,55 210,68 L360,48 Q510,52 660,68 L755,95 Q782,148 774,222 L765,305 Q742,362 698,392 L548,405 Q398,415 248,406 L98,386 Q56,344 50,282 L44,202 Q50,144 60,90 Z"
+          fill="url(#cpm-land)" stroke="#cddcbb" stroke-width="1.5" />
+        <!-- Dot texture overlay -->
+        <path d="M60,90 Q130,55 210,68 L360,48 Q510,52 660,68 L755,95 Q782,148 774,222 L765,305 Q742,362 698,392 L548,405 Q398,415 248,406 L98,386 Q56,344 50,282 L44,202 Q50,144 60,90 Z"
           fill="url(#cpm-dots)" />
 
-        <!-- City pins -->
-        {cities.map((city) => (
-          <g class="cpm__pin" transform={`translate(${city.x}, ${city.y})`} tabindex="0" role="button" aria-label={city.name}>
-            <rect class="cpm__tooltip-bg" x="-70" y="-44" width="140" height="36" rx="8" fill="#81AB4C" opacity="0" />
-            <text class="cpm__tooltip-name" x="0" y="-28" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="13" font-weight="700" opacity="0">{city.name}</text>
-            <text class="cpm__tooltip-stat" x="0" y="-14" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans, sans-serif" font-size="10" font-weight="500" opacity="0">{city.stat}</text>
-            <circle class="cpm__pin-pulse" cx="0" cy="0" r="14" fill="#81AB4C" opacity="0.2" />
-            <circle class="cpm__pin-dot" cx="0" cy="0" r="7" fill="#81AB4C" filter="url(#cpm-pin-shadow)" />
-            <circle class="cpm__pin-inner" cx="0" cy="0" r="3" fill="#fff" />
+        <!-- Schuylkill River -->
+        <path d="M310,72 Q328,140 336,210 Q342,260 350,340"
+          fill="none" stroke="#a8c4e0" stroke-width="2" opacity="0.7" stroke-linecap="round" />
+        <!-- Delaware River -->
+        <path d="M372,58 Q376,150 366,252 Q360,318 382,395"
+          fill="none" stroke="#a8c4e0" stroke-width="2.5" opacity="0.7" stroke-linecap="round" />
+
+        <!-- City pins — JS handles hover, no CSS transform conflict -->
+        {cities.map((city, i) => (
+          <g class="cpm__pin"
+             data-index={i}
+             transform={`translate(${city.x},${city.y})`}
+             tabindex="0"
+             role="button"
+             aria-label={`${city.name} — ${city.stat}`}
+             aria-describedby={`cpm-tip-${i}`}>
+            <!-- Pulse ring (CSS animation only, no transform conflict) -->
+            <circle class="cpm__pulse" cx="0" cy="0" r="16" fill="#81AB4C" opacity="0.18" />
+            <!-- Pin dot -->
+            <circle class="cpm__dot" cx="0" cy="0" r="8" fill="#81AB4C" filter="url(#cpm-shadow)" />
+            <circle cx="0" cy="0" r="3.5" fill="#ffffff" />
           </g>
         ))}
       </svg>
@@ -88,7 +100,7 @@ const {
   </div>
 </section>
 
-<style is:global>
+<style>
 .cpm {
   background: #F7F6F3;
   padding: 80px 5%;
@@ -122,69 +134,176 @@ const {
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   color: #4a4a4a;
-  max-width: 500px;
+  max-width: 520px;
   margin: 0 auto;
   line-height: 1.65;
 }
-.cpm__map-wrap {
+
+/* Map wrapper — relative so HTML tooltips can position against it */
+.cpm__wrap {
+  position: relative;
   background: #fff;
   border-radius: 24px;
-  overflow: hidden;
   border: 1px solid #EFEFED;
-  box-shadow: 0 4px 24px rgba(39, 46, 50, 0.06);
+  box-shadow: 0 4px 24px rgba(39, 46, 50, 0.07);
+  overflow: visible; /* allow tooltips to overflow */
 }
+
 .cpm__svg {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 24px;
+  overflow: visible;
 }
 
-/* Pin */
+/* Pin cursor */
 .cpm__pin {
   cursor: pointer;
-  transition: transform 0.25s ease;
 }
-.cpm__pin:hover,
 .cpm__pin:focus {
-  transform: scale(1.2);
   outline: none;
 }
-
-/* Tooltip */
-.cpm__tooltip-bg,
-.cpm__tooltip-name,
-.cpm__tooltip-stat {
-  transition: opacity 0.2s ease;
-}
-.cpm__pin:hover .cpm__tooltip-bg,
-.cpm__pin:hover .cpm__tooltip-name,
-.cpm__pin:hover .cpm__tooltip-stat,
-.cpm__pin:focus .cpm__tooltip-bg,
-.cpm__pin:focus .cpm__tooltip-name,
-.cpm__pin:focus .cpm__tooltip-stat {
-  opacity: 1;
-}
-.cpm__pin:hover .cpm__pin-dot {
-  fill: #6e9640;
+.cpm__pin:focus .cpm__dot {
+  stroke: #fff;
+  stroke-width: 2;
 }
 
-/* Pulse ring */
-.cpm__pin-pulse {
+/* Pulse animation — only animates opacity/scale, never position */
+.cpm__pulse {
   transform-box: fill-box;
   transform-origin: center;
   animation: cpm-pulse 2.5s ease-in-out infinite;
 }
 @keyframes cpm-pulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.35; }
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.30; transform: scale(1.4); }
+}
+
+/* Hover state — driven by JS adding .is-active class, no CSS :hover transform */
+.cpm__pin.is-active .cpm__dot {
+  fill: #5a8432;
+}
+.cpm__pin.is-active .cpm__pulse {
+  opacity: 0.35;
+}
+
+/* HTML tooltips */
+.cpm__tip {
+  position: absolute;
+  background: #81AB4C;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 20;
+  /* Positioned by JS */
+  top: 0;
+  left: 0;
+}
+.cpm__tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #81AB4C;
+}
+.cpm__tip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cpm__tip strong {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.3;
+}
+.cpm__tip span {
+  display: block;
+  font-size: 11px;
+  opacity: 0.85;
+  margin-top: 1px;
 }
 
 @media (max-width: 768px) {
-  .cpm {
-    padding: 48px 5%;
-  }
-  .cpm__map-wrap {
-    border-radius: 16px;
-  }
+  .cpm { padding: 48px 5%; }
+  .cpm__wrap { border-radius: 16px; }
+  .cpm__svg { border-radius: 16px; }
 }
 </style>
+
+<script>
+(function () {
+  const wrap = document.querySelector('.cpm__wrap');
+  if (!wrap) return;
+
+  const svg = wrap.querySelector('.cpm__svg');
+  const pins = wrap.querySelectorAll('.cpm__pin');
+
+  function showTip(pin) {
+    const idx = pin.dataset.index;
+    const tip = document.getElementById('cpm-tip-' + idx);
+    if (!tip) return;
+
+    // Get pin position in SVG coordinates, then map to wrapper-relative pixels
+    const svgRect = svg.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    const vb = svg.viewBox.baseVal; // 0 0 800 450
+
+    // Parse translate from the pin's transform attribute
+    const transform = pin.getAttribute('transform'); // "translate(x,y)"
+    const match = transform.match(/translate\(([^,]+),([^)]+)\)/);
+    if (!match) return;
+
+    const svgX = parseFloat(match[1]);
+    const svgY = parseFloat(match[2]);
+
+    // Scale from SVG units to screen pixels
+    const scaleX = svgRect.width  / vb.width;
+    const scaleY = svgRect.height / vb.height;
+
+    const pinScreenX = svgRect.left + svgX * scaleX;
+    const pinScreenY = svgRect.top  + svgY * scaleY;
+
+    // Position tooltip relative to wrapper
+    const tipLeft = pinScreenX - wrapRect.left;
+    const tipTop  = pinScreenY - wrapRect.top;
+
+    // Temporarily show to measure width
+    tip.style.visibility = 'hidden';
+    tip.classList.add('is-visible');
+    const tipW = tip.offsetWidth;
+    const tipH = tip.offsetHeight;
+    tip.classList.remove('is-visible');
+    tip.style.visibility = '';
+
+    tip.style.left = (tipLeft - tipW / 2) + 'px';
+    tip.style.top  = (tipTop - tipH - 16) + 'px'; // 16px above pin
+
+    pin.classList.add('is-active');
+    tip.classList.add('is-visible');
+  }
+
+  function hideTip(pin) {
+    const idx = pin.dataset.index;
+    const tip = document.getElementById('cpm-tip-' + idx);
+    pin.classList.remove('is-active');
+    if (tip) tip.classList.remove('is-visible');
+  }
+
+  pins.forEach(pin => {
+    pin.addEventListener('mouseenter', () => showTip(pin));
+    pin.addEventListener('mouseleave', () => hideTip(pin));
+    pin.addEventListener('focus',      () => showTip(pin));
+    pin.addEventListener('blur',       () => hideTip(pin));
+  });
+})();
+</script>
