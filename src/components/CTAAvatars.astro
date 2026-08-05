@@ -1,0 +1,233 @@
+---
+/**
+ * CTAAvatars — CTA section with overlapping avatar stack, star rating,
+ * trust count, and gradient CTA button.
+ * Adapted from windowfilm-ui2.vercel.app component library.
+ *
+ * Props:
+ *   title    — heading text (default: "Ready to transform your glass?")
+ *   subtitle — supporting paragraph
+ *   count    — trust count text (default: "Trusted by 2,400+ homeowners & businesses")
+ *   btnLabel — CTA button text (default: "Get a Free Quote")
+ *   btnHref  — CTA button href (default: "/contact/")
+ *   avatars  — array of { name, location, img } for the avatar stack
+ */
+interface Avatar {
+  name: string;
+  location: string;
+  img: string;
+}
+interface Props {
+  title?: string;
+  subtitle?: string;
+  count?: string;
+  btnLabel?: string;
+  btnHref?: string;
+  avatars?: Avatar[];
+}
+const {
+  title = 'Ready to transform your glass?',
+  subtitle = 'Free consultation, transparent pricing, and manufacturer-backed warranties on every install.',
+  count = 'Trusted by 2,400+ homeowners & businesses',
+  btnLabel = 'Get a Free Quote',
+  btnHref = '/contact/',
+  avatars = [
+    { name: 'David R.', location: 'Center City', img: '/images/window-film-philadelphia-pa-testimonial-commercial-1.jpg' },
+    { name: 'Alex & Maria', location: 'Fishtown', img: '/images/window-film-philadelphia-pa-testimonial-residential.jpg' },
+    { name: 'James W.', location: 'South Philly', img: '/images/window-film-philadelphia-pa-testimonial-commercial-2.jpg' },
+    { name: 'Michael T.', location: 'Old City', img: '/images/window-film-reading-pa-testimonial-commercial-1.jpg' },
+    { name: 'Sarah M.', location: 'Manayunk', img: '/images/window-film-reading-pa-testimonial-residential.jpg' },
+    { name: 'Janet K.', location: 'Rittenhouse', img: '/images/window-film-reading-pa-testimonial-commercial-2.jpg' },
+  ],
+} = Astro.props;
+---
+
+<section class="cta-avatars">
+  <div class="cta-avatars__inner">
+    <div class="cta-avatars__left">
+      <h2 class="cta-avatars__title">{title}</h2>
+      <p class="cta-avatars__subtitle">{subtitle}</p>
+    </div>
+    <div class="cta-avatars__right">
+      <div class="cta-avatars__stack">
+        {avatars.map((a, i) => (
+          <div class="cta-avatars__avatar" style={`--i:${i}`} title={`${a.name} — ${a.location}`}>
+            <img src={a.img} alt={a.name} loading="lazy" width="48" height="48" />
+            <span class="cta-avatars__tooltip">{a.name}<br />{a.location}</span>
+          </div>
+        ))}
+      </div>
+      <div class="cta-avatars__meta">
+        <span class="cta-avatars__stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <span class="cta-avatars__count">{count}</span>
+      </div>
+      <a href={btnHref} class="cta-avatars__btn">
+        {btnLabel}
+        <span class="cta-avatars__btn-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.cta-avatars {
+  background: var(--brand, #272E32);
+  border-radius: 40px;
+  padding: 64px 60px;
+  margin: 0 5%;
+}
+.cta-avatars__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.cta-avatars__left {
+  flex: 1;
+  min-width: 280px;
+}
+.cta-avatars__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  max-width: 460px;
+}
+.cta-avatars__subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 420px;
+}
+.cta-avatars__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 280px;
+}
+.cta-avatars__stack {
+  display: flex;
+  position: relative;
+}
+.cta-avatars__avatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--brand, #272E32);
+  margin-left: -14px;
+  cursor: pointer;
+  transition: transform 0.25s ease, z-index 0s 0.25s;
+  opacity: 0;
+  transform: scale(0) translateY(8px);
+  animation: cta-avatar-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 80ms + 200ms);
+}
+.cta-avatars__avatar:first-child { margin-left: 0; }
+.cta-avatars__avatar:hover {
+  transform: translateY(-6px);
+  z-index: 10;
+}
+.cta-avatars__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cta-avatars__tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green, #81AB4C);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  text-align: center;
+}
+.cta-avatars__avatar:hover .cta-avatars__tooltip {
+  opacity: 1;
+}
+.cta-avatars__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.cta-avatars__stars {
+  color: #F5A623;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.cta-avatars__count {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+.cta-avatars__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--green, #81AB4C), #6e9640);
+  color: #fff;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cta-avatars__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(129, 171, 76, 0.4);
+}
+.cta-avatars__btn-arrow {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+.cta-avatars__btn:hover .cta-avatars__btn-arrow {
+  transform: translateX(4px);
+}
+
+@keyframes cta-avatar-pop {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-avatars {
+    padding: 40px 28px;
+  }
+  .cta-avatars__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cta-avatars__right {
+    align-items: center;
+  }
+  .cta-avatars__title {
+    max-width: 100%;
+  }
+}
+</style>

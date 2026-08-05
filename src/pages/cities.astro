@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InnerPageHero from '../components/InnerPageHero.astro';
+import HeroSubpage from '../components/HeroSubpage.astro';
 import BrandLogos from '../components/BrandLogos.astro';
+import CTAAvatars from '../components/CTAAvatars.astro';
 
 const title = 'Window Film Service Areas | Philadelphia Metro | PA & NJ';
 const description = 'Window Film Philadelphia serves Philadelphia, Reading, Upper Darby Township, Camden, and the surrounding metro area. Leading residential and commercial window film across PA and NJ.';
@@ -57,10 +58,13 @@ const alsoServing = [
 
 <BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/cities/">
 
-<InnerPageHero
+<HeroSubpage
+  eyebrow="Service Areas"
   title="Cities We Serve"
-  bgImage="/images/wfp-cities-hero.jpg"
-  desc="Professional window film across the Philadelphia metropolitan area."
+  subtitle="Professional window film across the Philadelphia metropolitan area — Pennsylvania and New Jersey."
+  bg="/images/wfp-cities-hero.jpg"
+  cta1={{ label: 'Get a Free Quote', href: '/contact/' }}
+  cta2={{ label: 'See Our Services', href: '/services/' }}
 />
 
 <div class="ip-page-body">
@@ -144,13 +148,13 @@ const alsoServing = [
 <!-- ══════════════════════════════════════
      CTA BANNER
      ══════════════════════════════════════ -->
-<div class="cp-cta fade-in">
-  <h2>Ready to get started in <em>your city?</em></h2>
-  <div class="cp-cta__btns">
-    <a href="/contact/" class="cp-btn cp-btn--white">Get a Free Quote</a>
-    <a href="tel:+12673947980" class="cp-btn cp-btn--green">Call (267) 394-7980</a>
-  </div>
-</div>
+<CTAAvatars
+  title="Ready to get started in your city?"
+  subtitle="Free consultation, transparent pricing, and manufacturer-backed warranties on every install."
+  count="Trusted by 2,400+ homeowners & businesses"
+  btnLabel="Get a Free Quote"
+  btnHref="/contact/"
+/>
 
 </div><!-- end ip-page-body -->
 
