@@ -1,0 +1,169 @@
+---
+// BentoGridSymmetric.astro
+// Clean, even 3-column grid of equal cards (photo top, text bottom).
+// Cards reveal with a stagger on scroll and lift with a green edge on hover.
+// Good for services or applications overview grids.
+//
+// HOW TO USE:
+//   <BentoGridSymmetric />
+//   Pass items={[{title, desc, img, href}]}
+
+interface SymItem { title: string; desc: string; img: string; href: string; }
+interface Props { heading?: string; sub?: string; items?: SymItem[]; }
+
+const {
+  heading = 'Window film solutions for every need',
+  sub = 'Professional installation, measured and finished by certified installers.',
+  items = [
+    { title: 'Residential', desc: 'Privacy, UV and comfort for your home.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_200015_345ac3fd-c144-460e-9fde-43e0ccc33dda.png', href: '/services/residential/' },
+    { title: 'Commercial', desc: 'Energy savings for offices and retail.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260617_200020_365c270-4e12-4335-84fa-2b33fa00be69.png', href: '/services/commercial/' },
+    { title: 'Government & Public', desc: 'Security film institutions trust.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_175602_3ec0c373-ae60-4251-9694-bd03190474d1.png', href: '/services/government-buildings/' },
+  ],
+} = Astro.props;
+---
+
+<section class="bgs">
+  <div class="bgs__head">
+    <h2 class="bgs__title font-display">{heading}</h2>
+    <p class="bgs__sub">{sub}</p>
+  </div>
+  <div class="bgs__grid">
+    {items.map((it, i) => (
+      <a class="bgs__card" href={it.href} style={`--bgs-delay: ${i * 80}ms`}>
+        <div class="bgs__img-wrap">
+          <img src={it.img} alt={it.title} title={`${it.title} — Window Film Philadelphia`} loading="lazy" />
+        </div>
+        <div class="bgs__body">
+          <h3 class="bgs__card-title">{it.title}</h3>
+          <p class="bgs__card-desc">{it.desc}</p>
+          <span class="bgs__learn">Learn more →</span>
+        </div>
+        <div class="bgs__edge" aria-hidden="true"></div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .bgs { padding: 4rem 1.5rem; }
+  .bgs__head { max-width: 40rem; margin: 0 auto 2.5rem; text-align: center; }
+  .bgs__title { color: #1a1a1a; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin: 0 0 0.5rem; }
+  .bgs__sub { color: #4a4a4a; margin: 0; }
+
+  .bgs__grid {
+    max-width: 72rem; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .bgs__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid #EFEFED;
+    /* Stagger reveal */
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease var(--bgs-delay, 0ms),
+                transform 0.5s ease var(--bgs-delay, 0ms),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+  }
+  .bgs__card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .bgs__card:hover {
+    box-shadow: 0 12px 40px rgba(39, 46, 50, 0.12);
+    border-color: #81AB4C;
+  }
+
+  .bgs__img-wrap {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+  .bgs__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bgs__card:hover .bgs__img-wrap img { transform: scale(1.05); }
+
+  .bgs__body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .bgs__card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  .bgs__card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .bgs__learn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #81AB4C;
+    margin-top: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+  .bgs__card:hover .bgs__learn { transform: translateX(4px); }
+
+  /* Green edge accent on hover */
+  .bgs__edge {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: #81AB4C;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+  .bgs__card:hover .bgs__edge { transform: scaleY(1); transform-origin: top; }
+
+  @media (max-width: 860px) {
+    .bgs__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .bgs__grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bgs__card { opacity: 1; transform: none; transition: none; }
+    .bgs__img-wrap img { transition: none; }
+  }
+</style>
+
+<script>
+  // Intersection Observer for stagger reveal
+  const cards = document.querySelectorAll('.bgs__card');
+  if (cards.length && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    cards.forEach((c) => obs.observe(c));
+  } else {
+    cards.forEach((c) => c.classList.add('is-visible'));
+  }
+</script>
