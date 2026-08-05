@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
 import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import GalleryBanner from '../../components/GalleryBanner.astro';
 import HowItWorksSlideshow from '../../components/HowItWorksSlideshow.astro';
 import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
 import AccordionBenefits from '../../components/AccordionBenefits.astro';
@@ -24,7 +25,6 @@ const faqItems = [
   { question: 'Can window film be removed if I change my mind?', answer: 'Yes. Window film is not permanent. Our team can safely remove film from any glass surface — the process involves carefully peeling the film and cleaning the adhesive residue. The glass itself is not damaged by removal when done correctly.' },
 ];
 
-// AccordionFAQ expects { q, a } keys (BaseLayout expects { question, answer })
 const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
 
 const accordionBenefits = [
@@ -38,12 +38,20 @@ const accordionBenefits = [
   { number: '08', title: 'Solar Control', detail: 'Reject up to 78% of solar heat gain with spectrally selective films that keep your home cool without darkening rooms. Maintain your view while reducing your cooling costs.', image: '/images/residential/benefit-solar-control.jpg', imageAlt: 'Solar control window film in a Philadelphia residential interior' },
 ];
 
+const galleryPhotos = [
+  '/images/residential/gallery-1-measure.jpg',
+  '/images/residential/gallery-2-apply.jpg',
+  '/images/residential/gallery-3-finished.jpg',
+  '/images/residential/gallery-4-condo.jpg',
+  '/images/residential/gallery-5-historic.jpg',
+];
+
 const bentoItems = [
-  { span: 'lg', title: 'Homes & Condos', desc: 'Privacy, UV protection and comfort for living spaces.', img: '/images/residential/housing-rowhomes.jpg', href: '/contact/' },
+  { span: 'lg', title: 'Homes & Condos', desc: 'Privacy, UV protection and comfort for living spaces.', img: '/images/residential/home-exterior.jpg', href: '/contact/' },
   { span: 'sm', title: 'The Installation', desc: 'Precision from start to finish.', img: '/images/residential/bento-install.jpg', href: '/contact/' },
   { span: 'sm', title: 'The Finished Result', desc: 'Comfortable, protected, and bright.', img: '/images/residential/bento-finished.jpg', href: '/contact/' },
   { span: 'md', title: 'Historic Homes', desc: 'Clear UV film preserves character.', img: '/images/residential/housing-historic.jpg', href: '/contact/' },
-  { span: 'md', title: 'Condos & Apartments', desc: 'Glare control for high-rise living.', img: '/images/residential/housing-condos.jpg', href: '/contact/' },
+  { span: 'md', title: 'Modern Kitchens', desc: 'Solar control without darkening.', img: '/images/residential/kitchen-interior.jpg', href: '/contact/' },
 ];
 
 const whyItems = [
@@ -80,10 +88,10 @@ const testimonials = [
 ];
 
 const processSlides = [
-  { step: '01', title: 'Free In-Home Consultation', desc: 'We visit your home, assess every pane, discuss your goals, and take exact measurements — at no cost and no obligation.', img: '/images/residential/bento-install.jpg', imgAlt: 'Window film consultant assessing windows in a Philadelphia home', cta: 'Book a Free Consultation', ctaHref: '/contact/' },
-  { step: '02', title: 'Precision Preparation', desc: 'Film is pre-cut by plotter to your exact pane dimensions. We clean every pane and apply C-Bond primer for a superior bond before the film goes on.', img: '/images/residential/bento-finished.jpg', imgAlt: 'Professional installer preparing window film for installation', cta: 'See Our Process', ctaHref: '/process/' },
+  { step: '01', title: 'Free In-Home Consultation', desc: 'We visit your home, assess every pane, discuss your goals, and take exact measurements — at no cost and no obligation.', img: '/images/residential/gallery-1-measure.jpg', imgAlt: 'Window film consultant measuring windows in a Philadelphia home', cta: 'Book a Free Consultation', ctaHref: '/contact/' },
+  { step: '02', title: 'Precision Preparation', desc: 'Film is pre-cut by plotter to your exact pane dimensions. We clean every pane and apply C-Bond primer for a superior bond before the film goes on.', img: '/images/residential/gallery-2-apply.jpg', imgAlt: 'Professional installer preparing and applying window film', cta: 'See Our Process', ctaHref: '/process/' },
   { step: '03', title: 'Professional Installation', desc: 'Film is applied to prepared glass, squeegeed from center outward, edges trimmed, and every pane inspected for defects. Most homes done in a single day.', img: '/images/residential/bento-install.jpg', imgAlt: 'Installer applying window film with a squeegee', cta: 'Get a Free Quote', ctaHref: '/contact/' },
-  { step: '04', title: 'Walkthrough & Warranty', desc: 'We walk you through every window, explain care during the cure period, and provide your warranty documentation before we leave.', img: '/images/residential/bento-finished.jpg', imgAlt: 'Finished residential window film installation', cta: 'Get a Free Quote', ctaHref: '/contact/' },
+  { step: '04', title: 'Walkthrough & Warranty', desc: 'We walk you through every window, explain care during the cure period, and provide your warranty documentation before we leave.', img: '/images/residential/gallery-3-finished.jpg', imgAlt: 'Finished residential window film installation', cta: 'Get a Free Quote', ctaHref: '/contact/' },
 ];
 
 const pageSchemas = [
@@ -143,9 +151,7 @@ const howToSteps = [
   schemas={pageSchemas}
 >
 
-<!-- ══════════════════════════════════════
-     HERO — full-bleed, no rounded container
-     ══════════════════════════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="rsh-hero">
   <div class="rsh-hero__bg" style="background-image: url('/images/residential/hero.jpg')" role="img" aria-label="Philadelphia home interior with residential window film installed"></div>
   <div class="rsh-hero__overlay"></div>
@@ -173,7 +179,7 @@ const howToSteps = [
         <div class="rsh-hero__stat-divider" aria-hidden="true"></div>
         <div class="rsh-hero__stat">
           <span class="rsh-hero__stat-number">2008</span>
-          <span class="rsh-hero__stat-label">Serving Philadelphia Since</span>
+          <span class="rsh-hero__stat-label">Serving Since</span>
         </div>
         <div class="rsh-hero__stat-divider" aria-hidden="true"></div>
         <div class="rsh-hero__stat">
@@ -199,12 +205,9 @@ const howToSteps = [
   </div>
 </section>
 
-<!-- BRAND LOGOS -->
 <BrandLogos />
 
-<!-- ══════════════════════════════════════
-     INTRO — 2-col: heading + text
-     ══════════════════════════════════════ -->
+<!-- ═══ INTRO — 2-col with image ═══ -->
 <section class="rsh-intro">
   <div class="rsh-intro__container">
     <div class="rsh-intro__content">
@@ -214,14 +217,12 @@ const howToSteps = [
       <p class="rsh-intro__lead">We assess every pane individually — glass type, age, condition, orientation, and your goals — before recommending a product. The right film on the right glass for the right reason. That's how we've worked since 2008.</p>
     </div>
     <div class="rsh-intro__image-wrap">
-      <img src="/images/residential/housing-condos.jpg" alt="Philadelphia condo interior with residential window film" class="rsh-intro__image" loading="lazy" />
+      <img src="/images/residential/home-exterior.jpg" alt="Philadelphia home exterior with residential window film installed" class="rsh-intro__image" loading="lazy" />
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BEFORE/AFTER SLIDER
-     ══════════════════════════════════════ -->
+<!-- ═══ BEFORE/AFTER SLIDER ═══ -->
 <BeforeAfterSlider
   before="/images/residential/before.jpg"
   after="/images/residential/after.jpg"
@@ -233,9 +234,17 @@ const howToSteps = [
   sub="Drag the handle to compare a Philadelphia home before and after window film installation. Same room. Same windows. Completely different experience."
 />
 
-<!-- ══════════════════════════════════════
-     HOUSING TYPES — alternating image/text
-     ══════════════════════════════════════ -->
+<!-- ═══ GALLERY BANNER — fanned photo strips ═══ -->
+<GalleryBanner
+  titleLines={['OUR', 'WORK.']}
+  eyebrow="RESIDENTIAL INSTALLS"
+  description="A collection of real window film installations. Every project measured, applied, and finished by our own certified team."
+  photos={galleryPhotos}
+  hintText="Hover the photos · click to bring forward"
+  theme="dark"
+/>
+
+<!-- ═══ HOUSING TYPES — alternating image/text ═══ -->
 <section class="rsh-housing">
   <div class="rsh-container">
     <div class="rsh-housing__hd">
@@ -259,9 +268,7 @@ const howToSteps = [
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BENEFITS — AccordionBenefits (interactive split layout)
-     ══════════════════════════════════════ -->
+<!-- ═══ BENEFITS — AccordionBenefits (interactive split layout with swapping images) ═══ -->
 <AccordionBenefits
   eyebrow="WHAT WINDOW FILM DOES FOR YOUR HOME"
   title="Eight improvements, one professional installation"
@@ -269,18 +276,14 @@ const howToSteps = [
   benefits={accordionBenefits}
 />
 
-<!-- ══════════════════════════════════════
-     BENTO GRID — photo showcase
-     ══════════════════════════════════════ -->
+<!-- ═══ BENTO GRID — asymmetric photo showcase ═══ -->
 <BentoGridPhoto
   heading="Real installations. Real results."
   sub="Every project measured, applied, and finished by our own certified team."
   items={bentoItems}
 />
 
-<!-- ══════════════════════════════════════
-     WHY CHOOSE US — 4-col icon grid
-     ══════════════════════════════════════ -->
+<!-- ═══ WHY CHOOSE US — icon grid ═══ -->
 <section class="rsh-why">
   <div class="rsh-container">
     <div class="rsh-why__hd">
@@ -300,9 +303,7 @@ const howToSteps = [
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     SERVICE AREA — neighborhoods grid
-     ══════════════════════════════════════ -->
+<!-- ═══ SERVICE AREA — neighborhoods grid (charcoal, not brown) ═══ -->
 <section class="rsh-areas">
   <div class="rsh-container">
     <div class="rsh-areas__hd">
@@ -322,9 +323,7 @@ const howToSteps = [
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     INSTALLATION — HowItWorksSlideshow
-     ══════════════════════════════════════ -->
+<!-- ═══ INSTALLATION — HowItWorksSlideshow ═══ -->
 <HowItWorksSlideshow
   eyebrow="Installation & Process"
   title="How residential installation works"
@@ -332,9 +331,7 @@ const howToSteps = [
   slides={processSlides}
 />
 
-<!-- ══════════════════════════════════════
-     TESTIMONIALS
-     ══════════════════════════════════════ -->
+<!-- ═══ TESTIMONIALS ═══ -->
 <TestimonialSpotlight
   eyebrow="Homeowner Reviews"
   title="What Philadelphia homeowners say"
@@ -342,9 +339,7 @@ const howToSteps = [
   items={testimonials}
 />
 
-<!-- ══════════════════════════════════════
-     FAQ
-     ══════════════════════════════════════ -->
+<!-- ═══ FAQ ═══ -->
 <AccordionFAQ
   eyebrow="FAQ"
   heading="Residential window film questions"
@@ -352,12 +347,9 @@ const howToSteps = [
   items={faqAccordionItems}
 />
 
-<!-- BRAND LOGOS -->
 <BrandLogos />
 
-<!-- ══════════════════════════════════════
-     CTA — CTAAvatars
-     ══════════════════════════════════════ -->
+<!-- ═══ CTA ═══ -->
 <CTAAvatars
   title="Ready to transform your home?"
   subtitle="Schedule a free in-home consultation. We assess your windows, explain your options, and give you a detailed quote — no pressure, no obligation."
@@ -366,42 +358,41 @@ const howToSteps = [
   btnHref="/contact/"
 />
 
-</div><!-- end rsh-body -->
+</div>
 
 </BaseLayout>
 
 <style>
-/* ── DESIGN TOKENS ── */
+/* ── DESIGN TOKENS — site palette, no brown ══ */
 :root {
   --rsh-radius: 5px;
+  --rsh-charcoal: #272E32;
+  --rsh-green: #81AB4C;
+  --rsh-green-light: #eef4e4;
+  --rsh-green-dark: #7CB342;
+  --rsh-off-white: #F7F6F3;
+  --rsh-text-dark: #1a1a1a;
+  --rsh-text-mid: #4a4a4a;
+  --rsh-text-light: #888;
 }
 
-/* ── BODY WRAPPER — flat, no rounded corners ── */
-.rsh-body {
-  background: #ffffff;
-}
+.rsh-body { background: #ffffff; }
+.rsh-container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
 
-/* ── CONTAINER ── */
-.rsh-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 5%;
-}
-
-/* ── EYEBROW ── */
+/* ── EYEBROW ══ */
 .rsh-eyebrow {
   display: inline-block;
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: #4E6B2A;
-  margin-bottom: 12px;
+  color: var(--rsh-green);
+  margin-bottom: 16px;
 }
-.rsh-eyebrow--light { color: #83A94A; }
+.rsh-eyebrow--light { color: var(--rsh-green-dark); }
 
-/* ── HERO ── */
+/* ── HERO ══ */
 .rsh-hero {
   position: relative;
   min-height: 100vh;
@@ -420,12 +411,7 @@ const howToSteps = [
 .rsh-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(13, 26, 15, 0.68) 0%,
-    rgba(13, 26, 15, 0.82) 55%,
-    rgba(13, 26, 15, 0.95) 100%
-  );
+  background: linear-gradient(to bottom, rgba(39,46,50,0.68) 0%, rgba(39,46,50,0.82) 55%, rgba(39,46,50,0.95) 100%);
 }
 .rsh-hero__content {
   position: relative;
@@ -454,9 +440,7 @@ const howToSteps = [
   border-radius: 100px;
 }
 .rsh-hero__eyebrow-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
+  width: 4px; height: 4px; border-radius: 50%;
   background: rgba(124, 179, 66, 0.4);
   flex-shrink: 0;
 }
@@ -470,7 +454,7 @@ const howToSteps = [
   letter-spacing: -0.01em;
 }
 .rsh-hero__subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
   color: rgba(243, 246, 241, 0.72);
   max-width: 680px;
@@ -488,15 +472,15 @@ const howToSteps = [
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #7CB342;
+  background: var(--rsh-green-dark);
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   padding: 14px 32px;
   border-radius: 100px;
-  border: 2px solid #7CB342;
+  border: 2px solid var(--rsh-green-dark);
   transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 .rsh-hero__btn-primary:hover {
@@ -511,7 +495,7 @@ const howToSteps = [
   gap: 8px;
   background: transparent;
   color: #F3F6F1;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -521,15 +505,15 @@ const howToSteps = [
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
 }
 .rsh-hero__btn-secondary:hover {
-  border-color: #7CB342;
-  color: #7CB342;
+  border-color: var(--rsh-green-dark);
+  color: var(--rsh-green-dark);
   transform: translateY(-2px);
   background: rgba(124, 179, 66, 0.06);
 }
 .rsh-hero__stats-panel {
   width: 100%;
   max-width: 720px;
-  background: rgba(20, 32, 26, 0.6);
+  background: rgba(39, 46, 50, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -565,12 +549,12 @@ const howToSteps = [
   font-family: 'Space Mono', monospace;
   font-size: clamp(1.3rem, 2.5vw, 1.75rem);
   font-weight: 700;
-  color: #7CB342;
+  color: var(--rsh-green-dark);
   line-height: 1;
 }
 .rsh-hero__stat-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.68rem;
   font-weight: 500;
   color: rgba(243, 246, 241, 0.6);
@@ -580,23 +564,18 @@ const howToSteps = [
   max-width: 90px;
 }
 
-/* ── TRUST BAR ── */
-.rsh-trust {
-  padding: 32px 0;
-  text-align: center;
-}
+/* ── TRUST BAR ══ */
+.rsh-trust { padding: 32px 0; text-align: center; }
 .rsh-trust__label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #6E665C;
+  color: var(--rsh-text-mid);
   margin: 0;
 }
 
-/* ── INTRO ── */
-.rsh-intro {
-  padding: 80px 0 60px;
-}
+/* ── INTRO ══ */
+.rsh-intro { padding: 80px 0 60px; }
 .rsh-intro__container {
   max-width: 1280px;
   margin: 0 auto;
@@ -611,20 +590,18 @@ const howToSteps = [
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.15;
-  color: #2A241E;
+  color: var(--rsh-text-dark);
   margin: 0 0 24px;
   letter-spacing: -0.01em;
 }
 .rsh-intro__lead {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
-  color: #555;
+  color: var(--rsh-text-mid);
   line-height: 1.8;
   margin: 0 0 16px;
 }
-.rsh-intro__image-wrap {
-  overflow: hidden;
-}
+.rsh-intro__image-wrap { overflow: hidden; }
 .rsh-intro__image {
   width: 100%;
   height: 100%;
@@ -633,10 +610,8 @@ const howToSteps = [
   display: block;
 }
 
-/* ── HOUSING TYPES ── */
-.rsh-housing {
-  padding: 60px 0;
-}
+/* ── HOUSING TYPES ══ */
+.rsh-housing { padding: 60px 0; }
 .rsh-housing__hd {
   max-width: 680px;
   margin: 0 auto 48px;
@@ -647,13 +622,13 @@ const howToSteps = [
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.15;
-  color: #2A241E;
+  color: var(--rsh-text-dark);
   margin: 0 0 16px;
 }
 .rsh-housing__sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
-  color: #555;
+  color: var(--rsh-text-mid);
   line-height: 1.7;
   margin: 0;
 }
@@ -686,22 +661,20 @@ const howToSteps = [
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
   font-weight: 700;
-  color: #2A241E;
+  color: var(--rsh-text-dark);
   margin: 0 0 16px;
   line-height: 1.2;
 }
 .rsh-housing__desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
-  color: #555;
+  color: var(--rsh-text-mid);
   line-height: 1.8;
   margin: 0;
 }
 
-/* ── WHY CHOOSE US ── */
-.rsh-why {
-  padding: 80px 0;
-}
+/* ── WHY CHOOSE US ══ */
+.rsh-why { padding: 80px 0; }
 .rsh-why__hd {
   max-width: 680px;
   margin: 0 auto 48px;
@@ -712,7 +685,7 @@ const howToSteps = [
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.15;
-  color: #2A241E;
+  color: var(--rsh-text-dark);
   margin: 0;
 }
 .rsh-why__grid {
@@ -728,8 +701,8 @@ const howToSteps = [
   width: 56px;
   height: 56px;
   border-radius: var(--rsh-radius);
-  background: rgba(78, 107, 42, 0.1);
-  color: #4E6B2A;
+  background: var(--rsh-green-light);
+  color: var(--rsh-green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -738,7 +711,7 @@ const howToSteps = [
 .rsh-why__divider {
   width: 40px;
   height: 2px;
-  background: #83A94A;
+  background: var(--rsh-green);
   margin: 0 auto 20px;
   opacity: 0.4;
 }
@@ -746,20 +719,20 @@ const howToSteps = [
   font-family: 'Playfair Display', serif;
   font-size: 1.0625rem;
   font-weight: 700;
-  color: #2A241E;
+  color: var(--rsh-text-dark);
   margin: 0 0 8px;
 }
 .rsh-why__item-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.8125rem;
-  color: #6E665C;
+  color: var(--rsh-text-mid);
   line-height: 1.5;
   margin: 0;
 }
 
-/* ── SERVICE AREA ── */
+/* ── SERVICE AREA — charcoal, not brown ══ */
 .rsh-areas {
-  background: #2A241E;
+  background: var(--rsh-charcoal);
   padding: 80px 0;
 }
 .rsh-areas__hd {
@@ -776,7 +749,7 @@ const howToSteps = [
   margin: 0 0 16px;
 }
 .rsh-areas__sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   color: rgba(243, 246, 241, 0.55);
   line-height: 1.7;
@@ -798,7 +771,7 @@ const howToSteps = [
   display: block;
 }
 .rsh-areas__card:hover {
-  border-color: rgba(131, 169, 74, 0.5);
+  border-color: rgba(129, 171, 76, 0.5);
   transform: translateY(-4px);
 }
 .rsh-areas__name {
@@ -810,23 +783,23 @@ const howToSteps = [
 }
 .rsh-areas__housing {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #83A94A;
+  color: var(--rsh-green);
   margin-bottom: 14px;
 }
 .rsh-areas__note {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;
   color: rgba(243, 246, 241, 0.6);
   line-height: 1.6;
   margin: 0;
 }
 
-/* ── RESPONSIVE ── */
+/* ── RESPONSIVE ══ */
 @media (max-width: 992px) {
   .rsh-intro__container { grid-template-columns: 1fr; gap: 32px; }
   .rsh-why__grid { grid-template-columns: repeat(2, 1fr); }
