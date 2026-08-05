@@ -235,6 +235,30 @@ const howToSteps = [
   theme="dark"
 />
 
+<!-- ═══ HOUSING TYPES — alternating image/text ═══ -->
+<section class="rsh-housing">
+  <div class="rsh-container">
+    <div class="rsh-housing__hd">
+      <span class="rsh-eyebrow">Built for Philadelphia Homes</span>
+      <h2 class="rsh-housing__title">The right film for how Philadelphia lives</h2>
+      <p class="rsh-housing__sub">From 19th-century rowhomes to modern high-rise condos, Philadelphia's housing stock demands different film solutions. We assess your glass, orientation, and goals before recommending anything.</p>
+    </div>
+    <div class="rsh-housing__rows">
+      {housingTypes.map((h, i) => (
+        <div class={`rsh-housing__row${i % 2 === 1 ? ' rsh-housing__row--rev' : ''}`}>
+          <div class="rsh-housing__img">
+            <img src={h.img} alt={h.alt} title={h.alt} width="600" height="480" loading="lazy" />
+          </div>
+          <div class="rsh-housing__content">
+            <h3 class="rsh-housing__name">{h.name}</h3>
+            <p class="rsh-housing__desc">{h.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 <!-- ═══ WHY CHOOSE US — Full-bleed image slider (office of-ftype pattern) ═══ -->
 <section class="rsh-ftype" id="rshFtype">
   <div class="rsh-ftype__track" id="rshFtypeTrack">
@@ -294,30 +318,6 @@ no pressure</h2>
       <span class="rsh-ftype__nav-dot"></span>
       <span class="rsh-ftype__nav-label">Consultation</span>
     </button>
-  </div>
-</section>
-
-<!-- ═══ HOUSING TYPES — alternating image/text ═══ -->
-<section class="rsh-housing">
-  <div class="rsh-container">
-    <div class="rsh-housing__hd">
-      <span class="rsh-eyebrow">Built for Philadelphia Homes</span>
-      <h2 class="rsh-housing__title">The right film for how Philadelphia lives</h2>
-      <p class="rsh-housing__sub">From 19th-century rowhomes to modern high-rise condos, Philadelphia's housing stock demands different film solutions. We assess your glass, orientation, and goals before recommending anything.</p>
-    </div>
-    <div class="rsh-housing__rows">
-      {housingTypes.map((h, i) => (
-        <div class={`rsh-housing__row${i % 2 === 1 ? ' rsh-housing__row--rev' : ''}`}>
-          <div class="rsh-housing__img">
-            <img src={h.img} alt={h.alt} title={h.alt} width="600" height="480" loading="lazy" />
-          </div>
-          <div class="rsh-housing__content">
-            <h3 class="rsh-housing__name">{h.name}</h3>
-            <p class="rsh-housing__desc">{h.desc}</p>
-          </div>
-        </div>
-      ))}
-    </div>
   </div>
 </section>
 
