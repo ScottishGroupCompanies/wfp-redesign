@@ -1,8 +1,7 @@
 ---
 /**
- * CoveragePinMap — stylized SVG map with location pins that drop in
- * staggered on scroll. Hover or focus a pin for a green tooltip with
- * city name and stat.
+ * CoveragePinMap — stylized SVG map with location pins.
+ * Hover or focus a pin for a green tooltip with city name and stat.
  * Adapted from windowfilm-ui2.vercel.app component library.
  *
  * Props:
@@ -22,19 +21,19 @@ interface Props {
   cities?: City[];
 }
 const {
-  title = 'Cities we serve',
-  subtitle = 'Certified installers across the Greater Philadelphia region.',
+  title = "Cities we serve",
+  subtitle = "Certified installers across the Greater Philadelphia region.",
   cities = [
-    { name: 'Philadelphia, PA', stat: 'Primary service area', x: 340, y: 215 },
-    { name: 'Upper Darby, PA', stat: 'Delaware County', x: 305, y: 200 },
-    { name: 'Camden, NJ', stat: 'South Jersey hub', x: 365, y: 230 },
-    { name: 'Reading, PA', stat: 'Berks County', x: 200, y: 160 },
-    { name: 'Cherry Hill, NJ', stat: 'Camden County', x: 400, y: 250 },
-    { name: 'Norristown, PA', stat: 'Montgomery County', x: 280, y: 190 },
-    { name: 'Wilmington, DE', stat: 'New Castle County', x: 260, y: 320 },
-    { name: 'Chester, PA', stat: 'Delaware County', x: 300, y: 270 },
-    { name: 'Voorhees, NJ', stat: 'Camden County', x: 430, y: 260 },
-    { name: 'Haddonfield, NJ', stat: 'Camden County', x: 390, y: 245 },
+    { name: "Philadelphia, PA", stat: "Primary service area", x: 340, y: 215 },
+    { name: "Upper Darby, PA", stat: "Delaware County", x: 305, y: 200 },
+    { name: "Camden, NJ", stat: "South Jersey hub", x: 365, y: 230 },
+    { name: "Reading, PA", stat: "Berks County", x: 200, y: 160 },
+    { name: "Cherry Hill, NJ", stat: "Camden County", x: 400, y: 250 },
+    { name: "Norristown, PA", stat: "Montgomery County", x: 280, y: 190 },
+    { name: "Wilmington, DE", stat: "New Castle County", x: 260, y: 320 },
+    { name: "Chester, PA", stat: "Delaware County", x: 300, y: 270 },
+    { name: "Voorhees, NJ", stat: "Camden County", x: 430, y: 260 },
+    { name: "Haddonfield, NJ", stat: "Camden County", x: 390, y: 245 },
   ],
 } = Astro.props;
 ---
@@ -48,26 +47,25 @@ const {
     </div>
     <div class="cpm__map-wrap">
       <svg class="cpm__svg" viewBox="0 0 800 450" role="img" aria-label="Map of the Greater Philadelphia service region">
-        <!-- Background region shape (simplified PA/NJ/DE area) -->
         <defs>
           <linearGradient id="cpm-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#eef4e4" />
             <stop offset="100%" stop-color="#e8ede0" />
           </linearGradient>
-          <filter id="cpm-pin-shadow">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#272E32" flood-opacity="0.3"/>
+          <filter id="cpm-pin-shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#272E32" flood-opacity="0.3" />
           </filter>
         </defs>
 
-        <!-- Landmass (simplified) -->
+        <!-- Landmass -->
         <path d="M 50,80 Q 120,60 200,70 L 350,50 Q 500,55 650,70 L 750,100 Q 780,150 770,220 L 760,300 Q 740,360 700,390 L 550,400 Q 400,410 250,400 L 100,380 Q 60,340 50,280 L 45,200 Q 48,140 50,80 Z"
           fill="url(#cpm-bg-grad)" stroke="#d4dcc8" stroke-width="1.5" />
 
-        <!-- River lines (Schuylkill & Delaware) -->
+        <!-- Rivers -->
         <path d="M 320,80 Q 340,160 350,240 L 360,340" fill="none" stroke="#c4d4ec" stroke-width="2.5" opacity="0.6" />
         <path d="M 370,60 Q 375,150 365,250 Q 360,320 380,390" fill="none" stroke="#c4d4ec" stroke-width="2.5" opacity="0.6" />
 
-        <!-- Dotted grid texture -->
+        <!-- Dotted texture -->
         <pattern id="cpm-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
           <circle cx="10" cy="10" r="0.8" fill="#cdd5c0" />
         </pattern>
@@ -75,18 +73,14 @@ const {
           fill="url(#cpm-dots)" />
 
         <!-- City pins -->
-        {cities.map((city, i) => (
-          <g class="cpm__pin" style={`--i:${i}`} transform={`translate(${city.x}, ${city.y})`} tabindex="0" role="button" aria-label={city.name}>
-            <!-- Tooltip -->
-            <g class="cpm__tooltip" transform="translate(0, -15)">
-              <rect x="-70" y="-44" width="140" height="36" rx="8" fill="#81AB4C" opacity="0" class="cpm__tooltip-bg" />
-              <text x="0" y="-30" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="13" font-weight="700" opacity="0" class="cpm__tooltip-name">{city.name}</text>
-              <text x="0" y="-16" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="DM Sans, sans-serif" font-size="10" font-weight="500" opacity="0" class="cpm__tooltip-stat">{city.stat}</text>
-            </g>
-            <!-- Pin shape -->
-            <circle cx="0" cy="0" r="14" fill="#81AB4C" opacity="0.2" class="cpm__pin-pulse" />
-            <circle cx="0" cy="0" r="7" fill="#81AB4C" filter="url(#cpm-pin-shadow)" class="cpm__pin-dot" />
-            <circle cx="0" cy="0" r="3" fill="#fff" class="cpm__pin-inner" />
+        {cities.map((city) => (
+          <g class="cpm__pin" transform={`translate(${city.x}, ${city.y})`} tabindex="0" role="button" aria-label={city.name}>
+            <rect class="cpm__tooltip-bg" x="-70" y="-44" width="140" height="36" rx="8" fill="#81AB4C" opacity="0" />
+            <text class="cpm__tooltip-name" x="0" y="-28" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="13" font-weight="700" opacity="0">{city.name}</text>
+            <text class="cpm__tooltip-stat" x="0" y="-14" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans, sans-serif" font-size="10" font-weight="500" opacity="0">{city.stat}</text>
+            <circle class="cpm__pin-pulse" cx="0" cy="0" r="14" fill="#81AB4C" opacity="0.2" />
+            <circle class="cpm__pin-dot" cx="0" cy="0" r="7" fill="#81AB4C" filter="url(#cpm-pin-shadow)" />
+            <circle class="cpm__pin-inner" cx="0" cy="0" r="3" fill="#fff" />
           </g>
         ))}
       </svg>
@@ -94,7 +88,7 @@ const {
   </div>
 </section>
 
-<style>
+<style is:global>
 .cpm {
   background: #F7F6F3;
   padding: 80px 5%;
@@ -108,26 +102,26 @@ const {
   margin-bottom: 40px;
 }
 .cpm__eyebrow {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--green, #81AB4C);
+  color: #81AB4C;
   margin: 0 0 12px;
 }
 .cpm__title {
-  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-family: 'Playfair Display', serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 700;
-  color: var(--text-dark, #1a1a1a);
+  color: #1a1a1a;
   line-height: 1.2;
   margin: 0 0 16px;
 }
 .cpm__subtitle {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
-  color: var(--text-mid, #4a4a4a);
+  color: #4a4a4a;
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.65;
@@ -136,7 +130,7 @@ const {
   background: #fff;
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid var(--light-gray, #EFEFED);
+  border: 1px solid #EFEFED;
   box-shadow: 0 4px 24px rgba(39, 46, 50, 0.06);
 }
 .cpm__svg {
@@ -145,27 +139,18 @@ const {
   display: block;
 }
 
-/* Pin — visible by default, no drop animation (keeps it simple and reliable) */
+/* Pin */
 .cpm__pin {
   cursor: pointer;
   transition: transform 0.25s ease;
 }
-.cpm__pin:hover {
-  transform: scale(1.15);
+.cpm__pin:hover,
+.cpm__pin:focus {
+  transform: scale(1.2);
+  outline: none;
 }
 
-/* Pulsing ring */
-.cpm__pin-pulse {
-  transform-origin: center;
-  animation: cpm-pulse 2s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 100ms + 800ms);
-}
-@keyframes cpm-pulse {
-  0%, 100% { opacity: 0.2; r: 14; }
-  50% { opacity: 0.4; r: 18; }
-}
-
-/* Tooltip hover */
+/* Tooltip */
 .cpm__tooltip-bg,
 .cpm__tooltip-name,
 .cpm__tooltip-stat {
@@ -181,6 +166,17 @@ const {
 }
 .cpm__pin:hover .cpm__pin-dot {
   fill: #6e9640;
+}
+
+/* Pulse ring */
+.cpm__pin-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cpm-pulse 2.5s ease-in-out infinite;
+}
+@keyframes cpm-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
 }
 
 @media (max-width: 768px) {
