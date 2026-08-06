@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-10-reasons-install-window-film-philadelphia-2026.jpg"
 imageAlt: "10 Reasons to Install Window Film in Philadelphia in 2026 | Window Film Philadelphia"
 tags: ["window film", "Philadelphia", "window film Philadelphia", "2026"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 

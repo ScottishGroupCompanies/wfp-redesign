@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-philadelphia-window-film-installation-step-guide.jpg"
 imageAlt: "Philadelphia Window Film Installation Step by Step: A Homeowner's Guide | Window Film Philadelphia"
 tags: ["window film installation", "philadelphia", "window film", "installation process", "residential window film"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 

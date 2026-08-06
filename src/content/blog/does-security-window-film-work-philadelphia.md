@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-security-window-film-work-philadelphia.jpg"
 imageAlt: "How Does Security Window Film Work for Philadelphia Schools? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint"]
-category: "safety-security"
+categories: ["safety-security", "philadelphia"]
 draft: false
 ---
 

@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-how-long-does-window-tint-last-philadelphia.jpg"
 imageAlt: "How Long Does Window Tint Last on Philadelphia Homes and Offices? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint lifespan"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 

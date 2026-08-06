@@ -7,7 +7,7 @@ image: "/images/2021-08-philadelphia-window-film-energy-savings.webp"
 imageAlt: "Window film energy savings Philadelphia home"
 tags: ["energy savings", "residential", "philadelphia"]
 draft: false
-category: "philadelphia"
+categories: ["philadelphia"]
 ---
 
 Philadelphia summers are relentless. From June through September, the city's mix of brick rowhomes, glass-forward condos, and sun-facing storefronts absorbs heat from every direction. By mid-afternoon, rooms facing west or south can run 10-15 degrees warmer than the rest of the home, and central air conditioning fights a losing battle against direct solar gain through unprotected glass. Window film changes that equation significantly. A quality solar control film rejects 40-60% of incoming solar heat before it enters the room -- without blocking your view or changing the look of your windows from the street.

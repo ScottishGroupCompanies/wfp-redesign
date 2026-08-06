@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-heat-blocking-window-film-work-philadelphia.jpg"
 imageAlt: "Does Heat Blocking Window Film Work for Older Philadelphia Buildings? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint"]
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 draft: false
 ---
 

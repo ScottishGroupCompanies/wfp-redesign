@@ -7,7 +7,7 @@ image: "/images/anti-graffiti-window-film-philadelphia.jpg"
 imageAlt: "Historic Philadelphia brick storefront with pristine protected glass windows at golden hour"
 tags: ["anti-graffiti", "commercial window film", "philadelphia", "storefronts", "historic buildings", "security"]
 draft: false
-category: "anti-graffiti"
+categories: ["anti-graffiti", "philadelphia"]
 ---
 
 Graffiti vandalism costs Philadelphia property owners thousands of dollars every year. A single etching attack on a storefront window can mean a $500–$1,500 repair bill — and in areas like Kensington, Fishtown, South Street, and Old City, repeat incidents are common. Traditional responses involve chemical cleaning or full glass replacement, both expensive and time-consuming.

@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-reflective-window-film-privacy-philadelphia-buildings.jpg"
 imageAlt: "How Reflective Window Film Enhances Privacy for Philadelphia Buildings | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy film", "reflective film", "solar control"]
-category: "privacy-film"
+categories: ["privacy-film", "philadelphia"]
 draft: false
 ---
 

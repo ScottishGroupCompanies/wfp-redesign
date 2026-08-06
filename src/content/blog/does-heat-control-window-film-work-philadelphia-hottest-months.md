@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-heat-control-window-film-work-philadelphia-hottest-months.jpg"
 imageAlt: "Does Heat Control Window Film Work During Philadelphia’s Hottest Months? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "heat control", "energy savings"]
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 draft: false
 ---
 

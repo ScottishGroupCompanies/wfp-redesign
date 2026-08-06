@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-ceramic-window-tint-benefits-philadelphia.jpg"
 imageAlt: "Ceramic Window Tint Benefits for Philadelphia Homes and Businesses | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "energy savings"]
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 draft: false
 ---
 

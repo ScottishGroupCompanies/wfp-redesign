@@ -7,7 +7,7 @@ image: "/images/office-window-film-philadelphia-hero.jpg"
 imageAlt: "Modern Philadelphia office with heat reducing window film on floor-to-ceiling windows, Center City skyline visible"
 tags: ["heat reducing window film", "philadelphia", "window film", "energy savings", "solar heat"]
 draft: false
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 ---
 
 Philadelphia summers are no joke. From late June through September, temperatures regularly push into the 90s, and the relentless sun turns south- and west-facing rooms into saunas by early afternoon. Whether you're dealing with an overheated living room, a stifling corner office, or rising energy bills, **heat reducing window film** offers a practical, cost-effective solution that works without replacing your windows.

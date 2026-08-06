@@ -3,6 +3,7 @@
 // Shows the 3 latest blog posts tagged with a given city category slug.
 // Automatically updates when new posts are published — oldest drops off.
 import { getCollection } from 'astro:content';
+import { getPostCategories } from '../data/categories';
 
 interface Props {
   citySlug: string;   // e.g. 'camden', 'philadelphia', 'reading', 'upper-darby-township'
@@ -13,7 +14,7 @@ const { citySlug, cityName } = Astro.props;
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const cityPosts = allPosts
-  .filter((p) => p.data.category === citySlug)
+  .filter((p) => getPostCategories(p.data).includes(citySlug))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 

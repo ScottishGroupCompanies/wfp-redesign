@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-glare-reduction-window-film-philadelphia-home-offices.jpg"
 imageAlt: "Glare Reduction Window Film for Philadelphia Home Offices: Better Screens, Better Daylight | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "glare reduction"]
-category: "glare-reduction"
+categories: ["glare-reduction", "philadelphia"]
 draft: false
 ---
 

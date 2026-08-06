@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-10-ways-window-film-philadelphia-saves-money-summer.jpg"
 imageAlt: "10 Ways Window Film in Philadelphia Saves Money in the Summer | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "energy savings", "summer heat"]
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 draft: false
 ---
 

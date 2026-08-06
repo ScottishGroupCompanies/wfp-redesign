@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-bird-strike-window-film-philadelphia-glass-solutions.jpg"
 imageAlt: "Bird Strike Window Film Solutions for Protecting Philadelphia Glass | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "bird strike", "bird-safe glass", "commercial buildings"]
-category: "bird-strike"
+categories: ["bird-strike", "philadelphia"]
 draft: false
 ---
 

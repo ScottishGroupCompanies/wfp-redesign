@@ -7,7 +7,7 @@ image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["ceramic tint", "window film", "Philadelphia", "heat rejection", "UV protection", "residential window film"]
 draft: false
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 ---
 
 Philadelphia summers hit hard. Between the heat radiating off rowhome brick and afternoon sun pouring through south-facing windows, your AC runs constantly — and your furniture quietly fades. If you've been looking at window film options, you've probably come across ceramic tint. It costs more than basic dyed or metallic films. But the benefits of ceramic tint make it worth a closer look.

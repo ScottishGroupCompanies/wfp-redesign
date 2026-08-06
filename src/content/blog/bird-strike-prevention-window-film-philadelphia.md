@@ -7,7 +7,7 @@ image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["bird strike prevention", "window film", "philadelphia", "commercial", "wildlife"]
 draft: false
-category: "bird-strike"
+categories: ["bird-strike", "philadelphia"]
 ---
 
 Philadelphia is one of the most dangerous cities in North America for migratory birds. Positioned directly on the **Atlantic Flyway** — one of the four major North American bird migration corridors — the city sees hundreds of millions of birds pass through each spring and fall. When those birds encounter glass-clad buildings, the results are deadly. Estimates put bird-glass collision fatalities in the United States at up to **one billion birds per year**, and urban high-rises account for a disproportionate share of those deaths.

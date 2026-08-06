@@ -7,7 +7,7 @@ image: "/images/wfp-church-hero.jpg"
 imageAlt: "Decorative frosted window film adding privacy and soft daylight in a Philadelphia interior"
 tags: ["window film", "philadelphia", "privacy film", "decorative film", "energy savings"]
 draft: false
-category: "privacy-film"
+categories: ["privacy-film", "philadelphia"]
 ---
 
 Frosted glass can make a bright Philadelphia room feel calmer, but it is not automatically a heat-control solution. The real answer depends on whether the glass is permanently etched, treated with a decorative frosted film, or paired with a solar-control film engineered for heat rejection.

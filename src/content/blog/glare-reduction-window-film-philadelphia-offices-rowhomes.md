@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-glare-reduction-window-film-philadelphia-offices-rowhomes.jpg"
 imageAlt: "Glare Reduction Window Film for Philadelphia Offices and Sunlit Rowhomes | Window Film Philadelphia"
 tags: ["philadelphia", "glare reduction", "office window film", "rowhome window film", "solar control"]
-category: "glare-reduction"
+categories: ["glare-reduction", "philadelphia"]
 draft: false
 ---
 

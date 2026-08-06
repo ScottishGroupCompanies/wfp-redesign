@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-heat-blocking-window-film-philadelphia-interiors.jpg"
 imageAlt: "How Heat Blocking Window Film Keeps Philadelphia Interiors Comfortable | Window Film Philadelphia"
 tags: ["heat blocking window film", "philadelphia", "energy savings"]
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 draft: false
 ---
 

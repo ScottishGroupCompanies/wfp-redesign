@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-security-window-film-philadelphia-schools.jpg"
 imageAlt: "Guide to Security Window Film for Philadelphia Schools | Window Film Philadelphia"
 tags: ["security window film", "Philadelphia", "school security", "window film"]
-category: "school-security"
+categories: ["school-security", "philadelphia"]
 draft: false
 ---
 

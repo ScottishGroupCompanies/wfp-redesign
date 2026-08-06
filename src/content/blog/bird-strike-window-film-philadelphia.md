@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-bird-strike-window-film-philadelphia.jpg"
 imageAlt: "How Bird Strike Window Film Helps Prevent Avian Collisions in Philadelphia | Window Film Philadelphia"
 tags: ["bird strike window film", "philadelphia", "bird safety", "bird collision prevention"]
-category: "bird-strike"
+categories: ["bird-strike", "philadelphia"]
 draft: false
 ---
 

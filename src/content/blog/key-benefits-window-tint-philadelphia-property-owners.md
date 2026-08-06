@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-key-benefits-window-tint-philadelphia-property-owners.jpg"
 imageAlt: "7 Key Benefits of Window Tint Every Property Owner Should Know | Window Film Philadelphia"
 tags: ["window tint", "philadelphia", "energy savings", "uv protection", "glare reduction"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 

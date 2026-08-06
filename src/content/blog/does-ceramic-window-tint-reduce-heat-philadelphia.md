@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-ceramic-window-tint-reduce-heat-philadelphia.jpg"
 imageAlt: "Does Ceramic Window Tint Reduce Heat or Just Glare in Philadelphia Spaces? | Window Film Philadelphia"
 tags: ["does", "ceramic", "window", "tint", "reduce", "philadelphia", "window film"]
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 draft: false
 ---
 

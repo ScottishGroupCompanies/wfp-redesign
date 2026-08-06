@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-reflective-window-film-philadelphia.jpg"
 imageAlt: "Philadelphia Businesses Choose Reflective Window Film for Solar Control | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "reflective window film", "solar control"]
-category: "solar-control"
+categories: ["solar-control", "philadelphia"]
 draft: false
 ---
 

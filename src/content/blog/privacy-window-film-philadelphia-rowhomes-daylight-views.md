@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-privacy-window-film-philadelphia-rowhomes-daylight-views.jpg"
 imageAlt: "Privacy Window Film for Philadelphia Rowhomes: Better Daylight Without Street-Level Views | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy film"]
-category: "privacy-film"
+categories: ["privacy-film", "philadelphia"]
 draft: false
 ---
 

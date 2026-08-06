@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-options-office-window-film-philadelphia-businesses.jpg"
 imageAlt: "Options for Office Window Film for Philadelphia Businesses | Window Film Philadelphia"
 tags: ["office window film", "Philadelphia", "commercial window film", "office window film Philadelphia"]
-category: "solar-control"
+categories: ["solar-control", "philadelphia"]
 draft: false
 ---
 

@@ -7,7 +7,7 @@ image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Close-up of solar control window film on a Philadelphia home window"
 tags: ["window film", "philadelphia", "energy savings"]
 draft: false
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 ---
 
 ## Philadelphia summers and the “hot window” problem

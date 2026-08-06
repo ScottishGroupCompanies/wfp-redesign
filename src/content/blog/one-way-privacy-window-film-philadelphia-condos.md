@@ -7,7 +7,7 @@ image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "One-way privacy window film for a Philadelphia condo with bright daytime views"
 tags: ["window film", "philadelphia", "privacy window film", "condo privacy", "glare reduction"]
 draft: false
-category: "privacy-film"
+categories: ["privacy-film", "philadelphia"]
 ---
 
 ## Why Condo Owners Keep Asking for Daytime Privacy

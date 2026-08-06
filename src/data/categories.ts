@@ -248,3 +248,15 @@ export function getCategoryBySlug(slug: string): Category | undefined {
 export function getCategoryLabel(slug: string): string {
   return getCategoryBySlug(slug)?.label ?? slug;
 }
+
+/**
+ * Normalize a blog post's category data into a string array.
+ * Handles both legacy `category: "slug"` and preferred `categories: ["slug1", "slug2"]`.
+ * If both are present, they are merged (duplicates removed).
+ */
+export function getPostCategories(data: { category?: string; categories?: string[] }): string[] {
+  const cats: string[] = [];
+  if (data.categories) cats.push(...data.categories);
+  if (data.category) cats.push(data.category);
+  return [...new Set(cats)];
+}

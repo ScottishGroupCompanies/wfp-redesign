@@ -7,7 +7,7 @@ image: "/images/wfp-church-hero.jpg"
 imageAlt: "Decorative privacy window film on bathroom and door glass in a Philadelphia property"
 tags: ["window film", "philadelphia", "privacy film", "decorative film", "bathroom privacy"]
 draft: false
-category: "privacy-film"
+categories: ["privacy-film", "philadelphia"]
 ---
 
 Philadelphia homes rarely have the same privacy problem twice. A bathroom transom in Old City needs soft daylight without silhouettes after dark, while a narrow glass insert beside a South Philly front door needs coverage at eye level from the sidewalk and stoop. That is why the best window film for day and night privacy Philadelphia homeowners choose is usually not reflective film at all. For bathrooms and doors, frosted and decorative privacy films are the better fit because they obscure views around the clock instead of depending on daylight conditions.

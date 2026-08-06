@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-best-residential-window-tint-philadelphia-climate-options.jpg"
 imageAlt: "Best Residential Window Tint Options for Philadelphia’s Unique Climate | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "residential window tint"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 

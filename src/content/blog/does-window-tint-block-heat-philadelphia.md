@@ -7,7 +7,7 @@ image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial window tint blocking summer heat in a Philadelphia office building"
 tags: ["window tint", "heat blocking", "philadelphia", "window film", "infrared rejection", "energy savings"]
 draft: false
-category: "energy-savings"
+categories: ["energy-savings", "philadelphia"]
 ---
 
 ## What's Actually Heating Up Your Philadelphia Building?

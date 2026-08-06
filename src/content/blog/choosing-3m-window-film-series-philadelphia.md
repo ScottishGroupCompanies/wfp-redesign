@@ -7,7 +7,7 @@ image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "3M architectural window film installed on bright commercial glass in Philadelphia"
 tags: ["3m window film", "philadelphia", "energy savings", "glare reduction"]
 draft: false
-category: "solar-control"
+categories: ["solar-control", "philadelphia"]
 ---
 
 ## Why Series Selection Matters On Philadelphia Glass

@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-frosted-glass-reduce-heat-philadelphia.jpg"
 imageAlt: "Does Frosted Glass Reduce Heat in Philadelphia Sun-Exposed Rooms? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "frosted glass"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 

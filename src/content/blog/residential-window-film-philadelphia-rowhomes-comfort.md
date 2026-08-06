@@ -6,7 +6,7 @@ author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-residential-window-film-philadelphia-rowhomes-comfort.jpg"
 imageAlt: "Residential Window Film for Philadelphia Rowhomes: Comfort Without Replacing the Glass | Window Film Philadelphia"
 tags: ["residential window film", "philadelphia", "rowhomes", "energy savings", "uv protection"]
-category: "philadelphia"
+categories: ["philadelphia"]
 draft: false
 ---
 
