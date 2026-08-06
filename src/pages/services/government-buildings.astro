@@ -8,7 +8,6 @@ import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
 import AccordionBenefits from '../../components/AccordionBenefits.astro';
 import AccordionFAQ from '../../components/AccordionFAQ.astro';
 import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
-import BackAndForthSection from '../../components/BackAndForthSection.astro';
 import CTAAvatars from '../../components/CTAAvatars.astro';
 
 const title = 'Government & Public Building Window Tinting in Philadelphia | Security Window Film';
@@ -57,34 +56,11 @@ const bentoItems = [
 ];
 
 const projectTypes = [
-  {
-    heading: 'Federal Courthouses',
-    body: 'Federal courthouses carry the highest security and compliance burden of any public building. Glazing must resist blast pressure, delay forced entry, and still admit natural light for occupants and the public. We install security film systems rated to GSA blast criteria and tested under ASTM F1233, with structural attachment that bonds the film to the frame — not just to the glass. We also deliver the manufacturer test data and certificates of insurance that federal procurement and the U.S. Marshals Service typically require. Every pane is assessed individually for thermal stress and glass type before a product is recommended.',
-    imageSrc: '/images/government/federal-courthouse-window-film-philadelphia.jpg',
-    imageAlt: 'Philadelphia federal courthouse with security and blast mitigation window film installed',
-    flip: false,
-    ctaLabel: 'Request a Site Assessment',
-    ctaHref: '/contact/',
-  },
-  {
-    heading: 'Municipal Buildings',
-    body: 'City halls, municipal services buildings, and public works offices balance security, energy mandates, and a welcoming public counter — all on a public budget. Window film reduces solar heat gain and HVAC load toward EPAct and local energy mandate compliance, blocks UV to protect public records and interior finishes, and adds an anti-graffiti sacrificial layer to street-facing glass that gets tagged. We coordinate with your facilities team, schedule installations in phased zones so the building stays open, and provide the documentation your procurement process needs.',
-    imageSrc: '/images/government/municipal-building-window-film-philadelphia.jpg',
-    imageAlt: 'Philadelphia municipal building with energy and security window film installed',
-    flip: true,
-    ctaLabel: 'Request a Site Assessment',
-    ctaHref: '/contact/',
-  },
-  {
-    heading: 'Public Schools & Universities',
-    body: 'School districts and university campuses face a different security calculus: large glazed areas, high public foot traffic, and tight budgets. Forced entry delay film with an attachment system slows an intruder long enough to trigger alarms and initiate lockdown. UV film protects classroom furnishings, library collections, and lab equipment from fading. Anti-graffiti film shields first-floor glass and partition walls in hallways and transit-adjacent campuses. We work with district facilities directors and university facilities teams to assess, prioritize, and phase installations across multiple buildings.',
-    imageSrc: '/images/government/public-school-window-film-philadelphia.jpg',
-    imageAlt: 'Philadelphia public school with security and UV protection window film installed',
-    flip: false,
-    ctaLabel: 'Request a Site Assessment',
-    ctaHref: '/contact/',
-  },
+  { name: 'Federal Courthouses', desc: 'Federal courthouses carry the highest security and compliance burden of any public building. Glazing must resist blast pressure, delay forced entry, and still admit natural light for occupants and the public. We install security film systems rated to GSA blast criteria and tested under ASTM F1233, with structural attachment that bonds the film to the frame — not just to the glass. We also deliver the manufacturer test data and certificates of insurance that federal procurement and the U.S. Marshals Service typically require. Every pane is assessed individually for thermal stress and glass type before a product is recommended.', img: '/images/government/federal-courthouse-window-film-philadelphia.jpg', alt: 'Philadelphia federal courthouse with security and blast mitigation window film installed' },
+  { name: 'Municipal Buildings', desc: 'City halls, municipal services buildings, and public works offices balance security, energy mandates, and a welcoming public counter — all on a public budget. Window film reduces solar heat gain and HVAC load toward EPAct and local energy mandate compliance, blocks UV to protect public records and interior finishes, and adds an anti-graffiti sacrificial layer to street-facing glass that gets tagged. We coordinate with your facilities team, schedule installations in phased zones so the building stays open, and provide the documentation your procurement process needs.', img: '/images/government/municipal-building-window-film-philadelphia.jpg', alt: 'Philadelphia municipal building with energy and security window film installed' },
+  { name: 'Public Schools & Universities', desc: 'School districts and university campuses face a different security calculus: large glazed areas, high public foot traffic, and tight budgets. Forced entry delay film with an attachment system slows an intruder long enough to trigger alarms and initiate lockdown. UV film protects classroom furnishings, library collections, and lab equipment from fading. Anti-graffiti film shields first-floor glass and partition walls in hallways and transit-adjacent campuses. We work with district facilities directors and university facilities teams to assess, prioritize, and phase installations across multiple buildings.', img: '/images/government/public-school-window-film-philadelphia.jpg', alt: 'Philadelphia public school with security and UV protection window film installed' },
 ];
+    ];
 
 const testimonials = [
   { quote: 'After the security review, we needed blast-rated film on every ground-floor pane of the courthouse. They installed the attachment system, delivered the ASTM F1233 test data for our file, and coordinated with the U.S. Marshals Service on scheduling. The building never closed.', name: 'Col. James Whitfield', role: 'Facilities Director, federal courthouse', img: '/images/government/government-window-tinting-philadelphia-testimonial-1.jpg' },
@@ -264,28 +240,29 @@ const howToSteps = [
   theme="dark"
 />
 
-<!-- ═══ PROJECT TYPES — BackAndForthSection ═══ -->
-<section class="gov-project-hd">
+<!-- ═══ PROJECT TYPES — alternating image/text rows (commercial rsh-housing pattern) ═══ -->
+<section class="gov-housing">
   <div class="gov-container">
-    <div class="gov-project-hd__inner">
+    <div class="gov-housing__hd">
       <span class="gov-eyebrow">Government Project Types</span>
-      <h2 class="gov-project-hd__title">From federal courthouses to public schools</h2>
-      <p class="gov-project-hd__sub">Each public building type has its own security, compliance, and operational demands. We scale our process to match — coordinating with security staff, facilities teams, and procurement officers at every step.</p>
+      <h2 class="gov-housing__title">From federal courthouses to public schools</h2>
+      <p class="gov-housing__sub">Each public building type has its own security, compliance, and operational demands. We scale our process to match — coordinating with security staff, facilities teams, and procurement officers at every step.</p>
+    </div>
+    <div class="gov-housing__rows">
+      {projectTypes.map((p, i) => (
+        <div class={`gov-housing__row${i % 2 === 1 ? ' gov-housing__row--rev' : ''}`}>
+          <div class="gov-housing__img">
+            <img src={p.img} alt={p.alt} title={p.alt} width="600" height="480" loading="lazy" />
+          </div>
+          <div class="gov-housing__content">
+            <h3 class="gov-housing__name">{p.name}</h3>
+            <p class="gov-housing__desc">{p.desc}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
-
-{projectTypes.map((p) => (
-  <BackAndForthSection
-    heading={p.heading}
-    body={p.body}
-    imageSrc={p.imageSrc}
-    imageAlt={p.imageAlt}
-    flip={p.flip}
-    ctaLabel={p.ctaLabel}
-    ctaHref={p.ctaHref}
-  />
-))}
 
 <!-- ═══ WHY CHOOSE US — Full-bleed image slider (gov-ftype pattern) ═══ -->
 <section class="gov-ftype" id="govFtype">
@@ -702,14 +679,14 @@ no pressure</h2>
   display: block;
 }
 
-/* ── PROJECT TYPES HEADER ══ */
-.gov-project-hd { padding: 60px 0 24px; }
-.gov-project-hd__inner {
+/* ── HOUSING/PROJECT TYPES ══ */
+.gov-housing { padding: 60px 0; }
+.gov-housing__hd {
   max-width: 680px;
-  margin: 0 auto;
+  margin: 0 auto 48px;
   text-align: center;
 }
-.gov-project-hd__title {
+.gov-housing__title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 700;
@@ -717,11 +694,51 @@ no pressure</h2>
   color: var(--gov-text-dark);
   margin: 0 0 16px;
 }
-.gov-project-hd__sub {
+.gov-housing__sub {
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   color: var(--gov-text-mid);
   line-height: 1.7;
+  margin: 0;
+}
+.gov-housing__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.gov-housing__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.gov-housing__row--rev { direction: rtl; }
+.gov-housing__row--rev > * { direction: ltr; }
+.gov-housing__img {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.gov-housing__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 500ms ease;
+}
+.gov-housing__img:hover img { transform: scale(1.03); }
+.gov-housing__name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--gov-text-dark);
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.gov-housing__desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gov-text-mid);
+  line-height: 1.8;
   margin: 0;
 }
 
