@@ -1,0 +1,273 @@
+---
+// CategoryBlogFeed.astro
+// Shows the 3 latest blog posts tagged with a given category slug.
+// Automatically updates when new posts are published — oldest drops off.
+import { getCollection } from 'astro:content';
+import { getPostCategories } from '../data/categories';
+
+interface Props {
+  categorySlug: string;   // e.g. 'energy-savings', 'philadelphia', 'camden'
+  feedTitle: string;       // e.g. 'Latest Energy Savings Articles', 'Latest Philadelphia News'
+  viewAllLabel?: string;   // e.g. 'View All Philadelphia Articles →' (defaults to feedTitle)
+}
+
+const { categorySlug, feedTitle, viewAllLabel } = Astro.props;
+const viewAllText = viewAllLabel ?? `View All ${feedTitle} Articles`;
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const feedPosts = allPosts
+  .filter((p) => getPostCategories(p.data).includes(categorySlug))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+// Only render the section if there's at least one post
+const hasPosts = feedPosts.length > 0;
+---
+
+{hasPosts && (
+  <section class="cat-blog-feed">
+    <div class="cat-blog-feed__container">
+
+      {/* ── HEADER ── */}
+      <div class="cat-blog-feed__header">
+        <span class="cat-blog-feed__accent"></span>
+        <span class="cat-blog-feed__eyebrow">Window Film</span>
+        <h2 class="cat-blog-feed__title">{feedTitle}</h2>
+      </div>
+
+      {/* ── 3-CARD GRID ── */}
+      <div class="cat-blog-feed__grid">
+        {feedPosts.map((post) => (
+          <article class="cat-blog-feed__card">
+            {post.data.image && (
+              <a href={`/blog/${post.slug}/`} class="cat-blog-feed__img-link" tabindex="-1" aria-hidden="true">
+                <div class="cat-blog-feed__img">
+                  <img
+                    src={post.data.image}
+                    alt={post.data.imageAlt || post.data.title}
+                    loading="lazy"
+                    width="500"
+                    height="300"
+                  />
+                </div>
+              </a>
+            )}
+            <div class="cat-blog-feed__body">
+              <h3 class="cat-blog-feed__card-title">
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <span class="cat-blog-feed__date">{formatDate(post.data.pubDate)}</span>
+              <a href={`/blog/${post.slug}/`} class="cat-blog-feed__read-more">
+                Read More
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* ── VIEW ALL LINK ── */}
+      <div class="cat-blog-feed__footer">
+        <a href={`/blog/category/${categorySlug}/`} class="cat-blog-feed__view-all">
+          {viewAllText} &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+)}
+
+<style>
+.cat-blog-feed {
+  background: #ffffff;
+  padding: 80px 5% 100px;
+}
+
+.cat-blog-feed__container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ── HEADER ── */
+.cat-blog-feed__header {
+  text-align: center;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cat-blog-feed__accent {
+  width: 48px;
+  height: 3px;
+  background: var(--green, #81AB4C);
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.cat-blog-feed__eyebrow {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light, #888);
+}
+
+.cat-blog-feed__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  color: var(--text-dark, #1a1a1a);
+  margin: 0;
+}
+
+/* ── 3-CARD GRID ── */
+.cat-blog-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.cat-blog-feed__card {
+  background: #fff;
+  border-radius: var(--radius-lg, 24px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--light-gray, #EFEFED);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.cat-blog-feed__card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
+  transform: translateY(-4px);
+}
+
+.cat-blog-feed__img-link {
+  display: block;
+  overflow: hidden;
+}
+
+.cat-blog-feed__img {
+  height: 240px;
+  overflow: hidden;
+}
+
+.cat-blog-feed__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.cat-blog-feed__card:hover .cat-blog-feed__img img {
+  transform: scale(1.04);
+}
+
+.cat-blog-feed__body {
+  padding: 24px 24px 28px;
+  background: var(--off-white, #F7F6F3);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cat-blog-feed__card-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+}
+
+.cat-blog-feed__card-title a {
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cat-blog-feed__card-title a:hover {
+  color: #6e9640;
+}
+
+.cat-blog-feed__date {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 12px;
+  color: var(--text-light, #888);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.cat-blog-feed__read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--brand, #272E32);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, gap 0.2s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.cat-blog-feed__read-more:hover {
+  background: #1a2320;
+  gap: 10px;
+}
+
+/* ── VIEW ALL LINK ── */
+.cat-blog-feed__footer {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.cat-blog-feed__view-all {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green, #81AB4C);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cat-blog-feed__view-all:hover {
+  color: #6e9640;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .cat-blog-feed__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cat-blog-feed {
+    padding: 56px 5% 72px;
+  }
+  .cat-blog-feed__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
