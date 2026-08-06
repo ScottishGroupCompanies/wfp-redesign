@@ -1,0 +1,990 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import GalleryBanner from '../../components/GalleryBanner.astro';
+import HowItWorksSlideshow from '../../components/HowItWorksSlideshow.astro';
+import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import BackAndForthSection from '../../components/BackAndForthSection.astro';
+import CTAAvatars from '../../components/CTAAvatars.astro';
+
+const title = 'Government & Public Building Window Tinting in Philadelphia | Security Window Film';
+const description = 'GSA-compliant government window tinting in Philadelphia. Blast mitigation, forced entry delay, UV archive protection, energy mandate compliance, and anti-graffiti film for federal courthouses, municipal buildings, and public schools. Free site assessment.';
+const dateModified = new Date().toISOString().slice(0, 10);
+
+const faqItems = [
+  { question: 'Can you install window film in occupied government buildings without disrupting operations?', answer: 'Yes. Public buildings rarely have the option to close during upgrades. We schedule installations after hours, on weekends, or in phased zones so courts, offices, and public counters stay open throughout. For occupied facilities, we work floor by floor and wing by wing, coordinating directly with your facilities team, building manager, and security staff to minimize disruption to employees and the public.' },
+  { question: 'How does security window film meet GSA and blast mitigation standards?', answer: 'Security window film installed with a structural attachment system is engineered to hold shattered glass in place during a blast event, reducing the hazard of flying glass — the leading cause of injury in explosions. We install film systems rated to GSA blast criteria and tested under ASTM F1233 for forced entry resistance. We provide the test data and specifications your security team and procurement officers need for documentation.' },
+  { question: 'Does government window tinting help with federal energy mandate compliance?', answer: 'Yes. Federal facilities are required to meet energy reduction targets, and many state and municipal buildings follow similar mandates. Window film reduces solar heat gain and HVAC load without replacing the glazing — a cost-effective path toward EPAct and local energy mandate compliance. We document solar heat gain coefficients and performance specs so your sustainability team can verify the reduction in cooling demand.' },
+  { question: 'Is window film compatible with historic government buildings?', answer: 'In many cases, yes. Historic courthouses, city halls, and landmark civic buildings often have original single-pane glass that cannot be replaced without compromising the historic character. Interior-applied window film is frequently approved by the State Historic Preservation Office (SHPO) because it does not alter the exterior appearance of the building. We coordinate with your preservation officer and provide the documentation SHPO review typically requires.' },
+  { question: 'What warranty and compliance documentation is provided?', answer: 'Every government installation is backed by the manufacturer warranty covering film performance — peeling, bubbling, discoloration, and solar heat rejection. We also provide a labor warranty on every installation. Warranty terms vary by product and film type; we walk your procurement team through the specifics for each product during the site assessment and include warranty documentation in our proposal.' },
+  { question: 'Do you provide the documentation required for the public procurement process?', answer: 'Yes. We work with procurement officers regularly and understand the documentation public agencies require. We provide detailed proposals, product specifications, manufacturer test data, certificates of insurance, licensing documentation, and warranty information — formatted to fit your bid or proposal process. We are licensed and insured in both Pennsylvania and New Jersey, and we carry the documentation most government contracts require.' },
+  { question: 'Can anti-graffiti film protect public-facing glass in transit-adjacent and high-traffic buildings?', answer: 'Absolutely. Anti-graffiti film creates a sacrificial barrier on street-facing and public-facing glass. If it gets scratched, etched, or tagged, you peel it off and replace the film at a fraction of the cost of replacing the glass. This is essential for transit-adjacent public buildings, street-level government offices, and any facility where public-facing glass is vulnerable to vandalism.' },
+  { question: 'How long does government window film last?', answer: 'Professional-grade window film typically lasts 12–20 years depending on film type, glass orientation, and environmental exposure. South- and west-facing windows with direct sun exposure may see shorter lifespans than north-facing windows. All our government installations include manufacturer warranty coverage and our own labor guarantee, documented for your facility records.' },
+];
+
+const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
+
+const accordionBenefits = [
+  { number: '01', title: 'Blast Mitigation & Security', detail: 'Flying glass is the leading cause of injury in a blast event. Security window film installed with a structural attachment system holds shattered glass in the frame, reducing the hazard to occupants inside. Film systems are rated to GSA blast criteria and tested under ASTM F1233 — the documentation your security team and procurement officers need. Explore our <a href="/benefits/blast-mitigation/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">blast mitigation window film</a> solutions.', image: '/images/government/security-blast-window-film-philadelphia.jpg', imageAlt: 'Security blast mitigation window film on a Philadelphia federal building' },
+  { number: '02', title: 'UV Archive Protection', detail: 'Government buildings house irreplaceable records — court archives, historic documents, land deeds, and public records. UV rays through untreated glass cause paper, ink, and photographic materials to fade and degrade. Window film blocks up to 99.9% of UV radiation, extending the usable life of archived materials without altering visibility. See our <a href="/benefits/uv-blocking-window-film-philadelphia/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">UV protection window film</a> guide.', image: '/images/government/uv-protection-government-window-film-philadelphia.jpg', imageAlt: 'UV protection window film shielding archived documents in a Philadelphia government building' },
+  { number: '03', title: 'Energy Mandate Compliance', detail: 'Federal facilities must meet energy reduction targets, and many state and municipal buildings follow similar mandates. Window film reduces solar heat gain and HVAC load without replacing the glazing — a cost-effective path toward EPAct and local energy mandate compliance. We document solar heat gain coefficients so your sustainability team can verify the reduction. Explore our <a href="/benefits/energy-savings/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">energy saving window film</a> options.', image: '/images/government/energy-savings-government-window-film-philadelphia.jpg', imageAlt: 'Energy saving window film reducing HVAC load on a Philadelphia municipal building' },
+  { number: '04', title: 'Glare-Free Workspaces', detail: 'Afternoon glare on screens is a productivity and ergonomic issue in every government office — from case workers to clerks to judges\' chambers. Glare reduction film eliminates screen washout while maintaining natural light. According to <a href="https://www.osha.gov/ergonomics" target="_blank" rel="noopener noreferrer" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">OSHA</a>, glare is a recognized workplace ergonomic hazard. Explore <a href="/benefits/glare-reduction/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">glare reduction window film</a>.', image: '/images/government/glare-reduction-government-window-film-philadelphia.jpg', imageAlt: 'Glare reduction window film in a Philadelphia government office workspace' },
+  { number: '05', title: 'Confidentiality & Privacy', detail: 'Public buildings handle sensitive information — case files, hearings, personnel records, and citizen data. One-way daytime privacy film keeps the interior visible to staff while shielding it from public view at the street. Frosted and decorative options add privacy to interview rooms and partition glass without blocking light. See <a href="/benefits/privacy-window-film-philadelphia/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">privacy window film options</a>.', image: '/images/government/privacy-government-window-film-philadelphia.jpg', imageAlt: 'Privacy window film on a Philadelphia government office interview room partition' },
+  { number: '06', title: 'Historic Preservation', detail: 'Historic courthouses and city halls often have original glass that cannot be replaced without compromising landmark character. Interior-applied film is frequently approved by the State Historic Preservation Office (SHPO) because it does not alter the exterior appearance — a non-destructive way to add security, UV, and energy performance to protected glazing. Explore <a href="/benefits/energy-savings/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">energy saving window film</a> for historic structures.', image: '/images/government/historic-preservation-window-film-philadelphia.jpg', imageAlt: 'Historic preservation window film applied to original glass in a Philadelphia landmark government building' },
+  { number: '07', title: 'Anti-Graffiti Shield', detail: 'Public-facing glass in transit-adjacent and high-traffic government buildings is a frequent target for scratching, etching, and tagging. Anti-graffiti film creates a sacrificial barrier — if it is vandalized, you peel it off and replace the film at a fraction of the cost of replacing the glass. See <a href="/benefits/anti-graffiti/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">anti-graffiti window film</a>.', image: '/images/government/anti-graffiti-government-window-film-philadelphia.jpg', imageAlt: 'Anti-graffiti window film protecting public-facing glass on a Philadelphia government building' },
+  { number: '08', title: 'Forced Entry Delay', detail: 'Security film with an attachment system bonds the glass to the frame, delaying forced entry long enough to trigger alarms and allow response. ASTM F1233 testing measures the time a glazing system resists forced entry — critical for ground-floor government offices, police facilities, and public counters. Learn about <a href="/benefits/safety-and-security/" style="color: var(--gov-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">safety and security window film</a>.', image: '/images/government/forced-entry-government-window-film-philadelphia.jpg', imageAlt: 'Forced entry delay security window film on a Philadelphia government building entrance' },
+];
+
+const galleryPhotos = [
+  '/images/government/government-window-tinting-philadelphia-gallery-1.jpg',
+  '/images/government/government-window-tinting-philadelphia-gallery-2.jpg',
+  '/images/government/government-window-tinting-philadelphia-gallery-3.jpg',
+  '/images/government/government-window-tinting-philadelphia-gallery-4.jpg',
+  '/images/government/government-window-tinting-philadelphia-gallery-5.jpg',
+];
+
+const bentoItems = [
+  { span: 'lg', title: 'City Hall & Municipal Offices', desc: 'Security and energy film for the seat of city government.', img: '/images/government/government-window-tinting-philadelphia-bento-cityhall.jpg', href: '/contact/' },
+  { span: 'sm', title: 'The Application', desc: 'Precision from assessment to final handover.', img: '/images/government/government-window-tinting-philadelphia-bento-install.jpg', href: '/contact/' },
+  { span: 'sm', title: 'The Protected Space', desc: 'Secure, efficient, and well-documented.', img: '/images/government/government-window-tinting-philadelphia-bento-finished.jpg', href: '/contact/' },
+  { span: 'md', title: 'Public Libraries', desc: 'UV protection for collections and reading rooms.', img: '/images/government/government-window-tinting-philadelphia-bento-library.jpg', href: '/contact/' },
+  { span: 'md', title: 'Police & Public Safety', desc: 'Forced entry delay and blast film for secure facilities.', img: '/images/government/government-window-tinting-philadelphia-bento-police.jpg', href: '/contact/' },
+  { span: 'md', title: 'Historic Courthouses', desc: 'SHPO-friendly interior film for landmark glazing.', img: '/images/government/government-window-tinting-philadelphia-bento-historic.jpg', href: '/contact/' },
+];
+
+const projectTypes = [
+  {
+    heading: 'Federal Courthouses',
+    body: 'Federal courthouses carry the highest security and compliance burden of any public building. Glazing must resist blast pressure, delay forced entry, and still admit natural light for occupants and the public. We install security film systems rated to GSA blast criteria and tested under ASTM F1233, with structural attachment that bonds the film to the frame — not just to the glass. We also deliver the manufacturer test data and certificates of insurance that federal procurement and the U.S. Marshals Service typically require. Every pane is assessed individually for thermal stress and glass type before a product is recommended.',
+    imageSrc: '/images/government/federal-courthouse-window-film-philadelphia.jpg',
+    imageAlt: 'Philadelphia federal courthouse with security and blast mitigation window film installed',
+    flip: false,
+    ctaLabel: 'Request a Site Assessment',
+    ctaHref: '/contact/',
+  },
+  {
+    heading: 'Municipal Buildings',
+    body: 'City halls, municipal services buildings, and public works offices balance security, energy mandates, and a welcoming public counter — all on a public budget. Window film reduces solar heat gain and HVAC load toward EPAct and local energy mandate compliance, blocks UV to protect public records and interior finishes, and adds an anti-graffiti sacrificial layer to street-facing glass that gets tagged. We coordinate with your facilities team, schedule installations in phased zones so the building stays open, and provide the documentation your procurement process needs.',
+    imageSrc: '/images/government/municipal-building-window-film-philadelphia.jpg',
+    imageAlt: 'Philadelphia municipal building with energy and security window film installed',
+    flip: true,
+    ctaLabel: 'Request a Site Assessment',
+    ctaHref: '/contact/',
+  },
+  {
+    heading: 'Public Schools & Universities',
+    body: 'School districts and university campuses face a different security calculus: large glazed areas, high public foot traffic, and tight budgets. Forced entry delay film with an attachment system slows an intruder long enough to trigger alarms and initiate lockdown. UV film protects classroom furnishings, library collections, and lab equipment from fading. Anti-graffiti film shields first-floor glass and partition walls in hallways and transit-adjacent campuses. We work with district facilities directors and university facilities teams to assess, prioritize, and phase installations across multiple buildings.',
+    imageSrc: '/images/government/public-school-window-film-philadelphia.jpg',
+    imageAlt: 'Philadelphia public school with security and UV protection window film installed',
+    flip: false,
+    ctaLabel: 'Request a Site Assessment',
+    ctaHref: '/contact/',
+  },
+];
+
+const testimonials = [
+  { quote: 'After the security review, we needed blast-rated film on every ground-floor pane of the courthouse. They installed the attachment system, delivered the ASTM F1233 test data for our file, and coordinated with the U.S. Marshals Service on scheduling. The building never closed.', name: 'Col. James Whitfield', role: 'Facilities Director, federal courthouse', img: '/images/government/government-window-tinting-philadelphia-testimonial-1.jpg' },
+  { quote: 'As a procurement officer, I need a contractor who shows up with everything — insurance certificates, manufacturer specs, warranty docs, all formatted for our bid process. They handed me a complete proposal package the day of the site assessment. It sailed through review.', name: 'Patricia Ng', role: 'Procurement Officer, city of Philadelphia', img: '/images/government/government-window-tinting-philadelphia-testimonial-2.jpg' },
+  { quote: 'We run three public safety facilities. Forced entry delay on the ground floor and anti-graffiti on the street-facing glass was the right combination. The attachment system is serious — that film is not coming off the frame without real effort. Exactly what our threat assessment called for.', name: 'Captain Ray Morales', role: 'Chief Security Officer, police facilities', img: '/images/government/government-window-tinting-philadelphia-testimonial-3.jpg' },
+  { quote: 'I manage a 12-building municipal campus. They assessed each building separately — different glass, different orientation, different film per zone — and phased the install so every office stayed open. The energy savings showed up on the first utility bill, and the documentation went straight to our sustainability team for mandate reporting.', name: 'Gerald Brooks', role: 'Building Manager, municipal services campus', img: '/images/government/government-window-tinting-philadelphia-testimonial-4.jpg' },
+  { quote: 'Our campus has everything from 1920s brick academic buildings to modern glass libraries. They specified interior film for the historic structures — SHPO approved it because it does not change the exterior — and security film for the new construction. One contractor, one set of compliance docs, multiple film types done right.', name: 'Dr. Alan Ressler', role: 'University Facilities Director', img: '/images/government/government-window-tinting-philadelphia-testimonial-5.jpg' },
+  { quote: 'The public counter glass was getting etched every few weeks. Anti-graffiti film changed that overnight — when it gets tagged, we peel and replace the film, not the glass. The cost difference is enormous. I wish we had done it years ago.', name: 'Sgt. Maria Delgado', role: 'Police Facilities Coordinator', img: '/images/government/government-window-tinting-philadelphia-testimonial-6.jpg' },
+  { quote: 'We hold municipal archives going back to the 1800s. UV film on the archive room windows stopped the fading on the oldest bound records — the conservator confirmed the difference. The film is virtually invisible, which matters because the reading room needs the daylight.', name: 'Eleanor Briggs', role: 'Library Director, public library system', img: '/images/government/government-window-tinting-philadelphia-testimonial-7.jpg' },
+  { quote: 'Coordinating film across six public works buildings meant phased scheduling, after-hours crews, and a paper trail for every pane. They handled all of it and delivered warranty documentation per building. The energy reduction helped us hit our mandate target the same fiscal year.', name: 'Warren Pierce', role: 'Public Works Project Manager', img: '/images/government/government-window-tinting-philadelphia-testimonial-8.jpg' },
+];
+
+const processSlides = [
+  { step: '01', title: 'Security Assessment', desc: 'We visit your facility, assess every pane, evaluate glass type and thermal stress risk, review your security and compliance requirements, and take exact measurements — at no cost and no obligation.', img: '/images/government/government-window-film-assessment-philadelphia.jpg', imgAlt: 'Government window film consultant assessing federal building windows in Philadelphia', cta: 'Request a Site Assessment', ctaHref: '/contact/' },
+  { step: '02', title: 'Compliance Preparation', desc: 'Film is pre-cut by plotter to your exact pane dimensions. We coordinate with your facilities team and security staff to schedule installation around public hours — after hours, weekends, or phased by zone.', img: '/images/government/government-window-film-preparation-philadelphia.jpg', imgAlt: 'Precision plotter cutting government window film to exact dimensions', cta: 'See Our Process', ctaHref: '/process/' },
+  { step: '03', title: 'Cleared Installation', desc: 'Film is applied to prepared glass using manufacturer-specified techniques, squeegeed from center outward, edges trimmed to the pane, and every pane inspected for defects. Our crews work in coordinated zones to keep your facility operational.', img: '/images/government/government-window-film-installation-philadelphia.jpg', imgAlt: 'Professional installer applying security window film to government building glass in Philadelphia', cta: 'Request a Quote', ctaHref: '/contact/' },
+  { step: '04', title: 'Final Inspection & Handover', desc: 'We walk through every floor with your facilities team, explain care during the cure period, provide warranty and manufacturer test documentation, and deliver compliance specs for your records.', img: '/images/government/government-window-film-walkthrough-philadelphia.jpg', imgAlt: 'Installer and facilities manager doing final walkthrough of government window film installation', cta: 'Request a Quote', ctaHref: '/contact/' },
+];
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.windowfilmphiladelphia.net/services/' },
+      { '@type': 'ListItem', position: 3, name: 'Government & Public Buildings', item: 'https://www.windowfilmphiladelphia.net/services/government-buildings/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/services/government-buildings/',
+    url: 'https://www.windowfilmphiladelphia.net/services/government-buildings/',
+    name: 'Government & Public Building Window Tinting Philadelphia',
+    description,
+    dateModified,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Government & Public Building Window Tinting Benefits Philadelphia',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Blast Mitigation & Security', description: 'GSA-rated security window film holds shattered glass in place during a blast event for government buildings.' },
+      { '@type': 'ListItem', position: 2, name: 'UV Archive Protection', description: 'Blocks up to 99.9% of UV rays to protect government records, archives, and historic documents from fading.' },
+      { '@type': 'ListItem', position: 3, name: 'Energy Mandate Compliance', description: 'Reduces solar heat gain to help federal, state, and municipal buildings meet EPAct and energy mandate targets.' },
+      { '@type': 'ListItem', position: 4, name: 'Glare-Free Workspaces', description: 'Eliminates screen glare in government offices while maintaining natural light.' },
+      { '@type': 'ListItem', position: 5, name: 'Confidentiality & Privacy', description: 'One-way daytime privacy and frosted film for government interview rooms and public counters.' },
+      { '@type': 'ListItem', position: 6, name: 'Historic Preservation', description: 'Interior-applied film approved by SHPO that does not alter the exterior of landmark government buildings.' },
+      { '@type': 'ListItem', position: 7, name: 'Anti-Graffiti Shield', description: 'Sacrificial film protects public-facing government glass from scratching, etching, and tagging.' },
+      { '@type': 'ListItem', position: 8, name: 'Forced Entry Delay', description: 'Security film with attachment system delays forced entry, tested under ASTM F1233.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Government & Public Building Window Tinting Philadelphia',
+    description: 'Professional government window tinting installation for Philadelphia federal courthouses, municipal buildings, public schools, and university campuses. Blast mitigation, forced entry delay, UV archive protection, energy mandate compliance, anti-graffiti, and historic preservation film applied to existing government glazing.',
+    brand: { '@type': 'Brand', name: 'Window Film Philadelphia' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '2400', bestRating: '5', worstRating: '1' },
+    offers: { '@type': 'Offer', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+  },
+];
+
+const howToSteps = [
+  { name: 'Security Assessment', text: 'We visit your facility, assess every pane, evaluate glass type and thermal stress risk, review your security and compliance requirements, and take exact measurements at no cost or obligation.' },
+  { name: 'Compliance Preparation', text: 'Film is pre-cut by plotter to your exact pane dimensions. We coordinate with your facilities team and security staff to schedule installation around public hours.' },
+  { name: 'Cleared Installation', text: 'Film is applied to prepared glass using manufacturer-specified techniques, squeegeed from center outward, edges trimmed, and every pane inspected. Our crews work in coordinated zones to keep your facility operational.' },
+  { name: 'Final Inspection & Handover', text: 'We walk through every floor with your facilities team, explain care during the cure period, provide warranty and manufacturer test documentation, and deliver compliance specs.' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/services/government-buildings/"
+  faqItems={faqItems}
+  serviceName="Government & Public Building Window Tinting Philadelphia"
+  serviceDesc="Professional government window tinting installation for Philadelphia federal courthouses, municipal buildings, public schools, and university campuses. Blast mitigation, forced entry delay, UV archive protection, and energy mandate compliance film."
+  serviceUrl="https://www.windowfilmphiladelphia.net/services/government-buildings/"
+  howToSteps={howToSteps}
+  howToName="Government & Public Building Window Tinting Installation Process"
+  howToDesc="Professional government window tinting installation process for Philadelphia public buildings."
+  schemas={pageSchemas}
+>
+
+<!-- ═══ HERO ═══ -->
+<section class="gov-hero">
+  <div class="gov-hero__bg" style="background-image: url('/images/government/government-window-tinting-philadelphia-hero.jpg')" role="img" aria-label="Philadelphia government building with security window tinting installed"></div>
+  <div class="gov-hero__overlay"></div>
+  <div class="gov-hero__content">
+    <div class="gov-hero__eyebrow">
+      <span class="gov-hero__eyebrow-dot" aria-hidden="true"></span>
+      GOVERNMENT & PUBLIC BUILDINGS
+      <span class="gov-hero__eyebrow-dot" aria-hidden="true"></span>
+    </div>
+    <h1 class="gov-hero__title">Public & Government Window Tinting in Philadelphia</h1>
+    <p class="gov-hero__subtitle">GSA-compliant security film, blast mitigation, forced entry delay, UV archive protection, and energy mandate compliance for federal courthouses, municipal buildings, and public schools across the Delaware Valley. Applied to your existing glazing, phased to keep every facility open.</p>
+    <div class="gov-hero__cta">
+      <a href="/contact/" class="gov-hero__btn-primary">Request a Free Site Assessment</a>
+      <a href="tel:2673947980" class="gov-hero__btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
+    <div class="gov-hero__stats-panel" aria-label="Key statistics">
+      <div class="gov-hero__stats-inner">
+        <div class="gov-hero__stat">
+          <span class="gov-hero__stat-number">99.9%</span>
+          <span class="gov-hero__stat-label">UV Blocked</span>
+        </div>
+        <div class="gov-hero__stat-divider" aria-hidden="true"></div>
+        <div class="gov-hero__stat">
+          <span class="gov-hero__stat-number">2008</span>
+          <span class="gov-hero__stat-label">Serving Since</span>
+        </div>
+        <div class="gov-hero__stat-divider" aria-hidden="true"></div>
+        <div class="gov-hero__stat">
+          <span class="gov-hero__stat-number">2,400+</span>
+          <span class="gov-hero__stat-label">Projects Completed</span>
+        </div>
+        <div class="gov-hero__stat-divider" aria-hidden="true"></div>
+        <div class="gov-hero__stat">
+          <span class="gov-hero__stat-number">4.9</span>
+          <span class="gov-hero__stat-label">Google Rating</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gov-body">
+
+<!-- TRUST BAR -->
+<section class="gov-trust">
+  <div class="gov-container">
+    <p class="gov-trust__label">Trusted by Philadelphia government facilities, procurement officers, and public institutions since 2008</p>
+  </div>
+</section>
+
+<BrandLogos />
+
+<!-- ═══ INTRO — 2-col with image ═══ -->
+<section class="gov-intro">
+  <div class="gov-intro__container">
+    <div class="gov-intro__content">
+      <span class="gov-eyebrow">Our Services</span>
+      <h2 class="gov-intro__title">Government window tinting for Philadelphia public buildings, done to spec</h2>
+      <p class="gov-intro__lead">Government facilities operate under constraints no private building faces — GSA security standards, energy mandates, historic preservation review, and a public procurement process that demands documentation at every step. Government window tinting in Philadelphia addresses all of it on your existing glazing: blast mitigation and forced entry delay for courthouses and public safety buildings, UV protection for court archives and public records, energy mandate compliance for federal and municipal facilities, and anti-graffiti film for street-facing public counters.</p>
+      <p class="gov-intro__lead">We assess every pane individually — glass type, age, condition, orientation, and thermal stress risk — before recommending a product, because the wrong film on the wrong glass can cause thermal breakage. Different zones of the same building often need different films: blast-rated security film on the ground floor, solar control on the west facade, UV film in the archive room. We provide the manufacturer test data, certificates of insurance, and warranty documentation your procurement process requires — and we coordinate installations in phased zones so no facility closes. According to the <a href="https://www.osha.gov/ergonomics" target="_blank" rel="noopener noreferrer" style="color: var(--gov-green); text-decoration: underline; text-underline-offset: 3px;">OSHA ergonomics guidance</a>, glare is a recognized workplace hazard that contributes to eye strain and discomfort — window film removes it at the source for every government workspace.</p>
+    </div>
+    <div class="gov-intro__image-wrap">
+      <img src="/images/government/government-window-tinting-philadelphia-interior.jpg" alt="Philadelphia government building interior with security window tinting installed" title="Philadelphia government building with window tinting — Window Film Philadelphia" class="gov-intro__image" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE/AFTER SLIDER ═══ -->
+<BeforeAfterSlider
+  before="/images/government/government-window-tinting-philadelphia-before.jpg"
+  after="/images/government/government-window-tinting-philadelphia-after.jpg"
+  beforeAlt="Philadelphia government office interior without window film — harsh glare on workstations and faded surfaces"
+  afterAlt="Same Philadelphia government office interior after security and solar window tinting — even light and protected finishes"
+  beforeTag="Without film"
+  afterTag="With film"
+  heading="See the difference for yourself"
+  sub="Drag the handle to compare a Philadelphia government office before and after window tinting. Same workspace. Same windows. A measurable change in security, comfort, and energy performance."
+/>
+
+<!-- ═══ GALLERY BANNER — fanned photo strips ═══ -->
+<GalleryBanner
+  titleLines={['OUR', 'WORK.']}
+  eyebrow="GOVERNMENT INSTALLS"
+  description="A collection of real government and public building window film installations across Philadelphia. Every project assessed, applied, and finished by our own certified team."
+  photos={galleryPhotos}
+  hintText="Hover the photos · click to bring forward"
+  theme="dark"
+/>
+
+<!-- ═══ PROJECT TYPES — BackAndForthSection ═══ -->
+<section class="gov-project-hd">
+  <div class="gov-container">
+    <div class="gov-project-hd__inner">
+      <span class="gov-eyebrow">Government Project Types</span>
+      <h2 class="gov-project-hd__title">From federal courthouses to public schools</h2>
+      <p class="gov-project-hd__sub">Each public building type has its own security, compliance, and operational demands. We scale our process to match — coordinating with security staff, facilities teams, and procurement officers at every step.</p>
+    </div>
+  </div>
+</section>
+
+{projectTypes.map((p) => (
+  <BackAndForthSection
+    heading={p.heading}
+    body={p.body}
+    imageSrc={p.imageSrc}
+    imageAlt={p.imageAlt}
+    flip={p.flip}
+    ctaLabel={p.ctaLabel}
+    ctaHref={p.ctaHref}
+  />
+))}
+
+<!-- ═══ WHY CHOOSE US — Full-bleed image slider (gov-ftype pattern) ═══ -->
+<section class="gov-ftype" id="govFtype">
+  <div class="gov-ftype__track" id="govFtypeTrack">
+
+    <!-- SLIDE 01: Experience -->
+    <div class="gov-ftype__slide gov-ftype-active" data-slide="0">
+      <img src="/images/government/government-window-tinting-philadelphia-slider-experience.jpg" alt="Philadelphia government district with public buildings featuring security window tinting" title="Philadelphia government buildings with window tinting — Window Film Philadelphia" class="gov-ftype__bg" />
+      <div class="gov-ftype__overlay"></div>
+      <div class="gov-ftype__content">
+        <div class="gov-ftype__step">01</div>
+        <h2 class="gov-ftype__title">GSA-compliant security
+installations</h2>
+        <p class="gov-ftype__desc">Over a decade installing window film in Philadelphia government facilities — from federal courthouses on Independence Mall to municipal services buildings and public school campuses. We have worked with procurement officers, facilities directors, and security staff across every level of government. That experience means we evaluate each zone of your building independently — blast-rated film at street level, solar control on the west facade, UV film in the archive room. Not one film applied uniformly to every pane.</p>
+        <a href="/contact/" class="gov-ftype__cta">Get a Free Quote →</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: Certified -->
+    <div class="gov-ftype__slide" data-slide="1">
+      <img src="/images/government/government-window-tinting-philadelphia-slider-certified.jpg" alt="Professional installer applying security window film to government building glass" title="Certified government window film installation — Window Film Philadelphia" class="gov-ftype__bg" />
+      <div class="gov-ftype__overlay"></div>
+      <div class="gov-ftype__content">
+        <div class="gov-ftype__step">02</div>
+        <h2 class="gov-ftype__title">Cleared for
+government work</h2>
+        <p class="gov-ftype__desc">Government glazing carries requirements no private building faces — GSA blast criteria, ASTM F1233 forced entry testing, SHPO historic preservation review, and a procurement process that demands documentation. Our crews are trained on manufacturer-specific security and attachment system protocols, and we carry the licensing, insurance, and compliance documentation that government contracts require. We deliver the test data and certificates your security team and procurement officers need, in the format your bid process expects.</p>
+        <a href="/contact/" class="gov-ftype__cta">Talk to a Specialist →</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: Consultation -->
+    <div class="gov-ftype__slide" data-slide="2">
+      <img src="/images/government/government-window-tinting-philadelphia-slider-consultation.jpg" alt="Government window film consultant meeting with facilities director in Philadelphia" title="Free government site assessment — Window Film Philadelphia" class="gov-ftype__bg" />
+      <div class="gov-ftype__overlay"></div>
+      <div class="gov-ftype__content">
+        <div class="gov-ftype__step">03</div>
+        <h2 class="gov-ftype__title">Request a proposal,
+no pressure</h2>
+        <p class="gov-ftype__desc">We visit your facility, assess every pane, and deliver a detailed proposal with film specifications, performance data, manufacturer test reports, certificates of insurance, and warranty documentation — at no cost and no obligation. We provide everything your procurement process, security team, and compliance officers need to evaluate the work. You review it internally and decide. No pressure, no upselling.</p>
+        <a href="/contact/" class="gov-ftype__cta">Request a Site Assessment →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Nav dots -->
+  <div class="gov-ftype__nav">
+    <button class="gov-ftype__nav-item gov-ftype__nav-item--active" data-target="0" aria-label="Slide 1">
+      <span class="gov-ftype__nav-dot"></span>
+      <span class="gov-ftype__nav-label">Experience</span>
+    </button>
+    <button class="gov-ftype__nav-item" data-target="1" aria-label="Slide 2">
+      <span class="gov-ftype__nav-dot"></span>
+      <span class="gov-ftype__nav-label">Certified</span>
+    </button>
+    <button class="gov-ftype__nav-item" data-target="2" aria-label="Slide 3">
+      <span class="gov-ftype__nav-dot"></span>
+      <span class="gov-ftype__nav-label">Proposal</span>
+    </button>
+  </div>
+</section>
+
+<!-- ═══ BENEFITS — AccordionBenefits (interactive split layout with swapping images) ═══ -->
+<AccordionBenefits
+  eyebrow="WHAT GOVERNMENT WINDOW TINTING DOES FOR YOUR FACILITY"
+  title="One installation. Measurable security, compliance, and savings across your building."
+  subtitle="Government window tinting in Philadelphia addresses multiple operational and compliance concerns at once. Click any benefit to see the film and learn how it performs."
+  benefits={accordionBenefits}
+/>
+
+<!-- ═══ BENTO GRID — asymmetric photo showcase ═══ -->
+<BentoGridPhoto
+  heading="Real government installations. Real results."
+  sub="Every project assessed, applied, and finished by our own certified team."
+  items={bentoItems}
+/>
+
+<!-- ═══ SERVICE AREA — Map + neighborhood descriptions ═══ -->
+<section class="gov-local">
+  <div class="gov-local__grid">
+    <div class="gov-local__map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97443.81289285327!2d-75.2272!3d39.9526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54beb%3A0x89f514d88784e099!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1720000000000"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        title="Window Film Philadelphia government service area map"
+      ></iframe>
+    </div>
+    <div class="gov-local__content">
+      <span class="gov-eyebrow">Service Area</span>
+      <h2 class="gov-local__title">Government Window Tinting Across Greater Philadelphia</h2>
+      <p class="gov-local__intro">Our installation crews are Philadelphia-based. We provide government window tinting in Philadelphia and throughout the Delaware Valley — no travel surcharge within the standard service area.</p>
+      <div class="gov-neighborhoods">
+        <div class="gov-nh"><span class="gov-nh__name">Independence Mall</span><span class="gov-nh__desc">Federal courthouse and Independence Hall — blast-rated security film and forced entry delay for high-security federal glazing.</span></div>
+        <div class="gov-nh"><span class="gov-nh__name">City Hall area</span><span class="gov-nh__desc">Municipal offices and city government — energy mandate compliance and anti-graffiti film for public-facing glass.</span></div>
+        <div class="gov-nh"><span class="gov-nh__name">University City</span><span class="gov-nh__desc">Penn, Drexel, CHOP — institutional buildings with campus-scale security and UV protection needs.</span></div>
+        <div class="gov-nh"><span class="gov-nh__name">Spring Garden</span><span class="gov-nh__desc">Philadelphia Municipal Services Building — phased solar control and security film for occupied government space.</span></div>
+        <div class="gov-nh"><span class="gov-nh__name">Camden, NJ</span><span class="gov-nh__desc">Federal courthouse across the river — security and blast mitigation film coordinated with federal facilities staff.</span></div>
+        <div class="gov-nh"><span class="gov-nh__name">West Philadelphia</span><span class="gov-nh__desc">School district buildings and recreation centers — forced entry delay and UV film for public school campuses.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSTALLATION — HowItWorksSlideshow ═══ -->
+<HowItWorksSlideshow
+  eyebrow="Installation & Process"
+  title="How government installation works"
+  subtitle="From your first call to final walkthrough — a coordinated process designed around your facility's security and operational requirements."
+  slides={processSlides}
+/>
+
+<!-- ═══ TESTIMONIALS — TestimonialMarquee (scrolling cards with avatars) ═══ -->
+<TestimonialMarquee reviews={testimonials} />
+
+<!-- ═══ FAQ ═══ -->
+<AccordionFAQ
+  eyebrow="FAQ"
+  heading="Government window tinting questions"
+  sub="Everything you need to know before your government or public building installation."
+  items={faqAccordionItems}
+/>
+
+<!-- ═══ CTA ═══ -->
+<CTAAvatars
+  title="Ready to secure your facility?"
+  subtitle="Request a free site assessment. We evaluate your glazing, explain your security and compliance options, and give you a documented proposal — no pressure, no obligation."
+  count="Trusted by 2,400+ Philadelphia facilities"
+  btnLabel="Request a Free Site Assessment"
+  btnHref="/contact/"
+/>
+
+<!-- ═══ GEO BLOCK (hidden SEO/AEO content) ═══ -->
+<div class="gov-geo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+  <h2>Government Window Tinting Philadelphia — Public Building Window Film</h2>
+  <p>Window Film Philadelphia installs government window tinting in Philadelphia for federal courthouses, municipal buildings, public schools, university campuses, libraries, police facilities, and public works buildings across the Delaware Valley. Our certified installation team applies blast mitigation, forced entry delay, UV archive protection, energy mandate compliance, anti-graffiti, privacy, and historic preservation window film to government glazing of all types including single-pane, double-pane IGU, tempered, laminated, and low-E glass. Government window tinting in Philadelphia blocks 99.9% of UV radiation to protect court archives and public records, reduces solar heat gain to help facilities meet EPAct and energy mandate targets, delays forced entry per ASTM F1233, and meets GSA blast criteria with structural attachment systems. Philadelphia government window tinting installations are backed by manufacturer warranties and our own labor warranty, with documentation formatted for the public procurement process. We serve Independence Mall, City Hall, University City, Spring Garden, Camden NJ, West Philadelphia, and the broader Delaware Valley. Contact Window Film Philadelphia for a free site assessment and documented proposal.</p>
+  <dl>
+    <dt>What is government window tinting?</dt>
+    <dd>Government window tinting is the professional application of security, solar, and protective window film to existing government and public building glazing — providing blast mitigation, forced entry delay, UV archive protection, energy mandate compliance, anti-graffiti, and privacy without replacing the glass.</dd>
+    <dt>How much does government window tinting cost in Philadelphia?</dt>
+    <dd>Pricing varies based on film type, glass area, number of windows, security requirements, building access, and project phasing. We provide free site assessments with detailed documented proposals — no obligation. Security and blast-rated films carry different specifications than standard solar control films. We assess each zone individually.</dd>
+    <dt>Which Philadelphia areas do you serve for government window tinting?</dt>
+    <dd>We serve government and public buildings throughout Greater Philadelphia including Independence Mall, City Hall, University City, Spring Garden, West Philadelphia, Camden NJ, and the broader Delaware Valley. No travel surcharge within the standard service area. We are licensed and insured in both Pennsylvania and New Jersey.</dd>
+    <dt>What is the best window film for Philadelphia government buildings?</dt>
+    <dd>The best film depends on your glazing type, building use, security requirements, and compliance targets. Blast-rated security film with attachment is recommended for federal courthouses and public safety buildings. UV film is essential for archive rooms and libraries. Energy mandate compliance calls for spectrally selective solar control film. We assess each zone individually.</dd>
+    <dt>Does government window tinting meet GSA blast standards?</dt>
+    <dd>Security window film installed with a structural attachment system is engineered to hold shattered glass in place during a blast event, reducing flying-glass injury. Film systems are rated to GSA blast criteria and tested under ASTM F1233. We provide the manufacturer test data and specifications your security team and procurement officers need for documentation.</dd>
+  </dl>
+  <ul>
+    <li>Government window tinting Philadelphia</li>
+    <li>Public building window film Philadelphia</li>
+    <li>Municipal window tinting Philadelphia</li>
+    <li>Security window film government buildings Philadelphia</li>
+    <li>Blast mitigation window film Philadelphia</li>
+    <li>Federal building window film Philadelphia</li>
+    <li>Forced entry window film Philadelphia government</li>
+    <li>UV protection window film archives Philadelphia</li>
+    <li>Energy mandate compliance window film Philadelphia</li>
+    <li>Anti-graffiti window film Philadelphia government</li>
+    <li>Historic preservation window film Philadelphia government</li>
+    <li>Public school security window film Philadelphia</li>
+  </ul>
+</div>
+
+</div>
+
+</BaseLayout>
+
+<style>
+/* ── DESIGN TOKENS — site palette, no brown ══ */
+:root {
+  --gov-radius: 5px;
+  --gov-charcoal: #272E32;
+  --gov-green: #81AB4C;
+  --gov-green-light: #eef4e4;
+  --gov-green-dark: #7CB342;
+  --gov-off-white: #F7F6F3;
+  --gov-text-dark: #1a1a1a;
+  --gov-text-mid: #4a4a4a;
+  --gov-text-light: #888;
+}
+
+.gov-body { background: #ffffff; }
+.gov-container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+/* ── EYEBROW ══ */
+.gov-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gov-green);
+  margin-bottom: 16px;
+}
+.gov-eyebrow--light { color: var(--gov-green-dark); }
+
+/* ── HERO ══ */
+.gov-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.gov-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.gov-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(39,46,50,0.68) 0%, rgba(39,46,50,0.82) 55%, rgba(39,46,50,0.95) 100%);
+}
+.gov-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: 860px;
+  padding: 120px 24px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gov-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(124, 179, 66, 0.85);
+  margin-bottom: 28px;
+  background: rgba(124, 179, 66, 0.08);
+  border: 1px solid rgba(124, 179, 66, 0.2);
+  padding: 8px 18px;
+  border-radius: 100px;
+}
+.gov-hero__eyebrow-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(124, 179, 66, 0.4);
+  flex-shrink: 0;
+}
+.gov-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+.gov-hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: rgba(243, 246, 241, 0.72);
+  max-width: 680px;
+  margin: 0 0 36px;
+  line-height: 1.75;
+}
+.gov-hero__cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.gov-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gov-green-dark);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 2px solid var(--gov-green-dark);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.gov-hero__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 179, 66, 0.3);
+}
+.gov-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #F3F6F1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(243, 246, 241, 0.35);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.gov-hero__btn-secondary:hover {
+  border-color: var(--gov-green-dark);
+  color: var(--gov-green-dark);
+  transform: translateY(-2px);
+  background: rgba(124, 179, 66, 0.06);
+}
+.gov-hero__stats-panel {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(39, 46, 50, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+}
+.gov-hero__stats-inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.gov-hero__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 12px;
+  gap: 6px;
+  text-align: center;
+}
+.gov-hero__stat-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  align-self: stretch;
+  margin: 16px 0;
+  flex-shrink: 0;
+}
+.gov-hero__stat-number {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--gov-green-dark);
+  line-height: 1;
+}
+.gov-hero__stat-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(243, 246, 241, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+  max-width: 90px;
+}
+
+/* ── TRUST BAR ══ */
+.gov-trust { padding: 32px 0; text-align: center; }
+.gov-trust__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gov-text-mid);
+  margin: 0;
+}
+
+/* ── INTRO ══ */
+.gov-intro { padding: 80px 0 60px; }
+.gov-intro__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.gov-intro__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gov-text-dark);
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.gov-intro__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gov-text-mid);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.gov-intro__image-wrap { overflow: hidden; }
+.gov-intro__image {
+  width: 100%;
+  height: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── PROJECT TYPES HEADER ══ */
+.gov-project-hd { padding: 60px 0 24px; }
+.gov-project-hd__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.gov-project-hd__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gov-text-dark);
+  margin: 0 0 16px;
+}
+.gov-project-hd__sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gov-text-mid);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── FULL-BLEED SLIDER (gov-ftype pattern) ══ */
+.gov-ftype {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  overflow: hidden;
+  background: var(--gov-charcoal);
+}
+.gov-ftype__track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.gov-ftype__slide {
+  position: relative;
+  min-width: 100%;
+  min-height: 90vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.gov-ftype__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.gov-ftype__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(39,46,50,0.85) 0%, rgba(39,46,50,0.40) 60%, transparent 100%);
+  z-index: 1;
+}
+.gov-ftype__content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding-left: 80px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+}
+.gov-ftype-active .gov-ftype__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gov-ftype__step {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: var(--gov-green-dark, #7CB342);
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+.gov-ftype__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin: 0 0 1.5rem;
+  white-space: pre-line;
+}
+.gov-ftype__desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.82);
+  max-width: 460px;
+  margin: 0 0 2rem;
+}
+.gov-ftype__cta {
+  display: inline-block;
+  background: var(--gov-green-dark, #7CB342);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.gov-ftype__cta:hover {
+  background: #2E6B30;
+  transform: translateY(-2px);
+}
+.gov-ftype__nav {
+  position: absolute;
+  top: 50%;
+  right: 48px;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.gov-ftype__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+.gov-ftype__nav-item:hover { opacity: 0.7; }
+.gov-ftype__nav-item--active { opacity: 1; }
+.gov-ftype__nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: background 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+.gov-ftype__nav-item--active .gov-ftype__nav-dot {
+  background: var(--gov-green-dark, #7CB342);
+  transform: scale(1.3);
+}
+.gov-ftype__nav-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+.gov-ftype__nav-item--active .gov-ftype__nav-label {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .gov-ftype__content { padding-left: 24px; padding-right: 24px; }
+  .gov-ftype__nav { right: 16px; gap: 14px; }
+  .gov-ftype__nav-label { display: none; }
+}
+
+/* ── SERVICE AREA — Map + neighborhoods ══ */
+.gov-local {
+  padding: 80px 5%;
+}
+.gov-local__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.gov-local__map {
+  border-radius: 5px;
+  overflow: hidden;
+  height: 500px;
+}
+.gov-local__map iframe {
+  width: 100%;
+  height: 100%;
+}
+.gov-local__content {
+  display: flex;
+  flex-direction: column;
+}
+.gov-local__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--gov-text-dark);
+  margin: 0 0 16px;
+}
+.gov-local__intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gov-text-mid);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+.gov-neighborhoods {
+  display: flex;
+  flex-direction: column;
+}
+.gov-nh {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #EFEFED;
+}
+.gov-nh:last-child { border-bottom: none; }
+.gov-nh__name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gov-green);
+  white-space: nowrap;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+.gov-nh__desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--gov-text-mid);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .gov-local__grid { grid-template-columns: 1fr; }
+  .gov-local__map { height: 300px; }
+  .gov-nh { flex-direction: column; gap: 4px; }
+  .gov-nh__name { min-width: auto; }
+}
+
+/* ── RESPONSIVE ══ */
+@media (max-width: 992px) {
+  .gov-intro__container { grid-template-columns: 1fr; gap: 32px; }
+  .gov-hero__stats-panel { max-width: 100%; }
+}
+@media (max-width: 720px) {
+  .gov-hero__stats-inner { flex-wrap: wrap; }
+  .gov-hero__stat-divider { display: none; }
+}
+</style>
+
+<script>
+  const ftypeSection = document.getElementById('govFtype');
+  if (ftypeSection) {
+    const track = document.getElementById('govFtypeTrack');
+    const slides = Array.from(ftypeSection.querySelectorAll('.gov-ftype__slide'));
+    const navItems = Array.from(ftypeSection.querySelectorAll('.gov-ftype__nav-item'));
+    let current = 0;
+    const total = slides.length;
+    let timer = null;
+
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      current = index;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      slides.forEach((s, i) => s.classList.toggle('gov-ftype-active', i === current));
+      navItems.forEach((n, i) => n.classList.toggle('gov-ftype__nav-item--active', i === current));
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 7000);
+    }
+
+    navItems.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = parseInt(btn.dataset.target || '0', 10);
+        goTo(target);
+      });
+    });
+
+    resetTimer();
+  }
