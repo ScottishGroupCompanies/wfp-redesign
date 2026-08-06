@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BrandLogos from '../../../components/BrandLogos.astro';
 import InnerPageHero from '../../../components/InnerPageHero.astro';
 import { getCollection } from 'astro:content';
-import { allCategories, benefitCategories, cityCategories, getCategoryBySlug } from '../../../data/categories';
+import { allCategories, benefitCategories, applicationCategories, cityCategories, getCategoryBySlug } from '../../../data/categories';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -34,7 +34,10 @@ const title = `${category.label} Window Film Articles | Window Film Philadelphia
 const description = category.description;
 
 // Related categories (same group, excluding current)
-const relatedCats = (category.group === 'benefit' ? benefitCategories : cityCategories)
+const relatedGroup = category.group === 'benefit' ? benefitCategories
+  : category.group === 'application' ? applicationCategories
+  : cityCategories;
+const relatedCats = relatedGroup
   .filter((c) => c.slug !== category.slug)
   .slice(0, 6);
 ---
@@ -66,7 +69,7 @@ const relatedCats = (category.group === 'benefit' ? benefitCategories : cityCate
     <div class="cat-intro__head">
       <div>
         <span class="section-eyebrow">
-          {category.group === 'city' ? 'City' : 'Topic'} Category
+          {category.group === 'city' ? 'City' : category.group === 'application' ? 'Application' : 'Topic'} Category
         </span>
         <h1 class="section-title">{category.label} <em>Articles</em></h1>
         <p class="cat-intro__desc">{category.description}</p>
@@ -126,7 +129,7 @@ const relatedCats = (category.group === 'benefit' ? benefitCategories : cityCate
   {relatedCats.length > 0 && (
     <div class="cat-related">
       <span class="section-eyebrow">
-        {category.group === 'city' ? 'Other Cities' : 'Browse by Topic'}
+        {category.group === 'city' ? 'Other Cities' : category.group === 'application' ? 'Other Applications' : 'Browse by Topic'}
       </span>
       <h2 class="cat-related__title">More Categories</h2>
       <div class="cat-related__pills">

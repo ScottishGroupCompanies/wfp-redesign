@@ -1,15 +1,16 @@
 // ═══════════════════════════════════════════════════════════════
 //  Blog Category Definitions
-//  Benefits = every item from the Benefits nav menu
-//  Cities   = every city on the /cities/ page
+//  Benefits     = every item from the Benefits nav menu
+//  Applications = every item from the Applications nav menu
+//  Cities       = every city on the /cities/ page
 // ═══════════════════════════════════════════════════════════════
 
 export interface Category {
   slug: string;
   label: string;
   description: string;
-  href: string; // links to the related service/city page
-  group: 'benefit' | 'city';
+  href: string; // links to the related service/city/application page
+  group: 'benefit' | 'application' | 'city';
 }
 
 export const benefitCategories: Category[] = [
@@ -70,10 +71,17 @@ export const benefitCategories: Category[] = [
     group: 'benefit',
   },
   {
+    slug: 'exterior-building-wraps',
+    label: 'Exterior Building Wraps',
+    description: 'Large-format exterior films that transform building facades without replacement.',
+    href: '/benefits/exterior-building-wraps/',
+    group: 'benefit',
+  },
+  {
     slug: 'exterior-refinishing',
     label: 'Exterior Refinishing',
     description: 'Surface update films and wraps that transform building exteriors without replacement.',
-    href: '/benefits/exterior-building-wraps/',
+    href: '/benefits/exterior-refinishing/',
     group: 'benefit',
   },
   {
@@ -113,6 +121,93 @@ export const benefitCategories: Category[] = [
   },
 ];
 
+export const applicationCategories: Category[] = [
+  {
+    slug: 'homes-condos',
+    label: 'Homes & Condos',
+    description: 'Window film solutions for Philadelphia-area homes, condos, and rowhomes.',
+    href: '/applications/homes-condos/',
+    group: 'application',
+  },
+  {
+    slug: 'office-buildings',
+    label: 'Office Buildings',
+    description: 'Window film for Philadelphia office buildings — privacy, glare control, and energy savings.',
+    href: '/applications/office/',
+    group: 'application',
+  },
+  {
+    slug: 'retail',
+    label: 'Retail',
+    description: 'Storefront window film for Philadelphia retail — branding, glare reduction, and customer comfort.',
+    href: '/applications/retail/',
+    group: 'application',
+  },
+  {
+    slug: 'restaurants',
+    label: 'Restaurants',
+    description: 'Window film for Philadelphia restaurants — glare reduction, UV protection, and ambiance.',
+    href: '/applications/restaurants/',
+    group: 'application',
+  },
+  {
+    slug: 'hotels-hospitality',
+    label: 'Hotels & Hospitality',
+    description: 'Window film for Philadelphia hotels and hospitality venues — guest comfort and energy efficiency.',
+    href: '/applications/hotel-window-film/',
+    group: 'application',
+  },
+  {
+    slug: 'mass-transit',
+    label: 'Mass Transit & Airport',
+    description: 'Window film for transit hubs, airports, and transportation facilities in Philadelphia.',
+    href: '/applications/mass-transit/',
+    group: 'application',
+  },
+  {
+    slug: 'schools-universities',
+    label: 'Schools & Universities',
+    description: 'Window film for Philadelphia schools and universities — safety, security, and UV protection.',
+    href: '/applications/schools-universities/',
+    group: 'application',
+  },
+  {
+    slug: 'healthcare',
+    label: 'Hospitals & Healthcare',
+    description: 'Window film for Philadelphia healthcare facilities — patient privacy and UV protection.',
+    href: '/applications/healthcare/',
+    group: 'application',
+  },
+  {
+    slug: 'government-buildings',
+    label: 'Government Buildings',
+    description: 'Security and blast-mitigation window film for Philadelphia government and municipal buildings.',
+    href: '/government-buildings/',
+    group: 'application',
+  },
+  {
+    slug: 'secured-buildings',
+    label: 'Secured Buildings',
+    description: 'High-security window film for Philadelphia facilities requiring forced-entry and blast resistance.',
+    href: '/applications/secured-buildings/',
+    group: 'application',
+  },
+  {
+    slug: 'museums-libraries',
+    label: 'Museums & Libraries',
+    description: 'UV-blocking window film for Philadelphia museums, archives, and libraries.',
+    href: '/applications/museums-libraries/',
+    group: 'application',
+  },
+  {
+    slug: 'churches-faith-centers',
+    label: 'Churches & Faith Centers',
+    description: 'Window film for Philadelphia churches and faith centers — stained glass, security, and energy savings.',
+    href: '/applications/churches/',
+    group: 'application',
+  },
+];
+
 export const cityCategories: Category[] = [
   {
     slug: 'philadelphia',
@@ -144,7 +239,7 @@ export const cityCategories: Category[] = [
   },
 ];
 
-export const allCategories: Category[] = [...benefitCategories, ...cityCategories];
+export const allCategories: Category[] = [...benefitCategories, ...applicationCategories, ...cityCategories];
 
 export function getCategoryBySlug(slug: string): Category | undefined {
   return allCategories.find((c) => c.slug === slug);
