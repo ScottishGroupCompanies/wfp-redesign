@@ -5,7 +5,6 @@ import CountUp from '../components/animations/CountUp.astro';
 import TestimonialSpotlight from '../components/TestimonialSpotlight.astro';
 import GalleryBanner from '../components/GalleryBanner.astro';
 import TestimonialMarquee from '../components/TestimonialMarquee.astro';
-import AccordionFAQ from '../components/AccordionFAQ.astro';
 import CTAAvatars from '../components/CTAAvatars.astro';
 
 const title = 'Window Film Philadelphia Reviews & Testimonials | 4.9-Star Rated';
@@ -36,14 +35,14 @@ const spotlightReviews = [
 ];
 
 const marqueeReviews = [
-  { quote: 'They installed film on every window in our 12-unit building. The crew was organized, respectful, and done in two days. Our cooling costs dropped immediately.', name: 'Diane R.', role: 'Property Manager · Center City', img: '/images/about/about-avatar-1.jpg' },
-  { quote: 'I called three companies before choosing Window Film Philadelphia. They were the only ones who actually came out and assessed the glass. The installation was spotless.', name: 'Robert K.', role: 'Retail Owner · South Street', img: '/images/about/about-avatar-2.jpg' },
-  { quote: 'Our Victorian has original 1890s glass. Every other company said we could not put film on it. They assessed each pane individually and found the right film.', name: 'Lisa M.', role: 'Homeowner · Rittenhouse Square', img: '/images/about/about-avatar-3.jpg' },
-  { quote: 'As a facilities manager overseeing fourteen buildings, I need a contractor who handles everything. They provided all the compliance paperwork and the energy savings showed up immediately.', name: 'Thomas H.', role: 'Facilities Manager · University City', img: '/images/about/about-avatar-4.jpg' },
-  { quote: 'The security film on our storefront survived an attempted break-in. The glass cracked but stayed in place. That film paid for itself in one night.', name: 'Janet F.', role: 'Boutique Owner · Manayunk', img: '/images/about/about-avatar-5.jpg' },
-  { quote: 'We needed decorative frosted film on conference room partitions. They custom-cut our logo into the film. The result looks like it came with the building.', name: 'Linda P.', role: 'Office Manager · Old City', img: '/images/about/about-avatar-6.jpg' },
-  { quote: 'Our dining room faces west and the glare was unbearable. Solar control film fixed it completely. We can finally seat the full room during dinner service.', name: 'Marco V.', role: 'Restaurant Owner · Old City', img: '/images/about/about-avatar-7.jpg' },
-  { quote: 'The installer spent an hour explaining different films and helping me pick the right one for my budget. No pressure, no upsell. The film has been perfect.', name: 'Sarah M.', role: 'Homeowner · Fishtown', img: '/images/about/about-avatar-8.jpg' },
+  { quote: 'We were skeptical that film could really make a difference in a South Philadelphia rowhome. The 3M Sun Control film on our back bedroom windows changed everything — it is finally comfortable in summer and our PECO bills showed it immediately.', name: 'Alex & Maria', role: 'Homeowners · South Philadelphia', img: '/images/3m-testimonial-alex-maria.jpg' },
+  { quote: 'We manage a mid-size office building in University City and the Daylight Redirecting Film on the north-facing suites has been remarkable. Interior workstations that used to need lights on all day are now comfortable in natural light.', name: 'Robert T.', role: 'Property Manager · University City', img: '/images/3m-testimonial-robert-t.jpg' },
+  { quote: 'The C-Bond primer they use before applying security film makes a real difference. Our glass feels fundamentally stronger. The crew explained the science behind it — not just selling a product, but explaining why it works.', name: 'James W.', role: 'Facility Director · Camden NJ', img: '/images/c-bond-testimonial-james.jpg' },
+  { quote: 'We installed Huper Optik ceramic film across our entire condo. The heat reduction is immediately noticeable — our west-facing unit used to be an oven by 3pm. Now it stays comfortable all afternoon. The crew was clean, fast, and professional.', name: 'Daniel K.', role: 'Condo Owner · Northern Liberties', img: '/images/huper-optik-testimonial-daniel.jpg' },
+  { quote: 'As a school district facilities director, safety is my top priority. The security film they installed on every ground-floor window gives us real forced-entry delay. They coordinated with our security team and worked around the school calendar.', name: 'Karen K.', role: 'Facilities Director · Philadelphia School District', img: '/images/gs-testimonial-karen.jpg' },
+  { quote: 'Our hotel guest complaints about heat and glare dropped to zero after the installation. We installed Vista film across 180 guest room windows over three weekends — no disruption to occupancy, and the energy savings were immediate.', name: 'Jennifer L.', role: 'Operations Director · boutique hotel', img: '/images/hotel-testimonial-2.jpg' },
+  { quote: 'The LLumar dual-reflective film on our bedroom windows gave us daytime privacy without darkening the room at night. The installer showed me samples on the actual glass so I could see the difference before committing. That level of service is rare.', name: 'Rachel W.', role: 'Homeowner · Manayunk', img: '/images/llumar-testimonial-rachel-w.jpg' },
+  { quote: 'We needed anti-graffiti film on our transit-adjacent storefront after the third scratching incident. Six months later, someone tagged it again — we just peeled the film and replaced it. No glass replacement, no downtime, fraction of the cost.', name: 'Marcus T.', role: 'Retail Owner · Fishtown', img: '/images/llumar-testimonial-marcus-t.jpg' },
 ];
 
 const faqItems = [
@@ -54,8 +53,6 @@ const faqItems = [
   { question: 'What types of properties do your reviewers have?', answer: 'Our reviewers span every property type we serve: Philadelphia rowhomes and condos, Center City office towers, retail storefronts on South Street, restaurants on Passyunk Ave, hotels, schools, healthcare facilities, government buildings, museums, and churches across the Delaware Valley.' },
   { question: 'Can I see examples of the work mentioned in the reviews?', answer: 'Yes. Many of the installations referenced in our reviews are documented in our project gallery. Contact us and we can share before-and-after photos from projects similar to yours, or connect you with past clients who have offered to serve as references.' },
 ];
-
-const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
 
 const pageSchemas = [
   {
@@ -74,15 +71,6 @@ const pageSchemas = [
     name: 'Window Film Philadelphia Reviews & Testimonials',
     description,
     dateModified,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map(f => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
-    })),
   },
   {
     '@context': 'https://schema.org',
@@ -125,7 +113,7 @@ const pageSchemas = [
   title={title}
   description={description}
   canonical="https://www.windowfilmphiladelphia.net/reviews/"
-  faqItems={faqItems}
+  faqItems={[]}
   serviceName="Window Film Philadelphia"
   serviceDesc="Professional window film installation backed by 4.9-star reviews from Philadelphia homeowners, businesses, and institutions."
   serviceUrl="https://www.windowfilmphiladelphia.net/reviews/"
@@ -229,14 +217,6 @@ const pageSchemas = [
 </section>
 
 <TestimonialMarquee reviews={marqueeReviews} />
-
-<!-- ═══ FAQ ═══ -->
-<AccordionFAQ
-  eyebrow="FAQ"
-  heading="Questions about our reviews"
-  sub="Everything you need to know about reading, leaving, and verifying Window Film Philadelphia reviews."
-  items={faqAccordionItems}
-/>
 
 <!-- ═══ CTA ═══ -->
 <CTAAvatars
