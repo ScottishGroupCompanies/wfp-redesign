@@ -1,579 +1,492 @@
 ---
-/* Auron-inspired redesign · Window Film Philadelphia · Applications page */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandLogos from '../components/BrandLogos.astro';
-import InnerPageHero from '../components/InnerPageHero.astro';
+import BentoGridSymmetric from '../components/BentoGridSymmetric.astro';
+import AccordionFAQ from '../components/AccordionFAQ.astro';
+import CTAAvatars from '../components/CTAAvatars.astro';
 
-const title = 'Window Film Applications | Homes, Offices, Retail & More | Philadelphia';
-const description = 'Window film for every application: homes, offices, retail, healthcare, government, schools, industrial, and hospitality. Professional installation across Greater Philadelphia.';
+const title = 'Window Film Applications in Philadelphia | Homes, Offices, Retail & More';
+const description = 'Professional window film applications in Philadelphia — homes, offices, retail, restaurants, hotels, schools, healthcare, government, museums, and churches. Find the right film for your space.';
+const dateModified = new Date().toISOString().slice(0, 10);
 
-const appTypes = [
-  {
-    title: 'Homes',
-    benefit: 'UV protection & energy savings',
-    href: '/contact/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
-  },
-  {
-    title: 'Offices',
-    benefit: 'Privacy, glare control & security',
-    href: '/applications/office/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
-  },
-  {
-    title: 'Retail',
-    benefit: 'Branding, glare & customer comfort',
-    href: '/applications/retail/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
-  },
-  {
-    title: 'Healthcare',
-    benefit: 'UV blocking & patient privacy',
-    href: '/applications/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
-  },
-  {
-    title: 'Government',
-    benefit: 'Security film & blast mitigation',
-    href: '/government-buildings/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
-  },
-  {
-    title: 'Schools',
-    benefit: 'Student safety & UV protection',
-    href: '/applications/schools-universities/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
-  },
-  {
-    title: 'Industrial',
-    benefit: 'Worker safety & glare reduction',
-    href: '/applications/',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>`,
-  },
-];
-
-const featuredApps = [
-  {
-    number: '01',
-    heading: 'Philadelphia Residential Window Film',
-    body: 'Philadelphia homeowners are turning to window film as a cost-effective alternative to full glass replacement. Our residential films provide UV protection, heat rejection, privacy, and safety — all applied to your existing glass with no disruption to your home. From single windows to whole-home installations, our team handles projects of any size across the Philadelphia region.',
-    img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_201129_db569d87-0023-4279-9ec3-7f9c47102299.png',
-    alt: 'Philadelphia home with window film installation',
-    cta: 'Get a Residential Quote',
-    href: '/contact/',
-  },
-  {
-    number: '02',
-    heading: 'Commercial & Office Buildings',
-    body: 'Commercial properties throughout Philadelphia use window film to reduce energy costs, improve occupant comfort, and enhance their building\'s appearance. Office towers, retail storefronts, restaurants, and hotels across the region have benefited from our professional installation services. We work with building managers, property owners, and tenants to deliver results that meet tight project timelines.',
-    img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_202129_2fcae86a-64e2-4e20-aa11-2b7f105527ec.png',
-    alt: 'Philadelphia commercial building with window film',
-    cta: 'Commercial Consultation',
-    href: '/contact/',
-  },
-  {
-    number: '03',
-    heading: 'Government & Municipal Buildings',
-    body: 'Window Film Philadelphia serves government facilities throughout the Philadelphia region — from municipal offices to public schools and courthouses. Our government installations include security and blast-mitigation films, privacy films, and UV-blocking solutions that meet federal and local procurement standards. We hold certifications applicable to public-sector projects and work directly with facility managers and procurement officers.',
-    img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_202304_c5668858-7ee0-48ed-b712-7716c05c4ec1.png',
-    alt: 'Philadelphia government building window film',
-    cta: 'Government Inquiries',
-    href: '/government-buildings/',
-  },
+// All 12 application subpages from the nav menu (including Homes & Condos)
+const applicationItems = [
+  { title: 'Homes & Condos', desc: 'Energy savings, UV protection, privacy, and safety film for Philadelphia rowhomes, condos, and historic residences.', img: '/images/applications/residential-window-film-philadelphia-homes-condos.jpg', href: '/applications/homes-condos/' },
+  { title: 'Office Buildings', desc: 'Glare reduction, solar control, and security film for productive workspaces across Center City and beyond.', img: '/images/applications/office-window-film-philadelphia.jpg', href: '/applications/office/' },
+  { title: 'Retail & Storefronts', desc: 'Security, anti-graffiti, and decorative film that protects merchandise and enhances your storefront.', img: '/images/applications/retail-window-film-philadelphia.jpg', href: '/applications/retail/' },
+  { title: 'Restaurants', desc: 'Solar control film that eliminates afternoon glare and keeps dining rooms comfortable for every seat.', img: '/images/applications/restaurant-window-tinting-philadelphia.jpg', href: '/applications/restaurants/' },
+  { title: 'Hotels & Hospitality', desc: 'Guest comfort, energy savings, and decorative film for lobbies, guest rooms, and common areas.', img: '/images/applications/hotel-window-film-philadelphia.jpg', href: '/applications/hotel-window-film/' },
+  { title: 'Mass Transit & Airport', desc: 'Safety and security film for transit hubs, airport terminals, and high-traffic public glass.', img: '/images/applications/transit-window-film-philadelphia.jpg', href: '/applications/mass-transit/' },
+  { title: 'Schools & Universities', desc: 'Safety, security, and UV protection film for classrooms, dormitories, and campus buildings.', img: '/images/applications/school-window-film-philadelphia.jpg', href: '/applications/schools-universities/' },
+  { title: 'Hospitals & Healthcare', desc: 'UV blocking, privacy, and energy-saving film for patient rooms, clinics, and medical offices.', img: '/images/applications/healthcare-window-film-philadelphia.jpg', href: '/applications/healthcare/' },
+  { title: 'Government Buildings', desc: 'Security film, blast mitigation, and forced-entry delay for courthouses, municipal offices, and federal facilities.', img: '/images/applications/government-window-tinting-philadelphia.jpg', href: '/government-buildings/' },
+  { title: 'Secured Buildings', desc: 'Ballistic-resistant and forced-entry film for facilities that require the highest level of glass protection.', img: '/images/applications/security-window-film-philadelphia.jpg', href: '/applications/secured-buildings/' },
+  { title: 'Museums & Libraries', desc: 'Conservation-grade UV filtering film that protects artwork, archives, and irreplaceable collections from fading.', img: '/images/applications/museum-window-film-philadelphia.jpg', href: '/applications/museums-libraries/' },
+  { title: 'Churches & Faith Centers', desc: 'UV and glare protection for historic stained glass, worship spaces, and community gathering halls.', img: '/images/applications/church-window-film-philadelphia.jpg', href: '/applications/churches/' },
 ];
 
 const faqItems = [
-  { question: 'What types of window film are available for Philadelphia homes?', answer: 'Residential window film options include: UV-blocking film to protect furnishings and reduce sun exposure, heat-rejecting film to lower cooling costs, privacy film for bathrooms and street-facing windows, safety and security film to hold glass together during storms or break-ins, and decorative film for frosted or patterned effects. Our team helps homeowners select the right film based on their goals and budget.' },
-  { question: 'Can window film be installed on commercial buildings in Philadelphia?', answer: 'Yes. We install window film on all commercial property types — office buildings, retail stores, restaurants, hotels, warehouses, and medical facilities. Commercial projects are typically scoped with building management or property owners, and we work around tenant operations and business hours. Large-scale projects may qualify for volume pricing.' },
-  { question: 'Is window film a good investment for energy savings?', answer: 'Window film can significantly reduce cooling costs in Philadelphia buildings — particularly during hot summer months when solar heat gain through glass drives up HVAC usage. Heat-rejecting films can reduce solar heat gain by 40–70%, which translates to measurable savings on monthly energy bills. Energy savings vary based on building orientation, existing glass type, and film selection.' },
-  { question: 'How long does window film last in Philadelphia\'s climate?', answer: 'Quality window film from major manufacturers (3M, LLumar, Vista, Huper Optik, and others) carries warranties of 10–15 years for residential installations and 10 years for commercial. Philadelphia\'s seasonal temperature swings and UV exposure are well within the performance range of these films. Most films will far exceed their warranty period with proper care.' },
-  { question: 'Can security window film be applied to existing glass?', answer: 'Yes. Security and safety window films are applied directly to existing glass and can provide meaningful protection without replacing the glass itself. For high-security applications, we also offer attachment systems that anchor the film to the window frame, helping hold the glass in place during explosions or severe storms. We assess each project to recommend the appropriate film and attachment method.' },
-  { question: 'Do you work with government and municipal procurement?', answer: 'Yes. Window Film Philadelphia holds relevant certifications and has completed installations for municipal offices, public schools, courthouses, and other government facilities throughout the Philadelphia region. We are familiar with public procurement processes and can provide the documentation, insurance certificates, and compliance information required by municipal and federal projects.' },
+  { question: 'What are the most common window film applications in Philadelphia?', answer: 'The most common window film applications in Philadelphia span residential and commercial properties. Homes and condos use solar control and UV protection film to reduce cooling costs and protect furnishings. Office buildings install glare reduction and privacy film for occupant comfort. Retail storefronts rely on security and anti-graffiti film. Government and secured buildings require blast mitigation and forced-entry film. Schools, healthcare facilities, museums, and churches each have specialized film needs based on their unique operational priorities.' },
+  { question: 'How do I know which window film is right for my building?', answer: 'The right film depends on your glass type, building orientation, and what you need the film to do — reduce heat, block UV, add privacy, improve security, or all of the above. We assess every pane individually, checking thermal stress risk, glass age, and frame condition before recommending a product. Different zones of the same building often need different films: solar control on the west facade, glare reduction on the south, security film on the ground floor.' },
+  { question: 'Does every glass type work with every window film application?', answer: 'Window film can be applied to most glass types including single-pane, double-pane IGUs, tempered, laminated, and low-E glass. However, not every film is suitable for every glass type — using the wrong film on the wrong glass can cause thermal breakage. Our team evaluates each pane individually during a free site assessment before recommending a product. We carry the documentation property managers and compliance teams need.' },
+  { question: 'Does window film really reduce energy costs?', answer: 'Yes. Solar heat gain through untreated glass is a major contributor to cooling load. Spectrally selective films reject up to 78% of solar heat gain without darkening interiors, which reduces the demand on your HVAC system. Many Philadelphia clients see measurable energy savings within the first billing cycle. The exact reduction depends on glass orientation, film type, and building envelope.' },
+  { question: 'What is the expected lifespan of professional window film?', answer: 'Professional-grade window films typically last 12–20 years depending on film type, glass orientation, and environmental exposure. South- and west-facing windows with direct sun exposure may see shorter lifespans than north-facing windows. All our installations include manufacturer warranty coverage and our own labor guarantee. We never use lifetime warranty language — we provide the manufacturer warranty terms for your specific product.' },
+  { question: 'Can security window film be applied to existing glass?', answer: 'Yes. Security and safety window films are applied directly to existing glass and provide meaningful protection without replacing the glass. For high-security applications, we also offer attachment systems that anchor the film to the window frame, helping hold the glass in place during explosions or severe storms. We assess each project to recommend the appropriate film and attachment method.' },
+  { question: 'What Philadelphia neighborhoods do you cover for window film installations?', answer: 'We serve the entire Delaware Valley including Center City, Old City, South Philly, Fishtown, Northern Liberties, Manayunk, University City, King of Prussia, Camden NJ, and surrounding areas. Our installation crews are Philadelphia-based — no travel surcharge within the standard service area.' },
+  { question: 'Do you work with property managers and building owners?', answer: 'Yes. A significant portion of our work is through property management firms and building managers who oversee multiple properties. We provide site assessments, detailed proposals, and coordinate installations across portfolios. We are licensed and insured in both Pennsylvania and New Jersey, and we carry the documentation most management companies require.' },
 ];
 
-const stats = [
-  { value: '500+', label: 'Philadelphia Projects' },
-  { value: '15yr', label: 'Avg Film Warranty' },
-  { value: '100%', label: 'Professional Install' },
-  { value: '24h', label: 'Emergency Service' },
+const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Applications', item: 'https://www.windowfilmphiladelphia.net/applications/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/applications/',
+    url: 'https://www.windowfilmphiladelphia.net/applications/',
+    name: 'Window Film Applications in Philadelphia',
+    description,
+    dateModified,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Window Film Applications in Philadelphia',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Homes & Condos', description: 'Energy savings, UV protection, privacy, and safety film for Philadelphia residences.', url: 'https://www.windowfilmphiladelphia.net/applications/homes-condos/' },
+      { '@type': 'ListItem', position: 2, name: 'Office Buildings', description: 'Glare reduction, solar control, and security film for productive workspaces.', url: 'https://www.windowfilmphiladelphia.net/applications/office/' },
+      { '@type': 'ListItem', position: 3, name: 'Retail & Storefronts', description: 'Security, anti-graffiti, and decorative film for retail storefronts.', url: 'https://www.windowfilmphiladelphia.net/applications/retail/' },
+      { '@type': 'ListItem', position: 4, name: 'Restaurants', description: 'Solar control film that eliminates afternoon glare for dining rooms.', url: 'https://www.windowfilmphiladelphia.net/applications/restaurants/' },
+      { '@type': 'ListItem', position: 5, name: 'Hotels & Hospitality', description: 'Guest comfort, energy savings, and decorative film for hospitality properties.', url: 'https://www.windowfilmphiladelphia.net/applications/hotel-window-film/' },
+      { '@type': 'ListItem', position: 6, name: 'Mass Transit & Airport', description: 'Safety and security film for transit hubs and airport terminals.', url: 'https://www.windowfilmphiladelphia.net/applications/mass-transit/' },
+      { '@type': 'ListItem', position: 7, name: 'Schools & Universities', description: 'Safety, security, and UV protection film for educational campuses.', url: 'https://www.windowfilmphiladelphia.net/applications/schools-universities/' },
+      { '@type': 'ListItem', position: 8, name: 'Hospitals & Healthcare', description: 'UV blocking, privacy, and energy-saving film for medical facilities.', url: 'https://www.windowfilmphiladelphia.net/applications/healthcare/' },
+      { '@type': 'ListItem', position: 9, name: 'Government Buildings', description: 'Security film, blast mitigation, and forced-entry delay for public facilities.', url: 'https://www.windowfilmphiladelphia.net/government-buildings/' },
+      { '@type': 'ListItem', position: 10, name: 'Secured Buildings', description: 'Ballistic-resistant and forced-entry film for high-security facilities.', url: 'https://www.windowfilmphiladelphia.net/applications/secured-buildings/' },
+      { '@type': 'ListItem', position: 11, name: 'Museums & Libraries', description: 'Conservation-grade UV filtering film for artwork and archive protection.', url: 'https://www.windowfilmphiladelphia.net/applications/museums-libraries/' },
+      { '@type': 'ListItem', position: 12, name: 'Churches & Faith Centers', description: 'UV and glare protection for historic stained glass and worship spaces.', url: 'https://www.windowfilmphiladelphia.net/applications/churches/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Window Film Applications Philadelphia',
+    description: 'Professional window film installation for every application in Philadelphia — homes, offices, retail, restaurants, hotels, schools, healthcare, government, secured buildings, museums, and churches. Solar control, UV protection, security, anti-graffiti, privacy, and decorative film applied to existing glass.',
+    brand: { '@type': 'Brand', name: 'Window Film Philadelphia' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '2400', bestRating: '5', worstRating: '1' },
+    offers: { '@type': 'Offer', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/applications/" serviceName="Window Film Applications" serviceDesc="Window film applications for Philadelphia homes, businesses, and government facilities. Residential, commercial, security, decorative, and energy-saving solutions." serviceUrl="https://www.windowfilmphiladelphia.net/applications/">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/applications/"
+  faqItems={faqItems}
+  serviceName="Window Film Applications Philadelphia"
+  serviceDesc="Professional window film installation for every application in Philadelphia — homes, offices, retail, restaurants, hotels, schools, healthcare, government, and more."
+  serviceUrl="https://www.windowfilmphiladelphia.net/applications/"
+  schemas={pageSchemas}
+>
 
-<InnerPageHero
-  title="Window Film for Every Space"
-  desc="Homes · Offices · Retail · Healthcare · Government · Schools · Industrial"
-  bgImage="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_154533_bd567696-7c62-4996-8886-6828fb4aa6e4.png"
+<!-- ═══ HERO ═══ -->
+<section class="ap-hero">
+  <div class="ap-hero__bg" style="background-image: url('/images/applications/window-film-applications-philadelphia-hero.jpg')" role="img" aria-label="Philadelphia buildings with professional window film installed across different property types"></div>
+  <div class="ap-hero__overlay"></div>
+  <div class="ap-hero__content">
+    <div class="ap-hero__eyebrow">
+      <span class="ap-hero__eyebrow-dot" aria-hidden="true"></span>
+      WINDOW FILM APPLICATIONS
+      <span class="ap-hero__eyebrow-dot" aria-hidden="true"></span>
+    </div>
+    <h1 class="ap-hero__title">Window Film Applications in Philadelphia</h1>
+    <p class="ap-hero__subtitle">From rowhomes to high-rises, storefronts to schools — professional window film for every type of Philadelphia property. Explore each application and find the right film for your space.</p>
+    <div class="ap-hero__cta">
+      <a href="/contact/" class="ap-hero__btn-primary">Get a Free Consultation</a>
+      <a href="tel:2673947980" class="ap-hero__btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
+    <div class="ap-hero__stats-panel" aria-label="Key statistics">
+      <div class="ap-hero__stats-inner">
+        <div class="ap-hero__stat">
+          <span class="ap-hero__stat-number">PA &amp; NJ</span>
+          <span class="ap-hero__stat-label">Licensed In</span>
+        </div>
+        <div class="ap-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ap-hero__stat">
+          <span class="ap-hero__stat-number">2008</span>
+          <span class="ap-hero__stat-label">Serving Since</span>
+        </div>
+        <div class="ap-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ap-hero__stat">
+          <span class="ap-hero__stat-number">1.2M+</span>
+          <span class="ap-hero__stat-label">Sq Ft Installed</span>
+        </div>
+        <div class="ap-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ap-hero__stat">
+          <span class="ap-hero__stat-number">4.9</span>
+          <span class="ap-hero__stat-label">Google Rating</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ap-body">
+
+<!-- TRUST BAR -->
+<section class="ap-trust">
+  <div class="ap-container">
+    <p class="ap-trust__label">Trusted by Philadelphia homeowners, businesses, and institutions since 2008</p>
+  </div>
+</section>
+
+<BrandLogos />
+
+<!-- ═══ INTRO — 2-col with image ═══ -->
+<section class="ap-intro">
+  <div class="ap-intro__container">
+    <div class="ap-intro__content">
+      <span class="ap-eyebrow">Every Application</span>
+      <h2 class="ap-intro__title">One team. Every type of Philadelphia property.</h2>
+      <p class="ap-intro__lead">Window film isn't a one-size-fits-all product. A <a href="/applications/homes-condos/" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">South Philly rowhome</a> needs different film than a <a href="/applications/office/" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Center City office tower</a>. A <a href="/applications/museums-libraries/" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">museum gallery</a> has different priorities than a <a href="/applications/retail/" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">retail storefront on South Street</a>. We've spent over 15 years installing the right film for the right application across the Delaware Valley — and we've built a dedicated page for each one.</p>
+      <p class="ap-intro__lead">Browse all twelve window film applications in Philadelphia below. Each page breaks down the specific film recommendations, common challenges, and installation approach for that property type. Whether you're a <a href="/services/residential/" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">homeowner looking to cut cooling costs</a> or a facility manager evaluating <a href="/government-buildings/" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">security film for a government building</a>, there's a page tailored to your situation. According to the U.S. Department of Energy, <a href="https://www.energy.gov/cmei/buildings/retrofit-existing-buildings" target="_blank" rel="noopener noreferrer" style="color: var(--ap-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">retrofitting existing buildings</a> with energy-saving measures like window film is one of the most cost-effective ways to improve performance without full glass replacement.</p>
+    </div>
+    <div class="ap-intro__image-wrap">
+      <img src="/images/applications/window-film-applications-philadelphia-intro.jpg" alt="Philadelphia interior showing professional window film installed across different building types" title="Window film applications in Philadelphia — Window Film Philadelphia" class="ap-intro__image" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENTO GRID SYMMETRIC — all 12 application subpages ═══ -->
+<BentoGridSymmetric
+  heading="Window film applications in Philadelphia"
+  sub="Explore each application in detail — film recommendations, common challenges, and our installation approach for every property type."
+  items={applicationItems}
 />
 
-<div class="ip-page-body">
+<!-- ═══ FAQ ═══ -->
+<AccordionFAQ
+  eyebrow="FAQ"
+  heading="Window film applications — frequently asked questions"
+  sub="Everything you need to know before exploring the right film for your Philadelphia property."
+  items={faqAccordionItems}
+/>
 
-  <section class="apps-section">
-    <div class="apps-section__inner">
-      <div class="apps-section__hd apps-reveal">
-        <span class="apps-eyebrow">Applications</span>
-        <h2 class="apps-section__title">Window film for every space</h2>
-        <p class="apps-section__sub">Seven application categories. One expert team. Professional installation backed by industry-leading warranties.</p>
-      </div>
-      <div class="apps-grid">
-        {appTypes.map((app, i) => (
-          <a
-            href={app.href}
-            class="app-card apps-reveal"
-            style={`--stagger: ${i}`}
-            aria-label={`${app.title}: ${app.benefit}`}
-          >
-            <div class="app-card__icon-wrap">
-              <span class="app-card__icon" set:html={app.icon} />
-              <svg class="app-card__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-            </div>
-            <div class="app-card__body">
-              <h3 class="app-card__title">{app.title}</h3>
-              <p class="app-card__benefit">{app.benefit}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+<!-- ═══ CTA ═══ -->
+<CTAAvatars
+  title="Not sure which application fits your property?"
+  subtitle="Tell us about your building and your goals. We'll help you find the right film — no pressure, no obligation. Free consultation and detailed proposal."
+  count="Trusted by 2,400+ Philadelphia property owners"
+  btnLabel="Get a Free Consultation"
+  btnHref="/contact/"
+/>
 
-  <section class="auron-features">
-    <div class="auron-features__hd">
-      <span class="auron-badge">Featured Applications</span>
-      <h2 class="auron-features__title">How window film applies<br/>across Philadelphia</h2>
-    </div>
-    {featuredApps.map((s, i) => (
-      <div class={`auron-feat ${i % 2 === 1 ? 'auron-feat--rev' : ''} fade-in`}>
-        <div class="auron-feat__img">
-          <img src={s.img} alt={s.alt} width="600" height="480" loading="lazy" />
-          <div class="auron-feat__img-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 12.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/></svg>
-            Window Film Philadelphia
-          </div>
-        </div>
-        <div class="auron-feat__content">
-          <span class="auron-feat__num">{s.number}</span>
-          <h3 class="auron-feat__heading">{s.heading}</h3>
-          <p class="auron-feat__body">{s.body}</p>
-          <a href={s.href} class="auron-feat__cta">{s.cta}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></a>
-        </div>
-      </div>
-    ))}
-  </section>
-
-  <section class="auron-mission">
-    <div class="auron-mission__inner">
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">01</span>
-        <h3 class="auron-mission-card__title">Our Approach</h3>
-        <p class="auron-mission-card__body">We assess every project individually — understanding your building, your goals, and your budget before recommending a film solution. No upsells, no unnecessary upgrades. Just the right film for the right application at a fair price.</p>
-        <a href="/contact/" class="auron-btn auron-btn--outline-dark">Get a Site Assessment</a>
-      </div>
-      <div class="auron-mission-card fade-in">
-        <span class="auron-mission-card__num">02</span>
-        <h3 class="auron-mission-card__title">Our Promise</h3>
-        <p class="auron-mission-card__body">Every installation is backed by the manufacturer\'s warranty and our own workmanship guarantee. If anything goes wrong with the film or the application within the warranty period, we handle it at no cost to you.</p>
-        <a href="/resources/warranty/" class="auron-btn auron-btn--outline-dark">View Warranty Info</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="auron-faq">
-    <div class="auron-faq__inner">
-      <div class="auron-faq__hd">
-        <span class="auron-badge">FAQ</span>
-        <h2 class="auron-faq__title">Common questions about<br/>window film applications</h2>
-      </div>
-      <div class="auron-faq__items">
-        {faqItems.map((item, i) => (
-          <div class={`auron-faq__item ${i === 0 ? 'auron-faq__item--open' : ''}`}>
-            <div class="auron-faq__q">{item.question}<span class="auron-faq__toggle">+</span></div>
-            <div class="auron-faq__a">{item.answer}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <BrandLogos />
-
-  <section class="auron-cta-banner">
-    <div class="auron-cta-banner__inner">
-      <div class="auron-cta-banner__text">
-        <h2>Ready to find <em>your application?</em></h2>
-        <p>Get a free consultation and custom quote for your Philadelphia property.</p>
-      </div>
-      <div class="auron-cta-banner__btns">
-        <a href="/contact/" class="auron-btn auron-btn--white">Get a Free Quote</a>
-        <a href="tel:+126****7980" class="auron-btn auron-btn--outline-white">Call (267) 394-7980</a>
-      </div>
-    </div>
-  </section>
+<!-- ═══ GEO BLOCK (hidden SEO/AEO content) ═══ -->
+<div class="ap-geo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+  <h2>Window Film Applications in Philadelphia — Every Property Type</h2>
+  <p>Window Film Philadelphia installs window film for every application in Philadelphia and the Delaware Valley. Our certified installation team applies solar control, UV protection, glare reduction, security, anti-graffiti, privacy, safety, and decorative window film to residential, commercial, institutional, and government properties. Window film applications in Philadelphia include homes and condos, office buildings, retail storefronts, restaurants, hotels and hospitality, mass transit and airports, schools and universities, hospitals and healthcare facilities, government buildings, secured buildings, museums and libraries, and churches and faith centers. Each application requires a different film selection based on glass type, orientation, and operational priorities. We serve Center City, Old City, South Philly, Fishtown, Northern Liberties, Manayunk, University City, King of Prussia, Camden NJ, and the broader Delaware Valley. Contact Window Film Philadelphia for a free consultation.</p>
+  <dl>
+    <dt>What are window film applications in Philadelphia?</dt>
+    <dd>Window film applications in Philadelphia cover every property type where film is installed on existing glass — residential homes and condos, commercial offices and retail, hospitality venues, educational and healthcare facilities, government and secured buildings, and cultural institutions like museums and churches.</dd>
+    <dt>How many window film applications do you serve in Philadelphia?</dt>
+    <dd>We serve twelve distinct window film applications in Philadelphia, each with a dedicated page: homes and condos, office buildings, retail, restaurants, hotels and hospitality, mass transit and airport, schools and universities, hospitals and healthcare, government buildings, secured buildings, museums and libraries, and churches and faith centers.</dd>
+    <dt>Which Philadelphia neighborhoods do you serve for window film applications?</dt>
+    <dd>We serve window film applications throughout Greater Philadelphia including Center City, Old City, South Street, Fishtown, Northern Liberties, Manayunk, University City, King of Prussia, Camden NJ, and the broader Delaware Valley. No travel surcharge within the standard service area.</dd>
+    <dt>What is the best window film for my Philadelphia application?</dt>
+    <dd>The best film depends on your property type, glass type, and goals. Solar control film is popular for west-facing offices and homes. Security film is recommended for ground-floor retail and government buildings. UV protection film is essential for museums and healthcare. We assess each property individually during a free consultation.</dd>
+    <dt>Do you serve both residential and commercial window film applications?</dt>
+    <dd>Yes. We install window film for both residential and commercial applications in Philadelphia. Residential applications include homes, condos, and historic residences. Commercial applications include offices, retail, restaurants, hotels, schools, healthcare, government, and institutional properties.</dd>
+  </dl>
+  <ul>
+    <li>Window film applications in Philadelphia</li>
+    <li>Philadelphia window film applications</li>
+    <li>Window film applications Philadelphia PA</li>
+    <li>Residential window film applications Philadelphia</li>
+    <li>Commercial window film applications Philadelphia</li>
+    <li>Office window film applications Philadelphia</li>
+    <li>Retail window film applications Philadelphia</li>
+    <li>Restaurant window film applications Philadelphia</li>
+    <li>Hotel window film applications Philadelphia</li>
+    <li>School window film applications Philadelphia</li>
+    <li>Healthcare window film applications Philadelphia</li>
+    <li>Government window film applications Philadelphia</li>
+    <li>Museum window film applications Philadelphia</li>
+    <li>Church window film applications Philadelphia</li>
+    <li>Security window film applications Philadelphia</li>
+    <li>UV protection window film applications Philadelphia</li>
+  </ul>
+</div>
 
 </div>
 
+</BaseLayout>
+
 <style>
-.auron-hero { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; background: var(--brand); }
-.auron-hero__img { position: absolute; inset: 0; z-index: 0; }
-.auron-hero__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-hero__overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(26,58,46,0.92) 0%, rgba(26,58,46,0.75) 50%, rgba(26,58,46,0.4) 100%); }
-.auron-hero__content { position: relative; z-index: 2; padding: 100px 10%; max-width: 800px; }
-.auron-badge { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 14px; border-radius: 100px; margin-bottom: 24px; }
-.auron-badge--green { background: rgba(129,171,76,0.2); color: var(--green); border: 1px solid rgba(129,171,76,0.3); }
-.auron-badge--lime { background: rgba(129,171,76,0.15); color: var(--green); border: 1px solid rgba(129,171,76,0.25); }
-.auron-badge { background: rgba(129,171,76,0.12); color: var(--green); border: 1px solid rgba(129,171,76,0.2); }
-.auron-hero__title { font-family: 'Playfair Display', serif; font-size: clamp(42px,5.5vw,72px); font-weight: 700; line-height: 1.05; letter-spacing: -1.5px; color: #fff; margin: 0 0 20px; }
-.auron-accent { color: var(--green); }
-.auron-hero__sub { font-family: 'DM Sans', sans-serif; font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0 0 36px; max-width: 520px; }
-.auron-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.auron-btn { display: inline-block; padding: 15px 32px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 2px solid transparent; white-space: nowrap; }
-.auron-btn--primary { background: var(--green); color: var(--brand); border-color: var(--green); }
-.auron-btn--primary:hover { background: #7de84a; border-color: #7de84a; transform: translateY(-2px); color: var(--brand); }
-.auron-btn--outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
-.auron-btn--outline-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.auron-btn--outline-dark { background: transparent; color: var(--brand); border-color: var(--brand); }
-.auron-btn--outline-dark:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
-.auron-btn--white { background: #fff; color: var(--brand); border-color: #fff; }
-.auron-btn--white:hover { background: #F7F6F3; transform: translateY(-2px); color: var(--brand); }
-.auron-btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
-.auron-btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); color: #fff; }
-.auron-body { background: #ffffff; }
-.auron-stats { background: var(--brand); padding: 80px 10%; }
-.auron-stats__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.auron-stats__heading { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,40px); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.5px; margin: 0 0 16px; }
-.auron-stats__text p { font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0 0 28px; }
-.auron-stats__numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-.auron-stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(129,171,76,0.15); padding: 32px 28px; text-align: center; }
-.auron-stat-card__value { display: block; font-family: 'Playfair Display', serif; font-size: clamp(28px,3.5vw,44px); font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 8px; }
-.auron-stat-card__label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
-.auron-trust { background: var(--green); padding: 20px 10%; }
-.auron-trust__inner { display: flex; align-items: center; justify-content: center; }
-.auron-trust__tagline { display: flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: 1.5px; margin: 0; }
-.auron-trust__tagline svg { color: var(--brand); flex-shrink: 0; }
-.auron-features { padding: 100px 10%; background: #F7F6F3; }
-.auron-features__hd { margin-bottom: 72px; }
-.auron-features__title { font-family: 'Playfair Display', serif; font-size: clamp(30px,3.5vw,48px); font-weight: 700; color: var(--brand); line-height: 1.15; letter-spacing: -0.5px; margin: 12px 0 0; }
-.auron-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
-.auron-feat:last-child { margin-bottom: 0; }
-.auron-feat--rev .auron-feat__img { order: 2; }
-.auron-feat--rev .auron-feat__content { order: 1; }
-.auron-feat__img { position: relative; height: 460px; border-radius: 20px; overflow: hidden; }
-.auron-feat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.auron-feat__img-badge { position: absolute; bottom: 20px; left: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(26,58,46,0.88); backdrop-filter: blur(8px); color: var(--green); padding: 10px 16px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; border: 1px solid rgba(129,171,76,0.25); }
-.auron-feat__num { display: block; font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 700; color: var(--green); line-height: 1; opacity: 0.35; margin-bottom: -16px; }
-.auron-feat__heading { font-family: 'Playfair Display', serif; font-size: clamp(22px,2.5vw,32px); font-weight: 700; color: var(--brand); line-height: 1.2; margin: 0 0 16px; }
-.auron-feat__body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #555; line-height: 1.8; margin: 0 0 24px; }
-.auron-feat__cta { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); text-decoration: none; transition: gap 0.2s; }
-.auron-feat__cta:hover { gap: 14px; }
-.auron-mission { background: var(--brand); padding: 80px 10%; }
-.auron-mission__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.auron-mission-card { border-left: 4px solid var(--green); padding: 40px 40px; background: rgba(255,255,255,0.05); border-radius: 0 16px 16px 0; }
-.auron-mission-card__num { display: block; font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 700; color: var(--green); line-height: 1; opacity: 0.4; margin-bottom: 8px; }
-.auron-mission-card__title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; margin: 0 0 16px; }
-.auron-mission-card__body { font-family: 'DM Sans', sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0 0 28px; }
-/* ════════════════════════════════════
-   APPLICATIONS SECTION
-   ════════════════════════════════════ */
-.apps-section {
-  background: #F7F6F3;
-  padding: 100px 10%;
+/* ── DESIGN TOKENS — site palette ══ */
+:root {
+  --ap-radius: 5px;
+  --ap-charcoal: #272E32;
+  --ap-green: #81AB4C;
+  --ap-green-light: #eef4e4;
+  --ap-green-dark: #7CB342;
+  --ap-off-white: #F7F6F3;
+  --ap-text-dark: #1a1a1a;
+  --ap-text-mid: #4a4a4a;
+  --ap-text-light: #888;
 }
 
-.apps-section__inner { max-width: 1200px; margin: 0 auto; }
+.ap-body { background: #ffffff; }
+.ap-container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
 
-.apps-section__hd {
-  text-align: center;
-  margin-bottom: 56px;
-}
-
-.apps-eyebrow {
+/* ── EYEBROW ══ */
+.ap-eyebrow {
   display: inline-block;
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--green, #81AB4C);
-  margin-bottom: 14px;
+  color: var(--ap-green);
+  margin-bottom: 16px;
 }
 
-.apps-section__title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 700;
-  color: var(--brand, #272E32);
-  line-height: 1.15;
-  margin: 0 0 14px;
-  letter-spacing: -0.3px;
+/* ── HERO ══ */
+.ap-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-
-.apps-section__sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  color: rgba(39, 46, 50, 0.55);
-  max-width: 520px;
-  margin: 0 auto;
-  line-height: 1.65;
+.ap-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
-/* ── GRID: 4 + 3 rows ── */
-.apps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.ap-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(39,46,50,0.68) 0%, rgba(39,46,50,0.82) 55%, rgba(39,46,50,0.95) 100%);
 }
-
-/* Last row: center the 3 remaining cards */
-.apps-grid .app-card:nth-child(n+5) {
-  grid-column: span 1;
-}
-.apps-grid .app-card:nth-child(5) { grid-column: 1 / 2; margin-left: calc(25% + 8px); }
-.apps-grid .app-card:nth-child(6) { grid-column: 2 / 3; }
-.apps-grid .app-card:nth-child(7) { grid-column: 3 / 4; }
-
-/* ── CARD ── */
-.app-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 32px 28px 28px;
-  text-decoration: none;
+.ap-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: 860px;
+  padding: 120px 24px 80px;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
-  transition:
-    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-
-.app-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.app-card:focus-visible {
-  outline: 2px solid var(--green, #81AB4C);
-  outline-offset: 3px;
-  border-radius: 20px;
-}
-
-/* ── ICON WRAP ── */
-.app-card__icon-wrap {
-  width: 52px;
-  height: 52px;
-  background: rgba(129, 171, 76, 0.1);
-  border-radius: 14px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: var(--green, #81AB4C);
-  position: relative;
-  overflow: hidden;
-  transition: background 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.app-card__icon {
-  display: flex;
+.ap-hero__eyebrow {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.app-card:hover .app-card__icon {
-  transform: scale(1.08);
-}
-
-.app-card__arrow {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%) translateX(-4px);
-  opacity: 0;
-  color: #fff;
-  transition:
-    opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.app-card:hover .app-card__icon-wrap {
-  background: var(--green, #81AB4C);
-}
-
-.app-card:hover .app-card__icon {
-  color: #fff;
-}
-
-.app-card:hover .app-card__arrow {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-}
-
-/* ── CARD BODY ── */
-.app-card__body { flex: 1; }
-
-.app-card__title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.05rem;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--brand, #272E32);
-  margin: 0 0 6px;
-  line-height: 1.2;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(124, 179, 66, 0.85);
+  margin-bottom: 28px;
+  background: rgba(124, 179, 66, 0.08);
+  border: 1px solid rgba(124, 179, 66, 0.2);
+  padding: 8px 18px;
+  border-radius: 100px;
 }
-
-.app-card__benefit {
+.ap-hero__eyebrow-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(124, 179, 66, 0.4);
+  flex-shrink: 0;
+}
+.ap-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+.ap-hero__subtitle {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.83rem;
-  color: rgba(39, 46, 50, 0.5);
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: rgba(243, 246, 241, 0.72);
+  max-width: 680px;
+  margin: 0 0 36px;
+  line-height: 1.75;
+}
+.ap-hero__cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.ap-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ap-green-dark);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 2px solid var(--ap-green-dark);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.ap-hero__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 179, 66, 0.3);
+}
+.ap-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #F3F6F1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(243, 246, 241, 0.35);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.ap-hero__btn-secondary:hover {
+  border-color: var(--ap-green-dark);
+  color: var(--ap-green-dark);
+  transform: translateY(-2px);
+  background: rgba(124, 179, 66, 0.06);
+}
+.ap-hero__stats-panel {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(39, 46, 50, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+}
+.ap-hero__stats-inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.ap-hero__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 12px;
+  gap: 6px;
+  text-align: center;
+}
+.ap-hero__stat-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  align-self: stretch;
+  margin: 16px 0;
+  flex-shrink: 0;
+}
+.ap-hero__stat-number {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--ap-green-dark);
+  line-height: 1;
+}
+.ap-hero__stat-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(243, 246, 241, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+  max-width: 90px;
+}
+
+/* ── TRUST BAR ══ */
+.ap-trust { padding: 32px 0; text-align: center; }
+.ap-trust__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ap-text-mid);
   margin: 0;
-  line-height: 1.5;
-  transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.app-card:hover .app-card__benefit {
-  color: rgba(39, 46, 50, 0.7);
+/* ── INTRO ══ */
+.ap-intro { padding: 80px 0 60px; }
+.ap-intro__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.ap-intro__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ap-text-dark);
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.ap-intro__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--ap-text-mid);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.ap-intro__image-wrap { overflow: hidden; }
+.ap-intro__image {
+  width: 100%;
+  height: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
 }
 
-/* ════════════════════════════════════
-   SCROLL REVEAL ANIMATION
-   ════════════════════════════════════ */
-.apps-reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
-  transition-delay: calc(var(--stagger, 0) * 65ms);
+/* ── RESPONSIVE ══ */
+@media (max-width: 992px) {
+  .ap-intro__container { grid-template-columns: 1fr; gap: 32px; }
+  .ap-hero__stats-panel { max-width: 100%; }
 }
-
-.apps-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Reduced motion: show instantly, no animation */
-@media (prefers-reduced-motion: reduce) {
-  .apps-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-/* ════════════════════════════════════
-   INNER PAGE BODY WRAPPER
-   ════════════════════════════════════ */
-.ip-page-body {
-  position: relative;
-  background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: -40px;
-  z-index: 10;
-  overflow: visible;
-  padding-bottom: 80px;
-}
-
-/* ════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .apps-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  /* Last row: 3 cards in a 2-col grid — first spans both */
-  .apps-grid .app-card:nth-child(n+5) { grid-column: auto; margin-left: 0; }
-  .apps-grid .app-card:nth-child(5) { grid-column: 1 / -1; max-width: 50%; }
-  .apps-grid .app-card:nth-child(6) { }
-  .apps-grid .app-card:nth-child(7) { }
-  .apps-section { padding: 80px 6%; }
-}
-
-@media (max-width: 640px) {
-  .apps-grid {
-    grid-template-columns: 1fr;
-  }
-  .apps-grid .app-card:nth-child(n+5) { grid-column: auto; margin-left: 0; max-width: 100%; }
-  .apps-section { padding: 60px 5%; }
-  .app-card { padding: 28px 24px 24px; }
-}
-.auron-faq { background: #F7F6F3; padding: 100px 10%; }
-.auron-faq__inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
-.auron-faq__title { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,40px); font-weight: 700; color: var(--brand); line-height: 1.15; margin: 12px 0 0; }
-.auron-faq__item { border-bottom: 1px solid #D8D8D0; padding: 20px 0; }
-.auron-faq__item:first-of-type { border-top: 1px solid #D8D8D0; }
-.auron-faq__q { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--brand); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; cursor: pointer; padding: 4px 0; }
-.auron-faq__toggle { color: var(--green); font-size: 22px; flex-shrink: 0; font-weight: 400; transition: transform 0.2s; }
-.auron-faq__a { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #555; line-height: 1.75; margin-top: 10px; display: none; }
-.auron-faq__item--open .auron-faq__a { display: block; }
-.auron-faq__item--open .auron-faq__toggle { transform: rotate(45deg); }
-.auron-cta-banner { background: var(--brand); padding: 80px 10%; }
-.auron-cta-banner__inner { display: flex; align-items: center; justify-content: space-between; gap: 60px; }
-.auron-cta-banner__text h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px,3vw,42px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 8px; }
-.auron-cta-banner__text h2 em { font-style: italic; color: var(--green); }
-.auron-cta-banner__text p { font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.6); margin: 0; }
-.auron-cta-banner__btns { display: flex; gap: 14px; flex-shrink: 0; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.counter { animation: countUp 0.6s ease-out forwards; }
-@media (max-width: 1024px) {
-  .auron-stats__inner { grid-template-columns: 1fr; gap: 48px; }
-  .auron-feat { grid-template-columns: 1fr; gap: 40px; }
-  .auron-feat--rev .auron-feat__img { order: 0; }
-  .auron-feat--rev .auron-feat__content { order: 1; }
-  .auron-mission__inner { grid-template-columns: 1fr; }
-  .auron-benefits__grid { grid-template-columns: repeat(2,1fr); }
-  .auron-faq__inner { grid-template-columns: 1fr; gap: 40px; }
-  .auron-cta-banner__inner { flex-direction: column; text-align: center; }
-}
-@media (max-width: 768px) {
-  .auron-hero__content { padding: 80px 5%; }
-  .auron-hero__ctas { flex-direction: column; }
-  .auron-stats, .auron-features, .auron-benefits, .auron-faq, .auron-cta-banner { padding: 60px 5%; }
-  .auron-mission { padding: 60px 5%; }
-  .auron-feat__img { height: 280px; }
-  .auron-benefits__grid { grid-template-columns: 1fr; }
-  .auron-benefit { border-right: none !important; }
-  .auron-stat-card { padding: 24px 20px; }
-  .auron-cta-banner__btns { flex-direction: column; width: 100%; }
-  .auron-hero__title { font-size: 36px; }
+@media (max-width: 720px) {
+  .ap-hero__stats-inner { flex-wrap: wrap; }
+  .ap-hero__stat-divider { display: none; }
 }
 </style>
-
-<script>
-  // ── Scroll reveal for apps section ──
-  const appsObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.apps-reveal').forEach(el => appsObs.observe(el));
-
-  // ── FAQ accordion ──
-  document.querySelectorAll('.auron-faq__item').forEach(item => {
-    item.querySelector('.auron-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('auron-faq__item--open');
-      document.querySelectorAll('.auron-faq__item').forEach(i => i.classList.remove('auron-faq__item--open'));
-      if (!isOpen) item.classList.add('auron-faq__item--open');
-    });
-  });
-
-  // ── Stat counters ──
-  const counters = document.querySelectorAll('.counter');
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-        entry.target.classList.add('counted');
-        entry.target.style.animation = 'none';
-        entry.target.offsetHeight;
-        entry.target.style.animation = 'countUp 0.6s ease-out forwards';
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => countObs.observe(c));
-</script>
-
-</BaseLayout>
