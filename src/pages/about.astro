@@ -1,0 +1,799 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandLogos from '../components/BrandLogos.astro';
+import GalleryBanner from '../components/GalleryBanner.astro';
+import BentoGridPhoto from '../components/BentoGridPhoto.astro';
+import HowItWorksSlideshow from '../components/HowItWorksSlideshow.astro';
+import TestimonialMarquee from '../components/TestimonialMarquee.astro';
+import AccordionFAQ from '../components/AccordionFAQ.astro';
+import CTAAvatars from '../components/CTAAvatars.astro';
+
+const title = 'About Window Film Philadelphia | 15+ Years of Professional Window Tinting';
+const description = 'Window Film Philadelphia has been installing professional window film across the Delaware Valley since 2008. Licensed in PA & NJ, 1.2M+ sq ft installed, 4.9-star rated. Learn our story.';
+const dateModified = new Date().toISOString().slice(0, 10);
+
+const galleryPhotos = [
+  '/images/about/philadelphia-rowhome-window-tinting-gallery.jpg',
+  '/images/about/office-window-tinting-philadelphia-gallery.jpg',
+  '/images/about/retail-security-window-film-philadelphia-gallery.jpg',
+  '/images/about/decorative-window-film-philadelphia-gallery.jpg',
+  '/images/about/window-film-installer-philadelphia-gallery.jpg',
+];
+
+const bentoItems = [
+  { span: 'lg', title: 'Center City High-Rises', desc: 'Solar control and security film on glass curtain walls across the Philadelphia skyline.', img: '/images/about/center-city-window-film-philadelphia-bento.jpg', href: '/applications/office/' },
+  { span: 'sm', title: 'Precision Tools', desc: 'Plotter-cut film, factory-specified technique, no freehand trimming.', img: '/images/about/window-film-installation-tools-philadelphia-bento.jpg', href: '/process/' },
+  { span: 'sm', title: 'The Film Edge', desc: 'Every pane inspected for defects before we pack up.', img: '/images/about/window-tint-film-detail-philadelphia-bento.jpg', href: '/benefits/' },
+  { span: 'md', title: 'Philadelphia Rowhomes', desc: 'UV and energy-saving film for historic and modern residences.', img: '/images/about/philadelphia-rowhome-window-film-bento.jpg', href: '/applications/homes-condos/' },
+  { span: 'md', title: 'Commercial Storefronts', desc: 'Security and anti-graffiti film for street-facing glass.', img: '/images/about/commercial-storefront-window-film-philadelphia-bento.jpg', href: '/applications/retail/' },
+  { span: 'md', title: 'High-Rise Installation', desc: 'Scaffold-access work on multi-story glass facades.', img: '/images/about/high-rise-window-film-installation-philadelphia-bento.jpg', href: '/services/commercial/' },
+];
+
+const processSlides = [
+  { step: '01', title: 'Free Consultation', desc: 'We visit your property, assess every pane, evaluate glass type and thermal stress risk, and discuss your goals — at no cost and no obligation. Whether you need <a href="/services/residential/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">residential window film</a> or <a href="/services/commercial/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">commercial window tinting</a>, the process starts with understanding your space.', img: '/images/about/window-film-consultation-philadelphia-process.jpg', imgAlt: 'Window film consultant meeting with a Philadelphia homeowner during a free consultation' },
+  { step: '02', title: 'Precision Preparation', desc: 'Film is pre-cut by computer-controlled plotter to your exact pane dimensions — no freehand trimming, no waste. We coordinate scheduling around your operations, whether that means after-hours installation for an occupied office or a single-day residential appointment.', img: '/images/about/window-film-plotter-cutting-philadelphia-process.jpg', imgAlt: 'Computer-controlled plotter cutting window film to exact pane dimensions' },
+  { step: '03', title: 'Professional Installation', desc: 'Film is applied using manufacturer-specified techniques: squeegeed from center outward, edges trimmed to pane edges, every pane inspected for defects. Our crews are W-2 employees — not subcontractors — which means consistent quality on every job, from a <a href="/applications/homes-condos/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">South Philly rowhome</a> to a <a href="/government-buildings/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">federal courthouse</a>.', img: '/images/about/window-film-installation-philadelphia-process.jpg', imgAlt: 'Professional installer applying window film to a large commercial window in Philadelphia' },
+  { step: '04', title: 'Walkthrough & Warranty', desc: 'We walk through every pane with you, explain care during the cure period, provide manufacturer warranty documentation, and deliver compliance specs for your records. If anything looks off, we fix it before we leave — no exceptions.', img: '/images/about/window-film-walkthrough-philadelphia-process.jpg', imgAlt: 'Installer and homeowner reviewing completed window film installation in Philadelphia' },
+];
+
+const testimonials = [
+  { quote: 'They installed film on every window in our 12-unit building. The crew was organized, respectful, and done in two days. Our cooling costs dropped immediately — we can actually keep the hallway comfortable in August now.', name: 'Diane R.', role: 'Property Manager · Center City', img: '/images/about/about-avatar-1.jpg' },
+  { quote: 'I called three companies before choosing Window Film Philadelphia. They were the only ones who actually came out, assessed the glass, and explained why certain films would work and others would not. The installation was spotless.', name: 'Robert K.', role: 'Retail Owner · South Street', img: '/images/about/about-avatar-2.jpg' },
+  { quote: 'Our Victorian has original 1890s glass. Every other company said we could not put film on it. They assessed each pane individually, found the right film, and installed it without a single issue. The floors stopped fading within months.', name: 'Lisa M.', role: 'Homeowner · Rittenhouse Square', img: '/images/about/about-avatar-3.jpg' },
+  { quote: 'As a facilities manager overseeing fourteen buildings, I need a contractor who handles everything — assessment, coordination, documentation, installation. They worked with our schedule, provided all the compliance paperwork, and the energy savings showed up on the first utility bill.', name: 'Thomas H.', role: 'Facilities Manager · University City', img: '/images/about/about-avatar-4.jpg' },
+  { quote: 'The security film on our storefront survived an attempted break-in. The glass cracked but stayed in place — the thief could not get through. That film paid for itself in one night. I tell every business owner on our block to call them.', name: 'Janet F.', role: 'Boutique Owner · Manayunk', img: '/images/about/about-avatar-5.jpg' },
+  { quote: 'We needed decorative frosted film on our conference room partitions. They custom-cut our company logo into the film. The install was fast, clean, and the result looks like it came with the building. Could not be happier.', name: 'Linda P.', role: 'Office Manager · Old City', img: '/images/about/about-avatar-6.jpg' },
+  { quote: 'Our dining room faces west and by 4pm the glare was unbearable. The solar control film fixed it completely. We can finally seat the full room during dinner service. The install was done overnight so we never closed.', name: 'Marco V.', role: 'Restaurant Owner · Old City', img: '/images/about/about-avatar-7.jpg' },
+  { quote: 'I had them out for a free consultation not expecting much. The installer spent an hour explaining different films, showing me samples, and helping me pick the right one for my budget. No pressure, no upsell. The film has been perfect.', name: 'Sarah M.', role: 'Homeowner · Fishtown', img: '/images/about/about-avatar-8.jpg' },
+];
+
+const faqItems = [
+  { question: 'How long has Window Film Philadelphia been in business?', answer: 'Window Film Philadelphia has been installing professional window film across the Delaware Valley since 2008. Our team has completed over 2,400 projects totaling more than 1.2 million square feet of installed film, ranging from single-pane residential installations to multi-floor commercial high-rises.' },
+  { question: 'Are your installers employees or subcontractors?', answer: 'Every installer on our team is a W-2 employee — we do not use subcontractors. This means consistent training, consistent quality, and accountability on every project. Our installers are factory-certified by the manufacturers we represent, including 3M, LLumar, Vista, and Solar Gard.' },
+  { question: 'What areas do you serve?', answer: 'We serve the entire Delaware Valley including Center City, Old City, South Philly, Fishtown, Northern Liberties, Manayunk, University City, King of Prussia, Camden NJ, and surrounding areas. Our installation crews are Philadelphia-based — no travel surcharge within the standard service area. We are licensed and insured in both Pennsylvania and New Jersey.' },
+  { question: 'Do you offer free consultations?', answer: 'Yes. Every project starts with a free on-site consultation. We assess your glass, discuss your goals, take exact measurements, and provide a detailed proposal — no pressure and no obligation. For commercial properties, we coordinate with your building manager or facilities team to schedule around your operations.' },
+  { question: 'What types of window film do you install?', answer: 'We install the full range of professional window film: solar control, UV protection, glare reduction, privacy, safety and security, anti-graffiti, decorative, blast mitigation, ballistic-resistant, exterior building wraps, and mirror refinishing. We carry products from 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, and other leading manufacturers.' },
+  { question: 'Can you install film on historic glass?', answer: 'Yes. We have extensive experience working with historic properties across Philadelphia, including homes with original 19th-century glass. We assess each pane individually for thermal stress risk before recommending a film. Many clear UV-blocking films are virtually invisible on glass, making them ideal for historic preservation contexts.' },
+  { question: 'Do you work with property managers and commercial portfolios?', answer: 'Yes. A significant portion of our work is through property management firms and building managers who oversee multiple properties. We provide site assessments, detailed proposals, compliance documentation, and coordinate installations across portfolios. We carry the documentation most management companies require.' },
+  { question: 'What warranty coverage comes with your installations?', answer: 'Every installation includes manufacturer warranty coverage for film performance — peeling, bubbling, discoloration, and solar heat rejection. We also provide a labor warranty on every installation. Warranty terms vary by product and film type; we walk you through the specifics for your chosen product during the consultation.' },
+];
+
+const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.windowfilmphiladelphia.net/about/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/about/',
+    url: 'https://www.windowfilmphiladelphia.net/about/',
+    name: 'About Window Film Philadelphia',
+    description,
+    dateModified,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/about/',
+    url: 'https://www.windowfilmphiladelphia.net/about/',
+    name: 'About Window Film Philadelphia',
+    description,
+    dateModified,
+    about: {
+      '@type': 'LocalBusiness',
+      name: 'Window Film Philadelphia',
+      description: 'Professional window film installation for residential, commercial, and institutional properties in Philadelphia and the Delaware Valley since 2008.',
+      foundingDate: '2008',
+      areaServed: ['Philadelphia, PA', 'Camden, NJ', 'Reading, PA', 'Upper Darby, PA', 'Delaware Valley'],
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '2400', bestRating: '5', worstRating: '1' },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/about/"
+  faqItems={faqItems}
+  serviceName="Window Film Philadelphia"
+  serviceDesc="Professional window film installation for residential, commercial, and institutional properties in Philadelphia and the Delaware Valley since 2008."
+  serviceUrl="https://www.windowfilmphiladelphia.net/about/"
+  schemas={pageSchemas}
+>
+
+<!-- ═══ HERO ═══ -->
+<section class="ab-hero">
+  <div class="ab-hero__bg" style="background-image: url('/images/about/window-film-philadelphia-about-hero.jpg')" role="img" aria-label="Professional window film installation team working on a Philadelphia building"></div>
+  <div class="ab-hero__overlay"></div>
+  <div class="ab-hero__content">
+    <div class="ab-hero__eyebrow">
+      <span class="ab-hero__eyebrow-dot" aria-hidden="true"></span>
+      ABOUT WINDOW FILM PHILADELPHIA
+      <span class="ab-hero__eyebrow-dot" aria-hidden="true"></span>
+    </div>
+    <h1 class="ab-hero__title">Philadelphia's Window Film Team Since 2008</h1>
+    <p class="ab-hero__subtitle">Over 15 years installing professional window film across the Delaware Valley — from South Philly rowhomes to Center City high-rises. Licensed, insured, and factory-certified in Pennsylvania and New Jersey.</p>
+    <div class="ab-hero__cta">
+      <a href="/contact/" class="ab-hero__btn-primary">Get a Free Consultation</a>
+      <a href="tel:2673947980" class="ab-hero__btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        Call (267) 394-7980
+      </a>
+    </div>
+    <div class="ab-hero__stats-panel" aria-label="Key statistics">
+      <div class="ab-hero__stats-inner">
+        <div class="ab-hero__stat">
+          <span class="ab-hero__stat-number">PA & NJ</span>
+          <span class="ab-hero__stat-label">Licensed In</span>
+        </div>
+        <div class="ab-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ab-hero__stat">
+          <span class="ab-hero__stat-number">2008</span>
+          <span class="ab-hero__stat-label">Serving Since</span>
+        </div>
+        <div class="ab-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ab-hero__stat">
+          <span class="ab-hero__stat-number">2,400+</span>
+          <span class="ab-hero__stat-label">Projects Completed</span>
+        </div>
+        <div class="ab-hero__stat-divider" aria-hidden="true"></div>
+        <div class="ab-hero__stat">
+          <span class="ab-hero__stat-number">4.9</span>
+          <span class="ab-hero__stat-label">Google Rating</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ab-body">
+
+<!-- TRUST BAR -->
+<section class="ab-trust">
+  <div class="ab-container">
+    <p class="ab-trust__label">Trusted by Philadelphia homeowners, businesses, and institutions since 2008</p>
+  </div>
+</section>
+
+<BrandLogos />
+
+<!-- ═══ INTRO — Our Story ═══ -->
+<section class="ab-intro">
+  <div class="ab-intro__container">
+    <div class="ab-intro__image-wrap">
+      <img src="/images/about/window-film-installation-philadelphia-craftsmanship.jpg" alt="Professional window film installer squeegeeing film on glass in Philadelphia" class="ab-intro__image" loading="lazy" />
+    </div>
+    <div class="ab-intro__content">
+      <span class="ab-eyebrow">Our Story</span>
+      <h2 class="ab-intro__title">It started with a single window — and a difference you could feel.</h2>
+      <p class="ab-intro__lead">The company behind Window Film Philadelphia was founded in 2008, born from a simple experiment: installing energy-saving window film on a home and watching the heating and cooling bills drop. That first installation proved what film could do — reduce glare, block UV, cut energy costs, and protect furnishings — all without replacing a single pane of glass.</p>
+      <p class="ab-intro__lead">Today, our Philadelphia team carries that same hands-on conviction into every project. We are not a call center dispatching subcontractors. We are installers — factory-certified, W-2 employees who assess your glass, recommend the right product, and apply it with precision. From a <a href="/applications/homes-condos/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">rowhome in Fishtown</a> to a <a href="/applications/office/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Center City office tower</a>, the approach is the same: the right film, applied right.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT WE DO — Alternating rows ═══ -->
+<section class="ab-whatwedo">
+  <div class="ab-container">
+    <span class="ab-eyebrow ab-eyebrow--center">What We Do</span>
+    <h2 class="ab-whatwedo__title">Professional window film for every type of Philadelphia glass.</h2>
+    <p class="ab-whatwedo__lead">We install the full spectrum of professional window film — <a href="/benefits/energy-savings/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">solar control</a>, <a href="/benefits/uv-blocking-window-film-philadelphia/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">UV protection</a>, <a href="/benefits/glare-reduction/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">glare reduction</a>, <a href="/benefits/privacy-window-film-philadelphia/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">privacy</a>, <a href="/benefits/safety-and-security/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">security</a>, <a href="/benefits/anti-graffiti/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">anti-graffiti</a>, <a href="/benefits/decorative-promotional/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">decorative</a>, and more. Every product is backed by manufacturer warranty and applied to your existing glass — no replacement, no disruption.</p>
+  </div>
+
+  <div class="ab-whatwedo__rows">
+    <div class="ab-row">
+      <div class="ab-row__text">
+        <span class="ab-row__num">01</span>
+        <h3 class="ab-row__title">Residential Window Film</h3>
+        <p class="ab-row__body">From <a href="/applications/homes-condos/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">South Philly rowhomes</a> to Rittenhouse condos and historic Victorians — we install film that cuts cooling costs, blocks UV, adds privacy, and protects floors and furnishings from fading. Every pane assessed individually for thermal stress risk before we recommend a product.</p>
+      </div>
+      <div class="ab-row__image">
+        <img src="/images/about/philadelphia-rowhome-window-film-bento.jpg" alt="Philadelphia rowhome with professional window film installed on original windows" loading="lazy" />
+      </div>
+    </div>
+    <div class="ab-row ab-row--rev">
+      <div class="ab-row__text">
+        <span class="ab-row__num">02</span>
+        <h3 class="ab-row__title">Commercial Window Tinting</h3>
+        <p class="ab-row__body"><a href="/services/commercial/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Commercial window tinting in Philadelphia</a> is our largest practice area. Office towers, retail storefronts, hotels, restaurants, and multi-building portfolios. Solar control film reduces HVAC load, glare reduction film eliminates screen washout, security film protects against break-ins, and anti-graffiti film keeps street-facing glass clean.</p>
+      </div>
+      <div class="ab-row__image">
+        <img src="/images/about/commercial-storefront-window-film-philadelphia-bento.jpg" alt="Philadelphia commercial storefront with security window film installed" loading="lazy" />
+      </div>
+    </div>
+    <div class="ab-row">
+      <div class="ab-row__text">
+        <span class="ab-row__num">03</span>
+        <h3 class="ab-row__title">Institutional & Government</h3>
+        <p class="ab-row__body">We install <a href="/government-buildings/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">security and blast mitigation film</a> on government buildings, <a href="/applications/schools-universities/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">safety film on schools</a>, UV protection on <a href="/applications/museums-libraries/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">museum collections</a>, and privacy film in <a href="/applications/healthcare/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">healthcare facilities</a>. We carry the documentation compliance teams and facility managers need.</p>
+      </div>
+      <div class="ab-row__image">
+        <img src="/images/about/center-city-window-film-philadelphia-bento.jpg" alt="Philadelphia Center City high-rise with professional window film on glass facade" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY BANNER — Our Work ═══ -->
+<GalleryBanner
+  titleLines={['OUR', 'WORK.']}
+  eyebrow="PHILADELPHIA INSTALLS"
+  description="A collection of real window film installations across Philadelphia. Every project assessed, applied, and finished by our own certified team — no subcontractors."
+  photos={galleryPhotos}
+  hintText="Hover the photos · click to bring forward"
+  theme="dark"
+/>
+
+<!-- ═══ VALUES — Why Choose Us ═══ -->
+<section class="ab-values">
+  <div class="ab-container">
+    <span class="ab-eyebrow ab-eyebrow--center">Why Philadelphia Chooses Us</span>
+    <h2 class="ab-values__title">Principles we install by.</h2>
+    <div class="ab-values__grid">
+      <div class="ab-value">
+        <div class="ab-value__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ab-green)" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="ab-value__title">W-2 Employees, Not Subcontractors</h3>
+        <p class="ab-value__body">Every installer on your property is a factory-certified employee. Consistent training, consistent quality, and accountability on every job — from a single residential pane to a multi-floor commercial high-rise.</p>
+      </div>
+      <div class="ab-value">
+        <div class="ab-value__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ab-green)" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l4.461-4.461a2 2 0 012.828 0l.207.207a2 2 0 010 2.828l-4.461 4.461M11.42 15.17L6.75 21A2.652 2.652 0 003 17.25l5.877-5.877M11.42 15.17l-4.461-4.461a2 2 0 00-2.828 0l-.207.207a2 2 0 000 2.828l4.461 4.461"/></svg>
+        </div>
+        <h3 class="ab-value__title">Every Pane Assessed Individually</h3>
+        <p class="ab-value__body">We check glass type, age, condition, orientation, and thermal stress risk before recommending a film. Different zones of the same building often need different films — solar control on the west, glare reduction on the south, security on the ground floor.</p>
+      </div>
+      <div class="ab-value">
+        <div class="ab-value__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ab-green)" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+        </div>
+        <h3 class="ab-value__title">Free Consultation, No Pressure</h3>
+        <p class="ab-value__body">Every project starts with a free on-site assessment. We explain your options, show you film samples, and give you a detailed proposal. No upsell, no obligation. You decide what works for your building and your budget.</p>
+      </div>
+      <div class="ab-value">
+        <div class="ab-value__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ab-green)" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-.435-8.5-1.118z"/></svg>
+        </div>
+        <h3 class="ab-value__title">Licensed, Insured, Documented</h3>
+        <p class="ab-value__body">Licensed and insured in both Pennsylvania and New Jersey. We carry the documentation property managers, compliance teams, and facility managers need — manufacturer specs, thermal stress analysis, warranty paperwork, and compliance certificates.</p>
+      </div>
+      <div class="ab-value">
+        <div class="ab-value__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ab-green)" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="ab-value__title">Plotter-Cut Precision</h3>
+        <p class="ab-value__body">Every film is pre-cut by computer-controlled plotter to your exact pane dimensions. No freehand trimming, no waste, no gaps. The film fits the glass perfectly — every time, every pane, every project.</p>
+      </div>
+      <div class="ab-value">
+        <div class="ab-value__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ab-green)" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.715 2.25 12 2.25c2.285 0 4.544.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-3.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.39 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/></svg>
+        </div>
+        <h3 class="ab-value__title">Philadelphia-Based Crews</h3>
+        <p class="ab-value__body">Our installation teams are based in Philadelphia — not dispatched from another state. No travel surcharge within the standard service area. We know the city's building stock, from historic brick rowhomes to modern glass curtain walls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENTO GRID PHOTO — Our Work ═══ -->
+<BentoGridPhoto
+  heading="Every glass surface. Every industry."
+  sub="Window film installed across Philadelphia — residential, commercial, institutional, and high-rise."
+  items={bentoItems}
+/>
+
+<!-- ═══ HOW IT WORKS — Our Process ═══ -->
+<HowItWorksSlideshow
+  id="abProcess"
+  eyebrow="Our Process"
+  title="From first call to final walkthrough"
+  subtitle="A straightforward, transparent process designed around your schedule — whether it is a single residential pane or a multi-floor commercial installation."
+  slides={processSlides}
+/>
+
+<!-- ═══ WORKSHOP / LEGACY ═══ -->
+<section class="ab-legacy">
+  <div class="ab-intro__container">
+    <div class="ab-intro__content">
+      <span class="ab-eyebrow">Our Roots</span>
+      <h2 class="ab-intro__title">Craftsmanship meets cutting-edge technology.</h2>
+      <p class="ab-intro__lead">The company behind Window Film Philadelphia was founded by an entrepreneur with over 30 years of experience in the home improvement industry. It began with stained glass — building one of the largest studios of its kind in the country — and expanded into window film after seeing firsthand how the right film transforms a space. That combination of old-world craftsmanship and modern film technology defines how we work today.</p>
+      <p class="ab-intro__lead">We carry products from the leading manufacturers in the industry — <a href="/products/3m-window-film/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">3M</a>, <a href="/products/llumar-window-film/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">LLumar</a>, <a href="/products/vista-window-film/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Vista</a>, <a href="/products/solar-gard-window-film/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Solar Gard</a>, <a href="/products/huper-optik-window-film/" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Huper Optik</a>, and more — because no single manufacturer makes the best film for every application. We assess your glass, understand your goals, and recommend the right product from the right brand. According to the <a href="https://www.nfrc.org/for-homeowners/window-film/" target="_blank" rel="noopener noreferrer" style="color: var(--ab-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">National Fenestration Rating Council</a>, window film is one of the most cost-effective ways to improve the performance of existing windows without replacement.</p>
+    </div>
+    <div class="ab-intro__image-wrap">
+      <img src="/images/about/window-film-philadelphia-workshop.jpg" alt="Philadelphia window film workshop with rolls of film material and installation tools" class="ab-intro__image" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<TestimonialMarquee />
+
+<!-- ═══ FAQ ═══ -->
+<AccordionFAQ
+  eyebrow="FAQ"
+  heading="Questions about working with us"
+  sub="Everything you need to know before scheduling a free consultation."
+  items={faqAccordionItems}
+/>
+
+<!-- ═══ CTA ═══ -->
+<CTAAvatars
+  title="Ready to start your window film project?"
+  subtitle="Free consultation, transparent pricing, and manufacturer-backed warranties on every install. Tell us about your building and your goals — we will help you find the right film."
+  count="Trusted by 2,400+ Philadelphia property owners"
+  btnLabel="Get a Free Consultation"
+  btnHref="/contact/"
+  avatars={[
+    { name: 'David R.', location: 'Center City', img: '/images/about/about-avatar-1.jpg' },
+    { name: 'Lisa M.', location: 'Rittenhouse', img: '/images/about/about-avatar-3.jpg' },
+    { name: 'Robert K.', location: 'South Street', img: '/images/about/about-avatar-2.jpg' },
+    { name: 'Thomas H.', location: 'University City', img: '/images/about/about-avatar-4.jpg' },
+    { name: 'Janet F.', location: 'Manayunk', img: '/images/about/about-avatar-5.jpg' },
+    { name: 'Sarah M.', location: 'Fishtown', img: '/images/about/about-avatar-8.jpg' },
+  ]}
+/>
+
+<!-- ═══ GEO BLOCK (hidden SEO/AEO content) ═══ -->
+<div class="ab-geo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+  <h2>About Window Film Philadelphia — Professional Window Tinting Since 2008</h2>
+  <p>Window Film Philadelphia is the Philadelphia office of a window film company founded in 2008. We install professional window film for residential, commercial, and institutional properties across Philadelphia and the Delaware Valley. Our certified installation team applies solar control, UV protection, glare reduction, privacy, security, anti-graffiti, safety, decorative, blast mitigation, and ballistic-resistant window film to existing glass — no replacement required. We serve Center City, Old City, South Philly, Fishtown, Northern Liberties, Manayunk, University City, King of Prussia, Camden NJ, Reading PA, Upper Darby PA, and the broader Delaware Valley. Licensed and insured in Pennsylvania and New Jersey. Contact Window Film Philadelphia for a free consultation.</p>
+  <dl>
+    <dt>Who is Window Film Philadelphia?</dt>
+    <dd>Window Film Philadelphia is a professional window film installation company serving Philadelphia and the Delaware Valley since 2008. We install window film for residential homes, commercial buildings, and institutional properties — over 2,400 projects and 1.2 million square feet of film installed.</dd>
+    <dt>How long has Window Film Philadelphia been in business?</dt>
+    <dd>Window Film Philadelphia has been installing window film in Philadelphia since 2008. Our team has over 15 years of experience with residential, commercial, and institutional window film applications.</dd>
+    <dt>What areas does Window Film Philadelphia serve?</dt>
+    <dd>We serve the entire Delaware Valley including Center City, Old City, South Philly, Fishtown, Northern Liberties, Manayunk, University City, King of Prussia, Camden NJ, Reading PA, Upper Darby PA, and surrounding areas. No travel surcharge within the standard service area.</dd>
+    <dt>Does Window Film Philadelphia use subcontractors?</dt>
+    <dd>No. Every installer is a W-2 employee — not a subcontractor. Our installers are factory-certified by the manufacturers we represent, including 3M, LLumar, Vista, and Solar Gard.</dd>
+    <dt>What types of window film does Window Film Philadelphia install?</dt>
+    <dd>We install the full range of professional window film: solar control, UV protection, glare reduction, privacy, safety and security, anti-graffiti, decorative, blast mitigation, ballistic-resistant, exterior building wraps, and mirror refinishing.</dd>
+  </dl>
+  <ul>
+    <li>About Window Film Philadelphia</li>
+    <li>Philadelphia window film company</li>
+    <li>Window film installation Philadelphia PA</li>
+    <li>Professional window tinting Philadelphia</li>
+    <li>Window film contractor Philadelphia</li>
+    <li>Residential window film Philadelphia</li>
+    <li>Commercial window tinting Philadelphia</li>
+    <li>Window film company Delaware Valley</li>
+    <li>Window film installers Philadelphia</li>
+    <li>Licensed window film contractor PA NJ</li>
+  </ul>
+</div>
+
+</div>
+
+</BaseLayout>
+
+<style>
+/* ── DESIGN TOKENS — site palette ══ */
+:root {
+  --ab-radius: 5px;
+  --ab-charcoal: #272E32;
+  --ab-green: #81AB4C;
+  --ab-green-light: #eef4e4;
+  --ab-green-dark: #7CB342;
+  --ab-off-white: #F7F6F3;
+  --ab-light-gray: #EFEFED;
+  --ab-text-dark: #1a1a1a;
+  --ab-text-mid: #4a4a4a;
+  --ab-text-light: #888;
+}
+
+.ab-body { background: #ffffff; }
+.ab-container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+/* ── EYEBROW ══ */
+.ab-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ab-green);
+  margin-bottom: 16px;
+}
+.ab-eyebrow--center { display: block; text-align: center; margin-bottom: 20px; }
+
+/* ── HERO ══ */
+.ab-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ab-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.ab-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(39,46,50,0.68) 0%, rgba(39,46,50,0.82) 55%, rgba(39,46,50,0.95) 100%);
+}
+.ab-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: 860px;
+  padding: 120px 24px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ab-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(124, 179, 66, 0.85);
+  margin-bottom: 28px;
+  background: rgba(124, 179, 66, 0.08);
+  border: 1px solid rgba(124, 179, 66, 0.2);
+  padding: 8px 18px;
+  border-radius: 100px;
+}
+.ab-hero__eyebrow-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(124, 179, 66, 0.4);
+  flex-shrink: 0;
+}
+.ab-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+.ab-hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: rgba(243, 246, 241, 0.72);
+  max-width: 680px;
+  margin: 0 0 36px;
+  line-height: 1.75;
+}
+.ab-hero__cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.ab-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ab-green-dark);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 2px solid var(--ab-green-dark);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.ab-hero__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 179, 66, 0.3);
+}
+.ab-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #F3F6F1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(243, 246, 241, 0.35);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.ab-hero__btn-secondary:hover {
+  border-color: var(--ab-green-dark);
+  color: var(--ab-green-dark);
+  transform: translateY(-2px);
+}
+/* Stats Panel */
+.ab-hero__stats-panel {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(39, 46, 50, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--ab-radius);
+  padding: 28px 32px;
+}
+.ab-hero__stats-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.ab-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+.ab-hero__stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1;
+}
+.ab-hero__stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(243, 246, 241, 0.55);
+}
+.ab-hero__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .ab-hero__stats-inner { flex-direction: column; gap: 16px; }
+  .ab-hero__stat-divider { width: 60%; height: 1px; }
+}
+
+/* ── TRUST BAR ══ */
+.ab-trust {
+  padding: 40px 0 20px;
+  text-align: center;
+}
+.ab-trust__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ab-text-mid);
+  letter-spacing: 0.3px;
+}
+
+/* ── INTRO (Our Story + Legacy) ══ */
+.ab-intro {
+  padding: 80px 0;
+}
+.ab-intro__container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.ab-intro__content { max-width: 520px; }
+.ab-intro__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--ab-text-dark);
+  line-height: 1.2;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.ab-intro__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ab-text-mid);
+  margin: 0 0 20px;
+}
+.ab-intro__image-wrap {
+  border-radius: var(--ab-radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.ab-intro__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 860px) {
+  .ab-intro__container { grid-template-columns: 1fr; gap: 40px; }
+  .ab-intro { padding: 60px 0; }
+}
+
+/* Legacy section flips order */
+.ab-legacy {
+  padding: 80px 0;
+  background: var(--ab-off-white);
+}
+.ab-legacy .ab-intro__container {
+  grid-template-columns: 1fr 1fr;
+}
+.ab-legacy .ab-intro__content { order: 1; }
+.ab-legacy .ab-intro__image-wrap { order: 2; }
+@media (max-width: 860px) {
+  .ab-legacy .ab-intro__container { grid-template-columns: 1fr; }
+  .ab-legacy .ab-intro__content { order: 0; }
+  .ab-legacy .ab-intro__image-wrap { order: 1; }
+}
+
+/* ── WHAT WE DO ══ */
+.ab-whatwedo {
+  padding: 80px 0 40px;
+}
+.ab-whatwedo__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--ab-text-dark);
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ab-whatwedo__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ab-text-mid);
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 60px;
+}
+.ab-whatwedo__rows {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+.ab-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.ab-row--rev .ab-row__text { order: 2; }
+.ab-row--rev .ab-row__image { order: 1; }
+.ab-row__num {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ab-green);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.ab-row__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  font-weight: 700;
+  color: var(--ab-text-dark);
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.ab-row__body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ab-text-mid);
+  margin: 0;
+}
+.ab-row__image {
+  border-radius: var(--ab-radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.ab-row__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.ab-row__image:hover img { transform: scale(1.03); }
+@media (max-width: 860px) {
+  .ab-row { grid-template-columns: 1fr; gap: 30px; }
+  .ab-row--rev .ab-row__text { order: 0; }
+  .ab-row--rev .ab-row__image { order: 1; }
+}
+
+/* ── VALUES ══ */
+.ab-values {
+  padding: 80px 0;
+  background: var(--ab-off-white);
+}
+.ab-values__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--ab-text-dark);
+  text-align: center;
+  margin: 0 0 50px;
+  letter-spacing: -0.01em;
+}
+.ab-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.ab-value {
+  text-align: left;
+}
+.ab-value__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ab-green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.ab-value__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ab-text-dark);
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+.ab-value__body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ab-text-mid);
+  margin: 0;
+}
+@media (max-width: 860px) {
+  .ab-values__grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+  .ab-values__grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
