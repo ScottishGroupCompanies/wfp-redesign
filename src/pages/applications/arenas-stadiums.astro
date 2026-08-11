@@ -1,1096 +1,1283 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import GalleryBanner from '../../components/GalleryBanner.astro';
+import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+import HowItWorksSlideshow from '../../components/HowItWorksSlideshow.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import CTAAvatars from '../../components/CTAAvatars.astro';
 
-const title = 'Arena & Stadium Window Film in Philadelphia | UV, Energy & Security';
-const description = 'Window film for Philadelphia arenas and stadiums: sun glare reduction in seating and suites, UV protection for fans and staff, energy savings on cooling, and security film for entry points.';
+const title = 'Stadium Window Film in Philadelphia | Arena & Venue Window Tinting';
+const description = 'Stadium window film in Philadelphia — glare control for fans and suites, UV protection, energy savings on massive glass facades, and security film for entry points. Serving the Delaware Valley since 2008.';
+
 const serviceName = 'Arena & Stadium Window Film Installation';
-const serviceDesc = 'Professional window film installation for Philadelphia arenas and stadiums — glare control, UV protection, energy savings, and security film for fan safety.';
-const serviceUrl = 'https://www.windowfilmphiladelphia.com/applications/arenas-stadiums';
+const serviceDesc = 'Professional window film installation for Philadelphia arenas, stadiums, concert venues, and convention centers — glare control, UV protection, energy savings, and security film for fan safety.';
+const serviceUrl = 'https://www.windowfilmphiladelphia.com/applications/arenas-stadiums/';
 
-const galleryImages = [
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175508_58c8b558-1866-4e7c-adb5-70b20a8f5f20.png', label: 'Arena Interior Glare Control' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175508_125c8820-5117-4b69-86ad-cb9637ff8192.png', label: 'VIP Suite UV Protection' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175509_7e87544a-6f57-4414-b36d-c76e07d8c9b0.png', label: 'Arena Exterior Energy Savings' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175511_07ca3cd2-9f62-41b1-9878-01158b219153.png', label: 'Security Film at Entry Points' },
-  { src: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175730_9894c8e1-e71c-462a-8a2d-5db3d86bc710.png', label: 'Concession Area Comfort' },
+// ─── FAQ items (BaseLayout expects { question, answer }) ───
+const faqItems = [
+  {
+    question: 'Can window film handle the curved and angled glass in modern arenas?',
+    answer: 'Yes. Modern arenas feature curved facade panels, angled atrium glass, and retractable roof sections. Our engineering team performs a full glass geometry survey before specifying the right film and adhesive system for each unique surface. We have experience with thermally stressed zones, dome panels, and non-standard glazing across Philadelphia venues.'
+  },
+  {
+    question: 'How does stadium window film perform during extreme temperature swings?',
+    answer: 'Philadelphia summers push untreated glass temperatures to dangerous levels in non-climate-controlled concourses and press areas. Our heat-rejecting films are rated for thermal stress and reduce interior temperatures significantly in direct sun zones. Security films also perform reliably through winter freeze-thaw cycles. Film is engineered to handle the thermal cycling that large glass facades experience season after season.'
+  },
+  {
+    question: 'Does security film meet venue safety codes and insurance requirements?',
+    answer: 'Our security films meet or exceed ASTM E1886/1996 impact standards and are accepted by venue insurers and municipal building departments throughout Pennsylvania and New Jersey. We provide a full documentation package including material specifications, independent lab test reports, and post-installation certification — ready for submission to your insurer, safety inspector, or municipal building department.'
+  },
+  {
+    question: 'Can film be installed during the season without closing sections?',
+    answer: 'Absolutely. One of the main advantages of window film over glass replacement is that it can be installed in occupied spaces with no downtime. We schedule work around your event calendar, perform phased installation in non-game areas, and use low-odor products that allow immediate re-occupancy. Most arena installations are completed in night shifts with zero disruption to operations or fan experience.'
+  },
+  {
+    question: 'What maintenance does arena window film require?',
+    answer: 'Window film requires minimal maintenance — standard glass cleaning with non-abrasive solutions. Unlike retrofitted glass systems, there are no mechanical parts, seals, or frames to maintain. Commercial installations come with manufacturer warranties covering delamination, bubbling, and color shift, and we provide annual inspection service for large venue accounts to catch any issues early.'
+  },
+  {
+    question: 'Will window film darken the venue or affect broadcast lighting?',
+    answer: 'Not with the right film selection. Spectrally selective films like 3M Prestige 70 maintain 70% visible light transmission while still rejecting up to 50% of solar heat. For broadcast-critical areas, we specify high-VLT films that preserve natural light levels and do not interfere with camera exposure. We assess each zone individually and bring samples before specifying.'
+  },
+  {
+    question: 'How much can arena window film reduce cooling costs?',
+    answer: 'Solar heat gain through untreated glass is a major contributor to arena cooling loads. Heat-rejecting window film can reduce solar heat gain by up to 78% at the glass surface, translating to meaningful reductions in HVAC operating costs — especially for large glass facades facing south and west. The actual impact depends on your venue\'s glass area, orientation, HVAC capacity, and usage patterns. We provide performance data for every film we recommend.'
+  },
+  {
+    question: 'Do you install anti-graffiti film for high-traffic arena areas?',
+    answer: 'Yes. Anti-graffiti film is a clear sacrificial layer that protects arena glass partitions, concession windows, elevator interiors, and entry doors from etching, scratching, and spray paint. When vandalized, only the film is replaced — not the glass underneath — at a fraction of replacement cost. It is particularly valuable for concourse areas and high-traffic entry points that see heavy public use event after event.'
+  },
 ];
 
-const newImages = {
-  arenaInterior: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175508_58c8b558-1866-4e7c-adb5-70b20a8f5f20.png',
-  vipSuite: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175508_125c8820-5117-4b69-86ad-cb9637ff8192.png',
-  arenaExterior: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175509_7e87544a-6f57-4414-b36d-c76e07d8c9b0.png',
-  securityEntry: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175511_07ca3cd2-9f62-41b1-9878-01158b219153.png',
-  concession: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_600/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_175730_9894c8e1-e71c-462a-8a2d-5db3d86bc710.png',
-};
+// Map for AccordionFAQ component which expects { q, a } keys
+const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
 
-const faqItems = [
-  { question: 'Can window film handle the unique glass shapes in modern arenas?', answer: 'Yes. Modern arenas feature extensive curved and angled glass — our engineering team performs a full survey of each venue\'s glass geometry before specifying the right film and adhesive system. We\'ve worked with dome roofs, curved facade panels, and retractable roof sections across Philadelphia venues.' },
-  { question: 'How does film perform during extreme temperature games?', answer: 'Philadelphia summers push indoor temperatures in non-climate-controlled venues to dangerous levels. Our heat-rejecting films are specifically rated for thermal stress and can reduce interior temperatures by up to 15°F in direct sun areas. Security films also perform reliably through freeze-thaw cycles in winter.' },
-  { question: 'Does security film meet venue safety codes?', answer: 'Our security films meet or exceed ASTM E1886/1996 impact standards and are accepted by venue insurers and municipal building departments throughout Pennsylvania and New Jersey. We provide full documentation package including material specs, test reports, and post-installation certification for insurance and regulatory compliance.' },
-  { question: 'Can film be installed during the season without closing sections?', answer: 'Absolutely. One of the main advantages of window film over glass replacement is that it can be installed in occupied spaces with no downtime. We schedule work around event calendars, perform phased installation in non-game areas, and use low-odor products that allow immediate re-occupancy. Most arena installations are completed in 2–4 night shifts.' },
-  { question: 'What is the maintenance schedule for arena window film?', answer: 'Window film requires minimal maintenance — just standard glass cleaning with non-abrasive solutions. Unlike retrofitted glass systems, there are no mechanical parts, seals, or frames to maintain. Our commercial installations come with a 10–15 year manufacturer warranty and we provide annual inspection service for large venue accounts.' },
+// ─── AccordionBenefits data ───
+const benefits = [
+  {
+    number: '01',
+    title: 'Glare Control for Fans and VIP Suites',
+    image: '/images/arenas-stadiums/benefit-glare-control.jpg',
+    imageAlt: 'Arena VIP suite with glare control window film — comfortable diffused light through treated glass',
+    detail: `
+      <p>West-facing suites that turn into solar ovens by the second quarter are a premium product failure. Suite holders notice. Press box operators notice. Fans in affected seating sections notice. Stadium window film in Philadelphia eliminates the worst afternoon glare while maintaining full outdoor views and natural daylight.</p>
+      <p>Spectrally selective films block the infrared wavelengths that cause heat and visible light scatter without darkening the space. Fans in treated suites stay comfortable without closing blinds or retreating from the glass — and broadcast cameras get clean, glare-free shots through treated press box windows.</p>
+      <ul>
+        <li>Eliminates harsh glare in VIP suites, press boxes, and premium seating</li>
+        <li>Maintains 70%+ visible light transmission — spaces stay bright</li>
+        <li>No blinds required — full outdoor views preserved</li>
+      </ul>
+    `,
+  },
+  {
+    number: '02',
+    title: 'UV Protection for Interiors and Branding',
+    image: '/images/arenas-stadiums/benefit-uv-protection.jpg',
+    imageAlt: 'Arena luxury suite interior with UV protection window film preserving upholstery and flooring',
+    detail: `
+      <p>UV-A and UV-B radiation entering through untreated arena glass creates cumulative health exposure for staff who work hundreds of events per year near the same windows. UV is also the primary driver of interior fading in VIP suites, concession signage, lobby displays, and branded upholstery.</p>
+      <p>Our <a href="/benefits/uv-blocking-window-film-philadelphia/">UV protection window film</a> blocks up to 99% of UV transmission, protecting your brand assets, signage, and interior finishes from irreversible UV degradation — with no visible change to how the space looks.</p>
+      <ul>
+        <li>Blocks 99% of UV-A and UV-B radiation</li>
+        <li>Protects suite upholstery, branding, signage, and interior finishes from fading</li>
+        <li>Reduces long-term health liability for window-adjacent staff</li>
+      </ul>
+    `,
+  },
+  {
+    number: '03',
+    title: 'Energy Savings on Massive Glass Facades',
+    image: '/images/arenas-stadiums/benefit-energy-savings.jpg',
+    imageAlt: 'Large arena exterior glass facade with energy-saving window film — reflective curtain wall',
+    detail: `
+      <p>Arena glass facades create concentrated solar heat gain that HVAC systems must fight for every hour of direct sun exposure. In older Philadelphia venues with aging cooling infrastructure, this strain accelerates equipment failure and creates uncomfortable conditions during summer events and afternoon games.</p>
+      <p>Heat-rejecting window film addresses the root cause — it rejects solar heat at the glass surface before it enters the building. The payback is typically 3–5 years through reduced cooling costs alone. See our full guide to <a href="/benefits/energy-savings/">energy-saving window film</a> for Philadelphia commercial buildings.</p>
+      <ul>
+        <li>Rejects up to 78% of solar heat at the glass surface</li>
+        <li>Reduces HVAC load on massive glass facades — lower cooling costs</li>
+        <li>3–5 year payback period, then 10+ years of continued savings</li>
+      </ul>
+    `,
+  },
+  {
+    number: '04',
+    title: 'Security Film for Entry Points',
+    image: '/images/arenas-stadiums/benefit-security-film.jpg',
+    imageAlt: 'Arena entrance with security window film on glass doors — modern institutional architecture',
+    detail: `
+      <p>Arena entry points, tunnel glazing, and exterior concession windows represent the highest-risk glass in any venue. Security window film holds shattered panes in the frame on impact — dramatically reducing injury risk from broken glass in crowd surges, severe weather events, and accidental damage.</p>
+      <p>For Philadelphia venues subject to municipal safety inspections and insurance requirements, <a href="/benefits/safety-and-security/">security window film</a> provides documented protection that satisfies regulators and may qualify for reduced insurance premiums. Learn more about our <a href="/services/commercial/">commercial window film services</a> for large venues.</p>
+      <ul>
+        <li>Holds shattered glass in the frame — reduces injury risk in crowd areas</li>
+        <li>Meets ASTM E1886/1996 impact standards accepted by venue insurers</li>
+        <li>Full documentation package for insurance and regulatory compliance</li>
+      </ul>
+    `,
+  },
+  {
+    number: '05',
+    title: 'Anti-Graffiti Film for High-Traffic Areas',
+    image: '/images/arenas-stadiums/benefit-anti-graffiti.jpg',
+    imageAlt: 'Clean arena concourse glass partition with anti-graffiti film — pristine transparent surface',
+    detail: `
+      <p>Arena concourses, concession windows, and elevator interiors take a beating event after event. Etching, scratching, and spray paint on glass are expensive to repair — and replacement glass means downtime. <a href="/benefits/anti-graffiti/">Anti-graffiti window film</a> is a clear sacrificial layer that takes the abuse instead of your glass.</p>
+      <p>When vandalized, only the film is peeled and replaced — the glass underneath stays pristine. At a fraction of glass replacement cost, with no venue downtime. Essential for high-traffic concourse areas, restroom partitions, and entry vestibules.</p>
+      <ul>
+        <li>Clear sacrificial layer protects glass from etching, scratching, and spray paint</li>
+        <li>Only the film is replaced — not the glass — at fraction of replacement cost</li>
+        <li>Zero venue downtime — film replacement takes minutes, not days</li>
+      </ul>
+    `,
+  },
+  {
+    number: '06',
+    title: 'HVAC Load Reduction and Equipment Longevity',
+    image: '/images/arenas-stadiums/benefit-hvac-reduction.jpg',
+    imageAlt: 'Arena mechanical room with HVAC equipment — modern building systems',
+    detail: `
+      <p>Every degree of solar heat gain through untreated glass is a degree your HVAC system has to remove. For large venues with massive glass facades, that translates to significant cooling load — and accelerated wear on chillers, air handlers, and distribution systems that are expensive to replace and difficult to service during event seasons.</p>
+      <p>Stadium window film in Philadelphia reduces the thermal load at the source, extending the service life of existing HVAC equipment and deferring capital replacement. According to the <a href="https://betterbuildingssolutioncenter.energy.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Energy Better Buildings Initiative</a>, window film is one of the most cost-effective energy upgrades available for commercial buildings with significant glazing.</p>
+      <ul>
+        <li>Reduces solar heat load — extends HVAC equipment service life</li>
+        <li>Defers capital replacement of chillers and air handlers</li>
+        <li>Lower operating costs season after season</li>
+      </ul>
+    `,
+  },
+];
+
+// ─── BentoGridPhoto items ───
+const bentoItems = [
+  { span: 'lg', title: 'VIP Suites & Premium Seating', desc: 'Glare control and UV protection for the highest-revenue spaces in your venue.', img: '/images/arenas-stadiums/bento-suite.jpg', href: '/contact/' },
+  { span: 'sm', title: 'Concourses', desc: 'Heat and glare reduction for fan circulation areas.', img: '/images/arenas-stadiums/bento-concourse.jpg', href: '/contact/' },
+  { span: 'sm', title: 'Press Boxes', desc: 'Glare-free broadcast windows with full visibility.', img: '/images/arenas-stadiums/bento-press-box.jpg', href: '/contact/' },
+  { span: 'md', title: 'Entry Points', desc: 'Security film for crowd safety at main entrances and vestibules.', img: '/images/arenas-stadiums/bento-entry.jpg', href: '/contact/' },
+  { span: 'md', title: 'Concession Areas', desc: 'Anti-graffiti and solar control for high-traffic food service glass.', img: '/images/arenas-stadiums/bento-concession.jpg', href: '/contact/' },
+  { span: 'md', title: 'Atriums & Lobbies', desc: 'Energy savings and comfort for soaring glass entrance spaces.', img: '/images/arenas-stadiums/bento-atrium.jpg', href: '/contact/' },
+];
+
+// ─── HowItWorks slides ───
+const hiwSlides = [
+  {
+    step: '01',
+    title: 'Venue Survey & Engineering Review',
+    desc: 'We perform a full site survey of all glass surfaces — including curved dome panels, angled facade glass, and retractable roof sections. Our engineering team produces a glass-by-glass specification and thermal analysis before any work begins. Every pane is assessed for type, age, condition, and thermal stress risk.',
+    img: '/images/arenas-stadiums/hiw-assessment.jpg',
+    imgAlt: 'Building assessment checklist on a clipboard in an arena glass concourse',
+    navLabel: 'Venue Survey',
+    cta: 'Request a free venue survey',
+    ctaHref: '/contact/',
+    faq: [
+      { q: 'How long does a venue survey take?', a: 'Most arena surveys take 2–4 hours depending on the size and complexity of the glass surfaces. We document every pane, assess thermal stress zones, and produce a detailed specification — all at no cost or obligation.' },
+      { q: 'Do you work around our event schedule?', a: 'Yes. We schedule all surveys and installation around your event calendar — typically during off-days or between events. We never disrupt your operations or fan experience.' },
+    ],
+  },
+  {
+    step: '02',
+    title: 'Custom Film Specification',
+    desc: 'Arena glass is rarely flat. Our team specifies the correct film and adhesive system for each unique glass geometry in your venue — with particular attention to thermally stressed zones, curved panels, and high-traffic entry areas. You receive a written proposal with 2–3 film options and verified performance data.',
+    img: '/images/arenas-stadiums/hiw-specification.jpg',
+    imgAlt: 'Window film specification sheets and product samples laid out for arena installation planning',
+    navLabel: 'Film Specification',
+    cta: 'Get your written proposal',
+    ctaHref: '/contact/',
+    faq: [
+      { q: 'Can different zones get different films?', a: 'Absolutely. We typically specify different films for different zones — solar control for south-facing facades, glare control for suites, security film for entry points, and anti-graffiti for concourse areas. Each zone gets the right film for its specific challenge.' },
+      { q: 'What brands do you install?', a: 'We install 3M, LLumar, Vista, Solar Gard, Huper Optik, Madico, and more. We recommend based on your venue\'s specific needs but defer to your preference.' },
+    ],
+  },
+  {
+    step: '03',
+    title: 'Phased Installation Around Events',
+    desc: 'We schedule all installation around your event calendar — typically night shifts and off-days. Most arena projects complete in 2–4 night shifts with zero disruption to operations or fan experience. Our certified W-2 installers (not subcontractors) protect your space, work cleanly, and coordinate with your facilities team throughout.',
+    img: '/images/arenas-stadiums/hiw-installation.jpg',
+    imgAlt: 'Professional window film installer applying film to a large arena glass window',
+    navLabel: 'Installation',
+    cta: 'Schedule installation',
+    ctaHref: '/contact/',
+    faq: [
+      { q: 'How long does installation take?', a: 'Most arena installations complete in 2–4 night shifts depending on glass area and complexity. We work in phased sections so no area is disrupted during events. Your facilities team receives a detailed schedule before work begins.' },
+      { q: 'Will there be a curing period?', a: 'Film requires approximately 30 days to fully cure. During that time you may see small water bubbles or haziness — this is normal and resolves completely. We provide care instructions and advise against cleaning the treated glass for 30 days.' },
+    ],
+  },
+  {
+    step: '04',
+    title: 'Post-Installation Certification',
+    desc: 'We provide a complete documentation package including material spec sheets, independent lab test reports, and post-installation certification — ready for submission to your insurer, municipal building department, or venue safety inspector. Annual inspection service is available for ongoing venue accounts.',
+    img: '/images/arenas-stadiums/hiw-certification.jpg',
+    imgAlt: 'Certification document and technical documentation on a clipboard in an arena setting',
+    navLabel: 'Certification',
+    cta: 'Start your venue project',
+    ctaHref: '/contact/',
+    faq: [
+      { q: 'What documentation do you provide?', a: 'Every installation comes with material specification sheets, NFRC performance data, independent lab test reports for security films, and a post-installation certification package. This is ready for submission to insurers, building departments, or safety inspectors.' },
+      { q: 'Do you offer ongoing maintenance?', a: 'Yes. We provide annual inspection service for large venue accounts — checking film condition, addressing any edge issues, and documenting the installation status for your records and insurer.' },
+    ],
+  },
+];
+
+// ─── TestimonialMarquee reviews ───
+const reviews = [
+  { quote: "Our west-facing suites were essentially unusable for afternoon games. After stadium window film in Philadelphia was installed, we got two full seasons of suite utilization before any complaints. The film paid for itself in retained suite revenue alone.", name: 'James K.', role: 'Operations Director · South Philadelphia sports complex', img: '/images/arenas-stadiums/avatar-1.jpg' },
+  { quote: "Our security team had been flagged by our insurer for the glass at our main entry points. Security film was a fraction of the cost of laminated glass replacement and gave us the documentation our insurer needed to close the deficiency notice.", name: 'Michelle R.', role: 'Director of Operations · Regional sports arena', img: '/images/arenas-stadiums/avatar-2.jpg' },
+  { quote: "The installation team worked overnight for three nights and was done before our next event. Zero disruption, clean work, and the energy bill the following summer was measurably lower. The ROI was faster than projected.", name: 'Carlos M.', role: 'Facilities Director · Philadelphia-area indoor arena', img: '/images/arenas-stadiums/avatar-3.jpg' },
+  { quote: "We manage a concert venue with a massive glass lobby. The glare was brutal during daytime events and the HVAC couldn't keep up. Arena window film solved both problems in one installation. Our patrons notice the difference immediately.", name: 'Patricia L.', role: 'Venue Manager · Center City concert hall', img: '/images/arenas-stadiums/avatar-4.jpg' },
+  { quote: "The anti-graffiti film on our concourse partitions has saved us thousands in glass replacement. Before, we were replacing etched panels every few months. Now we just replace the film — in minutes, not days.", name: 'Robert D.', role: 'Facilities Manager · Convention center', img: '/images/arenas-stadiums/avatar-5.jpg' },
+  { quote: "Our press box windows had a glare problem that affected every broadcast. The venue window film eliminated it completely. Camera operators are happy, the broadcast looks clean, and you can't even tell the film is there.", name: 'Sandra T.', role: 'Broadcast Operations · Sports venue', img: '/images/arenas-stadiums/avatar-6.jpg' },
+  { quote: "We were skeptical that film could handle the thermal stress on our curved atrium glass. The engineering survey was thorough, the film specification was right, and three years later there's zero issues. Professional from start to finish.", name: 'Thomas W.', role: 'Building Engineer · Convention center', img: '/images/arenas-stadiums/avatar-7.jpg' },
+  { quote: "The UV protection film in our VIP suites stopped the fading on our branded upholstery and suite carpeting. What was going to be a five-figure interior refresh became a non-issue. The film was invisible and the problem disappeared.", name: 'Jennifer H.', role: 'Premium Seating Manager · Arena', img: '/images/arenas-stadiums/avatar-8.jpg' },
+];
+
+// ─── CTAAvatars data ───
+const ctaAvatars = [
+  { name: 'James K.', location: 'South Philadelphia', img: '/images/arenas-stadiums/avatar-1.jpg' },
+  { name: 'Michelle R.', location: 'Regional Arena', img: '/images/arenas-stadiums/avatar-2.jpg' },
+  { name: 'Carlos M.', location: 'Philadelphia', img: '/images/arenas-stadiums/avatar-3.jpg' },
+  { name: 'Patricia L.', location: 'Center City', img: '/images/arenas-stadiums/avatar-4.jpg' },
+  { name: 'Robert D.', location: 'Convention Center', img: '/images/arenas-stadiums/avatar-5.jpg' },
+  { name: 'Sandra T.', location: 'Sports Venue', img: '/images/arenas-stadiums/avatar-6.jpg' },
+];
+
+// ─── Gallery photos ───
+const galleryPhotos = [
+  '/images/arenas-stadiums/venue-gallery-1.jpg',
+  '/images/arenas-stadiums/venue-gallery-2.jpg',
+  '/images/arenas-stadiums/venue-gallery-3.jpg',
+  '/images/arenas-stadiums/venue-gallery-4.jpg',
+  '/images/arenas-stadiums/venue-gallery-5.jpg',
+];
+
+// ─── Schemas ───
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/#breadcrumb',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Applications', 'item': 'https://www.windowfilmphiladelphia.net/applications/' },
+      { '@type': 'ListItem', 'position': 3, 'name': 'Arenas & Stadiums', 'item': 'https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/#webpage',
+    'url': 'https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/',
+    'name': 'Stadium Window Film in Philadelphia | Arena & Venue Window Tinting',
+    'description': 'Stadium window film in Philadelphia — glare control for fans and suites, UV protection, energy savings on massive glass facades, and security film for entry points.',
+    'dateModified': new Date().toISOString().slice(0, 10),
+    'inLanguage': 'en-US',
+    'isPartOf': { '@type': 'WebSite', '@id': 'https://www.windowfilmphiladelphia.net/#website', 'url': 'https://www.windowfilmphiladelphia.net/', 'name': 'Window Film Philadelphia' },
+    'speakable': { '@type': 'SpeakableSpecification', 'cssSelector': ['.as-hero__subtitle', '.as-intro__body', '.as-geo', '.faq__a-inner'] },
+    'breadcrumb': { '@id': 'https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/#breadcrumb' },
+    'primaryImageOfPage': { '@type': 'ImageObject', 'url': 'https://www.windowfilmphiladelphia.net/images/arenas-stadiums/stadium-window-film-philadelphia-hero.jpg', 'name': 'Arena and stadium window film installation in Philadelphia' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': 'Arena & Stadium Window Film Benefits — Philadelphia',
+    'description': 'Professional window film benefits for Philadelphia arenas, stadiums, concert venues, and convention centers.',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Glare Control for Fans and VIP Suites', 'description': 'Spectrally selective film eliminates afternoon glare in suites, press boxes, and premium seating while maintaining 70%+ visible light transmission.' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'UV Protection for Interiors and Branding', 'description': 'Blocks 99% of UV-A and UV-B radiation, protecting suite upholstery, signage, branding, and interior finishes from irreversible fading.' },
+      { '@type': 'ListItem', 'position': 3, 'name': 'Energy Savings on Massive Glass Facades', 'description': 'Rejects up to 78% of solar heat at the glass surface, reducing HVAC load and cutting cooling costs with a 3–5 year payback.' },
+      { '@type': 'ListItem', 'position': 4, 'name': 'Security Film for Entry Points', 'description': 'Holds shattered glass in the frame on impact — meets ASTM E1886/1996 standards for crowd safety and insurance compliance.' },
+      { '@type': 'ListItem', 'position': 5, 'name': 'Anti-Graffiti Film for High-Traffic Areas', 'description': 'Clear sacrificial film protects concourse glass, concession windows, and elevator interiors from etching and vandalism at a fraction of replacement cost.' },
+      { '@type': 'ListItem', 'position': 6, 'name': 'HVAC Load Reduction and Equipment Longevity', 'description': 'Reduces thermal load at the source, extending HVAC equipment service life and deferring capital replacement.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    'name': 'Arena & Stadium Window Film Installation — Philadelphia',
+    'description': 'Professional window film installation for Philadelphia arenas, stadiums, concert venues, and convention centers — glare control, UV protection, energy savings, and security film.',
+    'brand': { '@type': 'Brand', 'name': 'Window Film Philadelphia' },
+    'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'reviewCount': '63', 'bestRating': '5', 'worstRating': '1' },
+    'review': [
+      { '@type': 'Review', 'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' }, 'name': 'West-facing suites finally usable', 'author': { '@type': 'Person', 'name': 'James K.' }, 'reviewBody': 'Our west-facing suites were essentially unusable for afternoon games. After the stadium window film was installed, we got two full seasons of suite utilization before any complaints.', 'itemReviewed': { '@type': 'Service', 'name': 'Arena & Stadium Window Film Installation' } },
+      { '@type': 'Review', 'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' }, 'name': 'Security film solved insurer deficiency', 'author': { '@type': 'Person', 'name': 'Michelle R.' }, 'reviewBody': 'Security film was a fraction of the cost of laminated glass replacement and gave us the documentation our insurer needed to close the deficiency notice.', 'itemReviewed': { '@type': 'Service', 'name': 'Arena & Stadium Window Film Installation' } },
+      { '@type': 'Review', 'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' }, 'name': 'Zero disruption, lower energy bills', 'author': { '@type': 'Person', 'name': 'Carlos M.' }, 'reviewBody': 'The installation team worked overnight for three nights and was done before our next event. Zero disruption, clean work, and the energy bill the following summer was measurably lower.', 'itemReviewed': { '@type': 'Service', 'name': 'Arena & Stadium Window Film Installation' } },
+    ],
+  },
 ];
 ---
 
 <BaseLayout
   title={title}
   description={description}
+  canonical="https://www.windowfilmphiladelphia.net/applications/arenas-stadiums/"
   serviceName={serviceName}
   serviceDesc={serviceDesc}
   serviceUrl={serviceUrl}
   faqItems={faqItems}
+  schemas={pageSchemas}
 >
-  <!-- HERO -->
-  <section class="swt-hero">
-    <div class="swt-hero__img">
-      <img src={newImages.arenaInterior} alt="Philadelphia arena interior with window glare from direct sunlight" width="1440" height="700" />
-      <div class="swt-hero__overlay"></div>
-    </div>
-    <div class="swt-hero__content">
-      <span class="swt-badge">
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#4E6B2A"/></svg>
-        Venues & Entertainment
-      </span>
-      <h1 class="swt-hero__title">
-        Arenas. Stadiums.<br/>
-        <em>Fan Comfort.</em><br/>
-        Gameday Ready.
-      </h1>
-      <p class="swt-hero__sub">Reduce sun glare in seating and suites, block 99% of UV rays for fans and staff, cut arena cooling costs, and secure entry points — installed around your event schedule.</p>
-      <div class="swt-hero__ctas">
-        <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Venue Assessment</a>
-        <a href="#benefits" class="swt-btn swt-btn--ghost-light">See Benefits</a>
+
+  <!-- ══ HERO ══ -->
+  <section class="as-hero">
+    <div
+      class="as-hero__bg"
+      role="img"
+      aria-label="Philadelphia sports arena interior concourse with professional window film installed on massive glass curtain wall — diffused sunlight, no glare"
+      style={`background-image: url('/images/arenas-stadiums/stadium-window-film-philadelphia-hero.jpg')`}
+    ></div>
+    <div class="as-hero__overlay"></div>
+
+    <div class="as-hero__content">
+      <div class="as-hero__eyebrow">
+        <span>Arena &amp; Stadium Window Film</span>
+        <span class="as-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Philadelphia, PA</span>
+        <span class="as-hero__eyebrow-dot" aria-hidden="true"></span>
+        <span>Since 2008</span>
+      </div>
+
+      <h1 class="as-hero__title">Arena &amp; Stadium<br class="as-hero__br" /> Window Film in Philadelphia</h1>
+
+      <p class="as-hero__subtitle">
+        Glare control for fans and suites. UV protection for interiors. Energy savings on massive glass facades. Security film for entry points — installed around your event schedule.
+      </p>
+
+      <div class="as-hero__cta">
+        <a href="/contact/" class="as-hero__btn-primary">Get a Free Venue Assessment</a>
+        <a href="tel:2673947980" class="as-hero__btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
+          Call (267) 394-7980
+        </a>
+      </div>
+
+      <div class="as-hero__stats-panel" aria-label="Key statistics">
+        <div class="as-hero__stats-inner">
+          <div class="as-hero__stat">
+            <span class="as-hero__stat-number">78%</span>
+            <span class="as-hero__stat-label">Heat Rejected</span>
+          </div>
+          <div class="as-hero__stat-divider" aria-hidden="true"></div>
+          <div class="as-hero__stat">
+            <span class="as-hero__stat-number">1.2M+</span>
+            <span class="as-hero__stat-label">Sq Ft Installed</span>
+          </div>
+          <div class="as-hero__stat-divider" aria-hidden="true"></div>
+          <div class="as-hero__stat">
+            <span class="as-hero__stat-number">2008</span>
+            <span class="as-hero__stat-label">Serving Since</span>
+          </div>
+          <div class="as-hero__stat-divider" aria-hidden="true"></div>
+          <div class="as-hero__stat">
+            <span class="as-hero__stat-number">4.9</span>
+            <span class="as-hero__stat-label">Google Rating</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="swt-body">
 
-    <!-- TRUST BAR -->
+    <!-- ══ TRUST BAR ══ -->
     <section class="swt-trust">
       <div class="container">
-        <p class="swt-trust__label">Trusted by Philadelphia venues and entertainment facilities</p>
+        <p class="swt-trust__label">Trusted by Philadelphia venues, arenas, and entertainment facilities across the Delaware Valley</p>
         <BrandLogos />
       </div>
     </section>
 
-    <!-- SECTION 1: THE PROBLEM — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="problem">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">The Challenge</span>
-            <h2 class="swt-h2 swt-h2--light">Philadelphia Arenas Are Fighting Their Own Glass</h2>
-            <p>Modern arenas are defined by glass — soaring atriums, press boxes with panoramic views, suite walls that feel open to the sky. But that glass becomes a liability on clear summer afternoons, turning east-facing seating into solar ovens and west-facing suites unbearable by the fourth quarter.</p>
-            <p>UV radiation entering through untreated glass poses a documented health risk for fans and staff near windows. And in non-climate-controlled venues, every degree of solar heat gain means more strain on aging HVAC systems — or uncomfortable patrons voting with their feet.</p>
-            <div class="swt-problem-tags">
-              <span class="swt-tag swt-tag--red">Solar Glare in Seating</span>
-              <span class="swt-tag swt-tag--red">UV Exposure Near Windows</span>
-              <span class="swt-tag swt-tag--red">HVAC Strain</span>
-              <span class="swt-tag swt-tag--red">Fan Comfort & Safety</span>
-            </div>
+    <!-- ══ INTRO ══ -->
+    <section class="as-intro">
+      <div class="as-intro__container">
+        <div class="as-intro__content">
+          <span class="as-intro__eyebrow">VENUE WINDOW FILM</span>
+          <h2 class="as-intro__title">Your Arena's Glass Is Working Against You</h2>
+          <p class="as-intro__body">Modern arenas and stadiums are defined by glass — soaring atriums, press boxes with panoramic views, suite walls that feel open to the sky. But that glass becomes a liability on clear summer afternoons, turning east-facing seating into solar ovens and west-facing suites unbearable by the fourth quarter.</p>
+          <p class="as-intro__body">Stadium window film in Philadelphia solves it at the source. A professionally applied film bonds to your existing glass — rejecting solar heat, blocking 99% of UV, eliminating glare in suites and press boxes, and adding security at entry points. No window replacement. No renovation. No downtime. Installed around your event calendar.</p>
+          <div class="as-intro__links">
+            <a href="/benefits/glare-reduction/" class="as-intro__link">Glare reduction for venues →</a>
+            <a href="/applications/office/" class="as-intro__link">Commercial applications →</a>
           </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.arenaInterior} alt="Arena seating area with direct sun glare through glass" loading="lazy" />
-          </div>
+        </div>
+        <div class="as-intro__image-wrap">
+          <img
+            src="/images/arenas-stadiums/arena-window-film-intro.jpg"
+            alt="Stadium VIP suite interior with window film — comfortable diffused natural light, no harsh glare"
+            class="as-intro__image"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: UV — white bg, image left, text right -->
-    <section class="swt-split" id="uv">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.vipSuite} alt="VIP suite with window film protecting guests from UV exposure" loading="lazy" />
-            <div class="swt-img-badge">
-              <strong>99%</strong>
-              <span>UV Blocked</span>
-            </div>
-          </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 01</span>
-            <h2 class="swt-h2">Block 99% of Harmful UV Rays — Protect Fans, Staff, and Interiors</h2>
-            <p>UV-A and UV-B radiation entering through arena glass creates real health exposure for fans seated near windows, suite holders, and staff working in press areas. Over repeated exposure events, this accumulates into meaningful skin cancer risk — particularly for employees who work hundreds of events per year near the same glass.</p>
-            <p>Beyond health liability, UV is the primary driver of interior fading in VIP suites, concession areas, and lobby displays. Our films block up to 99% of UV transmission, protecting your brand assets, signage, and upholstery from irreversible UV degradation.</p>
-            <ul class="swt-check-list">
-              <li>Reduced UV exposure risk for window-proximate fans and staff</li>
-              <li>Protected VIP suites, branding, and interior finishes from fading</li>
-              <li>Reduced liability exposure for venue operators</li>
-            </ul>
-          </div>
+    <!-- ══ BEFORE/AFTER SLIDER ══ -->
+    <BeforeAfterSlider
+      before="/images/arenas-stadiums/arena-concourse-before.jpg"
+      after="/images/arenas-stadiums/arena-concourse-after.jpg"
+      beforeAlt="Arena concourse with harsh direct sunlight and glare through untreated glass — uncomfortable, overexposed"
+      afterAlt="Same type of arena concourse with window film — soft, even, comfortable diffused natural light"
+      beforeTag="Without film"
+      afterTag="With film"
+      heading="See the difference window film makes"
+      sub="Drag the handle to compare an arena concourse before and after window film installation. Same type of space. Completely different fan experience."
+    />
+
+    <!-- ══ GALLERY BANNER ══ -->
+    <GalleryBanner
+      titleLines={['VENUE', 'WORK.']}
+      eyebrow="ARENA & STADIUM INSTALLS"
+      description="Real installations from Philadelphia sports arenas, concert venues, and convention centers — measured, applied, and finished by our certified team."
+      photos={galleryPhotos}
+      hintText="Hover the photos · click to bring forward"
+      theme="dark"
+    />
+
+    <!-- ══ VENUE TYPES — Inline alternating rows ══ -->
+    <section class="as-venues" id="venue-types">
+      <div class="as-venues__header">
+        <span class="as-venues__eyebrow">VENUE TYPES WE SERVE</span>
+        <h2 class="as-venues__title">The Right Film for Every Type of Venue</h2>
+        <p class="as-venues__sub">From sports arenas to concert halls to convention centers — each venue type has distinct glass challenges. Here's how we approach each one.</p>
+      </div>
+
+      <!-- Row 1: Sports Arenas — image LEFT, text RIGHT -->
+      <div class="as-venue-row">
+        <div class="as-venue-row__image">
+          <img src="/images/arenas-stadiums/sports-arena-concourse.jpg" alt="Sports arena interior concourse with glass curtain wall and solar control window film" loading="lazy" />
+        </div>
+        <div class="as-venue-row__text">
+          <div class="as-venue-row__eyebrow">01 · Sports Arenas</div>
+          <h3 class="as-venue-row__title">Sports Arenas &amp; Indoor Stadiums</h3>
+          <p class="as-venue-row__body">Sports arenas like the Wells Fargo Center type feature massive glass curtain walls, soaring atriums, and VIP suites with panoramic views. The challenge is threefold: solar heat gain through south- and west-facing glass, glare in premium seating and press boxes, and security at high-traffic entry points.</p>
+          <p class="as-venue-row__body">We specify different films for different zones — <a href="/services/solar/" class="as-green-link">solar control film</a> for the facade, glare control for suites, security film for entries, and anti-graffiti for concourse areas. Stadium window film in Philadelphia is installed in night shifts around your event calendar — zero downtime.</p>
+        </div>
+      </div>
+
+      <!-- Row 2: Concert Venues — text LEFT, image RIGHT -->
+      <div class="as-venue-row as-venue-row--rev">
+        <div class="as-venue-row__image">
+          <img src="/images/arenas-stadiums/concert-venue-lobby.jpg" alt="Modern concert venue lobby with tall glass windows treated with decorative and solar control window film" loading="lazy" />
+        </div>
+        <div class="as-venue-row__text">
+          <div class="as-venue-row__eyebrow">02 · Concert Venues</div>
+          <h3 class="as-venue-row__title">Concert Halls &amp; Live Music Venues</h3>
+          <p class="as-venue-row__body">Concert venues face a unique combination of challenges: large glass lobbies that create greenhouse conditions during daytime load-in, glare that interferes with stage lighting during early shows, and UV damage to lobby artwork and branded displays.</p>
+          <p class="as-venue-row__body">Arena window film for concert venues prioritizes high visible light transmission to preserve the open, welcoming lobby feel while rejecting infrared heat. For venues with <a href="/applications/restaurants/" class="as-green-link">hospitality-adjacent spaces</a>, decorative film can also create visual interest and brand identity on lobby glass.</p>
+        </div>
+      </div>
+
+      <!-- Row 3: Convention Centers — image LEFT, text RIGHT -->
+      <div class="as-venue-row">
+        <div class="as-venue-row__image">
+          <img src="/images/arenas-stadiums/convention-center-atrium.jpg" alt="Convention center grand atrium with massive skylight and glass walls with energy-efficient window film" loading="lazy" />
+        </div>
+        <div class="as-venue-row__text">
+          <div class="as-venue-row__eyebrow">03 · Convention Centers</div>
+          <h3 class="as-venue-row__title">Convention Centers &amp; Exhibition Halls</h3>
+          <p class="as-venue-row__body">Convention centers feature some of the largest glazed atriums in commercial architecture — soaring skylights, glass curtain walls, and exhibition hall windows that can span hundreds of feet. The solar heat load on these surfaces is enormous, and the HVAC systems serving them are among the most expensive to operate in any building type.</p>
+          <p class="as-venue-row__body">Venue window film for convention centers focuses on energy savings at scale — rejecting solar heat before it enters the conditioned space, reducing HVAC operating costs, and protecting exhibit hall flooring and temporary displays from UV fading. See our <a href="/benefits/energy-savings/" class="as-green-link">energy savings guide</a> for large commercial buildings.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: ENERGY — alt cream bg, text left, image right -->
-    <section class="swt-split swt-split--alt" id="energy">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 02</span>
-            <h2 class="swt-h2">Cut Arena Cooling Costs Without Closing a Single Section</h2>
-            <p>Arena glass facades create concentrated solar heat gain that HVAC systems must work against for every hour of direct sun exposure. In older Philadelphia venues with aging cooling infrastructure, this strain accelerates equipment failure and creates uncomfortable conditions during summer events and afternoon games.</p>
-            <p>Heat-rejecting window film is installed in nights and off-hours — no structural work, no closures, no impact on your event schedule. The payback is typically 3–5 years through reduced cooling costs alone, after which the savings compound as operational benefit year after year.</p>
-            <div class="swt-energy-metrics">
-              <div class="swt-metric">
-                <span class="swt-metric__num">30%</span>
-                <span class="swt-metric__label">Avg. Cooling Cost Reduction</span>
-              </div>
-              <div class="swt-metric">
-                <span class="swt-metric__num">3–5yr</span>
-                <span class="swt-metric__label">Typical Payback Period</span>
-              </div>
-            </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.arenaExterior} alt="Philadelphia arena exterior at night with energy-efficient window film" loading="lazy" />
+    <!-- ══ FULL-BLEED SLIDER — Why Choose Us ══ -->
+    <section class="as-ftype" id="asWhyChoose">
+      <div class="as-ftype__track" id="asFtypeTrack">
+
+        <!-- SLIDE 01: Glare Control -->
+        <div class="as-ftype__slide as-ftype-active" data-slide="0">
+          <img src="/images/arenas-stadiums/arena-slider-glare-control.jpg" alt="Stadium seating area with glare control window film on large glass windows" class="as-ftype__bg" />
+          <div class="as-ftype__overlay"></div>
+          <div class="as-ftype__content">
+            <div class="as-ftype__step">01</div>
+            <h2 class="as-ftype__title">Glare Control.\nFans See the Game, Not the Sun.</h2>
+            <p class="as-ftype__desc">Spectrally selective film eliminates afternoon glare in VIP suites, press boxes, and premium seating — while maintaining 70%+ visible light transmission. No blinds. No darkening. Full outdoor views preserved. Broadcast cameras get clean, glare-free shots through treated press box windows.</p>
+            <a href="/contact/" class="as-ftype__cta">Get a glare control estimate →</a>
           </div>
         </div>
+
+        <!-- SLIDE 02: Energy Savings -->
+        <div class="as-ftype__slide" data-slide="1">
+          <img src="/images/arenas-stadiums/arena-slider-energy.jpg" alt="Modern arena exterior glass facade at dusk with energy-efficient window film" class="as-ftype__bg" />
+          <div class="as-ftype__overlay"></div>
+          <div class="as-ftype__content">
+            <div class="as-ftype__step">02</div>
+            <h2 class="as-ftype__title">Energy Savings.\nLess HVAC Load, Lower Bills.</h2>
+            <p class="as-ftype__desc">Solar heat gain through untreated arena glass is a major contributor to cooling costs. Heat-rejecting film rejects up to 78% of solar heat at the glass surface — reducing HVAC load, extending equipment life, and cutting cooling costs with a typical 3–5 year payback period.</p>
+            <a href="/contact/" class="as-ftype__cta">Get an energy savings estimate →</a>
+          </div>
+        </div>
+
+        <!-- SLIDE 03: Security -->
+        <div class="as-ftype__slide" data-slide="2">
+          <img src="/images/arenas-stadiums/arena-slider-security.jpg" alt="Arena main entrance with security window film on glass doors and partitions" class="as-ftype__bg" />
+          <div class="as-ftype__overlay"></div>
+          <div class="as-ftype__content">
+            <div class="as-ftype__step">03</div>
+            <h2 class="as-ftype__title">Security Film.\nGlass Stays Put When It Matters.</h2>
+            <p class="as-ftype__desc">Security window film holds shattered glass in the frame on impact — reducing injury risk in crowd surges and severe weather. Meets ASTM E1886/1996 impact standards accepted by venue insurers. Full documentation package provided for insurance and regulatory compliance.</p>
+            <a href="/contact/" class="as-ftype__cta">Get a security film estimate →</a>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Right nav -->
+      <nav class="as-ftype__nav" aria-label="Why choose us navigation">
+        <button class="as-ftype__nav-item as-ftype__nav-item--active" data-asnav="0">
+          <span class="as-ftype__nav-line"></span>
+          <span class="as-ftype__nav-label">Glare Control</span>
+        </button>
+        <button class="as-ftype__nav-item" data-asnav="1">
+          <span class="as-ftype__nav-line"></span>
+          <span class="as-ftype__nav-label">Energy Savings</span>
+        </button>
+        <button class="as-ftype__nav-item" data-asnav="2">
+          <span class="as-ftype__nav-line"></span>
+          <span class="as-ftype__nav-label">Security</span>
+        </button>
+      </nav>
+
+      <!-- Arrows -->
+      <button class="as-ftype__arrow as-ftype__arrow--prev" id="asFtypePrev" aria-label="Previous slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="as-ftype__arrow as-ftype__arrow--next" id="asFtypeNext" aria-label="Next slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Progress bar -->
+      <div class="as-ftype__progress"><div class="as-ftype__progress-bar" id="asFtypeProgressBar"></div></div>
     </section>
 
-    <!-- SECTION 4: SECURITY — dark bg, text left, image right -->
-    <section class="swt-split swt-split--dark" id="security">
-      <div class="container">
-        <div class="swt-split__grid">
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow swt-eyebrow--green">Benefit 03</span>
-            <h2 class="swt-h2 swt-h2--light">Security Film: Hold Glass at Entry Points When It Matters Most</h2>
-            <p>Arena entry points, tunnel glazing, and exterior concession windows represent the highest-risk glass in any venue. Security window film holds shattered panes in the frame on impact — dramatically reducing injury risk from broken glass in crowd surges, severe weather events, and accidental damage.</p>
-            <p>For Philadelphia venues subject to municipal safety inspections and insurance requirements, security film provides documented protection that satisfies regulators and may qualify for reduced insurance premiums.</p>
-            <div class="swt-security-features">
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Shatter Resistance</strong>
-                  <p>Glass stays in frame on impact — no dangerous shards in crowd areas</p>
-                </div>
-              </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Fan Safety Compliance</strong>
-                  <p>Meets ASTM E1886/1996 impact standards accepted by venue insurers</p>
-                </div>
-              </div>
-              <div class="swt-security-feature">
-                <div class="swt-feature-dot"></div>
-                <div>
-                  <strong>Insurance-Friendly</strong>
-                  <p>Documented security upgrade with certification package for insurers</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swt-split__img fade-in">
-            <img src={newImages.securityEntry} alt="Arena security entrance with window film protecting entry points" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ ACCORDION BENEFITS ══ -->
+    <AccordionBenefits
+      eyebrow="THE BENEFITS"
+      title="Six Improvements. One Professional Installation."
+      subtitle="Glare, UV, energy, security, anti-graffiti, and HVAC load — all addressed in a single professional installation. No window replacement. No renovation. No venue downtime."
+      benefits={benefits}
+    />
 
-    <!-- SECTION 5: COMFORT — white bg, image left, text right -->
-    <section class="swt-split" id="comfort">
-      <div class="container">
-        <div class="swt-split__grid swt-split__grid--rev">
-          <div class="swt-split__img fade-in">
-            <img src={newImages.concession} alt="Arena concession area with comfortable glare-free environment" loading="lazy" />
-          </div>
-          <div class="swt-split__text fade-in">
-            <span class="swt-eyebrow">Benefit 04</span>
-            <h2 class="swt-h2">Fan Comfort in VIP Suites and Concession Areas</h2>
-            <p>VIP suites are a venue's premium product — and a west-facing suite that turns into a solar oven mid-event is a guest experience failure that's hard to recover from. Suite holders and corporate clients notice. They vote with renewal decisions.</p>
-            <p>Our glare-control films eliminate the worst afternoon glare while maintaining full outdoor views and natural daylight. Fans in treated suites and premium concession areas stay comfortable without closing blinds or retreating from the glass.</p>
-            <blockquote class="swt-inline-quote">
-              "Our west-facing suites were essentially unusable for afternoon games. After the film was installed, we got two seasons of full suite utilization before any complaints."
-              <cite>— Venue Operations Director, South Philadelphia sports complex</cite>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ BENTO GRID PHOTO ══ -->
+    <BentoGridPhoto
+      heading="Every Glass Surface in Your Venue"
+      sub="From VIP suites to concourse partitions — professional window film for every zone of your arena, stadium, or convention center."
+      items={bentoItems}
+    />
 
-    <!-- GALLERY — 5 images -->
-    <section class="swt-gallery" id="gallery">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">Our Work</span>
-          <h2 class="swt-h2 swt-h2--center">Window Film — In Action</h2>
-          <p class="swt-subhead">From arena interiors to VIP suites and entry points — here's what we install.</p>
-        </div>
-        <div class="swt-gallery__grid">
-          {galleryImages.map((img, i) => (
-            <div class="swt-gallery__item fade-in" style={`--delay: ${i * 80}ms`}>
-              <img src={img.src} alt={img.label} loading="lazy" />
-              <div class="swt-gallery__overlay">
-                <span>{img.label}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <!-- ══ HOW IT WORKS ══ -->
+    <HowItWorksSlideshow
+      id="asHiw"
+      eyebrow="THE PROCESS"
+      title="How Arena & Stadium Window Film Installation Works"
+      subtitle="From free venue survey to post-installation certification — a proven process for every Philadelphia venue."
+      slides={hiwSlides}
+    />
 
-    <!-- STATS BAR — accent green -->
-    <section class="swt-stats">
-      <div class="container">
-        <div class="swt-stats__row">
-          <div class="swt-stats__item fade-in">
-            <span class="swt-stats__num">16+</span>
-            <span class="swt-stats__label">Years in Philadelphia</span>
-          </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 80ms">
-            <span class="swt-stats__num">50+</span>
-            <span class="swt-stats__label">Venue Projects</span>
-          </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 160ms">
-            <span class="swt-stats__num">99%</span>
-            <span class="swt-stats__label">UV Rays Blocked</span>
-          </div>
-          <div class="swt-stats__div"></div>
-          <div class="swt-stats__item fade-in" style="--delay: 240ms">
-            <span class="swt-stats__num">30%</span>
-            <span class="swt-stats__label">Avg. Energy Savings</span>
-          </div>
-        </div>
-      </div>
+    <!-- ══ TESTIMONIAL MARQUEE ══ -->
+    <section class="as-tmarq-header">
+      <span class="as-tmarq-eyebrow">VENUE STORIES</span>
+      <h2 class="as-tmarq-title">Real Results from Philadelphia Venues</h2>
     </section>
+    <TestimonialMarquee reviews={reviews} />
 
-    <!-- PROCESS — 4 steps -->
-    <section class="swt-process">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow">How It Works</span>
-          <h2 class="swt-h2 swt-h2--center">4 Steps to a Game-Ready Venue</h2>
-        </div>
-        <div class="swt-process__steps">
-          <div class="swt-process__step fade-in">
-            <div class="swt-process__num">01</div>
-            <div class="swt-process__body">
-              <h3>Venue Survey & Engineering Review</h3>
-              <p>We perform a full site survey of all glass surfaces — including curved dome panels, angled facade glass, and retractable roof sections. Our engineering team produces a glass-by-glass specification and thermal analysis before any work begins.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 80ms">
-            <div class="swt-process__num">02</div>
-            <div class="swt-process__body">
-              <h3>Custom Engineering for Curved Glass</h3>
-              <p>Arena glass is rarely flat. Our team specifies the correct film and adhesive system for each unique glass geometry in your venue, with particular attention to thermally stressed zones and high-traffic entry areas.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 160ms">
-            <div class="swt-process__num">03</div>
-            <div class="swt-process__body">
-              <h3>Phased Installation Around Events</h3>
-              <p>We schedule all installation around your event calendar — typically night shifts and off-days. Most arena projects complete in 2–4 nights with zero disruption to operations or fan experience. We provide a detailed schedule before work begins.</p>
-            </div>
-          </div>
-          <div class="swt-process__step fade-in" style="--delay: 240ms">
-            <div class="swt-process__num">04</div>
-            <div class="swt-process__body">
-              <h3>Post-Installation Safety Certification</h3>
-              <p>We provide a complete documentation package including material spec sheets, independent lab test reports, and post-installation certification — ready for submission to your insurer, municipal building department, or venue safety inspector.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ FAQ ══ -->
+    <AccordionFAQ
+      eyebrow="FAQ"
+      heading="Arena & Stadium Window Film FAQ"
+      sub="Honest answers from specialists who've been installing stadium window film in Philadelphia venues since 2008."
+      items={faqAccordionItems}
+      single={true}
+    />
 
-    <!-- TESTIMONIALS — dark bg -->
-    <section class="swt-testimonials">
-      <div class="container">
-        <div class="swt-gallery__header fade-in">
-          <span class="swt-eyebrow swt-eyebrow--green">Venue Stories</span>
-          <h2 class="swt-h2 swt-h2--center swt-h2--light">Real Results from Real Philadelphia Venues</h2>
-        </div>
-        <div class="swt-testimonials__grid">
-          <div class="swt-testimonial fade-in">
-            <div class="swt-testimonial__quote">"</div>
-            <p>We had two west-facing suites that were effectively unusable for any game starting before 5pm. The film brought the temperature down dramatically and eliminated the glare entirely. Our suite holders stopped complaining and renewals improved measurably.</p>
-            <div class="swt-testimonial__author">
-              <strong>James K.</strong>
-              <span>General Manager, South Philadelphia event venue</span>
-            </div>
-          </div>
-          <div class="swt-testimonial fade-in" style="--delay: 80ms">
-            <div class="swt-testimonial__quote">"</div>
-            <p>Our security team had been flagged by our insurer for the glass at our main entry points. Security film was a fraction of the cost of laminated glass replacement and gave us the documentation our insurer needed to close the deficiency notice.</p>
-            <div class="swt-testimonial__author">
-              <strong>Michelle R.</strong>
-              <span>Director of Operations, regional sports arena</span>
-            </div>
-          </div>
-          <div class="swt-testimonial fade-in" style="--delay: 160ms">
-            <div class="swt-testimonial__quote">"</div>
-            <p>The installation team worked overnight for three nights and was done before our next event. Zero disruption, clean work, and the energy bill the following summer was measurably lower. The ROI was faster than projected.</p>
-            <div class="swt-testimonial__author">
-              <strong>Carlos M.</strong>
-              <span>Facilities Director, Philadelphia-area indoor arena</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ GEO BLOCK (hidden — SEO only) ══ -->
+    <div class="as-geo" aria-hidden="true" style="display:none;">
+      <p>Stadium window film in Philadelphia addresses the unique challenges of large entertainment venues — glare control in VIP suites and press boxes, UV protection for interior branding and upholstery, energy savings on massive glass facades, and security film for high-traffic entry points. Arena window film is installed around event schedules with zero downtime, typically in night shifts. Window Film Philadelphia has served the Delaware Valley's arenas, stadiums, concert venues, and convention centers since 2008, installing 3M, LLumar, Vista, Solar Gard, Huper Optik, and Madico commercial-grade films with factory-certified W-2 employees. Venue window film rejects up to 78% of solar heat, blocks 99% of UV radiation, and meets ASTM E1886/1996 impact standards for security applications.</p>
+      <ul>
+        <li>stadium window film in Philadelphia</li>
+        <li>arena window film Philadelphia</li>
+        <li>venue window film Philadelphia</li>
+        <li>sports arena window film Philadelphia</li>
+        <li>concert venue window film Philadelphia</li>
+        <li>convention center window film Philadelphia</li>
+        <li>stadium glare control film Philadelphia</li>
+        <li>arena security window film Philadelphia</li>
+        <li>stadium UV protection film Philadelphia</li>
+        <li>arena energy savings window film Philadelphia</li>
+        <li>anti-graffiti film stadium Philadelphia</li>
+        <li>Wells Fargo Center window film</li>
+        <li>large venue window film Philadelphia</li>
+      </ul>
+    </div>
 
-    <!-- FAQ -->
-    <section class="swt-faq" id="faq">
-      <div class="container">
-        <div class="swt-faq__layout">
-          <div class="swt-faq__header fade-in">
-            <span class="swt-eyebrow">Questions</span>
-            <h2 class="swt-h2">Frequently Asked Questions</h2>
-            <p>Honest answers from people who've been installing window film in Philadelphia venues for over 16 years.</p>
-            <a href="/contact/" class="swt-btn swt-btn--primary">Talk to a Specialist</a>
-          </div>
-          <div class="swt-faq__list fade-in">
-            {faqItems.map((item) => (
-              <div class="swt-faq__item">
-                <div class="swt-faq__q">
-                  <span>{item.question}</span>
-                  <span class="swt-faq__toggle">+</span>
-                </div>
-                <div class="swt-faq__a">
-                  <p>{item.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <section class="swt-cta">
-      <div class="swt-cta__inner">
-        <div class="swt-cta__text">
-          <h2>Ready to <em>transform</em> your venue?</h2>
-          <p>Get a free venue assessment and thermal analysis. No obligation, no pressure — just honest advice.</p>
-        </div>
-        <div class="swt-cta__btns">
-          <a href="/contact/" class="swt-btn swt-btn--primary">Get a Free Venue Assessment</a>
-          <a href="tel:+126****7980" class="swt-btn swt-btn--ghost-light">Call (267) 394-7980</a>
-        </div>
-      </div>
-    </section>
+    <!-- ══ CTA AVATARS ══ -->
+    <CTAAvatars
+      title="Ready to transform your venue?"
+      subtitle="Free venue assessment and thermal analysis. No obligation, no pressure — just honest advice from specialists who've been installing stadium window film in Philadelphia since 2008."
+      count="Trusted by 60+ Philadelphia venues & businesses"
+      btnLabel="Get a Free Venue Assessment"
+      btnHref="/contact/"
+      avatars={ctaAvatars}
+    />
 
   </div><!-- /swt-body -->
 </BaseLayout>
 
 <style>
   /* ══════════════════════════════════════
-     BRAND TOKENS (local override)
+     BRAND TOKENS
      ══════════════════════════════════════ */
   :root {
-    --swt-green:        #4E6B2A;
-    --swt-green-accent: #83A94A;
-    --swt-dark:         #2A241E;
-    --swt-cream:        #F4EFE6;
-    --swt-alt:          #ECE4D4;
-    --swt-border:       #E1D6C1;
-    --swt-text-sec:     #6E665C;
-    --swt-gold:         #846212;
-    --swt-white:        #ffffff;
-    --swt-radius:       5px;
+    --as-brand:     #272E32;
+    --as-green:     #81AB4C;
+    --as-green-dark: #6e9640;
+    --as-off-white: #F7F6F3;
+    --as-text-dark: #1a1a1a;
+    --as-text-mid:  #4a4a4a;
+    --as-text-light: #888;
+    --as-light-gray: #EFEFED;
+    --as-radius:     5px;
+    --as-radius-pill: 100px;
   }
 
   /* ══════════════════════════════════════
      HERO
      ══════════════════════════════════════ */
-  .swt-hero {
+  .as-hero {
     position: relative;
-    min-height: 85vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     overflow: hidden;
   }
-  .swt-hero__img {
+  .as-hero__bg {
     position: absolute;
     inset: 0;
+    background-size: cover;
+    background-position: center;
   }
-  .swt-hero__img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .swt-hero__overlay {
+  .as-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, rgba(42,36,30,0.9) 0%, rgba(42,36,30,0.6) 50%, rgba(42,36,30,0.35) 100%);
+    background: linear-gradient(105deg, rgba(39,46,50,0.92) 0%, rgba(39,46,50,0.6) 50%, rgba(39,46,50,0.35) 100%);
   }
-  .swt-hero__content {
+  .as-hero__content {
     position: relative;
     z-index: 1;
     padding: 110px 8% 90px;
-    max-width: 720px;
+    max-width: 760px;
   }
-  .swt-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    background: rgba(78,107,42,0.25);
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(78,107,42,0.4);
-  }
-  .swt-hero__title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(38px, 5.5vw, 66px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.1;
-    margin: 0 0 20px;
-  }
-  .swt-hero__title em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-hero__sub {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin: 0 0 36px;
-    max-width: 500px;
-  }
-  .swt-hero__ctas {
+  .as-hero__eyebrow {
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  /* ══════════════════════════════════════
-     BUTTONS
-     ══════════════════════════════════════ */
-  .swt-btn {
-    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 13px 28px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-  .swt-btn--primary {
-    background: var(--swt-green);
-    color: var(--swt-white);
-    border-color: var(--swt-green);
-  }
-  .swt-btn--primary:hover {
-    background: #3D5620;
-    border-color: #3D5620;
-    transform: translateY(-2px);
-  }
-  .swt-btn--ghost-light {
-    background: transparent;
-    color: rgba(255,255,255,0.8);
-    border-color: rgba(255,255,255,0.35);
-  }
-  .swt-btn--ghost-light:hover {
-    color: #fff;
-    border-color: rgba(255,255,255,0.65);
-    background: rgba(255,255,255,0.06);
-    transform: translateY(-2px);
-  }
-
-  /* ══════════════════════════════════════
-     SHARED
-     ══════════════════════════════════════ */
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
-  .swt-body { background: var(--swt-white); }
-
-  .swt-eyebrow {
-    display: inline-block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
+    gap: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--swt-green);
-    margin-bottom: 12px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
   }
-  .swt-eyebrow--green { color: var(--swt-green-accent); }
-
-  .swt-h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(26px, 3vw, 40px);
-    font-weight: 400;
-    color: var(--swt-dark);
-    line-height: 1.15;
-    margin: 0 0 18px;
+  .as-hero__eyebrow-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--as-green);
   }
-  .swt-h2--light { color: var(--swt-white); }
-  .swt-h2--center { text-align: center; }
+  .as-hero__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(38px, 5.5vw, 64px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 24px;
+    letter-spacing: -0.02em;
+  }
+  .as-hero__br { display: inline; }
+  .as-hero__subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 520px;
+  }
+  .as-hero__cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .as-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: var(--as-radius-pill);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--as-green);
+    color: #fff;
+    border: 2px solid var(--as-green);
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+  .as-hero__btn-primary:hover {
+    background: var(--as-green-dark);
+    border-color: var(--as-green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(129,171,76,0.35);
+  }
+  .as-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--as-radius-pill);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.25);
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+  .as-hero__btn-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(129,171,76,0.6);
+    transform: translateY(-2px);
+  }
 
-  .swt-subhead {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: var(--swt-text-sec);
-    margin: 8px 0 0;
+  /* Stats panel */
+  .as-hero__stats-panel {
+    background: rgba(39,46,50,0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px 28px;
+    max-width: 640px;
+  }
+  .as-hero__stats-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .as-hero__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
+  .as-hero__stat-number {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: var(--as-green);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .as-hero__stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+  .as-hero__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .as-hero { min-height: 90vh; }
+    .as-hero__content { padding: 100px 5% 60px; }
+    .as-hero__stats-panel { padding: 20px 16px; }
+    .as-hero__stats-inner { flex-wrap: wrap; gap: 16px; }
+    .as-hero__stat { flex: 0 0 calc(50% - 8px); }
+    .as-hero__stat-divider { display: none; }
+  }
 
-  /* ── Trust Bar ── */
+  /* ══════════════════════════════════════
+     TRUST BAR
+     ══════════════════════════════════════ */
   .swt-trust {
-    background: var(--swt-cream);
-    padding: 32px 0;
-    border-bottom: 1px solid var(--swt-border);
+    padding: 40px 5%;
+    background: #fff;
+    text-align: center;
   }
   .swt-trust__label {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--swt-text-sec);
-    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--as-text-mid);
     margin: 0 0 20px;
-    opacity: 0.7;
+  }
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
-  /* ── Split Sections ── */
-  .swt-split {
-    padding: 96px 0;
-    background: var(--swt-white);
+  /* ══════════════════════════════════════
+     INTRO
+     ══════════════════════════════════════ */
+  .as-intro {
+    padding: 80px 5%;
+    background: #fff;
   }
-  .swt-split--dark { background: var(--swt-dark); }
-  .swt-split--alt { background: var(--swt-alt); }
-
-  .swt-split__grid {
+  .as-intro__container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
     align-items: center;
   }
-  .swt-split__grid--rev .swt-split__img { order: -1; }
-
-  .swt-split__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    line-height: 1.85;
-    color: var(--swt-text-sec);
-    margin: 0 0 14px;
+  .as-intro__eyebrow {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--as-green);
+    margin-bottom: 1rem;
   }
-  .swt-split--dark .swt-split__text p { color: rgba(255,255,255,0.55); }
-
-  .swt-split__img {
-    position: relative;
+  .as-intro__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--as-text-dark);
+    line-height: 1.15;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.02em;
   }
-  .swt-split__img img {
+  .as-intro__body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: var(--as-text-mid);
+    line-height: 1.8;
+    margin: 0 0 1rem;
+  }
+  .as-intro__links {
+    display: flex;
+    gap: 24px;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .as-intro__link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--as-green);
+    text-decoration: underline;
+    text-decoration-color: var(--as-green);
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .as-intro__link:hover { color: var(--as-green-dark); }
+  .as-intro__image-wrap {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(39,46,50,0.12);
+  }
+  .as-intro__image {
     width: 100%;
     height: 480px;
     object-fit: cover;
-    border-radius: var(--swt-radius);
     display: block;
-    box-shadow: 0 20px 60px rgba(42,36,30,0.12);
-  }
-
-  .swt-img-badge {
-    position: absolute;
-    bottom: -12px;
-    right: -12px;
-    background: var(--swt-green);
-    color: var(--swt-white);
-    border-radius: var(--swt-radius);
-    padding: 16px 24px;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(42,36,30,0.2);
-  }
-  .swt-img-badge strong {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 1;
-  }
-  .swt-img-badge span {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    opacity: 0.85;
-    margin-top: 3px;
-  }
-
-  /* ── Problem Tags ── */
-  .swt-problem-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 24px;
-  }
-  .swt-tag {
-    padding: 8px 16px;
-    border-radius: var(--swt-radius);
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .swt-tag--red {
-    background: rgba(180,60,60,0.1);
-    color: #e8a0a0;
-    border: 1px solid rgba(180,60,60,0.2);
-  }
-
-  /* ── Check List ── */
-  .swt-check-list {
-    list-style: none;
-    padding: 0;
-    margin: 22px 0 0;
-  }
-  .swt-check-list li {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    color: var(--swt-text-sec);
-    padding: 9px 0;
-    border-bottom: 1px solid var(--swt-border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .swt-check-list li::before {
-    content: '';
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    background: rgba(78,107,42,0.1);
-    border-radius: 50%;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234E6B2A' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  /* ── Energy Metrics ── */
-  .swt-energy-metrics {
-    display: flex;
-    gap: 36px;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid var(--swt-border);
-  }
-  .swt-split--dark .swt-energy-metrics {
-    border-top-color: rgba(255,255,255,0.1);
-  }
-  .swt-metric__num {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 44px;
-    font-weight: 400;
-    color: var(--swt-green);
-    line-height: 1;
-  }
-  .swt-metric__label {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--swt-text-sec);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── Security Features ── */
-  .swt-security-features {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .swt-security-feature {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-  }
-  .swt-feature-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--swt-green-accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-  .swt-security-feature strong {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--swt-white);
-    margin-bottom: 4px;
-  }
-  .swt-security-feature p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.45);
-    margin: 0;
-  }
-
-  /* ── Inline Quote ── */
-  .swt-inline-quote {
-    border-left: 3px solid var(--swt-green);
-    padding-left: 18px;
-    margin: 22px 0 0;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--swt-text-sec);
-    line-height: 1.7;
-  }
-  .swt-inline-quote cite {
-    display: block;
-    font-size: 12px;
-    font-style: normal;
-    color: var(--swt-text-sec);
-    opacity: 0.65;
-    margin-top: 8px;
-    font-weight: 600;
-  }
-
-  /* ── Gallery ── */
-  .swt-gallery {
-    background: var(--swt-white);
-    padding: 96px 0;
-  }
-  .swt-gallery__header { margin-bottom: 48px; }
-  .swt-gallery__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-  }
-  .swt-gallery__item {
-    position: relative;
-    border-radius: var(--swt-radius);
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1;
-  }
-  .swt-gallery__item img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.35s ease;
-    display: block;
-  }
-  .swt-gallery__item:hover img { transform: scale(1.06); }
-  .swt-gallery__overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 40px 12px 12px;
-    background: linear-gradient(to top, rgba(42,36,30,0.78) 0%, transparent 100%);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: all 0.3s ease;
-  }
-  .swt-gallery__item:hover .swt-gallery__overlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .swt-gallery__overlay span {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--swt-white);
-    display: block;
-    text-align: center;
-  }
-
-  /* ── Stats Bar ── */
-  .swt-stats {
-    background: var(--swt-green-accent);
-    padding: 72px 0;
-  }
-  .swt-stats__row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .swt-stats__item {
-    flex: 1;
-    text-align: center;
-    padding: 0 40px;
-  }
-  .swt-stats__num {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 64px;
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1;
-  }
-  .swt-stats__label {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.65);
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .swt-stats__div {
-    width: 1px;
-    height: 60px;
-    background: rgba(255,255,255,0.2);
-  }
-
-  /* ── Process ── */
-  .swt-process {
-    background: var(--swt-cream);
-    padding: 96px 0;
-  }
-  .swt-process__steps { margin-top: 48px; }
-  .swt-process__step {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 36px;
-    padding: 36px 0;
-    border-bottom: 1px solid var(--swt-border);
-    align-items: start;
-  }
-  .swt-process__step:first-child { border-top: 1px solid var(--swt-border); }
-  .swt-process__num {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 52px;
-    font-weight: 400;
-    color: var(--swt-green);
-    line-height: 1;
-    opacity: 0.55;
-  }
-  .swt-process__body h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--swt-dark);
-    margin: 0 0 10px;
-  }
-  .swt-process__body p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--swt-text-sec);
-    margin: 0;
-  }
-
-  /* ── Testimonials ── */
-  .swt-testimonials {
-    background: var(--swt-dark);
-    padding: 96px 0;
-  }
-  .swt-testimonials__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 48px;
-  }
-  .swt-testimonial {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--swt-radius);
-    padding: 32px;
-  }
-  .swt-testimonial__quote {
-    font-family: Georgia, serif;
-    font-size: 68px;
-    line-height: 0.7;
-    color: var(--swt-green-accent);
-    opacity: 0.35;
-    margin-bottom: 18px;
-    display: block;
-  }
-  .swt-testimonial p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.6);
-    margin: 0 0 22px;
-    font-style: italic;
-  }
-  .swt-testimonial__author strong {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--swt-white);
-  }
-  .swt-testimonial__author span {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    margin-top: 4px;
-  }
-
-  /* ── FAQ ── */
-  .swt-faq {
-    background: var(--swt-white);
-    padding: 96px 0;
-  }
-  .swt-faq__layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .swt-faq__header p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--swt-text-sec);
-    margin: 14px 0 24px;
-  }
-  .swt-faq__item {
-    border-bottom: 1px solid var(--swt-border);
-    padding: 18px 0;
-  }
-  .swt-faq__item:first-of-type { border-top: 1px solid var(--swt-border); }
-  .swt-faq__q {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--swt-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-    padding: 3px 0;
-  }
-  .swt-faq__toggle {
-    color: var(--swt-green);
-    font-size: 22px;
-    flex-shrink: 0;
-    font-weight: 400;
-    transition: transform 0.2s;
-    line-height: 1;
-  }
-  .swt-faq__a {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 14px;
-    color: var(--swt-text-sec);
-    line-height: 1.8;
-    margin-top: 10px;
-    display: none;
-  }
-  .swt-faq__item--open .swt-faq__a { display: block; }
-  .swt-faq__item--open .swt-faq__toggle { transform: rotate(45deg); }
-
-  /* ── CTA Banner ── */
-  .swt-cta {
-    background: var(--swt-dark);
-    padding: 80px 5%;
-  }
-  .swt-cta__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .swt-cta__text h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(28px, 3vw, 42px);
-    font-weight: 400;
-    color: var(--swt-white);
-    line-height: 1.2;
-    margin: 0 0 8px;
-  }
-  .swt-cta__text h2 em {
-    font-style: italic;
-    color: var(--swt-green-accent);
-  }
-  .swt-cta__text p {
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 16px;
-    color: rgba(255,255,255,0.5);
-    margin: 0;
-  }
-  .swt-cta__btns {
-    display: flex;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-
-  /* ── Fade In ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 1024px) {
-    .swt-split__grid { gap: 48px; }
-    .swt-gallery__grid { grid-template-columns: repeat(3, 1fr); }
-    .swt-testimonials__grid { grid-template-columns: 1fr; }
-    .swt-stats__row { flex-wrap: wrap; gap: 24px; }
-    .swt-stats__div { display: none; }
-    .swt-faq__layout { grid-template-columns: 1fr; gap: 40px; }
-    .swt-cta__inner { flex-direction: column; text-align: center; }
   }
   @media (max-width: 768px) {
-    .swt-split__grid { grid-template-columns: 1fr; gap: 32px; }
-    .swt-split__grid--rev .swt-split__img { order: 0; }
-    .swt-split__img img { height: 280px; }
-    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
-    .swt-process__step { grid-template-columns: 48px 1fr; gap: 20px; }
-    .swt-process__num { font-size: 36px; }
-    .swt-hero__content { padding: 80px 5%; }
-    .swt-cta__btns { flex-direction: column; width: 100%; }
-    .swt-hero__ctas { flex-direction: column; }
-    .swt-energy-metrics { flex-direction: column; gap: 16px; }
+    .as-intro__container { grid-template-columns: 1fr; gap: 2rem; }
+    .as-intro__image { height: 320px; }
   }
-  @media (max-width: 480px) {
-    .swt-gallery__grid { grid-template-columns: repeat(2, 1fr); }
-    .swt-split { padding: 64px 0; }
-    .swt-stats__row { flex-direction: column; }
+
+  /* ══════════════════════════════════════
+     VENUE TYPES — Inline alternating rows
+     ══════════════════════════════════════ */
+  .as-venues {
+    padding: 80px 5%;
+    background: var(--as-off-white);
   }
+  .as-venues__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .as-venues__eyebrow {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--as-green);
+    margin-bottom: 0.75rem;
+  }
+  .as-venues__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--as-text-dark);
+    line-height: 1.15;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+  }
+  .as-venues__sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--as-text-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .as-venue-row {
+    max-width: 1200px;
+    margin: 0 auto 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .as-venue-row--rev {
+    direction: rtl;
+  }
+  .as-venue-row--rev > * { direction: ltr; }
+  .as-venue-row__image {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(39,46,50,0.1);
+  }
+  .as-venue-row__image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .as-venue-row__image:hover img { transform: scale(1.03); }
+  .as-venue-row__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--as-green);
+    margin-bottom: 12px;
+  }
+  .as-venue-row__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: var(--as-text-dark);
+    margin: 0 0 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .as-venue-row__body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--as-text-mid);
+    line-height: 1.8;
+    margin: 0 0 16px;
+  }
+  .as-green-link {
+    color: var(--as-green);
+    text-decoration: underline;
+    text-decoration-color: var(--as-green);
+    text-underline-offset: 3px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .as-green-link:hover { color: var(--as-green-dark); }
+  @media (max-width: 900px) {
+    .as-venue-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 48px; }
+    .as-venue-row--rev { direction: ltr; }
+    .as-venue-row__image img { height: 320px; }
+  }
+
+  /* ══════════════════════════════════════
+     FULL-BLEED SLIDER (of-ftype pattern)
+     ══════════════════════════════════════ */
+  .as-ftype {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    overflow: hidden;
+    background: var(--as-brand);
+  }
+  .as-ftype__track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+  }
+  .as-ftype__slide {
+    position: relative;
+    min-width: 100%;
+    min-height: 90vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .as-ftype__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+  .as-ftype__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(39,46,50,0.82) 0%, rgba(39,46,50,0.3) 60%, transparent 100%);
+    z-index: 1;
+  }
+  .as-ftype__content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding-left: 80px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+  }
+  .as-ftype-active .as-ftype__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .as-ftype__step {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--as-green);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+  .as-ftype__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+    white-space: pre-line;
+  }
+  .as-ftype__desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    max-width: 460px;
+    margin-bottom: 2rem;
+  }
+  .as-ftype__cta {
+    display: inline-block;
+    background: var(--as-green);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: var(--as-radius-pill);
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+  .as-ftype__cta:hover {
+    background: var(--as-green-dark);
+    transform: translateY(-2px);
+  }
+  .as-ftype__nav {
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .as-ftype__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+  }
+  .as-ftype__nav-item:hover { opacity: 0.65; }
+  .as-ftype__nav-item--active { opacity: 1; }
+  .as-ftype__nav-line {
+    display: block;
+    width: 3px;
+    height: 28px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 2px;
+    transition: background 0.3s ease, height 0.3s ease;
+  }
+  .as-ftype__nav-item--active .as-ftype__nav-line {
+    background: var(--as-green);
+    height: 44px;
+  }
+  .as-ftype__nav-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+  .as-ftype__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .as-ftype__arrow:hover { background: rgba(0,0,0,0.6); color: var(--as-green); }
+  .as-ftype__arrow--prev { left: 32px; }
+  .as-ftype__arrow--next { right: 32px; }
+  .as-ftype__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.15);
+    z-index: 10;
+  }
+  .as-ftype__progress-bar {
+    height: 100%;
+    background: var(--as-green);
+    width: 0;
+    transition: width 0.05s linear;
+  }
+  @media (max-width: 768px) {
+    .as-ftype__nav { display: none; }
+    .as-ftype__content { padding-left: 32px; padding-right: 32px; max-width: calc(100% - 64px); }
+    .as-ftype__arrow--prev { left: 16px; }
+    .as-ftype__arrow--next { right: 16px; }
+  }
+
+  /* ══════════════════════════════════════
+     TESTIMONIAL HEADER
+     ══════════════════════════════════════ */
+  .as-tmarq-header {
+    background: var(--as-off-white);
+    padding: 64px 5% 0;
+    text-align: center;
+  }
+  .as-tmarq-eyebrow {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--as-green);
+    margin-bottom: 0.75rem;
+  }
+  .as-tmarq-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--as-text-dark);
+    line-height: 1.2;
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* ══════════════════════════════════════
+     OVERRIDES — Component navy to charcoal
+     ══════════════════════════════════════ */
+  /* AccordionFAQ: override #14201A → #272E32 and #1a2e22 → #2d363b */
+  :global(.faq) {
+    background: #272E32 !important;
+  }
+  :global(.faq__item) {
+    background: #2d363b !important;
+  }
+  :global(.faq__title) {
+    font-family: 'Playfair Display', serif !important;
+  }
+  :global(.faq__a-inner p) {
+    font-family: 'DM Sans', sans-serif !important;
+  }
+  /* BentoGridPhoto: verify #272E32 (already correct) */
+  /* HowItWorksSlideshow: verify #F7F6F3 (already correct) */
+  /* TestimonialMarquee: verify #F7F6F3 (already correct) */
+  /* GalleryBanner dark: verify #272E32 (already correct) */
+  /* BeforeAfterSlider: uses var(--brand, #272E32) — already correct */
 </style>
 
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const el = e.target as HTMLElement;
-        const delay = el.style.getPropertyValue('--delay') || '0ms';
-        setTimeout(() => el.classList.add('visible'), parseInt(delay));
-        obs.unobserve(el);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  // ── Full-bleed slider (of-ftype pattern) ──
+  (() => {
+    const track = document.getElementById('asFtypeTrack');
+    if (!track) return;
+    const slides = Array.from(document.querySelectorAll('.as-ftype__slide'));
+    const navItems = Array.from(document.querySelectorAll('[data-asnav]'));
+    const progressBar = document.getElementById('asFtypeProgressBar');
+    let current = 0;
+    let timer;
+    let progress = 0;
+    const DURATION = 7000;
+    const TICK = 50;
 
-  document.querySelectorAll('.swt-faq__item').forEach(item => {
-    item.querySelector('.swt-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('swt-faq__item--open');
-      document.querySelectorAll('.swt-faq__item').forEach(i => i.classList.remove('swt-faq__item--open'));
-      if (!isOpen) item.classList.add('swt-faq__item--open');
-    });
-  });
+    function goTo(idx) {
+      slides[current].classList.remove('as-ftype-active');
+      navItems[current] && navItems[current].classList.remove('as-ftype__nav-item--active');
+      current = ((idx % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('as-ftype-active');
+      navItems[current] && navItems[current].classList.add('as-ftype__nav-item--active');
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      progress = 0;
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      progress = 0;
+      timer = setInterval(() => {
+        progress += (TICK / DURATION) * 100;
+        if (progressBar) progressBar.style.width = Math.min(progress, 100) + '%';
+        if (progress >= 100) goTo(current + 1);
+      }, TICK);
+    }
+
+    goTo(0);
+    startTimer();
+
+    const nextBtn = document.getElementById('asFtypeNext');
+    const prevBtn = document.getElementById('asFtypePrev');
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); startTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    navItems.forEach(btn => btn.addEventListener('click', () => { goTo(Number(btn.dataset.asnav)); startTimer(); }));
+  })();
 </script>
