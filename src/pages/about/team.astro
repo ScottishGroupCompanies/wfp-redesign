@@ -246,7 +246,52 @@ const pageSchemas = [
       <p class="mf-savings__callout-aside">He started Scottish Window Tinting that same year. The company now serves residential clients across five states and commercial clients in all 50.</p>
     </div>
   </div>
+
+  <div class="mf-container">
+    <div class="mf-bills">
+      <div class="mf-bills__head">
+        <span class="mf-eyebrow">The Actual Bills</span>
+        <h3 class="mf-bills__title">The proof, in black and white.</h3>
+        <p class="mf-bills__lead">These are Martin's real utility bills from Intermountain Rural Electric Association — before and after window film. Click to view full size.</p>
+      </div>
+      <div class="mf-bills__grid">
+        <button class="mf-bill" data-bill="/images/about/martin-faith-utility-bill-before-window-film.jpg" aria-label="View utility bill before window film — $8.98/day">
+          <img src="/images/about/martin-faith-utility-bill-before-window-film.jpg" alt="Utility bill from Intermountain Rural Electric Association, June 2007 — $269.33 total, $8.98 average daily cost, 10-year-old vinyl windows before window film" loading="lazy" />
+          <div class="mf-bill__overlay">
+            <span class="mf-bill__step">Before Film · 2007</span>
+            <span class="mf-bill__cost">$8.98/day · $269.33 total</span>
+            <span class="mf-bill__note">"10 year old vinyl windows (before replacing windows) · 2900 sq ft house"</span>
+            <span class="mf-bill__zoom">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m-3-3h6"/></svg>
+              View Full Size
+            </span>
+          </div>
+        </button>
+        <button class="mf-bill" data-bill="/images/about/martin-faith-utility-bill-after-window-film.jpg" aria-label="View utility bill after window film — $2.54/day">
+          <img src="/images/about/martin-faith-utility-bill-after-window-film.jpg" alt="Utility bill from Intermountain Rural Electric Association, June 2009 — $83.70 total, $2.54 average daily cost, after Vista Window Film V45 added to new windows" loading="lazy" />
+          <div class="mf-bill__overlay">
+            <span class="mf-bill__step">After Film · 2009</span>
+            <span class="mf-bill__cost">$2.54/day · $83.70 total</span>
+            <span class="mf-bill__note">"Vista Window Film V45 added to new windows in June 2009"</span>
+            <span class="mf-bill__zoom">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m-3-3h6"/></svg>
+              View Full Size
+            </span>
+          </div>
+        </button>
+      </div>
+      <p class="mf-bills__footnote">Bill 1 shows $8.98/day with 10-year-old vinyl windows on a 2,900 sq ft house. Bill 2 shows $2.54/day after Vista V45 solar control window film was applied — a <strong>72% reduction</strong> in average daily electricity cost. Bills courtesy of Intermountain Rural Electric Association (IREA), Colorado.</p>
+    </div>
+  </div>
 </section>
+
+<!-- Lightbox -->
+<div class="mf-lightbox" id="mfLightbox" aria-hidden="true" role="dialog" aria-label="Utility bill full size view">
+  <button class="mf-lightbox__close" id="mfLightboxClose" aria-label="Close bill view">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <img class="mf-lightbox__img" id="mfLightboxImg" src="" alt="Utility bill full size view" />
+</div>
 
 <!-- ═══ TIMELINE ═══ -->
 <section class="mf-timeline">
@@ -624,6 +669,169 @@ const pageSchemas = [
   .mf-savings__callout { padding: 32px 24px; }
 }
 
+/* ── BILLS ── */
+.mf-bills {
+  padding: 0 0 60px;
+  text-align: center;
+}
+.mf-bills__head {
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+.mf-bills__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--mf-text-dark);
+  line-height: 1.2;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.mf-bills__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--mf-text-mid);
+  margin: 0;
+}
+.mf-bills__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.mf-bill {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 1px solid var(--mf-light-gray);
+  border-radius: var(--mf-radius);
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+.mf-bill:hover {
+  box-shadow: 0 12px 40px rgba(39, 46, 50, 0.12);
+  transform: translateY(-3px);
+}
+.mf-bill img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 791/1024;
+  object-fit: cover;
+}
+.mf-bill__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(39,46,50,0.92) 0%, rgba(39,46,50,0.3) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  text-align: left;
+  pointer-events: none;
+}
+.mf-bill__step {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mf-green);
+  margin-bottom: 6px;
+}
+.mf-bill__cost {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.mf-bill__note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.mf-bill__zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--mf-green);
+  padding: 6px 14px;
+  background: rgba(124, 179, 66, 0.15);
+  border-radius: 100px;
+  width: fit-content;
+}
+.mf-bills__footnote {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--mf-text-light);
+  max-width: 680px;
+  margin: 32px auto 0;
+  text-align: center;
+}
+.mf-bills__footnote strong {
+  color: var(--mf-green-dark);
+}
+@media (max-width: 640px) {
+  .mf-bills__grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+/* ── LIGHTBOX ── */
+.mf-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 16, 12, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  padding: 40px;
+}
+.mf-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.mf-lightbox__img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+}
+.mf-lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.mf-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 /* ── TIMELINE ── */
 .mf-timeline {
   padding: 80px 0;
@@ -842,3 +1050,43 @@ const pageSchemas = [
   .mf-philly { padding: 60px 0; }
 }
 </style>
+
+<script>
+  // Utility bill lightbox
+  (function initBillLightbox() {
+    const lightbox = document.getElementById('mfLightbox');
+    const lightboxImg = document.getElementById('mfLightboxImg');
+    const closeBtn = document.getElementById('mfLightboxClose');
+
+    if (!lightbox || !lightboxImg || !closeBtn) return;
+
+    function openBill(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBill() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      // Clear src after transition
+      setTimeout(() => { if (!lightbox.classList.contains('is-open')) lightboxImg.src = ''; }, 300);
+    }
+
+    document.querySelectorAll('.mf-bill[data-bill]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        openBill(btn.dataset.bill);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeBill);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeBill();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeBill();
+    });
+  })();
+</script>
