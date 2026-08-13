@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InnerPageHero from '../components/InnerPageHero.astro';
 import BrandLogos from '../components/BrandLogos.astro';
+import CTAAvatars from '../components/CTAAvatars.astro';
 
 const title = 'Contact Window Film Philadelphia | Free Quote | PA & NJ';
 const description = 'Contact Window Film Philadelphia for a free consultation. Call (267) 394-7980 or request a quote online. Serving Philadelphia, Camden, and the Delaware Valley.';
@@ -271,18 +271,23 @@ const contactImages = {
   <BrandLogos />
 
   <!-- ══════════════════════════════════════
-       CTA BANNER
+       CTA — CTAAvatars (component library)
        ══════════════════════════════════════ -->
-  <section class="auron-cta-banner">
-    <div class="auron-cta-banner__inner">
-      <h2 class="auron-cta-banner__title">Ready to transform your space?</h2>
-      <p class="auron-cta-banner__sub">Free consultations. No-pressure quotes. Professional installation backed by industry-leading warranties.</p>
-      <div class="auron-cta-banner__btns">
-        <a href="tel:+126****7980" class="auron-btn auron-btn--primary">Call (267) 394-7980</a>
-        <a href="mailto:contact@windowfilmphiladelphia.net" class="auron-btn auron-btn--ghost-white">Email Us</a>
-      </div>
-    </div>
-  </section>
+  <CTAAvatars
+    title="Ready to transform your space?"
+    subtitle="Free consultations. No-pressure quotes. Professional installation backed by manufacturer warranties."
+    count="Trusted by 2,400+ Philadelphia property owners"
+    btnLabel="Get a Free Consultation"
+    btnHref="#consultation"
+    avatars={[
+      { name: 'David R.', location: 'Center City', img: '/images/about/about-avatar-1.jpg' },
+      { name: 'Lisa M.', location: 'Rittenhouse', img: '/images/about/about-avatar-3.jpg' },
+      { name: 'Robert K.', location: 'South Street', img: '/images/about/about-avatar-2.jpg' },
+      { name: 'Thomas H.', location: 'University City', img: '/images/about/about-avatar-4.jpg' },
+      { name: 'Janet F.', location: 'Manayunk', img: '/images/about/about-avatar-5.jpg' },
+      { name: 'Sarah M.', location: 'Fishtown', img: '/images/about/about-avatar-8.jpg' },
+    ]}
+  />
 
 </div><!-- end ct-body -->
 
@@ -758,34 +763,6 @@ const contactImages = {
     margin-bottom: 0;
   }
 
-  /* ── CTA BANNER ── */
-  .auron-cta-banner {
-    background: linear-gradient(135deg, var(--brand) 0%, var(--brand) 100%);
-    margin: 80px 0 0;
-    border-radius: 40px;
-    padding: 100px 60px;
-    text-align: center;
-  }
-  .auron-cta-banner__inner { max-width: 700px; margin: 0 auto; }
-  .auron-cta-banner__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .auron-cta-banner__sub {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 40px;
-    line-height: 1.6;
-  }
-  .auron-cta-banner__btns {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   /* ── FADE-IN ANIMATION ── */
   .fade-in {
     opacity: 0;
@@ -810,7 +787,6 @@ const contactImages = {
     .ct-cards, .ct-images, .ct-consult { padding-left: 28px; padding-right: 28px; }
     .ct-cards__grid { grid-template-columns: 1fr; }
     .ct-form-row { grid-template-columns: 1fr; }
-    .auron-cta-banner { padding: 72px 28px; }
   }
 </style>
 
