@@ -1,0 +1,844 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrandLogos from '../../components/BrandLogos.astro';
+import CTAAvatars from '../../components/CTAAvatars.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+
+const title = 'Meet Martin Faith — Founder & CEO | Window Film Philadelphia';
+const description = 'Martin Faith founded Scottish Window Tinting in 2008 after seeing window film cut his own utility bills by over 70%. From Glasgow stained glass artisan to national window film leader — his story and vision.';
+const dateModified = new Date().toISOString().slice(0, 10);
+
+const timeline = [
+  {
+    year: '1991',
+    title: 'From Glasgow to Colorado',
+    desc: 'Martin Faith moved from Glasgow, Scotland — home of the Glasgow School of Art — to Colorado. He brought with him decades of traditional stained glass craft, from collecting and restoring to fabricating original pieces.',
+  },
+  {
+    year: '1993',
+    title: 'Scottish Stained Glass Founded',
+    desc: 'Martin founded Scottish Stained Glass, which grew into one of the largest custom stained glass studios in the United States. The craft of working with glass — precision, light, and material — became the foundation for everything that followed.',
+  },
+  {
+    year: '2008',
+    title: 'The Window Film Experiment',
+    desc: 'Martin installed energy-efficient window film on his own home and watched his utility bills drop dramatically. That firsthand proof — real savings on a real house — convinced him that window film was a viable business that could help property owners across the country.',
+  },
+  {
+    year: '2008+',
+    title: 'Scottish Window Tinting Launched',
+    desc: 'Martin founded Scottish Window Tinting to bring professional window film installation to homes and businesses nationwide. The company started with residential service in Colorado and expanded to Texas, Utah, Kansas, Missouri, and commercial service across all 50 states.',
+  },
+  {
+    year: '2019',
+    title: 'Colorado Companies to Watch',
+    desc: 'Scottish Window Tinting was named a Colorado Companies to Watch winner — recognition for sustained growth and impact in the business community.',
+  },
+  {
+    year: '2019',
+    title: 'Lifetime Achievement Award',
+    desc: 'Martin received a Lifetime Achievement Award from Vistage International for his contributions to the Colorado business community across multiple companies and decades of leadership.',
+  },
+];
+
+const savingsSteps = [
+  {
+    label: 'Before Window Film',
+    value: '$8.98',
+    unit: 'avg daily utility cost',
+    note: 'Martin\'s home before any window improvements — the baseline.',
+  },
+  {
+    label: 'After Low-E Windows',
+    value: '$6.55',
+    unit: 'avg daily utility cost',
+    note: 'Replacing the windows with Low-E glass reduced costs, but at significant replacement expense.',
+  },
+  {
+    label: 'After Window Film',
+    value: '$2.54',
+    unit: 'avg daily utility cost',
+    note: 'Solar control window film applied to the existing glass — the result that launched a company.',
+  },
+];
+
+const values = [
+  {
+    title: 'Craftsmanship First',
+    body: 'Martin started as a stained glass artisan — working with glass by hand, learning traditional techniques in Glasgow. That craftsperson\'s mindset defines how every window film installation is approached: the right product, applied with precision, inspected before we leave.',
+    icon: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l4.461-4.461a2 2 0 012.828 0l.207.207a2 2 0 010 2.828l-4.461 4.461M11.42 15.17L6.75 21A2.652 2.652 0 003 17.25l5.877-5.877M11.42 15.17l-4.461-4.461a2 2 0 00-2.828 0l-.207.207a2 2 0 000 2.828l4.461 4.461',
+  },
+  {
+    title: 'Proof Before Promises',
+    body: 'Martin did not start a window film company because of a market analysis. He started it because he installed film on his own home and watched his utility bills drop by over 70%. That standard — prove it works before you sell it — still drives product selection and testing today.',
+    icon: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'People Over Subcontractors',
+    body: 'Every installer is a W-2 employee — not a subcontractor dispatched from a call center. Martin built the company on consistent quality and accountability. The person who assesses your glass is part of the team that installs it.',
+    icon: 'M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 5.87v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2m13-10a4 4 0 11-8 0 4 4 0 018 0z',
+  },
+  {
+    title: 'Nationwide Reach, Local Service',
+    body: 'Scottish Window Tinting serves all 50 states commercially, with residential teams in Colorado, Texas, Utah, Kansas, and Missouri. Window Film Philadelphia is the Delaware Valley office — the same company, the same standards, local crews who know the city\'s building stock.',
+    icon: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
+  },
+];
+
+const faqItems = [
+  { question: 'Who is Martin Faith?', answer: 'Martin Faith is the founder and CEO of Scottish Window Tinting — the parent company of Window Film Philadelphia. Originally from Glasgow, Scotland, Martin began his career as a stained glass artisan before expanding into window film in 2008 after seeing the energy savings on his own home. He has over 30 years of experience in the home improvement industry.' },
+  { question: 'How did Martin Faith get into window film?', answer: 'In 2008, Martin installed energy-efficient window film on his own home and tracked the results. His average daily utility cost dropped from $8.98 to $2.54 after applying solar control film to the existing glass. That firsthand evidence — not a market study — convinced him to start a window film company. Scottish Window Tinting was founded to bring that same savings and comfort to property owners nationwide.' },
+  { question: 'What is Scottish Group Companies?', answer: 'Scottish Group Companies is the parent organization founded by Martin Faith. It includes Scottish Stained Glass (founded 1993), Scottish Home Improvements (founded 2002), and Scottish Window Tinting (founded 2008). Window Film Philadelphia is the Philadelphia office of Scottish Window Tinting, serving the Delaware Valley with the same products, standards, and certified installers.' },
+  { question: 'Is Window Film Philadelphia the same company as Scottish Window Tinting?', answer: 'Yes. Window Film Philadelphia is the Philadelphia office of Scottish Window Tinting, which is part of Scottish Group Companies. The Philadelphia team carries the same manufacturer certifications, uses the same installation process, and operates under the same standards as every Scottish Window Tinting location nationwide.' },
+  { question: 'What awards has Martin Faith received?', answer: 'Martin received a Lifetime Achievement Award from Vistage International in 2019 for his contributions to the Colorado business community. Scottish Window Tinting was also named a Colorado Companies to Watch winner in 2019, recognizing the company\'s sustained growth and business impact.' },
+  { question: 'Can I meet with Martin or his team for a consultation?', answer: 'While Martin oversees the national company, the Window Film Philadelphia team handles all local consultations. Every project starts with a free on-site assessment by a certified installer who evaluates your glass, discusses your goals, and recommends the right film — the same process Martin used on his own home. Schedule a free consultation through our contact page or call (267) 394-7980.' },
+];
+
+const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.windowfilmphiladelphia.net/about/' },
+      { '@type': 'ListItem', position: 3, name: 'Meet Martin Faith', item: 'https://www.windowfilmphiladelphia.net/about/team/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/about/team/',
+    url: 'https://www.windowfilmphiladelphia.net/about/team/',
+    name: 'Meet Martin Faith — Founder & CEO',
+    description,
+    dateModified,
+    isPartOf: { '@id': 'https://www.windowfilmphiladelphia.net/#website' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': 'https://www.windowfilmphiladelphia.net/about/team/',
+    url: 'https://www.windowfilmphiladelphia.net/about/team/',
+    name: 'Meet Martin Faith',
+    description,
+    dateModified,
+    about: {
+      '@type': 'Person',
+      name: 'Martin Faith',
+      jobTitle: 'Founder & CEO',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Scottish Window Tinting',
+        parentOrganization: {
+          '@type': 'Organization',
+          name: 'Scottish Group Companies',
+        },
+      },
+      description: 'Founder of Scottish Window Tinting and Window Film Philadelphia. Originally from Glasgow, Scotland. Over 30 years of experience in the home improvement industry. Lifetime Achievement Award recipient from Vistage International (2019).',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://www.windowfilmphiladelphia.net/about/team/#person',
+    name: 'Martin Faith',
+    jobTitle: 'Founder & CEO',
+    image: 'https://www.windowfilmphiladelphia.net/images/team/team-martin-faith.jpg',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Scottish Window Tinting',
+    },
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Glasgow School of Art' },
+    birthPlace: { '@type': 'City', name: 'Glasgow', containedInPlace: { '@type': 'Country', name: 'Scotland' } },
+    description: 'Entrepreneur with over 30 years in the home improvement industry. Founded Scottish Stained Glass (1993), Scottish Home Improvements (2002), and Scottish Window Tinting (2008). Lifetime Achievement Award from Vistage International (2019).',
+    knowsAbout: ['Window film', 'Stained glass', 'Energy efficiency', 'Solar control', 'Security film', 'Home improvement'],
+    award: ['Lifetime Achievement Award - Vistage International 2019', 'Colorado Companies to Watch 2019'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://www.windowfilmphiladelphia.net/about/team/"
+  faqItems={faqItems}
+  serviceName="Window Film Philadelphia"
+  serviceDesc="Meet Martin Faith — founder of Scottish Window Tinting and Window Film Philadelphia. From Glasgow stained glass artisan to national window film leader with over 30 years of experience."
+  serviceUrl="https://www.windowfilmphiladelphia.net/about/team/"
+  schemas={pageSchemas}
+>
+
+<!-- ═══ HERO ═══ -->
+<section class="mf-hero">
+  <div class="mf-hero__bg" style="background-image: url('/images/about/window-film-philadelphia-about-hero.jpg')" role="img" aria-label="Professional window film installation — the craft behind Window Film Philadelphia"></div>
+  <div class="mf-hero__overlay"></div>
+  <div class="mf-hero__content">
+    <div class="mf-hero__text">
+      <div class="mf-hero__eyebrow">
+        <span class="mf-hero__eyebrow-dot" aria-hidden="true"></span>
+        FOUNDER &amp; CEO
+        <span class="mf-hero__eyebrow-dot" aria-hidden="true"></span>
+      </div>
+      <h1 class="mf-hero__title">Meet Martin Faith</h1>
+      <p class="mf-hero__subtitle">From a stained glass artisan in Glasgow, Scotland to the founder of one of the nation's leading window film companies — Martin built Scottish Window Tinting on a simple idea: prove it works on your own house before you sell it to anyone else.</p>
+    </div>
+    <div class="mf-hero__portrait">
+      <img src="/images/team/team-martin-faith.jpg" alt="Martin Faith, Founder and CEO of Scottish Window Tinting" title="Martin Faith" loading="eager" />
+    </div>
+  </div>
+</section>
+
+<div class="mf-body">
+
+<!-- ═══ BRAND LOGOS ═══ -->
+<BrandLogos />
+
+<!-- ═══ ORIGIN STORY ═══ -->
+<section class="mf-origin">
+  <div class="mf-container">
+    <div class="mf-origin__grid">
+      <div class="mf-origin__image-wrap">
+        <img src="/images/about/window-film-philadelphia-workshop.jpg" alt="Philadelphia window film workshop with rolls of film material and installation tools" title="Window film workshop — where craft meets technology" class="mf-origin__image" loading="lazy" />
+      </div>
+      <div class="mf-origin__content">
+        <span class="mf-eyebrow">The Beginning</span>
+        <h2 class="mf-origin__title">A craftsman's path from stained glass to window film.</h2>
+        <p class="mf-origin__lead">Martin Faith was born and raised in Glasgow, Scotland — a city shaped by the Glasgow School of Art and a deep tradition of glasswork. He learned the craft of stained glass from an early age: collecting, restoring, and fabricating original pieces using traditional techniques passed down through generations.</p>
+        <p class="mf-origin__lead">In 1991, Martin moved to Colorado and was surprised that American homes were not utilizing stained glass the way European homes did. He founded <a href="/about/" style="color: var(--mf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Scottish Stained Glass</a> in 1993, which grew into one of the largest custom stained glass studios in the United States. Working with glass — understanding how light, heat, and material interact — became the foundation for everything that followed.</p>
+        <p class="mf-origin__lead">That foundation led to window film. The same principles that make stained glass beautiful and functional — controlling light, managing heat, protecting what is inside — are what make window film effective. Martin saw the connection before most of the industry did.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE SAVINGS STORY ═══ -->
+<section class="mf-savings">
+  <div class="mf-container">
+    <div class="mf-savings__head">
+      <span class="mf-eyebrow mf-eyebrow--center">The Moment It Clicked</span>
+      <h2 class="mf-savings__title">One utility bill changed everything.</h2>
+      <p class="mf-savings__lead">In 2008, Martin installed energy-efficient window film on his own home and tracked the results. What he saw convinced him to start a window film company — not from a spreadsheet, but from a real electricity bill on a real house.</p>
+    </div>
+    <div class="mf-savings__grid">
+      {savingsSteps.map((step, i) => (
+        <div class={`mf-savings__card${i === 2 ? ' mf-savings__card--highlight' : ''}`}>
+          <span class="mf-savings__step">{`Step ${i + 1}`}</span>
+          <p class="mf-savings__label">{step.label}</p>
+          <div class="mf-savings__value">{step.value}</div>
+          <p class="mf-savings__unit">{step.unit}</p>
+          <p class="mf-savings__note">{step.note}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mf-savings__callout">
+      <p>Martin's average daily utility cost dropped from <strong>$8.98 to $2.54</strong> after applying solar control window film to his existing glass — a reduction of over <strong>70%</strong>. No window replacement, no construction, no disruption. Just film, applied to the glass that was already there.</p>
+      <p class="mf-savings__callout-aside">He started Scottish Window Tinting that same year. The company now serves residential clients across five states and commercial clients in all 50.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section class="mf-timeline">
+  <div class="mf-container">
+    <span class="mf-eyebrow mf-eyebrow--center">The Journey</span>
+    <h2 class="mf-timeline__title">From Glasgow to Philadelphia.</h2>
+    <div class="mf-timeline__track">
+      {timeline.map((item, i) => (
+        <div class={`mf-timeline__item${i % 2 === 0 ? '' : ' mf-timeline__item--rev'}`}>
+          <div class="mf-timeline__year">{item.year}</div>
+          <div class="mf-timeline__line" aria-hidden="true"></div>
+          <div class="mf-timeline__content">
+            <h3 class="mf-timeline__item-title">{item.title}</h3>
+            <p class="mf-timeline__item-desc">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VALUES ═══ -->
+<section class="mf-values">
+  <div class="mf-container">
+    <span class="mf-eyebrow mf-eyebrow--center">What Martin Built</span>
+    <h2 class="mf-values__title">Principles that drive the company.</h2>
+    <div class="mf-values__grid">
+      {values.map((v) => (
+        <div class="mf-value">
+          <div class="mf-value__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mf-green, #81AB4C)" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d={v.icon} />
+            </svg>
+          </div>
+          <h3 class="mf-value__title">{v.title}</h3>
+          <p class="mf-value__body" set:html={v.body} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHILADELPHIA CONNECTION ═══ -->
+<section class="mf-philly">
+  <div class="mf-container">
+    <div class="mf-philly__grid">
+      <div class="mf-philly__content">
+        <span class="mf-eyebrow">Local Presence</span>
+        <h2 class="mf-philly__title">Window Film Philadelphia is Scottish Window Tinting, locally.</h2>
+        <p class="mf-philly__lead">Window Film Philadelphia is the Delaware Valley office of Scottish Window Tinting — part of Scottish Group Companies, founded by Martin Faith. The Philadelphia team carries the same manufacturer certifications, uses the same installation process, and operates under the same standards as every Scottish Window Tinting location nationwide.</p>
+        <p class="mf-philly__lead">From <a href="/applications/homes-condos/" style="color: var(--mf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">South Philly rowhomes</a> to <a href="/applications/office/" style="color: var(--mf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Center City office towers</a>, the approach is the one Martin started with: assess the glass, recommend the right film, apply it with precision, and prove the results. The Philadelphia crews are local — not dispatched from another state. They know the city's building stock, from historic 19th-century glass to modern curtain walls.</p>
+        <div class="mf-philly__links">
+          <a href="/about/" class="mf-philly__link">Our Story →</a>
+          <a href="/process/" class="mf-philly__link">Our Process →</a>
+          <a href="/reviews/" class="mf-philly__link">Reviews →</a>
+        </div>
+      </div>
+      <div class="mf-philly__image-wrap">
+        <img src="/images/about/center-city-window-film-philadelphia-bento.jpg" alt="Philadelphia Center City high-rise with professional window film on glass facade" title="Philadelphia Center City — window film on commercial glass" class="mf-philly__image" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<AccordionFAQ
+  eyebrow="Questions"
+  heading="About Martin Faith & Scottish Window Tinting"
+  sub="The story behind the company and the person who started it."
+  items={faqAccordionItems}
+/>
+
+<!-- ═══ CTA ═══ -->
+<CTAAvatars
+  title="Ready to start your window film project?"
+  subtitle="Free consultation, transparent pricing, and manufacturer-backed warranties on every install. The same process Martin used on his own home — assess the glass, recommend the right film, apply it with precision."
+  count="Trusted by 2,400+ Philadelphia property owners"
+  btnLabel="Get a Free Consultation"
+  btnHref="/contact/"
+  avatars={[
+    { name: 'David R.', location: 'Center City', img: '/images/about/about-avatar-1.jpg' },
+    { name: 'Lisa M.', location: 'Rittenhouse', img: '/images/about/about-avatar-3.jpg' },
+    { name: 'Robert K.', location: 'South Street', img: '/images/about/about-avatar-2.jpg' },
+    { name: 'Thomas H.', location: 'University City', img: '/images/about/about-avatar-4.jpg' },
+    { name: 'Janet F.', location: 'Manayunk', img: '/images/about/about-avatar-5.jpg' },
+    { name: 'Sarah M.', location: 'Fishtown', img: '/images/about/about-avatar-8.jpg' },
+  ]}
+/>
+
+</div>
+
+</BaseLayout>
+
+<style>
+/* ── DESIGN TOKENS ── */
+:root {
+  --mf-radius: 5px;
+  --mf-charcoal: #272E32;
+  --mf-green: #81AB4C;
+  --mf-green-light: #eef4e4;
+  --mf-green-dark: #7CB342;
+  --mf-off-white: #F7F6F3;
+  --mf-light-gray: #EFEFED;
+  --mf-text-dark: #1a1a1a;
+  --mf-text-mid: #4a4a4a;
+  --mf-text-light: #888;
+}
+
+.mf-body { background: #ffffff; }
+.mf-container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+/* ── EYEBROW ── */
+.mf-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mf-green);
+  margin-bottom: 16px;
+}
+.mf-eyebrow--center { display: block; text-align: center; margin-bottom: 20px; }
+
+/* ── HERO ── */
+.mf-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.mf-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.mf-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(39,46,50,0.72) 0%, rgba(39,46,50,0.85) 55%, rgba(39,46,50,0.95) 100%);
+}
+.mf-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px 5% 80px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.mf-hero__text {
+  max-width: 640px;
+}
+.mf-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(124, 179, 66, 0.85);
+  margin-bottom: 28px;
+  background: rgba(124, 179, 66, 0.08);
+  border: 1px solid rgba(124, 179, 66, 0.2);
+  padding: 8px 18px;
+  border-radius: 100px;
+}
+.mf-hero__eyebrow-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(124, 179, 66, 0.4);
+  flex-shrink: 0;
+}
+.mf-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1.05;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.mf-hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: rgba(243, 246, 241, 0.78);
+  line-height: 1.75;
+  margin: 0;
+}
+.mf-hero__portrait {
+  display: flex;
+  justify-content: center;
+}
+.mf-hero__portrait img {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--mf-radius);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 860px) {
+  .mf-hero__content { grid-template-columns: 1fr; gap: 32px; text-align: center; padding: 100px 5% 60px; }
+  .mf-hero__eyebrow { margin-left: auto; margin-right: auto; }
+  .mf-hero__portrait img { max-width: 280px; }
+}
+
+/* ── ORIGIN ── */
+.mf-origin {
+  padding: 80px 0;
+}
+.mf-origin__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.mf-origin__image-wrap {
+  border-radius: var(--mf-radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.mf-origin__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mf-origin__content { max-width: 520px; }
+.mf-origin__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--mf-text-dark);
+  line-height: 1.2;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.mf-origin__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--mf-text-mid);
+  margin: 0 0 20px;
+}
+@media (max-width: 860px) {
+  .mf-origin__grid { grid-template-columns: 1fr; gap: 40px; }
+  .mf-origin { padding: 60px 0; }
+}
+
+/* ── SAVINGS ── */
+.mf-savings {
+  padding: 80px 0;
+  background: var(--mf-off-white);
+}
+.mf-savings__head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+.mf-savings__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--mf-text-dark);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+.mf-savings__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--mf-text-mid);
+  margin: 0;
+}
+.mf-savings__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.mf-savings__card {
+  background: #fff;
+  border: 1px solid var(--mf-light-gray);
+  border-radius: var(--mf-radius);
+  padding: 36px 28px;
+  text-align: center;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+.mf-savings__card:hover {
+  box-shadow: 0 8px 32px rgba(39, 46, 50, 0.08);
+  transform: translateY(-2px);
+}
+.mf-savings__card--highlight {
+  border-color: var(--mf-green);
+  background: linear-gradient(135deg, #fff 0%, var(--mf-green-light) 100%);
+}
+.mf-savings__card--highlight:hover {
+  box-shadow: 0 8px 32px rgba(124, 179, 66, 0.15);
+}
+.mf-savings__step {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mf-text-light);
+}
+.mf-savings__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--mf-text-dark);
+  margin: 12px 0 16px;
+}
+.mf-savings__value {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--mf-charcoal);
+  line-height: 1;
+  margin: 0;
+}
+.mf-savings__card--highlight .mf-savings__value {
+  color: var(--mf-green-dark);
+}
+.mf-savings__unit {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: var(--mf-text-light);
+  margin: 8px 0 16px;
+}
+.mf-savings__note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--mf-text-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+.mf-savings__callout {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--mf-charcoal);
+  color: rgba(243, 246, 241, 0.85);
+  border-radius: var(--mf-radius);
+  padding: 40px 48px;
+}
+.mf-savings__callout p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+.mf-savings__callout strong {
+  color: var(--mf-green);
+}
+.mf-savings__callout-aside {
+  font-size: 0.9rem !important;
+  color: rgba(243, 246, 241, 0.55) !important;
+  font-style: italic;
+  margin-top: 20px !important;
+}
+@media (max-width: 860px) {
+  .mf-savings__grid { grid-template-columns: 1fr; gap: 20px; }
+  .mf-savings__callout { padding: 32px 24px; }
+}
+
+/* ── TIMELINE ── */
+.mf-timeline {
+  padding: 80px 0;
+}
+.mf-timeline__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--mf-text-dark);
+  line-height: 1.2;
+  margin: 0 0 48px;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+.mf-timeline__track {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mf-timeline__item {
+  display: grid;
+  grid-template-columns: 120px 60px 1fr;
+  gap: 0;
+  align-items: start;
+  padding-bottom: 48px;
+}
+.mf-timeline__item:last-child { padding-bottom: 0; }
+.mf-timeline__year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--mf-green-dark);
+  text-align: right;
+  padding-right: 20px;
+  line-height: 1.2;
+}
+.mf-timeline__line {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background: var(--mf-light-gray);
+  margin: 0 auto;
+}
+.mf-timeline__line::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--mf-green);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px var(--mf-green);
+}
+.mf-timeline__content {
+  padding-left: 20px;
+}
+.mf-timeline__item-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--mf-text-dark);
+  margin: 0 0 8px;
+}
+.mf-timeline__item-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--mf-text-mid);
+  margin: 0;
+}
+@media (max-width: 700px) {
+  .mf-timeline__item { grid-template-columns: 80px 40px 1fr; }
+  .mf-timeline__year { font-size: 1.25rem; padding-right: 12px; }
+  .mf-timeline__content { padding-left: 12px; }
+  .mf-timeline__item-title { font-size: 1.1rem; }
+}
+
+/* ── VALUES ── */
+.mf-values {
+  padding: 80px 0;
+  background: var(--mf-charcoal);
+}
+.mf-values__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1.2;
+  margin: 0 0 48px;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+.mf-values__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.mf-value {
+  position: relative;
+}
+.mf-value:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -16px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(124, 179, 66, 0.2);
+}
+.mf-value__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(124, 179, 66, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.mf-value__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #F3F6F1;
+  margin: 0 0 12px;
+}
+.mf-value__body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(243, 246, 241, 0.65);
+  margin: 0;
+}
+.mf-value__body :global(a) {
+  color: var(--mf-green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1024px) {
+  .mf-values__grid { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
+  .mf-value:nth-child(2)::after { display: none; }
+}
+@media (max-width: 600px) {
+  .mf-values__grid { grid-template-columns: 1fr; gap: 32px; }
+  .mf-value::after { display: none !important; }
+  .mf-value { padding-bottom: 32px; border-bottom: 1px solid rgba(124, 179, 66, 0.15); }
+  .mf-value:last-child { border-bottom: none; padding-bottom: 0; }
+}
+
+/* ── PHILLY CONNECTION ── */
+.mf-philly {
+  padding: 80px 0;
+  background: var(--mf-off-white);
+}
+.mf-philly__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.mf-philly__content { max-width: 560px; }
+.mf-philly__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--mf-text-dark);
+  line-height: 1.2;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.mf-philly__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--mf-text-mid);
+  margin: 0 0 20px;
+}
+.mf-philly__links {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.mf-philly__link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--mf-green-dark);
+  text-decoration: none;
+  border-bottom: 2px solid var(--mf-green-light);
+  padding-bottom: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.mf-philly__link:hover {
+  border-color: var(--mf-green);
+  color: var(--mf-green);
+}
+.mf-philly__image-wrap {
+  border-radius: var(--mf-radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.mf-philly__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 860px) {
+  .mf-philly__grid { grid-template-columns: 1fr; gap: 40px; }
+  .mf-philly { padding: 60px 0; }
+}
+</style>
