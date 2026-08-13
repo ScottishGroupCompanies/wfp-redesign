@@ -5,7 +5,7 @@ import { allCategories, benefitCategories, applicationCategories, cityCategories
 import CtaLightRays from '../components/CtaLightRays.astro';
 
 const title = 'Window Film Blog | Tips & Guides | Window Film Philadelphia';
-const description = 'Read the latest window film tips, guides, and industry news from Window Film Philadelphia. Expert advice for residential and commercial properties in the Philadelphia area.';
+const description = 'Read window film tips, guides, and news from Window Film Philadelphia. Expert advice for residential and commercial properties in the Philly area.';
 const dateModified = new Date().toISOString().slice(0, 10);
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -90,7 +90,7 @@ const pageSchemas = [
 <!-- ═══ BLOG INDEX — featured lead + card grid ═══ -->
 <section class="bli">
   <div class="bli__head">
-    <h2 class="bli__title">Latest Articles</h2>
+    <h2 class="bli__title">What's new in window film?</h2>
     <p class="bli__sub">Guides, tips, and expert advice from our installation team.</p>
   </div>
   <div class="bli__wrap">
@@ -98,7 +98,7 @@ const pageSchemas = [
       <a class="bli__lead" href={`/blog/${featuredPost.slug}/`}>
         <div class="bli__lead-img">
           {featuredPost.data.image && (
-            <img src={featuredPost.data.image} alt={featuredPost.data.imageAlt || featuredPost.data.title} loading="lazy" />
+            <img src={featuredPost.data.image} alt={featuredPost.data.imageAlt || featuredPost.data.title} title={featuredPost.data.imageAlt || featuredPost.data.title} loading="lazy" />
           )}
         </div>
         <div class="bli__lead-body">
@@ -106,7 +106,7 @@ const pageSchemas = [
           <h3>{featuredPost.data.title}</h3>
           <p class="bli__excerpt">{featuredPost.data.description}</p>
           <div class="bli__meta">
-            <img src={authorAvatars[featuredPost.data.author] || defaultAvatar} alt={featuredPost.data.author} />
+            <img src={authorAvatars[featuredPost.data.author] || defaultAvatar} alt={featuredPost.data.author} title={featuredPost.data.author} />
             <span><b>{featuredPost.data.author}</b><small>{formatDate(featuredPost.data.pubDate)}</small></span>
           </div>
         </div>
@@ -122,7 +122,7 @@ const pageSchemas = [
           <a class="bli__card" href={`/blog/${post.slug}/`} style={`--d:${Math.min(i, 8) * 70}ms`}>
             <div class="bli__card-img">
               {post.data.image && (
-                <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />
+                <img src={post.data.image} alt={post.data.imageAlt || post.data.title} title={post.data.imageAlt || post.data.title} loading="lazy" />
               )}
               <span class="bli__chip">{catLabel}</span>
             </div>
@@ -130,7 +130,7 @@ const pageSchemas = [
               <h3>{post.data.title}</h3>
               <p class="bli__excerpt">{post.data.description}</p>
               <div class="bli__meta">
-                <img src={authorAvatars[post.data.author] || defaultAvatar} alt={post.data.author} />
+                <img src={authorAvatars[post.data.author] || defaultAvatar} alt={post.data.author} title={post.data.author} />
                 <span><b>{post.data.author}</b><small>{formatShort(post.data.pubDate)}</small></span>
               </div>
             </div>

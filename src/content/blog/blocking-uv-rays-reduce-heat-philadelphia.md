@@ -10,7 +10,7 @@ categories: ["uv-protection", "philadelphia"]
 draft: false
 ---
 
-## Why Homeowners Mix Up UV and Heat
+## Why do homeowners mix up UV and heat?
 
 Most people asking does blocking uv rays reduce heat in a Philadelphia home are really asking two questions at once. The first is whether the UV protection built into a window film will, by itself, make a room cooler. The second is whether a film that markets itself around UV blocking is doing what they think it is doing during the long, sun-heavy hours of a Philadelphia summer.
 

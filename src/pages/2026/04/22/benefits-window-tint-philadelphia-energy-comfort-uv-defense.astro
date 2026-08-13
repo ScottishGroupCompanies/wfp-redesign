@@ -3,12 +3,47 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BackAndForthSection from '../../../../components/BackAndForthSection.astro';
 
 const title = 'Benefits of Window Tint in Philadelphia: Energy, Comfort & UV Defense';
-const description = 'Philadelphia buildings take a beating from temperature swings, glare, and UV exposure. Learn how window tint addresses all three — without replacing your windows.';
+const description = 'Philadelphia buildings take a beating from temperature swings, glare, and UV. Learn how window tint addresses all three — without replacing your windows.';
 import BrandLogos from '../../../../components/BrandLogos.astro';
 import CTAStrip from '../../../../components/CTAStrip.astro';
+
+const canonical = 'https://www.windowfilmphiladelphia.net/2026/04/22/benefits-window-tint-philadelphia-energy-comfort-uv-defense/';
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "image": "https://www.windowfilmphiladelphia.net/images/wfphilly-infographic-3e9af1ac.webp",
+  "datePublished": "2026-04-22",
+  "dateModified": "2026-04-22",
+  "author": {
+    "@type": "Organization",
+    "name": "Window Film Philadelphia",
+    "url": "https://www.windowfilmphiladelphia.net/about/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Window Film Philadelphia",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.windowfilmphiladelphia.net/images/window-film-philadelphia-logo-white.png"
+    }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.windowfilmphiladelphia.net/" },
+    { "@type": "ListItem", "position": 2, "name": title, "item": canonical }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/2026/04/22/benefits-window-tint-philadelphia-energy-comfort-uv-defense/'>
+<BaseLayout title={title} description={description} canonical={canonical} schemas={[articleSchema, breadcrumbSchema]}>
   <section class="page-hero" style="background-image: linear-gradient(rgba(40,40,40,0.62), rgba(40,40,40,0.80)), url('/images/wfphilly-infographic-3e9af1ac.webp'); background-size: cover; background-position: center;">
     <div class="container">
       <h1>Benefits of Window Tint in Philadelphia: Energy, Comfort, and UV Defense</h1>

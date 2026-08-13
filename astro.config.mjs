@@ -14,7 +14,7 @@ export default defineConfig({
       applyBaseStyles: false, // We have custom base styles in global.css
     }),
     sitemap({
-      filter: (page) => !page.includes('/thank-you/'),
+      filter: (page) => !page.includes('/thank-you/') && !page.includes('/index-hiw-new'),
     }),
     icon({
       include: {

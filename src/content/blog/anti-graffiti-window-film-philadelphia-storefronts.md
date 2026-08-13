@@ -1,6 +1,6 @@
 ---
-title: "Anti-Graffiti Window Film for Philadelphia Storefronts and Historic Buildings"
-description: "Protect Philadelphia storefronts and historic buildings from spray paint and etching with anti-graffiti window film. Sacrificial film saves thousands vs. glass replacement."
+title: "Anti-Graffiti Window Film for Philadelphia Storefronts"
+description: "Protect Philadelphia storefronts from spray paint and etching with anti-graffiti window film. Sacrificial film saves thousands vs. replacement."
 pubDate: 2026-07-06
 author: "Window Film Philadelphia"
 image: "/images/anti-graffiti-window-film-philadelphia.jpg"

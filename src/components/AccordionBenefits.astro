@@ -91,7 +91,7 @@ const {
             >
               <!-- Mobile image (shows under open row on small screens) -->
               <div class="ab-detail__mobile-img">
-                <img src={b.image} alt={b.imageAlt} loading="lazy" />
+                <img src={b.image} alt={b.imageAlt} title={b.imageAlt} loading="lazy" />
               </div>
               <!-- Rich HTML detail -->
               <div class="ab-detail__body" set:html={b.detail} />
@@ -105,7 +105,7 @@ const {
         {benefits.map((b, i) => (
           <img
             src={b.image}
-            alt={b.imageAlt}
+            alt={b.imageAlt} title={b.imageAlt}
             class={`ab-img ${i === 0 ? 'ab-img--active' : ''}`}
             data-ab-img={i}
             loading={i === 0 ? 'eager' : 'lazy'}

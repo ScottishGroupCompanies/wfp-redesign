@@ -1,6 +1,6 @@
 ---
 title: "How Does Security Window Film Work for Philadelphia Schools?"
-description: "Discover how security window film works in Philadelphia schools — it holds glass together, delays entry, and reduces injury risk during break-ins, storms, or impacts. Learn the real capabilities."
+description: "Discover how security window film works in Philadelphia schools — it holds glass together, delays entry, and reduces injury risk."
 pubDate: 2026-07-30
 author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-security-window-film-work-philadelphia.jpg"
@@ -12,7 +12,7 @@ draft: false
 
 In Philadelphia schools, from South Philly classrooms to Center City education centers and Main Line campuses, safety is never just about locks and cameras. It's about how every part of the building responds in a crisis. We've seen it firsthand: a shattered window during a storm, a forced entry attempt at a side door, or just the daily wear on old glass in a Fishtown academic building. What we do is make sure that when glass breaks, it doesn't become a hazard. Security window film works by reinforcing existing glazing, holding fragments together, and adding critical seconds — sometimes minutes — of delay during unauthorized entry. In this post, we'll break down exactly how this technology performs in real school environments, what it can and can't do, and how Philadelphia institutions can use it as part of a layered safety strategy.
 
-## How Security Window Film Reinforces Glass with Strong Adhesion
+## How does security window film reinforce glass?
 
 Security window film bonds directly to the interior or exterior glass surface using a high-tack, pressure-sensitive adhesive. This adhesive isn't just glue — it's engineered to create a continuous bond across the entire pane, turning the glass and film into a single composite layer. When we install on older sash windows in historic school buildings in Society Hill or University City, we prep each surface meticulously: clean with isopropyl alcohol, neutralize any residue, and apply the film with zero contaminants. This ensures maximum contact. The film itself is made from polyethylene terephthalate (PET), a durable polymer that resists stretching and tearing. Once applied, the bond becomes part of the glass system, so even if impact fractures the pane, the film retains the shards. That means broken glass stays in the opening rather than scattering across a classroom floor or hallway. It's not about preventing breakage — it's about controlling what happens after.
 

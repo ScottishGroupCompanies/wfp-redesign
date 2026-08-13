@@ -1,6 +1,6 @@
 ---
-title: "Benefits of Ceramic Tint for Philadelphia Homes: Cooler Rooms, Clearer Views"
-description: "Discover the real benefits of ceramic tint for Philadelphia homes — heat rejection, UV protection, and glare control without sacrificing your view. Learn more."
+title: "Ceramic Tint: Cooler Rooms in Philadelphia Homes"
+description: "Discover the real benefits of ceramic tint for Philadelphia homes — heat rejection, UV protection, and glare control without sacrificing your view."
 pubDate: 2026-06-21
 author: "Window Film Philadelphia"
 image: "/images/wfp-office-hero.jpg"

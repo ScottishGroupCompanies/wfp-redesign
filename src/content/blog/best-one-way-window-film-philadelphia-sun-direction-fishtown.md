@@ -1,5 +1,5 @@
 ---
-title: "Best One Way Window Film Philadelphia: Match Film to Sun Direction in Fishtown"
+title: "One Way Window Film: Sun Direction in Philadelphia"
 description: "Best one way window film Philadelphia advice for Fishtown homes: match reflective film to sun direction, glare, and nighttime privacy limits."
 pubDate: 2026-06-16
 author: "Window Film Philadelphia"
@@ -10,7 +10,7 @@ draft: false
 categories: ["privacy-film", "philadelphia"]
 ---
 
-## Why Sun Direction Matters More Than the Mirror Look
+## Why does sun direction matter more than the mirror look?
 
 The best one way window film Philadelphia homeowners choose usually works because of daylight, not because the glass becomes permanently private. In Fishtown rowhomes, converted lofts, and corner properties near Frankford Avenue, that distinction matters. A reflective exterior appearance can give strong daytime privacy when the outside is brighter than the room inside, but that effect weakens fast once clouds roll in, a tree canopy blocks the sun, or interior lights come on after sunset.
 
@@ -33,7 +33,7 @@ Some elevations naturally give one-way film a better chance to work well. Before
 - East-facing windows can look great in the morning, then lose some of that privacy effect by mid to late afternoon.
 - North-facing windows are usually the least reliable for one-way film because they receive the most even, indirect light.
 
-The U.S. Department of Energy notes that north-facing windows bring relatively even light with little summer heat gain, while east- and west-facing windows are more sensitive to direct sun angle changes. That is exactly why sun direction matters so much when selecting reflective film for a Philadelphia home or storefront: [DOE daylighting guidance](https://www.energy.gov/energysaver/daylighting).
+The U.S. Department of Energy notes that north-facing windows bring relatively even light with little summer heat gain, while east- and west-facing windows are more sensitive to direct sun angle changes. That is exactly why sun direction matters so much when selecting reflective film for a Philadelphia home or storefront: [DOE daylighting guidance](https://www.wbdg.org/resources/daylighting).
 
 ## Product Details That Actually Matter
 

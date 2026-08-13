@@ -1,5 +1,5 @@
 ---
-title: "Does Mirror Tint Reduce Heat? Center City Glare vs. Temperature Results"
+title: "Does Mirror Tint Reduce Heat in Philadelphia?"
 description: "does mirror tint reduce heat in Philadelphia? Reflective window film cuts glare and solar gain for Center City rowhomes, shops, and offices."
 pubDate: 2026-05-31
 author: "Window Film Philadelphia"
@@ -10,7 +10,7 @@ draft: false
 categories: ["solar-control", "philadelphia"]
 ---
 
-## Mirror tint in Philadelphia: when glare becomes a heat problem
+## When does mirror tint glare become a heat problem?
 
 On a clear summer afternoon in Center City, the sun can turn a south- or west-facing window into a spotlight. The glare bounces off laptop screens in an office near Market Street, the front room of a South Philly rowhome feels like it’s “cooking,” and a storefront window in Old City makes customers squint as they step in from the sidewalk. Philadelphia’s hot, humid summers make that combination of brightness and warmth hard to ignore.
 
@@ -32,7 +32,7 @@ Heat control isn’t guesswork when you look at the right performance values. Th
 - **SHGC (Solar Heat Gain Coefficient):** the fraction of solar heat that ends up inside as heat; lower is better for summer comfort.
 - **Glare reduction / VLT (Visible Light Transmission):** how much visible light is reduced; this often tracks with comfort near the window and screen visibility.
 
-For a quick primer on film ratings and what labels can show (including SHGC and visible transmittance), the [Department of Energy guidance on energy-efficient window coverings](https://www.energy.gov/energysaver/energy-efficient-window-coverings) is a solid reference.
+For a quick primer on film ratings and what labels can show (including SHGC and visible transmittance), the [Department of Energy guidance on energy-efficient window coverings](https://www.buildinggreen.com/) is a solid reference.
 
 If your main concern is summer comfort and an AC system that struggles on humid July afternoons, SHGC and TSER do more to answer does mirror tint reduce heat than simply choosing the darkest-looking option.
 

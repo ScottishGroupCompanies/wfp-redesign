@@ -1,6 +1,6 @@
 ---
-title: "Does Window Tint Block Heat in Philadelphia: Infrared vs. UV Explained"
-description: "Does window tint block heat in Philadelphia homes and offices? Learn how IR-rejecting and UV-blocking films compare and which works best for Philly summers."
+title: "Does Window Tint Block Heat in Philadelphia?"
+description: "Does window tint block heat in Philadelphia homes and offices? Learn how IR-rejecting and UV-blocking films compare and which works best for Philly."
 pubDate: 2026-06-27
 author: "Window Film Philadelphia"
 image: "/images/wfp-office-hero.jpg"
