@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerPageHero from '../components/InnerPageHero.astro';
 import BrandLogos from '../components/BrandLogos.astro';
 
-const title = 'Contact Scottish Window Film | Free Quote | Philadelphia';
-const description = 'Contact Scottish Window Film in Philadelphia for a free window film consultation. Call (267) 394-7980 or request a quote online.';
+const title = 'Contact Window Film Philadelphia | Free Quote | PA & NJ';
+const description = 'Contact Window Film Philadelphia for a free consultation. Call (267) 394-7980 or request a quote online. Serving Philadelphia, Camden, and the Delaware Valley.';
 
 const contactImages = {
   img1: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260609_203051_9e201b35-80e5-4e3d-bc85-32561bb9d0ee.png',
@@ -16,13 +16,29 @@ const contactImages = {
 
 <BaseLayout title={title} description={description} canonical="https://www.windowfilmphiladelphia.net/contact/">
 
-<InnerPageHero
-  title="Get a Free Quote"
-  bgImage="https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_154526_2abe9c27-a9ea-468b-9a51-ca13dc27e4d1.png"
-  desc="Call (267) 394-7980 · Serving Greater Philadelphia"
-/>
+<!-- ═══ HERO ═══ -->
+<section class="ct-hero">
+  <div class="ct-hero__bg" style="background-image: url('https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260615_154526_2abe9c27-a9ea-468b-9a51-ca13dc27e4d1.png')" role="img" aria-label="Window Film Philadelphia — professional window film installation"></div>
+  <div class="ct-hero__overlay"></div>
+  <div class="ct-hero__content">
+    <div class="ct-hero__eyebrow">
+      <span class="ct-hero__eyebrow-dot" aria-hidden="true"></span>
+      GET IN TOUCH
+      <span class="ct-hero__eyebrow-dot" aria-hidden="true"></span>
+    </div>
+    <h1 class="ct-hero__title">Get a Free Quote</h1>
+    <p class="ct-hero__subtitle">Tell us about your building and your goals — we'll help you find the right film. Free on-site consultation, transparent pricing, and manufacturer-backed warranties on every install. Serving Philadelphia, Camden, and the Delaware Valley.</p>
+    <div class="ct-hero__cta">
+      <a href="tel:2673947980" class="ct-hero__btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        Call (267) 394-7980
+      </a>
+      <a href="#consultation" class="ct-hero__btn-secondary">Request a Quote Online</a>
+    </div>
+  </div>
+</section>
 
-<div class="ip-page-body">
+<div class="ct-body">
 
   <!-- ══════════════════════════════════════
        CONTACT CARDS — 3 col
@@ -103,7 +119,7 @@ const contactImages = {
   <!-- ══════════════════════════════════════
        CONSULTATION FORM + SIDEBAR
        ══════════════════════════════════════ -->
-  <section class="ct-consult">
+  <section class="ct-consult" id="consultation">
     <div class="ct-consult__inner">
 
       <!-- Form column -->
@@ -268,23 +284,134 @@ const contactImages = {
     </div>
   </section>
 
-</div><!-- end ip-page-body -->
+</div><!-- end ct-body -->
 
 </BaseLayout>
 
 <style>
-  /* ── PAGE BODY (inner page wrapper) ── */
-  .ip-page-body {
-    position: relative;
+  /* ── PAGE BODY (no rounded corners) ── */
+  .ct-body {
     background: #ffffff;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    margin-top: -40px;
+  }
+
+  /* ── HERO ── */
+  .ct-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .ct-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .ct-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(39,46,50,0.72) 0%, rgba(39,46,50,0.85) 55%, rgba(39,46,50,0.95) 100%);
+  }
+  .ct-hero__content {
+    position: relative;
     z-index: 10;
-    overflow: visible;
-    padding-bottom: 80px;
+    max-width: 860px;
+    padding: 120px 24px 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .ct-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(124, 179, 66, 0.85);
+    margin-bottom: 28px;
+    background: rgba(124, 179, 66, 0.08);
+    border: 1px solid rgba(124, 179, 66, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .ct-hero__eyebrow-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(124, 179, 66, 0.4);
+    flex-shrink: 0;
+  }
+  .ct-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    color: #F3F6F1;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+  }
+  .ct-hero__subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(243, 246, 241, 0.72);
+    max-width: 680px;
+    margin: 0 0 36px;
+    line-height: 1.75;
+  }
+  .ct-hero__cta {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .ct-hero__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #7CB342;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: 2px solid #7CB342;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .ct-hero__btn-primary:hover {
+    background: #6aa032;
+    border-color: #6aa032;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 179, 66, 0.3);
+  }
+  .ct-hero__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #F3F6F1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: 2px solid rgba(243, 246, 241, 0.35);
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+  }
+  .ct-hero__btn-secondary:hover {
+    border-color: #7CB342;
+    color: #7CB342;
+    transform: translateY(-2px);
+  }
+  @media (max-width: 640px) {
+    .ct-hero__cta { flex-direction: column; }
   }
 
   /* ── AURON BADGE (reuse from homepage) ── */
