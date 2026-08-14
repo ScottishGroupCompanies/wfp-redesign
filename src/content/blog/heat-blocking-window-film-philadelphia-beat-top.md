@@ -38,6 +38,8 @@ Each product line offers different visibility levels and heat rejection profiles
 
 ## Energy Savings That Add Up Over a Philadelphia Summer
 
+![heat blocking window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-heat-blocking-window-film-philadelphia-beat-top.jpg)
+
 Philadelphia's cooling season typically runs from late May through September, with July and August driving the highest electricity demand in the PJM grid that serves the region. Air conditioning accounts for a significant portion of residential and commercial energy costs during these months.
 
 Heat blocking window film reduces the cooling load by decreasing the amount of solar heat entering through glass. The savings compound in buildings with large window-to-wall ratios — common in Philadelphia's mid-century office buildings along Market Street and Broad Street, as well as in converted loft spaces in Old City and Callowhill.
