@@ -38,6 +38,8 @@ Patterned films add visual interest while providing partial or full privacy. Opt
 
 3M Fasara decorative films come in over 100 distinct patterns, from fine-line striations to bold geometric weaves. Each Fasara film also rejects up to 99 percent of UV radiation, which helps protect interior furnishings from fading — a real concern in sun-drenched south-facing Philadelphia rowhomes. The Illumina line adds color-shifting dichroic effects that change appearance depending on viewing angle, creating a dynamic privacy barrier for statement spaces.
 
+![best privacy window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-best-privacy-window-film-philadelphia.png)
+
 ## How to Choose the Right Privacy Film for Your Philadelphia Property
 
 Selecting the best privacy window film Philadelphia installation comes down to four practical factors.
