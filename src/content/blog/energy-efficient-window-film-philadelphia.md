@@ -47,11 +47,11 @@ Installation is fast — most whole-home projects are completed in a single day 
 
 ## Energy Efficient Window Film for Philadelphia Businesses
 
-For commercial properties, the ROI case is even stronger. Commercial buildings typically have large glass facades that drive significant solar heat load into occupied spaces. [Energy-saving window film](https://www.windowfilmphiladelphia.net/benefits/exterior-building-wraps/) can:
+For commercial properties, the ROI case is even stronger. Commercial buildings typically have large glass facades that drive significant solar heat load into occupied spaces. [Energy-saving window film](https://windowfilmphiladelphia.net/benefits/exterior-building-wraps/) can:
 
 - Reduce peak cooling demand (which affects demand charges from PECO)
 - Create a more consistent temperature across the building, reducing hot-spot complaints from tenants or employees
-- Reduce [glare](https://www.windowfilmphiladelphia.net/benefits/privacy-window-film-philadelphia/) on workstations and conference room screens
+- Reduce [glare](https://windowfilmphiladelphia.net/benefits/privacy-window-film-philadelphia/) on workstations and conference room screens
 - Protect merchandise, flooring, and furnishings from UV fading
 
 Many Philadelphia businesses qualify for utility rebates or commercial energy efficiency incentives when installing high-performance window film — your installer can help identify applicable programs.
@@ -77,7 +77,7 @@ Not all energy films are the same. For Philadelphia's mixed-climate conditions, 
 - **Low-e options** if your building has older single-pane windows
 - **Films with a lifetime manufacturer warranty** (the best products carry one)
 
-A qualified installer will measure your glass, assess your sun exposure, and recommend specific products rather than a one-size-fits-all solution. If [UV blocking](https://www.windowfilmphiladelphia.net/applications/homes-condos/) is also a priority — for protecting furniture, art, or merchandise — that can be layered in without sacrificing heat rejection performance.
+A qualified installer will measure your glass, assess your sun exposure, and recommend specific products rather than a one-size-fits-all solution. If [UV blocking](https://windowfilmphiladelphia.net/applications/homes-condos/) is also a priority — for protecting furniture, art, or merchandise — that can be layered in without sacrificing heat rejection performance.
 
 ## Key Takeaways
 
@@ -87,4 +87,4 @@ A qualified installer will measure your glass, assess your sun exposure, and rec
 - Most installations pay for themselves within 3–5 years and last 15–25 years
 - Commercial properties may qualify for PECO utility rebates
 
-Ready to cut your energy bills and make your Philadelphia space more comfortable? [Contact Window Film Philadelphia](https://www.windowfilmphiladelphia.net/) for a free consultation and energy assessment.
+Ready to cut your energy bills and make your Philadelphia space more comfortable? [Contact Window Film Philadelphia](https://windowfilmphiladelphia.net/) for a free consultation and energy assessment.

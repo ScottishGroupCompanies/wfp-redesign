@@ -40,7 +40,7 @@ Density varies. Light frost gives a soft haze that obscures outlines without mak
 
 ### Decorative and Etched-Pattern Film
 
-For Philadelphia rowhomes with original millwork or Victorian-era detail, a plain frosted panel can look out of character. Decorative window film — which replicates etched glass, geometric patterns, or Art Deco motifs — keeps the privacy function while adding something that looks like it belongs. [Decorative film options for Philadelphia properties](https://www.windowfilmphiladelphia.net/benefits/decorative-promotional/) cover everything from simple linen textures to custom-cut designs that mimic leaded glass.
+For Philadelphia rowhomes with original millwork or Victorian-era detail, a plain frosted panel can look out of character. Decorative window film — which replicates etched glass, geometric patterns, or Art Deco motifs — keeps the privacy function while adding something that looks like it belongs. [Decorative film options for Philadelphia properties](https://windowfilmphiladelphia.net/benefits/decorative-promotional/) cover everything from simple linen textures to custom-cut designs that mimic leaded glass.
 
 This category is worth considering if your front door already has glass features. Matching the visual weight of the sidelight to the rest of the entry makes the film look like a design decision rather than an afterthought.
 
@@ -50,11 +50,11 @@ Reflective film works differently from frosted. Instead of scattering light, it 
 
 The limitation is nighttime. When interior lights flip the brightness equation, the effect reverses. If your entry is lit up in the evening, reflective film alone won't maintain privacy after dark. Many homeowners pair it with a porch light that keeps the exterior brighter.
 
-For sidelights on south- or west-facing entries that get direct afternoon sun, reflective film also handles significant heat gain — the same reason it's widely used on [Philadelphia office and commercial window applications](https://www.windowfilmphiladelphia.net/applications/office/).
+For sidelights on south- or west-facing entries that get direct afternoon sun, reflective film also handles significant heat gain — the same reason it's widely used on [Philadelphia office and commercial window applications](https://windowfilmphiladelphia.net/applications/office/).
 
 ### UV-Blocking Film
 
-Sidelights that face south or west take sun exposure year-round. That exposure drives fading on hardwood floors, entry rugs, and anything in the sight line from the door. A window film with UV-blocking properties — most quality films reject 99% of UV regardless of visible light transmission — addresses fading without changing the appearance of the glass at all. [UV-blocking window film for Philadelphia homes](https://www.windowfilmphiladelphia.net/benefits/uv-blocking-window-film-philadelphia/) pairs especially well with frosted or decorative sidelight film because you get privacy and fade protection in a single product.
+Sidelights that face south or west take sun exposure year-round. That exposure drives fading on hardwood floors, entry rugs, and anything in the sight line from the door. A window film with UV-blocking properties — most quality films reject 99% of UV regardless of visible light transmission — addresses fading without changing the appearance of the glass at all. [UV-blocking window film for Philadelphia homes](https://windowfilmphiladelphia.net/benefits/uv-blocking-window-film-philadelphia/) pairs especially well with frosted or decorative sidelight film because you get privacy and fade protection in a single product.
 
 ## How to Choose the Right Opacity
 

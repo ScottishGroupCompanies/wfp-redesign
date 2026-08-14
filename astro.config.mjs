@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://www.windowfilmphiladelphia.net',
+  site: 'https://windowfilmphiladelphia.net',
   trailingSlash: 'always',
   build: {
     assets: '_assets',

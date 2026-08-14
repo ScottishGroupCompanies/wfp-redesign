@@ -9,7 +9,7 @@ import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
 
 const title = 'C-Bond Window Film Philadelphia | Certified Installer';
 const description = 'C-Bond window film in Philadelphia strengthens glass for retail, schools, offices, and healthcare entrances with certified installation.';
-const serviceUrl = 'https://www.windowfilmphiladelphia.net/products/c-bond-window-film/';
+const serviceUrl = 'https://windowfilmphiladelphia.net/products/c-bond-window-film/';
 const heroImage = '/images/c-bond-window-film-philadelphia-hero.jpg';
 
 const faqItems = [
@@ -37,8 +37,8 @@ const pageSchemas = [
     '@type': 'BreadcrumbList',
     '@id': serviceUrl + '#breadcrumb',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.windowfilmphiladelphia.net/' },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.windowfilmphiladelphia.net/products/' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://windowfilmphiladelphia.net/products/' },
       { '@type': 'ListItem', position: 3, name: 'C-Bond Window Film in Philadelphia', item: serviceUrl },
     ],
   },
@@ -50,7 +50,7 @@ const pageSchemas = [
     name: title,
     description,
     dateModified: new Date().toISOString().slice(0, 10),
-    isPartOf: { '@type': 'WebSite', '@id': 'https://www.windowfilmphiladelphia.net/#website', url: 'https://www.windowfilmphiladelphia.net/', name: 'Window Film Philadelphia' },
+    isPartOf: { '@type': 'WebSite', '@id': 'https://windowfilmphiladelphia.net/#website', url: 'https://windowfilmphiladelphia.net/', name: 'Window Film Philadelphia' },
     breadcrumb: { '@id': serviceUrl + '#breadcrumb' },
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.cb-hero__subtitle', '.cb-why__intro', '.cb-faq__a'] },
   },
@@ -69,17 +69,10 @@ const pageSchemas = [
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: 'C-Bond Window Film in Philadelphia',
-    image: 'https://www.windowfilmphiladelphia.net' + heroImage,
+    image: 'https://windowfilmphiladelphia.net' + heroImage,
     description,
     brand: { '@type': 'Brand', name: 'C-Bond Systems' },
     offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', areaServed: 'Philadelphia, PA' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '47', bestRating: '5' },
-    review: cBondReviews.map((review) => ({
-      '@type': 'Review',
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      author: { '@type': 'Person', name: review.name },
-      reviewBody: review.quote,
-    })),
   },
 ];
 ---

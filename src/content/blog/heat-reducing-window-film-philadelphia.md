@@ -33,7 +33,7 @@ Residential window film is one of the most underrated home upgrades available. H
 
 ### Significant Energy Savings
 
-Heating and cooling account for nearly half of the average home's energy use. By reducing solar heat gain in summer, heat reducing window film can lower cooling costs by 20-40%, depending on window orientation, film type, and how well-insulated the rest of the home is. Our [energy saving window film page](https://www.windowfilmphiladelphia.net/services/residential/) covers the efficiency side in more detail.
+Heating and cooling account for nearly half of the average home's energy use. By reducing solar heat gain in summer, heat reducing window film can lower cooling costs by 20-40%, depending on window orientation, film type, and how well-insulated the rest of the home is. Our [energy saving window film page](https://windowfilmphiladelphia.net/services/residential/) covers the efficiency side in more detail.
 
 ### Year-Round Comfort
 
@@ -41,7 +41,7 @@ Heat reduction isn't just a summer benefit. Many films provide light insulating 
 
 ### UV Protection
 
-Philadelphia gets around 2,500 hours of sunshine per year. Over time, that exposure fades hardwood floors, upholstery, artwork, and window treatments. Quality heat reducing films block up to 99% of UV radiation, dramatically slowing interior fading. Learn more on our [UV blocking window film page](https://www.windowfilmphiladelphia.net/services/solar/).
+Philadelphia gets around 2,500 hours of sunshine per year. Over time, that exposure fades hardwood floors, upholstery, artwork, and window treatments. Quality heat reducing films block up to 99% of UV radiation, dramatically slowing interior fading. Learn more on our [UV blocking window film page](https://windowfilmphiladelphia.net/services/solar/).
 
 ### Glare Reduction
 
@@ -103,7 +103,7 @@ For commercial buildings, the payback period is often shorter because of higher 
 
 DIY window films are available at hardware stores, but professional installation makes a meaningful difference. Bubble-free application on large panes requires specialized tools and technique. Professionals also ensure the film is compatible with your existing glass type -- a critical consideration, since certain films can cause thermal stress fractures on some glass types if improperly selected.
 
-Explore the full range of [commercial and residential window film applications](https://www.windowfilmphiladelphia.net/applications/) we serve throughout the greater Philadelphia area.
+Explore the full range of [commercial and residential window film applications](https://windowfilmphiladelphia.net/applications/) we serve throughout the greater Philadelphia area.
 
 ## Ready to Beat the Philadelphia Heat?
 
