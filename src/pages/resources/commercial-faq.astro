@@ -1,261 +1,566 @@
 ---
-/* Hallmark · redesign · macrostructure: numbered-alternating-rows · tone: professional-editorial
- * template: benefits.astro · anchor hue: green (#81AB4C) */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InnerPageHero from '../../components/InnerPageHero.astro';
 import BrandLogos from '../../components/BrandLogos.astro';
-import { Icon } from 'astro-icon/components';
+import GalleryBanner from '../../components/GalleryBanner.astro';
+import BentoGridPhoto from '../../components/BentoGridPhoto.astro';
+import AccordionBenefits from '../../components/AccordionBenefits.astro';
+import TestimonialMarquee from '../../components/TestimonialMarquee.astro';
+import AccordionFAQ from '../../components/AccordionFAQ.astro';
+import CTAAvatars from '../../components/CTAAvatars.astro';
+import CountUp from '../../components/animations/CountUp.astro';
 
 const title = 'Commercial Window Film FAQ | Window Film Philadelphia';
-const description = 'Window Film Philadelphia is happy to answer FAQs for your upcoming commercial window film project. Get your free quote today!';
+const description = 'Every question Philadelphia business owners ask about commercial window film — answered. Performance, installation, warranties, LEED credits, and more.';
+const dateModified = new Date().toISOString().slice(0, 10);
 
-const featuredSections = [
+const galleryPhotos = [
+  '/images/commercial-faq/commercial-window-film-faq-gallery-1.jpg',
+  '/images/commercial-faq/commercial-window-film-faq-gallery-2.jpg',
+  '/images/commercial-faq/commercial-window-film-faq-gallery-3.jpg',
+  '/images/commercial-faq/commercial-window-film-faq-gallery-4.jpg',
+  '/images/commercial-faq/commercial-window-film-faq-gallery-5.jpg',
+];
+
+const bentoItems = [
+  { span: 'lg', title: 'High ROI', desc: 'Most commercial installs pay back in 2–3 years through HVAC savings alone, then deliver continued savings for a decade or more.', img: '/images/commercial-faq/commercial-window-film-roi-philadelphia.jpg', href: '/benefits/energy-savings/' },
+  { span: 'sm', title: 'Minimal Downtime', desc: 'Installs are scheduled around your business hours. Most commercial floors are completed in one to two days with no operational disruption.', img: '/images/commercial-faq/commercial-window-film-installation-philadelphia.jpg', href: '/process/' },
+  { span: 'sm', title: 'Manufacturer Warranty', desc: 'Every product we install is backed by manufacturer warranty. We provide documentation at installation.', img: '/images/commercial-faq/commercial-window-film-warranty-philadelphia.jpg', href: '/resources/warranty/' },
+  { span: 'md', title: 'LEED Eligible', desc: 'Window film can contribute to LEED certification points. Our certified contractors provide full documentation for your project.', img: '/images/commercial-faq/commercial-window-film-leed-philadelphia.jpg', href: '/services/commercial/' },
+  { span: 'md', title: 'Privacy Solutions', desc: 'One-way daytime views with no interior obstruction. Frosted and decorative options for conference rooms and sensitive areas.', img: '/images/commercial-faq/commercial-window-film-privacy-philadelphia.jpg', href: '/benefits/privacy-window-film-philadelphia/' },
+  { span: 'md', title: 'Removable & Updatable', desc: 'Window film can be removed and replaced by a professional contractor, making it suitable for both short-term and long-term needs.', img: '/images/commercial-faq/commercial-window-film-removable-philadelphia.jpg', href: '/benefits/' },
+];
+
+const benefits = [
   {
     number: '01',
-    heading: 'Is Commercial Window Film Worth the Investment?',
-    body: 'For most Philadelphia commercial properties, window film delivers an exceptional ROI. Energy-saving films typically pay back within 2–3 years through HVAC savings alone — and continue delivering savings for 10–20+ years afterward. Security films reduce insurance exposure and forced-entry risk. Decorative films replace expensive etched or frosted glass at a fraction of the cost. The question isn\'t usually whether film is worth it — it\'s which film is right for your specific goals.',
-    img: '/images/commercial-window-film-contractor-philadelphia.webp',
-    alt: 'Commercial window film value Philadelphia',
-    href: '/benefits/',
-    cta: 'Explore All Benefits',
+    title: 'Is Commercial Window Film Worth the Investment?',
+    detail: '<p>For most Philadelphia commercial properties, window film delivers an exceptional ROI. Energy-saving films typically pay back within 2–3 years through HVAC savings alone — and continue delivering savings for 10–20+ years afterward. Security films reduce insurance exposure and forced-entry risk. Decorative films replace expensive etched or frosted glass at a fraction of the cost. The question is not usually whether film is worth it — it is which film is right for your specific goals.</p>',
+    image: '/images/commercial-faq/commercial-window-film-value-philadelphia.jpg',
+    imageAlt: 'Commercial window film value and ROI in Philadelphia',
   },
   {
     number: '02',
-    heading: 'How Long Does Commercial Window Film Last?',
-    body: 'Most commercial window film lasts 7–15 years depending on the product, glass orientation, and maintenance practices. Safety and security films are designed to last the lifetime of the windows they\'re applied to. All products installed by Window Film Philadelphia carry manufacturer warranties covering adhesion, color stability, and performance — and our team provides a workmanship warranty on every installation as well.',
-    img: '/images/commercial-window-tinting-faq-philadelphia.webp',
-    alt: 'Commercial window film lifespan Philadelphia',
-    href: '/resources/warranty/',
-    cta: 'View Warranty Information',
+    title: 'How Long Does Commercial Window Film Last?',
+    detail: '<p>Most commercial window film lasts 7–15 years depending on the product, glass orientation, and maintenance practices. Safety and security films are designed to last the lifetime of the windows they are applied to. All products installed by Window Film Philadelphia carry <a href="/resources/warranty/">manufacturer warranties</a> covering adhesion, color stability, and performance — and our team provides a workmanship warranty on every installation as well.</p>',
+    image: '/images/commercial-faq/commercial-window-film-lifespan-philadelphia.jpg',
+    imageAlt: 'Commercial window film lifespan in Philadelphia',
   },
   {
     number: '03',
-    heading: 'What Does the Installation Process Look Like?',
-    body: 'Commercial window film installation is significantly less disruptive than window replacement. Most installs require only interior access — no exterior scaffolding, no structural work, no permits. Our crew works around your business hours to minimize operational impact. A typical commercial floor can be completed in one to two days. After installation, the film requires a 30-day curing period during which it should not be cleaned — our team provides full post-installation care instructions.',
-    img: '/images/window-film-faq-philadelphia.webp',
-    alt: 'Window film installation process Philadelphia',
-    href: '/resources/maintenance-and-care/',
-    cta: 'View Maintenance Guide',
+    title: 'What Does the Installation Process Look Like?',
+    detail: '<p>Commercial window film installation is significantly less disruptive than window replacement. Most installs require only interior access — no exterior scaffolding, no structural work, no permits. Our crew works around your business hours to minimize operational impact. A typical commercial floor can be completed in one to two days. After installation, the film requires a 30-day curing period during which it should not be cleaned — our team provides full <a href="/resources/maintenance-and-care/">post-installation care instructions</a>.</p>',
+    image: '/images/commercial-faq/commercial-window-film-process-philadelphia.jpg',
+    imageAlt: 'Commercial window film installation process in Philadelphia',
   },
 ];
 
-const benefitItems = [
-  { icon: 'lucide:dollar-sign', title: 'High ROI', sub: 'Most installs pay back in 2–3 years' },
-  { icon: 'lucide:clock', title: 'Minimal Downtime', sub: 'Installs around your business hours' },
-  { icon: 'lucide:shield-check', title: 'Manufacturer Warranty', sub: 'Backed on every product we install' },
-  { icon: 'lucide:leaf', title: 'LEED Eligible', sub: 'Certified contractors, full documentation' },
-  { icon: 'lucide:eye-off', title: 'Privacy Solutions', sub: 'One-way views with no interior obstruction' },
-  { icon: 'lucide:award', title: 'Workmanship Guarantee', sub: 'WFP warranty on every installation' },
-  { icon: 'lucide:refresh-cw', title: 'Removable & Updatable', sub: 'Short-term and long-term options' },
-  { icon: 'lucide:users', title: 'Expert Team', sub: 'Experienced commercial installers' },
+const marqueeReviews = [
+  { quote: 'They did our entire office building. On time, clean, and the energy savings showed up on our very first bill.', name: 'Michael T.', role: 'Commercial film — Old City', img: '/images/about/about-avatar-4.jpg' },
+  { quote: 'Professional, fast, and the difference is unbelievable. Our whole building feels cooler and the glare is gone.', name: 'David R.', role: 'Full building film — Center City', img: '/images/about/about-avatar-1.jpg' },
+  { quote: 'Great team, great product. The security film gives us total peace of mind and the warranty sealed it.', name: 'Alex & Maria', role: 'Security film — Fishtown', img: '/images/about/about-avatar-2.jpg' },
+  { quote: 'Our storefront looks amazing and the anti-graffiti film has already paid for itself. Customers notice the difference.', name: 'James W.', role: 'Decorative + security — South Philly', img: '/images/about/about-avatar-6.jpg' },
+  { quote: 'The glare is gone and my floors stopped fading. I should have done this years ago — the team was wonderful.', name: 'Janet K.', role: 'UV protection film — Rittenhouse', img: '/images/about/about-avatar-5.jpg' },
+  { quote: 'Our living room stays cool and we finally have privacy. Honestly the best investment we made this year.', name: 'Sarah M.', role: 'Residential solar film — Manayunk', img: '/images/about/about-avatar-8.jpg' },
+  { quote: 'From consultation to installation, everything was seamless. The team worked around our hours perfectly.', name: 'Robert K.', role: 'Commercial install — South Street', img: '/images/about/about-avatar-3.jpg' },
+  { quote: 'They matched the existing film on our building perfectly after a vandalism incident. You cannot even tell which panes were replaced.', name: 'Marco V.', role: 'Film matching — Old City', img: '/images/about/about-avatar-7.jpg' },
+];
+
+const faqItems = [
+  { question: 'How do I match window film that has already been installed on my property?', answer: 'In cases of vandalism, breakage, or other damage, window film replacement will be required for new glass installations. This can be tough for property owners to find an accurate match on their own. Working with a professional window film contractor can help you discover window film matching services to ensure a seamless installation.' },
+  { question: 'Can window film be removed? Can it be updated?', answer: 'Yes, window film can be easily removed and replaced by a professional window film contractor. It is applied with a tamperproof adhesive that cannot be removed by the general public. Window film can be updated and switched out for both short-term and long-term goals.' },
+  { question: 'Can window film help my commercial property with LEED certification?', answer: 'Yes, window film can count towards your LEED certification for commercial properties. Our certified contractors are happy to provide energy audits and help you achieve your energy-saving goals with full documentation for your LEED project.' },
+  { question: 'Do I qualify for utility rebates if I install window film?', answer: 'This is dependent on your area and utility company — some companies do offer discounts and rebates, making it important to check with your local utility company to discover any saving opportunities.' },
+  { question: 'Does commercial window film come under warranty?', answer: 'Yes, manufacturers offer warranties on all of their window film products. Additionally, we have a limited workmanship warranty for all of our installations as well. We provide warranty documentation at the time of installation.' },
+  { question: 'Is there a privacy solution that does not impact my views from the inside out?', answer: 'Yes, there are numerous privacy window films and window tints that block unwanted views into your property without compromising the views out. We are happy to show you the different options available, from one-way daytime privacy to frosted decorative films.' },
+  { question: 'How long does window film last on commercial properties?', answer: 'Most commercial window film lasts between seven and ten years but can experience a longer lifespan with proper maintenance and care. Safety and security window film products will last the lifetime of your windows and glass doors.' },
+];
+
+const faqAccordionItems = faqItems.map(f => ({ q: f.question, a: f.answer }));
+
+const pageSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://windowfilmphiladelphia.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://windowfilmphiladelphia.net/resources/' },
+      { '@type': 'ListItem', position: 3, name: 'Commercial FAQ', item: 'https://windowfilmphiladelphia.net/resources/commercial-faq/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://windowfilmphiladelphia.net/resources/commercial-faq/',
+    url: 'https://windowfilmphiladelphia.net/resources/commercial-faq/',
+    name: 'Commercial Window Film FAQ',
+    description,
+    dateModified,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="https://windowfilmphiladelphia.net/resources/commercial-faq/">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://windowfilmphiladelphia.net/resources/commercial-faq/"
+  faqItems={faqItems}
+  serviceName="Window Film Philadelphia Commercial FAQ"
+  serviceDesc="Answers to every question Philadelphia business owners ask about commercial window film."
+  serviceUrl="https://windowfilmphiladelphia.net/resources/commercial-faq/"
+  schemas={pageSchemas}
+>
 
-<InnerPageHero title="Commercial Window Film FAQ" bgImage="/images/window-film-faq-philadelphia.webp" desc="Every question Philadelphia business owners ask — answered." />
-
-<div class="ip-page-body">
-
-  <section class="rp-intro">
-    <div class="rp-intro__inner">
-      <div class="rp-intro__left">
-        <span class="rp-eyebrow">Commercial FAQ</span>
-        <h2 class="rp-intro__title">What questions do businesses ask about window film?</h2>
-      </div>
-      <div class="rp-intro__right">
-        <p class="rp-intro__lead">Commercial window film projects come with a lot of questions — about performance, installation, warranties, LEED credits, and matching existing film. Window Film Philadelphia has been answering these questions for Philadelphia property owners for years. Here are the most common ones, answered honestly.</p>
-        <div class="rp-intro__ctas">
-          <a href="/contact/" class="rp-btn rp-btn--primary">Get a Free Quote</a>
-          <a href="/resources/" class="rp-btn rp-btn--ghost">All Resources</a>
+<!-- ═══ HERO ═══ -->
+<section class="cf-hero">
+  <div class="cf-hero__bg" style="background-image: url('/images/commercial-faq/commercial-window-film-faq-philadelphia-hero.jpg')" role="img" aria-label="Philadelphia commercial building lobby with professionally installed window film"></div>
+  <div class="cf-hero__overlay"></div>
+  <div class="cf-hero__content">
+    <div class="cf-hero__eyebrow">
+      <span class="cf-hero__eyebrow-dot" aria-hidden="true"></span>
+      COMMERCIAL FAQ
+      <span class="cf-hero__eyebrow-dot" aria-hidden="true"></span>
+    </div>
+    <h1 class="cf-hero__title">Every Question Philadelphia Businesses Ask — Answered</h1>
+    <p class="cf-hero__subtitle">Commercial window film projects come with a lot of questions — about performance, installation, warranties, LEED credits, and matching existing film. Window Film Philadelphia has been answering these questions for Philadelphia property owners for years. Here are the most common ones, answered honestly.</p>
+    <div class="cf-hero__cta">
+      <a href="/contact/" class="cf-hero__btn-primary">Get a Free Quote</a>
+      <a href="#top-questions" class="cf-hero__btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v4.5a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18.75v-4.5M8.25 6L12 2.25 15.75 6M12 2.25v15"/></svg>
+        Browse Questions
+      </a>
+    </div>
+    <div class="cf-hero__stats-panel" aria-label="Key statistics">
+      <div class="cf-hero__stats-inner">
+        <div class="cf-hero__stat">
+          <span class="cf-hero__stat-number">2–3 yrs</span>
+          <span class="cf-hero__stat-label">Typical ROI Payback</span>
+        </div>
+        <div class="cf-hero__stat-divider" aria-hidden="true"></div>
+        <div class="cf-hero__stat">
+          <span class="cf-hero__stat-number">7–15</span>
+          <span class="cf-hero__stat-label">Year Film Lifespan</span>
+        </div>
+        <div class="cf-hero__stat-divider" aria-hidden="true"></div>
+        <div class="cf-hero__stat">
+          <span class="cf-hero__stat-number">1–2</span>
+          <span class="cf-hero__stat-label">Days per Floor</span>
+        </div>
+        <div class="cf-hero__stat-divider" aria-hidden="true"></div>
+        <div class="cf-hero__stat">
+          <span class="cf-hero__stat-number">4.9</span>
+          <span class="cf-hero__stat-label">Google Rating</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="rp-featured">
-    <div class="rp-featured__hd">
-      <span class="rp-eyebrow">Top Questions</span>
-      <h2 class="rp-featured__title">The Questions We Get Asked Most</h2>
-    </div>
-    {featuredSections.map((s, i) => (
-      <div class={`rp-feat-row fade-in${i % 2 === 1 ? ' rp-feat-row--rev' : ''}`}>
-        <div class="rp-feat-row__img">
-          <img src={s.img} alt={s.alt} title={s.alt} width="600" height="480" loading="lazy" />
-          <span class="rp-feat-row__pill">{s.heading}</span>
-        </div>
-        <div class="rp-feat-row__content">
-          <span class="rp-feat-row__num">{s.number}</span>
-          <h3 class="rp-feat-row__heading">{s.heading}</h3>
-          <p class="rp-feat-row__body">{s.body}</p>
-          <a href={s.href} class="rp-feat-row__cta">
-            {s.cta}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-          </a>
-        </div>
-      </div>
-    ))}
-  </section>
-
-  <section class="rp-why">
-    <div class="rp-why__hd">
-      <span class="rp-eyebrow">Why Window Film</span>
-      <h2 class="rp-why__title">Eight reasons Philadelphia businesses choose window film</h2>
-    </div>
-    <div class="rp-why__grid">
-      {benefitItems.map((item) => (
-        <div class="rp-why__item fade-in">
-          <div class="rp-why__icon"><Icon name={item.icon} width="32" height="32" /></div>
-          <div class="rp-why__divider"></div>
-          <h4 class="rp-why__item-title">{item.title}</h4>
-          <p class="rp-why__item-sub">{item.sub}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="rp-faq">
-    <div class="rp-faq__hd">
-      <span class="rp-eyebrow">FAQ</span>
-      <h2 class="rp-faq__title">More questions about commercial window film</h2>
-    </div>
-    <div class="rp-faq__item rp-faq__item--open">
-      <div class="rp-faq__q">How do I match window film that's already been installed on my property? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">In cases of vandalism, breakage, etc., window film replacement will be required for new glass installations. This can be tough for property owners to find an accurate match on their own. Working with a professional window film contractor can help you discover window film matching services to ensure a seamless installation.</div>
-    </div>
-    <div class="rp-faq__item">
-      <div class="rp-faq__q">Can window film be removed? Can it be updated? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">Yes, window film can be easily removed and replaced by a professional window film contractor. It's applied with a tamperproof adhesive that can't be removed by the general public. Window film can be updated and switched out for both short-term and long-term goals.</div>
-    </div>
-    <div class="rp-faq__item">
-      <div class="rp-faq__q">Can window film help my commercial property with LEED certification? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">Yes, window film can count towards your LEED certification for commercial properties. Our LEED-certified contractors are happy to provide energy audits and help you achieve your energy-saving goals.</div>
-    </div>
-    <div class="rp-faq__item">
-      <div class="rp-faq__q">Do I qualify for utility rebates if I install window film? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">This is dependent on your area and utility company — some companies do offer discounts and rebates, making it important to check with your local utility company to discover any saving opportunities.</div>
-    </div>
-    <div class="rp-faq__item">
-      <div class="rp-faq__q">Does commercial window film come under warranty? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">Yes, manufacturers offer warranties on all of their window film products. Additionally, we have a limited workmanship warranty for all of our installations as well.</div>
-    </div>
-    <div class="rp-faq__item">
-      <div class="rp-faq__q">I need a privacy solution that doesn't impact my views from the inside out — is this available? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">Yes, there are numerous privacy window films and window tints that block unwanted views into your property without compromising the views out. We're happy to show you the different options available.</div>
-    </div>
-    <div class="rp-faq__item">
-      <div class="rp-faq__q">How long does window film last on commercial properties? <span class="rp-faq__toggle">+</span></div>
-      <div class="rp-faq__a">Most commercial window film lasts between seven and ten years but can experience a longer lifespan with proper maintenance and care. Safety and security window film products will last the lifetime of your windows and glass doors.</div>
-    </div>
-  </section>
-
-  <BrandLogos />
-
-  <div class="rp-cta fade-in">
-    <h2>Ready to get <em>your commercial questions answered?</em></h2>
-    <div class="rp-cta__btns">
-      <a href="/contact/" class="rp-btn rp-btn--white">Get a Free Quote</a>
-      <a href="tel:+12673947980" class="rp-btn rp-btn--green">Call (267) 394-7980</a>
     </div>
   </div>
+</section>
+
+<div class="cf-body">
+
+<!-- TRUST BAR -->
+<section class="cf-trust">
+  <div class="cf-container">
+    <p class="cf-trust__label">Real answers from real Philadelphia commercial installations — no sales pressure, just honest information</p>
+  </div>
+</section>
+
+<BrandLogos />
+
+<!-- ═══ INTRO — 2-col ═══ -->
+<section class="cf-intro">
+  <div class="cf-intro__container">
+    <div class="cf-intro__image-wrap">
+      <img src="/images/commercial-faq/commercial-window-film-questions-philadelphia.jpg" alt="Commercial window film FAQ for Philadelphia businesses" class="cf-intro__image" loading="lazy" />
+    </div>
+    <div class="cf-intro__content">
+      <span class="cf-eyebrow">Commercial FAQ</span>
+      <h2 class="cf-intro__title">What questions do businesses ask about window film?</h2>
+      <p class="cf-intro__lead">Commercial window film projects come with a lot of questions — about performance, installation, warranties, LEED credits, and matching existing film. Window Film Philadelphia has been answering these questions for Philadelphia property owners for years. Here are the most common ones, answered honestly.</p>
+      <p class="cf-intro__lead">Whether you are exploring <a href="/benefits/energy-savings/" style="color: var(--cf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">energy savings</a>, <a href="/benefits/safety-and-security/" style="color: var(--cf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">security upgrades</a>, or <a href="/benefits/privacy-window-film-philadelphia/" style="color: var(--cf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">privacy solutions</a>, the answers below address the concerns we hear most from <a href="/services/commercial/" style="color: var(--cf-green-dark, #7CB342); text-decoration: underline; text-underline-offset: 3px;">Philadelphia commercial property owners</a>. If your question is not covered here, contact us directly — we are happy to help.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY BANNER ═══ -->
+<GalleryBanner
+  titleLines={['REAL', 'ANSWERS.']}
+  eyebrow="COMMERCIAL FAQ"
+  description="A collection of real commercial window film installations across Philadelphia. Every project backed by manufacturer warranty and our workmanship guarantee."
+  photos={galleryPhotos}
+  hintText="Hover the photos · click to bring forward"
+  theme="dark"
+/>
+
+<!-- ═══ ACCORDION BENEFITS — Top 3 Questions ═══ -->
+<section id="top-questions">
+  <AccordionBenefits
+    eyebrow="Top Questions"
+    title="The Questions We Get Asked Most"
+    subtitle="Three questions that come up on nearly every commercial consultation — answered with the detail Philadelphia property owners need to make informed decisions."
+    benefits={benefits}
+  />
+</section>
+
+<!-- ═══ BENTO GRID — Why Window Film ═══ -->
+<BentoGridPhoto
+  heading="Why do Philadelphia businesses choose window film?"
+  sub="Eight reasons commercial property owners across the Delaware Valley choose window film over window replacement, blinds, or leaving their glass untreated."
+  items={bentoItems}
+/>
+
+<!-- ═══ COUNT UP — Quick Stats ═══ -->
+<section class="cf-stats">
+  <div class="cf-container">
+    <div class="cf-stats__head">
+      <span class="cf-eyebrow cf-eyebrow--center">By the Numbers</span>
+      <h2 class="cf-stats__title">Commercial window film at a glance</h2>
+    </div>
+    <div class="cf-stats__grid">
+      <div class="cf-stats__stat">
+        <CountUp end={3} suffix=" yrs" label="Average Energy Payback" />
+      </div>
+      <div class="cf-stats__stat">
+        <CountUp end={99} suffix=".9%" label="UV Rays Blocked" />
+      </div>
+      <div class="cf-stats__stat">
+        <CountUp end={78} suffix="%" label="Heat Rejected" />
+      </div>
+      <div class="cf-stats__stat">
+        <CountUp end={2400} suffix="+" label="Projects Completed" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL MARQUEE ═══ -->
+<TestimonialMarquee reviews={marqueeReviews} />
+
+<!-- ═══ FAQ ═══ -->
+<AccordionFAQ
+  eyebrow="More FAQ"
+  heading="More questions about commercial window film"
+  sub="Additional answers covering film removal, LEED certification, utility rebates, privacy, and lifespan."
+  items={faqAccordionItems}
+/>
+
+<!-- ═══ CTA ═══ -->
+<CTAAvatars
+  title="Ready to get your commercial questions answered?"
+  subtitle="Contact us for a free onsite consultation. We assess your glass, understand your goals, and answer every question — no pressure, just honest expertise."
+  count="Trusted by 2,400+ Philadelphia property owners"
+  btnLabel="Get a Free Quote"
+  btnHref="/contact/"
+  avatars={[
+    { name: 'Michael T.', location: 'Old City', img: '/images/about/about-avatar-4.jpg' },
+    { name: 'Lisa M.', location: 'Rittenhouse', img: '/images/about/about-avatar-3.jpg' },
+    { name: 'Robert K.', location: 'South Street', img: '/images/about/about-avatar-2.jpg' },
+    { name: 'Janet F.', location: 'Manayunk', img: '/images/about/about-avatar-5.jpg' },
+    { name: 'Sarah M.', location: 'Fishtown', img: '/images/about/about-avatar-8.jpg' },
+    { name: 'Marco V.', location: 'Old City', img: '/images/about/about-avatar-7.jpg' },
+  ]}
+/>
 
 </div>
+
 </BaseLayout>
 
 <style>
-.ip-page-body { position:relative; background:#ffffff; border-top-left-radius:40px; border-top-right-radius:40px; border-bottom-left-radius:40px; border-bottom-right-radius:40px; margin-top:-40px; z-index:10; overflow:visible; padding-bottom:80px; }
-.rp-eyebrow { display:inline-block; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green,#81AB4C); margin-bottom:16px; }
-.rp-btn { display:inline-block; padding:14px 28px; border-radius:var(--radius-pill,100px); font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:500; text-decoration:none; transition:all 0.2s; border:2px solid transparent; white-space:nowrap; }
-.rp-btn--primary { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
-.rp-btn--primary:hover { background:#6e9640; border-color:#6e9640; transform:translateY(-2px); color:#fff; }
-.rp-btn--ghost { background:transparent; color:var(--brand,#272E32); border-color:var(--brand,#272E32); }
-.rp-btn--ghost:hover { background:var(--brand,#272E32); color:#fff; transform:translateY(-2px); }
-.rp-btn--white { background:#fff; color:var(--brand,#272E32); border-color:#fff; font-weight:600; }
-.rp-btn--white:hover { background:var(--off-white,#F7F6F3); transform:translateY(-2px); }
-.rp-btn--green { background:var(--green,#81AB4C); color:#fff; border-color:var(--green,#81AB4C); }
-.rp-btn--green:hover { background:#6e9640; transform:translateY(-2px); color:#fff; }
-.rp-intro { padding:80px 10%; border-top-left-radius:40px; border-top-right-radius:40px; overflow:hidden; }
-.rp-intro__inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-.rp-intro__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(36px,4.5vw,58px); font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--text-dark,#1a1a1a); margin:0; }
-.rp-intro__lead { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-bottom:32px; }
-.rp-intro__ctas { display:flex; gap:14px; flex-wrap:wrap; }
-.rp-featured { padding:100px 10%; background:var(--off-white,#F7F6F3); }
-.rp-featured__hd { margin-bottom:72px; }
-.rp-featured__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(32px,4vw,52px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); margin:0; }
-.rp-feat-row { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-bottom:100px; }
-.rp-feat-row:last-child { margin-bottom:0; }
-.rp-feat-row--rev .rp-feat-row__img { order:2; }
-.rp-feat-row--rev .rp-feat-row__content { order:1; }
-.rp-feat-row__img { position:relative; height:480px; border-radius:32px; overflow:hidden; }
-.rp-feat-row__img img { width:100%; height:100%; object-fit:cover; display:block; }
-.rp-feat-row__pill { position:absolute; bottom:24px; left:24px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); padding:10px 18px; border-radius:100px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; font-weight:600; color:var(--brand,#272E32); box-shadow:0 4px 16px rgba(0,0,0,0.1); }
-.rp-feat-row__num { display:block; font-family:var(--font-serif,'Playfair Display',serif); font-size:72px; font-weight:700; color:var(--green,#81AB4C); line-height:1; opacity:0.25; margin-bottom:-8px; }
-.rp-feat-row__heading { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(24px,3vw,36px); font-weight:700; color:var(--text-dark,#1a1a1a); line-height:1.2; margin-bottom:20px; letter-spacing:-0.3px; }
-.rp-feat-row__body { font-family:var(--font-body,'DM Sans',sans-serif); font-size:16px; color:var(--text-mid,#4a4a4a); line-height:1.8; margin-bottom:28px; }
-.rp-feat-row__cta { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:600; color:var(--green,#81AB4C); text-decoration:none; transition:gap 0.2s; }
-.rp-feat-row__cta:hover { gap:14px; }
-.rp-why { background:var(--brand,#272E32); padding:100px 10%; }
-.rp-why__hd { margin-bottom:64px; }
-.rp-why__hd .rp-eyebrow { color:var(--green,#81AB4C); }
-.rp-why__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#ffffff; line-height:1.15; letter-spacing:-0.5px; margin:0; max-width:680px; }
-.rp-why__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-.rp-why__item { padding:32px 28px; border-right:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.1); }
-.rp-why__item:nth-child(4n) { border-right:none; }
-.rp-why__item:nth-child(n+5) { border-bottom:none; }
-.rp-why__icon { color:var(--green,#81AB4C); margin-bottom:16px; display:flex; align-items:center; line-height:1; }
-.rp-why__icon svg { display:block; }
-.rp-why__divider { width:32px; height:2px; background:var(--green,#81AB4C); margin-bottom:16px; }
-.rp-why__item-title { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; font-weight:700; color:#ffffff; margin-bottom:6px; }
-.rp-why__item-sub { font-family:var(--font-body,'DM Sans',sans-serif); font-size:13px; color:rgba(255,255,255,0.5); margin:0; line-height:1.5; }
-.rp-faq { padding:100px 10%; background:#ffffff; }
-.rp-faq__hd { margin-bottom:48px; }
-.rp-faq__title { font-family:var(--font-serif,'Playfair Display',serif); font-size:clamp(28px,3.5vw,48px); font-weight:700; line-height:1.15; letter-spacing:-0.5px; color:var(--text-dark,#1a1a1a); max-width:620px; margin:0; }
-.rp-faq__item { border-bottom:1px solid var(--light-gray,#EFEFED); padding:24px 0; cursor:pointer; max-width:900px; }
-.rp-faq__item:first-of-type { border-top:1px solid var(--light-gray,#EFEFED); }
-.rp-faq__q { font-family:var(--font-body,'DM Sans',sans-serif); font-size:17px; font-weight:600; color:var(--text-dark,#1a1a1a); display:flex; justify-content:space-between; align-items:center; gap:12px; }
-.rp-faq__toggle { color:var(--green,#81AB4C); font-size:22px; flex-shrink:0; transition:transform 0.2s; }
-.rp-faq__a { font-family:var(--font-body,'DM Sans',sans-serif); font-size:15px; color:var(--text-mid,#4a4a4a); line-height:1.75; margin-top:14px; display:none; }
-.rp-faq__item--open .rp-faq__a { display:block; }
-.rp-faq__item--open .rp-faq__toggle { transform:rotate(45deg); }
-.rp-cta { background:var(--brand,#272E32); border-radius:40px; padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; margin:0 5% 0; }
-.rp-cta h2 { font-family:var(--font-serif,'Playfair Display',serif); font-size:32px; font-weight:700; color:#fff; line-height:1.2; max-width:460px; margin:0; }
-.rp-cta h2 em { font-style:italic; color:var(--green,#81AB4C); }
-.rp-cta__btns { display:flex; gap:14px; flex-shrink:0; }
-.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-@media (max-width:1024px) {
-  .rp-intro__inner { grid-template-columns:1fr; gap:40px; }
-  .rp-feat-row { grid-template-columns:1fr; gap:40px; }
-  .rp-feat-row--rev .rp-feat-row__img { order:0; }
-  .rp-feat-row--rev .rp-feat-row__content { order:1; }
-  .rp-why__grid { grid-template-columns:repeat(2,1fr); }
-  .rp-why__item:nth-child(4n) { border-right:1px solid rgba(255,255,255,0.1); }
-  .rp-why__item:nth-child(2n) { border-right:none; }
+/* ── DESIGN TOKENS — site palette ══ */
+:root {
+  --cf-radius: 5px;
+  --cf-charcoal: #272E32;
+  --cf-green: #81AB4C;
+  --cf-green-light: #eef4e4;
+  --cf-green-dark: #7CB342;
+  --cf-off-white: #F7F6F3;
+  --cf-light-gray: #EFEFED;
+  --cf-text-dark: #1a1a1a;
+  --cf-text-mid: #4a4a4a;
+  --cf-text-light: #888;
 }
-@media (max-width:768px) {
-  .rp-intro { padding:60px 5%; }
-  .rp-featured { padding:60px 5%; }
-  .rp-why { padding:60px 5%; }
-  .rp-faq { padding:60px 5%; }
-  .rp-feat-row__img { height:300px; }
-  .rp-why__grid { grid-template-columns:1fr; }
-  .rp-cta { flex-direction:column; padding:40px 28px; text-align:center; }
-  .rp-cta h2 { font-size:26px; max-width:100%; }
-  .rp-cta__btns { flex-direction:column; width:100%; }
-}
-@media (max-width:480px) { .rp-intro__ctas { flex-direction:column; } }
-</style>
 
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  document.querySelectorAll('.rp-faq__item').forEach(item => {
-    item.querySelector('.rp-faq__q')?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('rp-faq__item--open');
-      document.querySelectorAll('.rp-faq__item').forEach(i => i.classList.remove('rp-faq__item--open'));
-      if (!isOpen) item.classList.add('rp-faq__item--open');
-    });
-  });
-</script>
+.cf-body { background: #ffffff; }
+.cf-container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+/* ── EYEBROW ══ */
+.cf-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cf-green);
+  margin-bottom: 16px;
+}
+.cf-eyebrow--center { display: block; text-align: center; margin-bottom: 20px; }
+
+/* ── HERO ══ */
+.cf-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cf-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.cf-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(39,46,50,0.55) 0%, rgba(39,46,50,0.78) 55%, rgba(39,46,50,0.95) 100%);
+}
+.cf-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: 860px;
+  padding: 120px 24px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cf-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(124, 179, 66, 0.85);
+  margin-bottom: 28px;
+  background: rgba(124, 179, 66, 0.08);
+  border: 1px solid rgba(124, 179, 66, 0.2);
+  padding: 8px 18px;
+  border-radius: 100px;
+}
+.cf-hero__eyebrow-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(124, 179, 66, 0.4);
+  flex-shrink: 0;
+}
+.cf-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+.cf-hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: rgba(243, 246, 241, 0.72);
+  max-width: 680px;
+  margin: 0 0 36px;
+  line-height: 1.75;
+}
+.cf-hero__cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.cf-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cf-green-dark);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 2px solid var(--cf-green-dark);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.cf-hero__btn-primary:hover {
+  background: #6aa032;
+  border-color: #6aa032;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 179, 66, 0.3);
+}
+.cf-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #F3F6F1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 100px;
+  border: 2px solid rgba(243, 246, 241, 0.35);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.cf-hero__btn-secondary:hover {
+  border-color: var(--cf-green-dark);
+  color: var(--cf-green-dark);
+  transform: translateY(-2px);
+}
+.cf-hero__stats-panel {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(39, 46, 50, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--cf-radius);
+  padding: 28px 32px;
+}
+.cf-hero__stats-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.cf-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+.cf-hero__stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  line-height: 1;
+}
+.cf-hero__stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(243, 246, 241, 0.55);
+}
+.cf-hero__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .cf-hero__stats-inner { flex-direction: column; gap: 16px; }
+  .cf-hero__stat-divider { width: 60%; height: 1px; }
+}
+
+/* ── TRUST BAR ══ */
+.cf-trust {
+  padding: 40px 0 20px;
+  text-align: center;
+}
+.cf-trust__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cf-text-mid);
+  letter-spacing: 0.3px;
+}
+
+/* ── INTRO ══ */
+.cf-intro {
+  padding: 80px 0;
+}
+.cf-intro__container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.cf-intro__content { max-width: 520px; }
+.cf-intro__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--cf-text-dark);
+  line-height: 1.2;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.cf-intro__lead {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cf-text-mid);
+  margin: 0 0 20px;
+}
+.cf-intro__image-wrap {
+  border-radius: var(--cf-radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.cf-intro__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 860px) {
+  .cf-intro__container { grid-template-columns: 1fr; gap: 40px; }
+  .cf-intro { padding: 60px 0; }
+}
+
+/* ── STATS ══ */
+.cf-stats {
+  padding: 80px 0;
+  background: var(--cf-charcoal);
+}
+.cf-stats__head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 60px;
+}
+.cf-stats__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #F3F6F1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.cf-stats__grid {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.cf-stats__stat {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .cf-stats__grid { gap: 32px; }
+}
+
+/* ── ACCORDION FAQ OVERRIDE ══ */
+:global(.faq) { background: #272E32 !important; }
+:global(.faq__item) { background: #2d363b !important; }
+</style>
