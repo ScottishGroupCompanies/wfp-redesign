@@ -2,7 +2,7 @@
 title: "Bullet Proof Window Film for Philadelphia"
 description: "Discover how bullet proof window film in Philadelphia delays forced entry, holds glass intact, and protects properties with Llumar security film."
 pubDate: 2026-08-03
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-bullet-proof-window-film-philadelphia.jpg"
 imageAlt: "Can Bullet Proof Window Film Protect Your Property in Philadelphia? | Window Film Philadelphia"
 tags: ["bullet proof window film", "philadelphia", "security window film", "safety", "llumar"]

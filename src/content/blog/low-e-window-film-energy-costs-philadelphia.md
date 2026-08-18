@@ -2,7 +2,7 @@
 title: "Low E Window Film Cuts Costs in Philadelphia"
 description: "See how low e window film in Philadelphia lowers cooling costs, improves winter comfort, and keeps older homes and offices efficient."
 pubDate: 2026-07-09
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-low-e-window-film-energy-costs-philadelphia.jpg"
 imageAlt: "Surprising Ways Low E Window Film Cuts Energy Costs in Philadelphia | Window Film Philadelphia"
 tags: ["low e window film", "philadelphia", "energy savings", "3M Thinsulate", "window film"]

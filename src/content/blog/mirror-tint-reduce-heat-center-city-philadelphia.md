@@ -2,7 +2,7 @@
 title: "Does Mirror Tint Reduce Heat in Philadelphia?"
 description: "does mirror tint reduce heat in Philadelphia? Reflective window film cuts glare and solar gain for Center City rowhomes, shops, and offices."
 pubDate: 2026-05-31
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Reflective mirror window film on glass reducing heat and glare in Philadelphia"
 tags: ["window film", "philadelphia", "energy savings", "glare reduction"]

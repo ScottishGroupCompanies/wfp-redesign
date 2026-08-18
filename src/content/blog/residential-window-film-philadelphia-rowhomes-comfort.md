@@ -2,7 +2,7 @@
 title: "Residential Window Film for Philadelphia Rowhomes"
 description: "Residential window film Philadelphia homeowners choose can cut glare, block UV, and improve comfort in rowhomes without replacing existing glass."
 pubDate: 2026-07-17
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-residential-window-film-philadelphia-rowhomes-comfort.jpg"
 imageAlt: "Residential Window Film for Philadelphia Rowhomes: Comfort Without Replacing the Glass | Window Film Philadelphia"
 tags: ["residential window film", "philadelphia", "rowhomes", "energy savings", "uv protection"]

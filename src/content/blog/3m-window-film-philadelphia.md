@@ -2,7 +2,7 @@
 title: "3M Window Film for Philadelphia Homes & Offices"
 description: "Discover 3M window film advantages for Philadelphia homes and offices — energy savings, UV protection, glare reduction, and security in one investment."
 pubDate: 2026-08-08
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["window film", "philadelphia", "3M", "energy savings", "solar control"]

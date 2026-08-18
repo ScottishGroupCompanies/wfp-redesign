@@ -2,7 +2,7 @@
 title: "Ceramic vs Tinted: Reduce Heat in Philadelphia"
 description: "Best window tint to reduce heat Philadelphia homeowners choose often comes down to ceramic vs. tinted film. Compare comfort, glare, and savings."
 pubDate: 2026-06-12
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Premium heat-reducing window film for Philadelphia homes and businesses"
 tags: ["window film", "philadelphia", "heat reduction", "ceramic tint", "energy savings"]

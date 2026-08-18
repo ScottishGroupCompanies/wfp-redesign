@@ -2,7 +2,7 @@
 title: "Security Window Film for Philadelphia Businesses"
 description: "Security window film Philadelphia businesses choose can hold shattered glass together, slow smash-and-grab entry, and protect busy storefronts."
 pubDate: 2026-06-09
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-retail-hero.jpg"
 imageAlt: "Philadelphia retail storefront protected with security window film"
 tags: ["window film", "philadelphia", "security film", "commercial window film", "storefront security"]

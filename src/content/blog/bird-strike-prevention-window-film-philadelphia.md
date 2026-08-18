@@ -2,7 +2,7 @@
 title: "Bird Strike Prevention Window Film Philadelphia"
 description: "Philadelphia sits on the Atlantic Flyway — birds pay the price. Discover how bird strike prevention window film protects wildlife."
 pubDate: 2026-07-01
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["bird strike prevention", "window film", "philadelphia", "commercial", "wildlife"]

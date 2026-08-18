@@ -2,7 +2,7 @@
 title: "Best Privacy Window Film Options for Discreet Living in Philadelphia"
 description: "Discover the best privacy window film for Philadelphia homes and offices. Compare frosted, one-way, and decorative options from Solyx and 3M Fasara."
 pubDate: 2026-08-13
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-best-privacy-window-film-philadelphia.jpg"
 imageAlt: "Best Privacy Window Film Options for Discreet Living in Philadelphia | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy"]

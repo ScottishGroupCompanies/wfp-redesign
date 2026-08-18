@@ -2,7 +2,7 @@
 title: "One Way Window Film: Day & Night in Philadelphia"
 description: "Best one way window film day and night Philadelphia guide covering daylight privacy, after-dark visibility, and the right film choices for city glass."
 pubDate: 2026-06-14
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Reflective privacy window film installed on a Philadelphia building window for daytime privacy"
 tags: ["window film", "philadelphia", "privacy window film"]

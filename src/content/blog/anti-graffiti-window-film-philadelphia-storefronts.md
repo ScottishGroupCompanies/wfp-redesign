@@ -2,7 +2,7 @@
 title: "Anti-Graffiti Window Film for Philadelphia Storefronts"
 description: "Protect Philadelphia storefronts from spray paint and etching with anti-graffiti window film. Sacrificial film saves thousands vs. replacement."
 pubDate: 2026-07-06
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/anti-graffiti-window-film-philadelphia.jpg"
 imageAlt: "Historic Philadelphia brick storefront with pristine protected glass windows at golden hour"
 tags: ["anti-graffiti", "commercial window film", "philadelphia", "storefronts", "historic buildings", "security"]

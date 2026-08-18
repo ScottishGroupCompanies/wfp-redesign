@@ -2,7 +2,7 @@
 title: "Security Window Film for Philadelphia Buildings"
 description: "Security window film in Philadelphia slows break-ins, contains shattered glass, and protects occupants from blast debris. Learn which film fits."
 pubDate: 2026-08-07
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-security-window-film-philadelphia.jpg"
 imageAlt: "Security Window Film: Is Your Philadelphia Building Really Protected? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "security film", "safety", "smash-and-grab"]

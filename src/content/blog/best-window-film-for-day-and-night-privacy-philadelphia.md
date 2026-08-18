@@ -2,7 +2,7 @@
 title: "Best Window Film for Day and Night Privacy in Philadelphia Homes"
 description: "Discover the best window film for day and night privacy in Philadelphia. Compare frosted, reflective, and decorative options for rowhomes and condos."
 pubDate: 2026-08-17
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-best-window-film-for-day-and-night-privacy-philadelphia.jpg"
 imageAlt: "Best Window Film for Day and Night Privacy in Philadelphia Homes | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy", "day and night privacy", "frosted film", "reflective film"]

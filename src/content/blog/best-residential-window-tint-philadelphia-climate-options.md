@@ -2,7 +2,7 @@
 title: "Residential Window Tint for Philadelphia Climate"
 description: "Compare the best residential window tint Philadelphia homeowners use for heat, glare, and UV control in rowhomes, condos, and historic properties."
 pubDate: 2026-07-25
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-best-residential-window-tint-philadelphia-climate-options.jpg"
 imageAlt: "Best Residential Window Tint Options for Philadelphia’s Unique Climate | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "residential window tint"]

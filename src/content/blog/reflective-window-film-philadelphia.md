@@ -2,7 +2,7 @@
 title: "Reflective Window Film for Philadelphia Businesses"
 description: "Philadelphia commercial property owners use reflective window film to reject 50-80% solar heat while maintaining views. Local 3M and Llumar installer."
 pubDate: 2026-07-28
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-reflective-window-film-philadelphia.jpg"
 imageAlt: "Philadelphia Businesses Choose Reflective Window Film for Solar Control | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "reflective window film", "solar control"]

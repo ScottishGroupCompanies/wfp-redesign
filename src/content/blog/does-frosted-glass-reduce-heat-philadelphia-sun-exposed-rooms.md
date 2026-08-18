@@ -2,7 +2,7 @@
 title: "Frosted Glass & Heat in Philadelphia Sun Rooms"
 description: "Does frosted glass reduce heat in Philadelphia rooms? Learn when privacy film helps comfort and glare, and when heat-control film works better."
 pubDate: 2026-07-29
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-does-frosted-glass-reduce-heat-philadelphia-sun-exposed-rooms.jpg"
 imageAlt: "Does Frosted Glass Reduce Heat for Philadelphia's Sun-exposed Rooms? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint"]

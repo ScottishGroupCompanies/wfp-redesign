@@ -2,7 +2,7 @@
 title: "Does Frosted Glass Reduce Heat in Philadelphia?"
 description: "Wondering does frosted glass reduce heat in Philadelphia spaces? Learn when frosted film softens glare and when solar window film is smarter."
 pubDate: 2026-05-29
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-church-hero.jpg"
 imageAlt: "Decorative frosted window film adding privacy and soft daylight in a Philadelphia interior"
 tags: ["window film", "philadelphia", "privacy film", "decorative film", "energy savings"]

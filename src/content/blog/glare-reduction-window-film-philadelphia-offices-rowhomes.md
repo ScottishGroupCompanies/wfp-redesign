@@ -2,7 +2,7 @@
 title: "Reduce Glare with Window Film in Philadelphia"
 description: "Learn how glare reduction window film helps Philadelphia offices and rowhomes cut screen washout, solar heat, and UV while keeping daylight usable."
 pubDate: 2026-07-07
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-glare-reduction-window-film-philadelphia-offices-rowhomes.jpg"
 imageAlt: "Glare Reduction Window Film for Philadelphia Offices and Sunlit Rowhomes | Window Film Philadelphia"
 tags: ["philadelphia", "glare reduction", "office window film", "rowhome window film", "solar control"]

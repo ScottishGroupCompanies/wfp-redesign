@@ -2,7 +2,7 @@
 title: "Decorative Window Film Ideas for Philadelphia Homes"
 description: "Explore decorative window film Philadelphia homeowners use for privacy, style, and daylight in rowhomes, condos, and historic spaces across the city."
 pubDate: 2026-07-10
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-decorative-window-film-ideas-philadelphia-homes.jpg"
 imageAlt: "Decorative Window Film Ideas That Transform Spaces for Philadelphia Homes | Window Film Philadelphia"
 tags: ["decorative window film", "philadelphia", "privacy film", "3M Fasara", "Solyx"]

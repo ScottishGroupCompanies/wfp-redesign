@@ -2,7 +2,7 @@
 title: "Heat Blocking Window Film for Philadelphia Homes"
 description: "Discover how heat blocking window film in Philadelphia cuts cooling costs, reduces glare, and protects interiors with proven 3M and LLumar data."
 pubDate: 2026-08-09
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-heat-blocking-window-film-philadelphia-beat-top.jpg"
 imageAlt: "Beat the Heat: Top Reasons to Use Heat Blocking Window Film in Philadelphia | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "heat blocking", "energy savings", "solar control"]

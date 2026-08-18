@@ -2,7 +2,7 @@
 title: "Does Window Tint Help with Heat in Philadelphia?"
 description: "Does window tint help with heat in Philadelphia? Yes — the right film blocks up to 80% of solar heat. Learn how tinting keeps your home or office cooler."
 pubDate: 2026-06-28
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["window tint", "heat reduction", "philadelphia", "energy savings", "solar film"]

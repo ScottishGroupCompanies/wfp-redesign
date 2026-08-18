@@ -2,7 +2,7 @@
 title: "Earthquake Protection Systems: Safer Windows for Philadelphia Properties"
 description: "Earthquake protection systems in Philadelphia use security window film to hold glass together during seismic events, reducing flying glass hazards."
 pubDate: 2026-08-11
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-earthquake-protection-systems-philadelphia.jpg"
 imageAlt: "Earthquake Protection Systems: Safer Windows for Philadelphia Properties | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "earthquake protection", "security film", "seismic safety"]

@@ -15,12 +15,24 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, headings } = await post.render();
-const { title, description, pubDate, author, image, imageAlt, tags } = post.data;
+const { title, description, pubDate, author, image, imageAlt, tags, updatedDate } = post.data;
 const tocHeadings = headings.filter((h) => h.depth === 2);
 // Estimate reading time from raw body length (200 wpm)
 const rawBody: string = post.body ?? '';
 const wordCount = rawBody.split(/\s+/).filter(Boolean).length;
 const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+// Author info — Mike Kinsey is the author of all WFP blog posts
+const authorInfo = {
+  name: 'Mike Kinsey',
+  title: 'President, Window Film Philadelphia',
+  bio: 'Mike Kinsey has consulted on window film projects across the United States for over 15 years. As President of Window Film Philadelphia — the Delaware Valley office of Scottish Window Tinting — Mike oversees every project from specification through installation. He has personally sold and installed over 250,000 square feet of window film and holds certifications from 3M, EnerLogic, and the American Institute of Architects (AIA) for continuing education. His background in project management and construction gives him unique insight into how window film performs on Philadelphia\'s building stock, from single-pane rowhome glass to Center City curtain wall systems.',
+  image: '/images/team/team-mike-kinsey.jpg',
+  url: 'https://windowfilmphiladelphia.net/about/',
+};
+
+// Use updatedDate if provided in frontmatter, otherwise fall back to pubDate
+const modifiedDate = updatedDate || pubDate;
 
 // Recent posts for sidebar (exclude current)
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -49,11 +61,13 @@ const articleSchema = {
   "description": description,
   "image": image ? `https://windowfilmphiladelphia.net${image}` : undefined,
   "datePublished": pubDate.toISOString().slice(0, 10),
-  "dateModified": pubDate.toISOString().slice(0, 10),
+  "dateModified": modifiedDate.toISOString().slice(0, 10),
   "author": {
-    "@type": "Organization",
-    "name": author || "Window Film Philadelphia",
-    "url": "https://windowfilmphiladelphia.net/about/"
+    "@type": "Person",
+    "name": authorInfo.name,
+    "url": authorInfo.url,
+    "image": `https://windowfilmphiladelphia.net${authorInfo.image}`,
+    "jobTitle": authorInfo.title,
   },
   "publisher": {
     "@type": "Organization",
@@ -98,13 +112,17 @@ const breadcrumbSchema = {
     <a href="/blog/" class="post-back">&#8592; Back to Blog</a>
     <div class="post-meta-right">
       <div class="post-meta-info">
-        <span class="post-author">By {author}</span>
+        <span class="post-author">By <a href="/about/" class="post-author-link">{authorInfo.name}</a></span>
         <span class="post-sep">&#183;</span>
         <span class="post-date">{formatDate(pubDate)}</span>
         <span class="post-sep">&#183;</span>
         <span class="post-reading-time">{readingTime} min read</span>
-        <span class="post-sep">&#183;</span>
-        <span class="post-updated">Updated {formatDate(pubDate)}</span>
+        {modifiedDate.toISOString().slice(0, 10) !== pubDate.toISOString().slice(0, 10) && (
+          <>
+            <span class="post-sep">&#183;</span>
+            <span class="post-updated">Updated {formatDate(modifiedDate)}</span>
+          </>
+        )}
       </div>
       {tags && tags.length > 0 && (
         <div class="post-tags">
@@ -146,6 +164,17 @@ const breadcrumbSchema = {
       <article class="post-prose">
         <Content />
       </article>
+
+      <!-- Author Bio -->
+      <div class="post-author-bio">
+        <img src={authorInfo.image} alt={authorInfo.name} title={authorInfo.name} width="120" height="120" loading="lazy" class="post-author-bio__img" />
+        <div class="post-author-bio__content">
+          <h3 class="post-author-bio__name">About {authorInfo.name}</h3>
+          <p class="post-author-bio__title">{authorInfo.title}</p>
+          <p class="post-author-bio__text">{authorInfo.bio}</p>
+          <a href={authorInfo.url} class="post-author-bio__link">Learn more about {authorInfo.name} &rarr;</a>
+        </div>
+      </div>
 
     </main>
 
@@ -259,7 +288,71 @@ const breadcrumbSchema = {
   font-size: 14px; color: var(--text-light, #888);
 }
 .post-author { font-weight: 600; color: var(--text-mid, #4a4a4a); }
+.post-author-link { color: inherit; text-decoration: none; transition: color 0.2s; }
+.post-author-link:hover { color: #7CB342; }
 .post-sep { color: var(--light-gray, #ccc); }
+
+/* ── AUTHOR BIO BOX ── */
+.post-author-bio {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: #f7f6f3;
+  border: 1px solid #e5e5e3;
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 48px;
+}
+.post-author-bio__img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.post-author-bio__content { flex: 1; }
+.post-author-bio__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #14201A;
+  margin: 0 0 4px;
+}
+.post-author-bio__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7CB342;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 12px;
+}
+.post-author-bio__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #4a5c48;
+  margin: 0 0 12px;
+}
+.post-author-bio__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7CB342;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.post-author-bio__link:hover { color: #5D8C32; }
+
+@media (max-width: 768px) {
+  .post-author-bio {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .post-author-bio__img { margin-bottom: 0; }
+}
 .post-reading-time {
   font-family: var(--font-body, 'DM Sans', sans-serif);
   font-size: 14px; color: var(--text-light, #888);

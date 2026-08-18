@@ -2,7 +2,7 @@
 title: "Cut Summer Costs with Window Film in Philadelphia"
 description: "Save on cooling with heat blocking window film philadelphia homeowners choose. Compare 3M and Llumar options and get a Philadelphia quote today."
 pubDate: 2026-06-02
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-premium-films-v2.jpg"
 imageAlt: "Close-up of solar control window film on a Philadelphia home window"
 tags: ["window film", "philadelphia", "energy savings"]

@@ -2,7 +2,7 @@
 title: "5 Reasons Philadelphia Homes Need Window Film This Summer"
 description: "From energy savings to UV protection, here are the top reasons Philadelphia homeowners are installing window film before the summer heat hits."
 pubDate: 2026-05-28
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/2021-08-philadelphia-window-film-energy-savings.webp"
 imageAlt: "Window film energy savings Philadelphia home"
 tags: ["energy savings", "residential", "philadelphia"]

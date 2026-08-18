@@ -2,7 +2,7 @@
 title: "Stained Glass Window Film for Philadelphia Entryways"
 description: "Find the best stained glass window film Philadelphia entryways need for classic privacy, daylight, and style without custom leaded-glass cost."
 pubDate: 2026-06-17
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-church-hero.jpg"
 imageAlt: "Stained glass style window film on a Philadelphia entryway with decorative sidelights"
 tags: ["window film", "philadelphia", "decorative window film", "privacy window film", "stained glass film"]

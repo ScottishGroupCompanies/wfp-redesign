@@ -2,7 +2,7 @@
 title: "Does Heat Blocking Film Work in Philadelphia?"
 description: "Does heat blocking window film work in Philadelphia? Yes — it cuts solar heat gain, blocks UV, and improves comfort in older buildings."
 pubDate: 2026-07-29
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-does-heat-blocking-window-film-work-philadelphia.jpg"
 imageAlt: "Does Heat Blocking Window Film Work for Older Philadelphia Buildings? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint"]

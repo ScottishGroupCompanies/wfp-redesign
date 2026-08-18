@@ -2,7 +2,7 @@
 title: "How Long Does Window Tint Last in Philadelphia?"
 description: "How long does window tint last on Philadelphia homes and offices? Learn about film types, climate impacts, installation mistakes."
 pubDate: 2026-07-29
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-how-long-does-window-tint-last-philadelphia.jpg"
 imageAlt: "How Long Does Window Tint Last on Philadelphia Homes and Offices? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint lifespan"]

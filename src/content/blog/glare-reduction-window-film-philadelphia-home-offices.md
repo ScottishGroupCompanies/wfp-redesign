@@ -2,7 +2,7 @@
 title: "Glare Reduction Film for Philadelphia Home Offices"
 description: "Glare reduction window film Philadelphia homes and offices use can cut harsh screen glare, soften sunlight, and keep interiors comfortable year-round."
 pubDate: 2026-07-19
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-glare-reduction-window-film-philadelphia-home-offices.jpg"
 imageAlt: "Glare Reduction Window Film for Philadelphia Home Offices: Better Screens, Better Daylight | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "glare reduction"]

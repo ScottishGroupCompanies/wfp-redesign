@@ -2,7 +2,7 @@
 title: "Bird Strike Film Solutions for Philadelphia Glass"
 description: "Learn how bird strike window film Philadelphia buildings use can reduce collisions, preserve daylight, and fit offices, rowhomes, and landmarks."
 pubDate: 2026-07-11
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-bird-strike-window-film-philadelphia-glass-solutions.jpg"
 imageAlt: "Bird Strike Window Film Solutions for Protecting Philadelphia Glass | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "bird strike", "bird-safe glass", "commercial buildings"]

@@ -2,7 +2,7 @@
 title: "Commercial Window Film for Philadelphia Offices"
 description: "Commercial window film Philadelphia offices trust can improve comfort, add privacy, and lower cooling load across busy Philadelphia workspaces."
 pubDate: 2026-07-18
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-commercial-window-film-philadelphia-office-cooling-privacy.jpg"
 imageAlt: "Commercial Window Film for Philadelphia Offices: Comfort, Privacy, and Lower Cooling Load | Window Film Philadelphia"
 tags: ["commercial window film", "philadelphia offices", "privacy window film", "glare reduction", "energy savings"]

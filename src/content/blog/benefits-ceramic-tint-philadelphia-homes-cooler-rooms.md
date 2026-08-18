@@ -2,7 +2,7 @@
 title: "Ceramic Tint: Cooler Rooms in Philadelphia Homes"
 description: "Discover the real benefits of ceramic tint for Philadelphia homes — heat rejection, UV protection, and glare control without sacrificing your view."
 pubDate: 2026-06-21
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/wfp-office-hero.jpg"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["ceramic tint", "window film", "Philadelphia", "heat rejection", "UV protection", "residential window film"]

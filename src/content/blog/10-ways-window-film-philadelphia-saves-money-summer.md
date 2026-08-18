@@ -2,7 +2,7 @@
 title: "10 Ways Window Film Saves Money in Philadelphia"
 description: "Discover 10 ways window film Philadelphia property owners use to cut summer energy bills, reduce glare, and protect interiors from July heat."
 pubDate: 2026-07-28
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-10-ways-window-film-philadelphia-saves-money-summer.jpg"
 imageAlt: "10 Ways Window Film in Philadelphia Saves Money in the Summer | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "energy savings", "summer heat"]

@@ -2,7 +2,7 @@
 title: "How Does Security Window Film Work for Philadelphia Schools?"
 description: "Discover how security window film works in Philadelphia schools — it holds glass together, delays entry, and reduces injury risk."
 pubDate: 2026-07-30
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-does-security-window-film-work-philadelphia.jpg"
 imageAlt: "How Does Security Window Film Work for Philadelphia Schools? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "window tint"]

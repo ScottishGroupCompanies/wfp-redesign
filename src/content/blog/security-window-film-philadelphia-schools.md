@@ -2,7 +2,7 @@
 title: "Guide to Security Window Film for Philadelphia Schools"
 description: "Security window film for Philadelphia schools protects students and staff from forced entry, broken glass, and blasts. Learn how LLumar and Vista work."
 pubDate: 2026-07-20
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-security-window-film-philadelphia-schools.jpg"
 imageAlt: "Guide to Security Window Film for Philadelphia Schools | Window Film Philadelphia"
 tags: ["security window film", "Philadelphia", "school security", "window film"]

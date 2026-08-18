@@ -2,7 +2,7 @@
 title: "Is Security Window Film Worth It in Philadelphia?"
 description: "Security window film for Philadelphia offices can slow forced entry, hold broken glass together, and protect tenants. See where the investment pays off."
 pubDate: 2026-07-14
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-security-window-film-philadelphia-office-investment.jpg"
 imageAlt: "Security Window Film for Philadelphia Offices: Is It Worth the Investment? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "security film"]
