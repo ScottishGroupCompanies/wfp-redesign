@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InnerPageHero from '../components/InnerPageHero.astro';
+import HeroSubpage from '../components/HeroSubpage.astro';
 import CTAAvatars from '../components/CTAAvatars.astro';
 
 const title = 'Privacy Policy | Window Film Philadelphia';
@@ -10,10 +10,13 @@ const lastUpdated = 'August 18, 2026';
 
 <BaseLayout title={title} description={description} canonical='https://www.windowfilmphiladelphia.net/privacy-policy/'>
 
-  <InnerPageHero
+  <HeroSubpage
+    eyebrow="Legal"
     title="Privacy Policy"
-    bgImage="/images/window-film-contractor-philadelphia.jpg"
-    desc={`Last updated: ${lastUpdated}`}
+    subtitle={`Last updated: ${lastUpdated}. How we collect, use, and protect your information when you visit our site or contact us for a quote.`}
+    bg="/images/window-film-contractor-philadelphia.jpg"
+    cta1={{ label: 'Contact Us', href: '/contact/' }}
+    cta2={{ label: 'See our services', href: '/services/' }}
   />
 
   <div class="ip-page-body">
@@ -82,10 +85,6 @@ const lastUpdated = 'August 18, 2026';
 .ip-page-body {
   position: relative;
   background: #ffffff;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
   margin-top: -40px;
   z-index: 10;
   overflow: visible;
