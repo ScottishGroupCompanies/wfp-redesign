@@ -858,7 +858,7 @@ const currentPath = Astro.url.pathname;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
-.mobile-nav-group__toggle[aria-expanded="true"] + .mobile-nav-group__sub {
+.mobile-nav-group.is-expanded .mobile-nav-group__sub {
   max-height: 1000px;
 }
 
@@ -1121,6 +1121,8 @@ document.querySelectorAll('.mobile-nav-group__toggle').forEach((toggle) => {
   toggle.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', (!isExpanded).toString());
+    const group = toggle.closest('.mobile-nav-group');
+    if (group) group.classList.toggle('is-expanded', !isExpanded);
   });
 });
 
