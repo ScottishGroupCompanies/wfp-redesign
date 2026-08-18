@@ -1251,55 +1251,7 @@ h3.cc-pl-row__heading { font-size: inherit; font-weight: inherit; font-family: i
 ══════════════════════════════════════ */
 .cc-slider { position: relative; width: 100%; min-height: 90vh; overflow: hidden; background: #14201A; }
 .cc-slider__track { display: flex; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
-.cc-slider__slide { position: relative; min-width: 100%; min-height: 90vh; flex-shrink: 0; display: flex; align-items: center; }
-.cc-slider__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
-.cc-slider__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); z-index: 1; }
-.cc-slider__content { position: relative; z-index: 2; max-width: 560px; padding-left: 8%; color: #fff; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
-.cc-slider__slide[data-slide="0"] .cc-slider__content { opacity: 1; transform: translateY(0); }
-.cc-slider__step { font-family: 'Space Mono', monospace; font-size: 13px; color: #81AB4C; letter-spacing: 0.2em; margin-bottom: 1rem; opacity: 0; animation: ccFadeUp 0.4s ease 0.2s forwards; }
-.cc-slider__title { font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 1.5rem; opacity: 0; animation: ccFadeUp 0.4s ease 0.3s forwards; }
-.cc-slider__desc { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 460px; margin-bottom: 2rem; opacity: 0; animation: ccFadeUp 0.4s ease 0.4s forwards; }
-.cc-slider__faq { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; opacity: 0; animation: ccFadeUp 0.4s ease 0.5s forwards; }
-.cc-slider__faq-item { border-radius: 8px; overflow: hidden; }
-.cc-slider__faq-q { width: 100%; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.88); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 500; padding: 12px 16px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s ease; }
-.cc-slider__faq-q:hover { background: rgba(255,255,255,0.18); }
-.cc-slider__faq-icon { font-size: 1.2rem; color: #81AB4C; flex-shrink: 0; font-style: normal; transition: transform 0.3s ease; }
-.cc-slider__faq-q[aria-expanded="true"] .cc-slider__faq-icon { transform: rotate(45deg); }
-.cc-slider__faq-a { background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.10); border-top: none; border-radius: 0 0 8px 8px; color: rgba(255,255,255,0.70); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.875rem; line-height: 1.6; padding: 12px 16px; margin-top: -4px; }
-.cc-slider__cta { display: inline-block; background: var(--green, #81AB4C); color: #fff; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px; text-decoration: none; transition: background 0.25s ease, transform 0.2s ease; opacity: 0; animation: ccFadeUp 0.4s ease 0.6s forwards; }
-.cc-slider__cta:hover { background: #6e9640; transform: translateY(-2px); }
-.cc-slider__nav { position: absolute; top: 50%; right: 48px; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 24px; }
-.cc-slider__nav-item { display: flex; align-items: center; gap: 12px; background: transparent; border: none; cursor: pointer; padding: 0; opacity: 0.35; transition: opacity 0.3s ease; }
-.cc-slider__nav-item:hover { opacity: 0.65; }
-.cc-slider__nav-item--active { opacity: 1; }
-.cc-slider__nav-line { display: block; width: 3px; height: 32px; background: rgba(255,255,255,0.4); border-radius: 2px; transition: background 0.3s ease, height 0.3s ease; }
-.cc-slider__nav-item--active .cc-slider__nav-line { background: #81AB4C; height: 48px; }
-.cc-slider__nav-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 11px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
-.cc-slider__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: background 0.3s ease, color 0.3s ease; }
-.cc-slider__arrow:hover { background: rgba(0,0,0,0.6); color: #81AB4C; }
-.cc-slider__arrow--prev { left: 32px; }
-.cc-slider__arrow--next { right: 32px; }
-.cc-slider__progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 10; }
-.cc-slider__progress-bar { height: 100%; background: #81AB4C; width: 0; transition: width 0.05s linear; }
-@keyframes ccFadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.cc-slider__slide.cc-active .cc-slider__content { opacity: 1; transform: translateY(0); }
-.cc-slider__slide.cc-active .cc-slider__step { animation: ccFadeUp 0.4s ease 0.2s forwards; }
-.cc-slider__slide.cc-active .cc-slider__title { animation: ccFadeUp 0.4s ease 0.3s forwards; }
-.cc-slider__slide.cc-active .cc-slider__desc { animation: ccFadeUp 0.4s ease 0.4s forwards; }
-.cc-slider__slide.cc-active .cc-slider__faq { animation: ccFadeUp 0.4s ease 0.5s forwards; }
-.cc-slider__slide.cc-active .cc-slider__cta { animation: ccFadeUp 0.4s ease 0.6s forwards; }
-@media (max-width: 1024px) { .cc-slider__nav { right: 32px; } .cc-slider__content { padding-left: 60px; } }
-@media (max-width: 768px) {
-  .cc-slider { min-height: auto; }
-  .cc-slider__slide { min-height: auto; padding: 60px 0 40px; }
-  .cc-slider__nav { display: none; }
-  .cc-slider__overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.85) 100%); }
-  .cc-slider__content { padding-left: 5%; padding-right: 5%; max-width: 100%; }
-  .cc-slider__title { font-size: 1.75rem; }
-  .cc-slider__desc { font-size: 0.9rem; }
-  .cc-slider__arrow--prev { left: 20px; }
-  .cc-slider__arrow--next { right: 20px; }
-}
+
 
 /* ── FEATURED SECTIONS ── */
 /* ── PRODUCT LINES (cc-products) ── */
