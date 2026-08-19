@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSubpage from '../components/HeroSubpage.astro';
+import CTAAvatars from '../components/CTAAvatars.astro';
+
+const title = 'Page Not Found | Window Film Philadelphia';
+const description = 'The page you were looking for could not be found. Browse our window film services, applications, and resources — or contact us for a free estimate.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://windowfilmphiladelphia.net/404/"
+  noindex={true}
+>
+
+  <HeroSubpage
+    eyebrow="ERROR 404"
+    title="This page has\ngone off the grid."
+    subtitle="The page you were looking for doesn't exist — but your windows still deserve the best. Let's get you back on track."
+    bg="/images/wfp-landing-hero.jpg"
+    cta1={{ label: 'Get a Free Quote', href: '/contact/' }}
+    cta2={{ label: 'See Our Services', href: '/services/' }}
+  />
+
+  <!-- Quick navigation -->
+  <section class="err-quick">
+    <div class="err-quick__inner">
+      <p class="err-quick__label">POPULAR PAGES</p>
+      <div class="err-quick__grid">
+        <a href="/" class="err-quick__card">
+          <span class="err-quick__card-num">01</span>
+          <span class="err-quick__card-title">Home</span>
+          <span class="err-quick__card-desc">Window film solutions for every need</span>
+        </a>
+        <a href="/services/" class="err-quick__card">
+          <span class="err-quick__card-num">02</span>
+          <span class="err-quick__card-title">Services</span>
+          <span class="err-quick__card-desc">Solar control, security, decorative &amp; more</span>
+        </a>
+        <a href="/applications/" class="err-quick__card">
+          <span class="err-quick__card-num">03</span>
+          <span class="err-quick__card-title">Applications</span>
+          <span class="err-quick__card-desc">Homes, offices, schools, hospitals &amp; more</span>
+        </a>
+        <a href="/resources/architects-builders/" class="err-quick__card">
+          <span class="err-quick__card-num">04</span>
+          <span class="err-quick__card-title">Resources</span>
+          <span class="err-quick__card-desc">Spec sheets, warranties &amp; product data</span>
+        </a>
+        <a href="/cities/" class="err-quick__card">
+          <span class="err-quick__card-num">05</span>
+          <span class="err-quick__card-title">Cities We Serve</span>
+          <span class="err-quick__card-desc">Philadelphia, Camden, Reading &amp; more</span>
+        </a>
+        <a href="/blog/" class="err-quick__card">
+          <span class="err-quick__card-num">06</span>
+          <span class="err-quick__card-title">Blog</span>
+          <span class="err-quick__card-desc">Tips, guides &amp; window film insights</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTAAvatars
+    title="Ready to transform your glass?"
+    subtitle="Free consultation, transparent pricing, and manufacturer-backed warranties on every install."
+  />
+
+</BaseLayout>
+
+<style>
+/* ── Quick navigation section ── */
+.err-quick {
+  background: #F5F3EE;
+  padding: 96px 0;
+}
+
+.err-quick__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.err-quick__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #7CB342;
+  margin: 0 0 2.5rem;
+  text-align: center;
+}
+
+.err-quick__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.err-quick__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px 28px;
+  background: #fff;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.err-quick__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+.err-quick__card-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #7CB342;
+  letter-spacing: 0.1em;
+}
+
+.err-quick__card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #272E32;
+  line-height: 1.2;
+}
+
+.err-quick__card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .err-quick__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .err-quick__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
