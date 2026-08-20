@@ -835,7 +835,7 @@ const currentPath = Astro.url.pathname;
 
 .mobile-nav-group__title {
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #fff;
   text-decoration: none;
@@ -857,14 +857,17 @@ const currentPath = Astro.url.pathname;
 
 .mobile-nav-group__sub {
   list-style: none;
-  padding: 0 0 16px 20px;
+  padding: 0 0 0 20px;
   margin: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  visibility: hidden;
+  transition: max-height 0.3s ease, padding-bottom 0.3s ease, visibility 0.3s;
 }
 .mobile-nav-group.is-expanded .mobile-nav-group__sub {
   max-height: 1000px;
+  padding-bottom: 16px;
+  visibility: visible;
 }
 
 .mobile-nav-group__sub-link, .mobile-nav-group__sub-card {
