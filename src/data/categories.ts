@@ -217,6 +217,27 @@ export const cityCategories: Category[] = [
     group: 'city',
   },
   {
+    slug: 'pittsburgh',
+    label: 'Pittsburgh',
+    description: 'Window film guides and local insights for Pittsburgh homes and businesses across Allegheny County.',
+    href: '/cities/pittsburgh/',
+    group: 'city',
+  },
+  {
+    slug: 'allentown',
+    label: 'Allentown',
+    description: 'Window film guides and local insights for Allentown homes and businesses across the Lehigh Valley.',
+    href: '/cities/allentown/',
+    group: 'city',
+  },
+  {
+    slug: 'erie',
+    label: 'Erie',
+    description: 'Window film guides and local insights for Erie homes and businesses along the Lake Erie shore.',
+    href: '/cities/erie/',
+    group: 'city',
+  },
+  {
     slug: 'camden',
     label: 'Camden',
     description: 'Window film resources for Camden County and South Jersey communities.',

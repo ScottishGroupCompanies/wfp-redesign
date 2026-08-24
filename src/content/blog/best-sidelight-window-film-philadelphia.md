@@ -3,7 +3,7 @@ title: "Sidelight Window Film in Philadelphia: Block Hallway Views"
 description: "Find the best sidelight window film in Philadelphia to block hallway views at your front door while keeping natural light."
 pubDate: 2026-06-20
 author: "Mike Kinsey"
-image: "/images/wfp-office-hero.jpg"
+image: "/images/wfp-office-hero.webp"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["sidelight", "privacy", "window film", "decorative", "philadelphia"]
 draft: false

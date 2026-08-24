@@ -3,7 +3,7 @@ title: "Privacy Window Film: Right Opacity in Philadelphia"
 description: "Best privacy window film Philadelphia options for rowhomes, condos, and offices. Learn how to match opacity, daylight, and style for your glass."
 pubDate: 2026-06-18
 author: "Mike Kinsey"
-image: "/images/wfp-church-hero.jpg"
+image: "/images/wfp-church-hero.webp"
 imageAlt: "Privacy window film applied to decorative glass in a Philadelphia building"
 tags: ["window film", "philadelphia", "privacy window film"]
 draft: false

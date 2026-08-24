@@ -3,7 +3,7 @@ title: "One Way Privacy Window Film for Philadelphia Condos"
 description: "Best one way privacy window film Philadelphia condo owners choose balances daytime privacy, glare control, and natural light."
 pubDate: 2026-06-13
 author: "Mike Kinsey"
-image: "/images/wfp-premium-films-v2.jpg"
+image: "/images/wfp-premium-films-v2.webp"
 imageAlt: "One-way privacy window film for a Philadelphia condo with bright daytime views"
 tags: ["window film", "philadelphia", "privacy window film", "condo privacy", "glare reduction"]
 draft: false

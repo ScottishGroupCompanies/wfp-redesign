@@ -3,7 +3,7 @@ title: "Best One Way Window Film for Philadelphia: Privacy Without Sacrificing L
 description: "Discover the best one way window film Philadelphia options for daytime privacy. Compare reflective films that block street views while keeping natural light."
 pubDate: 2026-08-14
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-best-one-way-window-film-philadelphia.jpg"
+image: "/images/blog/wfp-blog-best-one-way-window-film-philadelphia.webp"
 imageAlt: "Best One Way Window Film for Philadelphia: Privacy Without Sacrificing Light | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "one way privacy", "reflective film", "privacy"]
 category: "privacy-film"

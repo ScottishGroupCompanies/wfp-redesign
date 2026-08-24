@@ -3,7 +3,7 @@ title: "One Way Window Film: Sun Direction in Philadelphia"
 description: "Best one way window film Philadelphia advice for Fishtown homes: match reflective film to sun direction, glare, and nighttime privacy limits."
 pubDate: 2026-06-16
 author: "Mike Kinsey"
-image: "/images/wfp-premium-films-v2.jpg"
+image: "/images/wfp-premium-films-v2.webp"
 imageAlt: "Reflective one-way privacy window film on a sunlit Philadelphia residential window"
 tags: ["window film", "philadelphia", "privacy window film", "glare reduction", "decorative film"]
 draft: false

@@ -3,7 +3,7 @@ title: "Best Window Film for Nighttime Privacy in Philadelphia: What Actually Wo
 description: "Discover the best window film for nighttime privacy in Philadelphia. Learn which films work after dark and which fail when interior lights turn on."
 pubDate: 2026-08-15
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-best-window-film-for-nighttime-privacy-philadelphia.jpg"
+image: "/images/blog/wfp-blog-best-window-film-for-nighttime-privacy-philadelphia.webp"
 imageAlt: "Best Window Film for Nighttime Privacy in Philadelphia: What Actually Works? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "nighttime privacy", "privacy film", "frosted film"]
 category: "privacy-film"

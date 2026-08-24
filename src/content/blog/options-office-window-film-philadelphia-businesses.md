@@ -3,7 +3,7 @@ title: "Options for Office Window Film for Philadelphia Businesses"
 description: "Compare office window film options for Philadelphia businesses: solar control, glare reduction, privacy, security, and decorative films. Improve comfort."
 pubDate: 2026-07-20
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-options-office-window-film-philadelphia-businesses.jpg"
+image: "/images/blog/wfp-blog-options-office-window-film-philadelphia-businesses.webp"
 imageAlt: "Options for Office Window Film for Philadelphia Businesses | Window Film Philadelphia"
 tags: ["office window film", "Philadelphia", "commercial window film", "office window film Philadelphia"]
 categories: ["solar-control", "philadelphia"]

@@ -3,7 +3,7 @@ title: "Heat Control Film for Philadelphia’s Hottest Months"
 description: "Does heat control window film work in Philadelphia? Learn how modern films cut glare, solar heat gain, and UV exposure during the city's hottest months."
 pubDate: 2026-07-31
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-does-heat-control-window-film-work-philadelphia-hottest-months.jpg"
+image: "/images/blog/wfp-blog-does-heat-control-window-film-work-philadelphia-hottest-months.webp"
 imageAlt: "Does Heat Control Window Film Work During Philadelphia’s Hottest Months? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "heat control", "energy savings"]
 categories: ["energy-savings", "philadelphia"]

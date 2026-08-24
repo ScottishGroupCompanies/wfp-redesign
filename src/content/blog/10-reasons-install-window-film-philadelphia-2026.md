@@ -3,7 +3,7 @@ title: "10 Reasons to Install Window Film in Philadelphia in 2026"
 description: "Explore 10 reasons to install window film Philadelphia property owners trust for heat, UV, glare, privacy, safety, and 2026 energy savings now."
 pubDate: 2026-07-20
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-10-reasons-install-window-film-philadelphia-2026.jpg"
+image: "/images/blog/wfp-blog-10-reasons-install-window-film-philadelphia-2026.webp"
 imageAlt: "10 Reasons to Install Window Film in Philadelphia in 2026 | Window Film Philadelphia"
 tags: ["window film", "Philadelphia", "window film Philadelphia", "2026"]
 categories: ["philadelphia"]

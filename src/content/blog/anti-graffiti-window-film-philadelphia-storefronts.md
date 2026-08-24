@@ -3,7 +3,7 @@ title: "Anti-Graffiti Window Film for Philadelphia Storefronts"
 description: "Protect Philadelphia storefronts from spray paint and etching with anti-graffiti window film. Sacrificial film saves thousands vs. replacement."
 pubDate: 2026-07-06
 author: "Mike Kinsey"
-image: "/images/anti-graffiti-window-film-philadelphia.jpg"
+image: "/images/anti-graffiti-window-film-philadelphia.webp"
 imageAlt: "Historic Philadelphia brick storefront with pristine protected glass windows at golden hour"
 tags: ["anti-graffiti", "commercial window film", "philadelphia", "storefronts", "historic buildings", "security"]
 draft: false
@@ -16,7 +16,7 @@ Anti-graffiti window film changes the equation. This thin, sacrificial film bond
 
 <div style="background:#14201A;border-radius:20px;overflow:hidden;margin:40px 0;">
   <div style="width:100%;height:240px;overflow:hidden;">
-    <img src="/images/anti-graffiti-installation-banner.jpg" alt="Professional window film installer applying protective film to commercial glass storefront" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 35%;" loading="lazy" />
+    <img src="/images/anti-graffiti-installation-banner.webp" alt="Professional window film installer applying protective film to commercial glass storefront" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 35%;" loading="lazy" />
   </div>
   <div class="ag-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;padding:36px 32px;">
     <div style="padding:8px 4px;border-right:1px solid rgba(255,255,255,0.1);">
@@ -60,13 +60,13 @@ The film can also be applied to other smooth surfaces where graffiti is common �
 
 <div class="ag-ba-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:40px 0;">
   <div style="position:relative;border-radius:16px;overflow:hidden;">
-    <img src="/images/anti-graffiti-before.jpg" alt="Heavily scratched and damaged commercial storefront glass — before anti-graffiti film" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
+    <img src="/images/anti-graffiti-before.webp" alt="Heavily scratched and damaged commercial storefront glass — before anti-graffiti film" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
     <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));padding:14px 18px;">
       <span style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#fff;">&#x2717; Before &mdash; Unprotected Glass</span>
     </div>
   </div>
   <div style="position:relative;border-radius:16px;overflow:hidden;">
-    <img src="/images/anti-graffiti-after.jpg" alt="Clean pristine commercial storefront after anti-graffiti window film installation" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
+    <img src="/images/anti-graffiti-after.webp" alt="Clean pristine commercial storefront after anti-graffiti window film installation" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;" loading="lazy" />
     <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.55));padding:14px 18px;">
       <span style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#fff;">&#x2713; After &mdash; Anti-Graffiti Film Applied</span>
     </div>
@@ -92,27 +92,27 @@ Anti-graffiti window film is installed across a wide range of Philadelphia prope
 
 <div class="ag-gallery" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0;">
   <figure style="margin:0;">
-    <img src="/images/ag-gallery-metal-elevator.jpg" alt="Brushed stainless steel elevator panels protected with Metal Shield anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
+    <img src="/images/ag-gallery-metal-elevator.webp" alt="Brushed stainless steel elevator panels protected with Metal Shield anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
     <figcaption style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:#888;margin-top:6px;text-align:center;">Elevator &amp; Metal Surfaces</figcaption>
   </figure>
   <figure style="margin:0;">
-    <img src="/images/ag-gallery-mirror-restroom.jpg" alt="Commercial restroom mirror protected with Mirror Shield anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
+    <img src="/images/ag-gallery-mirror-restroom.webp" alt="Commercial restroom mirror protected with Mirror Shield anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
     <figcaption style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:#888;margin-top:6px;text-align:center;">Lobby &amp; Restroom Mirrors</figcaption>
   </figure>
   <figure style="margin:0;">
-    <img src="/images/ag-gallery-historic.jpg" alt="Historic Philadelphia brick building with original windows protected by anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
+    <img src="/images/ag-gallery-historic.webp" alt="Historic Philadelphia brick building with original windows protected by anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
     <figcaption style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:#888;margin-top:6px;text-align:center;">Historic Buildings</figcaption>
   </figure>
   <figure style="margin:0;">
-    <img src="/images/ag-gallery-school.jpg" alt="School entrance glass doors and windows protected with anti-graffiti window film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
+    <img src="/images/ag-gallery-school.webp" alt="School entrance glass doors and windows protected with anti-graffiti window film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
     <figcaption style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:#888;margin-top:6px;text-align:center;">Schools &amp; Institutions</figcaption>
   </figure>
   <figure style="margin:0;">
-    <img src="/images/ag-gallery-restaurant.jpg" alt="Restaurant storefront windows protected with anti-graffiti film, warm evening light" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
+    <img src="/images/ag-gallery-restaurant.webp" alt="Restaurant storefront windows protected with anti-graffiti film, warm evening light" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
     <figcaption style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:#888;margin-top:6px;text-align:center;">Restaurants &amp; Bars</figcaption>
   </figure>
   <figure style="margin:0;">
-    <img src="/images/ag-gallery-transit.jpg" alt="Transit station glass panels protected with anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
+    <img src="/images/ag-gallery-transit.webp" alt="Transit station glass panels protected with anti-graffiti film" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;" loading="lazy" />
     <figcaption style="font-family:Inter,system-ui,sans-serif;font-size:0.72rem;color:#888;margin-top:6px;text-align:center;">Transit Properties</figcaption>
   </figure>
 </div>
@@ -127,7 +127,7 @@ Anti-graffiti window film is installed across a wide range of Philadelphia prope
 Philadelphia has a long and complicated relationship with graffiti. The city is widely recognized as one of the birthplaces of American graffiti culture — its tagging traditions helped shape the visual language of hip-hop from the 1970s onward. That history is real. But so is the ongoing financial toll on businesses that didn't ask to be part of it.
 
 <div style="width:100%;border-radius:16px;overflow:hidden;margin:28px 0;">
-  <img src="/images/ag-philly-urban-context.jpg" alt="Philadelphia commercial street showing the urban context where anti-graffiti film is most needed" style="width:100%;display:block;" loading="lazy" />
+  <img src="/images/ag-philly-urban-context.webp" alt="Philadelphia commercial street showing the urban context where anti-graffiti film is most needed" style="width:100%;display:block;" loading="lazy" />
 </div>
 
 PennDOT alone spent $129,000 in 2023 removing graffiti from Philadelphia-area state infrastructure — highways, overpasses, and transit-adjacent public surfaces. That figure covers only state-maintained property. The bill for private commercial glass runs substantially higher and falls entirely on property owners and their insurers.
@@ -214,7 +214,7 @@ The right product depends on surface type, exposure level, and replacement frequ
 </div>
 
 <div style="width:100%;border-radius:16px;overflow:hidden;margin:40px 0 28px;">
-  <img src="/images/anti-graffiti-etching-closeup.jpg" alt="Cracked and damaged commercial storefront glass — the true cost of leaving glass unprotected" style="width:100%;display:block;" loading="lazy" />
+  <img src="/images/anti-graffiti-etching-closeup.webp" alt="Cracked and damaged commercial storefront glass — the true cost of leaving glass unprotected" style="width:100%;display:block;" loading="lazy" />
 </div>
 
 ## The Ongoing Cost of Not Protecting Your Glass
@@ -230,7 +230,7 @@ For Philadelphia commercial properties on high-traffic corridors, the question i
 Installing anti-graffiti film is a straightforward professional process — but for a commercial property, getting the right result means more than just applying a product to glass.
 
 <div style="width:100%;border-radius:16px;overflow:hidden;margin:28px 0;">
-  <img src="/images/ag-site-assessment.jpg" alt="Professional site assessment of commercial glass before anti-graffiti film installation" style="width:100%;display:block;" loading="lazy" />
+  <img src="/images/ag-site-assessment.webp" alt="Professional site assessment of commercial glass before anti-graffiti film installation" style="width:100%;display:block;" loading="lazy" />
 </div>
 
 The process starts with a **site assessment**: an on-site evaluation of your glass type, thickness, coating, framing system, and vandalism exposure. For historic buildings, we confirm glass compatibility before recommending any product. Older single-pane glass, original sash windows, and certain tempered or coated glass types each have specific requirements.

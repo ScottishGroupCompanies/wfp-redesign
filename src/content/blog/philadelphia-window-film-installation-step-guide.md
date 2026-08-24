@@ -3,7 +3,7 @@ title: "Philadelphia Window Film Installation Guide"
 description: "A homeowner's guide to professional Philadelphia window film installation—what to expect on site, how long it takes, and why proper installation matters."
 pubDate: 2026-07-22
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-philadelphia-window-film-installation-step-guide.jpg"
+image: "/images/blog/wfp-blog-philadelphia-window-film-installation-step-guide.webp"
 imageAlt: "Philadelphia Window Film Installation Step by Step: A Homeowner's Guide | Window Film Philadelphia"
 tags: ["window film installation", "philadelphia", "window film", "installation process", "residential window film"]
 categories: ["philadelphia"]

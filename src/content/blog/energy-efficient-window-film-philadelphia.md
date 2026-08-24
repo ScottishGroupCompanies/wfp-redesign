@@ -3,7 +3,7 @@ title: "Energy Efficient Window Film in Philadelphia"
 description: "Energy efficient window film in Philadelphia cuts cooling costs, blocks solar heat, and keeps your home or office comfortable year-round."
 pubDate: 2026-07-04
 author: "Mike Kinsey"
-image: "/images/wfp-office-hero.jpg"
+image: "/images/wfp-office-hero.webp"
 imageAlt: "Commercial office window film installation in Philadelphia"
 tags: ["energy efficient window film", "philadelphia", "window film", "heat control", "energy savings"]
 draft: false

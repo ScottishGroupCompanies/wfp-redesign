@@ -3,7 +3,7 @@ title: "Earthquake Protection Systems: Safer Windows for Philadelphia Properties
 description: "Earthquake protection systems in Philadelphia use security window film to hold glass together during seismic events, reducing flying glass hazards."
 pubDate: 2026-08-11
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-earthquake-protection-systems-philadelphia.jpg"
+image: "/images/blog/wfp-blog-earthquake-protection-systems-philadelphia.webp"
 imageAlt: "Earthquake Protection Systems: Safer Windows for Philadelphia Properties | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "earthquake protection", "security film", "seismic safety"]
 category: "safety-security"
@@ -28,7 +28,7 @@ When property owners research earthquake protection systems Philadelphia securit
 
 Two product lines stand out for this application:
 
-![earthquake protection systems philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-earthquake-protection-systems-philadelphia.jpg)
+![earthquake protection systems philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-earthquake-protection-systems-philadelphia.webp)
 
 - **3M Safety & Security Window Films** — Engineered with micro-layered polyester technology, 3M's safety films deliver high tensile strength that helps hold glass together under impact. The 3M Ultra Safety series uses up to 42 micro-layers in a single film, giving it the tear resistance needed to keep shattered glass bonded to the frame area. Independent testing has shown these films significantly reduce the velocity and distance of flying glass fragments compared to untreated panes.
 - **Llumar Safety & Security Films** — Manufactured by Eastman, Llumar's security films are designed to meet ANSI Z97.1 and CPSC 16 CFR 1201 safety glazing standards. These films provide impact resistance that helps glass withstand repeated blows and structural flexing, making them well-suited for buildings in seismic zones where glass may face both impact and pressure stresses.

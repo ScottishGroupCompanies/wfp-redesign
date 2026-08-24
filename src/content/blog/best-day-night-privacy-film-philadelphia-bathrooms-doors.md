@@ -3,7 +3,7 @@ title: "Day & Night Privacy Film for Philadelphia Bathrooms"
 description: "Best day and night privacy window film for Philadelphia bathrooms and doors — frosted options, UV protection, and local installation guidance."
 pubDate: 2026-06-15
 author: "Mike Kinsey"
-image: "/images/wfp-church-hero.jpg"
+image: "/images/wfp-church-hero.webp"
 imageAlt: "Decorative privacy window film on bathroom and door glass in a Philadelphia property"
 tags: ["window film", "philadelphia", "privacy film", "decorative film", "bathroom privacy"]
 draft: false

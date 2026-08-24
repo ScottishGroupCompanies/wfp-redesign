@@ -3,7 +3,7 @@ title: "Nighttime Privacy Window Film for Philadelphia"
 description: "Best window film for nighttime privacy Philadelphia homes can use: compare frosted, decorative, and dual-reflective options by room."
 pubDate: 2026-06-11
 author: "Mike Kinsey"
-image: "/images/wfp-landing-hero.jpg"
+image: "/images/wfp-landing-hero.webp"
 imageAlt: "Nighttime privacy window film for a Philadelphia home"
 tags: ["window film", "philadelphia", "privacy window film", "nighttime privacy", "decorative film"]
 draft: false

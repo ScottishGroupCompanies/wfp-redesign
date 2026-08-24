@@ -3,7 +3,7 @@ title: "Transform Entryways with the Best Sidelight Window Film for Philadelphia
 description: "Discover the best sidelight window film for Philadelphia homes. Add privacy to entryway glass without sacrificing natural light, style, or curb appeal."
 pubDate: 2026-08-18
 author: "Window Film Philadelphia"
-image: "/images/blog/wfp-blog-best-sidelight-window-film-philadelphia-transform-entryways.jpg"
+image: "/images/blog/wfp-blog-best-sidelight-window-film-philadelphia-transform-entryways.webp"
 imageAlt: "Transform Entryways with the Best Sidelight Window Film for Philadelphia | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "sidelight", "privacy", "entryway"]
 category: "privacy-film"

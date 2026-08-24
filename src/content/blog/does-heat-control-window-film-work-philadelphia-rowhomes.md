@@ -3,7 +3,7 @@ title: "Does Heat Control Film Work in Philadelphia Rowhomes?"
 description: "Does heat control window film work in Philadelphia? See realistic results by exposure, floor, and film type for rowhomes, apartments, and offices."
 pubDate: 2026-05-30
 author: "Mike Kinsey"
-image: "/images/wfp-premium-films-v2.jpg"
+image: "/images/wfp-premium-films-v2.webp"
 imageAlt: "Premium heat control window film installation in Philadelphia"
 tags: ["heat control window film", "philadelphia", "rowhomes", "window film"]
 draft: false

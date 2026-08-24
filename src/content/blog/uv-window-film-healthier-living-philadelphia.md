@@ -3,7 +3,7 @@ title: "UV Window Film for Healthier Living in Philadelphia"
 description: "See why UV window film Philadelphia property owners choose can block up to 99% of UV rays, cut fading, and improve comfort in homes and offices."
 pubDate: 2026-07-12
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-uv-window-film-healthier-living-philadelphia.jpg"
+image: "/images/blog/wfp-blog-uv-window-film-healthier-living-philadelphia.webp"
 imageAlt: "Why UV Window Film Is a Must-have for Healthier Living in Philadelphia | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "uv protection", "fading protection", "interior comfort"]
 categories: ["uv-protection", "philadelphia"]

@@ -3,7 +3,7 @@ title: "Best Privacy Window Film Options for Discreet Living in Philadelphia"
 description: "Discover the best privacy window film for Philadelphia homes and offices. Compare frosted, one-way, and decorative options from Solyx and 3M Fasara."
 pubDate: 2026-08-13
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-best-privacy-window-film-philadelphia.jpg"
+image: "/images/blog/wfp-blog-best-privacy-window-film-philadelphia.webp"
 imageAlt: "Best Privacy Window Film Options for Discreet Living in Philadelphia | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy"]
 category: "privacy-film"
@@ -38,7 +38,7 @@ Patterned films add visual interest while providing partial or full privacy. Opt
 
 3M Fasara decorative films come in over 100 distinct patterns, from fine-line striations to bold geometric weaves. Each Fasara film also rejects up to 99 percent of UV radiation, which helps protect interior furnishings from fading — a real concern in sun-drenched south-facing Philadelphia rowhomes. The Illumina line adds color-shifting dichroic effects that change appearance depending on viewing angle, creating a dynamic privacy barrier for statement spaces.
 
-![best privacy window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-best-privacy-window-film-philadelphia.jpg)
+![best privacy window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-best-privacy-window-film-philadelphia.webp)
 
 ## How to Choose the Right Privacy Film for Your Philadelphia Property
 

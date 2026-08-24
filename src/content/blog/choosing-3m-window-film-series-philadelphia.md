@@ -3,7 +3,7 @@ title: "Which 3M Window Film Series in Philadelphia?"
 description: "Compare Prestige, Ceramic, and Night Vision 3M window film Philadelphia property owners choose for heat control, glare reduction, and UV defense."
 pubDate: 2026-06-08
 author: "Mike Kinsey"
-image: "/images/wfp-premium-films-v2.jpg"
+image: "/images/wfp-premium-films-v2.webp"
 imageAlt: "3M architectural window film installed on bright commercial glass in Philadelphia"
 tags: ["3m window film", "philadelphia", "energy savings", "glare reduction"]
 draft: false

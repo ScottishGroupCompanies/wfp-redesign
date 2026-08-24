@@ -3,7 +3,7 @@ title: "UV Protection Window Film in Philadelphia"
 description: "Discover how UV protection window film shields Philadelphia homes and businesses from fading, skin damage, and heat — with 99% UV block from 3M and LLumar."
 pubDate: 2026-07-03
 author: "Mike Kinsey"
-image: "/images/wfp-office-hero.jpg"
+image: "/images/wfp-office-hero.webp"
 imageAlt: "UV protection window film installed in a Philadelphia office building"
 tags: ["UV protection window film", "philadelphia", "window film", "UV blocking", "fade protection"]
 draft: false

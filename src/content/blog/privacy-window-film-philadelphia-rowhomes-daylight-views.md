@@ -3,7 +3,7 @@ title: "Privacy Window Film for Philadelphia Rowhomes"
 description: "Privacy window film Philadelphia homeowners use to brighten rowhomes and condos while limiting street views. Compare frosted, solar, and decorative film."
 pubDate: 2026-07-21
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-privacy-window-film-philadelphia-rowhomes-daylight-views.jpg"
+image: "/images/blog/wfp-blog-privacy-window-film-philadelphia-rowhomes-daylight-views.webp"
 imageAlt: "Privacy Window Film for Philadelphia Rowhomes: Better Daylight Without Street-Level Views | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy film"]
 categories: ["privacy-film", "philadelphia"]

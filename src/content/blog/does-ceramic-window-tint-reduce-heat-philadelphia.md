@@ -3,7 +3,7 @@ title: "Does Ceramic Window Tint Reduce Heat in Philadelphia?"
 description: "Ceramic window tint reduces heat by up to 50% in Philly homes, blocking infrared radiation while maintaining visibility on Center City windows."
 pubDate: 2026-07-28
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-does-ceramic-window-tint-reduce-heat-philadelphia.jpg"
+image: "/images/blog/wfp-blog-does-ceramic-window-tint-reduce-heat-philadelphia.webp"
 imageAlt: "Does Ceramic Window Tint Reduce Heat or Just Glare in Philadelphia Spaces? | Window Film Philadelphia"
 tags: ["does", "ceramic", "window", "tint", "reduce", "philadelphia", "window film"]
 categories: ["energy-savings", "philadelphia"]

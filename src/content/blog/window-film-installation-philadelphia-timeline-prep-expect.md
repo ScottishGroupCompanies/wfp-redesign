@@ -3,7 +3,7 @@ title: "Window Film Installation in Philadelphia: What to Expect"
 description: "Window film installation philadelphia guide covering timing, prep, older glass, and aftercare for Philadelphia homes and offices with local expert tips."
 pubDate: 2026-06-10
 author: "Mike Kinsey"
-image: "/images/wfp-expert-installation-v1.jpg"
+image: "/images/wfp-expert-installation-v1.webp"
 imageAlt: "Professional window film installation on a Philadelphia property by an expert installer"
 tags: ["window film", "philadelphia", "installation", "energy savings"]
 draft: false

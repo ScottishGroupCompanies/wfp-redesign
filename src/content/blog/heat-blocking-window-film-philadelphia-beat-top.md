@@ -3,7 +3,7 @@ title: "Heat Blocking Window Film for Philadelphia Homes"
 description: "Discover how heat blocking window film in Philadelphia cuts cooling costs, reduces glare, and protects interiors with proven 3M and LLumar data."
 pubDate: 2026-08-09
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-heat-blocking-window-film-philadelphia-beat-top.jpg"
+image: "/images/blog/wfp-blog-heat-blocking-window-film-philadelphia-beat-top.webp"
 imageAlt: "Beat the Heat: Top Reasons to Use Heat Blocking Window Film in Philadelphia | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "heat blocking", "energy savings", "solar control"]
 category: "energy-savings"
@@ -38,7 +38,7 @@ Each product line offers different visibility levels and heat rejection profiles
 
 ## Energy Savings That Add Up Over a Philadelphia Summer
 
-![heat blocking window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-heat-blocking-window-film-philadelphia-beat-top.jpg)
+![heat blocking window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-heat-blocking-window-film-philadelphia-beat-top.webp)
 
 Philadelphia's cooling season typically runs from late May through September, with July and August driving the highest electricity demand in the PJM grid that serves the region. Air conditioning accounts for a significant portion of residential and commercial energy costs during these months.
 

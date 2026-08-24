@@ -3,7 +3,7 @@ title: "Frosted Window Film for Philadelphia Glass Walls"
 description: "Best frosted window film Philadelphia options for Old City glass walls, with cleanable office privacy solutions across Center City and University City."
 pubDate: 2026-06-19
 author: "Mike Kinsey"
-image: "/images/wfp-office-hero.jpg"
+image: "/images/wfp-office-hero.webp"
 imageAlt: "Frosted privacy window film on office glass walls in Old City Philadelphia"
 tags: ["frosted window film", "privacy window film", "philadelphia", "office glass", "decorative film"]
 draft: false

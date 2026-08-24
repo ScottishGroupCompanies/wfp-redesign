@@ -3,7 +3,7 @@ title: "3M Window Film Advantages for Philadelphia"
 description: "See why 3m window film philadelphia property owners choose helps cut heat, glare, and UV in Philadelphia homes and businesses with proven 3M data."
 pubDate: 2026-07-15
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-3m-window-film-advantages-philadelphia-buildings.jpg"
+image: "/images/blog/wfp-blog-3m-window-film-advantages-philadelphia-buildings.webp"
 imageAlt: "3M Window Film Advantages for Philadelphia Homeowners and Businesses | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "energy savings"]
 categories: ["energy-savings", "philadelphia"]

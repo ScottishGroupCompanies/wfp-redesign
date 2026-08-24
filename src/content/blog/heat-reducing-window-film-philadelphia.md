@@ -3,7 +3,7 @@ title: "Heat Reducing Window Film in Philadelphia"
 description: "Beat Philadelphia summer heat with heat reducing window film. Lower cooling costs, block infrared heat, and stay comfortable year-round."
 pubDate: 2026-07-05
 author: "Mike Kinsey"
-image: "/images/office-window-film-philadelphia-hero.jpg"
+image: "/images/office-window-film-philadelphia-hero.webp"
 imageAlt: "Modern Philadelphia office with heat reducing window film on floor-to-ceiling windows, Center City skyline visible"
 tags: ["heat reducing window film", "philadelphia", "window film", "energy savings", "solar heat"]
 draft: false

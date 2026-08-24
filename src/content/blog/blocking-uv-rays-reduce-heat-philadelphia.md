@@ -3,7 +3,7 @@ title: "Does Blocking UV Rays Reduce Heat in Your Philadelphia Home?"
 description: "Does blocking UV rays reduce heat in your Philadelphia home? Learn how UV film compares to solar heat gain, what it really cuts, and what it does not."
 pubDate: 2026-07-27
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-blocking-uv-rays-reduce-heat-philadelphia.jpg"
+image: "/images/blog/wfp-blog-blocking-uv-rays-reduce-heat-philadelphia.webp"
 imageAlt: "Does Blocking UV Rays Reduce Heat in Your Philadelphia Home? | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "uv protection", "heat reduction"]
 categories: ["uv-protection", "philadelphia"]

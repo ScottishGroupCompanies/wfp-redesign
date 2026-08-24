@@ -3,7 +3,7 @@ title: "Surprising UV Window Film Benefits in Philadelphia"
 description: "Discover how UV window film protects Philadelphia homes from fading, skin damage, and rising cooling costs while preserving your interiors and views."
 pubDate: 2026-08-04
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-uv-window-film-philadelphia.jpg"
+image: "/images/blog/wfp-blog-uv-window-film-philadelphia.webp"
 imageAlt: "The Surprising Benefits of UV Window Film for Philadelphia Homes | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "uv protection", "fading", "skin protection", "energy savings"]
 categories: ["uv-protection", "philadelphia"]

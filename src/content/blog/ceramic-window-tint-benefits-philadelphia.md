@@ -3,7 +3,7 @@ title: "Ceramic Window Tint Benefits in Philadelphia"
 description: "Learn how ceramic window tint benefits Philadelphia homes and businesses with lower heat, less glare, 99% UV blocking, and clearer comfort."
 pubDate: 2026-07-26
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-ceramic-window-tint-benefits-philadelphia.jpg"
+image: "/images/blog/wfp-blog-ceramic-window-tint-benefits-philadelphia.webp"
 imageAlt: "Ceramic Window Tint Benefits for Philadelphia Homes and Businesses | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "energy savings"]
 categories: ["energy-savings", "philadelphia"]

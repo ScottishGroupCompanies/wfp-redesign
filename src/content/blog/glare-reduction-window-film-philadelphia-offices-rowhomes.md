@@ -3,7 +3,7 @@ title: "Reduce Glare with Window Film in Philadelphia"
 description: "Learn how glare reduction window film helps Philadelphia offices and rowhomes cut screen washout, solar heat, and UV while keeping daylight usable."
 pubDate: 2026-07-07
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-glare-reduction-window-film-philadelphia-offices-rowhomes.jpg"
+image: "/images/blog/wfp-blog-glare-reduction-window-film-philadelphia-offices-rowhomes.webp"
 imageAlt: "Glare Reduction Window Film for Philadelphia Offices and Sunlit Rowhomes | Window Film Philadelphia"
 tags: ["philadelphia", "glare reduction", "office window film", "rowhome window film", "solar control"]
 categories: ["glare-reduction", "philadelphia"]
@@ -37,7 +37,7 @@ For example, 3M Sun Control Window Film Prestige Series is known for a lighter, 
 
 For many projects, the best glare reduction window film Philadelphia offices and rowhomes install is a spectrally selective product rather than the darkest film on the card. That matters in places like Old City lofts or Washington Square offices where daylight is part of the appeal and the finish needs to stay refined.
 
-![glare reduction window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-glare-reduction-window-film-philadelphia-offices-rowhomes.png)
+![glare reduction window film philadelphia infographic — Window Film Philadelphia](/images/blog/wfp-infographic-glare-reduction-window-film-philadelphia-offices-rowhomes.webp)
 
 ## Where film makes the biggest difference
 

@@ -3,7 +3,7 @@ title: "Heat Blocking Film for Philadelphia Interiors"
 description: "Heat blocking window film Philadelphia property owners choose can cut hot spots, soften glare, and keep city interiors more comfortable all summer."
 pubDate: 2026-07-13
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-heat-blocking-window-film-philadelphia-interiors.jpg"
+image: "/images/blog/wfp-blog-heat-blocking-window-film-philadelphia-interiors.webp"
 imageAlt: "How Heat Blocking Window Film Keeps Philadelphia Interiors Comfortable | Window Film Philadelphia"
 tags: ["heat blocking window film", "philadelphia", "energy savings"]
 categories: ["energy-savings", "philadelphia"]

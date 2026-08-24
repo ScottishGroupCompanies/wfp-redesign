@@ -3,7 +3,7 @@ title: "Prevent Bird Strikes with Window Film in Philadelphia"
 description: "Bird strike window film helps Philadelphia buildings prevent deadly avian collisions along the Atlantic Flyway. Learn how bird-safe film protects wildlife."
 pubDate: 2026-08-05
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-bird-strike-window-film-philadelphia.jpg"
+image: "/images/blog/wfp-blog-bird-strike-window-film-philadelphia.webp"
 imageAlt: "How Bird Strike Window Film Helps Prevent Avian Collisions in Philadelphia | Window Film Philadelphia"
 tags: ["bird strike window film", "philadelphia", "bird safety", "bird collision prevention"]
 categories: ["bird-strike", "philadelphia"]

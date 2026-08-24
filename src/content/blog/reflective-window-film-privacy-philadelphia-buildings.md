@@ -3,7 +3,7 @@ title: "Reflective Window Film Privacy in Philadelphia"
 description: "Discover how reflective window film in Philadelphia enhances privacy, controls solar heat, and reduces glare for offices, rowhomes, and buildings."
 pubDate: 2026-07-08
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-reflective-window-film-privacy-philadelphia-buildings.jpg"
+image: "/images/blog/wfp-blog-reflective-window-film-privacy-philadelphia-buildings.webp"
 imageAlt: "How Reflective Window Film Enhances Privacy for Philadelphia Buildings | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "privacy film", "reflective film", "solar control"]
 categories: ["privacy-film", "philadelphia"]

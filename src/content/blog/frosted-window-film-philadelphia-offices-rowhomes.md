@@ -3,7 +3,7 @@ title: "Frosted Window Film in Philadelphia Offices & Rowhomes"
 description: "Frosted window film for Philadelphia homes and offices adds privacy without blocking daylight. See where it works best and when to choose other film types."
 pubDate: 2026-07-23
 author: "Mike Kinsey"
-image: "/images/blog/wfp-blog-frosted-window-film-philadelphia-offices-rowhomes.jpg"
+image: "/images/blog/wfp-blog-frosted-window-film-philadelphia-offices-rowhomes.webp"
 imageAlt: "Frosted Window Film for Philadelphia Offices and Rowhomes: Privacy Without Losing Light | Window Film Philadelphia"
 tags: ["frosted window film", "philadelphia", "privacy window film"]
 categories: ["privacy-film", "philadelphia"]

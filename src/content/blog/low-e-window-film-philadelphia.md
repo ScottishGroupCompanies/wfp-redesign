@@ -3,7 +3,7 @@ title: "Low E Window Film in Philadelphia: More Comfort"
 description: "Low e window film Philadelphia homeowners use to cut summer heat and winter chill, improving comfort and efficiency without replacing windows."
 pubDate: 2026-06-03
 author: "Mike Kinsey"
-image: "/images/wfp-premium-films-v2.jpg"
+image: "/images/wfp-premium-films-v2.webp"
 imageAlt: "Close-up of energy-saving window film on a glass window in Philadelphia"
 tags: ["window film", "philadelphia", "energy savings"]
 draft: false
