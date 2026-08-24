@@ -327,6 +327,11 @@ const currentPath = Astro.url.pathname;
   left: 0;
   right: 0;
   z-index: 300;
+  transform: translateY(0);
+  transition: transform 0.35s ease;
+}
+.topbar.is-hidden {
+  transform: translateY(-100%);
 }
 .topbar__inner {
   max-width: 1320px;
@@ -1138,12 +1143,15 @@ document.querySelectorAll('.mobile-nav-group__toggle').forEach((toggle) => {
 //  SCROLL DETECTION
 // ═══════════════════════════════════════════════════════════════
 let lastScroll = 0;
+const topbarEl = document.querySelector('.topbar');
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   if (currentScroll > 50) {
     siteHeader?.classList.add('is-scrolled');
+    topbarEl?.classList.add('is-hidden');
   } else {
     siteHeader?.classList.remove('is-scrolled');
+    topbarEl?.classList.remove('is-hidden');
   }
   lastScroll = currentScroll;
 });
