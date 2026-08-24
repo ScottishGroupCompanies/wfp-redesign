@@ -132,6 +132,7 @@ const contactImages = {
           class="ct-consult__form"
           action="https://formsubmit.co/contact@windowfilmphiladelphia.net"
           method="POST"
+          data-zoho-lead
         >
           <input type="hidden" name="_next" value="https://windowfilmphiladelphia.net/thank-you/" />
           <input type="hidden" name="_subject" value="New Contact — Window Film Philadelphia" />
@@ -162,10 +163,10 @@ const contactImages = {
             <label for="project_type" class="ct-form-label">Project Type</label>
             <select id="project_type" name="project_type" class="ct-form-input ct-form-select" required>
               <option value="" disabled selected>Select project type</option>
-              <option value="residential">Residential</option>
-              <option value="commercial">Commercial</option>
-              <option value="government">Government / Municipal</option>
-              <option value="other">Other</option>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Government / Municipal">Government / Municipal</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -173,11 +174,11 @@ const contactImages = {
             <label for="film_type" class="ct-form-label">Film Category</label>
             <select id="film_type" name="film_type" class="ct-form-input ct-form-select">
               <option value="" disabled selected>Select film type</option>
-              <option value="sun_control">Sun Control / Energy Savings</option>
-              <option value="privacy">Privacy / Decorative</option>
-              <option value="security">Safety &amp; Security</option>
-              <option value="uv_protection">UV Protection</option>
-              <option value="not_sure">Not sure — need advice</option>
+              <option value="Sun Control / Energy Savings">Sun Control / Energy Savings</option>
+              <option value="Privacy / Decorative">Privacy / Decorative</option>
+              <option value="Safety &amp; Security">Safety &amp; Security</option>
+              <option value="UV Protection">UV Protection</option>
+              <option value="Not sure — need advice">Not sure — need advice</option>
             </select>
           </div>
 
@@ -191,6 +192,12 @@ const contactImages = {
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
           </button>
         </form>
+
+        <div class="ct-form-success" hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3 class="ct-form-success__title">Message sent!</h3>
+          <p class="ct-form-success__text">We'll be in touch within 1 business day. Thanks for reaching out to Window Film Philadelphia.</p>
+        </div>
       </div>
 
       <!-- Sidebar column -->
@@ -453,6 +460,32 @@ const contactImages = {
   .auron-btn--primary:hover { background: #b5ff7a; transform: translateY(-1px); color: var(--brand); }
   .auron-btn--ghost-white { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
   .auron-btn--ghost-white:hover { border-color: #fff; }
+
+  /* ── FORM SUCCESS MESSAGE ── */
+  .ct-form-success {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(129,171,76,0.08);
+    border: 1px solid rgba(129,171,76,0.3);
+    border-radius: 18px;
+    padding: 40px 32px;
+  }
+  .ct-form-success__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--brand, #1a1a1a);
+    margin: 0;
+  }
+  .ct-form-success__text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin: 0;
+  }
 
   /* ── CONTACT CARDS ── */
   .ct-cards {

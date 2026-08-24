@@ -21,25 +21,17 @@ const currentYear = new Date().getFullYear();
         the Delaware Valley.
       </p>
 
+      <div class="wfp-footer__contact-info">
+        <a href="tel:+126****7980" class="wfp-footer__phone">(267) 394-7980</a>
+        <a href="mailto:contact@windowfilmphiladelphia.net" class="wfp-footer__email">contact@windowfilmphiladelphia.net</a>
+        <p class="wfp-footer__hours">Mon–Sat: 8am – 6pm</p>
+      </div>
+
       <div class="wfp-footer__divider"></div>
 
       <div class="wfp-footer__social">
-        <!-- Facebook -->
-        <a href="#" class="wfp-footer__social-icon" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-          </svg>
-        </a>
-        <!-- Instagram -->
-        <a href="#" class="wfp-footer__social-icon" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/window-tinting-ohio/" class="wfp-footer__social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/company/window-film-philadelphia/" class="wfp-footer__social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
             <rect x="2" y="9" width="4" height="12"/>
@@ -118,18 +110,62 @@ const currentYear = new Date().getFullYear();
       </ul>
     </div>
 
-    <!-- ── COL 5: Get in Touch ── -->
-    <div class="wfp-footer__contact">
-      <h3 class="wfp-footer__col-header">GET IN TOUCH</h3>
+    <!-- ── COL 5: Contact Form ── -->
+    <div class="wfp-footer__form-col">
+      <h3 class="wfp-footer__col-header">GET A FREE QUOTE</h3>
 
-      <a href="tel:+12673947980" class="wfp-footer__phone">(267) 394-7980</a>
-      <a href="mailto:contact@windowfilmphiladelphia.net" class="wfp-footer__email">contact@windowfilmphiladelphia.net</a>
-      <p class="wfp-footer__hours">Mon–Sat: 8am – 6pm</p>
+      <!--
+        NOTE: currently posts to FormSubmit as a placeholder.
+        TODO(Zoho): swap `action` to the Zoho Web-to-Lead endpoint
+        (https://crm.zoho.com/crm/WebToLeadForm), add hidden fields
+        xnQsjsdp / xmIwtLD / actionType / returnURL, set Lead Source,
+        and rename field `name=` attrs to Zoho's expected lead fields
+        (First Name, Last Name, Email, Phone, Company, Description).
+      -->
+      <form
+        class="wfp-footer__form"
+        action="https://formsubmit.co/contact@windowfilmphiladelphia.net"
+        method="POST"
+        data-zoho-lead
+      >
+        <input type="hidden" name="_next" value="https://windowfilmphiladelphia.net/thank-you/" />
+        <input type="hidden" name="_subject" value="New Footer Lead — Window Film Philadelphia" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="lead_source" value="Website Footer Form" />
 
-      <div class="wfp-footer__divider"></div>
+        <div class="wfp-footer__form-row">
+          <input type="text" name="first_name" aria-label="First name" placeholder="First name" required class="wfp-footer__input" />
+          <input type="text" name="last_name" aria-label="Last name" placeholder="Last name" required class="wfp-footer__input" />
+        </div>
+        <input type="email" name="email" aria-label="Email" placeholder="Email" required class="wfp-footer__input" />
+        <input type="tel" name="phone" aria-label="Phone" placeholder="Phone" required class="wfp-footer__input" />
 
-      <a href="/contact" class="wfp-footer__cta">Get a Free Quote →</a>
-      <p class="wfp-footer__cta-sub">Free consultation · No pressure</p>
+        <select name="project_type" aria-label="Project type" required class="wfp-footer__input wfp-footer__select">
+          <option value="" disabled selected>Select project type</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Government / Municipal">Government / Municipal</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <select name="film_type" aria-label="Film category" class="wfp-footer__input wfp-footer__select">
+          <option value="" disabled selected>Select film type</option>
+          <option value="Sun Control / Energy Savings">Sun Control / Energy Savings</option>
+          <option value="Privacy / Decorative">Privacy / Decorative</option>
+          <option value="Safety &amp; Security">Safety &amp; Security</option>
+          <option value="UV Protection">UV Protection</option>
+          <option value="Not sure — need advice">Not sure — need advice</option>
+        </select>
+
+        <textarea name="message" aria-label="Message" rows="3" placeholder="Tell us about your project…" required class="wfp-footer__input wfp-footer__textarea"></textarea>
+
+        <button type="submit" class="wfp-footer__cta">Get a Free Quote →</button>
+        <p class="wfp-footer__cta-sub">Free consultation · No pressure</p>
+      </form>
+
+      <div class="wfp-footer__form-success" hidden>
+        <p class="wfp-footer__form-success-text">Message sent! We'll be in touch within 1 business day. Thanks for reaching out to Window Film Philadelphia.</p>
+      </div>
     </div>
 
   </div>
@@ -156,7 +192,7 @@ const currentYear = new Date().getFullYear();
 /* ─── MAIN INNER ─── */
 .wfp-footer__inner {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 0.8fr 1.2fr;
+  grid-template-columns: 1.6fr 1fr 1fr 0.8fr 1.5fr;
   gap: 40px;
   align-items: start;
   padding: 56px 80px;
@@ -299,15 +335,15 @@ const currentYear = new Date().getFullYear();
   color: #fff;
 }
 
-/* ─── CONTACT COLUMN ── */
-.wfp-footer__contact {
-  padding-top: 4px; /* align header with brand tagline */
+/* ─── CONTACT INFO (now in brand column) ── */
+.wfp-footer__contact-info {
+  margin-bottom: 20px;
 }
 
 .wfp-footer__phone {
   display: block;
   font-family: 'Inter', sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
@@ -338,12 +374,86 @@ const currentYear = new Date().getFullYear();
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.45);
-  margin: 0 0 24px 0;
+  margin: 0;
   line-height: 1.4;
 }
 
-.wfp-footer__contact .wfp-footer__divider {
-  margin-bottom: 24px;
+/* ─── CONTACT FORM (col 5) ── */
+.wfp-footer__form-col {
+  padding-top: 4px; /* align header with brand tagline */
+}
+
+.wfp-footer__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wfp-footer__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.wfp-footer__input {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #fff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.wfp-footer__input::placeholder {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+.wfp-footer__input:focus {
+  outline: none;
+  border-color: #7CB342;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.wfp-footer__textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.wfp-footer__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237CB342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 34px;
+  cursor: pointer;
+}
+
+.wfp-footer__select:invalid {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+.wfp-footer__select option {
+  color: #1a1a1a;
+}
+
+.wfp-footer__form-success {
+  background: rgba(124, 179, 66, 0.10);
+  border: 1px solid rgba(124, 179, 66, 0.35);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.wfp-footer__form-success-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0;
 }
 
 .wfp-footer__cta {
@@ -358,8 +468,10 @@ const currentYear = new Date().getFullYear();
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin-top: 2px;
   transition: background 0.2s;
 }
 
@@ -415,12 +527,9 @@ const currentYear = new Date().getFullYear();
     grid-column: 1 / -1;
   }
 
-  .wfp-footer__contact {
+  .wfp-footer__form-col {
     grid-column: 1 / -1;
-  }
-
-  .wfp-footer__cta {
-    max-width: 320px;
+    max-width: 480px;
   }
 
   .wfp-footer__bottom {
@@ -435,11 +544,8 @@ const currentYear = new Date().getFullYear();
     padding: 40px 24px;
   }
 
-  .wfp-footer__contact {
+  .wfp-footer__form-col {
     grid-column: auto;
-  }
-
-  .wfp-footer__cta {
     max-width: 100%;
   }
 
@@ -455,3 +561,121 @@ const currentYear = new Date().getFullYear();
   }
 }
 </style>
+
+<script is:inline>
+  // ─────────────────────────────────────────────────────────────
+  // Zoho CRM Web-to-Lead integration (shared by every form[data-zoho-lead])
+  // Fires two POSTs in parallel: FormSubmit (email backup) + Zoho WebToLead
+  // (creates a Prospect). Shows success if EITHER succeeds; only logs to
+  // console if BOTH fail. Never shows an error to the user.
+  // ─────────────────────────────────────────────────────────────
+  (function () {
+    const ZOHO_URL = 'https://crm.zoho.com/crm/WebToLeadForm';
+    const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/contact@windowfilmphiladelphia.net';
+
+    function val(form, name) {
+      const el = form.querySelector('[name="' + name + '"]');
+      return el ? el.value.trim() : '';
+    }
+
+    function buildDescription(details, projectType, filmCategory) {
+      return (
+        (details || '') +
+        '\n\n--- Project Details ---\n' +
+        'Project Type: ' + (projectType || 'Not provided') + '\n' +
+        'Film Category: ' + (filmCategory || 'Not provided')
+      );
+    }
+
+    function postFormSubmit(fullName, email, phone, description) {
+      return fetch(FORMSUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: fullName,
+          email: email,
+          phone: phone,
+          message: description,
+          _subject: 'New Contact Form Submission — Window Film Philadelphia',
+        }),
+      }).then(function (r) { if (!r.ok) throw new Error('FormSubmit ' + r.status); return r; });
+    }
+
+    function postZoho(fields) {
+      const body = new URLSearchParams();
+      Object.keys(fields).forEach(function (k) { body.append(k, fields[k]); });
+      // Zoho WebToLeadForm doesn't return CORS-readable responses; use no-cors.
+      // The POST still creates the Prospect; we treat a resolved fetch as success.
+      return fetch(ZOHO_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+    }
+
+    function showSuccess(form) {
+      form.setAttribute('hidden', '');
+      // find a sibling success element within the same form container
+      const container = form.parentElement;
+      const success = container && container.querySelector('[data-zoho-success], .wfp-footer__form-success, .ct-form-success');
+      if (success) success.removeAttribute('hidden');
+    }
+
+    function wire(form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const first = val(form, 'first_name');
+        const last = val(form, 'last_name');
+        const email = val(form, 'email');
+        const phone = val(form, 'phone');
+        const details = val(form, 'message');
+        const projectType = val(form, 'project_type'); // human-readable value
+        const filmCategory = val(form, 'film_type');
+        const fullName = (first + ' ' + last).trim();
+        const description = buildDescription(details, projectType, filmCategory);
+
+        const zohoFields = {
+          xnQsjsdp: '325aec352fca48630f82c839c082a7aa9196cea28dfcc9e80957434ae4a1b82a',
+          xmIwtLD: 'f0bb62d4e0d3507553760024d3e14e099546427dcdc85266704c37d416384aced18465ecf42623da5b55800cb7b24914',
+          actionType: 'TGVhZHM=',
+          returnURL: 'https://windowfilmphiladelphia.net/thank-you/',
+          zc_gad: '',
+          aG9uZXlwb3Q: '',
+          'First Name': first,
+          'Last Name': last,
+          Email: email,
+          Phone: phone,
+          Company: '',
+          LEADCF29: projectType || '-None-',
+          LEADCF28: filmCategory || '-None-',
+          Description: description,
+          'Lead Status': 'New',
+          LEADCF5: 'Web Form',
+          LEADCF4: 'Website',
+          LEADCF7: 'www.windowfilmphiladelphia.net',
+          LEADCF8: '-None-',
+        };
+
+        const btn = form.querySelector('[type="submit"]');
+        if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+        Promise.allSettled([
+          postFormSubmit(fullName, email, phone, description),
+          postZoho(zohoFields),
+        ]).then(function (results) {
+          const anyOk = results.some(function (r) { return r.status === 'fulfilled'; });
+          if (anyOk) {
+            showSuccess(form);
+          } else {
+            console.error('Both lead submissions failed', results);
+            if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll('form[data-zoho-lead]').forEach(wire);
+  })();
+</script>
