@@ -26,8 +26,8 @@ interface Props {
 }
 
 const {
-  before    = '/images/philadelphia-window-film-installation-before-glare.jpg',
-  after     = '/images/philadelphia-window-film-installation-after-solar-control.jpg',
+  before    = '/images/philadelphia-window-film-installation-before-glare.webp',
+  after     = '/images/philadelphia-window-film-installation-after-solar-control.webp',
   beforeAlt = 'Philadelphia rowhouse living room without window film — harsh glare and overexposed windows',
   afterAlt  = 'Same Philadelphia living room after window film installation — soft even light, no glare, comfortable atmosphere',
   beforeTag = 'Without film',
@@ -37,6 +37,8 @@ const {
 } = Astro.props;
 
 const id = `bas-${Math.random().toString(36).slice(2, 9)}`;
+
+import { responsiveImg, SIZES_CONTENT } from '../lib/responsive-image';
 ---
 
 <section class="bas-section">
@@ -64,6 +66,7 @@ const id = `bas-${Math.random().toString(36).slice(2, 9)}`;
           class="before-after__img before-after__img--before"
           draggable="false"
           loading="lazy"
+          {...responsiveImg(before, SIZES_CONTENT)}
         />
 
         <!-- After image (clipped by --pos) -->
@@ -75,6 +78,7 @@ const id = `bas-${Math.random().toString(36).slice(2, 9)}`;
             class="before-after__img before-after__img--after"
             draggable="false"
             loading="lazy"
+            {...responsiveImg(after, SIZES_CONTENT)}
           />
         </div>
 

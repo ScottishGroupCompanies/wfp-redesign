@@ -27,6 +27,8 @@ interface Props {
 const { slides, id = 'hiwSlideshow', eyebrow, title, subtitle } = Astro.props;
 const trackId = `${id}Track`;
 const progressId = `${id}Progress`;
+
+import { responsiveImg, SIZES_CONTENT } from '../lib/responsive-image';
 ---
 
 <section class="hiw-section" id={id}>
@@ -65,6 +67,7 @@ const progressId = `${id}Progress`;
                   alt={slide.imgAlt || slide.title} title={slide.imgAlt || slide.title}
                   class="hiw-slide__img"
                   loading="lazy"
+                  {...responsiveImg(slide.img, SIZES_CONTENT)}
                 />
                 <div class="hiw-slide__panel">
                   <span class="hiw-slide__step">{slide.step}</span>

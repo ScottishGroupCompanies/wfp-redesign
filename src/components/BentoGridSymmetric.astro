@@ -20,6 +20,9 @@ const {
     { title: 'Government & Public', desc: 'Security film institutions trust.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/f_auto,q_auto,w_800/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_175602_3ec0c373-ae60-4251-9694-bd03190474d1.png', href: '/services/government-buildings/' },
   ],
 } = Astro.props;
+
+import { responsiveImg } from '../lib/responsive-image';
+const SYM_SIZES = '(max-width: 768px) 100vw, 33vw';
 ---
 
 <section class="bgs">
@@ -31,7 +34,7 @@ const {
     {items.map((it, i) => (
       <a class="bgs__card" href={it.href} style={`--bgs-delay: ${i * 80}ms`}>
         <div class="bgs__img-wrap">
-          <img src={it.img} alt={it.title} title={`${it.title} — Window Film Philadelphia`} loading="lazy" />
+          <img src={it.img} alt={it.title} title={`${it.title} — Window Film Philadelphia`} loading="lazy" {...responsiveImg(it.img, SYM_SIZES)} />
         </div>
         <div class="bgs__body">
           <h3 class="bgs__card-title">{it.title}</h3>

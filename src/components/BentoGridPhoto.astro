@@ -22,6 +22,9 @@ const {
     { span: 'md', title: 'Government Buildings', desc: 'Blast mitigation & safety compliance.', img: 'https://res.cloudinary.com/deunehrew/image/fetch/v1781806028/https://d8j0ntlcm91z4.cloudfront.net/user_39gHIafquScvuUngNf6xPBDD37B/hf_20260618_175602_3ec0c373-ae60-4251-9694-bd03190474d1.png', href: '/government-buildings/' },
   ],
 } = Astro.props;
+
+import { responsiveImg } from '../lib/responsive-image';
+const BENTO_SIZES = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw';
 ---
 
 <section class="bgp">
@@ -32,7 +35,7 @@ const {
   <div class="bgp__grid">
     {items.map((it) => (
       <a class={`bgp__card bgp__card--${it.span || 'sm'}`} href={it.href}>
-        <img src={it.img} alt={it.title} title={it.title} loading="lazy" />
+        <img src={it.img} alt={it.title} title={it.title} loading="lazy" {...responsiveImg(it.img, BENTO_SIZES)} />
         <div class="bgp__overlay"></div>
         <div class="bgp__body">
           <h3>{it.title}</h3>

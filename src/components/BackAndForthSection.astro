@@ -31,11 +31,13 @@ const {
   ctaHref,
   altBg = false,
 } = Astro.props;
+
+import { responsiveImg, SIZES_CONTENT } from '../lib/responsive-image';
 ---
 
 <section class={`baf-section${flip ? ' baf-section--flip' : ''}`}>
   <div class="baf-section__image">
-    <img src={imageSrc} alt={imageAlt} title={imageAlt} loading="lazy" />
+    <img src={imageSrc} alt={imageAlt} title={imageAlt} loading="lazy" {...responsiveImg(imageSrc, '(max-width: 768px) 100vw, 50vw')} />
   </div>
   <div class={`baf-section__content${altBg ? ' baf-section__content--alt' : ''}`}>
     <div class="baf-section__inner">

@@ -29,6 +29,8 @@ const {
   hintText = 'Hover the photos · click to bring forward',
   theme = 'light',
 } = Astro.props;
+
+import { responsiveImg } from '../lib/responsive-image';
 ---
 
 <section class={`gb gb--${theme}`}>
@@ -50,7 +52,7 @@ const {
       <div class="gb__strips">
         {photos.slice(0, 5).map((src, i) => (
           <button class="gb__strip" style={`--i:${i}; --n:${Math.min(photos.length, 5)};`} aria-label={`View photo ${i + 1}`}>
-            <img src={src} alt={`Project photo ${i + 1}`} title={`Project photo ${i + 1}`} loading="lazy" draggable="false" />
+            <img src={src} alt={`Project photo ${i + 1}`} title={`Project photo ${i + 1}`} loading="lazy" draggable="false" {...responsiveImg(src, '(max-width: 899px) 150px, 190px')} />
           </button>
         ))}
       </div>

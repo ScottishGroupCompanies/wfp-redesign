@@ -8,13 +8,15 @@ interface Props {
   items: Item[];
 }
 const { items } = Astro.props;
+
+import { responsiveImg } from '../lib/responsive-image';
 ---
 
 <div class="ag-grid">
   {items.map(item => (
     <a href={item.href} class="ag-card">
       <div class="ag-card__img-wrap">
-        <img src={item.img} alt={item.title} title={item.title} loading="lazy" />
+        <img src={item.img} alt={item.title} title={item.title} loading="lazy" {...responsiveImg(item.img, '(max-width: 768px) 50vw, 25vw')} />
       </div>
       <div class="ag-card__overlay" aria-hidden="true"></div>
       <span class="ag-card__title">{item.title}</span>
