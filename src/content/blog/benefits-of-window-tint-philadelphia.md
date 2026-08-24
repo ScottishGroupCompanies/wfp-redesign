@@ -2,7 +2,7 @@
 title: "Benefits of Window Tint: Why More Philadelphia Owners Are Making the Switch"
 description: "Discover the benefits of window tint for Philadelphia homes and offices — energy savings, UV blocking, glare reduction, and security from 3M and LLumar film."
 pubDate: 2026-08-22
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-benefits-of-window-tint-philadelphia.jpg"
 imageAlt: "Benefits of Window Tint: Why More Philadelphia Owners Are Making the Switch | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "energy savings", "uv protection", "glare reduction", "security film"]

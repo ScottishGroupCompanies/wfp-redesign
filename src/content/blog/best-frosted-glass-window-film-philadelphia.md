@@ -2,7 +2,7 @@
 title: "Best Frosted Glass Window Film for Philadelphia: Modern Looks, More Privacy"
 description: "Discover the best frosted glass window film for Philadelphia spaces. Compare Solyx and 3M Fasara patterns for privacy, light, and modern design."
 pubDate: 2026-08-20
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-best-frosted-glass-window-film-philadelphia.webp"
 imageAlt: "Best Frosted Glass Window Film for Philadelphia: Modern Looks, More Privacy | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "frosted glass", "privacy"]

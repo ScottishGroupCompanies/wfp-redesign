@@ -2,7 +2,7 @@
 title: "Best Mirrored Window Film for Philadelphia: See Out, Keep Eyes Out"
 description: "Discover the best mirrored window film for Philadelphia. Cut glare, boost privacy, and reduce heat with reflective film options rated for local conditions."
 pubDate: 2026-08-21
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-best-mirrored-window-film-philadelphia.jpg"
 imageAlt: "Best Mirrored Window Film for Philadelphia: See Out, Keep Eyes Out | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "mirrored window film", "privacy", "reflective film"]

@@ -2,7 +2,7 @@
 title: "Best Residential Window Tint for Philadelphia: Comfort Meets Curb Appeal"
 description: "Discover the best residential window tint for Philadelphia homes. Reduce heat, block UV rays, and improve privacy with professional window film installation."
 pubDate: 2026-08-23
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-best-residential-window-tint-philadelphia.jpg"
 imageAlt: "Best Residential Window Tint for Philadelphia: Comfort Meets Curb Appeal | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "residential window tint", "home comfort", "energy savings"]

@@ -2,7 +2,7 @@
 title: "Top Trends in Best Decorative Window Film for Philadelphia Businesses"
 description: "Discover the best decorative window film Philadelphia businesses use for privacy, branding, and design. Compare 3M Fasara and Solyx options."
 pubDate: 2026-08-19
-author: "Window Film Philadelphia"
+author: "Mike Kinsey"
 image: "/images/blog/wfp-blog-decorative-window-film-philadelphia-business-trends.webp"
 imageAlt: "Top Trends in Best Decorative Window Film for Philadelphia Businesses | Window Film Philadelphia"
 tags: ["window film", "philadelphia", "decorative film", "commercial"]
