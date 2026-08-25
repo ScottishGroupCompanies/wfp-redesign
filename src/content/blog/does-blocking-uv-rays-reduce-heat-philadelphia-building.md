@@ -1,7 +1,7 @@
 ---
 title: "Does Blocking UV Rays Reduce Heat in Your Philadelphia Building?"
 description: "Does blocking UV rays reduce heat in Philadelphia? Learn how UV film blocks 99% UV while IR rejection handles the real heat load. Expert breakdown inside."
-pubDate: 2026-08-24
+pubDate: 2026-08-25
 author: "Window Film Philadelphia"
 image: "/images/blog/wfp-blog-does-blocking-uv-rays-reduce-heat-philadelphia-building.jpg"
 imageAlt: "Does Blocking UV Rays Reduce Heat in Your Philadelphia Building? | Window Film Philadelphia"
