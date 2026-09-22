@@ -133,6 +133,12 @@ const currentYear = new Date().getFullYear();
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="lead_source" value="Website Footer Form" />
 
+        <!-- Honeypot: leave empty. Hidden from users; bots often fill it. -->
+        <div class="hp-field" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label for="hp_website_footer">Website</label>
+          <input type="text" id="hp_website_footer" name="_honey" tabindex="-1" autocomplete="off" />
+        </div>
+
         <div class="wfp-footer__form-row">
           <input type="text" name="first_name" aria-label="First name" placeholder="First name" required class="wfp-footer__input" />
           <input type="text" name="last_name" aria-label="Last name" placeholder="Last name" required class="wfp-footer__input" />
@@ -622,9 +628,26 @@ const currentYear = new Date().getFullYear();
       if (success) success.removeAttribute('hidden');
     }
 
+    const MIN_SUBMIT_MS = 3000;
+
+    function isSpam(form) {
+      // Honeypot filled, or form submitted too fast for a human.
+      if (val(form, '_honey')) return true;
+      const loadedAt = Number(form.dataset.loadedAt || 0);
+      if (loadedAt && (Date.now() - loadedAt) < MIN_SUBMIT_MS) return true;
+      return false;
+    }
+
     function wire(form) {
+      form.dataset.loadedAt = String(Date.now());
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        // Block spam before FormSubmit or Zoho — show fake success so bots stop.
+        if (isSpam(form)) {
+          showSuccess(form);
+          return;
+        }
 
         const first = val(form, 'first_name');
         const last = val(form, 'last_name');
