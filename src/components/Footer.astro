@@ -114,25 +114,12 @@ const currentYear = new Date().getFullYear();
     <div class="wfp-footer__form-col">
       <h3 class="wfp-footer__col-header">GET A FREE QUOTE</h3>
 
-      <!--
-        NOTE: currently posts to FormSubmit as a placeholder.
-        TODO(Zoho): swap `action` to the Zoho Web-to-Lead endpoint
-        (https://crm.zoho.com/crm/WebToLeadForm), add hidden fields
-        xnQsjsdp / xmIwtLD / actionType / returnURL, set Lead Source,
-        and rename field `name=` attrs to Zoho's expected lead fields
-        (First Name, Last Name, Email, Phone, Company, Description).
-      -->
       <form
         class="wfp-footer__form"
-        action="https://formsubmit.co/contact@windowfilmphiladelphia.net"
+        action="/api/contact"
         method="POST"
         data-zoho-lead
       >
-        <input type="hidden" name="_next" value="https://windowfilmphiladelphia.net/thank-you/" />
-        <input type="hidden" name="_subject" value="New Footer Lead — Window Film Philadelphia" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="lead_source" value="Website Footer Form" />
-
         <!-- Honeypot: leave empty. Hidden from users; bots often fill it. -->
         <div class="hp-field" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
           <label for="hp_website_footer">Website</label>
@@ -164,6 +151,8 @@ const currentYear = new Date().getFullYear();
         </select>
 
         <textarea name="message" aria-label="Message" rows="3" placeholder="Tell us about your project…" required class="wfp-footer__input wfp-footer__textarea"></textarea>
+
+        <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY} data-action="contact" data-theme="dark"></div>
 
         <button type="submit" class="wfp-footer__cta">Get a Free Quote →</button>
         <p class="wfp-footer__cta-sub">Free consultation · No pressure</p>
@@ -570,54 +559,21 @@ const currentYear = new Date().getFullYear();
 
 <script is:inline>
   // ─────────────────────────────────────────────────────────────
-  // Zoho CRM Web-to-Lead integration (shared by every form[data-zoho-lead])
-  // Fires two POSTs in parallel: FormSubmit (email backup) + Zoho WebToLead
-  // (creates a Prospect). Shows success if EITHER succeeds; only logs to
-  // console if BOTH fail. Never shows an error to the user.
+  // Server-verified contact form integration (shared by every form[data-zoho-lead]).
+  // The Vercel endpoint verifies Turnstile, then creates the Zoho CRM Lead.
   // ─────────────────────────────────────────────────────────────
   (function () {
-    const ZOHO_URL = 'https://crm.zoho.com/crm/WebToLeadForm';
-    const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/contact@windowfilmphiladelphia.net';
-
     function val(form, name) {
       const el = form.querySelector('[name="' + name + '"]');
       return el ? el.value.trim() : '';
     }
 
-    function buildDescription(details, projectType, filmCategory) {
-      return (
-        (details || '') +
-        '\n\n--- Project Details ---\n' +
-        'Project Type: ' + (projectType || 'Not provided') + '\n' +
-        'Film Category: ' + (filmCategory || 'Not provided')
-      );
-    }
-
-    function postFormSubmit(fullName, email, phone, description) {
-      return fetch(FORMSUBMIT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: fullName,
-          email: email,
-          phone: phone,
-          message: description,
-          _subject: 'New Contact Form Submission — Window Film Philadelphia',
-        }),
-      }).then(function (r) { if (!r.ok) throw new Error('FormSubmit ' + r.status); return r; });
-    }
-
-    function postZoho(fields) {
+    function formBody(form) {
       const body = new URLSearchParams();
-      Object.keys(fields).forEach(function (k) { body.append(k, fields[k]); });
-      // Zoho WebToLeadForm doesn't return CORS-readable responses; use no-cors.
-      // The POST still creates the Prospect; we treat a resolved fetch as success.
-      return fetch(ZOHO_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
+      new FormData(form).forEach(function (fieldValue, fieldName) {
+        if (typeof fieldValue === 'string') body.append(fieldName, fieldValue);
       });
+      return body;
     }
 
     function showSuccess(form) {
@@ -649,52 +605,26 @@ const currentYear = new Date().getFullYear();
           return;
         }
 
-        const first = val(form, 'first_name');
-        const last = val(form, 'last_name');
-        const email = val(form, 'email');
-        const phone = val(form, 'phone');
-        const details = val(form, 'message');
-        const projectType = val(form, 'project_type'); // human-readable value
-        const filmCategory = val(form, 'film_type');
-        const fullName = (first + ' ' + last).trim();
-        const description = buildDescription(details, projectType, filmCategory);
-
-        const zohoFields = {
-          xnQsjsdp: '325aec352fca48630f82c839c082a7aa9196cea28dfcc9e80957434ae4a1b82a',
-          xmIwtLD: 'f0bb62d4e0d3507553760024d3e14e099546427dcdc85266704c37d416384aced18465ecf42623da5b55800cb7b24914',
-          actionType: 'TGVhZHM=',
-          returnURL: 'https://windowfilmphiladelphia.net/thank-you/',
-          zc_gad: '',
-          aG9uZXlwb3Q: '',
-          'First Name': first,
-          'Last Name': last,
-          Email: email,
-          Phone: phone,
-          Company: '',
-          LEADCF29: projectType || '-None-',
-          LEADCF28: filmCategory || '-None-',
-          Description: description,
-          'Lead Status': 'New',
-          LEADCF5: 'Web Form',
-          LEADCF4: 'Website',
-          LEADCF7: 'www.windowfilmphiladelphia.net',
-          LEADCF8: '-None-',
-        };
+        const token = val(form, 'cf-turnstile-response');
+        if (!token) {
+          window.alert('Please complete the verification before submitting.');
+          return;
+        }
 
         const btn = form.querySelector('[type="submit"]');
         if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
 
-        Promise.allSettled([
-          postFormSubmit(fullName, email, phone, description),
-          postZoho(zohoFields),
-        ]).then(function (results) {
-          const anyOk = results.some(function (r) { return r.status === 'fulfilled'; });
-          if (anyOk) {
+        fetch('/api/contact', {
+          method: 'POST', headers: { Accept: 'application/json' }, body: formBody(form),
+        }).then(function (result) {
+          return result.json().catch(function () { return {}; }).then(function (body) {
+            if (!result.ok) throw new Error(body.error || 'Contact form submission failed');
             showSuccess(form);
-          } else {
-            console.error('Both lead submissions failed', results);
+          });
+        }).catch(function (error) {
+            console.error('Contact form submission failed', error);
+            window.alert('We could not send your request. Please try again or call us.');
             if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
-          }
         });
       });
     }

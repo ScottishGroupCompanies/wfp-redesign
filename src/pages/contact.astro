@@ -130,14 +130,10 @@ const contactImages = {
 
         <form
           class="ct-consult__form"
-          action="https://formsubmit.co/contact@windowfilmphiladelphia.net"
+          action="/api/contact"
           method="POST"
           data-zoho-lead
         >
-          <input type="hidden" name="_next" value="https://windowfilmphiladelphia.net/thank-you/" />
-          <input type="hidden" name="_subject" value="New Contact — Window Film Philadelphia" />
-          <input type="hidden" name="_captcha" value="false" />
-
           <!-- Honeypot: leave empty. Hidden from users; bots often fill it. -->
           <div class="hp-field" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
             <label for="hp_website_contact">Website</label>
@@ -192,6 +188,8 @@ const contactImages = {
             <label for="message" class="ct-form-label">Project Details</label>
             <textarea id="message" name="message" rows="5" placeholder="Describe your windows, building, or project goals…" required class="ct-form-input ct-form-textarea"></textarea>
           </div>
+
+          <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY} data-action="contact"></div>
 
           <button type="submit" class="auron-btn auron-btn--primary ct-form-submit">
             Request Free Consultation

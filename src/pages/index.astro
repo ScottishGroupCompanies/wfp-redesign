@@ -709,7 +709,11 @@ const description = "Professional window film installation in Philadelphia. UV p
         
         <!-- Form Card -->
         <div class="contact-modern__form-card">
-          <form class="contact-modern__form" id="contactForm">
+          <form class="contact-modern__form" id="contactForm" action="/api/contact" method="POST" data-zoho-lead>
+            <div class="hp-field" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label for="hp_website_home">Website</label>
+              <input type="text" id="hp_website_home" name="_honey" tabindex="-1" autocomplete="off" />
+            </div>
             
             <!-- Row 1: Full Name | Phone Number -->
             <div class="contact-modern__row">
@@ -770,6 +774,8 @@ const description = "Professional window film installation in Philadelphia. UV p
                 <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
               </div>
             </div>
+
+            <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY} data-action="contact"></div>
 
             <!-- Row 5: Submit Button -->
             <div class="contact-modern__submit-row">
@@ -3688,15 +3694,4 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// ── Contact form ──
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    alert('Thank you! We\'ll be in touch within 24 hours.');
-    contactForm.reset();
-  });
-}
 </script>
