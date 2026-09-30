@@ -46,9 +46,20 @@ const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toStri
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8QZN9L2VV"></script>
-<script>
+<script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
   gtag('js', new Date());
   gtag('config', 'G-J8QZN9L2VV');
+
+  // Delegated phone/email click tracking – covers every tel:/mailto: link, including dynamic ones.
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    var a = t && t.closest ? t.closest('a[href^="tel:" i], a[href^="mailto:" i]') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    var href = a.getAttribute('href') || '';
+    var eventName = href.toLowerCase().indexOf('tel:') === 0 ? 'phone_click' : 'email_click';
+    window.gtag('event', eventName, { link_url: href, page_path: window.location.pathname });
+  }, true);
 </script>

@@ -22,7 +22,7 @@ const currentYear = new Date().getFullYear();
       </p>
 
       <div class="wfp-footer__contact-info">
-        <a href="tel:+126****7980" class="wfp-footer__phone">(267) 394-7980</a>
+        <a href="tel:+12673947980" class="wfp-footer__phone">(267) 394-7980</a>
         <a href="mailto:contact@windowfilmphiladelphia.net" class="wfp-footer__email">contact@windowfilmphiladelphia.net</a>
         <p class="wfp-footer__hours">Mon–Sat: 8am – 6pm</p>
       </div>
@@ -119,6 +119,7 @@ const currentYear = new Date().getFullYear();
         action="/api/contact"
         method="POST"
         data-zoho-lead
+        data-form-name="footer_quote"
       >
         <!-- Honeypot: leave empty. Hidden from users; bots often fill it. -->
         <div class="hp-field" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
@@ -557,6 +558,18 @@ const currentYear = new Date().getFullYear();
 }
 </style>
 
+<style is:global>
+  /* Component styles set display:flex on these elements, which overrides the
+     [hidden] attribute (Tailwind preflight's [hidden] rule has lower specificity).
+     Without this, submitted forms never hide and .ct-form-success is always visible. */
+  form[data-zoho-lead][hidden],
+  [data-zoho-success][hidden],
+  .ct-form-success[hidden],
+  .wfp-footer__form-success[hidden] {
+    display: none !important;
+  }
+</style>
+
 <script is:inline>
   // ─────────────────────────────────────────────────────────────
   // Server-verified contact form integration (shared by every form[data-zoho-lead]).
@@ -582,6 +595,16 @@ const currentYear = new Date().getFullYear();
       const container = form.parentElement;
       const success = container && container.querySelector('[data-zoho-success], .wfp-footer__form-success, .ct-form-success');
       if (success) success.removeAttribute('hidden');
+    }
+
+    function trackLead(form) {
+      try {
+        if (typeof window.gtag !== 'function') return;
+        window.gtag('event', 'generate_lead', {
+          form_name: form.dataset.formName || 'contact',
+          page_path: window.location.pathname
+        });
+      } catch (err) { /* never let analytics break the form */ }
     }
 
     const MIN_SUBMIT_MS = 3000;
@@ -620,6 +643,7 @@ const currentYear = new Date().getFullYear();
           return result.json().catch(function () { return {}; }).then(function (body) {
             if (!result.ok) throw new Error(body.error || 'Contact form submission failed');
             showSuccess(form);
+            trackLead(form);
           });
         }).catch(function (error) {
             console.error('Contact form submission failed', error);
