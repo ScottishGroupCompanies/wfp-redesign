@@ -466,19 +466,28 @@ const breadcrumbSchema = {
   text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s;
 }
 .post-prose :global(a:hover) { color: #6e9640; }
-.post-prose :global(ul), .post-prose :global(ol) {
+.post-prose :global(ul) {
   padding-left: 0; margin-bottom: 20px; list-style: none;
 }
+.post-prose :global(ol) {
+  padding-left: 28px; margin-bottom: 20px; list-style: decimal;
+}
 .post-prose :global(ul li) {
-  display: flex; align-items: flex-start; gap: 10px;
+  position: relative;
+  padding-left: 24px;
+  font-size: 16px; color: var(--text-mid, #4a4a4a);
+  line-height: 1.7; padding-top: 4px; padding-bottom: 4px;
+}
+.post-prose :global(ul li::before) {
+  content: ''; position: absolute; left: 4px; top: 13px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green, #81AB4C);
+}
+.post-prose :global(ol li) {
   font-size: 16px; color: var(--text-mid, #4a4a4a);
   line-height: 1.7; padding: 4px 0;
 }
-.post-prose :global(ul li::before) {
-  content: ''; display: inline-block;
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--green, #81AB4C); margin-top: 9px; flex-shrink: 0;
-}
+.post-prose :global(ol li::marker) { color: var(--green, #81AB4C); font-weight: 700; }
 .post-prose :global(blockquote) {
   border-left: 4px solid var(--green, #81AB4C);
   background: var(--green-light, #eef4e4);
